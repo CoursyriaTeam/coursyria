@@ -1,0 +1,4253 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Coursyria | Courses</title>
+
+    <link
+      rel="preload"
+      as="image"
+      href="image/logoo.png"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --blue-950: #03133b;
+        --blue-900: #06245f;
+        --blue-800: #073b92;
+        --blue-700: #0b57c7;
+        --blue-600: #1478e8;
+        --blue-500: #2da8ff;
+        --blue-300: #8ed8ff;
+        --ice: #eef8ff;
+        --white: #ffffff;
+        --silver: #dce9f7;
+        --text: #102344;
+        --muted: #5f7392;
+        --line: rgba(24, 105, 205, 0.22);
+        --shadow: 0 24px 70px rgba(5, 45, 110, 0.16);
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 90px;
+      }
+
+      body {
+        font-family: "Cairo", sans-serif;
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+
+        background-image: url("image/back.png");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        width: 520px;
+        height: 520px;
+        border: 1px solid rgba(26, 117, 221, 0.14);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -2;
+      }
+
+      body::before {
+        top: -330px;
+        right: -260px;
+        box-shadow:
+          0 0 0 22px rgba(35, 130, 230, 0.05),
+          0 0 0 55px rgba(35, 130, 230, 0.035),
+          0 0 0 95px rgba(35, 130, 230, 0.025);
+      }
+
+      body::after {
+        bottom: -350px;
+        left: -290px;
+        box-shadow:
+          0 0 0 22px rgba(35, 130, 230, 0.05),
+          0 0 0 55px rgba(35, 130, 230, 0.035),
+          0 0 0 95px rgba(35, 130, 230, 0.025);
+      }
+
+      /* =====================================================
+         PAGE
+      ====================================================== */
+
+      .page {
+        width: min(1220px, 94%);
+        margin: 24px auto;
+
+        background: rgba(255, 255, 255, 0.78);
+
+        border: 1px solid rgba(35, 125, 225, 0.18);
+        border-radius: 34px;
+
+        overflow: hidden;
+
+        box-shadow: var(--shadow);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        position: relative;
+      }
+
+      /* =====================================================
+         MUSIC CONTROL
+      ====================================================== */
+
+      .music-control {
+        position: fixed;
+        top: 18px;
+        left: 18px;
+
+        z-index: 20000;
+
+        border: 1px solid rgba(20, 121, 220, 0.25);
+
+        border-radius: 18px;
+
+        padding: 11px 18px;
+
+        display: flex;
+        align-items: center;
+        gap: 9px;
+
+        font-family: "Cairo", sans-serif;
+        font-size: 13px;
+        font-weight: 900;
+
+        color: #0752aa;
+
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.98),
+          rgba(224, 246, 255, 0.95)
+        );
+
+        box-shadow:
+          0 10px 30px rgba(7, 77, 165, 0.2),
+          0 0 18px rgba(45, 168, 255, 0.12);
+
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+
+        cursor: pointer;
+
+        transition: 0.3s ease;
+      }
+
+      .music-control:hover {
+        transform: translateY(-3px) scale(1.02);
+
+        box-shadow:
+          0 15px 35px rgba(7, 77, 165, 0.25),
+          0 0 25px rgba(45, 168, 255, 0.2);
+      }
+
+      .music-control.playing {
+        border-color: rgba(20, 121, 220, 0.5);
+
+        background: linear-gradient(135deg, #dff7ff, #ffffff, #d8f3ff);
+      }
+
+      .music-icon {
+        width: 31px;
+        height: 31px;
+
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: linear-gradient(135deg, #42baff, #0752b7);
+
+        color: #fff;
+
+        font-size: 16px;
+
+        box-shadow: 0 5px 14px rgba(7, 82, 186, 0.25);
+      }
+
+      /* =====================================================
+         BLUE LINE
+      ====================================================== */
+
+      .blue-line {
+        width: 240px;
+        height: 2px;
+
+        margin: 15px auto;
+
+        position: relative;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          #1679e8,
+          #9be2ff,
+          #1679e8,
+          transparent
+        );
+
+        box-shadow: 0 0 10px rgba(38, 148, 244, 0.35);
+      }
+
+      .blue-line::before,
+      .blue-line::after {
+        content: "";
+
+        position: absolute;
+
+        top: 50%;
+
+        width: 9px;
+        height: 9px;
+
+        transform: translateY(-50%) rotate(45deg);
+
+        background: linear-gradient(135deg, #fff, #2d9cf3, #0647a8);
+      }
+
+      .blue-line::before {
+        right: 0;
+      }
+
+      .blue-line::after {
+        left: 0;
+      }
+
+      /* =====================================================
+         NAVIGATION
+      ====================================================== */
+
+      .navbar {
+        position: sticky;
+        top: 12px;
+
+        width: calc(100% - 40px);
+        margin: 15px auto 0;
+
+        z-index: 5000;
+
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.96),
+          rgba(232, 246, 255, 0.94)
+        );
+
+        border: 1px solid rgba(20, 121, 220, 0.2);
+
+        border-radius: 18px;
+
+        box-shadow: 0 12px 35px rgba(7, 77, 165, 0.12);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      .nav-container {
+        min-height: 62px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 7px;
+
+        padding: 8px 12px;
+      }
+
+      .nav-link {
+        position: relative;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 10px 15px;
+
+        color: #164679;
+
+        text-decoration: none;
+
+        font-size: 13px;
+        font-weight: 800;
+
+        border-radius: 12px;
+
+        transition: 0.3s ease;
+
+        white-space: nowrap;
+      }
+
+      .nav-link:hover {
+        color: #0757ae;
+
+        background: rgba(72, 181, 255, 0.12);
+
+        transform: translateY(-2px);
+      }
+
+      .nav-link::after {
+        content: "";
+
+        position: absolute;
+
+        bottom: 5px;
+        right: 50%;
+
+        width: 0;
+        height: 2px;
+
+        transform: translateX(50%);
+
+        background: linear-gradient(90deg, #1478e8, #65d1ff);
+
+        transition: 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 55%;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+
+        width: 46px;
+        height: 46px;
+
+        border: 1px solid rgba(20, 121, 220, 0.22);
+
+        border-radius: 12px;
+
+        background: linear-gradient(145deg, #ffffff, #e8f7ff);
+
+        color: #0757ae;
+
+        font-size: 23px;
+
+        cursor: pointer;
+
+        align-items: center;
+        justify-content: center;
+
+        font-family: inherit;
+      }
+
+      /* =====================================================
+         HEADER
+      ====================================================== */
+
+      .header {
+        text-align: center;
+
+        padding: 58px 25px 42px;
+
+        position: relative;
+
+        background:
+          radial-gradient(
+            circle at 50% 10%,
+            rgba(105, 210, 255, 0.25),
+            transparent 34%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.96),
+            rgba(237, 248, 255, 0.76)
+          );
+
+        border-bottom: 1px solid rgba(22, 112, 218, 0.12);
+      }
+
+      .logo-box {
+        width: 250px;
+        height: 250px;
+
+        margin: 0 auto 8px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+        z-index: 5;
+
+        animation: headerLogoFloat 4s ease-in-out infinite;
+      }
+
+      .logo-box::before {
+        content: "";
+
+        position: absolute;
+
+        width: 195px;
+        height: 195px;
+
+        border-radius: 50%;
+
+        background: radial-gradient(
+          circle,
+          rgba(70, 190, 255, 0.2),
+          rgba(30, 130, 230, 0.08) 50%,
+          transparent 72%
+        );
+
+        filter: blur(12px);
+
+        z-index: -1;
+      }
+
+      .logo-box img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+
+        display: block;
+
+        filter: drop-shadow(0 12px 18px rgba(7, 82, 186, 0.2))
+          drop-shadow(0 0 20px rgba(45, 168, 255, 0.22));
+      }
+
+      @keyframes headerLogoFloat {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+
+        50% {
+          transform: translateY(-5px) scale(1.025);
+        }
+      }
+
+      .brand {
+        font-family: "Playfair Display", serif;
+
+        font-size: clamp(44px, 6vw, 76px);
+
+        letter-spacing: 5px;
+
+        color: #0752ba;
+
+        text-shadow:
+          1px 1px 0 #fff,
+          0 0 22px rgba(47, 164, 255, 0.25);
+      }
+
+      .brand span {
+        color: #1698f3;
+      }
+
+      .page-title {
+        font-family: "Playfair Display", serif;
+
+        font-size: clamp(28px, 4vw, 48px);
+
+        color: #083d91;
+
+        letter-spacing: 2px;
+
+        margin-top: 20px;
+      }
+
+      .page-subtitle {
+        margin-top: 8px;
+
+        color: var(--muted);
+
+        font-size: 15px;
+
+        font-weight: 600;
+      }
+
+      /* =====================================================
+         TEAM
+      ====================================================== */
+
+      .team-section {
+        padding: 30px 55px 48px;
+      }
+
+      .team-grid {
+        display: grid;
+
+        grid-template-columns: 230px 1fr 230px;
+
+        gap: 26px;
+
+        align-items: stretch;
+      }
+
+      .team-card {
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.94),
+          rgba(231, 245, 255, 0.82)
+        );
+
+        border: 1px solid var(--line);
+
+        border-radius: 25px;
+
+        padding: 22px;
+
+        text-align: center;
+
+        box-shadow: 0 12px 30px rgba(8, 76, 160, 0.08);
+
+        transition: 0.35s ease;
+      }
+
+      .team-card:hover {
+        transform: translateY(-5px);
+
+        border-color: rgba(19, 119, 224, 0.45);
+
+        box-shadow: 0 18px 38px rgba(7, 77, 165, 0.13);
+      }
+
+      .team-card h3 {
+        color: #08489f;
+
+        font-size: 18px;
+
+        margin-bottom: 15px;
+      }
+
+      .team-logo,
+      .teacher-image {
+        height: 170px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .team-logo img {
+        width: 145px;
+        height: 145px;
+
+        object-fit: contain;
+
+        display: block;
+      }
+
+      .teacher-image img {
+        width: 145px;
+        height: 145px;
+
+        border-radius: 50%;
+
+        object-fit: cover;
+
+        border: 4px solid #a9dcff;
+
+        box-shadow: 0 10px 28px rgba(5, 87, 175, 0.18);
+      }
+
+      .team-info {
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        text-align: right;
+
+        padding: 30px;
+      }
+
+      .team-info h2 {
+        color: #073f94;
+
+        font-size: 27px;
+
+        margin-bottom: 12px;
+      }
+
+      .team-info p {
+        line-height: 2;
+
+        font-size: 15px;
+
+        color: #4d6483;
+      }
+
+      .team-tags {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+
+        margin-top: 18px;
+      }
+
+      .tag {
+        padding: 6px 13px;
+
+        border-radius: 30px;
+
+        border: 1px solid rgba(30, 126, 220, 0.3);
+
+        background: rgba(239, 250, 255, 0.88);
+
+        color: #0754a8;
+
+        font-size: 12px;
+
+        font-weight: 800;
+      }
+
+      /* =====================================================
+         SECTIONS
+      ====================================================== */
+
+      .courses-section,
+      .info-section {
+        padding: 10px 55px 55px;
+      }
+
+      .section-title {
+        text-align: center;
+
+        margin-bottom: 30px;
+      }
+
+      .section-title h2 {
+        font-family: "Playfair Display", serif;
+
+        font-size: 38px;
+
+        color: #073f91;
+      }
+
+      .section-title p {
+        color: var(--muted);
+
+        margin-top: 5px;
+
+        font-size: 14px;
+      }
+
+      /* =====================================================
+         COURSE FILTERS
+      ====================================================== */
+
+      .course-filters {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        margin-bottom: 30px;
+      }
+
+      .filter-btn {
+        border: 1px solid rgba(20, 121, 220, 0.2);
+
+        background: linear-gradient(145deg, #ffffff, #edf8ff);
+
+        color: #0757ae;
+
+        padding: 10px 18px;
+
+        border-radius: 30px;
+
+        font-family: inherit;
+
+        font-size: 13px;
+
+        font-weight: 800;
+
+        cursor: pointer;
+
+        transition: 0.3s ease;
+      }
+
+      .filter-btn:hover {
+        transform: translateY(-3px);
+
+        border-color: rgba(20, 121, 220, 0.5);
+
+        box-shadow: 0 8px 18px rgba(7, 82, 186, 0.12);
+      }
+
+      .filter-btn.active {
+        color: white;
+
+        background: linear-gradient(135deg, #35adff, #0751b7);
+
+        border-color: transparent;
+
+        box-shadow: 0 8px 20px rgba(7, 82, 186, 0.22);
+      }
+
+      /* =====================================================
+         COURSES
+      ====================================================== */
+
+      .courses {
+        display: grid;
+
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        gap: 18px;
+
+        align-items: stretch;
+      }
+
+      .course {
+        min-width: 0;
+
+        min-height: 105px;
+
+        text-decoration: none;
+
+        color: inherit;
+
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.97),
+          rgba(239, 248, 255, 0.9)
+        );
+
+        border: 1px solid rgba(30, 126, 220, 0.19);
+
+        border-radius: 21px;
+
+        padding: 18px 20px;
+
+        display: grid;
+
+        grid-template-columns: 48px minmax(0, 1fr) 28px;
+
+        align-items: center;
+
+        column-gap: 12px;
+
+        transition: 0.35s ease;
+
+        box-shadow: 0 8px 22px rgba(8, 74, 155, 0.055);
+
+        position: relative;
+
+        overflow: hidden;
+
+        cursor: pointer;
+      }
+
+      .course::before {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        right: 0;
+
+        width: 5px;
+        height: 100%;
+
+        background: linear-gradient(#8fe0ff, #1379df, #063c92);
+      }
+
+      .course::after {
+        content: "";
+
+        position: absolute;
+
+        width: 150px;
+        height: 150px;
+
+        border-radius: 50%;
+
+        left: -100px;
+        bottom: -110px;
+
+        border: 1px solid rgba(36, 144, 235, 0.1);
+
+        transition: 0.35s;
+      }
+
+      .course:hover {
+        transform: translateY(-6px);
+
+        border-color: rgba(15, 117, 224, 0.48);
+
+        box-shadow: 0 18px 35px rgba(7, 76, 160, 0.13);
+      }
+
+      .course:hover::after {
+        transform: scale(1.3);
+      }
+
+      .course.hidden-course {
+        display: none;
+      }
+
+      .course-number {
+        width: 48px;
+        height: 48px;
+
+        border-radius: 50%;
+
+        background: linear-gradient(
+          145deg,
+          #dff7ff 0%,
+          #55c5ff 36%,
+          #126fda 66%,
+          #063d91 100%
+        );
+
+        color: #fff;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-weight: 900;
+
+        font-size: 14px;
+
+        box-shadow:
+          0 7px 15px rgba(11, 103, 201, 0.24),
+          inset 1px 1px 5px rgba(255, 255, 255, 0.55);
+
+        position: relative;
+
+        z-index: 2;
+      }
+
+      .course-content {
+        min-width: 0;
+
+        text-align: center;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        position: relative;
+
+        z-index: 2;
+      }
+
+      .course-name {
+        width: 100%;
+
+        font-size: 15px;
+
+        text-align: center;
+
+        font-weight: 800;
+
+        line-height: 1.55;
+
+        color: #173459;
+
+        overflow-wrap: anywhere;
+      }
+
+      .course-name-ar {
+        font-weight: 800;
+      }
+
+      .course-name-en {
+        margin-top: 2px;
+
+        font-size: 12px;
+
+        color: #5f7392;
+
+        font-weight: 700;
+
+        direction: ltr;
+      }
+
+      .arrow {
+        color: #1478dd;
+
+        font-size: 22px;
+
+        text-align: center;
+
+        position: relative;
+
+        z-index: 2;
+
+        transition: 0.3s;
+      }
+
+      .course:hover .arrow {
+        transform: translateX(-5px);
+      }
+
+      /* =====================================================
+         INFO IMAGE
+      ====================================================== */
+
+      .info-image-card {
+        width: min(900px, 100%);
+
+        margin: 0 auto;
+
+        padding: 16px;
+
+        border-radius: 26px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.97),
+          rgba(235, 247, 255, 0.9)
+        );
+
+        border: 1px solid rgba(30, 126, 220, 0.2);
+
+        box-shadow: 0 14px 36px rgba(8, 74, 155, 0.09);
+
+        text-align: center;
+
+        overflow: hidden;
+      }
+
+      .info-image-card img {
+        display: block;
+
+        width: 100%;
+
+        max-height: 850px;
+
+        object-fit: contain;
+
+        margin: 0 auto;
+
+        border-radius: 18px;
+      }
+
+      /* =====================================================
+         SHAM CASH
+      ====================================================== */
+
+      .payment-section {
+        position: relative;
+      }
+
+      .shamcash-trigger {
+        width: min(560px, 100%);
+
+        margin: 0 auto;
+
+        padding: 24px;
+
+        border-radius: 25px;
+
+        border: 1px solid rgba(30, 126, 220, 0.25);
+
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.97),
+          rgba(231, 246, 255, 0.92)
+        );
+
+        box-shadow: 0 14px 35px rgba(8, 74, 155, 0.1);
+
+        text-align: center;
+
+        cursor: pointer;
+
+        transition: 0.35s ease;
+      }
+
+      .shamcash-trigger:hover {
+        transform: translateY(-5px);
+
+        box-shadow: 0 20px 45px rgba(8, 74, 155, 0.18);
+
+        border-color: rgba(20, 121, 220, 0.5);
+      }
+
+      .shamcash-icon {
+        width: 70px;
+        height: 70px;
+
+        margin: 0 auto 12px;
+
+        border-radius: 20px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 34px;
+
+        background: linear-gradient(145deg, #dff7ff, #42baff, #0752b7);
+
+        color: white;
+
+        box-shadow:
+          0 8px 20px rgba(7, 82, 186, 0.22),
+          inset 1px 1px 5px rgba(255, 255, 255, 0.6);
+      }
+
+      .shamcash-trigger h3 {
+        color: #0752aa;
+
+        font-size: 21px;
+      }
+
+      .shamcash-trigger p {
+        margin-top: 6px;
+
+        color: #607795;
+
+        font-size: 14px;
+      }
+
+      /* =====================================================
+         SHAM CASH CURTAIN
+      ====================================================== */
+
+      .shamcash-curtain {
+        display: none;
+
+        position: fixed;
+
+        inset: 0;
+
+        background: rgba(2, 18, 50, 0.78);
+
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+
+        z-index: 10000;
+
+        align-items: flex-start;
+
+        justify-content: center;
+
+        overflow-y: auto;
+
+        padding: 35px 20px;
+      }
+
+      .shamcash-curtain.show {
+        display: flex;
+      }
+
+      .shamcash-sheet {
+        width: min(520px, 95vw);
+
+        margin-top: 0;
+
+        padding: 14px;
+
+        border-radius: 25px;
+
+        background: linear-gradient(145deg, #ffffff, #eaf8ff);
+
+        box-shadow: 0 30px 80px rgba(0, 20, 60, 0.45);
+
+        transform-origin: top center;
+
+        animation: shamCashDrop 0.9s cubic-bezier(0.22, 0.8, 0.25, 1) forwards;
+      }
+
+      .shamcash-sheet img {
+        width: 100%;
+
+        max-height: 75vh;
+
+        object-fit: contain;
+
+        display: block;
+
+        border-radius: 18px;
+      }
+
+      .shamcash-close {
+        margin-top: 12px;
+
+        width: 100%;
+
+        border: none;
+
+        border-radius: 13px;
+
+        padding: 12px;
+
+        background: linear-gradient(135deg, #42baff, #0752b7);
+
+        color: white;
+
+        font-family: inherit;
+
+        font-size: 15px;
+
+        font-weight: 800;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+      }
+
+      .shamcash-close:hover {
+        transform: translateY(-2px);
+
+        box-shadow: 0 8px 20px rgba(7, 82, 186, 0.25);
+      }
+
+      @keyframes shamCashDrop {
+        0% {
+          transform: translateY(-120px) scaleY(0.15);
+          opacity: 0;
+        }
+
+        35% {
+          transform: translateY(15px) scaleY(1.04);
+          opacity: 1;
+        }
+
+        60% {
+          transform: translateY(-6px) scaleY(0.98);
+        }
+
+        80% {
+          transform: translateY(3px) scaleY(1.01);
+        }
+
+        100% {
+          transform: translateY(0) scaleY(1);
+          opacity: 1;
+        }
+      }
+
+      .shamcash-curtain.closing .shamcash-sheet {
+        animation: shamCashUp 0.45s ease forwards;
+      }
+
+      @keyframes shamCashUp {
+        0% {
+          transform: translateY(0) scaleY(1);
+          opacity: 1;
+        }
+
+        100% {
+          transform: translateY(-100px) scaleY(0.15);
+          opacity: 0;
+        }
+      }
+
+      /* =====================================================
+         FAQ
+      ====================================================== */
+
+      .faq-section {
+        padding: 10px 55px 55px;
+      }
+
+      .faq-container {
+        width: min(900px, 100%);
+
+        margin: 0 auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 12px;
+      }
+
+      .faq-item {
+        border: 1px solid rgba(30, 126, 220, 0.2);
+
+        border-radius: 18px;
+
+        overflow: hidden;
+
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.96),
+          rgba(236, 248, 255, 0.9)
+        );
+
+        box-shadow: 0 8px 20px rgba(8, 74, 155, 0.06);
+      }
+
+      .faq-question {
+        width: 100%;
+
+        border: none;
+
+        background: transparent;
+
+        color: #12477f;
+
+        font-family: inherit;
+
+        font-size: 15px;
+
+        font-weight: 800;
+
+        text-align: right;
+
+        padding: 19px 20px;
+
+        cursor: pointer;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 15px;
+      }
+
+      .faq-question:hover {
+        background: rgba(80, 190, 255, 0.08);
+      }
+
+      .faq-icon {
+        min-width: 32px;
+        height: 32px;
+
+        border-radius: 50%;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        color: white;
+
+        background: linear-gradient(135deg, #45bcff, #0752b7);
+
+        font-size: 20px;
+
+        transition: 0.3s;
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(45deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+
+        overflow: hidden;
+
+        transition:
+          max-height 0.4s ease,
+          padding 0.4s ease;
+      }
+
+      .faq-answer-inner {
+        padding: 0 20px 19px;
+
+        color: #5d7390;
+
+        font-size: 14px;
+
+        line-height: 2;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 300px;
+      }
+
+      /* =====================================================
+         CONTACT
+      ====================================================== */
+
+      .contact-section {
+        padding: 10px 55px 55px;
+      }
+
+      .contact-grid {
+        width: min(950px, 100%);
+
+        margin: 0 auto;
+
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 18px;
+      }
+
+      .contact-card {
+        min-height: 175px;
+
+        text-decoration: none;
+
+        color: inherit;
+
+        border: 1px solid rgba(30, 126, 220, 0.2);
+
+        border-radius: 22px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.97),
+          rgba(233, 247, 255, 0.92)
+        );
+
+        padding: 25px 18px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        box-shadow: 0 10px 25px rgba(8, 74, 155, 0.07);
+
+        transition: 0.35s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-6px);
+
+        border-color: rgba(20, 121, 220, 0.45);
+
+        box-shadow: 0 18px 35px rgba(7, 76, 160, 0.13);
+      }
+
+      .contact-icon {
+        width: 65px;
+        height: 65px;
+
+        border-radius: 18px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        margin-bottom: 13px;
+
+        font-size: 30px;
+
+        background: linear-gradient(145deg, #dff7ff, #42baff, #0752b7);
+
+        color: white;
+
+        box-shadow: 0 8px 20px rgba(7, 82, 186, 0.18);
+      }
+
+      .contact-card h3 {
+        color: #0752aa;
+
+        font-size: 17px;
+
+        margin-bottom: 5px;
+      }
+
+      .contact-card p {
+        color: #687e99;
+
+        font-size: 12px;
+
+        line-height: 1.7;
+      }
+
+      /* =====================================================
+         FOOTER
+      ====================================================== */
+
+      .footer {
+        border-top: 1px solid rgba(23, 119, 220, 0.16);
+
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.88),
+          rgba(224, 243, 255, 0.84)
+        );
+
+        padding: 34px 20px;
+
+        text-align: center;
+
+        color: #607795;
+
+        font-size: 13px;
+
+        line-height: 2.2;
+      }
+
+      .footer strong {
+        display: inline-block;
+
+        color: #0752aa;
+
+        font-family: "Playfair Display", serif;
+
+        font-size: 27px;
+
+        letter-spacing: 2px;
+      }
+
+      .designer-link {
+        display: inline-block;
+
+        margin-top: 7px;
+
+        padding: 6px 15px;
+
+        color: #0757ae;
+
+        text-decoration: none;
+
+        font-weight: 800;
+
+        font-size: 14px;
+
+        border: 1px solid rgba(20, 121, 220, 0.22);
+
+        border-radius: 20px;
+
+        transition: 0.3s;
+
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .designer-link:hover {
+        color: #fff;
+
+        background: linear-gradient(135deg, #35adff, #0751b7);
+
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        margin-top: 10px;
+
+        padding-top: 10px;
+
+        border-top: 1px solid rgba(26, 118, 218, 0.12);
+
+        color: #8294ad;
+
+        font-size: 12px;
+      }
+
+      /* =====================================================
+         RANK MODAL
+      ====================================================== */
+
+      .modal {
+        display: none;
+
+        position: fixed;
+
+        inset: 0;
+
+        background: rgba(2, 18, 50, 0.78);
+
+        backdrop-filter: blur(8px);
+
+        justify-content: center;
+
+        align-items: center;
+
+        z-index: 9999;
+
+        padding: 20px;
+      }
+
+      .modal-content {
+        background: linear-gradient(145deg, #fff, #e9f7ff);
+
+        padding: 18px;
+
+        border-radius: 22px;
+
+        max-width: 90%;
+
+        box-shadow: 0 25px 70px rgba(0, 20, 60, 0.35);
+      }
+
+      .modal-content img {
+        width: 100%;
+
+        max-width: 450px;
+
+        border-radius: 14px;
+
+        display: block;
+      }
+
+      .close {
+        margin-top: 12px;
+
+        background: linear-gradient(135deg, #42baff, #0752b7);
+
+        color: #fff;
+
+        padding: 10px 20px;
+
+        border-radius: 10px;
+
+        cursor: pointer;
+
+        font-weight: 800;
+
+        text-align: center;
+      }
+
+      /* =====================================================
+         MAIN CONTENT
+      ====================================================== */
+
+      .hidden {
+        opacity: 0;
+
+        visibility: hidden;
+
+        transform: translateY(18px);
+      }
+
+      #main-content {
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s ease,
+          visibility 0.9s ease;
+      }
+
+      /* =====================================================
+         SPLASH
+      ====================================================== */
+
+      #splash {
+        position: fixed;
+
+        inset: 0;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        z-index: 99999;
+
+        overflow: hidden;
+
+        background-image:
+          linear-gradient(rgba(1, 18, 65, 0.12), rgba(0, 39, 100, 0.25)),
+          url("image/back.png");
+
+        background-size: cover;
+
+        background-position: center;
+
+        background-repeat: no-repeat;
+
+        transition:
+          opacity 0.85s ease,
+          visibility 0.85s ease,
+          transform 0.85s ease;
+      }
+
+      #splash.hide {
+        opacity: 0;
+
+        visibility: hidden;
+
+        transform: scale(1.05);
+
+        pointer-events: none;
+      }
+
+      #splash::before {
+        content: "";
+
+        position: absolute;
+
+        inset: 0;
+
+        background:
+          radial-gradient(
+            circle at center,
+            rgba(69, 191, 255, 0.25),
+            transparent 28%
+          ),
+          radial-gradient(
+              circle,
+              rgba(89, 202, 255, 0.28) 0 1px,
+              transparent 2px
+            )
+            0 0 / 48px 48px;
+
+        animation: starsMove 16s linear infinite;
+      }
+
+      #splash::after {
+        content: "";
+
+        position: absolute;
+
+        width: min(88vw, 850px);
+
+        height: min(88vw, 850px);
+
+        border-radius: 50%;
+
+        border: 1px solid rgba(112, 215, 255, 0.14);
+
+        box-shadow:
+          0 0 0 60px rgba(48, 160, 255, 0.025),
+          0 0 0 130px rgba(48, 160, 255, 0.015),
+          0 0 150px rgba(30, 169, 255, 0.45);
+
+        animation: pulseRing 3.5s ease-in-out infinite;
+      }
+
+      .splash-content {
+        width: min(95vw, 900px);
+
+        position: relative;
+
+        z-index: 20;
+
+        text-align: center;
+
+        padding: 20px;
+      }
+
+      .logo-stage {
+        width: min(72vw, 560px);
+
+        height: min(58vh, 560px);
+
+        margin: 0 auto 18px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        position: relative;
+
+        z-index: 25;
+
+        animation: stageFloat 4s ease-in-out infinite;
+      }
+
+      .logo-stage::before {
+        content: "";
+
+        position: absolute;
+
+        width: 73%;
+        height: 73%;
+
+        border-radius: 50%;
+
+        background: radial-gradient(
+          circle,
+          rgba(80, 206, 255, 0.26),
+          rgba(39, 150, 255, 0.12) 42%,
+          transparent 70%
+        );
+
+        filter: blur(10px);
+
+        animation: logoAura 3s ease-in-out infinite;
+
+        pointer-events: none;
+      }
+
+      .logo-stage::after {
+        content: "";
+
+        position: absolute;
+
+        width: 91%;
+        height: 91%;
+
+        border-radius: 50%;
+
+        border: 1px solid rgba(126, 222, 255, 0.12);
+
+        box-shadow:
+          0 0 30px rgba(42, 174, 255, 0.16),
+          inset 0 0 35px rgba(42, 174, 255, 0.08);
+
+        animation: softRing 4s ease-in-out infinite;
+
+        pointer-events: none;
+      }
+
+      .logo-rope {
+        position: absolute;
+
+        inset: -2%;
+
+        border-radius: 50%;
+
+        z-index: 35;
+
+        pointer-events: none;
+
+        transform: rotate(-8deg);
+
+        filter: drop-shadow(0 0 4px #ffffff) drop-shadow(0 0 12px #38c4ff)
+          drop-shadow(0 0 25px rgba(30, 157, 255, 0.95))
+          drop-shadow(0 0 50px rgba(22, 111, 255, 0.45));
+
+        animation:
+          ropeOrbit 8s linear infinite,
+          ropeBreath 2.8s ease-in-out infinite;
+      }
+
+      .logo-rope::before {
+        content: "";
+
+        position: absolute;
+
+        inset: 7%;
+
+        border-radius: 50%;
+
+        background: conic-gradient(
+          from 0deg,
+          transparent 0deg,
+          transparent 18deg,
+          rgba(42, 175, 255, 0.18) 22deg,
+          #36c7ff 27deg,
+          #eaffff 30deg,
+          #ffffff 33deg,
+          #48cfff 37deg,
+          rgba(37, 153, 255, 0.1) 42deg,
+          transparent 53deg,
+          transparent 112deg,
+          rgba(42, 175, 255, 0.12) 118deg,
+          #31bfff 123deg,
+          #ffffff 127deg,
+          #4fd3ff 132deg,
+          rgba(37, 153, 255, 0.1) 137deg,
+          transparent 150deg,
+          transparent 228deg,
+          rgba(42, 175, 255, 0.12) 234deg,
+          #31bfff 239deg,
+          #ffffff 243deg,
+          #4fd3ff 248deg,
+          rgba(37, 153, 255, 0.1) 254deg,
+          transparent 268deg,
+          transparent 315deg,
+          rgba(42, 175, 255, 0.15) 320deg,
+          #31bfff 326deg,
+          #ffffff 330deg,
+          #4fd3ff 335deg,
+          transparent 345deg,
+          transparent 360deg
+        );
+
+        -webkit-mask: radial-gradient(
+          circle,
+          transparent 59.5%,
+          #000 60.2%,
+          #000 63.2%,
+          transparent 64%
+        );
+
+        mask: radial-gradient(
+          circle,
+          transparent 59.5%,
+          #000 60.2%,
+          #000 63.2%,
+          transparent 64%
+        );
+      }
+
+      .logo-rope::after {
+        content: "";
+
+        position: absolute;
+
+        inset: 12%;
+
+        border-radius: 50%;
+
+        background: conic-gradient(
+          from 180deg,
+          transparent 0deg,
+          transparent 27deg,
+          rgba(63, 205, 255, 0.18) 31deg,
+          #43caff 36deg,
+          #ffffff 39deg,
+          #62d8ff 43deg,
+          transparent 48deg,
+          transparent 91deg,
+          rgba(63, 205, 255, 0.18) 96deg,
+          #43caff 101deg,
+          #ffffff 104deg,
+          #62d8ff 108deg,
+          transparent 113deg,
+          transparent 178deg,
+          rgba(63, 205, 255, 0.18) 183deg,
+          #43caff 188deg,
+          #ffffff 191deg,
+          #62d8ff 195deg,
+          transparent 200deg,
+          transparent 267deg,
+          rgba(63, 205, 255, 0.18) 272deg,
+          #43caff 277deg,
+          #ffffff 280deg,
+          #62d8ff 284deg,
+          transparent 289deg,
+          transparent 360deg
+        );
+
+        -webkit-mask: radial-gradient(
+          circle,
+          transparent 62%,
+          #000 62.8%,
+          #000 64.2%,
+          transparent 65%
+        );
+
+        mask: radial-gradient(
+          circle,
+          transparent 62%,
+          #000 62.8%,
+          #000 64.2%,
+          transparent 65%
+        );
+
+        filter: drop-shadow(0 0 5px #55d5ff)
+          drop-shadow(0 0 14px rgba(43, 177, 255, 0.9));
+
+        animation: innerRopeSpin 5s linear infinite;
+      }
+
+      .rope-light {
+        position: absolute;
+
+        width: 18px;
+        height: 18px;
+
+        top: 7%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        border-radius: 50%;
+
+        background: #ffffff;
+
+        box-shadow:
+          0 0 5px #ffffff,
+          0 0 12px #ffffff,
+          0 0 25px #55d7ff,
+          0 0 45px #1ba5ff,
+          0 0 75px rgba(0, 137, 255, 0.95);
+
+        animation:
+          lightOrbit 8s linear infinite,
+          lightPulse 1.3s ease-in-out infinite;
+
+        z-index: 50;
+      }
+
+      .rope-light-2 {
+        position: absolute;
+
+        width: 9px;
+        height: 9px;
+
+        bottom: 13%;
+        left: 15%;
+
+        border-radius: 50%;
+
+        background: #dffaff;
+
+        box-shadow:
+          0 0 7px #ffffff,
+          0 0 18px #43caff,
+          0 0 35px #168eff;
+
+        animation:
+          secondLight 5s linear infinite,
+          smallLightPulse 1.7s ease-in-out infinite;
+
+        z-index: 50;
+      }
+
+      .crystal-field {
+        position: absolute;
+
+        inset: 0;
+
+        z-index: 3;
+
+        overflow: hidden;
+
+        pointer-events: none;
+      }
+
+      .crystal {
+        position: absolute;
+
+        width: 18px;
+        height: 18px;
+
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.95),
+          rgba(126, 221, 255, 0.85) 45%,
+          rgba(19, 104, 220, 0.75)
+        );
+
+        clip-path: polygon(50% 0%, 100% 35%, 82% 100%, 18% 100%, 0% 35%);
+
+        box-shadow:
+          0 0 12px rgba(78, 199, 255, 0.8),
+          0 0 28px rgba(38, 149, 255, 0.45);
+
+        opacity: 0.85;
+
+        animation:
+          crystalFloat 5s ease-in-out infinite,
+          crystalSpin 7s linear infinite;
+      }
+
+      .c1 {
+        top: 12%;
+        left: 12%;
+        width: 24px;
+        height: 24px;
+      }
+
+      .c2 {
+        top: 22%;
+        left: 25%;
+        width: 12px;
+        height: 12px;
+        animation-delay: -1.2s;
+      }
+
+      .c3 {
+        top: 9%;
+        right: 18%;
+        width: 30px;
+        height: 30px;
+        animation-delay: -2s;
+      }
+
+      .c4 {
+        top: 35%;
+        right: 8%;
+        width: 15px;
+        height: 15px;
+        animation-delay: -3s;
+      }
+
+      .c5 {
+        bottom: 18%;
+        left: 10%;
+        width: 26px;
+        height: 26px;
+        animation-delay: -1.5s;
+      }
+
+      .c6 {
+        bottom: 9%;
+        right: 15%;
+        width: 19px;
+        height: 19px;
+        animation-delay: -4s;
+      }
+
+      .c7 {
+        top: 48%;
+        left: 5%;
+        width: 10px;
+        height: 10px;
+        animation-delay: -2.5s;
+      }
+
+      .c8 {
+        top: 18%;
+        right: 35%;
+        width: 16px;
+        height: 16px;
+        animation-delay: -0.8s;
+      }
+
+      .c9 {
+        bottom: 30%;
+        right: 28%;
+        width: 11px;
+        height: 11px;
+        animation-delay: -3.5s;
+      }
+
+      .c10 {
+        bottom: 12%;
+        left: 30%;
+        width: 22px;
+        height: 22px;
+        animation-delay: -2.2s;
+      }
+
+      .c11 {
+        top: 60%;
+        right: 4%;
+        width: 28px;
+        height: 28px;
+        animation-delay: -4.5s;
+      }
+
+      .c12 {
+        top: 5%;
+        left: 42%;
+        width: 13px;
+        height: 13px;
+        animation-delay: -1.8s;
+      }
+
+      .c13 {
+        bottom: 42%;
+        left: 20%;
+        width: 17px;
+        height: 17px;
+        animation-delay: -3.8s;
+      }
+
+      .c14 {
+        bottom: 5%;
+        right: 42%;
+        width: 14px;
+        height: 14px;
+        animation-delay: -0.5s;
+      }
+
+      .logo-3d {
+        width: min(65vw, 470px);
+
+        height: min(52vh, 470px);
+
+        object-fit: contain;
+
+        display: block;
+
+        position: relative;
+
+        z-index: 45;
+
+        filter: drop-shadow(0 30px 35px rgba(0, 0, 0, 0.38))
+          drop-shadow(0 0 18px rgba(72, 192, 255, 0.8))
+          drop-shadow(0 0 45px rgba(72, 192, 255, 0.65));
+
+        animation: logoFloat 4s ease-in-out infinite;
+      }
+
+      .splash-title {
+        position: relative;
+
+        z-index: 30;
+
+        color: #0b278c;
+
+        font-family: "Playfair Display", serif;
+
+        font-size: clamp(38px, 6vw, 68px);
+
+        letter-spacing: 7px;
+
+        text-shadow:
+          0 0 22px rgba(91, 203, 255, 0.75),
+          2px 2px 0 rgba(255, 255, 255, 0.7);
+      }
+
+      .splash-subtitle {
+        position: relative;
+
+        z-index: 30;
+
+        margin-top: 8px;
+
+        color: #03104d;
+
+        font-size: 15px;
+
+        font-weight: 800;
+      }
+
+      .loader-wrap {
+        position: relative;
+
+        z-index: 30;
+
+        width: min(340px, 76vw);
+
+        margin: 25px auto 0;
+      }
+
+      .loader-bar {
+        height: 8px;
+
+        background: rgba(255, 255, 255, 0.25);
+
+        border: 1px solid rgba(60, 168, 255, 0.4);
+
+        border-radius: 50px;
+
+        overflow: hidden;
+      }
+
+      #loader-progress {
+        width: 0%;
+
+        height: 100%;
+
+        border-radius: inherit;
+
+        background: linear-gradient(90deg, #168dff, #e1f8ff, #126df0);
+
+        box-shadow:
+          0 0 10px #45c8ff,
+          0 0 20px #45c8ff;
+
+        transition: width 0.12s linear;
+      }
+
+      #loader-text {
+        margin-top: 10px;
+
+        color: #06134d;
+
+        font-size: 12px;
+
+        font-weight: 900;
+      }
+
+      /* =====================================================
+         ANIMATIONS
+      ====================================================== */
+
+      @keyframes logoFloat {
+        0%,
+        100% {
+          transform: scale(1) translateY(0);
+        }
+
+        50% {
+          transform: scale(1.035) translateY(-12px);
+        }
+      }
+
+      @keyframes stageFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes logoAura {
+        0%,
+        100% {
+          transform: scale(0.9);
+          opacity: 0.55;
+        }
+
+        50% {
+          transform: scale(1.08);
+          opacity: 1;
+        }
+      }
+
+      @keyframes softRing {
+        0%,
+        100% {
+          transform: scale(0.96);
+          opacity: 0.4;
+        }
+
+        50% {
+          transform: scale(1.03);
+          opacity: 0.9;
+        }
+      }
+
+      @keyframes ropeOrbit {
+        from {
+          transform: rotate(-8deg);
+        }
+
+        to {
+          transform: rotate(352deg);
+        }
+      }
+
+      @keyframes innerRopeSpin {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+
+      @keyframes ropeBreath {
+        0%,
+        100% {
+          scale: 0.98;
+          opacity: 0.78;
+        }
+
+        50% {
+          scale: 1.03;
+          opacity: 1;
+        }
+      }
+
+      @keyframes lightOrbit {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg) translateY(245px)
+            rotate(0deg);
+        }
+
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg) translateY(245px)
+            rotate(-360deg);
+        }
+      }
+
+      @keyframes lightPulse {
+        0%,
+        100% {
+          scale: 0.75;
+          opacity: 0.65;
+        }
+
+        50% {
+          scale: 1.3;
+          opacity: 1;
+        }
+      }
+
+      @keyframes secondLight {
+        0% {
+          transform: translate(0, 0);
+          opacity: 0.4;
+        }
+
+        25% {
+          transform: translate(55px, -70px);
+          opacity: 1;
+        }
+
+        50% {
+          transform: translate(130px, -20px);
+          opacity: 0.55;
+        }
+
+        75% {
+          transform: translate(65px, 65px);
+          opacity: 1;
+        }
+
+        100% {
+          transform: translate(0, 0);
+          opacity: 0.4;
+        }
+      }
+
+      @keyframes smallLightPulse {
+        0%,
+        100% {
+          scale: 0.7;
+        }
+
+        50% {
+          scale: 1.5;
+        }
+      }
+
+      @keyframes starsMove {
+        to {
+          transform: translate3d(80px, -100px, 0);
+        }
+      }
+
+      @keyframes pulseRing {
+        0%,
+        100% {
+          transform: scale(0.96);
+          opacity: 0.55;
+        }
+
+        50% {
+          transform: scale(1.04);
+          opacity: 1;
+        }
+      }
+
+      @keyframes crystalFloat {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0) scale(1);
+        }
+
+        25% {
+          transform: translateY(-18px) translateX(8px) scale(1.08);
+        }
+
+        50% {
+          transform: translateY(-8px) translateX(-10px) scale(0.92);
+        }
+
+        75% {
+          transform: translateY(15px) translateX(5px) scale(1.05);
+        }
+      }
+
+      @keyframes crystalSpin {
+        from {
+          rotate: 0deg;
+        }
+
+        to {
+          rotate: 360deg;
+        }
+      }
+
+      /* =====================================================
+         RESPONSIVE TABLET
+      ====================================================== */
+
+      @media (max-width: 950px) {
+        .nav-container {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .team-info {
+          grid-column: 1 / -1;
+          grid-row: 1;
+          text-align: center;
+        }
+
+        .team-tags {
+          justify-content: center;
+        }
+
+        .courses {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .contact-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* =====================================================
+         RESPONSIVE MOBILE
+      ====================================================== */
+
+      @media (max-width: 650px) {
+        body {
+          background-position: 70% center;
+          background-attachment: scroll;
+        }
+
+        .page {
+          width: 96%;
+          margin: 10px auto;
+          border-radius: 23px;
+        }
+
+        /* MUSIC */
+
+        .music-control {
+          top: 12px;
+          left: 12px;
+
+          padding: 9px 12px;
+
+          border-radius: 15px;
+
+          font-size: 11px;
+        }
+
+        .music-icon {
+          width: 29px;
+          height: 29px;
+          font-size: 14px;
+        }
+
+        /* NAV MOBILE */
+
+        .navbar {
+          top: 7px;
+          width: calc(100% - 20px);
+          border-radius: 16px;
+        }
+
+        .nav-container {
+          min-height: 60px;
+          justify-content: space-between;
+          padding: 7px 9px;
+        }
+
+        .mobile-menu-btn {
+          display: flex;
+        }
+
+        .nav-links {
+          display: none;
+
+          width: 100%;
+
+          flex-direction: column;
+
+          gap: 4px;
+
+          padding: 8px 0 4px;
+        }
+
+        .nav-links.open {
+          display: flex;
+        }
+
+        .nav-link {
+          width: 100%;
+
+          padding: 12px 10px;
+
+          background: rgba(239, 249, 255, 0.75);
+        }
+
+        .nav-link::after {
+          display: none;
+        }
+
+        /* HEADER */
+
+        .header {
+          padding: 30px 15px 28px;
+        }
+
+        .logo-box {
+          width: 215px;
+          height: 215px;
+
+          margin-bottom: 5px;
+        }
+
+        .logo-box::before {
+          width: 175px;
+          height: 175px;
+        }
+
+        .brand {
+          font-size: 40px;
+          letter-spacing: 3px;
+        }
+
+        .page-title {
+          font-size: 29px;
+        }
+
+        /* SECTIONS */
+
+        .team-section,
+        .courses-section,
+        .info-section,
+        .faq-section,
+        .contact-section {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+
+        .team-info {
+          grid-column: auto;
+          grid-row: auto;
+          order: -1;
+          padding: 22px;
+        }
+
+        .team-logo,
+        .teacher-image {
+          height: 150px;
+        }
+
+        /* FILTERS */
+
+        .course-filters {
+          gap: 7px;
+          margin-bottom: 22px;
+        }
+
+        .filter-btn {
+          padding: 8px 12px;
+          font-size: 11px;
+        }
+
+        /* COURSES */
+
+        .courses {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .course {
+          min-height: 96px;
+          padding: 15px;
+          grid-template-columns: 44px minmax(0, 1fr) 25px;
+        }
+
+        .course-number {
+          width: 44px;
+          height: 44px;
+        }
+
+        .course-name {
+          font-size: 14px;
+        }
+
+        .section-title h2 {
+          font-size: 30px;
+        }
+
+        /* CONTACT */
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .contact-card {
+          min-height: 145px;
+          padding: 20px;
+        }
+
+        /* FAQ */
+
+        .faq-question {
+          font-size: 13px;
+          padding: 16px;
+        }
+
+        .faq-answer-inner {
+          padding: 0 16px 16px;
+          font-size: 12px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+          padding: 28px 15px;
+        }
+
+        .footer strong {
+          font-size: 23px;
+        }
+
+        /* SPLASH */
+
+        .logo-stage {
+          width: min(92vw, 390px);
+          height: min(47vh, 390px);
+          margin-bottom: 12px;
+        }
+
+        .logo-3d {
+          width: min(78vw, 320px);
+          height: min(40vh, 320px);
+        }
+
+        .logo-rope {
+          inset: 1%;
+        }
+
+        .logo-rope::before {
+          -webkit-mask: radial-gradient(
+            circle,
+            transparent 57%,
+            #000 58%,
+            #000 61.5%,
+            transparent 62.5%
+          );
+
+          mask: radial-gradient(
+            circle,
+            transparent 57%,
+            #000 58%,
+            #000 61.5%,
+            transparent 62.5%
+          );
+        }
+
+        .logo-rope::after {
+          -webkit-mask: radial-gradient(
+            circle,
+            transparent 60%,
+            #000 60.8%,
+            #000 62.5%,
+            transparent 63.5%
+          );
+
+          mask: radial-gradient(
+            circle,
+            transparent 60%,
+            #000 60.8%,
+            #000 62.5%,
+            transparent 63.5%
+          );
+        }
+
+        .rope-light {
+          width: 14px;
+          height: 14px;
+        }
+
+        @keyframes lightOrbit {
+          0% {
+            transform: translate(-50%, -50%) rotate(0deg) translateY(165px)
+              rotate(0deg);
+          }
+
+          100% {
+            transform: translate(-50%, -50%) rotate(360deg) translateY(165px)
+              rotate(-360deg);
+          }
+        }
+
+        .splash-title {
+          font-size: 38px;
+          letter-spacing: 4px;
+        }
+
+        .splash-subtitle {
+          font-size: 13px;
+        }
+
+        .loader-wrap {
+          margin-top: 20px;
+        }
+
+        /* SHAM CASH */
+
+        .shamcash-curtain {
+          padding: 20px 12px;
+        }
+
+        .shamcash-sheet {
+          width: 96vw;
+          padding: 10px;
+          border-radius: 20px;
+        }
+
+        .shamcash-sheet img {
+          max-height: 72vh;
+          border-radius: 14px;
+        }
+
+        .shamcash-trigger {
+          padding: 20px 15px;
+        }
+      }
+
+      @media (max-width: 390px) {
+        .logo-box {
+          width: 195px;
+          height: 195px;
+        }
+
+        .logo-box::before {
+          width: 160px;
+          height: 160px;
+        }
+
+        .logo-stage {
+          width: 92vw;
+          height: 330px;
+        }
+
+        .logo-3d {
+          width: 270px;
+          height: 270px;
+        }
+
+        @keyframes lightOrbit {
+          0% {
+            transform: translate(-50%, -50%) rotate(0deg) translateY(145px)
+              rotate(0deg);
+          }
+
+          100% {
+            transform: translate(-50%, -50%) rotate(360deg) translateY(145px)
+              rotate(-360deg);
+          }
+        }
+
+        .splash-title {
+          font-size: 32px;
+          letter-spacing: 3px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =====================================================
+         AUDIO
+    ====================================================== -->
+
+    <audio id="introAudio" preload="auto">
+      <source src="audio/intro.mp3" type="audio/mpeg" />
+    </audio>
+
+    <audio id="backgroundAudio" preload="auto" loop>
+      <source src="audio/background.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- =====================================================
+         MUSIC BUTTON
+    ====================================================== -->
+
+    <button
+      id="musicControl"
+      class="music-control"
+      type="button"
+      aria-label="تشغيل الموسيقى"
+    >
+      <span class="music-icon" id="musicIcon">🔊</span>
+
+      <span id="musicText">تشغيل الموسيقى</span>
+    </button>
+
+    <!-- =====================================================
+       SPLASH SCREEN
+    ====================================================== -->
+
+    <div id="splash" aria-label="Loading">
+      <div class="crystal-field">
+        <span class="crystal c1"></span>
+        <span class="crystal c2"></span>
+        <span class="crystal c3"></span>
+        <span class="crystal c4"></span>
+        <span class="crystal c5"></span>
+        <span class="crystal c6"></span>
+        <span class="crystal c7"></span>
+        <span class="crystal c8"></span>
+        <span class="crystal c9"></span>
+        <span class="crystal c10"></span>
+        <span class="crystal c11"></span>
+        <span class="crystal c12"></span>
+        <span class="crystal c13"></span>
+        <span class="crystal c14"></span>
+      </div>
+
+      <div class="splash-content">
+        <div class="logo-stage">
+          <div class="logo-rope">
+            <div class="rope-light"></div>
+            <div class="rope-light-2"></div>
+          </div>
+
+          <img src="image/logoo.png" class="logo-3d" alt="Coursyria Logo" />
+        </div>
+
+        <div class="splash-title">COURSYRIA</div>
+
+        <div class="splash-subtitle">تعلّم • تطوّر • قد</div>
+
+        <div class="loader-wrap">
+          <div class="loader-bar">
+            <div id="loader-progress"></div>
+          </div>
+
+          <div id="loader-text">جارِ تحميل الموقع... 0%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================
+       MAIN CONTENT
+    ====================================================== -->
+
+    <div id="main-content" class="hidden">
+      <div class="page">
+        <!-- =====================================================
+           NAVIGATION
+        ====================================================== -->
+
+        <nav class="navbar">
+          <div class="nav-container">
+            <button
+              class="mobile-menu-btn"
+              id="mobileMenuBtn"
+              aria-label="فتح القائمة"
+              aria-expanded="false"
+            >
+              ☰
+            </button>
+
+            <div class="nav-links" id="navLinks">
+              <a href="#home" class="nav-link">الرئيسية</a>
+
+              <a href="#courses" class="nav-link">الدورات</a>
+
+              <a href="#ranks" class="nav-link">الرتب</a>
+
+              <a href="#promotion" class="nav-link">شروط الترقية</a>
+
+              <a href="#payment" class="nav-link">الدفع</a>
+
+              <a href="#faq" class="nav-link">الأسئلة الشائعة</a>
+
+              <a href="#contact" class="nav-link">تواصل معنا</a>
+            </div>
+          </div>
+        </nav>
+
+        <!-- =====================================================
+           HEADER / HOME
+        ====================================================== -->
+
+        <header class="header" id="home">
+          <div class="logo-box">
+            <img src="image/logoo.png" alt="Coursyria Logo" />
+          </div>
+
+          <div class="brand">COUR<span>SYRIA</span></div>
+
+          <div class="blue-line"></div>
+
+          <h1 class="page-title">COURSES</h1>
+
+          <p class="page-subtitle">Coursyria — تعلّم • تطوّر • قد</p>
+        </header>
+
+        <!-- =====================================================
+           TEAM
+        ====================================================== -->
+
+        <section class="team-section">
+          <div class="team-grid">
+            <div class="team-card">
+              <h3>فريق Coursyria</h3>
+
+              <div class="team-logo">
+                <img src="image/logoo.png" alt="Team Logo" />
+              </div>
+
+              <p>فريق تعليمي يهدف إلى تقديم محتوى تدريبي احترافي.</p>
+            </div>
+
+            <div class="team-card team-info">
+              <h2>من نحن؟</h2>
+
+              <p>
+                Coursyria هو فريق تدريبي يقدّم دورات تعليمية متخصصة تساعدك على
+                تطوير مهاراتك التقنية والشخصية والوصول إلى مستوى احترافي.
+              </p>
+
+              <div class="team-tags">
+                <span class="tag">تعليم احترافي</span>
+
+                <span class="tag">تطبيق عملي</span>
+
+                <span class="tag">مدربون متخصصون</span>
+
+                <span class="tag">تطوير مستمر</span>
+              </div>
+            </div>
+
+            <div class="team-card">
+              <h3>المدرب</h3>
+
+              <div class="teacher-image">
+                <img src="image/teacher.jpg" alt="Trainer" />
+              </div>
+
+              <p>
+                المدرب المهندس
+                <br />
+                <strong>عبدالرحمن الحنفي</strong>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================
+           COURSES
+        ====================================================== -->
+
+        <section class="courses-section" id="courses">
+          <div class="section-title">
+            <h2>دوراتنا</h2>
+
+            <div class="blue-line"></div>
+
+            <p>اختر التصنيف المناسب واستكشف الدورات</p>
+          </div>
+
+          <div class="course-filters">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+
+            <button class="filter-btn" data-filter="tech">💻 تقنية</button>
+
+            <button class="filter-btn" data-filter="cyber">
+              🔐 أمن سيبراني
+            </button>
+
+            <button class="filter-btn" data-filter="business">
+              📊 إدارة ومحاسبة
+            </button>
+
+            <button class="filter-btn" data-filter="languages">🌎 لغات</button>
+
+            <button class="filter-btn" data-filter="design">
+              🎨 تصميم وتسويق
+            </button>
+          </div>
+
+          <div class="courses">
+            <!-- 01 -->
+            <a href="full/excel.html" class="course" data-category="tech">
+              <div class="course-number">01</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">إكسل ماستر</div>
+
+                  <div class="course-name-en">Excel Master</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 02 -->
+            <a href="full/canva.html" class="course" data-category="design">
+              <div class="course-number">02</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">كانفا A1</div>
+
+                  <div class="course-name-en">Canva A1</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 03 -->
+            <a href="full/ai.html" class="course" data-category="tech">
+              <div class="course-number">03</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">
+                    التعلّم باستخدام الذكاء الاصطناعي
+                  </div>
+
+                  <div class="course-name-en">Learning With AI</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 04 -->
+            <a href="full/secure.html" class="course" data-category="cyber">
+              <div class="course-number">04</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">أمن المعلومات</div>
+
+                  <div class="course-name-en">Information Security</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 05 -->
+            <a href="full/time.html" class="course" data-category="business">
+              <div class="course-number">05</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">فن إدارة الوقت</div>
+
+                  <div class="course-name-en">Time Management Art</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 06 -->
+            <a
+              href="full/courseyria_social_media_course-1.html"
+              class="course"
+              data-category="design"
+            >
+              <div class="course-number">06</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">منصات التواصل الاجتماعي</div>
+
+                  <div class="course-name-en">Social Media Platform</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 07 -->
+            <a href="full/project.html" class="course" data-category="tech">
+              <div class="course-number">07</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">بناء مشروع صغير</div>
+
+                  <div class="course-name-en">Small Project Building</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 08 -->
+            <a href="full/market.html" class="course" data-category="design">
+              <div class="course-number">08</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">إدارة المحتوى التسويقي</div>
+
+                  <div class="course-name-en">Marketing Content Management</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 09 -->
+            <a href="full/uiux.html" class="course" data-category="design">
+              <div class="course-number">09</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">
+                    تصميم واجهات المستخدم وتجربة المستخدم
+                  </div>
+
+                  <div class="course-name-en">UI UX</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 10 -->
+            <a href="full/cpp.html" class="course" data-category="tech">
+              <div class="course-number">10</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">سي بلس بلس</div>
+
+                  <div class="course-name-en">C++</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 11 -->
+            <a
+              href="full/coursyria_csharp_beginner.html"
+              class="course"
+              data-category="tech"
+            >
+              <div class="course-number">11</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">سي شارب</div>
+
+                  <div class="course-name-en">C#</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 12 -->
+            <a href="full/hr.html" class="course" data-category="business">
+              <div class="course-number">12</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">الموارد البشرية</div>
+
+                  <div class="course-name-en">HR</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 13 -->
+            <a
+              href="full/HR_Master.html"
+              class="course"
+              data-category="business"
+            >
+              <div class="course-number">13</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">ماستر الموارد البشرية</div>
+
+                  <div class="course-name-en">HR Master</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 14 -->
+            <a
+              href="full/computerskill.html"
+              class="course"
+              data-category="tech"
+            >
+              <div class="course-number">14</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">مهارات الحاسوب</div>
+
+                  <div class="course-name-en">Computer Skills</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 15 -->
+            <a href="full/cyber.html" class="course" data-category="cyber">
+              <div class="course-number">15</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">معسكر الأمن السيبراني</div>
+
+                  <div class="course-name-en">Cyber Security Camp</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 16 -->
+            <a
+              href="full/Conversation_A1.html"
+              class="course"
+              data-category="languages"
+            >
+              <div class="course-number">16</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">محادثة إنكليزية A1</div>
+
+                  <div class="course-name-en">English Conversation A1</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 17 -->
+            <a
+              href="full/Conversation_A2.html"
+              class="course"
+              data-category="languages"
+            >
+              <div class="course-number">17</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">محادثة إنكليزية A2</div>
+
+                  <div class="course-name-en">English Conversation A2</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 18 -->
+            <a href="full/blueTeam.html" class="course" data-category="cyber">
+              <div class="course-number">18</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">
+                    الفريق الأزرق للأمن السيبراني
+                  </div>
+
+                  <div class="course-name-en">Blue Team Cyber Security</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 19 -->
+            <a
+              href="full/Data_Analyst1.html"
+              class="course"
+              data-category="tech"
+            >
+              <div class="course-number">19</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">محلل البيانات 1</div>
+
+                  <div class="course-name-en">Data Analyst 1</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 20 -->
+            <a
+              href="full/Data_Analyst_2.html"
+              class="course"
+              data-category="tech"
+            >
+              <div class="course-number">20</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">محلل البيانات 2</div>
+
+                  <div class="course-name-en">Data Analyst 2</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 21 -->
+            <a href="full/a1.html" class="course" data-category="languages">
+              <div class="course-number">21</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">الإنكليزية A1</div>
+
+                  <div class="course-name-en">A1 English</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 22 -->
+            <a href="full/a2.html" class="course" data-category="languages">
+              <div class="course-number">22</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">الإنكليزية A2</div>
+
+                  <div class="course-name-en">A2 English</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 23 -->
+            <a href="full/b1.html" class="course" data-category="languages">
+              <div class="course-number">23</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">الإنكليزية B1</div>
+
+                  <div class="course-name-en">B1 English</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 24 -->
+            <a href="full/b2.html" class="course" data-category="languages">
+              <div class="course-number">24</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">الإنكليزية B2</div>
+
+                  <div class="course-name-en">B2 English</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 25 -->
+            <a href="full/icdl.html" class="course" data-category="tech">
+              <div class="course-number">25</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">
+                    الرخصة الدولية لقيادة الحاسوب
+                  </div>
+
+                  <div class="course-name-en">ICDL</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 26 -->
+            <a
+              href="full/alamen.html"
+              class="course"
+              data-category="business"
+            >
+              <div class="course-number">26</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">الأمين للمحاسبة</div>
+
+                  <div class="course-name-en">Al-Ameen Accounting</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 27 -->
+            <a
+              href="full/albayan.html"
+              class="course"
+              data-category="business"
+            >
+              <div class="course-number">27</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">البيان للمحاسبة</div>
+
+                  <div class="course-name-en">Al-Bayan Accounting</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 28 -->
+            <a
+              href="full/computermaster.html"
+              class="course"
+              data-category="tech"
+            >
+              <div class="course-number">28</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">ماستر مهارات الحاسوب</div>
+
+                  <div class="course-name-en">Computer Skills Master</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 29 -->
+            <a
+              href="full/data3.html"
+              class="course"
+              data-category="tech"
+            >
+              <div class="course-number">29</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">محلل البيانات 3</div>
+
+                  <div class="course-name-en">Data Analyst 3</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 30 -->
+            <a
+              href="full/data4.html"
+              class="course"
+              data-category="tech"
+            >
+              <div class="course-number">30</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">محلل البيانات 4</div>
+
+                  <div class="course-name-en">Data Analyst 4</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 31 -->
+            <a
+              href="full/software.html"
+              class="course"
+              data-category="tech"
+            >
+              <div class="course-number">31</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">برامج الحاسوب</div>
+
+                  <div class="course-name-en">Computer Software</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+
+            <!-- 32 -->
+            <a href="full/pythonn.html" class="course" data-category="tech">
+              <div class="course-number">32</div>
+
+              <div class="course-content">
+                <div class="course-name">
+                  <div class="course-name-ar">بايثون</div>
+
+                  <div class="course-name-en">Python</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
+          </div>
+        </section>
+
+        <!-- =====================================================
+           RANKS
+        ====================================================== -->
+
+        <section class="courses-section" id="ranks">
+          <div class="section-title">
+            <h2>الرتب</h2>
+
+            <div class="blue-line"></div>
+
+            <p>اضغط على الرتبة لعرض الصورة</p>
+          </div>
+
+          <div class="courses">
+            <div class="course" onclick="openRank('ranks/rank1.jpg')">
+              <div class="course-number">01</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة الأولى</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+
+            <div class="course" onclick="openRank('ranks/rank2.jpg')">
+              <div class="course-number">02</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة الثانية</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+
+            <div class="course" onclick="openRank('ranks/rank3.jpg')">
+              <div class="course-number">03</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة الثالثة</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+
+            <div class="course" onclick="openRank('ranks/rank4.jpg')">
+              <div class="course-number">04</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة الرابعة</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+
+            <div class="course" onclick="openRank('ranks/rank5.jpg')">
+              <div class="course-number">05</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة الخامسة</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+
+            <div class="course" onclick="openRank('ranks/rank6.jpg')">
+              <div class="course-number">06</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة السادسة</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+
+            <div class="course" onclick="openRank('ranks/rank7.jpg')">
+              <div class="course-number">07</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة السابعة</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+
+            <div class="course" onclick="openRank('ranks/rank8.jpg')">
+              <div class="course-number">08</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة الثامنة</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+
+            <div class="course" onclick="openRank('ranks/rank9.jpg')">
+              <div class="course-number">09</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة التاسعة</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+
+            <div class="course" onclick="openRank('ranks/rank10.jpg')">
+              <div class="course-number">10</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة العاشرة</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+
+            <div class="course" onclick="openRank('ranks/rank11.jpg')">
+              <div class="course-number">11</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة الحادية عشرة</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+
+            <div class="course" onclick="openRank('ranks/rank12.jpg')">
+              <div class="course-number">12</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة الثانية عشرة</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+
+            <div class="course" onclick="openRank('ranks/rank13.jpg')">
+              <div class="course-number">13</div>
+              <div class="course-content">
+                <div class="course-name">الرتبة الثالثة عشرة</div>
+              </div>
+              <div class="arrow">←</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================
+           PROMOTION CONDITIONS
+        ====================================================== -->
+
+        <section class="info-section" id="promotion">
+          <div class="section-title">
+            <h2>شروط الترقية</h2>
+
+            <div class="blue-line"></div>
+
+            <p>اطّلع على شروط ومتطلبات الانتقال بين الرتب</p>
+          </div>
+
+          <div class="info-image-card">
+            <img src="image/condition.png" alt="شروط الترقية" loading="lazy" />
+          </div>
+        </section>
+
+        <!-- =====================================================
+           PAYMENT
+        ====================================================== -->
+
+        <section class="info-section payment-section" id="payment">
+          <div class="section-title">
+            <h2>الدفع عن طريق شام كاش</h2>
+
+            <div class="blue-line"></div>
+
+            <p>اضغط على البطاقة لإظهار معلومات الدفع</p>
+          </div>
+
+          <div class="shamcash-trigger" onclick="openShamCash()">
+            <div class="shamcash-icon">💳</div>
+
+            <h3>الدفع عن طريق شام كاش</h3>
+
+            <p>اضغط هنا لإظهار باركود شام كاش</p>
+          </div>
+        </section>
+
+        <!-- =====================================================
+           FAQ
+        ====================================================== -->
+
+        <section class="faq-section" id="faq">
+          <div class="section-title">
+            <h2>الأسئلة الشائعة</h2>
+
+            <div class="blue-line"></div>
+
+            <p>أهم الأسئلة التي قد تحتاج إلى معرفة إجاباتها</p>
+          </div>
+
+          <div class="faq-container">
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>هل الدورات أونلاين؟</span>
+
+                <span class="faq-icon">+</span>
+              </button>
+
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  نعم جميعا فيديوهات مسجلة بدقة عالية على التلغرام
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>كيف يتم التسجيل؟</span>
+
+                <span class="faq-icon">+</span>
+              </button>
+
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  اختر الدورة التي تريدها من قسم الدورات، ثم انتقل إلى صفحة
+                  الدورة واضغط على زر بدء الرحلة أو تواصل معنا لإتمام التسجيل.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>كيف يتم الدفع؟</span>
+
+                <span class="faq-icon">+</span>
+              </button>
+
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  يمكنك استخدام طريقة الدفع المتوفرة عبر شام كاش، وذلك من خلال
+                  قسم الدفع الموجود في الموقع.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>هل أحصل على شهادة؟</span>
+
+                <span class="faq-icon">+</span>
+              </button>
+
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  تختلف تفاصيل الشهادة حسب الدورة والبرنامج التدريبي. يمكنك
+                  التواصل معنا لمعرفة تفاصيل الشهادة الخاصة بالدورة.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>كم مدة الدورة؟</span>
+
+                <span class="faq-icon">+</span>
+              </button>
+
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  مدة الدورة تختلف من برنامج إلى آخر. يمكنك الدخول إلى صفحة
+                  الدورة لمعرفة المدة والمحاور والتفاصيل الكاملة.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>هل يوجد دعم بعد الدورة؟</span>
+
+                <span class="faq-icon">+</span>
+              </button>
+
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  يمكنك التواصل مع فريق Coursyria للاستفسار عن الدعم والمتابعة
+                  المتاحة لكل دورة.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================
+           CONTACT
+        ====================================================== -->
+
+        <section class="contact-section" id="contact">
+          <div class="section-title">
+            <h2>معلومات التواصل</h2>
+
+            <div class="blue-line"></div>
+
+            <p>نحن هنا لمساعدتك والإجابة عن استفساراتك</p>
+          </div>
+
+          <div class="contact-grid">
+            <!-- المدرب -->
+
+            <a
+              href="https://wa.me/963995980568"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-card"
+            >
+              <div class="contact-icon">👨‍🏫</div>
+
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>اضغط للتواصل عبر واتساب</p>
+            </a>
+
+            <!-- لين -->
+
+            <a
+              href="https://wa.me/963937015714"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-card"
+            >
+              <div class="contact-icon">💬</div>
+
+              <h3>لين الكردي</h3>
+
+              <p>اضغط للتواصل عبر واتساب</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- =====================================================
+           FOOTER
+        ====================================================== -->
+
+        <footer class="footer">
+          <strong> COURSYRIA </strong>
+
+          <br />
+
+          <span> تعلّم • تطوّر • قد </span>
+
+          <br />
+
+          <a
+            href="https://wa.me/963937015714"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="designer-link"
+          >
+            إعداد وتصميم لين الكردي
+          </a>
+
+          <div class="copyright">© 2026 Coursyria — جميع الحقوق محفوظة</div>
+        </footer>
+      </div>
+
+      <!-- =====================================================
+         SHAM CASH CURTAIN
+         (منقولة خارج .page لتفادي مشكلة backdrop-filter/overflow
+          التي كانت تمنع ظهور الصورة)
+      ====================================================== -->
+
+      <div
+        id="shamCashCurtain"
+        class="shamcash-curtain"
+        onclick="if (event.target === this) closeShamCash();"
+      >
+        <div class="shamcash-sheet">
+          <img src="image/shamcash.png" alt="باركود شام كاش" />
+
+          <button class="shamcash-close" onclick="closeShamCash()">
+            إغلاق
+          </button>
+        </div>
+      </div>
+
+      <!-- =====================================================
+         RANK MODAL
+         (منقولة خارج .page لنفس السبب)
+      ====================================================== -->
+
+      <div
+        id="rankModal"
+        class="modal"
+        onclick="if (event.target === this) closeRank();"
+      >
+        <div class="modal-content">
+          <img id="rankImg" src="" alt="Rank" />
+
+          <div class="close" onclick="closeRank()">إغلاق</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================
+       JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+      /* =====================================================
+         AUDIO
+      ====================================================== */
+
+      const introAudio = document.getElementById("introAudio");
+
+      const backgroundAudio = document.getElementById("backgroundAudio");
+
+      const musicControl = document.getElementById("musicControl");
+
+      const musicIcon = document.getElementById("musicIcon");
+
+      const musicText = document.getElementById("musicText");
+
+      let musicEnabled = false;
+
+      /*
+        محاولة تشغيل نغمة الانترو تلقائياً.
+        إذا منع المتصفح التشغيل التلقائي،
+        سيبقى زر الموسيقى بالأعلى جاهزاً للتشغيل.
+      */
+
+      function startIntroMusic() {
+        introAudio.currentTime = 0;
+
+        const playPromise = introAudio.play();
+
+        if (playPromise !== undefined) {
+          playPromise
+            .then(function () {
+              musicEnabled = true;
+              updateMusicButton();
+            })
+            .catch(function () {
+              musicEnabled = false;
+              updateMusicButton();
+            });
+        }
+      }
+
+      /*
+        زر الموسيقى الرئيسي.
+      */
+
+      musicControl.addEventListener("click", function () {
+        if (!introAudio.paused && !introAudio.ended) {
+          introAudio.pause();
+
+          backgroundAudio.pause();
+
+          musicEnabled = false;
+
+          updateMusicButton();
+
+          return;
+        }
+
+        if (!backgroundAudio.paused) {
+          backgroundAudio.pause();
+
+          musicEnabled = false;
+
+          updateMusicButton();
+
+          return;
+        }
+
+        /*
+            بعد الدخول للموقع الانترو ما بيشتغل تاني،
+            فبنشغّل مباشرة موسيقى الخلفية.
+          */
+
+        backgroundAudio
+          .play()
+          .then(function () {
+            musicEnabled = true;
+            updateMusicButton();
+          })
+          .catch(function () {});
+      });
+
+      function updateMusicButton() {
+        const playing =
+          musicEnabled && (!introAudio.paused || !backgroundAudio.paused);
+
+        if (playing) {
+          musicControl.classList.add("playing");
+
+          musicIcon.textContent = "🔊";
+
+          musicText.textContent = "إيقاف الموسيقى";
+
+          musicControl.setAttribute("aria-label", "إيقاف الموسيقى");
+        } else {
+          musicControl.classList.remove("playing");
+
+          musicIcon.textContent = "🔇";
+
+          musicText.textContent = "تشغيل الموسيقى";
+
+          musicControl.setAttribute("aria-label", "تشغيل الموسيقى");
+        }
+      }
+
+      /* =====================================================
+         MOBILE NAVIGATION
+      ====================================================== */
+
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+
+      const navLinks = document.getElementById("navLinks");
+
+      mobileMenuBtn.addEventListener("click", function () {
+        navLinks.classList.toggle("open");
+
+        const isOpen = navLinks.classList.contains("open");
+
+        mobileMenuBtn.setAttribute("aria-expanded", isOpen);
+
+        mobileMenuBtn.textContent = isOpen ? "✕" : "☰";
+      });
+
+      document.querySelectorAll(".nav-link").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("open");
+
+          mobileMenuBtn.setAttribute("aria-expanded", "false");
+
+          mobileMenuBtn.textContent = "☰";
+        });
+      });
+
+      /* =====================================================
+         COURSE FILTER
+      ====================================================== */
+
+      const filterButtons = document.querySelectorAll(".filter-btn");
+
+      const courseCards = document.querySelectorAll(
+        ".courses-section#courses .course",
+      );
+
+      filterButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          const filter = button.getAttribute("data-filter");
+
+          filterButtons.forEach(function (btn) {
+            btn.classList.remove("active");
+          });
+
+          button.classList.add("active");
+
+          courseCards.forEach(function (course) {
+            const category = course.getAttribute("data-category");
+
+            if (filter === "all" || category === filter) {
+              course.classList.remove("hidden-course");
+            } else {
+              course.classList.add("hidden-course");
+            }
+          });
+        });
+      });
+
+      /* =====================================================
+         FAQ ACCORDION
+      ====================================================== */
+
+      const faqItems = document.querySelectorAll(".faq-item");
+
+      faqItems.forEach(function (item) {
+        const question = item.querySelector(".faq-question");
+
+        question.addEventListener("click", function () {
+          const wasActive = item.classList.contains("active");
+
+          faqItems.forEach(function (otherItem) {
+            otherItem.classList.remove("active");
+          });
+
+          if (!wasActive) {
+            item.classList.add("active");
+          }
+        });
+      });
+
+      /* =====================================================
+         RANK MODAL
+      ====================================================== */
+
+      function openRank(imgSrc) {
+        document.getElementById("rankImg").src = imgSrc;
+
+        document.getElementById("rankModal").style.display = "flex";
+
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeRank() {
+        document.getElementById("rankModal").style.display = "none";
+
+        document.getElementById("rankImg").src = "";
+
+        document.body.style.overflow = "";
+      }
+
+      /* =====================================================
+         SHAM CASH
+      ====================================================== */
+
+      function openShamCash() {
+        const curtain = document.getElementById("shamCashCurtain");
+
+        curtain.classList.remove("closing");
+
+        curtain.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeShamCash() {
+        const curtain = document.getElementById("shamCashCurtain");
+
+        curtain.classList.add("closing");
+
+        setTimeout(function () {
+          curtain.classList.remove("show");
+
+          curtain.classList.remove("closing");
+
+          document.body.style.overflow = "";
+        }, 450);
+      }
+
+      /* =====================================================
+         ESC KEY
+      ====================================================== */
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeRank();
+
+          closeShamCash();
+
+          navLinks.classList.remove("open");
+
+          mobileMenuBtn.setAttribute("aria-expanded", "false");
+
+          mobileMenuBtn.textContent = "☰";
+        }
+      });
+
+      /* =====================================================
+         SPLASH LOADING
+      ====================================================== */
+
+      window.addEventListener("load", function () {
+        const splash = document.getElementById("splash");
+
+        const mainContent = document.getElementById("main-content");
+
+        const progress = document.getElementById("loader-progress");
+
+        const loaderText = document.getElementById("loader-text");
+
+        /*
+            تشغيل نغمة الانترو عند تحميل الصفحة (تبقى محصورة بشاشة التحميل فقط).
+          */
+
+        startIntroMusic();
+
+        const totalTime = 3200;
+
+        let current = 0;
+
+        const loading = setInterval(function () {
+          current += 1;
+
+          progress.style.width = current + "%";
+
+          loaderText.textContent = "جارِ تحميل الموقع... " + current + "%";
+
+          if (current >= 100) {
+            clearInterval(loading);
+
+            setTimeout(function () {
+              splash.classList.add("hide");
+
+              mainContent.classList.remove("hidden");
+
+              /*
+                  عند الدخول الفعلي لصفحة الموقع:
+                  نوقف نغمة الانترو فوراً ونبدأ أغنية الخلفية بدلاً منها،
+                  حتى لا يصير أي تداخل بين النغمتين.
+                */
+
+              if (!introAudio.paused) {
+                introAudio.pause();
+              }
+
+              introAudio.currentTime = 0;
+
+              if (musicEnabled) {
+                backgroundAudio.currentTime = 0;
+
+                backgroundAudio
+                  .play()
+                  .then(function () {
+                    musicEnabled = true;
+                    updateMusicButton();
+                  })
+                  .catch(function () {});
+              }
+
+              setTimeout(function () {
+                splash.remove();
+              }, 900);
+            }, 250);
+          }
+        }, totalTime / 100);
+      });
+
+      /*
+        إذا بدأ المستخدم التفاعل مع الصفحة
+        وكان المتصفح قد منع التشغيل التلقائي،
+        نحاول تشغيل الانترو (فقط أثناء وجود شاشة التحميل).
+      */
+
+      document.addEventListener(
+        "click",
+        function firstUserInteraction() {
+          const splashStillVisible = document.getElementById("splash");
+
+          if (
+            splashStillVisible &&
+            introAudio.paused &&
+            backgroundAudio.paused &&
+            !musicEnabled
+          ) {
+            introAudio
+              .play()
+              .then(function () {
+                musicEnabled = true;
+                updateMusicButton();
+              })
+              .catch(function () {});
+          }
+
+          document.removeEventListener("click", firstUserInteraction);
+        },
+        { once: true },
+      );
+    </script>
+  </body>
+</html>

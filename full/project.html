@@ -1,0 +1,1745 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>كورس بناء المشاريع الصغيرة | Coursyria</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        width: 100%;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        width: 100%;
+        min-width: 0;
+        overflow-x: hidden;
+        font-family: "Cairo", sans-serif;
+
+        background:
+          radial-gradient(
+            circle at 80% 10%,
+            rgba(214, 169, 74, 0.18),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 10% 80%,
+            rgba(124, 23, 27, 0.18),
+            transparent 25%
+          ),
+          linear-gradient(135deg, #080504, #1b100c 45%, #080504);
+
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      :root {
+        --bg: #0d0806;
+        --bg2: #1b100c;
+        --brown: #3a2117;
+        --brown2: #24130e;
+        --gold: #d6a94a;
+        --gold-light: #ffe3a0;
+        --red: #7c171b;
+        --red-light: #a92a2e;
+        --text: #fff8e8;
+        --muted: #d7c7af;
+      }
+
+      /* =========================
+         CONTAINER
+      ========================= */
+
+      .container {
+        width: min(1200px, 94%);
+        max-width: 1200px;
+        margin: auto;
+        padding: 35px 0 60px;
+      }
+
+      /* =========================
+         HEADER
+      ========================= */
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        padding: 18px 25px;
+        border-bottom: 1px solid rgba(214, 169, 74, 0.35);
+        margin-bottom: 35px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        min-width: 0;
+      }
+
+      .logo-icon {
+        width: 58px;
+        height: 58px;
+        flex: 0 0 58px;
+
+        border: 2px solid var(--gold);
+        border-radius: 50%;
+
+        display: grid;
+        place-items: center;
+
+        color: var(--gold-light);
+        font-size: 28px;
+        font-weight: 900;
+
+        box-shadow: 0 0 20px rgba(214, 169, 74, 0.2);
+      }
+
+      .logo-text {
+        min-width: 0;
+      }
+
+      .logo-text h2 {
+        font-size: 27px;
+        letter-spacing: -1px;
+      }
+
+      .logo-text span {
+        color: var(--gold);
+      }
+
+      .logo-text small {
+        display: block;
+        color: #cdbb9c;
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
+
+      /* =========================
+         HERO
+      ========================= */
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+        align-items: center;
+
+        padding: 45px 30px;
+
+        border: 1px solid rgba(214, 169, 74, 0.35);
+        border-radius: 30px;
+
+        background: linear-gradient(
+          135deg,
+          rgba(70, 38, 24, 0.75),
+          rgba(10, 7, 5, 0.95)
+        );
+
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.5),
+          inset 0 0 40px rgba(214, 169, 74, 0.04);
+
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+
+        width: 350px;
+        height: 350px;
+
+        border-radius: 50%;
+
+        background: rgba(214, 169, 74, 0.08);
+
+        filter: blur(5px);
+
+        top: -180px;
+        left: -100px;
+
+        pointer-events: none;
+      }
+
+      .hero > div {
+        min-width: 0;
+      }
+
+      .badge {
+        display: inline-block;
+
+        background: linear-gradient(90deg, #68151a, #a32629);
+
+        border: 1px solid #d5a84b;
+
+        color: #ffe8af;
+
+        padding: 8px 28px;
+
+        border-radius: 25px;
+
+        font-weight: 800;
+
+        margin-bottom: 20px;
+
+        box-shadow: 0 0 20px rgba(169, 42, 46, 0.2);
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 6vw, 82px);
+        line-height: 1;
+
+        margin-bottom: 12px;
+
+        color: #fff6dc;
+
+        text-shadow: 0 5px 20px #000;
+
+        overflow-wrap: break-word;
+      }
+
+      .hero h1 span {
+        color: var(--gold);
+        display: block;
+      }
+
+      .hero h3 {
+        font-size: 23px;
+        color: #e9d2a1;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        color: #d9cdbd;
+        line-height: 2;
+        font-size: 17px;
+        max-width: 600px;
+      }
+
+      /* =========================
+         HERO ART
+      ========================= */
+
+      .hero-art {
+        min-height: 390px;
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        min-width: 0;
+      }
+
+      .building {
+        width: 280px;
+        height: 230px;
+
+        position: relative;
+
+        background: linear-gradient(135deg, #d8b469, #76502a);
+
+        border: 5px solid #9c7137;
+
+        box-shadow: 0 25px 50px #000;
+
+        transform: perspective(500px) rotateY(-8deg);
+      }
+
+      .building::before {
+        content: "";
+
+        position: absolute;
+
+        top: -100px;
+        left: 35px;
+
+        width: 200px;
+        height: 100px;
+
+        background: linear-gradient(135deg, #f4d48a, #755028);
+
+        clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      }
+
+      .window {
+        position: absolute;
+
+        width: 40px;
+        height: 55px;
+
+        background: #24170f;
+
+        border: 3px solid #dcb86b;
+
+        box-shadow: inset 0 0 15px #000;
+      }
+
+      .w1 {
+        top: 35px;
+        left: 35px;
+      }
+
+      .w2 {
+        top: 35px;
+        left: 120px;
+      }
+
+      .w3 {
+        top: 35px;
+        right: 35px;
+      }
+
+      .w4 {
+        bottom: 30px;
+        left: 35px;
+      }
+
+      .w5 {
+        bottom: 30px;
+        left: 120px;
+      }
+
+      .w6 {
+        bottom: 30px;
+        right: 35px;
+      }
+
+      .foundation {
+        position: absolute;
+
+        bottom: -25px;
+        left: -25px;
+
+        width: 330px;
+        height: 30px;
+
+        border-radius: 50%;
+
+        background: linear-gradient(90deg, #4c2b18, #d3a84c, #4c2b18);
+      }
+
+      /* =========================
+         PRICE
+      ========================= */
+
+      .price-box {
+        margin-top: 30px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 20px;
+
+        background: linear-gradient(135deg, #2c1810, #160b08);
+
+        border: 1px solid var(--gold);
+
+        padding: 18px 22px;
+
+        border-radius: 18px;
+      }
+
+      .price-label {
+        color: #d6c3a4;
+        font-size: 14px;
+      }
+
+      .price {
+        color: #ffe09a;
+        font-size: 32px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        background: linear-gradient(135deg, #9c2729, #5d1115);
+
+        border: 1px solid #e0b454;
+
+        color: white;
+
+        padding: 13px 25px;
+
+        border-radius: 12px;
+
+        text-decoration: none;
+
+        font-weight: 800;
+
+        transition: 0.3s;
+
+        white-space: nowrap;
+      }
+
+      .cta:hover {
+        transform: translateY(-3px);
+
+        box-shadow: 0 10px 25px rgba(169, 42, 46, 0.35);
+      }
+
+      /* =========================
+         SECTION TITLES
+      ========================= */
+
+      .section-title {
+        text-align: center;
+
+        margin: 55px 0 28px;
+
+        font-size: 28px;
+
+        color: #ffe0a0;
+      }
+
+      .section-title span {
+        display: block;
+
+        width: 90px;
+        height: 3px;
+
+        margin: 10px auto;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+      }
+
+      /* =========================
+         COURSE INFO
+      ========================= */
+
+      .course-info {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 18px;
+
+        margin-top: 25px;
+      }
+
+      .course-info-card {
+        padding: 22px;
+
+        text-align: center;
+
+        border-radius: 18px;
+
+        border: 1px solid rgba(214, 169, 74, 0.4);
+
+        background: linear-gradient(145deg, #291710, #110907);
+
+        box-shadow:
+          inset 0 0 20px rgba(214, 169, 74, 0.03),
+          0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .course-info-icon {
+        font-size: 30px;
+        margin-bottom: 8px;
+      }
+
+      .course-info-card h3 {
+        color: #ffe2a0;
+        font-size: 17px;
+      }
+
+      .course-info-card p {
+        color: #cbbba6;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      /* =========================
+         MODULES
+      ========================= */
+
+      .modules {
+        display: grid;
+
+        grid-template-columns: repeat(5, 1fr);
+
+        gap: 14px;
+      }
+
+      .module {
+        background: linear-gradient(145deg, #382117, #170c09);
+
+        border: 1px solid rgba(214, 169, 74, 0.45);
+
+        border-radius: 18px;
+
+        padding: 25px 15px;
+
+        text-align: center;
+
+        min-height: 160px;
+
+        transition: 0.3s;
+
+        min-width: 0;
+      }
+
+      .module:hover {
+        transform: translateY(-7px);
+
+        border-color: var(--gold);
+
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .module .number {
+        width: 48px;
+        height: 48px;
+
+        margin: auto auto 15px;
+
+        border-radius: 50%;
+
+        display: grid;
+        place-items: center;
+
+        background: linear-gradient(135deg, #9d2428, #541012);
+
+        border: 1px solid var(--gold);
+
+        color: #ffe7a9;
+
+        font-weight: 900;
+      }
+
+      .module h3 {
+        color: #ffe1a0;
+
+        font-size: 17px;
+
+        margin-bottom: 8px;
+
+        overflow-wrap: break-word;
+      }
+
+      .module p {
+        color: #cbbba4;
+
+        font-size: 13px;
+
+        line-height: 1.8;
+      }
+
+      /* =========================
+         WHY
+      ========================= */
+
+      .why {
+        display: grid;
+
+        grid-template-columns: repeat(6, 1fr);
+
+        border: 1px solid rgba(214, 169, 74, 0.35);
+
+        border-radius: 22px;
+
+        overflow: hidden;
+
+        background: #160c08;
+      }
+
+      .why-item {
+        padding: 25px 12px;
+
+        text-align: center;
+
+        border-left: 1px solid rgba(214, 169, 74, 0.2);
+
+        min-width: 0;
+      }
+
+      .why-item:last-child {
+        border-left: none;
+      }
+
+      .icon {
+        font-size: 34px;
+
+        color: var(--gold);
+
+        margin-bottom: 12px;
+      }
+
+      .why-item h4 {
+        color: #ffe3a5;
+
+        font-size: 15px;
+      }
+
+      .why-item p {
+        color: #bfae96;
+
+        font-size: 12px;
+
+        line-height: 1.7;
+
+        margin-top: 7px;
+      }
+
+      /* =========================
+         AUDIENCE
+      ========================= */
+
+      .audience {
+        display: grid;
+
+        grid-template-columns: repeat(4, 1fr);
+
+        gap: 18px;
+      }
+
+      .audience-card {
+        padding: 25px;
+
+        border-radius: 18px;
+
+        border: 1px solid rgba(214, 169, 74, 0.35);
+
+        background: linear-gradient(145deg, #291710, #110907);
+
+        text-align: center;
+
+        min-width: 0;
+      }
+
+      .audience-card h3 {
+        color: #ffe2a0;
+
+        margin: 10px 0;
+      }
+
+      .audience-card p {
+        color: #cbbba6;
+
+        font-size: 14px;
+
+        line-height: 1.9;
+      }
+
+      /* =========================
+         QUOTE
+      ========================= */
+
+      .quote {
+        margin-top: 45px;
+
+        padding: 40px;
+
+        text-align: center;
+
+        border: 1px solid rgba(214, 169, 74, 0.4);
+
+        border-radius: 25px;
+
+        background: radial-gradient(circle, #3b2117, #100907);
+      }
+
+      .quote .mark {
+        font-size: 50px;
+
+        color: var(--gold);
+      }
+
+      .quote p {
+        font-size: 25px;
+
+        line-height: 2;
+
+        color: #f5dfb0;
+
+        font-weight: 700;
+      }
+
+      .quote small {
+        color: #a99880;
+      }
+
+      /* =========================
+         FINAL CTA
+      ========================= */
+
+      .final {
+        margin-top: 50px;
+
+        padding: 40px 25px;
+
+        text-align: center;
+
+        border-radius: 25px;
+
+        background: linear-gradient(135deg, #5d1115, #1b0c08 50%, #765126);
+
+        border: 1px solid #e0b454;
+
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      }
+
+      .final h2 {
+        font-size: 32px;
+
+        color: #ffe3a2;
+
+        margin-bottom: 10px;
+      }
+
+      .final p {
+        color: #e3d4bb;
+
+        margin-bottom: 22px;
+      }
+
+      .final .big-price {
+        font-size: 38px;
+
+        color: white;
+
+        font-weight: 900;
+
+        margin-bottom: 20px;
+      }
+
+      /* =========================
+         CONTACT
+      ========================= */
+
+      .contact-grid {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 18px;
+
+        margin-top: 20px;
+      }
+
+      .contact-card {
+        display: flex;
+
+        align-items: center;
+
+        gap: 18px;
+
+        padding: 22px;
+
+        text-decoration: none;
+
+        color: var(--text);
+
+        background: linear-gradient(145deg, #382117, #170c09);
+
+        border: 1px solid rgba(214, 169, 74, 0.4);
+
+        border-radius: 18px;
+
+        transition: all 0.3s ease;
+
+        min-width: 0;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-5px);
+
+        border-color: var(--gold);
+
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+
+        background: linear-gradient(145deg, #45291c, #1d0e0a);
+      }
+
+      .contact-icon {
+        width: 58px;
+        height: 58px;
+
+        min-width: 58px;
+
+        display: grid;
+
+        place-items: center;
+
+        border-radius: 16px;
+
+        font-size: 28px;
+
+        background: linear-gradient(135deg, #8e2428, #4e1013);
+
+        border: 1px solid var(--gold);
+
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.3);
+      }
+
+      .contact-card h3 {
+        color: #ffe2a0;
+
+        font-size: 17px;
+
+        margin-bottom: 5px;
+
+        overflow-wrap: anywhere;
+      }
+
+      .contact-card p {
+        color: #cdbca3;
+
+        font-size: 13px;
+
+        margin: 0;
+      }
+
+      /* =========================
+         FOOTER
+      ========================= */
+
+      footer {
+        margin-top: 45px;
+
+        padding: 28px 20px;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        gap: 35px;
+
+        flex-wrap: wrap;
+
+        border-top: 1px solid rgba(214, 169, 74, 0.25);
+
+        color: #bca98d;
+
+        font-size: 14px;
+
+        text-align: center;
+      }
+
+      footer div {
+        transition: 0.3s ease;
+      }
+
+      footer div:hover {
+        color: var(--gold-light);
+      }
+
+      /* =========================
+         COPYRIGHT
+      ========================= */
+
+      .copyright {
+        text-align: center;
+
+        padding: 18px 10px 5px;
+
+        color: #8f806d;
+
+        font-size: 12px;
+
+        border-top: 1px solid rgba(214, 169, 74, 0.12);
+      }
+
+      /* =====================================================
+         TABLET
+      ===================================================== */
+
+      @media (max-width: 1100px) {
+        .modules {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .why {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .why-item {
+          border-bottom: 1px solid rgba(214, 169, 74, 0.2);
+        }
+      }
+
+      /* =====================================================
+         TABLET / MOBILE
+      ===================================================== */
+
+      @media (max-width: 900px) {
+        .container {
+          width: 94%;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+
+          text-align: center;
+
+          padding: 40px 25px;
+        }
+
+        .hero p {
+          margin: auto;
+        }
+
+        .hero-art {
+          min-height: 300px;
+        }
+
+        .modules {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .why {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .audience {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .course-info {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* =====================================================
+         MOBILE
+      ===================================================== */
+
+      @media (max-width: 600px) {
+        .container {
+          width: calc(100% - 24px);
+
+          padding-top: 12px;
+
+          padding-bottom: 35px;
+        }
+
+        .header {
+          padding: 14px 4px;
+
+          margin-bottom: 22px;
+
+          justify-content: center;
+
+          text-align: center;
+        }
+
+        .header > div:last-child {
+          display: none;
+        }
+
+        .logo {
+          gap: 10px;
+        }
+
+        .logo-icon {
+          width: 46px;
+          height: 46px;
+
+          flex-basis: 46px;
+
+          font-size: 21px;
+        }
+
+        .logo-text h2 {
+          font-size: 21px;
+        }
+
+        .logo-text small {
+          font-size: 9px;
+
+          letter-spacing: 1px;
+        }
+
+        .hero {
+          padding: 28px 16px;
+
+          border-radius: 22px;
+
+          gap: 20px;
+        }
+
+        .badge {
+          padding: 7px 18px;
+
+          font-size: 13px;
+
+          margin-bottom: 16px;
+        }
+
+        .hero h1 {
+          font-size: clamp(38px, 13vw, 50px);
+
+          line-height: 1.1;
+        }
+
+        .hero h3 {
+          font-size: 17px;
+
+          line-height: 1.7;
+
+          margin-bottom: 12px;
+        }
+
+        .hero p {
+          font-size: 13px;
+
+          line-height: 1.9;
+        }
+
+        .hero-art {
+          min-height: 260px;
+
+          margin-top: 10px;
+        }
+
+        .building {
+          width: 210px;
+
+          height: 175px;
+
+          border-width: 4px;
+
+          transform: scale(0.82);
+        }
+
+        .building::before {
+          width: 150px;
+
+          height: 75px;
+
+          top: -75px;
+
+          left: 26px;
+        }
+
+        .window {
+          width: 31px;
+
+          height: 42px;
+
+          border-width: 2px;
+        }
+
+        .w1 {
+          top: 25px;
+          left: 25px;
+        }
+
+        .w2 {
+          top: 25px;
+          left: 88px;
+        }
+
+        .w3 {
+          top: 25px;
+          right: 25px;
+        }
+
+        .w4 {
+          bottom: 22px;
+          left: 25px;
+        }
+
+        .w5 {
+          bottom: 22px;
+          left: 88px;
+        }
+
+        .w6 {
+          bottom: 22px;
+          right: 25px;
+        }
+
+        .foundation {
+          width: 250px;
+
+          left: -22px;
+
+          bottom: -21px;
+
+          height: 24px;
+        }
+
+        /* PRICE */
+
+        .price-box {
+          flex-direction: column;
+
+          text-align: center;
+
+          padding: 18px 15px;
+
+          gap: 14px;
+        }
+
+        .price {
+          font-size: 28px;
+
+          white-space: normal;
+        }
+
+        .cta {
+          width: 100%;
+
+          padding: 12px 18px;
+
+          font-size: 14px;
+        }
+
+        /* TITLES */
+
+        .section-title {
+          margin: 38px 0 20px;
+
+          font-size: 22px;
+        }
+
+        /* COURSE INFO */
+
+        .course-info {
+          grid-template-columns: 1fr;
+
+          gap: 12px;
+        }
+
+        .course-info-card {
+          padding: 18px;
+        }
+
+        .course-info-card h3 {
+          font-size: 15px;
+        }
+
+        .course-info-card p {
+          font-size: 12px;
+        }
+
+        /* MODULES */
+
+        .modules {
+          grid-template-columns: 1fr 1fr;
+
+          gap: 10px;
+        }
+
+        .module {
+          min-height: 150px;
+
+          padding: 18px 10px;
+        }
+
+        .module .number {
+          width: 40px;
+
+          height: 40px;
+
+          margin-bottom: 10px;
+        }
+
+        .module h3 {
+          font-size: 14px;
+
+          line-height: 1.6;
+        }
+
+        .module p {
+          font-size: 11px;
+
+          line-height: 1.7;
+        }
+
+        /* WHY */
+
+        .why {
+          grid-template-columns: 1fr 1fr;
+
+          border-radius: 16px;
+        }
+
+        .why-item {
+          padding: 18px 9px;
+
+          border-left: 1px solid rgba(214, 169, 74, 0.2);
+        }
+
+        .why-item:nth-child(odd) {
+          border-left: 1px solid rgba(214, 169, 74, 0.2);
+        }
+
+        .why-item h4 {
+          font-size: 13px;
+        }
+
+        .why-item p {
+          font-size: 10px;
+
+          line-height: 1.6;
+        }
+
+        .icon {
+          font-size: 28px;
+
+          margin-bottom: 8px;
+        }
+
+        /* AUDIENCE */
+
+        .audience {
+          grid-template-columns: 1fr;
+
+          gap: 12px;
+        }
+
+        .audience-card {
+          padding: 20px 15px;
+        }
+
+        .audience-card h3 {
+          font-size: 16px;
+        }
+
+        .audience-card p {
+          font-size: 12px;
+
+          line-height: 1.8;
+        }
+
+        /* QUOTE */
+
+        .quote {
+          margin-top: 30px;
+
+          padding: 25px 15px;
+
+          border-radius: 20px;
+        }
+
+        .quote .mark {
+          font-size: 40px;
+        }
+
+        .quote p {
+          font-size: 17px;
+
+          line-height: 1.9;
+        }
+
+        /* FINAL */
+
+        .final {
+          margin-top: 35px;
+
+          padding: 28px 15px;
+
+          border-radius: 20px;
+        }
+
+        .final h2 {
+          font-size: 25px;
+        }
+
+        .final p {
+          font-size: 13px;
+
+          line-height: 1.8;
+        }
+
+        .final .big-price {
+          font-size: 30px;
+        }
+
+        /* CONTACT */
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+
+          gap: 12px;
+        }
+
+        .contact-card {
+          padding: 16px;
+
+          gap: 12px;
+        }
+
+        .contact-icon {
+          width: 50px;
+
+          height: 50px;
+
+          min-width: 50px;
+
+          font-size: 23px;
+        }
+
+        .contact-card h3 {
+          font-size: 13px;
+
+          line-height: 1.6;
+        }
+
+        .contact-card p {
+          font-size: 10px;
+        }
+
+        /* FOOTER */
+
+        footer {
+          flex-direction: column;
+
+          gap: 10px;
+
+          padding: 22px 10px;
+
+          font-size: 12px;
+
+          line-height: 1.8;
+        }
+
+        .copyright {
+          font-size: 10px;
+        }
+      }
+
+      /* =====================================================
+         VERY SMALL PHONES
+         320px / 360px
+      ===================================================== */
+
+      @media (max-width: 360px) {
+        .container {
+          width: calc(100% - 16px);
+        }
+
+        .hero {
+          padding: 24px 12px;
+        }
+
+        .hero h1 {
+          font-size: 37px;
+        }
+
+        .hero h3 {
+          font-size: 15px;
+        }
+
+        .hero p {
+          font-size: 12px;
+        }
+
+        .building {
+          transform: scale(0.7);
+        }
+
+        .modules {
+          gap: 7px;
+        }
+
+        .module {
+          padding: 15px 7px;
+        }
+
+        .module h3 {
+          font-size: 12px;
+        }
+
+        .module p {
+          font-size: 10px;
+        }
+
+        .why-item {
+          padding: 15px 6px;
+        }
+
+        .why-item h4 {
+          font-size: 11px;
+        }
+
+        .why-item p {
+          font-size: 9px;
+        }
+
+        .final .big-price {
+          font-size: 26px;
+        }
+
+        .contact-card {
+          padding: 13px 10px;
+        }
+
+        .contact-icon {
+          width: 44px;
+
+          height: 44px;
+
+          min-width: 44px;
+
+          font-size: 20px;
+        }
+
+        .contact-card h3 {
+          font-size: 11px;
+        }
+
+        .contact-card p {
+          font-size: 9px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- ================= HEADER ================= -->
+
+      <header class="header">
+        <div class="logo">
+          <div class="logo-icon">C</div>
+
+          <div class="logo-text">
+            <h2>Cours<span>yria</span></h2>
+            <small>تعلم · تطور · أنجز</small>
+          </div>
+        </div>
+
+        <div style="color: #d5b979; font-weight: 700">دورة احترافية</div>
+      </header>
+
+      <!-- ================= HERO ================= -->
+
+      <section class="hero">
+        <div>
+          <div class="badge">دورة احترافية</div>
+
+          <h1>
+            بناء
+            <span>المشاريع الصغيرة</span>
+          </h1>
+
+          <h3>من فكرة بسيطة إلى مشروع ناجح</h3>
+
+          <p>
+            تعلّم كيف تحوّل فكرتك إلى مشروع حقيقي من خلال التخطيط الذكي، وإدارة
+            الموارد، وتنفيذ المشروع، وتحقيق النمو والاستدامة.
+          </p>
+
+          <!-- PRICE -->
+
+          <div class="price-box">
+            <div>
+              <div class="price-label">سعر الدورة</div>
+
+              <div class="price">1,700 SP</div>
+            </div>
+
+            <a href="#register" class="cta"> ابدأ رحلتك الآن </a>
+          </div>
+        </div>
+
+        <!-- BUILDING -->
+
+        <div class="hero-art">
+          <div class="building">
+            <div class="window w1"></div>
+            <div class="window w2"></div>
+            <div class="window w3"></div>
+
+            <div class="window w4"></div>
+            <div class="window w5"></div>
+            <div class="window w6"></div>
+
+            <div class="foundation"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= COURSE INFO ================= -->
+
+      <h2 class="section-title">
+        معلومات الدورة
+        <span></span>
+      </h2>
+
+      <section class="course-info">
+        <div class="course-info-card">
+          <div class="course-info-icon">📅</div>
+
+          <h3>مدة الكورس</h3>
+
+          <p>شهرين</p>
+        </div>
+
+        <div class="course-info-card">
+          <div class="course-info-icon">🎓</div>
+
+          <h3>عدد الجلسات</h3>
+
+          <p>15 جلسة تدريبية</p>
+        </div>
+      </section>
+
+      <!-- ================= MODULES ================= -->
+
+      <h2 class="section-title">
+        محاور الدورة
+        <span></span>
+      </h2>
+
+      <section class="modules">
+        <div class="module">
+          <div class="number">01</div>
+
+          <h3>تحديد الفكرة والفرصة</h3>
+
+          <p>اكتشاف فكرة المشروع وتحليل الفرص المناسبة في السوق.</p>
+        </div>
+
+        <div class="module">
+          <div class="number">02</div>
+
+          <h3>التخطيط الذكي</h3>
+
+          <p>وضع خطة واضحة ومنظمة للانتقال من الفكرة إلى التنفيذ.</p>
+        </div>
+
+        <div class="module">
+          <div class="number">03</div>
+
+          <h3>تنفيذ المشروع</h3>
+
+          <p>تحويل الخطة إلى خطوات عملية وبناء المشروع بشكل تدريجي.</p>
+        </div>
+
+        <div class="module">
+          <div class="number">04</div>
+
+          <h3>إدارة الموارد والتكلفة</h3>
+
+          <p>إدارة الوقت والمال والموارد لتحقيق أفضل النتائج.</p>
+        </div>
+
+        <div class="module">
+          <div class="number">05</div>
+
+          <h3>التطوير والاستدامة</h3>
+
+          <p>تطوير المشروع وبناء أساس يساعده على الاستمرار والنمو.</p>
+        </div>
+      </section>
+
+      <!-- ================= WHY ================= -->
+
+      <h2 class="section-title">
+        لماذا هذه الدورة؟
+        <span></span>
+      </h2>
+
+      <section class="why">
+        <div class="why-item">
+          <div class="icon">★</div>
+
+          <h4>مناسبة للمبتدئين</h4>
+
+          <p>ابدأ من الأساس دون الحاجة لخبرة سابقة.</p>
+        </div>
+
+        <div class="why-item">
+          <div class="icon">◷</div>
+
+          <h4>نتائج ملموسة</h4>
+
+          <p>حوّل أفكارك إلى خطوات عملية قابلة للتنفيذ.</p>
+        </div>
+
+        <div class="why-item">
+          <div class="icon">♙</div>
+
+          <h4>وفر وقتك</h4>
+
+          <p>تعلم بطريقة منظمة بدل التجربة العشوائية.</p>
+        </div>
+
+        <div class="why-item">
+          <div class="icon">▣</div>
+
+          <h4>محتوى حديث</h4>
+
+          <p>أفكار وأدوات عملية لبناء المشاريع.</p>
+        </div>
+
+        <div class="why-item">
+          <div class="icon">▶</div>
+
+          <h4>تطبيقات عملية</h4>
+
+          <p>انتقل من المعرفة إلى التطبيق الفعلي.</p>
+        </div>
+
+        <div class="why-item">
+          <div class="icon">♛</div>
+
+          <h4>شهادة معتمدة</h4>
+
+          <p>احصل على شهادة عند إتمام الدورة.</p>
+        </div>
+      </section>
+
+      <!-- ================= AUDIENCE ================= -->
+
+      <h2 class="section-title">
+        لمن هذه الدورة؟
+        <span></span>
+      </h2>
+
+      <section class="audience">
+        <div class="audience-card">
+          <div class="icon">👤</div>
+
+          <h3>المبتدئون</h3>
+
+          <p>لكل شخص لديه فكرة ويريد تحويلها إلى مشروع حقيقي.</p>
+        </div>
+
+        <div class="audience-card">
+          <div class="icon">💼</div>
+
+          <h3>أصحاب الأفكار</h3>
+
+          <p>لمن يملك فكرة مشروع ويريد معرفة كيف يبدأ بشكل صحيح.</p>
+        </div>
+
+        <div class="audience-card">
+          <div class="icon">📈</div>
+
+          <h3>رواد الأعمال</h3>
+
+          <p>لتطوير مهارات التخطيط والتنفيذ وإدارة المشاريع.</p>
+        </div>
+
+        <div class="audience-card">
+          <div class="icon">🚀</div>
+
+          <h3>الطموحون</h3>
+
+          <p>لكل من يريد بناء مستقبله من خلال مشروعه الخاص.</p>
+        </div>
+      </section>
+
+      <!-- ================= QUOTE ================= -->
+
+      <section class="quote">
+        <div class="mark">“</div>
+
+        <p>من فكرة بسيطة إلى مشروع ناجح... خطط، نفّذ، ثم انمُ.</p>
+
+        <small> ابدأ بخطوة، وابنِ مستقبلك </small>
+      </section>
+
+      <!-- ================= FINAL CTA ================= -->
+
+      <section class="final" id="register">
+        <h2>ابدأ رحلتك الآن</h2>
+
+        <p>طوّر مهاراتك وحوّل فكرتك إلى مشروع حقيقي</p>
+
+        <div class="big-price">1,700 SP</div>
+
+        <a
+          href="https://wa.me/963937015714"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta"
+        >
+          سجّل الآن ←
+        </a>
+      </section>
+
+      <!-- ================= CONTACT ================= -->
+
+      <section class="section">
+        <div class="section-title">
+          📞 معلومات التواصل
+          <span></span>
+        </div>
+
+        <div class="contact-grid">
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+          >
+            <div class="contact-icon">👨‍🏫</div>
+
+            <div>
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>اضغط للتواصل عبر واتساب</p>
+            </div>
+          </a>
+
+          <a
+            href="https://wa.me/963937015714"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+          >
+            <div class="contact-icon">💬</div>
+
+            <div>
+              <h3>لين الكردي</h3>
+
+              <p>اضغط للتواصل عبر واتساب</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ================= COPYRIGHT ================= -->
+
+      <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
+
+      <!-- ================= FOOTER ================= -->
+
+      <footer>
+        <div>تعلم · تطور · أنجز</div>
+
+        <div>coursyria.com</div>
+
+        <div>coursyria_team</div>
+
+        <div>@coursyria.team</div>
+      </footer>
+    </div>
+  </body>
+</html>

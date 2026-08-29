@@ -1,0 +1,2024 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>معسكر الأمن السيبراني | Coursyria</title>
+
+    <style>
+      /* =========================================================
+         ROOT
+      ========================================================= */
+
+      :root {
+        --bg: #070b14;
+        --bg-2: #0b1524;
+        --panel: #0c1b2d;
+        --panel-2: #10263b;
+
+        --cyan: #50d0ff;
+        --cyan-light: #a0ffdd;
+        --turquoise: #00c8b0;
+        --turquoise-dark: #007f86;
+
+        --text: #e5f0ff;
+        --muted: #8fb0c5;
+
+        --line: rgba(80, 208, 255, 0.18);
+        --line-strong: rgba(80, 255, 208, 0.42);
+
+        --shadow: 0 20px 55px rgba(0, 0, 0, 0.5);
+      }
+
+      /* =========================================================
+         RESET
+      ========================================================= */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        min-height: 100vh;
+        width: 100%;
+        background:
+          radial-gradient(
+            circle at 15% 10%,
+            rgba(0, 200, 180, 0.12),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 90% 30%,
+            rgba(80, 208, 255, 0.12),
+            transparent 30%
+          ),
+          linear-gradient(145deg, #050912, #0b1727 50%, #050a13);
+
+        color: var(--text);
+        font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+
+        background-image:
+          linear-gradient(rgba(80, 208, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(80, 208, 255, 0.035) 1px, transparent 1px);
+
+        background-size: 50px 50px;
+        z-index: -1;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* =========================================================
+         MAIN CONTAINER
+      ========================================================= */
+
+      .container {
+        width: min(1120px, 94%);
+        margin: 30px auto;
+        position: relative;
+
+        background: linear-gradient(
+          145deg,
+          rgba(9, 24, 41, 0.97),
+          rgba(5, 14, 25, 0.97)
+        );
+
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 4px;
+        height: 100%;
+
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--turquoise),
+          var(--cyan),
+          transparent
+        );
+
+        opacity: 0.7;
+        pointer-events: none;
+      }
+
+      /* =========================================================
+         TOP BAR
+      ========================================================= */
+
+      .topbar {
+        min-height: 72px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 42px;
+
+        border-bottom: 1px solid var(--line);
+
+        background: rgba(4, 13, 24, 0.72);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        direction: ltr;
+      }
+
+      .brand-mark {
+        width: 43px;
+        height: 43px;
+
+        display: grid;
+        place-items: center;
+
+        border: 1px solid var(--cyan);
+        color: var(--cyan);
+
+        font-size: 20px;
+        font-weight: 900;
+
+        background: linear-gradient(
+          145deg,
+          rgba(80, 208, 255, 0.12),
+          rgba(0, 200, 176, 0.03)
+        );
+
+        box-shadow: 0 0 20px rgba(80, 208, 255, 0.13);
+
+        clip-path: polygon(50% 0, 92% 22%, 82% 80%, 50% 100%, 18% 80%, 8% 22%);
+      }
+
+      .brand-name {
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+
+      .brand-name span {
+        color: var(--cyan);
+      }
+
+      .top-label {
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 2px;
+        direction: ltr;
+      }
+
+      /* =========================================================
+         HERO
+      ========================================================= */
+
+      .hero {
+        min-height: 510px;
+
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+
+        align-items: center;
+
+        gap: 40px;
+
+        padding: 70px 70px 55px;
+
+        position: relative;
+      }
+
+      .hero::after {
+        content: "CYBER";
+        position: absolute;
+
+        left: -25px;
+        bottom: 10px;
+
+        font-size: 110px;
+        font-weight: 900;
+
+        letter-spacing: 15px;
+
+        color: rgba(80, 208, 255, 0.025);
+
+        pointer-events: none;
+        white-space: nowrap;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+
+        padding: 7px 15px;
+
+        color: var(--cyan-light);
+
+        border: 1px solid var(--line-strong);
+
+        background: rgba(0, 200, 176, 0.06);
+
+        font-size: 13px;
+        font-weight: 700;
+
+        margin-bottom: 20px;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+
+        background: var(--turquoise);
+        border-radius: 50%;
+
+        box-shadow: 0 0 12px var(--turquoise);
+        flex-shrink: 0;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 6vw, 72px);
+
+        line-height: 1.05;
+
+        font-weight: 900;
+
+        color: #fff;
+
+        margin-bottom: 12px;
+      }
+
+      .hero h1 span {
+        display: block;
+
+        background: linear-gradient(
+          90deg,
+          var(--cyan-light),
+          var(--cyan),
+          var(--turquoise)
+        );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+      }
+
+      .hero-description {
+        max-width: 650px;
+
+        color: #a9c5d8;
+
+        font-size: 16px;
+
+        line-height: 2;
+
+        margin-bottom: 28px;
+      }
+
+      /* =========================================================
+         COURSE DETAILS MINI CARDS
+      ========================================================= */
+
+      .course-mini-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+
+      .mini-card {
+        min-width: 145px;
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        padding: 11px 14px;
+
+        border: 1px solid var(--line);
+
+        background: rgba(7, 25, 41, 0.7);
+      }
+
+      .mini-icon {
+        width: 35px;
+        height: 35px;
+
+        display: grid;
+        place-items: center;
+
+        border: 1px solid var(--line-strong);
+
+        background: rgba(0, 200, 176, 0.06);
+
+        color: var(--cyan);
+
+        flex-shrink: 0;
+      }
+
+      .mini-text small {
+        display: block;
+        color: var(--muted);
+        font-size: 10px;
+      }
+
+      .mini-text strong {
+        display: block;
+        color: var(--cyan-light);
+        font-size: 16px;
+        margin-top: 2px;
+      }
+
+      /* =========================================================
+         START DATE
+      ========================================================= */
+
+      .start-box {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 18px;
+
+        padding: 13px 18px;
+
+        border: 1px solid var(--line);
+
+        background: rgba(7, 25, 41, 0.7);
+      }
+
+      .start-icon {
+        width: 43px;
+        height: 43px;
+
+        display: grid;
+        place-items: center;
+
+        color: var(--cyan);
+
+        border: 1px solid var(--line-strong);
+
+        background: rgba(0, 200, 176, 0.06);
+
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      .start-text small {
+        display: block;
+
+        color: var(--muted);
+
+        font-size: 11px;
+
+        margin-bottom: 2px;
+      }
+
+      .start-text strong {
+        color: var(--cyan-light);
+
+        font-size: 24px;
+      }
+
+      /* =========================================================
+         CYBER VISUAL
+      ========================================================= */
+
+      .cyber-visual {
+        min-height: 390px;
+
+        position: relative;
+
+        display: grid;
+
+        place-items: center;
+      }
+
+      .circle {
+        width: 300px;
+        height: 300px;
+
+        border-radius: 50%;
+
+        border: 1px solid rgba(80, 208, 255, 0.3);
+
+        position: relative;
+
+        box-shadow:
+          0 0 0 20px rgba(80, 208, 255, 0.025),
+          0 0 0 50px rgba(0, 200, 176, 0.02),
+          inset 0 0 40px rgba(0, 200, 176, 0.06);
+      }
+
+      .circle::before {
+        content: "";
+
+        position: absolute;
+
+        inset: 28px;
+
+        border-radius: 50%;
+
+        border: 1px dashed rgba(80, 255, 208, 0.3);
+
+        animation: rotate 18s linear infinite;
+      }
+
+      .circle::after {
+        content: "";
+
+        position: absolute;
+
+        inset: 70px;
+
+        border-radius: 50%;
+
+        border: 1px solid rgba(80, 208, 255, 0.2);
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .shield {
+        width: 145px;
+        height: 175px;
+
+        position: absolute;
+
+        top: 62px;
+        left: 77px;
+
+        display: grid;
+        place-items: center;
+
+        color: var(--cyan-light);
+
+        font-size: 55px;
+        font-weight: 900;
+
+        background: linear-gradient(
+          145deg,
+          rgba(80, 208, 255, 0.15),
+          rgba(0, 200, 176, 0.05)
+        );
+
+        border: 2px solid var(--cyan);
+
+        clip-path: polygon(50% 0, 92% 17%, 84% 67%, 50% 100%, 16% 67%, 8% 17%);
+
+        box-shadow: 0 0 40px rgba(80, 208, 255, 0.18);
+      }
+
+      .shield::after {
+        content: "⌁";
+
+        position: absolute;
+
+        font-size: 76px;
+
+        color: var(--turquoise);
+
+        transform: rotate(90deg);
+
+        opacity: 0.8;
+      }
+
+      .node {
+        width: 42px;
+        height: 42px;
+
+        position: absolute;
+
+        display: grid;
+        place-items: center;
+
+        border-radius: 50%;
+
+        color: var(--cyan);
+
+        background: #091b2c;
+
+        border: 1px solid var(--cyan);
+
+        box-shadow: 0 0 18px rgba(80, 208, 255, 0.2);
+      }
+
+      .node.n1 {
+        top: 15px;
+        left: 128px;
+      }
+
+      .node.n2 {
+        bottom: 28px;
+        right: 18px;
+      }
+
+      .node.n3 {
+        bottom: 45px;
+        left: 18px;
+      }
+
+      .node.n4 {
+        top: 110px;
+        right: -20px;
+      }
+
+      /* =========================================================
+         SECTION TITLE
+      ========================================================= */
+
+      .section-title {
+        display: flex;
+
+        align-items: center;
+
+        gap: 15px;
+
+        margin: 5px 0 22px;
+
+        font-size: 25px;
+
+        font-weight: 800;
+
+        color: #fff;
+      }
+
+      .section-title::before {
+        content: "";
+
+        width: 5px;
+        height: 30px;
+
+        background: linear-gradient(var(--cyan), var(--turquoise));
+
+        box-shadow: 0 0 14px rgba(80, 208, 255, 0.3);
+
+        flex-shrink: 0;
+      }
+
+      /* =========================================================
+         TOPICS
+      ========================================================= */
+
+      .topics-section {
+        padding: 10px 55px 45px;
+      }
+
+      .topics-grid {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 14px;
+      }
+
+      .topic {
+        min-height: 185px;
+
+        position: relative;
+
+        padding: 22px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(14, 37, 59, 0.95),
+          rgba(7, 21, 35, 0.95)
+        );
+
+        border: 1px solid var(--line);
+
+        transition: 0.3s ease;
+
+        overflow: hidden;
+      }
+
+      .topic::before {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        right: 0;
+
+        width: 100%;
+        height: 3px;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--cyan),
+          var(--turquoise),
+          transparent
+        );
+
+        opacity: 0.5;
+      }
+
+      .topic:hover {
+        transform: translateY(-6px);
+
+        border-color: var(--line-strong);
+
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.35),
+          0 0 25px rgba(0, 200, 176, 0.07);
+      }
+
+      .topic-number {
+        font-size: 42px;
+
+        font-weight: 900;
+
+        line-height: 1;
+
+        color: rgba(80, 208, 255, 0.2);
+
+        margin-bottom: 18px;
+      }
+
+      .topic h3 {
+        font-size: 17px;
+
+        color: var(--cyan-light);
+
+        margin-bottom: 8px;
+      }
+
+      .topic p {
+        color: #8faec1;
+
+        font-size: 12px;
+
+        line-height: 1.8;
+      }
+
+      .topic-icon {
+        position: absolute;
+
+        left: 18px;
+        bottom: 15px;
+
+        font-size: 28px;
+
+        opacity: 0.65;
+
+        filter: grayscale(20%);
+      }
+
+      .topic.full {
+        grid-column: span 3;
+
+        min-height: 145px;
+
+        background: linear-gradient(
+          120deg,
+          rgba(0, 85, 92, 0.28),
+          rgba(8, 30, 47, 0.9)
+        );
+
+        border-color: rgba(0, 200, 176, 0.35);
+      }
+
+      /* =========================================================
+         FEATURES
+      ========================================================= */
+
+      .features-section {
+        margin: 0 55px 45px;
+
+        padding: 28px;
+
+        border: 1px solid var(--line);
+
+        background: linear-gradient(
+          145deg,
+          rgba(12, 32, 50, 0.85),
+          rgba(6, 18, 30, 0.85)
+        );
+      }
+
+      .features-title {
+        text-align: center;
+
+        font-size: 25px;
+
+        font-weight: 900;
+
+        color: var(--cyan-light);
+
+        margin-bottom: 22px;
+      }
+
+      .features-grid {
+        display: grid;
+
+        grid-template-columns: repeat(5, 1fr);
+
+        gap: 10px;
+      }
+
+      .feature {
+        min-height: 105px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        align-items: center;
+
+        text-align: center;
+
+        padding: 15px 8px;
+
+        background: rgba(6, 20, 33, 0.8);
+
+        border: 1px solid rgba(80, 208, 255, 0.12);
+
+        transition: 0.3s ease;
+      }
+
+      .feature-icon {
+        color: var(--turquoise);
+
+        font-size: 27px;
+
+        margin-bottom: 8px;
+      }
+
+      .feature span {
+        color: #c6dfed;
+
+        font-size: 12px;
+
+        line-height: 1.6;
+      }
+
+      .feature:hover {
+        transform: translateY(-4px);
+
+        border-color: var(--line-strong);
+
+        background: rgba(10, 38, 55, 0.9);
+      }
+
+      /* =========================================================
+         OFFER
+      ========================================================= */
+
+      .offer {
+        margin: 0 55px 45px;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 20px;
+
+        align-items: stretch;
+      }
+
+      .slogan-box {
+        padding: 35px;
+
+        border: 1px solid rgba(0, 200, 176, 0.25);
+
+        background: linear-gradient(
+          145deg,
+          rgba(0, 85, 90, 0.22),
+          rgba(8, 25, 42, 0.9)
+        );
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+      }
+
+      .slogan-small {
+        color: var(--muted);
+
+        font-size: 13px;
+
+        margin-bottom: 10px;
+      }
+
+      .slogan {
+        font-size: clamp(28px, 4vw, 43px);
+
+        line-height: 1.4;
+
+        font-weight: 900;
+
+        background: linear-gradient(
+          90deg,
+          var(--cyan-light),
+          var(--cyan),
+          var(--turquoise)
+        );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+      }
+
+      .price-box {
+        padding: 35px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        border: 1px solid rgba(80, 208, 255, 0.28);
+
+        background: linear-gradient(
+          145deg,
+          rgba(14, 43, 64, 0.9),
+          rgba(7, 22, 37, 0.95)
+        );
+      }
+
+      .price-label {
+        color: var(--muted);
+
+        font-size: 14px;
+
+        margin-bottom: 4px;
+      }
+
+      .price {
+        font-size: 45px;
+
+        font-weight: 900;
+
+        color: var(--cyan-light);
+      }
+
+      .price small {
+        font-size: 15px;
+
+        color: #90b0c3;
+      }
+
+      /* =========================================================
+         BUTTON
+      ========================================================= */
+
+      .button-area {
+        text-align: center;
+
+        margin: -15px 55px 45px;
+      }
+
+      .btn {
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        width: min(100%, 420px);
+
+        min-width: 320px;
+
+        padding: 17px 30px;
+
+        color: #fff;
+
+        font-size: 17px;
+
+        font-weight: 800;
+
+        background: linear-gradient(135deg, #00b8a0, #0077be);
+
+        border: 1px solid #60ffd0;
+
+        box-shadow: 0 12px 30px rgba(0, 200, 200, 0.2);
+
+        transition: 0.3s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-5px);
+
+        box-shadow: 0 18px 40px rgba(0, 208, 192, 0.35);
+      }
+
+      /* =========================================================
+         CONTACT
+      ========================================================= */
+
+      .contact-section {
+        margin: 0 55px 40px;
+      }
+
+      .contact-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 14px;
+      }
+
+      .contact {
+        display: flex;
+
+        align-items: center;
+
+        gap: 15px;
+
+        padding: 20px;
+
+        color: white;
+
+        background: linear-gradient(145deg, #102a40, #081a2a);
+
+        border: 1px solid var(--line);
+
+        transition: 0.3s ease;
+
+        min-width: 0;
+      }
+
+      .contact:hover {
+        transform: translateY(-5px);
+
+        border-color: var(--cyan);
+
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .contact-icon {
+        width: 52px;
+        height: 52px;
+
+        flex-shrink: 0;
+
+        display: grid;
+
+        place-items: center;
+
+        border: 1px solid rgba(80, 208, 255, 0.3);
+
+        background: rgba(80, 208, 255, 0.07);
+
+        font-size: 24px;
+      }
+
+      .contact h3 {
+        font-size: 14px;
+
+        margin-bottom: 5px;
+
+        color: var(--cyan-light);
+
+        overflow-wrap: anywhere;
+      }
+
+      .contact p {
+        font-size: 11px;
+
+        color: var(--muted);
+      }
+
+      .contact-purple {
+        border-color: rgba(179, 136, 255, 0.22);
+      }
+
+      .contact-purple:hover {
+        border-color: #b388ff;
+      }
+
+      /* =========================================================
+         FOOTER
+      ========================================================= */
+
+      footer {
+        padding: 25px 55px;
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        border-top: 1px solid var(--line);
+
+        background: rgba(3, 11, 20, 0.7);
+
+        color: #7594a8;
+
+        font-size: 12px;
+
+        gap: 15px;
+      }
+
+      footer span {
+        overflow-wrap: anywhere;
+      }
+
+      footer strong {
+        color: var(--cyan);
+
+        font-size: 16px;
+      }
+
+      .copyright {
+        text-align: center;
+
+        padding: 17px;
+
+        color: #607d91;
+
+        font-size: 11px;
+
+        border-top: 1px solid rgba(80, 208, 255, 0.07);
+      }
+
+      /* =========================================================
+         RESPONSIVE TABLET
+      ========================================================= */
+
+      @media (max-width: 850px) {
+        .container {
+          margin: 15px auto;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+
+          text-align: center;
+
+          padding: 55px 35px 45px;
+        }
+
+        .hero-description {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .course-mini-info {
+          justify-content: center;
+        }
+
+        .start-box {
+          margin: auto;
+        }
+
+        .cyber-visual {
+          order: -1;
+
+          min-height: 330px;
+        }
+
+        .topics-section {
+          padding-left: 35px;
+          padding-right: 35px;
+        }
+
+        .topics-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .topic.full {
+          grid-column: span 2;
+        }
+
+        .features-section,
+        .offer,
+        .button-area,
+        .contact-section {
+          margin-left: 35px;
+          margin-right: 35px;
+        }
+
+        .features-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .offer {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* =========================================================
+         RESPONSIVE MOBILE
+      ========================================================= */
+
+      @media (max-width: 600px) {
+        .container {
+          width: calc(100% - 10px);
+
+          margin: 5px auto;
+
+          border-radius: 4px;
+        }
+
+        .container::before {
+          width: 2px;
+        }
+
+        .topbar {
+          min-height: 65px;
+
+          padding: 0 14px;
+        }
+
+        .brand {
+          gap: 9px;
+        }
+
+        .brand-mark {
+          width: 37px;
+          height: 37px;
+        }
+
+        .brand-name {
+          font-size: 20px;
+        }
+
+        .top-label {
+          display: none;
+        }
+
+        .hero {
+          padding: 35px 15px 30px;
+
+          gap: 15px;
+        }
+
+        .hero::after {
+          font-size: 50px;
+          letter-spacing: 8px;
+        }
+
+        .eyebrow {
+          font-size: 10px;
+          padding: 6px 11px;
+        }
+
+        .hero h1 {
+          font-size: 38px;
+        }
+
+        .hero-description {
+          font-size: 13px;
+
+          line-height: 1.9;
+
+          margin-bottom: 20px;
+        }
+
+        .course-mini-info {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+
+        .mini-card {
+          min-width: 0;
+          padding: 9px;
+          gap: 7px;
+          text-align: right;
+        }
+
+        .mini-icon {
+          width: 31px;
+          height: 31px;
+          font-size: 14px;
+        }
+
+        .mini-text small {
+          font-size: 9px;
+        }
+
+        .mini-text strong {
+          font-size: 13px;
+        }
+
+        .start-box {
+          width: 100%;
+          justify-content: center;
+          gap: 10px;
+          padding: 10px;
+        }
+
+        .start-icon {
+          width: 38px;
+          height: 38px;
+          font-size: 17px;
+        }
+
+        .start-text strong {
+          font-size: 19px;
+        }
+
+        .cyber-visual {
+          min-height: 245px;
+        }
+
+        .circle {
+          width: 210px;
+          height: 210px;
+        }
+
+        .circle::before {
+          inset: 20px;
+        }
+
+        .circle::after {
+          inset: 50px;
+        }
+
+        .shield {
+          width: 96px;
+          height: 120px;
+
+          top: 44px;
+          left: 57px;
+
+          font-size: 38px;
+        }
+
+        .shield::after {
+          font-size: 50px;
+        }
+
+        .node {
+          width: 31px;
+          height: 31px;
+
+          font-size: 12px;
+        }
+
+        .node.n1 {
+          top: 2px;
+          left: 89px;
+        }
+
+        .node.n2 {
+          bottom: 5px;
+          right: 2px;
+        }
+
+        .node.n3 {
+          bottom: 12px;
+          left: 2px;
+        }
+
+        .node.n4 {
+          top: 75px;
+          right: -12px;
+        }
+
+        .topics-section {
+          padding: 8px 12px 30px;
+        }
+
+        .section-title {
+          font-size: 19px;
+          gap: 10px;
+          margin-bottom: 17px;
+        }
+
+        .section-title::before {
+          width: 4px;
+          height: 25px;
+        }
+
+        .topics-grid {
+          grid-template-columns: 1fr 1fr;
+
+          gap: 8px;
+        }
+
+        .topic {
+          min-height: 155px;
+
+          padding: 15px 11px;
+        }
+
+        .topic-number {
+          font-size: 31px;
+
+          margin-bottom: 11px;
+        }
+
+        .topic h3 {
+          font-size: 13px;
+          line-height: 1.5;
+        }
+
+        .topic p {
+          font-size: 9px;
+
+          line-height: 1.65;
+        }
+
+        .topic-icon {
+          font-size: 19px;
+          left: 9px;
+          bottom: 8px;
+        }
+
+        .topic.full {
+          grid-column: span 2;
+
+          min-height: 130px;
+        }
+
+        .features-section {
+          margin: 0 12px 30px;
+
+          padding: 20px 10px;
+        }
+
+        .features-title {
+          font-size: 20px;
+          margin-bottom: 17px;
+        }
+
+        .features-grid {
+          grid-template-columns: repeat(2, 1fr);
+
+          gap: 7px;
+        }
+
+        .feature {
+          min-height: 82px;
+          padding: 10px 5px;
+        }
+
+        .feature-icon {
+          font-size: 22px;
+          margin-bottom: 5px;
+        }
+
+        .feature span {
+          font-size: 9px;
+        }
+
+        .offer {
+          margin: 0 12px 30px;
+
+          gap: 8px;
+        }
+
+        .slogan-box,
+        .price-box {
+          padding: 23px 15px;
+        }
+
+        .slogan {
+          font-size: 29px;
+        }
+
+        .price-label {
+          font-size: 12px;
+        }
+
+        .price {
+          font-size: 36px;
+        }
+
+        .price small {
+          font-size: 13px;
+        }
+
+        .button-area {
+          margin: -3px 12px 30px;
+        }
+
+        .btn {
+          width: 100%;
+          min-width: 0;
+
+          padding: 15px 18px;
+
+          font-size: 14px;
+        }
+
+        .contact-section {
+          margin: 0 12px 28px;
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact {
+          padding: 15px;
+          gap: 11px;
+        }
+
+        .contact-icon {
+          width: 45px;
+          height: 45px;
+          font-size: 20px;
+        }
+
+        .contact h3 {
+          font-size: 12px;
+        }
+
+        .contact p {
+          font-size: 10px;
+        }
+
+        footer {
+          padding: 18px 12px;
+
+          flex-direction: column;
+
+          gap: 8px;
+
+          text-align: center;
+
+          font-size: 11px;
+        }
+
+        .copyright {
+          padding: 14px 10px;
+          font-size: 10px;
+        }
+      }
+
+      /* =========================================================
+         SMALL MOBILE
+      ========================================================= */
+
+      @media (max-width: 380px) {
+        .container {
+          width: calc(100% - 6px);
+        }
+
+        .brand-name {
+          font-size: 17px;
+        }
+
+        .brand-mark {
+          width: 34px;
+          height: 34px;
+        }
+
+        .hero {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        .hero h1 {
+          font-size: 33px;
+        }
+
+        .hero-description {
+          font-size: 12px;
+        }
+
+        .course-mini-info {
+          grid-template-columns: 1fr;
+        }
+
+        .mini-card {
+          width: 100%;
+        }
+
+        .cyber-visual {
+          min-height: 220px;
+        }
+
+        .circle {
+          width: 185px;
+          height: 185px;
+        }
+
+        .circle::before {
+          inset: 17px;
+        }
+
+        .circle::after {
+          inset: 43px;
+        }
+
+        .shield {
+          width: 84px;
+          height: 105px;
+
+          top: 39px;
+          left: 50px;
+
+          font-size: 32px;
+        }
+
+        .shield::after {
+          font-size: 43px;
+        }
+
+        .node {
+          width: 28px;
+          height: 28px;
+        }
+
+        .node.n1 {
+          left: 78px;
+        }
+
+        .node.n4 {
+          right: -10px;
+          top: 65px;
+        }
+
+        .topics-grid {
+          gap: 6px;
+        }
+
+        .topic {
+          min-height: 145px;
+
+          padding: 12px 8px;
+        }
+
+        .topic-number {
+          font-size: 28px;
+        }
+
+        .topic h3 {
+          font-size: 11px;
+        }
+
+        .topic p {
+          font-size: 8px;
+        }
+
+        .topic-icon {
+          font-size: 17px;
+        }
+
+        .feature span {
+          font-size: 8px;
+        }
+
+        .price {
+          font-size: 31px;
+        }
+
+        .contact {
+          padding: 12px;
+        }
+
+        .contact h3 {
+          font-size: 11px;
+        }
+      }
+
+      /* =========================================================
+         VERY SMALL DEVICES
+      ========================================================= */
+
+      @media (max-width: 320px) {
+        .hero h1 {
+          font-size: 29px;
+        }
+
+        .section-title {
+          font-size: 17px;
+        }
+
+        .topic {
+          min-height: 138px;
+        }
+
+        .topic h3 {
+          font-size: 10px;
+        }
+
+        .topic p {
+          font-size: 7.5px;
+        }
+
+        .price {
+          font-size: 28px;
+        }
+
+        .btn {
+          font-size: 13px;
+        }
+      }
+
+      /* =========================================================
+         ACCESSIBILITY / TOUCH
+      ========================================================= */
+
+      @media (hover: none) {
+        .topic:hover,
+        .feature:hover,
+        .contact:hover,
+        .btn:hover {
+          transform: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .circle::before {
+          animation: none;
+        }
+
+        *,
+        *::before,
+        *::after {
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- =====================================================
+           TOP BAR
+      ====================================================== -->
+
+      <div class="topbar">
+        <div class="brand">
+          <div class="brand-mark">C</div>
+
+          <div class="brand-name">Cours<span>yria</span></div>
+        </div>
+
+        <div class="top-label">LEARN · BUILD · PROTECT</div>
+      </div>
+
+      <!-- =====================================================
+           HERO
+      ====================================================== -->
+
+      <header class="hero">
+        <div class="hero-content">
+          <div class="eyebrow">معسكر تدريبي عملي مكثف</div>
+
+          <h1>
+            معسكر
+            <span>الأمن السيبراني</span>
+          </h1>
+
+          <p class="hero-description">
+            معسكر عملي مكثف يؤهلك لاكتساب المهارات اللازمة لحماية الأنظمة، فهم
+            التهديدات، وتحليل الهجمات السيبرانية ضمن بيئة تدريبية عملية.
+          </p>
+
+          <!-- COURSE MINI INFO -->
+
+          <div class="course-mini-info">
+            <div class="mini-card">
+              <div class="mini-icon">⏱</div>
+
+              <div class="mini-text">
+                <small>مدة المعسكر</small>
+                <strong>5 أشهر</strong>
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-icon">📚</div>
+
+              <div class="mini-text">
+                <small>عدد الجلسات</small>
+                <strong>45 جلسة</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- START DATE -->
+
+          <div class="start-box">
+            <div class="start-icon">⏳</div>
+
+            <div class="start-text">
+              <small> موعد بداية المعسكر </small>
+
+              <strong> الشهر 9 </strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- CYBER VISUAL -->
+
+        <div class="cyber-visual">
+          <div class="circle">
+            <div class="shield">C</div>
+
+            <div class="node n1">⚡</div>
+
+            <div class="node n2">◉</div>
+
+            <div class="node n3">#</div>
+
+            <div class="node n4">◇</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- =====================================================
+           TOPICS
+      ====================================================== -->
+
+      <section class="topics-section">
+        <div class="section-title">محاور المعسكر</div>
+
+        <div class="topics-grid">
+          <!-- 01 -->
+
+          <article class="topic">
+            <div class="topic-number">01</div>
+
+            <h3>الأساسيات</h3>
+
+            <p>
+              مفاهيم الأمن السيبراني · التهديدات والهجمات · الأدوات والموارد
+            </p>
+
+            <div class="topic-icon">🛡️</div>
+          </article>
+
+          <!-- 02 -->
+
+          <article class="topic">
+            <div class="topic-number">02</div>
+
+            <h3>أنظمة التشغيل</h3>
+
+            <p>Windows · أمان الأنظمة · إدارة النظام والأدوات</p>
+
+            <div class="topic-icon">💻</div>
+          </article>
+
+          <!-- 03 -->
+
+          <article class="topic">
+            <div class="topic-number">03</div>
+
+            <h3>أساسيات الشبكات</h3>
+
+            <p>مفهوم الشبكات · TCP/IP · تحليل وحل المشكلات</p>
+
+            <div class="topic-icon">🌐</div>
+          </article>
+
+          <!-- 04 -->
+
+          <article class="topic">
+            <div class="topic-number">04</div>
+
+            <h3>فك الشيفرات</h3>
+
+            <p>أساسيات التشفير · خوارزميات التشفير · التحليل</p>
+
+            <div class="topic-icon">🔐</div>
+          </article>
+
+          <!-- 05 -->
+
+          <article class="topic">
+            <div class="topic-number">05</div>
+
+            <h3>كسر كلمات المرور</h3>
+
+            <p>تقييم كلمات المرور · أدوات الهجوم · أساليب الحماية</p>
+
+            <div class="topic-icon">🔑</div>
+          </article>
+
+          <!-- 06 -->
+
+          <article class="topic">
+            <div class="topic-number">06</div>
+
+            <h3>مهارات الفريق الأحمر</h3>
+
+            <p>الاستطلاع وجمع المعلومات · استغلال الثغرات · الاختبار</p>
+
+            <div class="topic-icon">🎯</div>
+          </article>
+
+          <!-- 07 -->
+
+          <article class="topic full">
+            <div class="topic-number">07</div>
+
+            <h3>مهارات الفريق الأزرق</h3>
+
+            <p>
+              المراقبة وكشف التهديدات · الاستجابة للحوادث · التحليل الجنائي
+              الرقمي
+            </p>
+
+            <div class="topic-icon">🔵</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           FEATURES
+      ====================================================== -->
+
+      <section class="features-section">
+        <div class="features-title">مميزات المعسكر</div>
+
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-icon">👨‍🏫</div>
+
+            <span> مدربون محترفون </span>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🧪</div>
+
+            <span> مشاريع عملية </span>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🏅</div>
+
+            <span> شهادة خبرة معتمدة </span>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🤝</div>
+
+            <span> دعم ومتابعة طوال المعسكر </span>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">💰</div>
+
+            <span>
+              سعر المعسكر<br />
+              150 دولار
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           OFFER
+      ====================================================== -->
+
+      <section class="offer">
+        <div class="slogan-box">
+          <div class="slogan-small">رسالتنا</div>
+
+          <div class="slogan">
+            تعلم اليوم،
+            <br />
+            احمِ الغد
+          </div>
+        </div>
+
+        <div class="price-box">
+          <div class="price-label">قيمة الاشتراك في المعسكر</div>
+
+          <div class="price">
+            150
+            <small> دولار </small>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           CTA
+      ====================================================== -->
+
+      <div class="button-area">
+        <a
+          href="https://chat.whatsapp.com/HmhqjnBmBslIYHxIOT6qPK?s=sh&p=a&mlu=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn"
+        >
+          ⚡ احجز مكانك الآن
+        </a>
+      </div>
+
+      <!-- =====================================================
+           CONTACT
+      ====================================================== -->
+
+      <section class="contact-section">
+        <div class="section-title">معلومات التواصل</div>
+
+        <div class="contact-grid">
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact"
+          >
+            <div class="contact-icon">👨‍🏫</div>
+
+            <div>
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>اضغط للتواصل عبر واتساب</p>
+            </div>
+          </a>
+
+          <a
+            href="https://wa.me/963937015714"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact contact-purple"
+          >
+            <div class="contact-icon">💬</div>
+
+            <div>
+              <h3>للتواصل مع لين الكردي</h3>
+
+              <p>اضغط للتواصل عبر واتساب</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           FOOTER
+      ====================================================== -->
+
+      <footer>
+        <span> ✈ Coursyria_team </span>
+
+        <span> 🌐 coursyria.com </span>
+
+        <span> 📸 coursyria.team </span>
+      </footer>
+
+      <!-- =====================================================
+           COPYRIGHT
+      ====================================================== -->
+
+      <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
+    </div>
+  </body>
+</html>

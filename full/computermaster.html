@@ -1,0 +1,1664 @@
+```html
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Computer Skills Master | Coursyria</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =====================================================
+   ROOT
+===================================================== */
+
+      :root {
+        --bg: #020d1c;
+        --bg2: #06182b;
+        --card: #071d32;
+        --border: #16405c;
+
+        --green: #aaff18;
+        --cyan: #00e6d0;
+        --blue: #00a8ff;
+
+        --white: #f5f9ff;
+        --muted: #b7c7d5;
+      }
+
+      /* =====================================================
+   RESET
+===================================================== */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Cairo", sans-serif;
+        background:
+          radial-gradient(
+            circle at 80% 10%,
+            rgba(0, 220, 210, 0.12),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 15% 70%,
+            rgba(0, 150, 255, 0.08),
+            transparent 25%
+          ),
+          var(--bg);
+
+        color: var(--white);
+        overflow-x: hidden;
+      }
+
+      /* =====================================================
+   MAIN PAGE
+===================================================== */
+
+      .page {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* =====================================================
+   HERO
+===================================================== */
+
+      .hero {
+        min-height: 650px;
+        padding: 35px 45px 45px;
+        position: relative;
+
+        background:
+          linear-gradient(
+            90deg,
+            rgba(2, 13, 28, 0.98) 0%,
+            rgba(2, 13, 28, 0.86) 45%,
+            rgba(2, 13, 28, 0.25) 100%
+          ),
+          radial-gradient(
+            circle at 85% 45%,
+            rgba(0, 255, 220, 0.13),
+            transparent 30%
+          );
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+
+        width: 500px;
+        height: 500px;
+
+        right: -220px;
+        top: -160px;
+
+        border-radius: 50%;
+
+        border: 1px solid rgba(0, 255, 220, 0.15);
+
+        box-shadow:
+          0 0 50px rgba(0, 255, 220, 0.08),
+          inset 0 0 50px rgba(0, 255, 220, 0.05);
+      }
+
+      .hero::after {
+        content: "";
+
+        position: absolute;
+
+        width: 700px;
+        height: 2px;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--cyan),
+          transparent
+        );
+
+        right: -150px;
+        top: 400px;
+
+        transform: rotate(-10deg);
+
+        opacity: 0.5;
+      }
+
+      /* =====================================================
+   TOP
+===================================================== */
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        position: relative;
+        z-index: 5;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo {
+        width: 60px;
+        height: 60px;
+
+        border-radius: 16px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: linear-gradient(135deg, var(--green), var(--cyan));
+
+        color: #001426;
+
+        font-size: 28px;
+        font-weight: 900;
+
+        box-shadow: 0 0 20px rgba(100, 255, 50, 0.35);
+      }
+
+      .brand-text {
+        font-size: 28px;
+        font-weight: 900;
+        letter-spacing: 0.5px;
+      }
+
+      .brand-text span {
+        color: var(--green);
+      }
+
+      .brand-small {
+        font-size: 10px;
+        color: #8ca1b4;
+        letter-spacing: 2px;
+      }
+
+      .badge {
+        background: linear-gradient(90deg, var(--green), #d7ff3d);
+
+        color: #052015;
+
+        padding: 9px 24px;
+
+        border-radius: 30px;
+
+        font-weight: 900;
+        font-size: 14px;
+
+        box-shadow: 0 0 20px rgba(170, 255, 24, 0.18);
+      }
+
+      /* =====================================================
+   HERO CONTENT
+===================================================== */
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+
+        margin-top: 65px;
+
+        max-width: 670px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+
+        color: #061d16;
+
+        background: var(--green);
+
+        padding: 5px 22px;
+
+        border-radius: 30px;
+
+        font-size: 16px;
+        font-weight: 900;
+
+        margin-bottom: 20px;
+      }
+
+      .hero h1 {
+        font-family: Arial, sans-serif;
+
+        font-size: 68px;
+
+        line-height: 0.95;
+
+        font-weight: 900;
+
+        letter-spacing: -2px;
+      }
+
+      .hero h1 span {
+        display: block;
+
+        background: linear-gradient(90deg, var(--green), var(--cyan));
+
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero-sub {
+        margin-top: 25px;
+
+        font-size: 22px;
+
+        line-height: 1.9;
+
+        color: #edf5fc;
+
+        font-weight: 600;
+      }
+
+      .hero-sub span {
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      /* =====================================================
+   LAPTOP
+===================================================== */
+
+      .laptop {
+        position: absolute;
+
+        left: 55px;
+        bottom: 70px;
+
+        width: 330px;
+        height: 190px;
+
+        border: 8px solid #31495c;
+        border-bottom-width: 15px;
+
+        border-radius: 15px 15px 5px 5px;
+
+        background:
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(0, 255, 210, 0.15),
+            transparent 45%
+          ),
+          #020b15;
+
+        box-shadow:
+          0 0 30px rgba(0, 220, 255, 0.12),
+          inset 0 0 30px rgba(0, 220, 255, 0.08);
+
+        transform: perspective(500px) rotateY(8deg);
+      }
+
+      .laptop::after {
+        content: "";
+
+        position: absolute;
+
+        left: -45px;
+        right: -45px;
+
+        bottom: -30px;
+
+        height: 18px;
+
+        background: #30475a;
+
+        border-radius: 50%;
+
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      }
+
+      .screen-code {
+        padding: 22px;
+
+        font-family: monospace;
+
+        color: var(--cyan);
+
+        line-height: 1.7;
+
+        font-size: 12px;
+      }
+
+      .screen-code span {
+        color: var(--green);
+      }
+
+      /* =====================================================
+   FEATURES
+===================================================== */
+
+      .features {
+        margin: -5px 35px 0;
+
+        position: relative;
+        z-index: 10;
+
+        display: grid;
+
+        grid-template-columns: repeat(4, 1fr);
+
+        background: rgba(6, 29, 48, 0.95);
+
+        border: 1px solid var(--border);
+
+        border-radius: 20px;
+
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+
+        overflow: hidden;
+      }
+
+      .feature {
+        padding: 20px 15px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 13px;
+
+        justify-content: center;
+
+        border-left: 1px solid rgba(80, 180, 220, 0.15);
+      }
+
+      .feature:last-child {
+        border-left: none;
+      }
+
+      .feature-icon {
+        font-size: 32px;
+
+        color: var(--green);
+
+        filter: drop-shadow(0 0 7px rgba(170, 255, 24, 0.35));
+      }
+
+      .feature h4 {
+        font-size: 14px;
+        color: #fff;
+      }
+
+      .feature p {
+        font-size: 11px;
+        color: #9eb1c0;
+        margin-top: 2px;
+      }
+
+      /* =====================================================
+   SECTIONS
+===================================================== */
+
+      .section {
+        padding: 65px 35px;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      .section-title span {
+        display: inline-block;
+
+        padding: 8px 38px;
+
+        background: linear-gradient(90deg, var(--cyan), var(--green));
+
+        color: #031b20;
+
+        border-radius: 5px;
+
+        font-size: 23px;
+
+        font-weight: 900;
+
+        box-shadow: 0 0 25px rgba(0, 230, 208, 0.15);
+      }
+
+      /* =====================================================
+   MODULES
+===================================================== */
+
+      .modules {
+        display: grid;
+
+        grid-template-columns: repeat(5, 1fr);
+
+        gap: 12px;
+      }
+
+      .module {
+        background: linear-gradient(
+          180deg,
+          rgba(15, 49, 73, 0.8),
+          rgba(4, 22, 39, 0.95)
+        );
+
+        border: 1px solid #194761;
+
+        border-radius: 14px;
+
+        padding: 20px 13px;
+
+        min-height: 330px;
+
+        text-align: center;
+
+        position: relative;
+
+        overflow: hidden;
+
+        transition: 0.3s ease;
+      }
+
+      .module::before {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        right: 0;
+
+        width: 100%;
+        height: 3px;
+
+        background: linear-gradient(90deg, var(--cyan), var(--green));
+      }
+
+      .module:hover {
+        transform: translateY(-8px);
+
+        border-color: var(--cyan);
+
+        box-shadow: 0 12px 35px rgba(0, 230, 210, 0.12);
+      }
+
+      .module-icon {
+        width: 75px;
+        height: 75px;
+
+        margin: 0 auto 15px;
+
+        border-radius: 50%;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        font-size: 34px;
+
+        background: radial-gradient(circle at 35% 30%, #cfff4d, #00bfae);
+
+        color: #06212b;
+
+        box-shadow: 0 0 25px rgba(80, 255, 100, 0.2);
+      }
+
+      .module h3 {
+        font-size: 17px;
+
+        color: #fff;
+
+        margin-bottom: 15px;
+      }
+
+      .module ul {
+        list-style: none;
+
+        text-align: right;
+      }
+
+      .module li {
+        font-size: 11px;
+
+        color: #c3d0da;
+
+        padding: 7px 0;
+
+        border-bottom: 1px solid rgba(100, 180, 220, 0.08);
+      }
+
+      .module li::before {
+        content: "✓";
+
+        color: var(--green);
+
+        font-weight: 900;
+
+        margin-left: 7px;
+      }
+
+      /* =====================================================
+   INFO BOXES
+===================================================== */
+
+      .two-columns {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 18px;
+      }
+
+      .info-box {
+        background: linear-gradient(145deg, #09243b, #041525);
+
+        border: 1px solid #194963;
+
+        border-radius: 20px;
+
+        padding: 32px;
+
+        position: relative;
+
+        overflow: hidden;
+      }
+
+      .info-box::before {
+        content: "";
+
+        position: absolute;
+
+        width: 160px;
+        height: 160px;
+
+        border-radius: 50%;
+
+        background: var(--cyan);
+
+        opacity: 0.035;
+
+        left: -60px;
+        bottom: -60px;
+      }
+
+      .info-box h2 {
+        color: var(--cyan);
+
+        font-size: 24px;
+
+        margin-bottom: 20px;
+      }
+
+      .info-box p {
+        color: #d4dfe8;
+
+        font-size: 15px;
+
+        line-height: 2.1;
+      }
+
+      .check-list {
+        list-style: none;
+      }
+
+      .check-list li {
+        padding: 9px 0;
+
+        color: #e2ebf2;
+
+        font-size: 14px;
+
+        border-bottom: 1px solid rgba(100, 190, 220, 0.08);
+      }
+
+      .check-list li::before {
+        content: "✓";
+
+        color: var(--green);
+
+        font-size: 20px;
+
+        font-weight: 900;
+
+        margin-left: 10px;
+      }
+
+      /* =====================================================
+   COURSE DETAILS
+===================================================== */
+
+      .course-details {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 15px;
+
+        margin-top: 20px;
+      }
+
+      .detail-card {
+        background: linear-gradient(145deg, #09263f, #041525);
+
+        border: 1px solid #194963;
+
+        border-radius: 18px;
+
+        padding: 25px 15px;
+
+        text-align: center;
+
+        transition: 0.3s ease;
+      }
+
+      .detail-card:hover {
+        transform: translateY(-5px);
+
+        border-color: var(--green);
+
+        box-shadow: 0 10px 25px rgba(170, 255, 24, 0.08);
+      }
+
+      .detail-icon {
+        font-size: 30px;
+
+        margin-bottom: 8px;
+      }
+
+      .detail-card h3 {
+        font-size: 14px;
+
+        color: #9db4c7;
+
+        margin-bottom: 6px;
+      }
+
+      .detail-value {
+        color: var(--green);
+
+        font-size: 22px;
+
+        font-weight: 900;
+      }
+
+      /* =====================================================
+   PRICE
+===================================================== */
+
+      .price-box {
+        margin-top: 25px;
+
+        padding: 35px 25px;
+
+        text-align: center;
+
+        background:
+          radial-gradient(
+            circle at center,
+            rgba(0, 230, 208, 0.12),
+            transparent 60%
+          ),
+          #041728;
+
+        border: 1px solid rgba(0, 230, 208, 0.25);
+
+        border-radius: 22px;
+
+        position: relative;
+
+        overflow: hidden;
+      }
+
+      .price-box::before {
+        content: "";
+
+        position: absolute;
+
+        width: 250px;
+        height: 2px;
+
+        top: 0;
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--green),
+          transparent
+        );
+      }
+
+      .price-label {
+        color: #b8cad7;
+
+        font-size: 15px;
+
+        margin-bottom: 5px;
+      }
+
+      .price {
+        font-size: 48px;
+
+        color: var(--green);
+
+        font-weight: 900;
+
+        line-height: 1.2;
+
+        text-shadow: 0 0 20px rgba(170, 255, 24, 0.18);
+      }
+
+      .price-currency {
+        font-size: 20px;
+
+        color: var(--cyan);
+
+        margin-right: 5px;
+      }
+
+      .price-description {
+        color: #a9bdca;
+
+        font-size: 13px;
+
+        margin-top: 8px;
+      }
+
+      /* =====================================================
+   START BUTTON
+===================================================== */
+
+      .start-button {
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        margin-top: 25px;
+
+        padding: 14px 45px;
+
+        border-radius: 40px;
+
+        text-decoration: none;
+
+        color: #051a1d;
+
+        background: linear-gradient(90deg, var(--cyan), var(--green));
+
+        font-size: 19px;
+
+        font-weight: 900;
+
+        box-shadow: 0 0 25px rgba(0, 230, 208, 0.2);
+
+        transition: 0.3s ease;
+      }
+
+      .start-button:hover {
+        transform: scale(1.06);
+
+        box-shadow: 0 0 40px rgba(170, 255, 24, 0.3);
+      }
+
+      /* =====================================================
+   CONTACT
+===================================================== */
+
+      .contact-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 18px;
+
+        max-width: 850px;
+
+        margin: auto;
+      }
+
+      .contact-card {
+        display: flex;
+
+        align-items: center;
+
+        gap: 18px;
+
+        padding: 22px;
+
+        text-decoration: none;
+
+        color: white;
+
+        background: linear-gradient(145deg, #09243b, #041525);
+
+        border: 1px solid #194963;
+
+        border-radius: 18px;
+
+        transition: 0.3s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-5px);
+
+        border-color: var(--green);
+
+        box-shadow: 0 10px 30px rgba(0, 230, 208, 0.1);
+      }
+
+      .contact-icon {
+        width: 58px;
+        height: 58px;
+
+        flex-shrink: 0;
+
+        border-radius: 50%;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        font-size: 27px;
+
+        background: linear-gradient(135deg, var(--green), var(--cyan));
+
+        color: #042027;
+      }
+
+      .contact-card h3 {
+        font-size: 15px;
+
+        margin-bottom: 5px;
+
+        color: #fff;
+      }
+
+      .contact-card p {
+        font-size: 12px;
+
+        color: #9eb4c3;
+      }
+
+      /* =====================================================
+   CTA
+===================================================== */
+
+      .cta {
+        position: relative;
+
+        padding: 65px 30px;
+
+        text-align: center;
+
+        background:
+          radial-gradient(
+            circle at 50% 100%,
+            rgba(0, 255, 210, 0.16),
+            transparent 45%
+          ),
+          #031426;
+
+        border-top: 1px solid #123d55;
+
+        border-bottom: 1px solid #123d55;
+
+        overflow: hidden;
+      }
+
+      .cta::before {
+        content: "";
+
+        position: absolute;
+
+        width: 600px;
+        height: 2px;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--green),
+          transparent
+        );
+
+        left: 50%;
+
+        transform: translateX(-50%) rotate(-5deg);
+
+        top: 40%;
+
+        opacity: 0.4;
+      }
+
+      .cta h2 {
+        position: relative;
+
+        font-size: 34px;
+
+        font-weight: 900;
+      }
+
+      .cta h2 span {
+        color: var(--green);
+      }
+
+      .cta p {
+        position: relative;
+
+        margin-top: 8px;
+
+        color: #b7c7d5;
+
+        font-size: 16px;
+      }
+
+      /* =====================================================
+   FOOTER
+===================================================== */
+
+      footer {
+        padding: 25px;
+
+        background: #020c18;
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        color: #8ea2b4;
+
+        font-size: 12px;
+
+        gap: 15px;
+
+        flex-wrap: wrap;
+      }
+
+      footer strong {
+        color: var(--green);
+      }
+
+      footer div {
+        text-align: center;
+      }
+
+      /* =====================================================
+   COPYRIGHT
+===================================================== */
+
+      .copyright {
+        padding: 15px 20px;
+
+        text-align: center;
+
+        background: #010914;
+
+        color: #718798;
+
+        font-size: 12px;
+
+        border-top: 1px solid rgba(100, 180, 220, 0.08);
+      }
+
+      .copyright::before {
+        content: "© ";
+
+        color: var(--green);
+
+        font-weight: 900;
+      }
+
+      /* =====================================================
+   RESPONSIVE - TABLET
+===================================================== */
+
+      @media (max-width: 1000px) {
+        .hero {
+          min-height: 620px;
+        }
+
+        .modules {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .laptop {
+          opacity: 0.35;
+
+          left: -30px;
+        }
+      }
+
+      /* =====================================================
+   RESPONSIVE - MOBILE
+===================================================== */
+
+      @media (max-width: 700px) {
+        .hero {
+          padding: 25px 20px 45px;
+
+          min-height: 620px;
+
+          text-align: center;
+        }
+
+        .top {
+          flex-direction: column;
+
+          gap: 18px;
+        }
+
+        .brand {
+          justify-content: center;
+        }
+
+        .hero-content {
+          margin-top: 45px;
+        }
+
+        .hero h1 {
+          font-size: 48px;
+
+          letter-spacing: -1px;
+        }
+
+        .hero-sub {
+          font-size: 17px;
+        }
+
+        .laptop {
+          width: 250px;
+
+          height: 145px;
+
+          left: 50%;
+
+          transform: translateX(-50%);
+
+          bottom: 35px;
+
+          opacity: 0.18;
+        }
+
+        /* FEATURES */
+
+        .features {
+          margin: 0 15px;
+
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .feature {
+          padding: 15px 8px;
+        }
+
+        .feature-icon {
+          font-size: 25px;
+        }
+
+        .feature h4 {
+          font-size: 11px;
+        }
+
+        .feature p {
+          font-size: 9px;
+        }
+
+        /* SECTION */
+
+        .section {
+          padding: 45px 15px;
+        }
+
+        .section-title span {
+          font-size: 18px;
+
+          padding: 8px 25px;
+        }
+
+        /* MODULES */
+
+        .modules {
+          grid-template-columns: 1fr 1fr;
+
+          gap: 10px;
+        }
+
+        .module {
+          min-height: 300px;
+
+          padding: 18px 10px;
+        }
+
+        .module-icon {
+          width: 62px;
+          height: 62px;
+
+          font-size: 28px;
+        }
+
+        .module h3 {
+          font-size: 15px;
+        }
+
+        .module li {
+          font-size: 10px;
+        }
+
+        /* INFO */
+
+        .two-columns {
+          grid-template-columns: 1fr;
+        }
+
+        .info-box {
+          padding: 25px 20px;
+        }
+
+        /* COURSE DETAILS */
+
+        .course-details {
+          grid-template-columns: 1fr;
+        }
+
+        /* CONTACT */
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        /* CTA */
+
+        .cta {
+          padding: 50px 20px;
+        }
+
+        .cta h2 {
+          font-size: 25px;
+        }
+
+        /* FOOTER */
+
+        footer {
+          flex-direction: column;
+
+          gap: 12px;
+
+          text-align: center;
+        }
+      }
+
+      /* =====================================================
+   SMALL PHONES
+===================================================== */
+
+      @media (max-width: 420px) {
+        .hero h1 {
+          font-size: 39px;
+        }
+
+        .badge {
+          font-size: 12px;
+        }
+
+        .features {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .modules {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .module {
+          min-height: 320px;
+        }
+
+        .module h3 {
+          font-size: 14px;
+        }
+
+        .module li {
+          font-size: 9px;
+        }
+
+        .price {
+          font-size: 40px;
+        }
+
+        .start-button {
+          width: 90%;
+
+          justify-content: center;
+
+          font-size: 17px;
+
+          padding: 13px 20px;
+        }
+
+        .contact-card {
+          padding: 17px 14px;
+        }
+
+        .contact-card h3 {
+          font-size: 13px;
+        }
+
+        .contact-card p {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- =====================================================
+     HERO
+===================================================== -->
+
+      <section class="hero">
+        <div class="top">
+          <div class="brand">
+            <div class="logo">💻</div>
+
+            <div>
+              <div class="brand-text">COUR<span>SYRIA</span></div>
+
+              <div class="brand-small">LEARN • DEVELOP • ACHIEVE</div>
+            </div>
+          </div>
+
+          <div class="badge">⭐ دورة احترافية</div>
+        </div>
+
+        <div class="hero-content">
+          <div class="eyebrow">مهارات الحاسوب</div>
+
+          <h1>
+            COMPUTER
+            <span>SKILLS</span>
+            <span>MASTER</span>
+          </h1>
+
+          <p class="hero-sub">
+            أتقن مهارات الحاسوب الأساسية
+
+            <br />
+
+            وطوّر قدراتك الرقمية
+
+            <span> بثقة وكفاءة </span>
+          </p>
+        </div>
+
+        <div class="laptop">
+          <div class="screen-code">
+            <span>></span> System Skills<br />
+
+            <span>✓</span> إدارة الملفات<br />
+
+            <span>✓</span> إعدادات النظام<br />
+
+            <span>✓</span> صيانة النظام<br />
+
+            <span>✓</span> سطر الأوامر<br />
+
+            <span>✓</span> الأمان والنسخ الاحتياطي
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+     FEATURES
+===================================================== -->
+
+      <section class="features">
+        <div class="feature">
+          <div class="feature-icon">🏆</div>
+
+          <div>
+            <h4>شهادة إنجاز</h4>
+
+            <p>معتمدة</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🎯</div>
+
+          <div>
+            <h4>مهارات مطلوبة</h4>
+
+            <p>في سوق العمل</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+
+          <div>
+            <h4>تعلّم بسرعة</h4>
+
+            <p>وبأسلوب سهل</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🏅</div>
+
+          <div>
+            <h4>محتوى عملي</h4>
+
+            <p>وتطبيقات واقعية</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+     COURSE INFORMATION
+===================================================== -->
+
+      <section class="section">
+        <div class="section-title">
+          <span> 📋 معلومات الدورة </span>
+        </div>
+
+        <div class="course-details">
+          <div class="detail-card">
+            <div class="detail-icon">📅</div>
+
+            <h3>مدة الدورة</h3>
+
+            <div class="detail-value">شهر واحد</div>
+          </div>
+
+          <div class="detail-card">
+            <div class="detail-icon">🎓</div>
+
+            <h3>عدد الجلسات</h3>
+
+            <div class="detail-value">8 جلسات</div>
+          </div>
+
+          <div class="detail-card">
+            <div class="detail-icon">💰</div>
+
+            <h3>سعر الدورة</h3>
+
+            <div class="detail-value">1500 SP</div>
+          </div>
+        </div>
+
+        <!-- PRICE -->
+
+        <div class="price-box">
+          <div class="price-label">السعر</div>
+
+          <div class="price">
+            1500
+
+            <span class="price-currency"> SP </span>
+          </div>
+
+          <div class="price-description">السعر الكامل للمستوى الأول</div>
+
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="start-button"
+          >
+            🚀 ابدأ رحلتك الآن
+          </a>
+        </div>
+      </section>
+
+      <!-- =====================================================
+     COURSE MODULES
+===================================================== -->
+
+      <section class="section">
+        <div class="section-title">
+          <span> 📚 محاور الدورة </span>
+        </div>
+
+        <div class="modules">
+          <!-- 01 -->
+
+          <div class="module">
+            <div class="module-icon">🛡️</div>
+
+            <h3>الأمان والنسخ الاحتياطي</h3>
+
+            <ul>
+              <li>حماية النظام والبيانات</li>
+
+              <li>إنشاء نسخ احتياطية</li>
+
+              <li>استعادة الملفات</li>
+
+              <li>الحفاظ على أمان جهازك</li>
+            </ul>
+          </div>
+
+          <!-- 02 -->
+
+          <div class="module">
+            <div class="module-icon">💻</div>
+
+            <h3>سطر الأوامر</h3>
+
+            <ul>
+              <li>التنقل بين المجلدات</li>
+
+              <li>عرض محتويات المجلد</li>
+
+              <li>إدارة الملفات والأوامر</li>
+
+              <li>أوامر مفيدة وعملية</li>
+            </ul>
+          </div>
+
+          <!-- 03 -->
+
+          <div class="module">
+            <div class="module-icon">🧹</div>
+
+            <h3>صيانة النظام</h3>
+
+            <ul>
+              <li>تفريغ مساحة القرص</li>
+
+              <li>إدارة البرامج المثبتة</li>
+
+              <li>تنظيف الملفات المؤقتة</li>
+
+              <li>تحسين أداء النظام</li>
+            </ul>
+          </div>
+
+          <!-- 04 -->
+
+          <div class="module">
+            <div class="module-icon">⚙️</div>
+
+            <h3>إعدادات النظام</h3>
+
+            <ul>
+              <li>ضبط إعدادات النظام</li>
+
+              <li>إدارة المستخدمين</li>
+
+              <li>تخصيص بيئة العمل</li>
+
+              <li>خيارات الطاقة</li>
+            </ul>
+          </div>
+
+          <!-- 05 -->
+
+          <div class="module">
+            <div class="module-icon">📁</div>
+
+            <h3>إدارة الملفات</h3>
+
+            <ul>
+              <li>إنشاء الملفات والمجلدات</li>
+
+              <li>نسخ ونقل وحذف</li>
+
+              <li>إعادة تسمية الملفات</li>
+
+              <li>تنظيم الملفات بكفاءة</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+     WHAT YOU WILL LEARN
+===================================================== -->
+
+      <section class="section">
+        <div class="two-columns">
+          <div class="info-box">
+            <h2>🎯 ماذا ستتعلم؟</h2>
+
+            <ul class="check-list">
+              <li>استخدام الحاسوب بكفاءة وسرعة</li>
+
+              <li>إدارة الملفات والمجلدات بسهولة</li>
+
+              <li>تنظيف النظام وتفريغ المساحة</li>
+
+              <li>التعامل مع سطر الأوامر بثقة</li>
+
+              <li>حل المشكلات الشائعة وإصلاحها</li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h2>👥 لمن هذه الدورة؟</h2>
+
+            <p>
+              لجميع المستخدمين الراغبين في تطوير مهاراتهم في استخدام الحاسوب،
+              سواء للدراسة أو العمل أو الاستخدام الشخصي.
+
+              <br /><br />
+
+              الدورة مناسبة للمبتدئين ولكل من يريد تنظيم طريقة استخدامه للحاسوب
+              ورفع مستوى مهاراته الرقمية.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+     CTA
+===================================================== -->
+
+      <section class="cta">
+        <h2>
+          طوّر مهاراتك وكن
+
+          <span> أكثر إنتاجية كل يوم! </span>
+        </h2>
+
+        <p>مهارات بسيطة ... تأثير كبير</p>
+
+        <a
+          href="https://wa.me/963995980568"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="start-button"
+        >
+          🚀 ابدأ رحلتك الآن
+        </a>
+      </section>
+
+      <!-- =====================================================
+     CONTACT
+===================================================== -->
+
+      <section class="section">
+        <div class="section-title">
+          <span> 📞 معلومات التواصل </span>
+        </div>
+
+        <div class="contact-grid">
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+          >
+            <div class="contact-icon">👨‍🏫</div>
+
+            <div>
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>اضغط للتواصل عبر واتساب</p>
+            </div>
+          </a>
+
+          <a
+            href="https://wa.me/963937015714"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card contact-person-card"
+          >
+            <div class="contact-icon">💬</div>
+
+            <div>
+              <h3>لين الكردي</h3>
+
+              <p>اضغط للتواصل عبر واتساب</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- =====================================================
+     FOOTER
+===================================================== -->
+
+      <footer>
+        <div>✈ Coursyria_team</div>
+
+        <div>🌐 coursyria.com</div>
+
+        <div>📸 coursyria.team</div>
+      </footer>
+
+      <!-- =====================================================
+     COPYRIGHT
+===================================================== -->
+
+      <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
+    </div>
+  </body>
+</html>
+```

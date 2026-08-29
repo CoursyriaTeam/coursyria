@@ -1,0 +1,1455 @@
+```html
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>دورة أمن المعلومات | Coursyria</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =====================================================
+         RESET
+      ===================================================== */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        width: 100%;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        width: 100%;
+        min-width: 0;
+        overflow-x: hidden;
+        font-family: "Cairo", sans-serif;
+        background: #eef5ff;
+        color: #09234f;
+        padding: 25px 12px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      :root {
+        --blue: #0757d9;
+        --blue-dark: #062d78;
+        --blue-deep: #031c52;
+        --blue-light: #eaf3ff;
+        --text: #09234f;
+        --muted: #53647d;
+        --white: #ffffff;
+      }
+
+      /* =====================================================
+         POSTER
+      ===================================================== */
+
+      .poster {
+        width: 100%;
+        max-width: 1100px;
+        margin: auto;
+        background: #fff;
+        overflow: hidden;
+        border-radius: 28px;
+        box-shadow: 0 20px 60px rgba(0, 40, 110, 0.15);
+      }
+
+      /* =====================================================
+         HEADER
+      ===================================================== */
+
+      .header {
+        min-height: 650px;
+        position: relative;
+        padding: 40px 55px 55px;
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 35px;
+        align-items: center;
+        overflow: hidden;
+
+        background:
+          radial-gradient(
+            circle at 90% 20%,
+            rgba(0, 111, 255, 0.16),
+            transparent 30%
+          ),
+          linear-gradient(135deg, #fff 45%, #edf5ff);
+      }
+
+      .header::after {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border: 1px solid rgba(20, 95, 220, 0.15);
+        border-radius: 50%;
+        left: -180px;
+        bottom: -260px;
+        pointer-events: none;
+      }
+
+      /* =====================================================
+         LOGO
+      ===================================================== */
+
+      .logo {
+        position: absolute;
+        top: 30px;
+        right: 45px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 5;
+      }
+
+      .logo-icon {
+        width: 65px;
+        height: 65px;
+        border-radius: 16px;
+        background: linear-gradient(145deg, #0871ef, #052c75);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 34px;
+        font-weight: 900;
+        box-shadow: 0 8px 20px rgba(0, 73, 180, 0.25);
+        flex-shrink: 0;
+      }
+
+      .logo-text {
+        font-size: 31px;
+        font-weight: 900;
+        color: #08275a;
+      }
+
+      .logo-sub {
+        font-size: 11px;
+        color: #68778e;
+        margin-top: -5px;
+        letter-spacing: 1px;
+      }
+
+      /* =====================================================
+         HERO TEXT
+      ===================================================== */
+
+      .hero-text {
+        padding-top: 70px;
+        z-index: 2;
+      }
+
+      .badge {
+        display: inline-block;
+        background: linear-gradient(90deg, #0b62df, #3988f0);
+        color: white;
+        padding: 8px 28px;
+        border-radius: 30px;
+        font-size: 18px;
+        font-weight: 800;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 20px rgba(0, 84, 210, 0.18);
+      }
+
+      .hero-text h1 {
+        font-size: 62px;
+        line-height: 1.05;
+        font-weight: 900;
+        color: #082653;
+        margin-bottom: 4px;
+      }
+
+      .english-title {
+        font-size: 48px;
+        line-height: 1.05;
+        color: #0b63db;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+      }
+
+      .tagline {
+        font-size: 24px;
+        font-weight: 800;
+        color: #0c54c4;
+        border-top: 2px solid #b8d5ff;
+        border-bottom: 2px solid #b8d5ff;
+        padding: 13px 0;
+        margin-bottom: 18px;
+      }
+
+      .description {
+        color: #40536f;
+        font-size: 18px;
+        line-height: 2;
+        max-width: 550px;
+      }
+
+      /* =====================================================
+         HERO VISUAL
+      ===================================================== */
+
+      .hero-visual {
+        position: relative;
+        min-height: 480px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+      }
+
+      .glow {
+        position: absolute;
+        width: 430px;
+        height: 430px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(24, 117, 255, 0.23),
+          rgba(24, 117, 255, 0.05) 55%,
+          transparent 70%
+        );
+      }
+
+      .shield {
+        position: relative;
+        width: 280px;
+        height: 340px;
+        background: linear-gradient(145deg, #126bea, #06398e);
+        clip-path: polygon(
+          50% 0,
+          91% 16%,
+          86% 63%,
+          72% 81%,
+          50% 100%,
+          28% 81%,
+          14% 63%,
+          9% 16%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        filter: drop-shadow(0 18px 20px rgba(0, 70, 180, 0.25));
+      }
+
+      .shield::before {
+        content: "";
+        position: absolute;
+        width: 210px;
+        height: 260px;
+        background: #fff;
+        clip-path: polygon(
+          50% 0,
+          91% 16%,
+          86% 63%,
+          72% 81%,
+          50% 100%,
+          28% 81%,
+          14% 63%,
+          9% 16%
+        );
+      }
+
+      .lock {
+        position: relative;
+        z-index: 2;
+        width: 90px;
+        height: 100px;
+        border: 12px solid #0757d9;
+        border-radius: 15px;
+        margin-top: 35px;
+      }
+
+      .lock::before {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border: 10px solid #0757d9;
+        border-bottom: 0;
+        border-radius: 35px 35px 0 0;
+        top: -52px;
+        left: 8px;
+      }
+
+      .lock::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 32px;
+        background: #0757d9;
+        border-radius: 8px;
+        left: 28px;
+        top: 25px;
+      }
+
+      /* =====================================================
+         COURSE INFO
+      ===================================================== */
+
+      .course-info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        max-width: 900px;
+        margin: -25px auto 0;
+        padding: 0 25px;
+        position: relative;
+        z-index: 5;
+      }
+
+      .info-card {
+        background: #fff;
+        border: 1px solid #d5e5fa;
+        border-radius: 18px;
+        padding: 18px 12px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 55, 140, 0.1);
+      }
+
+      .info-icon {
+        font-size: 27px;
+        margin-bottom: 5px;
+      }
+
+      .info-label {
+        font-size: 12px;
+        color: #687992;
+        margin-bottom: 2px;
+      }
+
+      .info-value {
+        font-size: 20px;
+        font-weight: 900;
+        color: #0757c9;
+      }
+
+      /* =====================================================
+         SECTIONS
+      ===================================================== */
+
+      .section {
+        padding: 35px 45px;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 900;
+        color: #084ab7;
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        content: "";
+        height: 2px;
+        width: 70px;
+        background: linear-gradient(90deg, transparent, #1268df);
+      }
+
+      .section-title::after {
+        background: linear-gradient(90deg, #1268df, transparent);
+      }
+
+      /* =====================================================
+         MODULES
+      ===================================================== */
+
+      .modules {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 13px;
+      }
+
+      .module {
+        background: linear-gradient(180deg, #fff, #f4f8ff);
+        border: 1px solid #d6e5fa;
+        border-radius: 18px;
+        padding: 20px 10px;
+        text-align: center;
+        min-height: 190px;
+        position: relative;
+        transition: 0.3s;
+      }
+
+      .module:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 12px 25px rgba(0, 75, 170, 0.13);
+        border-color: #7eb1f5;
+      }
+
+      .module-number {
+        width: 43px;
+        height: 43px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #0a6be5, #0645a9);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+        font-weight: 900;
+        font-size: 15px;
+      }
+
+      .module-icon {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+
+      .module h3 {
+        font-size: 17px;
+        color: #092e6b;
+        margin-bottom: 8px;
+      }
+
+      .module p {
+        font-size: 12px;
+        line-height: 1.7;
+        color: #65748a;
+      }
+
+      /* =====================================================
+         WHY COURSE
+      ===================================================== */
+
+      .why {
+        background: linear-gradient(135deg, #f6faff, #eaf3ff);
+        border-radius: 25px;
+        border: 1px solid #d8e7fb;
+        overflow: hidden;
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0;
+      }
+
+      .why-card {
+        text-align: center;
+        padding: 20px 12px;
+        border-left: 1px solid #cbdcf2;
+      }
+
+      .why-card:last-child {
+        border-left: none;
+      }
+
+      .why-icon {
+        width: 65px;
+        height: 65px;
+        margin: 0 auto 12px;
+        border-radius: 50%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #0961d8;
+        font-size: 28px;
+        box-shadow: 0 6px 20px rgba(0, 73, 170, 0.1);
+      }
+
+      .why-card h3 {
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+
+      .why-card p {
+        font-size: 12px;
+        color: #63738a;
+      }
+
+      /* =====================================================
+         CONTENT
+      ===================================================== */
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+      }
+
+      .content-box {
+        border-radius: 22px;
+        padding: 28px;
+        border: 1px solid #d8e5f7;
+        background: #fff;
+        box-shadow: 0 8px 25px rgba(0, 50, 120, 0.06);
+      }
+
+      .content-box h2 {
+        color: #084dbb;
+        font-size: 23px;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .content-list {
+        list-style: none;
+      }
+
+      .content-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px dashed #d6e1ef;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .content-list li:last-child {
+        border-bottom: none;
+      }
+
+      .check {
+        flex-shrink: 0;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #0a61d7;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+      }
+
+      /* =====================================================
+         PRICE
+      ===================================================== */
+
+      .price-section {
+        margin: 10px 45px 40px;
+        border-radius: 28px;
+        padding: 35px;
+        text-align: center;
+        color: white;
+        background:
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(51, 151, 255, 0.3),
+            transparent 30%
+          ),
+          linear-gradient(135deg, #031d51, #075ed9);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .price-section::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 50%;
+        right: -100px;
+        top: -160px;
+      }
+
+      .price-section h2 {
+        font-size: 27px;
+        margin-bottom: 10px;
+      }
+
+      .price-label {
+        color: #bcd8ff;
+        font-size: 15px;
+      }
+
+      .price {
+        font-size: 48px;
+        font-weight: 900;
+        color: white;
+        margin: 8px 0;
+      }
+
+      .currency {
+        font-size: 20px;
+        color: #ffd75a;
+      }
+
+      .price-note {
+        font-size: 13px;
+        color: #d8e7ff;
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 13px 45px;
+        background: white;
+        color: #0757c9;
+        border-radius: 35px;
+        font-weight: 900;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        transform: scale(1.04);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* =====================================================
+         CONTACT
+      ===================================================== */
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .contact-card {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 22px 24px;
+        background: linear-gradient(135deg, #ffffff, #f2f7ff);
+        border: 1px solid #d8e6f8;
+        border-radius: 20px;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 8px 25px rgba(5, 55, 130, 0.07);
+        transition: all 0.3s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-6px);
+        border-color: #6da8ef;
+        box-shadow: 0 14px 30px rgba(5, 78, 180, 0.14);
+      }
+
+      .contact-icon {
+        width: 58px;
+        height: 58px;
+        flex-shrink: 0;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #0871e8, #0645a9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 27px;
+        box-shadow: 0 7px 18px rgba(5, 78, 180, 0.2);
+      }
+
+      .contact-card h3 {
+        margin: 0 0 6px;
+        color: #082e6b;
+        font-size: 17px;
+        font-weight: 800;
+      }
+
+      .contact-card p {
+        margin: 0;
+        color: #61738c;
+        font-size: 13px;
+      }
+
+      /* =====================================================
+         FOOTER
+      ===================================================== */
+
+      footer {
+        background: #061f50;
+        color: #dceaff;
+        padding: 22px 45px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        font-size: 13px;
+      }
+
+      footer div {
+        transition: 0.3s ease;
+      }
+
+      footer div:hover {
+        color: #ffffff;
+        transform: translateY(-2px);
+      }
+
+      .copyright {
+        background: #031638;
+        color: #a9c5e8;
+        text-align: center;
+        padding: 12px 15px;
+        font-size: 12px;
+      }
+
+      /* =====================================================
+         TABLET
+      ===================================================== */
+
+      @media (max-width: 1000px) {
+        body {
+          padding: 15px;
+        }
+
+        .header {
+          grid-template-columns: 1fr 1fr;
+          padding: 40px 30px 45px;
+          gap: 15px;
+        }
+
+        .hero-text h1 {
+          font-size: 48px;
+        }
+
+        .english-title {
+          font-size: 38px;
+        }
+
+        .tagline {
+          font-size: 20px;
+        }
+
+        .description {
+          font-size: 15px;
+        }
+
+        .logo {
+          right: 30px;
+        }
+
+        .modules {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .why-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .why-card {
+          border-bottom: 1px solid #cbdcf2;
+        }
+      }
+
+      /* =====================================================
+         MOBILE
+      ===================================================== */
+
+      @media (max-width: 700px) {
+        body {
+          padding: 0;
+          background: #fff;
+        }
+
+        .poster {
+          width: 100%;
+          max-width: 100%;
+          border-radius: 0;
+          box-shadow: none;
+        }
+
+        .header {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          text-align: center;
+          padding: 25px 16px 40px;
+          gap: 10px;
+        }
+
+        .logo {
+          position: relative;
+          top: auto;
+          right: auto;
+          justify-content: center;
+          margin-bottom: 5px;
+        }
+
+        .logo-icon {
+          width: 54px;
+          height: 54px;
+          font-size: 28px;
+          border-radius: 14px;
+        }
+
+        .logo-text {
+          font-size: 25px;
+        }
+
+        .logo-sub {
+          font-size: 9px;
+        }
+
+        .hero-text {
+          padding-top: 5px;
+        }
+
+        .badge {
+          font-size: 14px;
+          padding: 7px 20px;
+          margin-bottom: 15px;
+        }
+
+        .hero-text h1 {
+          font-size: clamp(34px, 10vw, 43px);
+          line-height: 1.15;
+        }
+
+        .english-title {
+          font-size: clamp(25px, 8vw, 32px);
+          line-height: 1.1;
+        }
+
+        .tagline {
+          font-size: 16px;
+          padding: 10px 0;
+        }
+
+        .description {
+          font-size: 13px;
+          line-height: 1.9;
+        }
+
+        .hero-visual {
+          min-height: 290px;
+          margin-top: 5px;
+        }
+
+        .glow {
+          width: 290px;
+          height: 290px;
+        }
+
+        .shield {
+          width: 190px;
+          height: 235px;
+        }
+
+        .shield::before {
+          width: 140px;
+          height: 180px;
+        }
+
+        .lock {
+          transform: scale(0.65);
+        }
+
+        /* Course info */
+
+        .course-info {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 7px;
+          padding: 0 12px;
+          margin-top: -18px;
+        }
+
+        .info-card {
+          padding: 13px 5px;
+          border-radius: 14px;
+        }
+
+        .info-icon {
+          font-size: 21px;
+        }
+
+        .info-label {
+          font-size: 9px;
+        }
+
+        .info-value {
+          font-size: 14px;
+        }
+
+        /* Sections */
+
+        .section {
+          padding: 28px 12px;
+        }
+
+        .section-title {
+          font-size: 20px;
+          margin-bottom: 20px;
+          gap: 8px;
+        }
+
+        .section-title::before,
+        .section-title::after {
+          width: 35px;
+        }
+
+        /* Modules */
+
+        .modules {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .module {
+          min-height: 175px;
+          padding: 17px 8px;
+          border-radius: 15px;
+        }
+
+        .module-number {
+          width: 38px;
+          height: 38px;
+          font-size: 13px;
+          margin-bottom: 10px;
+        }
+
+        .module-icon {
+          font-size: 27px;
+        }
+
+        .module h3 {
+          font-size: 14px;
+        }
+
+        .module p {
+          font-size: 10px;
+          line-height: 1.6;
+        }
+
+        /* Why */
+
+        .why {
+          border-radius: 18px;
+        }
+
+        .why-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .why-card {
+          border-left: none;
+          border-bottom: 1px solid #cbdcf2;
+          padding: 18px 10px;
+        }
+
+        .why-card:last-child {
+          border-bottom: none;
+        }
+
+        /* Content */
+
+        .content-grid {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+
+        .content-box {
+          padding: 20px 15px;
+          border-radius: 18px;
+        }
+
+        .content-box h2 {
+          font-size: 19px;
+          margin-bottom: 15px;
+        }
+
+        .content-list li {
+          font-size: 12px;
+          gap: 9px;
+          padding: 10px 0;
+        }
+
+        .check {
+          width: 22px;
+          height: 22px;
+          font-size: 11px;
+        }
+
+        /* Price */
+
+        .price-section {
+          margin: 5px 12px 25px;
+          padding: 28px 15px;
+          border-radius: 22px;
+        }
+
+        .price-section h2 {
+          font-size: 22px;
+        }
+
+        .price-label {
+          font-size: 13px;
+        }
+
+        .price {
+          font-size: 38px;
+        }
+
+        .currency {
+          font-size: 17px;
+        }
+
+        .price-note {
+          font-size: 11px;
+        }
+
+        .btn {
+          width: 100%;
+          max-width: 280px;
+          padding: 12px 25px;
+        }
+
+        /* Contact */
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .contact-card {
+          padding: 16px;
+          gap: 13px;
+          border-radius: 16px;
+        }
+
+        .contact-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 23px;
+          border-radius: 13px;
+        }
+
+        .contact-card h3 {
+          font-size: 14px;
+        }
+
+        .contact-card p {
+          font-size: 11px;
+        }
+
+        /* Footer */
+
+        footer {
+          flex-direction: column;
+          text-align: center;
+          padding: 20px 15px;
+          gap: 9px;
+          font-size: 11px;
+        }
+
+        .copyright {
+          font-size: 10px;
+          padding: 11px;
+        }
+      }
+
+      /* =====================================================
+         VERY SMALL PHONES
+      ===================================================== */
+
+      @media (max-width: 380px) {
+        .header {
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+
+        .hero-text h1 {
+          font-size: 32px;
+        }
+
+        .english-title {
+          font-size: 24px;
+        }
+
+        .tagline {
+          font-size: 14px;
+        }
+
+        .description {
+          font-size: 12px;
+        }
+
+        .course-info {
+          gap: 5px;
+          padding: 0 8px;
+        }
+
+        .info-card {
+          padding: 11px 3px;
+        }
+
+        .info-value {
+          font-size: 12px;
+        }
+
+        .modules {
+          gap: 7px;
+        }
+
+        .module {
+          min-height: 165px;
+        }
+
+        .module h3 {
+          font-size: 13px;
+        }
+
+        .module p {
+          font-size: 9px;
+        }
+
+        .section {
+          padding-left: 9px;
+          padding-right: 9px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="poster">
+      <!-- =====================================================
+           HEADER
+      ===================================================== -->
+
+      <header class="header">
+        <div class="logo">
+          <div class="logo-icon">C</div>
+
+          <div>
+            <div class="logo-text">Coursyria</div>
+            <div class="logo-sub">تعلم • تطور • احمِ مستقبلك</div>
+          </div>
+        </div>
+
+        <div class="hero-text">
+          <div class="badge">دورة احترافية</div>
+
+          <h1>أمن المعلومات</h1>
+
+          <div class="english-title">
+            INFORMATION<br />
+            SECURITY
+          </div>
+
+          <div class="tagline">احمِ البيانات .. احمِ المستقبل</div>
+
+          <p class="description">
+            تعلم أساسيات أمن المعلومات لحماية البيانات والأنظمة من التهديدات
+            السيبرانية وبناء بيئة رقمية آمنة ومستدامة.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="glow"></div>
+
+          <div class="shield">
+            <div class="lock"></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- =====================================================
+           COURSE INFORMATION
+      ===================================================== -->
+
+      <div class="course-info">
+        <div class="info-card">
+          <div class="info-icon">📅</div>
+          <div class="info-label">مدة الدورة</div>
+          <div class="info-value">شهر ونصف</div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🎓</div>
+          <div class="info-label">عدد الجلسات</div>
+          <div class="info-value">10 جلسات</div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">💰</div>
+          <div class="info-label">سعر الدورة</div>
+          <div class="info-value">950 ل.س</div>
+        </div>
+      </div>
+
+      <!-- =====================================================
+           MODULES
+      ===================================================== -->
+
+      <section class="section">
+        <h2 class="section-title">محاور الدورة</h2>
+
+        <div class="modules">
+          <div class="module">
+            <div class="module-number">01</div>
+            <div class="module-icon">🛡️</div>
+            <h3>أساسيات أمن المعلومات</h3>
+            <p>مفاهيم الأمن وحماية البيانات والأنظمة والمعلومات.</p>
+          </div>
+
+          <div class="module">
+            <div class="module-number">02</div>
+            <div class="module-icon">🌐</div>
+            <h3>أمن الشبكات</h3>
+            <p>حماية الشبكات وفهم المخاطر والتهديدات.</p>
+          </div>
+
+          <div class="module">
+            <div class="module-number">03</div>
+            <div class="module-icon">🖥️</div>
+            <h3>حماية الأنظمة</h3>
+            <p>تأمين الأنظمة والأجهزة وتقليل نقاط الضعف.</p>
+          </div>
+
+          <div class="module">
+            <div class="module-number">04</div>
+            <div class="module-icon">⚠️</div>
+            <h3>إدارة المخاطر</h3>
+            <p>التعرف على المخاطر وتقييمها والتعامل معها.</p>
+          </div>
+
+          <div class="module">
+            <div class="module-number">05</div>
+            <div class="module-icon">📋</div>
+            <h3>السياسات الأمنية</h3>
+            <p>بناء السياسات والإجراءات الأمنية الأساسية.</p>
+          </div>
+
+          <div class="module">
+            <div class="module-number">06</div>
+            <div class="module-icon">🔔</div>
+            <h3>الاستجابة للحوادث</h3>
+            <p>اكتشاف الحوادث الأمنية والاستجابة لها.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           WHY COURSE
+      ===================================================== -->
+
+      <section class="section">
+        <div class="why">
+          <h2 class="section-title">لماذا هذه الدورة؟</h2>
+
+          <div class="why-grid">
+            <div class="why-card">
+              <div class="why-icon">🏅</div>
+              <h3>شهادة معتمدة</h3>
+              <p>احصل على شهادة إتمام الدورة.</p>
+            </div>
+
+            <div class="why-card">
+              <div class="why-icon">🎓</div>
+              <h3>تدريب عملي</h3>
+              <p>تطبيق المفاهيم بطريقة عملية.</p>
+            </div>
+
+            <div class="why-card">
+              <div class="why-icon">📖</div>
+              <h3>محتوى حديث</h3>
+              <p>معلومات ومفاهيم محدثة.</p>
+            </div>
+
+            <div class="why-card">
+              <div class="why-icon">🎧</div>
+              <h3>دعم فني مستمر</h3>
+              <p>مساعدة ومتابعة خلال الدورة.</p>
+            </div>
+
+            <div class="why-card">
+              <div class="why-icon">👤</div>
+              <h3>مناسب للمبتدئين</h3>
+              <p>ابدأ من الأساسيات خطوة بخطوة.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           DETAILS
+      ===================================================== -->
+
+      <section class="section">
+        <div class="content-grid">
+          <div class="content-box">
+            <h2>📚 ماذا ستتعلم؟</h2>
+
+            <ul class="content-list">
+              <li>
+                <span class="check">✓</span>
+                <span> مقدمة في أمن المعلومات ومفاهيم الحماية. </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                <span> فهم المخاطر والتهديدات السيبرانية. </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                <span> حماية البيانات والأنظمة والشبكات. </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                <span> إدارة المخاطر الأمنية بطريقة صحيحة. </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                <span> السياسات والإجراءات الأمنية الأساسية. </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                <span> أساسيات الاستجابة للحوادث الأمنية. </span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="content-box">
+            <h2>🚀 ماذا ستحصل؟</h2>
+
+            <ul class="content-list">
+              <li>
+                <span class="check">✓</span>
+                <span> شهادة إتمام الدورة. </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                <span> تدريب عملي وتطبيقات واقعية. </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                <span> فهم أفضل لمفاهيم أمن المعلومات. </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                <span> معرفة أساسيات حماية الأنظمة والشبكات. </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                <span> محتوى حديث ومنظم للمبتدئين. </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                <span> دعم ومتابعة طوال فترة الدورة. </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           PRICE
+      ===================================================== -->
+
+      <section class="price-section">
+        <h2>ابدأ رحلتك الآن 🔐</h2>
+
+        <div class="price-label">سعر الدورة</div>
+
+        <div class="price">
+          950
+          <span class="currency">ل.س</span>
+        </div>
+
+        <div class="price-note">شهر ونصف • 10 جلسات • محتوى تدريبي متكامل</div>
+
+        <a
+          href="https://wa.me/963937015714"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn"
+        >
+          سجّل الآن
+        </a>
+      </section>
+
+      <!-- =====================================================
+           CONTACT
+      ===================================================== -->
+
+      <section class="section">
+        <div class="section-title">📞 معلومات التواصل</div>
+
+        <div class="contact-grid">
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+          >
+            <div class="contact-icon">👨‍🏫</div>
+
+            <div>
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>اضغط للتواصل عبر واتساب</p>
+            </div>
+          </a>
+
+          <a
+            href="https://wa.me/963937015714"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+          >
+            <div class="contact-icon">💬</div>
+
+            <div>
+              <h3>لين الكردي</h3>
+
+              <p>اضغط للتواصل عبر واتساب</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           FOOTER
+      ===================================================== -->
+
+      <footer>
+        <div>✈ Coursyria_team</div>
+
+        <div>🌐 coursyria.com</div>
+
+        <div>📸 coursyria.team</div>
+      </footer>
+
+      <!-- =====================================================
+           COPYRIGHT
+      ===================================================== -->
+
+      <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
+    </div>
+  </body>
+</html>
+```

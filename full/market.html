@@ -1,0 +1,1423 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>إدارة المحتوى التسويقي | Coursyria</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: "Cairo", sans-serif;
+        color: #f7fbff;
+        background:
+          radial-gradient(
+            circle at 20% 10%,
+            rgba(0, 112, 255, 0.22),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 85% 30%,
+            rgba(0, 174, 255, 0.14),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 50% 90%,
+            rgba(0, 78, 255, 0.14),
+            transparent 30%
+          ),
+          linear-gradient(135deg, #010611, #031124 50%, #010611);
+        min-height: 100vh;
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* ================= CONTAINER ================= */
+
+      .container {
+        width: min(1200px, 94%);
+        margin: auto;
+        padding: 25px 0 60px;
+      }
+
+      /* ================= HEADER ================= */
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 20px 25px;
+        border-bottom: 1px solid rgba(0, 153, 255, 0.3);
+        margin-bottom: 25px;
+        gap: 15px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        min-width: 0;
+      }
+
+      .logo-icon {
+        width: 62px;
+        height: 62px;
+        flex-shrink: 0;
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        font-size: 35px;
+        font-weight: 900;
+        color: #fff;
+        border: 2px solid #198dff;
+        background: linear-gradient(135deg, #0b3d91, #031024);
+        box-shadow:
+          0 0 12px #087cff,
+          0 0 35px rgba(0, 119, 255, 0.4);
+      }
+
+      .logo-name {
+        font-size: 29px;
+        font-weight: 900;
+        letter-spacing: -1px;
+      }
+
+      .logo-name span {
+        color: #2ca8ff;
+      }
+
+      .logo-sub {
+        color: #86a9c8;
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
+
+      .header-badge {
+        border: 1px solid #158cff;
+        background: rgba(5, 58, 120, 0.4);
+        color: #67c8ff;
+        padding: 8px 22px;
+        border-radius: 25px;
+        box-shadow: 0 0 15px rgba(0, 126, 255, 0.2);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      /* ================= HERO ================= */
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+        align-items: center;
+        min-height: 540px;
+        padding: 45px 35px;
+        border-radius: 28px;
+        border: 1px solid rgba(0, 132, 255, 0.5);
+        background:
+          radial-gradient(
+            circle at 80% 35%,
+            rgba(0, 113, 255, 0.18),
+            transparent 30%
+          ),
+          linear-gradient(135deg, #06152c, #020914 65%);
+        box-shadow:
+          0 0 35px rgba(0, 102, 255, 0.12),
+          inset 0 0 50px rgba(0, 119, 255, 0.06);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 144, 255, 0.15);
+        right: -180px;
+        top: -170px;
+        box-shadow:
+          0 0 60px rgba(0, 119, 255, 0.12),
+          inset 0 0 50px rgba(0, 119, 255, 0.08);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        min-width: 0;
+      }
+
+      .course-badge {
+        display: inline-block;
+        padding: 8px 28px;
+        border-radius: 30px;
+        color: white;
+        font-weight: 800;
+        border: 1px solid #168dff;
+        background: linear-gradient(90deg, #064fbd, #082b68);
+        box-shadow:
+          0 0 10px #087cff,
+          inset 0 0 15px rgba(0, 145, 255, 0.2);
+        margin-bottom: 20px;
+      }
+
+      .hero h1 {
+        font-size: clamp(45px, 6vw, 78px);
+        line-height: 1.1;
+        font-weight: 900;
+        color: #fff;
+        text-shadow:
+          0 0 12px rgba(255, 255, 255, 0.25),
+          0 5px 25px #000;
+      }
+
+      .hero h1 .blue {
+        display: block;
+        color: #168cff;
+        text-shadow:
+          0 0 8px #008cff,
+          0 0 30px rgba(0, 137, 255, 0.7);
+      }
+
+      .english-title {
+        font-size: 19px;
+        letter-spacing: 2px;
+        color: #61c8ff;
+        margin: 8px 0 20px;
+      }
+
+      .hero-description {
+        color: #c5d8e8;
+        font-size: 17px;
+        line-height: 2;
+        max-width: 580px;
+      }
+
+      /* ================= COURSE INFO ================= */
+
+      .course-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .info-box {
+        padding: 13px 15px;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 140, 255, 0.4);
+        background: rgba(3, 26, 55, 0.75);
+        box-shadow: inset 0 0 15px rgba(0, 125, 255, 0.05);
+      }
+
+      .info-label {
+        color: #79a9ca;
+        font-size: 11px;
+        margin-bottom: 3px;
+      }
+
+      .info-value {
+        color: #4fc7ff;
+        font-size: 17px;
+        font-weight: 900;
+      }
+
+      /* ================= PRICE ================= */
+
+      .price-box {
+        margin-top: 18px;
+        padding: 18px 20px;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        background: linear-gradient(135deg, #061b39, #030a16);
+        border: 1px solid #087cff;
+        box-shadow: 0 0 20px rgba(0, 115, 255, 0.16);
+      }
+
+      .price-title {
+        color: #8eb3d0;
+        font-size: 13px;
+      }
+
+      .price {
+        font-size: 31px;
+        font-weight: 900;
+        color: #55caff;
+        text-shadow: 0 0 15px rgba(0, 163, 255, 0.55);
+      }
+
+      .cta {
+        display: inline-block;
+        padding: 13px 24px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: white;
+        font-weight: 800;
+        background: linear-gradient(135deg, #087cff, #0648a5);
+        border: 1px solid #56cfff;
+        box-shadow:
+          0 0 12px rgba(0, 140, 255, 0.55),
+          inset 0 0 10px rgba(255, 255, 255, 0.1);
+        transition: 0.3s;
+        text-align: center;
+      }
+
+      .cta:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 128, 255, 0.45);
+      }
+
+      /* ================= DIGITAL ART ================= */
+
+      .hero-art {
+        height: 410px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .laptop {
+        position: relative;
+        width: 300px;
+        height: 205px;
+        background: linear-gradient(145deg, #172b47, #030a15);
+        border: 4px solid #3179c8;
+        border-radius: 16px 16px 10px 10px;
+        box-shadow:
+          0 0 25px #087cff,
+          0 0 65px rgba(0, 113, 255, 0.45);
+        transform: perspective(700px) rotateX(5deg) rotateY(-5deg);
+      }
+
+      .laptop-screen {
+        position: absolute;
+        inset: 14px;
+        background: linear-gradient(135deg, #071b39, #020813);
+        border: 1px solid #168dff;
+        border-radius: 7px;
+        padding: 15px;
+      }
+
+      .screen-title {
+        color: #7fd5ff;
+        font-size: 11px;
+        margin-bottom: 15px;
+      }
+
+      .screen-bars {
+        display: flex;
+        gap: 7px;
+        align-items: end;
+        height: 80px;
+      }
+
+      .screen-bars span {
+        flex: 1;
+        background: linear-gradient(to top, #076dff, #30c4ff);
+        border-radius: 4px 4px 0 0;
+        box-shadow: 0 0 8px #008cff;
+      }
+
+      .screen-bars span:nth-child(1) {
+        height: 35%;
+      }
+
+      .screen-bars span:nth-child(2) {
+        height: 70%;
+      }
+
+      .screen-bars span:nth-child(3) {
+        height: 50%;
+      }
+
+      .screen-bars span:nth-child(4) {
+        height: 85%;
+      }
+
+      .screen-bars span:nth-child(5) {
+        height: 65%;
+      }
+
+      .laptop-base {
+        position: absolute;
+        width: 360px;
+        height: 28px;
+        bottom: -31px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 5px 5px 25px 25px;
+        background: linear-gradient(#315b86, #071326);
+        border: 2px solid #2c75bc;
+        box-shadow: 0 12px 25px #000;
+      }
+
+      .platform {
+        position: absolute;
+        bottom: 15px;
+        width: 410px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #087cff;
+        background: rgba(0, 51, 112, 0.3);
+        box-shadow:
+          0 0 15px #008cff,
+          0 0 50px rgba(0, 120, 255, 0.4),
+          inset 0 0 20px rgba(0, 120, 255, 0.25);
+      }
+
+      /* ================= FLOATING ICONS ================= */
+
+      .float-icon {
+        position: absolute;
+        width: 55px;
+        height: 55px;
+        display: grid;
+        place-items: center;
+        border-radius: 15px;
+        font-size: 26px;
+        background: rgba(4, 35, 73, 0.75);
+        border: 1px solid #168cff;
+        box-shadow: 0 0 18px rgba(0, 128, 255, 0.6);
+        color: #52c8ff;
+      }
+
+      .i1 {
+        top: 30px;
+        right: 30px;
+      }
+
+      .i2 {
+        top: 100px;
+        right: -15px;
+      }
+
+      .i3 {
+        bottom: 110px;
+        left: 20px;
+      }
+
+      .i4 {
+        bottom: 45px;
+        right: 30px;
+      }
+
+      /* ================= TITLES ================= */
+
+      .section-title {
+        text-align: center;
+        margin: 55px 0 25px;
+        font-size: 28px;
+        color: #dff5ff;
+        text-shadow: 0 0 12px rgba(0, 145, 255, 0.5);
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 2px;
+        margin: 12px auto;
+        background: linear-gradient(90deg, transparent, #0797ff, transparent);
+        box-shadow: 0 0 10px #008cff;
+      }
+
+      /* ================= MODULES ================= */
+
+      .modules {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 12px;
+      }
+
+      .module {
+        min-height: 180px;
+        padding: 20px 10px;
+        text-align: center;
+        border-radius: 15px;
+        background: linear-gradient(145deg, #08234a, #030c1b);
+        border: 1px solid rgba(0, 137, 255, 0.55);
+        position: relative;
+        overflow: hidden;
+        transition: 0.3s;
+      }
+
+      .module::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #159cff;
+        box-shadow: 0 0 12px #008cff;
+      }
+
+      .module:hover {
+        transform: translateY(-7px);
+        border-color: #3cc4ff;
+        box-shadow: 0 12px 30px rgba(0, 108, 255, 0.25);
+      }
+
+      .module-number {
+        color: #168dff;
+        font-size: 14px;
+        font-weight: 900;
+        margin-bottom: 10px;
+      }
+
+      .module-icon {
+        font-size: 34px;
+        color: #35bfff;
+        text-shadow: 0 0 12px #008cff;
+        margin-bottom: 10px;
+      }
+
+      .module h3 {
+        color: #e8f8ff;
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+
+      .module p {
+        color: #91b0c8;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+
+      /* ================= WHY ================= */
+
+      .why {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        overflow: hidden;
+        border: 1px solid rgba(0, 136, 255, 0.5);
+        border-radius: 20px;
+        background: linear-gradient(135deg, #06172f, #020914);
+      }
+
+      .why-item {
+        padding: 25px 12px;
+        text-align: center;
+        border-left: 1px solid rgba(0, 136, 255, 0.2);
+      }
+
+      .why-item:last-child {
+        border-left: none;
+      }
+
+      .why-icon {
+        font-size: 34px;
+        color: #22aaff;
+        text-shadow: 0 0 15px #008cff;
+        margin-bottom: 10px;
+      }
+
+      .why-item h3 {
+        font-size: 15px;
+        color: #e3f6ff;
+      }
+
+      .why-item p {
+        color: #8eaec7;
+        font-size: 11px;
+        line-height: 1.7;
+        margin-top: 6px;
+      }
+
+      /* ================= QUOTE ================= */
+
+      .quote {
+        margin-top: 45px;
+        padding: 35px;
+        text-align: center;
+        border: 1px solid rgba(0, 136, 255, 0.5);
+        border-radius: 20px;
+        background: radial-gradient(circle, #08275a, #020914);
+        box-shadow: inset 0 0 40px rgba(0, 118, 255, 0.08);
+      }
+
+      .quote-mark {
+        color: #128cff;
+        font-size: 50px;
+        line-height: 1;
+        text-shadow: 0 0 15px #008cff;
+      }
+
+      .quote p {
+        font-size: 24px;
+        font-weight: 800;
+        color: #e9f8ff;
+        line-height: 2;
+      }
+
+      /* ================= FINAL ================= */
+
+      .final {
+        margin-top: 40px;
+        padding: 40px 20px;
+        text-align: center;
+        border-radius: 25px;
+        border: 1px solid #168cff;
+        background:
+          radial-gradient(
+            circle at center,
+            rgba(0, 117, 255, 0.18),
+            transparent 55%
+          ),
+          linear-gradient(135deg, #05245a, #020916);
+        box-shadow:
+          0 0 30px rgba(0, 115, 255, 0.18),
+          inset 0 0 35px rgba(0, 115, 255, 0.08);
+      }
+
+      .final h2 {
+        font-size: 32px;
+        color: #fff;
+      }
+
+      .final p {
+        color: #a9c9df;
+        margin: 8px 0 15px;
+      }
+
+      .final-price {
+        font-size: 40px;
+        font-weight: 900;
+        color: #45c5ff;
+        text-shadow: 0 0 18px rgba(0, 157, 255, 0.7);
+        margin-bottom: 20px;
+      }
+
+      /* ================= CONTACT ================= */
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        margin-top: 20px;
+      }
+
+      .contact-card {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 22px;
+        text-decoration: none;
+        color: #fff;
+        border: 1px solid rgba(22, 140, 255, 0.55);
+        border-radius: 18px;
+        background: linear-gradient(145deg, #08234a, #030c1b);
+        box-shadow:
+          0 0 18px rgba(0, 124, 255, 0.12),
+          inset 0 0 20px rgba(0, 120, 255, 0.05);
+        transition: 0.3s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-5px);
+        border-color: #35c4ff;
+        box-shadow:
+          0 10px 30px rgba(0, 120, 255, 0.25),
+          0 0 20px rgba(0, 145, 255, 0.18);
+      }
+
+      .contact-icon {
+        width: 58px;
+        height: 58px;
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        font-size: 28px;
+        background: rgba(0, 102, 204, 0.2);
+        border: 1px solid #168dff;
+        box-shadow:
+          0 0 12px rgba(0, 140, 255, 0.4),
+          inset 0 0 12px rgba(0, 140, 255, 0.08);
+      }
+
+      .contact-card h3 {
+        margin: 0 0 6px;
+        font-size: 16px;
+        color: #eaf8ff;
+      }
+
+      .contact-card p {
+        margin: 0;
+        font-size: 12px;
+        color: #82b9d8;
+      }
+
+      /* ================= FOOTER ================= */
+
+      footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 25px;
+        margin-top: 45px;
+        padding: 25px 15px;
+        border-top: 1px solid rgba(0, 135, 255, 0.25);
+        color: #8fb3cc;
+        font-size: 13px;
+        text-align: center;
+      }
+
+      footer div {
+        transition: 0.3s ease;
+      }
+
+      footer div:hover {
+        color: #35bfff;
+        text-shadow: 0 0 10px rgba(0, 145, 255, 0.6);
+      }
+
+      /* ================= COPYRIGHT ================= */
+
+      .copyright {
+        text-align: center;
+        padding: 15px 10px 25px;
+        color: #58758c;
+        font-size: 12px;
+        border-top: 1px solid rgba(0, 135, 255, 0.1);
+      }
+
+      /* ================= TABLET ================= */
+
+      @media (max-width: 950px) {
+        .hero {
+          grid-template-columns: 1fr;
+          text-align: center;
+          padding: 40px 25px;
+        }
+
+        .hero-description {
+          margin: auto;
+        }
+
+        .course-info {
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .price-box {
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .hero-art {
+          min-height: 380px;
+        }
+
+        .modules {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .why {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .why-item {
+          border-bottom: 1px solid rgba(0, 136, 255, 0.2);
+        }
+
+        .why-item:nth-child(3),
+        .why-item:nth-child(6) {
+          border-left: none;
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* ================= MOBILE ================= */
+
+      @media (max-width: 600px) {
+        .container {
+          width: 94%;
+          padding: 12px 0 35px;
+        }
+
+        .header {
+          padding: 8px 0 16px;
+          margin-bottom: 15px;
+        }
+
+        .logo {
+          gap: 9px;
+        }
+
+        .logo-name {
+          font-size: 21px;
+        }
+
+        .logo-icon {
+          width: 48px;
+          height: 48px;
+          border-radius: 14px;
+          font-size: 26px;
+        }
+
+        .logo-sub {
+          font-size: 8px;
+          letter-spacing: 1px;
+        }
+
+        .header-badge {
+          display: none;
+        }
+
+        .hero {
+          padding: 27px 15px;
+          border-radius: 21px;
+          gap: 8px;
+          min-height: auto;
+        }
+
+        .course-badge {
+          padding: 7px 18px;
+          font-size: 13px;
+          margin-bottom: 14px;
+        }
+
+        .hero h1 {
+          font-size: 43px;
+          line-height: 1.15;
+        }
+
+        .english-title {
+          font-size: 11px;
+          letter-spacing: 1px;
+          margin: 7px 0 13px;
+        }
+
+        .hero-description {
+          font-size: 13px;
+          line-height: 1.9;
+        }
+
+        /* معلومات الدورة على الموبايل */
+
+        .course-info {
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+          margin-top: 16px;
+        }
+
+        .info-box {
+          padding: 10px 7px;
+          border-radius: 12px;
+        }
+
+        .info-label {
+          font-size: 9px;
+        }
+
+        .info-value {
+          font-size: 14px;
+        }
+
+        /* السعر */
+
+        .price-box {
+          flex-direction: column;
+          gap: 13px;
+          padding: 15px;
+          margin-top: 12px;
+        }
+
+        .price {
+          font-size: 27px;
+        }
+
+        .cta {
+          width: 100%;
+          padding: 12px 15px;
+          font-size: 13px;
+        }
+
+        /* الرسم */
+
+        .hero-art {
+          height: 285px;
+          min-height: 285px;
+          transform: scale(0.72);
+          margin-top: -25px;
+          margin-bottom: -45px;
+        }
+
+        .laptop {
+          width: 285px;
+          height: 195px;
+        }
+
+        .laptop-base {
+          width: 335px;
+        }
+
+        .platform {
+          width: 380px;
+        }
+
+        .float-icon {
+          width: 48px;
+          height: 48px;
+          font-size: 22px;
+        }
+
+        .i1 {
+          top: 30px;
+          right: 15px;
+        }
+
+        .i2 {
+          right: -5px;
+        }
+
+        .i3 {
+          left: 10px;
+        }
+
+        .i4 {
+          right: 15px;
+        }
+
+        /* العناوين */
+
+        .section-title {
+          font-size: 21px;
+          margin: 38px 0 20px;
+        }
+
+        .section-title::after {
+          width: 75px;
+          margin: 9px auto;
+        }
+
+        /* المحاور */
+
+        .modules {
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+
+        .module {
+          min-height: 165px;
+          padding: 16px 7px;
+          border-radius: 13px;
+        }
+
+        .module-number {
+          font-size: 12px;
+          margin-bottom: 6px;
+        }
+
+        .module-icon {
+          font-size: 28px;
+          margin-bottom: 7px;
+        }
+
+        .module h3 {
+          font-size: 12px;
+          line-height: 1.5;
+          margin-bottom: 5px;
+        }
+
+        .module p {
+          font-size: 10px;
+          line-height: 1.6;
+        }
+
+        /* لماذا الدورة */
+
+        .why {
+          grid-template-columns: 1fr 1fr;
+          border-radius: 15px;
+        }
+
+        .why-item {
+          min-height: 120px;
+          padding: 18px 7px;
+          border-left: 1px solid rgba(0, 136, 255, 0.2);
+          border-bottom: 1px solid rgba(0, 136, 255, 0.2);
+        }
+
+        .why-item:nth-child(2n) {
+          border-left: none;
+        }
+
+        .why-item:nth-last-child(-n + 2) {
+          border-bottom: none;
+        }
+
+        .why-icon {
+          font-size: 27px;
+          margin-bottom: 7px;
+        }
+
+        .why-item h3 {
+          font-size: 12px;
+          line-height: 1.6;
+        }
+
+        .why-item p {
+          font-size: 9px;
+          line-height: 1.6;
+        }
+
+        /* الاقتباس */
+
+        .quote {
+          margin-top: 30px;
+          padding: 25px 15px;
+          border-radius: 17px;
+        }
+
+        .quote-mark {
+          font-size: 40px;
+        }
+
+        .quote p {
+          font-size: 16px;
+          line-height: 1.9;
+        }
+
+        /* النهائي */
+
+        .final {
+          margin-top: 28px;
+          padding: 30px 15px;
+          border-radius: 20px;
+        }
+
+        .final h2 {
+          font-size: 24px;
+        }
+
+        .final p {
+          font-size: 12px;
+          line-height: 1.8;
+        }
+
+        .final-price {
+          font-size: 29px;
+          margin-bottom: 17px;
+        }
+
+        .final .cta {
+          width: auto;
+          min-width: 160px;
+        }
+
+        /* التواصل */
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 10px;
+          margin-top: 15px;
+        }
+
+        .contact-card {
+          padding: 15px;
+          gap: 12px;
+          border-radius: 15px;
+        }
+
+        .contact-icon {
+          width: 50px;
+          height: 50px;
+          border-radius: 13px;
+          font-size: 23px;
+        }
+
+        .contact-card h3 {
+          font-size: 13px;
+        }
+
+        .contact-card p {
+          font-size: 10px;
+        }
+
+        /* الفوتر */
+
+        footer {
+          flex-direction: column;
+          gap: 7px;
+          font-size: 11px;
+          padding: 20px 10px;
+          margin-top: 30px;
+        }
+
+        .copyright {
+          font-size: 10px;
+          padding: 12px 8px 20px;
+        }
+      }
+
+      /* ================= SMALL PHONES ================= */
+
+      @media (max-width: 380px) {
+        .container {
+          width: 95%;
+        }
+
+        .hero {
+          padding: 23px 12px;
+        }
+
+        .hero h1 {
+          font-size: 37px;
+        }
+
+        .english-title {
+          font-size: 9px;
+        }
+
+        .hero-description {
+          font-size: 12px;
+        }
+
+        .info-value {
+          font-size: 12px;
+        }
+
+        .price {
+          font-size: 24px;
+        }
+
+        .hero-art {
+          transform: scale(0.63);
+          margin-top: -35px;
+          margin-bottom: -60px;
+        }
+
+        .modules {
+          gap: 6px;
+        }
+
+        .module {
+          min-height: 155px;
+          padding: 13px 5px;
+        }
+
+        .module h3 {
+          font-size: 11px;
+        }
+
+        .module p {
+          font-size: 9px;
+        }
+
+        .why-item h3 {
+          font-size: 11px;
+        }
+
+        .quote p {
+          font-size: 14px;
+        }
+
+        .final-price {
+          font-size: 26px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- ================= HEADER ================= -->
+
+      <header class="header">
+        <div class="logo">
+          <div class="logo-icon">C</div>
+
+          <div>
+            <div class="logo-name">Cours<span>yria</span></div>
+
+            <div class="logo-sub">LEARN · GROW · LEAD</div>
+          </div>
+        </div>
+
+        <div class="header-badge">دورة احترافية</div>
+      </header>
+
+      <!-- ================= HERO ================= -->
+
+      <section class="hero">
+        <div class="hero-content">
+          <div class="course-badge">دورة احترافية</div>
+
+          <h1>
+            إدارة المحتوى
+            <span class="blue">التسويقي</span>
+          </h1>
+
+          <div class="english-title">MARKETING CONTENT MANAGEMENT</div>
+
+          <p class="hero-description">
+            تعلّم كيف تخطط لإنشاء محتوى جذاب، تديره بذكاء، وتحوله إلى نتائج
+            تسويقية حقيقية.
+          </p>
+
+          <!-- معلومات الدورة -->
+
+          <div class="course-info">
+            <div class="info-box">
+              <div class="info-label">مدة الدورة</div>
+
+              <div class="info-value">شهر ونصف</div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-label">عدد الجلسات</div>
+
+              <div class="info-value">12 جلسة</div>
+            </div>
+          </div>
+
+          <!-- السعر -->
+
+          <div class="price-box">
+            <div>
+              <div class="price-title">سعر الدورة</div>
+
+              <div class="price">1000 SP</div>
+            </div>
+
+            <a href="#register" class="cta"> ابدأ رحلتك الآن </a>
+          </div>
+        </div>
+
+        <!-- ================= DIGITAL ART ================= -->
+
+        <div class="hero-art">
+          <div class="platform"></div>
+
+          <div class="laptop">
+            <div class="laptop-screen">
+              <div class="screen-title">CONTENT STRATEGY</div>
+
+              <div class="screen-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <div class="laptop-base"></div>
+          </div>
+
+          <div class="float-icon i1">♥</div>
+          <div class="float-icon i2">▶</div>
+          <div class="float-icon i3">◎</div>
+          <div class="float-icon i4">#</div>
+        </div>
+      </section>
+
+      <!-- ================= MODULES ================= -->
+
+      <h2 class="section-title">محاور الدورة</h2>
+
+      <section class="modules">
+        <div class="module">
+          <div class="module-number">01</div>
+          <div class="module-icon">◎</div>
+          <h3>استراتيجية المحتوى</h3>
+          <p>بناء استراتيجية واضحة تناسب أهدافك وجمهورك.</p>
+        </div>
+
+        <div class="module">
+          <div class="module-number">02</div>
+          <div class="module-icon">▤</div>
+          <h3>تخطيط المحتوى</h3>
+          <p>تنظيم الأفكار ووضع خطة محتوى فعالة.</p>
+        </div>
+
+        <div class="module">
+          <div class="module-number">03</div>
+          <div class="module-icon">✎</div>
+          <h3>إنشاء محتوى جذاب</h3>
+          <p>كتابة وتصميم محتوى يجذب الجمهور.</p>
+        </div>
+
+        <div class="module">
+          <div class="module-number">04</div>
+          <div class="module-icon">▣</div>
+          <h3>إدارة وتنظيم المحتوى</h3>
+          <p>إدارة المحتوى وتنظيم عملية النشر والمتابعة.</p>
+        </div>
+
+        <div class="module">
+          <div class="module-number">05</div>
+          <div class="module-icon">↗</div>
+          <h3>تحليل الأداء والتحسين</h3>
+          <p>قياس النتائج وتحسين المحتوى باستمرار.</p>
+        </div>
+
+        <div class="module">
+          <div class="module-number">06</div>
+          <div class="module-icon">📣</div>
+          <h3>توزيع المحتوى والترويج</h3>
+          <p>إيصال المحتوى للجمهور المناسب بالطريقة الصحيحة.</p>
+        </div>
+      </section>
+
+      <!-- ================= WHY ================= -->
+
+      <h2 class="section-title">لماذا هذه الدورة؟</h2>
+
+      <section class="why">
+        <div class="why-item">
+          <div class="why-icon">★</div>
+          <h3>مناسبة لجميع المستويات</h3>
+          <p>ابدأ من الأساس وتطور خطوة بخطوة.</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">◷</div>
+          <h3>نتائج ملموسة</h3>
+          <p>تعلم مهارات قابلة للتطبيق.</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">♟</div>
+          <h3>وفر وقتك وجهدك</h3>
+          <p>منهج منظم ومباشر.</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">▤</div>
+          <h3>محتوى محدث</h3>
+          <p>أدوات وأفكار حديثة.</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">▶</div>
+          <h3>تطبيقات عملية</h3>
+          <p>تعلّم من خلال التطبيق.</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">♜</div>
+          <h3>شهادة معتمدة</h3>
+          <p>شهادة عند إتمام الدورة.</p>
+        </div>
+      </section>
+
+      <!-- ================= QUOTE ================= -->
+
+      <section class="quote">
+        <div class="quote-mark">“</div>
+
+        <p>المحتوى القوي لا يُنشر فقط... بل يُخطط له، يُقاس، ويُطوّر.</p>
+      </section>
+
+      <!-- ================= FINAL ================= -->
+
+      <section class="final" id="register">
+        <h2>ابدأ رحلتك الآن</h2>
+
+        <p>طوّر مهاراتك في إدارة المحتوى وصنع تأثيرك</p>
+
+        <div class="final-price">1000 SP</div>
+
+        <a
+          href="https://wa.me/963937015714"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta"
+        >
+          سجّل الآن ←
+        </a>
+      </section>
+
+      <!-- ================= CONTACT ================= -->
+
+      <section>
+        <div class="section-title">📞 معلومات التواصل</div>
+
+        <div class="contact-grid">
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+          >
+            <div class="contact-icon">👨‍🏫</div>
+
+            <div>
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>اضغط للتواصل عبر واتساب</p>
+            </div>
+          </a>
+
+          <a
+            href="https://wa.me/963937015714"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+          >
+            <div class="contact-icon">💬</div>
+
+            <div>
+              <h3>لين الكردي</h3>
+
+              <p>اضغط للتواصل عبر واتساب</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ================= FOOTER ================= -->
+
+      <footer>
+        <div>✈ Coursyria_team</div>
+
+        <div>🌐 coursyria.com</div>
+
+        <div>📸 coursyria.team</div>
+      </footer>
+
+      <!-- ================= COPYRIGHT ================= -->
+
+      <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
+    </div>
+  </body>
+</html>

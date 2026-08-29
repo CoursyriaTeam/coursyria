@@ -1,0 +1,1443 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>Excel Master | Coursyria</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #07110c;
+        --bg-2: #0b1710;
+        --card: rgba(19, 39, 27, 0.72);
+
+        --green: #21c56b;
+        --green-light: #8df0b5;
+        --green-dark: #0d8c47;
+
+        --white: #ffffff;
+        --text: #d8e2dc;
+        --muted: #8d9b93;
+
+        --border: rgba(141, 240, 181, 0.14);
+
+        --radius-lg: 28px;
+        --radius-md: 20px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Cairo", sans-serif;
+        background:
+          radial-gradient(
+            circle at 85% 5%,
+            rgba(33, 197, 107, 0.14),
+            transparent 30%
+          ),
+          radial-gradient(
+            circle at 10% 60%,
+            rgba(33, 197, 107, 0.08),
+            transparent 25%
+          ),
+          var(--bg);
+
+        color: var(--white);
+        min-height: 100vh;
+        padding: 30px 18px;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: rgba(33, 197, 107, 0.05);
+        filter: blur(90px);
+        top: -250px;
+        right: -200px;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        background: rgba(141, 240, 181, 0.035);
+        filter: blur(80px);
+        bottom: -180px;
+        left: -150px;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1080px;
+        margin: auto;
+      }
+
+      /* =========================
+         NAVBAR
+      ========================== */
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        margin-bottom: 55px;
+        animation: fadeDown 0.8s ease both;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .logo-icon {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 13px;
+        background: linear-gradient(135deg, var(--green), var(--green-dark));
+        color: #031c0e;
+        font-size: 21px;
+        font-weight: 900;
+        box-shadow: 0 8px 25px rgba(33, 197, 107, 0.25);
+      }
+
+      .logo-text {
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+
+      .logo-text span {
+        color: var(--green-light);
+      }
+
+      .nav-badge {
+        padding: 8px 16px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.035);
+        border-radius: 50px;
+        color: var(--muted);
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      /* =========================
+         HERO
+      ========================== */
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        gap: 65px;
+        align-items: center;
+        margin-bottom: 90px;
+      }
+
+      .hero-content {
+        min-width: 0;
+        animation: fadeRight 0.9s ease both;
+      }
+
+      .small-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 13px;
+        border-radius: 50px;
+        background: rgba(33, 197, 107, 0.09);
+        border: 1px solid rgba(33, 197, 107, 0.18);
+        color: var(--green-light);
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .small-label::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 12px var(--green);
+      }
+
+      .hero h1 {
+        font-size: clamp(52px, 8vw, 92px);
+        line-height: 0.9;
+        font-weight: 900;
+        letter-spacing: -4px;
+        margin-bottom: 10px;
+      }
+
+      .hero h1 span {
+        display: block;
+        background: linear-gradient(
+          135deg,
+          #ffffff 10%,
+          var(--green-light) 70%
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .master {
+        color: var(--green);
+        font-size: clamp(34px, 5vw, 55px);
+        letter-spacing: -2px;
+      }
+
+      .hero-description {
+        max-width: 520px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 2;
+        margin: 28px 0;
+      }
+
+      .hero-description strong {
+        color: var(--text);
+      }
+
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .primary-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 13px 24px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--green), #15a958);
+        color: #04130a;
+        font-size: 14px;
+        font-weight: 800;
+        text-decoration: none;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(33, 197, 107, 0.2);
+        transition: 0.3s ease;
+      }
+
+      .primary-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 35px rgba(33, 197, 107, 0.3);
+      }
+
+      .price-mini {
+        display: flex;
+        flex-direction: column;
+        padding-right: 18px;
+        border-right: 1px solid var(--border);
+      }
+
+      .price-mini small {
+        color: var(--muted);
+        font-size: 10px;
+      }
+
+      .price-mini strong {
+        color: var(--green-light);
+        font-size: 16px;
+      }
+
+      /* =========================
+         EXCEL MOCKUP
+      ========================== */
+
+      .excel-wrapper {
+        position: relative;
+        min-width: 0;
+        animation: fadeLeft 0.9s ease both;
+      }
+
+      .excel-glow {
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        background: var(--green);
+        filter: blur(90px);
+        opacity: 0.16;
+        top: 25%;
+        left: 20%;
+      }
+
+      .excel-card {
+        position: relative;
+        padding: 10px;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.025)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 26px;
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+        transform: perspective(900px) rotateY(-5deg);
+        transition: 0.5s ease;
+      }
+
+      .excel-card:hover {
+        transform: perspective(900px) rotateY(0deg) translateY(-7px);
+      }
+
+      .excel-screen {
+        overflow: hidden;
+        background: #f7f9f8;
+        border-radius: 18px;
+        color: #1b261f;
+      }
+
+      .excel-top {
+        height: 42px;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        background: #107c41;
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .excel-dots {
+        display: flex;
+        gap: 5px;
+        margin-left: auto;
+      }
+
+      .excel-dots span {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .excel-toolbar {
+        height: 38px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 0 15px;
+        background: #ffffff;
+        border-bottom: 1px solid #dfe6e1;
+        color: #6b746f;
+        font-size: 10px;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .formula {
+        margin: 10px 14px;
+        height: 28px;
+        border: 1px solid #d9e0dc;
+        display: flex;
+        align-items: center;
+        padding: 0 9px;
+        color: #777;
+        font-size: 10px;
+        direction: ltr;
+      }
+
+      .sheet {
+        display: grid;
+        grid-template-columns: 35px repeat(5, minmax(0, 1fr));
+        font-size: 9px;
+        margin-bottom: 20px;
+      }
+
+      .cell {
+        min-width: 0;
+        min-height: 35px;
+        padding: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+        border-right: 1px solid #dce3df;
+        border-bottom: 1px solid #dce3df;
+      }
+
+      .cell.head {
+        background: #eef3ef;
+        font-weight: 800;
+        color: #4b5750;
+      }
+
+      .cell.green {
+        background: #e4f5eb;
+        color: #107c41;
+        font-weight: 700;
+      }
+
+      .floating {
+        position: absolute;
+        padding: 12px 15px;
+        border-radius: 14px;
+        background: rgba(12, 28, 19, 0.9);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      }
+
+      .floating.one {
+        top: 18px;
+        left: -35px;
+      }
+
+      .floating.two {
+        bottom: 25px;
+        right: -30px;
+      }
+
+      .floating small {
+        display: block;
+        color: var(--muted);
+        font-size: 9px;
+        margin-bottom: 3px;
+      }
+
+      .floating strong {
+        color: var(--green-light);
+        font-size: 13px;
+      }
+
+      /* =========================
+         INFO BAR
+      ========================== */
+
+      .info-bar {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 90px;
+      }
+
+      .info-item {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        transition: 0.3s ease;
+      }
+
+      .info-item:hover {
+        background: rgba(33, 197, 107, 0.06);
+        transform: translateY(-4px);
+        border-color: rgba(33, 197, 107, 0.25);
+      }
+
+      .info-icon {
+        font-size: 21px;
+        margin-bottom: 7px;
+      }
+
+      .info-item span {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        margin-bottom: 4px;
+      }
+
+      .info-item strong {
+        color: var(--text);
+        font-size: 14px;
+      }
+
+      /* =========================
+         SECTION TITLE
+      ========================== */
+
+      .section-heading {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      .section-heading span {
+        display: inline-block;
+        color: var(--green);
+        font-size: 11px;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(24px, 4vw, 30px);
+        font-weight: 800;
+      }
+
+      .section-heading p {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 7px;
+      }
+
+      /* =========================
+         COURSE CARDS
+      ========================== */
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 15px;
+        margin-bottom: 90px;
+      }
+
+      .card {
+        position: relative;
+        overflow: hidden;
+        padding: 25px;
+        min-height: 170px;
+        background: linear-gradient(
+          145deg,
+          rgba(24, 50, 34, 0.78),
+          rgba(13, 27, 18, 0.78)
+        );
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        transition:
+          transform 0.35s ease,
+          border-color 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: var(--green);
+        filter: blur(60px);
+        opacity: 0;
+        top: -40px;
+        right: -30px;
+        transition: 0.4s;
+      }
+
+      .card:hover {
+        transform: translateY(-7px);
+        border-color: rgba(33, 197, 107, 0.3);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .card:hover::before {
+        opacity: 0.12;
+      }
+
+      .card-number {
+        color: rgba(141, 240, 181, 0.35);
+        font-size: 11px;
+        font-weight: 800;
+        margin-bottom: 15px;
+      }
+
+      .card h3 {
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+
+      .card p {
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.9;
+      }
+
+      /* =========================
+         BENEFITS
+      ========================== */
+
+      .benefits {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 50px;
+        align-items: center;
+        margin-bottom: 90px;
+      }
+
+      .benefits-visual {
+        position: relative;
+        min-height: 310px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .circle {
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(33, 197, 107, 0.2),
+          rgba(33, 197, 107, 0.02) 65%,
+          transparent 70%
+        );
+        border: 1px solid rgba(33, 197, 107, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 80px rgba(33, 197, 107, 0.08);
+        animation: pulse 4s infinite ease-in-out;
+      }
+
+      .circle-inner {
+        width: 145px;
+        height: 145px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0d2115;
+        border: 1px solid rgba(141, 240, 181, 0.18);
+        color: var(--green-light);
+        font-size: 45px;
+        font-weight: 900;
+      }
+
+      .benefits-content h2 {
+        font-size: 28px;
+        margin-bottom: 25px;
+      }
+
+      .benefit-list {
+        display: grid;
+        gap: 13px;
+        list-style: none;
+      }
+
+      .benefit-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text);
+        font-size: 13px;
+      }
+
+      .check {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: rgba(33, 197, 107, 0.1);
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      /* =========================
+         CTA
+      ========================== */
+
+      .cta {
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        padding: 55px 25px;
+        margin-bottom: 50px;
+        background: linear-gradient(
+          135deg,
+          rgba(33, 197, 107, 0.12),
+          rgba(12, 28, 18, 0.7)
+        );
+        border: 1px solid rgba(33, 197, 107, 0.2);
+        border-radius: var(--radius-lg);
+      }
+
+      .cta::before {
+        content: "";
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        background: var(--green);
+        filter: blur(110px);
+        opacity: 0.08;
+        top: -160px;
+        right: 25%;
+      }
+
+      .cta-label {
+        color: var(--green);
+        font-size: 11px;
+        font-weight: 800;
+      }
+
+      .cta h2 {
+        font-size: clamp(27px, 4vw, 40px);
+        line-height: 1.4;
+        margin: 10px 0;
+      }
+
+      .cta p {
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 25px;
+      }
+
+      .price {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 6px;
+        margin-bottom: 25px;
+      }
+
+      .price strong {
+        color: var(--green-light);
+        font-size: 30px;
+        font-weight: 900;
+      }
+
+      .price span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      /* =========================
+         FOOTER
+      ========================== */
+
+      footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      footer strong {
+        color: var(--green-light);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        margin: 40px 0 20px;
+      }
+
+      .coach-btn,
+      .contact-btn {
+        display: block;
+        text-decoration: none;
+        width: 100%;
+        max-width: 340px;
+        text-align: center;
+        border-radius: 16px;
+        padding: 14px 20px;
+        transition: 0.3s ease;
+      }
+
+      .coach-btn {
+        background: linear-gradient(135deg, #0d8c47, #21c56b);
+        border: 2px solid rgba(141, 240, 181, 0.25);
+        color: #eafff0;
+        font-weight: 800;
+        font-size: 1.05rem;
+        box-shadow: 0 0 25px rgba(33, 197, 107, 0.25);
+      }
+
+      .coach-btn:hover {
+        transform: translateY(-3px);
+        background: linear-gradient(135deg, #10a85a, #2ad273);
+        box-shadow: 0 0 40px rgba(33, 197, 107, 0.35);
+      }
+
+      .contact-btn {
+        background: linear-gradient(135deg, #0d2115, #134d2f);
+        border: 2px solid rgba(141, 240, 181, 0.18);
+        color: #8df0b5;
+        font-weight: 700;
+        font-size: 1rem;
+        box-shadow: 0 0 20px rgba(33, 197, 107, 0.15);
+      }
+
+      .contact-btn:hover {
+        transform: translateY(-3px);
+        background: linear-gradient(135deg, #10301d, #17603b);
+        box-shadow: 0 0 30px rgba(33, 197, 107, 0.25);
+      }
+
+      .copyright {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #8d9b93;
+        border-top: 1px solid rgba(141, 240, 181, 0.18);
+        padding-top: 14px;
+        margin-top: 10px;
+      }
+
+      /* =========================
+         ANIMATIONS
+      ========================== */
+
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.035);
+        }
+      }
+
+      /* =========================
+         TABLET & MOBILE
+      ========================== */
+
+      @media (max-width: 850px) {
+        body {
+          padding: 20px 13px;
+        }
+
+        .navbar {
+          margin-bottom: 40px;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 45px;
+          text-align: center;
+        }
+
+        .hero-description {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .hero-actions {
+          justify-content: center;
+        }
+
+        .excel-card {
+          transform: none;
+          max-width: 520px;
+          margin: auto;
+        }
+
+        .floating.one {
+          left: 0;
+        }
+
+        .floating.two {
+          right: 0;
+        }
+
+        .cards {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .benefits {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .benefit-list {
+          text-align: right;
+          max-width: 600px;
+          margin: auto;
+        }
+      }
+
+      /* =========================
+         SMALL PHONES
+      ========================== */
+
+      @media (max-width: 560px) {
+        body {
+          padding: 15px 10px;
+        }
+
+        .nav-badge {
+          display: none;
+        }
+
+        .navbar {
+          justify-content: center;
+          margin-bottom: 35px;
+        }
+
+        .hero {
+          margin-bottom: 65px;
+        }
+
+        .hero h1 {
+          font-size: clamp(48px, 17vw, 68px);
+          letter-spacing: -2px;
+        }
+
+        .master {
+          font-size: clamp(30px, 10vw, 40px);
+        }
+
+        .small-label {
+          font-size: 11px;
+        }
+
+        .hero-description {
+          font-size: 13px;
+          line-height: 2;
+          margin: 22px auto;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .primary-btn {
+          width: 100%;
+          max-width: 340px;
+        }
+
+        .price-mini {
+          padding-right: 0;
+          padding-top: 10px;
+          border-right: none;
+          border-top: 1px solid var(--border);
+          width: 100%;
+          max-width: 200px;
+        }
+
+        .excel-toolbar {
+          gap: 10px;
+          font-size: 8px;
+        }
+
+        .excel-top {
+          font-size: 10px;
+        }
+
+        .formula {
+          font-size: 8px;
+          margin: 8px;
+        }
+
+        .sheet {
+          grid-template-columns: 25px repeat(5, minmax(0, 1fr));
+          font-size: 6px;
+        }
+
+        .cell {
+          min-height: 28px;
+          padding: 1px;
+        }
+
+        .floating {
+          display: none;
+        }
+
+        .info-bar {
+          grid-template-columns: 1fr;
+          margin-bottom: 65px;
+        }
+
+        .info-item {
+          padding: 18px;
+          text-align: center;
+        }
+
+        .cards {
+          grid-template-columns: 1fr;
+          margin-bottom: 65px;
+        }
+
+        .card {
+          min-height: auto;
+          padding: 22px;
+        }
+
+        .benefits {
+          margin-bottom: 65px;
+          gap: 25px;
+        }
+
+        .benefits-visual {
+          min-height: 260px;
+        }
+
+        .circle {
+          width: 210px;
+          height: 210px;
+        }
+
+        .circle-inner {
+          width: 125px;
+          height: 125px;
+          font-size: 37px;
+        }
+
+        .benefits-content .section-heading {
+          text-align: center !important;
+        }
+
+        .benefit-list li {
+          align-items: flex-start;
+          font-size: 12px;
+          line-height: 1.8;
+        }
+
+        .cta {
+          padding: 42px 18px;
+          margin-bottom: 40px;
+        }
+
+        .cta p {
+          line-height: 1.9;
+        }
+
+        .coach-btn,
+        .contact-btn {
+          font-size: 0.9rem;
+          padding: 13px 12px;
+        }
+
+        .copyright {
+          font-size: 0.75rem;
+        }
+      }
+
+      /* =========================
+         VERY SMALL PHONES
+      ========================== */
+
+      @media (max-width: 360px) {
+        body {
+          padding: 12px 7px;
+        }
+
+        .logo-text {
+          font-size: 18px;
+        }
+
+        .logo-icon {
+          width: 38px;
+          height: 38px;
+          font-size: 18px;
+        }
+
+        .hero h1 {
+          font-size: 46px;
+        }
+
+        .master {
+          font-size: 29px;
+        }
+
+        .circle {
+          width: 185px;
+          height: 185px;
+        }
+
+        .circle-inner {
+          width: 110px;
+          height: 110px;
+          font-size: 32px;
+        }
+
+        .cta h2 {
+          font-size: 25px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <!-- NAVBAR -->
+      <nav class="navbar">
+        <div class="logo">
+          <div class="logo-icon">C</div>
+          <div class="logo-text">Course<span>yria</span></div>
+        </div>
+
+        <div class="nav-badge">LEARN • BUILD • PROTECT</div>
+      </nav>
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-content">
+          <div class="small-label">دورة تدريبية احترافية</div>
+
+          <h1>
+            <span>Excel</span>
+            <span class="master">MASTER</span>
+          </h1>
+
+          <p class="hero-description">
+            انتقل من التعامل مع الجداول والبيانات بشكل تقليدي إلى
+            <strong>تحليلها وفهمها وتحويلها إلى قرارات ذكية.</strong>
+            دورة عملية تبدأ معك من الأساسيات وتوصلك إلى مستوى متقدم.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              href="https://wa.me/963995980568"
+              class="primary-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ابدأ رحلتك الآن
+            </a>
+
+            <div class="price-mini">
+              <small>سعر الدورة</small>
+              <strong>2500 ل.س</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXCEL MOCKUP -->
+        <div class="excel-wrapper">
+          <div class="excel-glow"></div>
+
+          <div class="excel-card">
+            <div class="excel-screen">
+              <div class="excel-top">
+                Microsoft Excel
+
+                <div class="excel-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+
+              <div class="excel-toolbar">
+                <span>Home</span>
+                <span>Insert</span>
+                <span>Data</span>
+                <span>Formulas</span>
+                <span>Review</span>
+              </div>
+
+              <div class="formula">=SUM(B2:B8)</div>
+
+              <div class="sheet">
+                <div class="cell head"></div>
+                <div class="cell head">A</div>
+                <div class="cell head">B</div>
+                <div class="cell head">C</div>
+                <div class="cell head">D</div>
+                <div class="cell head">E</div>
+
+                <div class="cell head">1</div>
+                <div class="cell green">المبيعات</div>
+                <div class="cell green">القيمة</div>
+                <div class="cell green">النسبة</div>
+                <div class="cell green">النتيجة</div>
+                <div class="cell green">التقييم</div>
+
+                <div class="cell head">2</div>
+                <div class="cell">منتج A</div>
+                <div class="cell">1200</div>
+                <div class="cell">25%</div>
+                <div class="cell">300</div>
+                <div class="cell">ممتاز</div>
+
+                <div class="cell head">3</div>
+                <div class="cell">منتج B</div>
+                <div class="cell">950</div>
+                <div class="cell">20%</div>
+                <div class="cell">190</div>
+                <div class="cell">جيد</div>
+
+                <div class="cell head">4</div>
+                <div class="cell">منتج C</div>
+                <div class="cell">1800</div>
+                <div class="cell">35%</div>
+                <div class="cell">630</div>
+                <div class="cell">ممتاز</div>
+
+                <div class="cell head">5</div>
+                <div class="cell">منتج D</div>
+                <div class="cell">700</div>
+                <div class="cell">20%</div>
+                <div class="cell">140</div>
+                <div class="cell">جيد</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating one">
+            <small>تحليل البيانات</small>
+            <strong>+35%</strong>
+          </div>
+
+          <div class="floating two">
+            <small>المستوى</small>
+            <strong>من الصفر → احتراف</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- INFO -->
+      <section class="info-bar">
+        <div class="info-item">
+          <div class="info-icon">⏳</div>
+          <span>مدة الدورة</span>
+          <strong>شهران</strong>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">📚</div>
+          <span>عدد الجلسات</span>
+          <strong>12 جلسات تدريبية</strong>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">🎯</div>
+          <span>المستوى</span>
+          <strong>من الصفر حتى الاحتراف</strong>
+        </div>
+      </section>
+
+      <!-- COURSE CONTENT -->
+      <section>
+        <div class="section-heading">
+          <span>WHAT YOU WILL LEARN</span>
+          <h2>محاور الدورة</h2>
+          <p>المهارات التي تحتاجها للتعامل مع Excel باحتراف</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-number">01</div>
+            <h3>الدوال والمعادلات</h3>
+            <p>
+              تعلّم أهم الدوال والمعادلات واستخدمها لحل المشكلات وتحليل
+              البيانات.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">02</div>
+            <h3>تنظيم البيانات</h3>
+            <p>
+              الفرز والتصفية والتنسيق الشرطي وتنظيم البيانات بطريقة احترافية.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">03</div>
+            <h3>تحليل البيانات</h3>
+            <p>
+              استخدم Pivot Tables والرسوم البيانية لاستخراج المعلومات المهمة.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">04</div>
+            <h3>التقارير الاحترافية</h3>
+            <p>
+              أنشئ تقارير واضحة وتفاعلية تساعدك على عرض المعلومات بطريقة أفضل.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">05</div>
+            <h3>البيانات الكبيرة</h3>
+            <p>
+              تعلّم أدوات وتقنيات التعامل مع كميات كبيرة من البيانات بكفاءة.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">06</div>
+            <h3>الأتمتة</h3>
+            <p>تعرّف على Power Query والـ Macro لتسريع المهام المتكررة.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- BENEFITS -->
+      <section class="benefits">
+        <div class="benefits-visual">
+          <div class="circle">
+            <div class="circle-inner">XLS</div>
+          </div>
+        </div>
+
+        <div class="benefits-content">
+          <div
+            class="section-heading"
+            style="text-align: right; margin-bottom: 25px"
+          >
+            <span>WHY COURSyria?</span>
+            <h2>أكثر من مجرد دورة</h2>
+          </div>
+
+          <ul class="benefit-list">
+            <li>
+              <span class="check">✓</span>
+              محتوى مرتب ومنظم وسهل التطبيق
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              تطبيقات عملية من واقع العمل
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              تمارين ومشاريع تساعدك على تثبيت المعلومات
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              تطوير مهاراتك وزيادة فرصك الوظيفية
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              دعم ومتابعة خلال فترة الدورة
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              مشروع تخرج وشهادة في نهاية الرحلة
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta">
+        <div class="cta-label">YOUR NEXT STEP</div>
+
+        <h2>
+          حوّل بياناتك إلى<br />
+          قرارات أذكى.
+        </h2>
+
+        <p>ابدأ الآن وابنِ مهارة عملية تحتاجها في الدراسة والعمل.</p>
+
+        <div class="price">
+          <strong>2500</strong>
+          <span>ل.س</span>
+        </div>
+
+        <br />
+
+        <a
+          href="https://wa.me/963995980568"
+          class="primary-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ابدأ رحلتك نحو الاحتراف
+        </a>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <strong>Coursyria</strong>
+        — Learn • Build • Protect
+      </footer>
+
+      <!-- FOOTER LINKS -->
+      <div class="footer-links">
+        <a
+          href="https://wa.me/963995980568"
+          class="coach-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          المدرب المهندس عبدالرحمن الحنفي
+        </a>
+
+        <a
+          href="https://wa.me/963937015714"
+          class="contact-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          للتواصل مع لين الكردي
+        </a>
+      </div>
+
+      <!-- COPYRIGHT -->
+      <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
+    </main>
+  </body>
+</html>
