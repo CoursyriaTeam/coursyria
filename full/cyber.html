@@ -4,39 +4,43 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
     />
 
     <title>معسكر الأمن السيبراني | Coursyria</title>
 
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap");
+
       /* =========================================================
-         ROOT
-      ========================================================= */
+       PREMIUM COURSYRIA — ICE BLUE / ROYAL BLUE
+    ========================================================= */
 
       :root {
-        --bg: #070b14;
-        --bg-2: #0b1524;
-        --panel: #0c1b2d;
-        --panel-2: #10263b;
+        --navy: #03133b;
+        --navy2: #06245f;
+        --royal-dark: #073b92;
+        --royal: #0b57c7;
+        --bright: #1478e8;
+        --sky: #2da8ff;
+        --ice: #8ed8ff;
+        --ice-bg: #eef8ff;
+        --white: #ffffff;
+        --silver: #dce9f7;
+        --dark-text: #102344;
+        --muted: #5f7392;
 
-        --cyan: #50d0ff;
-        --cyan-light: #a0ffdd;
-        --turquoise: #00c8b0;
-        --turquoise-dark: #007f86;
+        --glass: rgba(255, 255, 255, 0.74);
+        --glass-blue: rgba(238, 248, 255, 0.78);
 
-        --text: #e5f0ff;
-        --muted: #8fb0c5;
-
-        --line: rgba(80, 208, 255, 0.18);
-        --line-strong: rgba(80, 255, 208, 0.42);
-
-        --shadow: 0 20px 55px rgba(0, 0, 0, 0.5);
+        --shadow:
+          0 30px 80px rgba(3, 19, 59, 0.12),
+          0 10px 35px rgba(20, 120, 232, 0.08);
       }
 
       /* =========================================================
-         RESET
-      ========================================================= */
+       RESET
+    ========================================================= */
 
       * {
         margin: 0;
@@ -46,30 +50,41 @@
 
       html {
         scroll-behavior: smooth;
-        width: 100%;
         overflow-x: hidden;
       }
 
       body {
         min-height: 100vh;
-        width: 100%;
+        overflow-x: hidden;
+
+        font-family: "Cairo", "Segoe UI", Arial, sans-serif;
+        color: var(--dark-text);
+
         background:
           radial-gradient(
-            circle at 15% 10%,
-            rgba(0, 200, 180, 0.12),
+            circle at 10% 10%,
+            rgba(45, 168, 255, 0.18),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 90% 15%,
+            rgba(20, 120, 232, 0.13),
             transparent 28%
           ),
           radial-gradient(
-            circle at 90% 30%,
-            rgba(80, 208, 255, 0.12),
-            transparent 30%
+            circle at 50% 100%,
+            rgba(142, 216, 255, 0.22),
+            transparent 35%
           ),
-          linear-gradient(145deg, #050912, #0b1727 50%, #050a13);
+          linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f5fbff 42%,
+            #eef8ff 72%,
+            #ffffff 100%
+          );
 
-        color: var(--text);
-        font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-
-        overflow-x: hidden;
+        position: relative;
       }
 
       body::before {
@@ -77,71 +92,104 @@
         position: fixed;
         inset: 0;
         pointer-events: none;
+        z-index: -3;
 
         background-image:
-          linear-gradient(rgba(80, 208, 255, 0.035) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(80, 208, 255, 0.035) 1px, transparent 1px);
+          linear-gradient(rgba(11, 87, 199, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(45, 168, 255, 0.035) 1px, transparent 1px);
 
-        background-size: 50px 50px;
-        z-index: -1;
+        background-size: 48px 48px;
+
+        mask-image: linear-gradient(to bottom, black, transparent 90%);
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+
+        width: 500px;
+        height: 500px;
+
+        left: -220px;
+        bottom: -220px;
+
+        border-radius: 50%;
+
+        background: rgba(45, 168, 255, 0.12);
+
+        filter: blur(100px);
+
+        pointer-events: none;
+        z-index: -2;
+
+        animation: bgFloat 10s ease-in-out infinite alternate;
+      }
+
+      @keyframes bgFloat {
+        from {
+          transform: translate(0, 0) scale(1);
+        }
+
+        to {
+          transform: translate(100px, -70px) scale(1.15);
+        }
       }
 
       a {
         text-decoration: none;
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
+        color: inherit;
       }
 
       /* =========================================================
-         MAIN CONTAINER
-      ========================================================= */
+       MAIN GLASS CONTAINER
+    ========================================================= */
 
       .container {
-        width: min(1120px, 94%);
-        margin: 30px auto;
+        width: min(1160px, calc(100% - 30px));
+        margin: 24px auto;
+
         position: relative;
+        overflow: hidden;
 
         background: linear-gradient(
           145deg,
-          rgba(9, 24, 41, 0.97),
-          rgba(5, 14, 25, 0.97)
+          rgba(255, 255, 255, 0.88),
+          rgba(238, 248, 255, 0.76)
         );
 
-        border: 1px solid var(--line);
+        border: 1px solid rgba(45, 168, 255, 0.22);
+
+        border-radius: 30px;
+
         box-shadow: var(--shadow);
 
-        overflow: hidden;
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
       }
 
       .container::before {
         content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 4px;
-        height: 100%;
 
-        background: linear-gradient(
-          to bottom,
-          transparent,
-          var(--turquoise),
-          var(--cyan),
-          transparent
+        position: absolute;
+        inset: 0;
+
+        pointer-events: none;
+
+        background: radial-gradient(
+          circle at 50% 0%,
+          rgba(45, 168, 255, 0.09),
+          transparent 30%
         );
 
-        opacity: 0.7;
-        pointer-events: none;
+        z-index: 0;
       }
 
       /* =========================================================
-         TOP BAR
-      ========================================================= */
+       TOPBAR
+    ========================================================= */
 
       .topbar {
-        min-height: 72px;
+        min-height: 76px;
 
         display: flex;
         align-items: center;
@@ -149,9 +197,14 @@
 
         padding: 0 42px;
 
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid rgba(11, 87, 199, 0.1);
 
-        background: rgba(4, 13, 24, 0.72);
+        background: rgba(255, 255, 255, 0.64);
+
+        position: relative;
+        z-index: 5;
+
+        backdrop-filter: blur(20px);
       }
 
       .brand {
@@ -163,86 +216,92 @@
       }
 
       .brand-mark {
-        width: 43px;
-        height: 43px;
+        width: 45px;
+        height: 45px;
 
         display: grid;
         place-items: center;
 
-        border: 1px solid var(--cyan);
-        color: var(--cyan);
-
-        font-size: 20px;
         font-weight: 900;
+        font-size: 20px;
+
+        color: white;
 
         background: linear-gradient(
-          145deg,
-          rgba(80, 208, 255, 0.12),
-          rgba(0, 200, 176, 0.03)
+          135deg,
+          var(--sky),
+          var(--bright),
+          var(--royal-dark)
         );
 
-        box-shadow: 0 0 20px rgba(80, 208, 255, 0.13);
+        box-shadow:
+          0 8px 25px rgba(20, 120, 232, 0.25),
+          inset 0 0 14px rgba(255, 255, 255, 0.35);
 
-        clip-path: polygon(50% 0, 92% 22%, 82% 80%, 50% 100%, 18% 80%, 8% 22%);
+        clip-path: polygon(50% 0, 92% 20%, 82% 80%, 50% 100%, 18% 80%, 8% 20%);
+
+        animation: logoPulse 3s ease-in-out infinite;
+      }
+
+      @keyframes logoPulse {
+        50% {
+          transform: scale(1.04);
+
+          box-shadow:
+            0 12px 35px rgba(45, 168, 255, 0.32),
+            inset 0 0 18px rgba(255, 255, 255, 0.45);
+        }
       }
 
       .brand-name {
-        font-size: 24px;
-        font-weight: 800;
-        letter-spacing: 1px;
+        font-family: "Playfair Display", serif;
+
+        font-size: 25px;
+        font-weight: 900;
+
+        letter-spacing: 2px;
+
+        color: var(--royal-dark);
       }
 
       .brand-name span {
-        color: var(--cyan);
+        color: var(--sky);
       }
 
       .top-label {
-        font-size: 12px;
-        color: var(--muted);
+        font-size: 11px;
+
         letter-spacing: 2px;
+
+        color: var(--muted);
+
         direction: ltr;
       }
 
       /* =========================================================
-         HERO
-      ========================================================= */
+       HERO
+    ========================================================= */
 
       .hero {
-        min-height: 510px;
+        min-height: 590px;
 
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
+
+        grid-template-columns: 1.03fr 0.97fr;
 
         align-items: center;
 
-        gap: 40px;
+        gap: 30px;
 
-        padding: 70px 70px 55px;
+        padding: 65px 60px 55px;
 
         position: relative;
-      }
-
-      .hero::after {
-        content: "CYBER";
-        position: absolute;
-
-        left: -25px;
-        bottom: 10px;
-
-        font-size: 110px;
-        font-weight: 900;
-
-        letter-spacing: 15px;
-
-        color: rgba(80, 208, 255, 0.025);
-
-        pointer-events: none;
-        white-space: nowrap;
+        z-index: 1;
       }
 
       .hero-content {
         position: relative;
-        z-index: 2;
+        z-index: 5;
       }
 
       .eyebrow {
@@ -250,159 +309,254 @@
         align-items: center;
         gap: 9px;
 
-        padding: 7px 15px;
+        padding: 8px 15px;
 
-        color: var(--cyan-light);
+        border-radius: 50px;
 
-        border: 1px solid var(--line-strong);
+        color: var(--royal-dark);
 
-        background: rgba(0, 200, 176, 0.06);
+        border: 1px solid rgba(45, 168, 255, 0.25);
 
-        font-size: 13px;
-        font-weight: 700;
+        background: linear-gradient(
+          90deg,
+          rgba(238, 248, 255, 0.92),
+          rgba(142, 216, 255, 0.18)
+        );
+
+        font-size: 12px;
+        font-weight: 800;
 
         margin-bottom: 20px;
+
+        box-shadow: 0 8px 25px rgba(45, 168, 255, 0.08);
       }
 
       .eyebrow::before {
         content: "";
-        width: 7px;
-        height: 7px;
 
-        background: var(--turquoise);
+        width: 8px;
+        height: 8px;
+
         border-radius: 50%;
 
-        box-shadow: 0 0 12px var(--turquoise);
-        flex-shrink: 0;
+        background: var(--sky);
+
+        box-shadow:
+          0 0 8px var(--sky),
+          0 0 18px rgba(45, 168, 255, 0.55);
+
+        animation: blink 1.5s infinite;
       }
 
-      .hero h1 {
-        font-size: clamp(42px, 6vw, 72px);
+      @keyframes blink {
+        50% {
+          opacity: 0.35;
+        }
+      }
 
-        line-height: 1.05;
+      /* =========================================================
+       IMPORTANT — TITLE FIX
+    ========================================================= */
+
+      .hero h1 {
+        font-size: clamp(42px, 5.5vw, 72px);
+
+        line-height: 1.08;
 
         font-weight: 900;
 
-        color: #fff;
+        color: var(--navy);
 
-        margin-bottom: 12px;
+        margin-bottom: 20px;
+
+        white-space: normal;
+
+        word-break: keep-all;
       }
 
-      .hero h1 span {
+      .hero h1 .cyber-title {
         display: block;
+
+        width: max-content;
+        max-width: 100%;
+
+        white-space: nowrap;
 
         background: linear-gradient(
           90deg,
-          var(--cyan-light),
-          var(--cyan),
-          var(--turquoise)
+          var(--royal-dark),
+          var(--royal),
+          var(--bright),
+          var(--sky)
         );
 
         -webkit-background-clip: text;
         background-clip: text;
 
         color: transparent;
+
+        background-size: 250%;
+
+        animation: titleGradient 6s ease infinite;
+      }
+
+      @keyframes titleGradient {
+        0%,
+        100% {
+          background-position: 0%;
+        }
+
+        50% {
+          background-position: 100%;
+        }
       }
 
       .hero-description {
-        max-width: 650px;
+        max-width: 640px;
 
-        color: #a9c5d8;
+        color: var(--muted);
 
-        font-size: 16px;
+        font-size: 15px;
 
-        line-height: 2;
+        line-height: 2.05;
 
-        margin-bottom: 28px;
+        margin-bottom: 27px;
       }
 
       /* =========================================================
-         COURSE DETAILS MINI CARDS
-      ========================================================= */
+       MINI INFO
+    ========================================================= */
 
       .course-mini-info {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+
+        grid-template-columns: repeat(2, minmax(150px, 220px));
+
         gap: 10px;
-        margin-bottom: 22px;
+
+        margin-bottom: 17px;
       }
 
       .mini-card {
-        min-width: 145px;
-
         display: flex;
         align-items: center;
+
         gap: 10px;
 
-        padding: 11px 14px;
+        padding: 12px 14px;
 
-        border: 1px solid var(--line);
+        border-radius: 14px;
 
-        background: rgba(7, 25, 41, 0.7);
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.9),
+          rgba(238, 248, 255, 0.72)
+        );
+
+        border: 1px solid rgba(45, 168, 255, 0.17);
+
+        box-shadow: 0 8px 25px rgba(3, 19, 59, 0.05);
+
+        transition: 0.35s ease;
+      }
+
+      .mini-card:hover {
+        transform: translateY(-4px);
+
+        border-color: rgba(20, 120, 232, 0.35);
+
+        box-shadow: 0 15px 35px rgba(20, 120, 232, 0.1);
       }
 
       .mini-icon {
-        width: 35px;
-        height: 35px;
+        width: 37px;
+        height: 37px;
+
+        flex-shrink: 0;
 
         display: grid;
         place-items: center;
 
-        border: 1px solid var(--line-strong);
+        border-radius: 11px;
 
-        background: rgba(0, 200, 176, 0.06);
+        color: white;
 
-        color: var(--cyan);
+        background: linear-gradient(
+          135deg,
+          var(--ice),
+          var(--bright),
+          var(--royal-dark)
+        );
 
-        flex-shrink: 0;
+        box-shadow: 0 6px 18px rgba(20, 120, 232, 0.18);
       }
 
       .mini-text small {
         display: block;
+
         color: var(--muted);
-        font-size: 10px;
+
+        font-size: 9px;
       }
 
       .mini-text strong {
         display: block;
-        color: var(--cyan-light);
-        font-size: 16px;
+
+        color: var(--navy);
+
+        font-size: 15px;
+
         margin-top: 2px;
       }
 
       /* =========================================================
-         START DATE
-      ========================================================= */
+       START
+    ========================================================= */
 
       .start-box {
         display: inline-flex;
 
         align-items: center;
 
-        gap: 18px;
+        gap: 13px;
 
-        padding: 13px 18px;
+        padding: 12px 18px;
 
-        border: 1px solid var(--line);
+        border-radius: 14px;
 
-        background: rgba(7, 25, 41, 0.7);
+        border: 1px solid rgba(45, 168, 255, 0.18);
+
+        background: linear-gradient(
+          135deg,
+          rgba(238, 248, 255, 0.9),
+          rgba(255, 255, 255, 0.75)
+        );
+
+        box-shadow: 0 8px 25px rgba(20, 120, 232, 0.06);
       }
 
       .start-icon {
-        width: 43px;
-        height: 43px;
+        width: 42px;
+        height: 42px;
 
         display: grid;
         place-items: center;
 
-        color: var(--cyan);
+        border-radius: 11px;
 
-        border: 1px solid var(--line-strong);
+        color: var(--bright);
 
-        background: rgba(0, 200, 176, 0.06);
+        background: linear-gradient(145deg, #ffffff, var(--ice-bg));
 
-        font-size: 20px;
-        flex-shrink: 0;
+        border: 1px solid rgba(45, 168, 255, 0.25);
+
+        animation: hourglass 2.5s ease-in-out infinite;
+      }
+
+      @keyframes hourglass {
+        50% {
+          transform: rotate(6deg) scale(1.05);
+        }
       }
 
       .start-text small {
@@ -410,206 +564,881 @@
 
         color: var(--muted);
 
-        font-size: 11px;
-
-        margin-bottom: 2px;
+        font-size: 10px;
       }
 
       .start-text strong {
-        color: var(--cyan-light);
+        color: var(--royal);
 
-        font-size: 24px;
+        font-size: 21px;
       }
 
       /* =========================================================
-         CYBER VISUAL
-      ========================================================= */
+       CREATIVE CYBER COMMAND VISUAL
+    ========================================================= */
 
       .cyber-visual {
-        min-height: 390px;
-
-        position: relative;
+        min-height: 460px;
 
         display: grid;
 
         place-items: center;
+
+        position: relative;
       }
 
-      .circle {
-        width: 300px;
-        height: 300px;
-
-        border-radius: 50%;
-
-        border: 1px solid rgba(80, 208, 255, 0.3);
+      .cyber-stage {
+        width: 470px;
+        height: 420px;
 
         position: relative;
 
+        display: grid;
+        place-items: center;
+      }
+
+      /* Atmospheric glow */
+
+      .cyber-stage::before {
+        content: "";
+
+        position: absolute;
+
+        width: 330px;
+        height: 330px;
+
+        border-radius: 50%;
+
+        background: radial-gradient(
+          circle,
+          rgba(45, 168, 255, 0.2),
+          rgba(142, 216, 255, 0.08),
+          transparent 70%
+        );
+
+        filter: blur(8px);
+
+        animation: auraPulse 4s ease-in-out infinite;
+      }
+
+      @keyframes auraPulse {
+        50% {
+          transform: scale(1.12);
+
+          opacity: 0.72;
+        }
+      }
+
+      /* =========================================================
+       TECH ORBIT
+    ========================================================= */
+
+      .tech-orbit {
+        position: absolute;
+
+        width: 350px;
+        height: 350px;
+
+        border: 1px solid rgba(45, 168, 255, 0.22);
+
+        border-radius: 50%;
+
+        transform: rotateX(68deg);
+
+        box-shadow: 0 0 30px rgba(45, 168, 255, 0.08);
+
+        animation: orbitSpin 14s linear infinite;
+      }
+
+      .tech-orbit.two {
+        width: 290px;
+        height: 290px;
+
+        border-color: rgba(20, 120, 232, 0.22);
+
+        transform: rotateX(68deg) rotateZ(45deg);
+
+        animation-duration: 10s;
+        animation-direction: reverse;
+      }
+
+      .tech-orbit::before,
+      .tech-orbit::after {
+        content: "";
+
+        position: absolute;
+
+        width: 9px;
+        height: 9px;
+
+        border-radius: 50%;
+
+        background: var(--sky);
+
         box-shadow:
-          0 0 0 20px rgba(80, 208, 255, 0.025),
-          0 0 0 50px rgba(0, 200, 176, 0.02),
-          inset 0 0 40px rgba(0, 200, 176, 0.06);
+          0 0 10px var(--sky),
+          0 0 25px rgba(45, 168, 255, 0.6);
       }
 
-      .circle::before {
-        content: "";
-
-        position: absolute;
-
-        inset: 28px;
-
-        border-radius: 50%;
-
-        border: 1px dashed rgba(80, 255, 208, 0.3);
-
-        animation: rotate 18s linear infinite;
+      .tech-orbit::before {
+        top: -5px;
+        left: 50%;
       }
 
-      .circle::after {
-        content: "";
-
-        position: absolute;
-
-        inset: 70px;
-
-        border-radius: 50%;
-
-        border: 1px solid rgba(80, 208, 255, 0.2);
+      .tech-orbit::after {
+        right: 8%;
+        bottom: 20%;
+        background: var(--bright);
       }
 
-      @keyframes rotate {
+      @keyframes orbitSpin {
         from {
-          transform: rotate(0deg);
+          transform: rotateX(68deg) rotateZ(0);
         }
 
+        to {
+          transform: rotateX(68deg) rotateZ(360deg);
+        }
+      }
+
+      /* =========================================================
+       COMMAND FLOOR
+    ========================================================= */
+
+      .command-floor {
+        position: absolute;
+
+        bottom: 45px;
+
+        width: 390px;
+        height: 85px;
+
+        border-radius: 50%;
+
+        background: radial-gradient(
+          ellipse,
+          rgba(20, 120, 232, 0.18),
+          rgba(238, 248, 255, 0.65),
+          transparent 70%
+        );
+
+        border-bottom: 2px solid rgba(45, 168, 255, 0.3);
+
+        transform: perspective(300px) rotateX(65deg);
+
+        box-shadow: 0 0 50px rgba(45, 168, 255, 0.1);
+      }
+
+      /* =========================================================
+       DEFENSE BUILDING
+    ========================================================= */
+
+      .defense-building {
+        position: absolute;
+
+        width: 165px;
+        height: 175px;
+
+        bottom: 100px;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+
+        z-index: 5;
+
+        filter: drop-shadow(0 15px 25px rgba(3, 19, 59, 0.12));
+
+        animation: buildingFloat 5s ease-in-out infinite;
+      }
+
+      @keyframes buildingFloat {
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .building-roof {
+        width: 0;
+        height: 0;
+
+        border-left: 28px solid transparent;
+        border-right: 28px solid transparent;
+
+        border-bottom: 32px solid var(--royal-dark);
+
+        position: relative;
+
+        filter: drop-shadow(0 5px 10px rgba(7, 59, 146, 0.22));
+      }
+
+      .building-roof::after {
+        content: "✦";
+
+        position: absolute;
+
+        top: 5px;
+        left: -7px;
+
+        color: white;
+
+        font-size: 12px;
+      }
+
+      .building-main {
+        width: 135px;
+        height: 115px;
+
+        position: relative;
+
+        background: linear-gradient(145deg, #ffffff, #eef8ff);
+
+        border: 1px solid rgba(45, 168, 255, 0.28);
+
+        border-radius: 7px 7px 3px 3px;
+
+        box-shadow:
+          0 12px 30px rgba(3, 19, 59, 0.1),
+          inset 0 0 20px rgba(45, 168, 255, 0.08);
+      }
+
+      .building-main::before {
+        content: "";
+
+        position: absolute;
+
+        top: 8px;
+        left: 10px;
+        right: 10px;
+
+        height: 3px;
+
+        border-radius: 5px;
+
+        background: linear-gradient(
+          90deg,
+          var(--sky),
+          var(--bright),
+          var(--royal)
+        );
+      }
+
+      .building-title {
+        position: absolute;
+
+        top: 17px;
+
+        width: 100%;
+
+        text-align: center;
+
+        font-size: 9px;
+
+        font-weight: 900;
+
+        color: var(--royal-dark);
+
+        letter-spacing: 0.5px;
+      }
+
+      .building-windows {
+        position: absolute;
+
+        top: 40px;
+
+        left: 15px;
+        right: 15px;
+
+        display: grid;
+
+        grid-template-columns: repeat(5, 1fr);
+
+        gap: 6px;
+      }
+
+      .building-window {
+        height: 19px;
+
+        border-radius: 3px;
+
+        background: linear-gradient(135deg, #e8f8ff, #8ed8ff);
+
+        border: 1px solid rgba(45, 168, 255, 0.22);
+
+        box-shadow: inset 0 0 7px rgba(255, 255, 255, 0.9);
+
+        animation: windowBlink 3s ease-in-out infinite;
+      }
+
+      .building-window:nth-child(2) {
+        animation-delay: -0.7s;
+      }
+
+      .building-window:nth-child(4) {
+        animation-delay: -1.4s;
+      }
+
+      @keyframes windowBlink {
+        50% {
+          background: linear-gradient(135deg, #ffffff, #2da8ff);
+
+          box-shadow: 0 0 9px rgba(45, 168, 255, 0.35);
+        }
+      }
+
+      .building-door {
+        position: absolute;
+
+        bottom: 0;
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        width: 26px;
+        height: 37px;
+
+        border-radius: 7px 7px 0 0;
+
+        background: linear-gradient(135deg, var(--navy), var(--royal-dark));
+
+        border: 1px solid rgba(45, 168, 255, 0.4);
+      }
+
+      .building-flag {
+        position: absolute;
+
+        top: -27px;
+
+        width: 2px;
+        height: 27px;
+
+        background: var(--royal-dark);
+      }
+
+      .building-flag::after {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        left: 1px;
+
+        width: 25px;
+        height: 13px;
+
+        background: linear-gradient(135deg, var(--bright), var(--sky));
+
+        clip-path: polygon(0 0, 100% 25%, 75% 100%, 0 75%);
+      }
+
+      /* =========================================================
+       SECURITY VEHICLES
+    ========================================================= */
+
+      .security-car {
+        position: absolute;
+
+        width: 90px;
+        height: 30px;
+
+        bottom: 92px;
+
+        z-index: 7;
+
+        animation: carFloat 3s ease-in-out infinite;
+      }
+
+      .security-car.left {
+        left: 25px;
+      }
+
+      .security-car.right {
+        right: 22px;
+
+        transform: scaleX(-1);
+
+        animation-delay: -1.2s;
+      }
+
+      @keyframes carFloat {
+        50% {
+          transform: translateY(-4px);
+        }
+      }
+
+      .car-body {
+        position: absolute;
+
+        bottom: 5px;
+
+        width: 90px;
+        height: 20px;
+
+        border-radius: 8px 12px 6px 6px;
+
+        background: linear-gradient(135deg, var(--navy), var(--royal-dark));
+
+        box-shadow: 0 8px 15px rgba(3, 19, 59, 0.18);
+      }
+
+      .car-body::before {
+        content: "";
+
+        position: absolute;
+
+        top: -11px;
+        left: 23px;
+
+        width: 40px;
+        height: 15px;
+
+        border-radius: 9px 9px 2px 2px;
+
+        background: linear-gradient(135deg, #ffffff, #bfeaff);
+
+        border: 1px solid rgba(45, 168, 255, 0.3);
+      }
+
+      .car-light {
+        position: absolute;
+
+        top: 0;
+
+        left: 42px;
+
+        width: 14px;
+        height: 4px;
+
+        border-radius: 4px;
+
+        background: var(--sky);
+
+        box-shadow: 0 0 12px var(--sky);
+
+        animation: policeLight 0.8s infinite alternate;
+      }
+
+      @keyframes policeLight {
+        from {
+          opacity: 0.25;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      .wheel {
+        position: absolute;
+
+        bottom: 0;
+
+        width: 13px;
+        height: 13px;
+
+        border-radius: 50%;
+
+        background: var(--navy);
+
+        border: 2px solid var(--ice);
+      }
+
+      .wheel.one {
+        left: 14px;
+      }
+
+      .wheel.two {
+        right: 14px;
+      }
+
+      /* =========================================================
+       DRONE / AIRCRAFT
+    ========================================================= */
+
+      .drone {
+        position: absolute;
+
+        top: 45px;
+        right: 20px;
+
+        width: 125px;
+        height: 55px;
+
+        z-index: 8;
+
+        animation: droneMove 5s ease-in-out infinite;
+      }
+
+      @keyframes droneMove {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(-2deg);
+        }
+
+        50% {
+          transform: translate(-35px, -10px) rotate(2deg);
+        }
+      }
+
+      .drone-body {
+        position: absolute;
+
+        top: 19px;
+        left: 35px;
+
+        width: 55px;
+        height: 20px;
+
+        border-radius: 20px;
+
+        background: linear-gradient(135deg, var(--navy), var(--bright));
+
+        box-shadow:
+          0 8px 18px rgba(3, 19, 59, 0.18),
+          0 0 20px rgba(45, 168, 255, 0.15);
+      }
+
+      .drone-body::after {
+        content: "";
+
+        position: absolute;
+
+        width: 10px;
+        height: 10px;
+
+        bottom: -5px;
+        left: 22px;
+
+        border-radius: 50%;
+
+        background: var(--sky);
+
+        box-shadow: 0 0 14px var(--sky);
+      }
+
+      .drone-arm {
+        position: absolute;
+
+        top: 27px;
+
+        width: 37px;
+        height: 2px;
+
+        background: var(--royal);
+      }
+
+      .drone-arm.left {
+        left: 5px;
+        transform: rotate(-18deg);
+      }
+
+      .drone-arm.right {
+        right: 5px;
+        transform: rotate(18deg);
+      }
+
+      .drone-prop {
+        position: absolute;
+
+        top: 5px;
+
+        width: 34px;
+        height: 34px;
+
+        border: 1px solid rgba(45, 168, 255, 0.35);
+
+        border-radius: 50%;
+
+        animation: propSpin 0.6s linear infinite;
+      }
+
+      .drone-prop.left {
+        left: 0;
+      }
+
+      .drone-prop.right {
+        right: 0;
+      }
+
+      @keyframes propSpin {
         to {
           transform: rotate(360deg);
         }
       }
 
-      .shield {
+      /* =========================================================
+       CODE TERMINAL
+    ========================================================= */
+
+      .code-terminal {
+        position: absolute;
+
+        top: 125px;
+        left: -5px;
+
         width: 145px;
-        height: 175px;
 
-        position: absolute;
+        padding: 11px 12px;
 
-        top: 62px;
-        left: 77px;
+        border-radius: 13px;
 
-        display: grid;
-        place-items: center;
+        background: rgba(3, 19, 59, 0.94);
 
-        color: var(--cyan-light);
+        border: 1px solid rgba(45, 168, 255, 0.32);
 
-        font-size: 55px;
-        font-weight: 900;
+        box-shadow:
+          0 18px 35px rgba(3, 19, 59, 0.16),
+          0 0 25px rgba(45, 168, 255, 0.1);
 
-        background: linear-gradient(
-          145deg,
-          rgba(80, 208, 255, 0.15),
-          rgba(0, 200, 176, 0.05)
-        );
+        direction: ltr;
 
-        border: 2px solid var(--cyan);
+        z-index: 9;
 
-        clip-path: polygon(50% 0, 92% 17%, 84% 67%, 50% 100%, 16% 67%, 8% 17%);
-
-        box-shadow: 0 0 40px rgba(80, 208, 255, 0.18);
+        animation: terminalFloat 4s ease-in-out infinite;
       }
 
-      .shield::after {
-        content: "⌁";
-
-        position: absolute;
-
-        font-size: 76px;
-
-        color: var(--turquoise);
-
-        transform: rotate(90deg);
-
-        opacity: 0.8;
+      @keyframes terminalFloat {
+        50% {
+          transform: translateY(-7px);
+        }
       }
 
-      .node {
-        width: 42px;
-        height: 42px;
+      .terminal-head {
+        display: flex;
 
-        position: absolute;
+        align-items: center;
 
-        display: grid;
-        place-items: center;
+        gap: 5px;
+
+        margin-bottom: 9px;
+      }
+
+      .terminal-dot {
+        width: 5px;
+        height: 5px;
 
         border-radius: 50%;
 
-        color: var(--cyan);
+        background: var(--sky);
 
-        background: #091b2c;
-
-        border: 1px solid var(--cyan);
-
-        box-shadow: 0 0 18px rgba(80, 208, 255, 0.2);
+        box-shadow: 0 0 7px var(--sky);
       }
 
-      .node.n1 {
-        top: 15px;
-        left: 128px;
+      .terminal-title {
+        margin-left: auto;
+
+        color: #9edfff;
+
+        font-size: 7px;
+
+        letter-spacing: 1px;
       }
 
-      .node.n2 {
-        bottom: 28px;
-        right: 18px;
+      .code-line {
+        font-family: monospace;
+
+        font-size: 8px;
+
+        line-height: 1.9;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        color: #dff7ff;
       }
 
-      .node.n3 {
-        bottom: 45px;
-        left: 18px;
+      .code-line span {
+        color: var(--sky);
       }
 
-      .node.n4 {
-        top: 110px;
-        right: -20px;
+      .code-line b {
+        color: #ffffff;
+      }
+
+      .typing {
+        border-right: 2px solid var(--sky);
+
+        width: 0;
+
+        overflow: hidden;
+
+        animation:
+          typing 3.5s steps(22) infinite,
+          cursorBlink 0.7s infinite;
+      }
+
+      @keyframes typing {
+        0% {
+          width: 0;
+        }
+
+        55%,
+        75% {
+          width: 100%;
+        }
+
+        100% {
+          width: 0;
+        }
+      }
+
+      @keyframes cursorBlink {
+        50% {
+          border-color: transparent;
+        }
       }
 
       /* =========================================================
-         SECTION TITLE
-      ========================================================= */
+       FLOATING DATA NODES
+    ========================================================= */
+
+      .data-node {
+        position: absolute;
+
+        width: 8px;
+        height: 8px;
+
+        border-radius: 50%;
+
+        background: var(--sky);
+
+        box-shadow:
+          0 0 10px var(--sky),
+          0 0 25px rgba(45, 168, 255, 0.45);
+
+        z-index: 4;
+
+        animation: nodeFloat 4s ease-in-out infinite;
+      }
+
+      .node1 {
+        top: 110px;
+        right: 110px;
+      }
+
+      .node2 {
+        top: 250px;
+        left: 35px;
+
+        animation-delay: -1.5s;
+      }
+
+      .node3 {
+        bottom: 80px;
+        right: 120px;
+
+        animation-delay: -2.5s;
+      }
+
+      @keyframes nodeFloat {
+        50% {
+          transform: translateY(-13px) scale(1.2);
+        }
+      }
+
+      /* =========================================================
+       LASER CONNECTIONS
+    ========================================================= */
+
+      .laser {
+        position: absolute;
+
+        height: 1px;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--sky),
+          transparent
+        );
+
+        opacity: 0.5;
+
+        z-index: 2;
+
+        animation: laserMove 3s linear infinite;
+      }
+
+      .laser.one {
+        width: 130px;
+
+        top: 170px;
+        right: 30px;
+
+        transform: rotate(-18deg);
+      }
+
+      .laser.two {
+        width: 120px;
+
+        top: 275px;
+        left: 15px;
+
+        transform: rotate(15deg);
+
+        animation-delay: -1.5s;
+      }
+
+      @keyframes laserMove {
+        0% {
+          opacity: 0;
+          transform: translateX(-30px) rotate(-18deg);
+        }
+
+        40%,
+        70% {
+          opacity: 0.7;
+        }
+
+        100% {
+          opacity: 0;
+
+          transform: translateX(35px) rotate(-18deg);
+        }
+      }
+
+      /* =========================================================
+       TOPICS
+    ========================================================= */
+
+      .topics-section {
+        padding: 10px 55px 50px;
+      }
 
       .section-title {
         display: flex;
 
         align-items: center;
 
-        gap: 15px;
+        gap: 13px;
 
-        margin: 5px 0 22px;
+        margin: 5px 0 24px;
 
         font-size: 25px;
 
-        font-weight: 800;
+        font-weight: 900;
 
-        color: #fff;
+        color: var(--navy);
       }
 
       .section-title::before {
         content: "";
 
-        width: 5px;
-        height: 30px;
+        width: 6px;
+        height: 31px;
 
-        background: linear-gradient(var(--cyan), var(--turquoise));
+        border-radius: 20px;
 
-        box-shadow: 0 0 14px rgba(80, 208, 255, 0.3);
+        background: linear-gradient(
+          to bottom,
+          var(--sky),
+          var(--bright),
+          var(--royal-dark)
+        );
 
-        flex-shrink: 0;
-      }
-
-      /* =========================================================
-         TOPICS
-      ========================================================= */
-
-      .topics-section {
-        padding: 10px 55px 45px;
+        box-shadow: 0 0 15px rgba(45, 168, 255, 0.25);
       }
 
       .topics-grid {
@@ -617,27 +1446,34 @@
 
         grid-template-columns: repeat(3, 1fr);
 
-        gap: 14px;
+        gap: 15px;
       }
 
       .topic {
-        min-height: 185px;
-
         position: relative;
+
+        min-height: 245px;
 
         padding: 22px;
 
+        overflow: hidden;
+
+        border-radius: 20px;
+
+        border: 1px solid rgba(45, 168, 255, 0.15);
+
         background: linear-gradient(
           145deg,
-          rgba(14, 37, 59, 0.95),
-          rgba(7, 21, 35, 0.95)
+          rgba(255, 255, 255, 0.9),
+          rgba(238, 248, 255, 0.75)
         );
 
-        border: 1px solid var(--line);
+        box-shadow: 0 12px 35px rgba(3, 19, 59, 0.05);
 
-        transition: 0.3s ease;
-
-        overflow: hidden;
+        transition:
+          transform 0.35s ease,
+          border-color 0.35s ease,
+          box-shadow 0.35s ease;
       }
 
       .topic::before {
@@ -653,23 +1489,38 @@
 
         background: linear-gradient(
           90deg,
-          transparent,
-          var(--cyan),
-          var(--turquoise),
-          transparent
+          var(--sky),
+          var(--bright),
+          var(--royal-dark)
         );
+      }
 
-        opacity: 0.5;
+      .topic::after {
+        content: "";
+
+        position: absolute;
+
+        width: 100px;
+        height: 100px;
+
+        left: -50px;
+        bottom: -55px;
+
+        border-radius: 50%;
+
+        background: rgba(45, 168, 255, 0.09);
+
+        filter: blur(20px);
       }
 
       .topic:hover {
-        transform: translateY(-6px);
+        transform: translateY(-7px);
 
-        border-color: var(--line-strong);
+        border-color: rgba(45, 168, 255, 0.4);
 
         box-shadow:
-          0 15px 35px rgba(0, 0, 0, 0.35),
-          0 0 25px rgba(0, 200, 176, 0.07);
+          0 20px 45px rgba(3, 19, 59, 0.08),
+          0 0 30px rgba(45, 168, 255, 0.08);
       }
 
       .topic-number {
@@ -679,70 +1530,97 @@
 
         line-height: 1;
 
-        color: rgba(80, 208, 255, 0.2);
+        color: rgba(11, 87, 199, 0.12);
 
-        margin-bottom: 18px;
+        margin-bottom: 15px;
+
+        transition: 0.3s ease;
+      }
+
+      .topic:hover .topic-number {
+        color: rgba(45, 168, 255, 0.3);
       }
 
       .topic h3 {
         font-size: 17px;
 
-        color: var(--cyan-light);
+        color: var(--navy);
 
-        margin-bottom: 8px;
+        margin-bottom: 10px;
       }
 
       .topic p {
-        color: #8faec1;
+        color: var(--muted);
 
-        font-size: 12px;
+        font-size: 11px;
 
-        line-height: 1.8;
+        line-height: 1.9;
+      }
+
+      .topic p strong {
+        color: var(--royal);
       }
 
       .topic-icon {
         position: absolute;
 
-        left: 18px;
-        bottom: 15px;
+        left: 17px;
+        bottom: 12px;
 
-        font-size: 28px;
+        font-size: 31px;
 
-        opacity: 0.65;
+        opacity: 0.55;
 
-        filter: grayscale(20%);
+        filter: drop-shadow(0 0 8px rgba(45, 168, 255, 0.3));
+
+        transition: 0.35s ease;
+      }
+
+      .topic:hover .topic-icon {
+        transform: scale(1.15) rotate(-7deg);
+
+        opacity: 1;
       }
 
       .topic.full {
         grid-column: span 3;
 
-        min-height: 145px;
+        min-height: 190px;
 
         background: linear-gradient(
           120deg,
-          rgba(0, 85, 92, 0.28),
-          rgba(8, 30, 47, 0.9)
+          rgba(220, 241, 255, 0.9),
+          rgba(255, 255, 255, 0.8),
+          rgba(238, 248, 255, 0.9)
         );
 
-        border-color: rgba(0, 200, 176, 0.35);
+        border-color: rgba(45, 168, 255, 0.2);
+      }
+
+      .topic.full p {
+        max-width: 800px;
       }
 
       /* =========================================================
-         FEATURES
-      ========================================================= */
+       FEATURES
+    ========================================================= */
 
       .features-section {
         margin: 0 55px 45px;
 
-        padding: 28px;
+        padding: 30px;
 
-        border: 1px solid var(--line);
+        border-radius: 22px;
+
+        border: 1px solid rgba(45, 168, 255, 0.16);
 
         background: linear-gradient(
           145deg,
-          rgba(12, 32, 50, 0.85),
-          rgba(6, 18, 30, 0.85)
+          rgba(255, 255, 255, 0.78),
+          rgba(238, 248, 255, 0.68)
         );
+
+        box-shadow: 0 15px 40px rgba(3, 19, 59, 0.05);
       }
 
       .features-title {
@@ -752,9 +1630,19 @@
 
         font-weight: 900;
 
-        color: var(--cyan-light);
+        margin-bottom: 24px;
 
-        margin-bottom: 22px;
+        background: linear-gradient(
+          90deg,
+          var(--royal-dark),
+          var(--bright),
+          var(--sky)
+        );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
       }
 
       .features-grid {
@@ -762,87 +1650,111 @@
 
         grid-template-columns: repeat(5, 1fr);
 
-        gap: 10px;
+        gap: 11px;
       }
 
       .feature {
-        min-height: 105px;
+        min-height: 115px;
 
         display: flex;
 
         flex-direction: column;
 
         justify-content: center;
-
         align-items: center;
 
         text-align: center;
 
-        padding: 15px 8px;
+        padding: 13px 8px;
 
-        background: rgba(6, 20, 33, 0.8);
+        border-radius: 16px;
 
-        border: 1px solid rgba(80, 208, 255, 0.12);
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.95),
+          rgba(238, 248, 255, 0.72)
+        );
 
-        transition: 0.3s ease;
-      }
+        border: 1px solid rgba(45, 168, 255, 0.12);
 
-      .feature-icon {
-        color: var(--turquoise);
-
-        font-size: 27px;
-
-        margin-bottom: 8px;
-      }
-
-      .feature span {
-        color: #c6dfed;
-
-        font-size: 12px;
-
-        line-height: 1.6;
+        transition: 0.35s ease;
       }
 
       .feature:hover {
-        transform: translateY(-4px);
+        transform: translateY(-5px) scale(1.015);
 
-        border-color: var(--line-strong);
+        border-color: rgba(45, 168, 255, 0.35);
 
-        background: rgba(10, 38, 55, 0.9);
+        box-shadow: 0 15px 30px rgba(20, 120, 232, 0.08);
+      }
+
+      .feature-icon {
+        font-size: 27px;
+
+        margin-bottom: 8px;
+
+        filter: drop-shadow(0 0 7px rgba(45, 168, 255, 0.3));
+      }
+
+      .feature span {
+        color: var(--muted);
+
+        font-size: 10px;
+
+        line-height: 1.7;
       }
 
       /* =========================================================
-         OFFER
-      ========================================================= */
+       OFFER
+    ========================================================= */
 
       .offer {
-        margin: 0 55px 45px;
+        margin: 0 55px 40px;
 
         display: grid;
 
         grid-template-columns: 1fr 1fr;
 
-        gap: 20px;
+        gap: 17px;
+      }
 
-        align-items: stretch;
+      .slogan-box,
+      .price-box {
+        border-radius: 22px;
+
+        padding: 35px;
+
+        position: relative;
+
+        overflow: hidden;
       }
 
       .slogan-box {
-        padding: 35px;
-
-        border: 1px solid rgba(0, 200, 176, 0.25);
+        border: 1px solid rgba(45, 168, 255, 0.16);
 
         background: linear-gradient(
-          145deg,
-          rgba(0, 85, 90, 0.22),
-          rgba(8, 25, 42, 0.9)
+          135deg,
+          rgba(220, 241, 255, 0.82),
+          rgba(255, 255, 255, 0.8)
         );
+      }
 
-        display: flex;
+      .slogan-box::after {
+        content: "";
 
-        flex-direction: column;
+        position: absolute;
 
-        justify-content: center;
+        width: 170px;
+        height: 170px;
+
+        left: -70px;
+        bottom: -100px;
+
+        border-radius: 50%;
+
+        background: rgba(45, 168, 255, 0.15);
+
+        filter: blur(35px);
       }
 
       .slogan-small {
@@ -850,11 +1762,11 @@
 
         font-size: 13px;
 
-        margin-bottom: 10px;
+        margin-bottom: 7px;
       }
 
       .slogan {
-        font-size: clamp(28px, 4vw, 43px);
+        font-size: clamp(29px, 4vw, 45px);
 
         line-height: 1.4;
 
@@ -862,9 +1774,9 @@
 
         background: linear-gradient(
           90deg,
-          var(--cyan-light),
-          var(--cyan),
-          var(--turquoise)
+          var(--royal-dark),
+          var(--bright),
+          var(--sky)
         );
 
         -webkit-background-clip: text;
@@ -874,8 +1786,6 @@
       }
 
       .price-box {
-        padding: 35px;
-
         display: flex;
 
         flex-direction: column;
@@ -886,89 +1796,128 @@
 
         text-align: center;
 
-        border: 1px solid rgba(80, 208, 255, 0.28);
+        border: 1px solid rgba(45, 168, 255, 0.22);
 
         background: linear-gradient(
-          145deg,
-          rgba(14, 43, 64, 0.9),
-          rgba(7, 22, 37, 0.95)
+          135deg,
+          rgba(238, 248, 255, 0.95),
+          rgba(255, 255, 255, 0.82)
         );
+
+        box-shadow: inset 0 0 40px rgba(45, 168, 255, 0.04);
       }
 
       .price-label {
         color: var(--muted);
 
-        font-size: 14px;
+        font-size: 13px;
 
-        margin-bottom: 4px;
+        margin-bottom: 3px;
       }
 
       .price {
-        font-size: 45px;
+        font-size: 53px;
 
         font-weight: 900;
 
-        color: var(--cyan-light);
+        line-height: 1.2;
+
+        background: linear-gradient(
+          90deg,
+          var(--royal-dark),
+          var(--bright),
+          var(--sky)
+        );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
       }
 
       .price small {
-        font-size: 15px;
+        font-size: 14px;
 
-        color: #90b0c3;
+        color: var(--muted);
       }
 
       /* =========================================================
-         BUTTON
-      ========================================================= */
+       CTA
+    ========================================================= */
 
       .button-area {
         text-align: center;
 
-        margin: -15px 55px 45px;
+        margin: 0 55px 45px;
       }
 
       .btn {
         display: inline-flex;
 
         align-items: center;
-
         justify-content: center;
 
         gap: 10px;
 
-        width: min(100%, 420px);
+        width: min(100%, 450px);
 
-        min-width: 320px;
+        min-height: 60px;
 
-        padding: 17px 30px;
+        padding: 16px 28px;
 
-        color: #fff;
+        border-radius: 50px;
 
-        font-size: 17px;
+        color: white;
 
-        font-weight: 800;
+        font-size: 16px;
 
-        background: linear-gradient(135deg, #00b8a0, #0077be);
+        font-weight: 900;
 
-        border: 1px solid #60ffd0;
+        background: linear-gradient(
+          100deg,
+          var(--sky),
+          var(--bright),
+          var(--royal-dark)
+        );
 
-        box-shadow: 0 12px 30px rgba(0, 200, 200, 0.2);
+        background-size: 220%;
 
-        transition: 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+
+        box-shadow:
+          0 15px 35px rgba(20, 120, 232, 0.2),
+          0 0 30px rgba(45, 168, 255, 0.08);
+
+        transition: 0.35s ease;
+
+        animation: buttonGradient 5s ease infinite;
+      }
+
+      @keyframes buttonGradient {
+        0%,
+        100% {
+          background-position: 0%;
+        }
+
+        50% {
+          background-position: 100%;
+        }
       }
 
       .btn:hover {
-        transform: translateY(-5px);
+        transform: translateY(-5px) scale(1.015);
 
-        box-shadow: 0 18px 40px rgba(0, 208, 192, 0.35);
+        box-shadow:
+          0 20px 45px rgba(20, 120, 232, 0.25),
+          0 0 35px rgba(45, 168, 255, 0.18);
       }
 
       /* =========================================================
-         CONTACT
-      ========================================================= */
+       CONTACT
+    ========================================================= */
 
       .contact-section {
-        margin: 0 55px 40px;
+        margin: 0 55px 42px;
       }
 
       .contact-grid {
@@ -986,129 +1935,142 @@
 
         gap: 15px;
 
-        padding: 20px;
-
-        color: white;
-
-        background: linear-gradient(145deg, #102a40, #081a2a);
-
-        border: 1px solid var(--line);
-
-        transition: 0.3s ease;
-
         min-width: 0;
+
+        padding: 18px;
+
+        border-radius: 17px;
+
+        border: 1px solid rgba(45, 168, 255, 0.16);
+
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.9),
+          rgba(238, 248, 255, 0.72)
+        );
+
+        transition: 0.35s ease;
       }
 
       .contact:hover {
         transform: translateY(-5px);
 
-        border-color: var(--cyan);
+        border-color: rgba(45, 168, 255, 0.38);
 
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 15px 35px rgba(20, 120, 232, 0.08);
       }
 
       .contact-icon {
-        width: 52px;
-        height: 52px;
+        width: 51px;
+        height: 51px;
 
         flex-shrink: 0;
 
         display: grid;
-
         place-items: center;
 
-        border: 1px solid rgba(80, 208, 255, 0.3);
+        border-radius: 14px;
 
-        background: rgba(80, 208, 255, 0.07);
+        background: linear-gradient(
+          135deg,
+          var(--ice),
+          var(--bright),
+          var(--royal-dark)
+        );
 
-        font-size: 24px;
+        font-size: 23px;
+
+        box-shadow: 0 0 20px rgba(45, 168, 255, 0.18);
       }
 
       .contact h3 {
-        font-size: 14px;
+        font-size: 13px;
 
-        margin-bottom: 5px;
+        color: var(--navy);
 
-        color: var(--cyan-light);
+        margin-bottom: 4px;
 
         overflow-wrap: anywhere;
       }
 
       .contact p {
-        font-size: 11px;
+        font-size: 10px;
 
         color: var(--muted);
       }
 
       .contact-purple {
-        border-color: rgba(179, 136, 255, 0.22);
+        background: linear-gradient(
+          145deg,
+          rgba(238, 248, 255, 0.9),
+          rgba(255, 255, 255, 0.8)
+        );
       }
 
-      .contact-purple:hover {
-        border-color: #b388ff;
+      .contact-purple .contact-icon {
+        background: linear-gradient(135deg, var(--sky), var(--royal));
       }
 
       /* =========================================================
-         FOOTER
-      ========================================================= */
+       FOOTER
+    ========================================================= */
 
       footer {
-        padding: 25px 55px;
+        padding: 24px 55px;
 
         display: flex;
 
         justify-content: space-between;
-
         align-items: center;
 
-        border-top: 1px solid var(--line);
-
-        background: rgba(3, 11, 20, 0.7);
-
-        color: #7594a8;
-
-        font-size: 12px;
-
         gap: 15px;
-      }
 
-      footer span {
-        overflow-wrap: anywhere;
+        border-top: 1px solid rgba(45, 168, 255, 0.12);
+
+        background: rgba(238, 248, 255, 0.5);
+
+        color: var(--muted);
+
+        font-size: 11px;
       }
 
       footer strong {
-        color: var(--cyan);
-
-        font-size: 16px;
+        color: var(--royal);
       }
 
       .copyright {
+        padding: 16px;
+
         text-align: center;
 
-        padding: 17px;
+        color: var(--muted);
 
-        color: #607d91;
+        font-size: 10px;
 
-        font-size: 11px;
-
-        border-top: 1px solid rgba(80, 208, 255, 0.07);
+        border-top: 1px solid rgba(45, 168, 255, 0.08);
       }
 
       /* =========================================================
-         RESPONSIVE TABLET
-      ========================================================= */
+       TABLET
+    ========================================================= */
 
-      @media (max-width: 850px) {
-        .container {
-          margin: 15px auto;
-        }
-
+      @media (max-width: 900px) {
         .hero {
           grid-template-columns: 1fr;
 
           text-align: center;
 
-          padding: 55px 35px 45px;
+          padding: 50px 35px 45px;
+        }
+
+        .hero-content {
+          order: 2;
+        }
+
+        .cyber-visual {
+          order: 1;
+
+          min-height: 430px;
         }
 
         .hero-description {
@@ -1124,10 +2086,9 @@
           margin: auto;
         }
 
-        .cyber-visual {
-          order: -1;
-
-          min-height: 330px;
+        .hero h1 .cyber-title {
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .topics-section {
@@ -1161,8 +2122,8 @@
       }
 
       /* =========================================================
-         RESPONSIVE MOBILE
-      ========================================================= */
+       MOBILE
+    ========================================================= */
 
       @media (max-width: 600px) {
         .container {
@@ -1170,231 +2131,290 @@
 
           margin: 5px auto;
 
-          border-radius: 4px;
-        }
-
-        .container::before {
-          width: 2px;
+          border-radius: 16px;
         }
 
         .topbar {
-          min-height: 65px;
+          min-height: 62px;
 
-          padding: 0 14px;
+          padding: 0 13px;
         }
 
         .brand {
-          gap: 9px;
+          gap: 8px;
         }
 
         .brand-mark {
-          width: 37px;
-          height: 37px;
+          width: 36px;
+          height: 36px;
         }
 
         .brand-name {
-          font-size: 20px;
+          font-size: 19px;
         }
 
         .top-label {
           display: none;
         }
 
+        /* HERO */
+
         .hero {
-          padding: 35px 15px 30px;
+          padding: 30px 11px 28px;
 
-          gap: 15px;
-        }
-
-        .hero::after {
-          font-size: 50px;
-          letter-spacing: 8px;
+          gap: 4px;
         }
 
         .eyebrow {
-          font-size: 10px;
+          font-size: 9px;
+
           padding: 6px 11px;
+
+          margin-bottom: 15px;
         }
 
         .hero h1 {
-          font-size: 38px;
+          font-size: 35px;
+
+          line-height: 1.12;
+
+          margin-bottom: 17px;
+        }
+
+        /*
+        Keep Arabic title together.
+        No ugly split between الأمن / السيبراني.
+      */
+
+        .hero h1 .cyber-title {
+          font-size: 32px;
+
+          width: 100%;
+
+          white-space: nowrap;
+
+          letter-spacing: -1px;
         }
 
         .hero-description {
-          font-size: 13px;
+          font-size: 11.5px;
 
           line-height: 1.9;
 
-          margin-bottom: 20px;
+          margin-bottom: 18px;
         }
 
         .course-mini-info {
-          display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 8px;
+
+          gap: 7px;
         }
 
         .mini-card {
-          min-width: 0;
-          padding: 9px;
-          gap: 7px;
+          padding: 9px 8px;
+
+          gap: 6px;
+
           text-align: right;
+
+          border-radius: 10px;
         }
 
         .mini-icon {
-          width: 31px;
-          height: 31px;
-          font-size: 14px;
+          width: 30px;
+          height: 30px;
+
+          font-size: 13px;
         }
 
         .mini-text small {
-          font-size: 9px;
+          font-size: 8px;
         }
 
         .mini-text strong {
-          font-size: 13px;
+          font-size: 12px;
         }
 
         .start-box {
           width: 100%;
+
           justify-content: center;
-          gap: 10px;
-          padding: 10px;
+
+          padding: 9px;
         }
 
         .start-icon {
-          width: 38px;
-          height: 38px;
-          font-size: 17px;
+          width: 35px;
+          height: 35px;
         }
 
         .start-text strong {
-          font-size: 19px;
+          font-size: 18px;
         }
+
+        /* =====================================================
+         MOBILE CYBER VISUAL
+      ===================================================== */
 
         .cyber-visual {
-          min-height: 245px;
+          min-height: 325px;
+
+          width: 100%;
+
+          overflow: hidden;
         }
 
-        .circle {
-          width: 210px;
-          height: 210px;
+        .cyber-stage {
+          width: 330px;
+          height: 310px;
+
+          transform: scale(0.86);
         }
 
-        .circle::before {
-          inset: 20px;
+        .cyber-stage::before {
+          width: 260px;
+          height: 260px;
         }
 
-        .circle::after {
-          inset: 50px;
+        .tech-orbit {
+          width: 285px;
+          height: 285px;
         }
 
-        .shield {
-          width: 96px;
-          height: 120px;
-
-          top: 44px;
-          left: 57px;
-
-          font-size: 38px;
+        .tech-orbit.two {
+          width: 230px;
+          height: 230px;
         }
 
-        .shield::after {
-          font-size: 50px;
+        .command-floor {
+          width: 300px;
+          height: 65px;
+
+          bottom: 34px;
         }
 
-        .node {
-          width: 31px;
-          height: 31px;
+        .defense-building {
+          transform: scale(0.83);
 
-          font-size: 12px;
+          bottom: 75px;
         }
 
-        .node.n1 {
-          top: 2px;
-          left: 89px;
+        .security-car.left {
+          left: 5px;
         }
 
-        .node.n2 {
-          bottom: 5px;
-          right: 2px;
+        .security-car.right {
+          right: 5px;
         }
 
-        .node.n3 {
-          bottom: 12px;
-          left: 2px;
+        .drone {
+          top: 28px;
+          right: -3px;
+
+          transform: scale(0.78);
         }
 
-        .node.n4 {
-          top: 75px;
-          right: -12px;
+        .code-terminal {
+          top: 100px;
+          left: -2px;
+
+          transform: scale(0.82);
+
+          transform-origin: left top;
         }
+
+        .data-node {
+          transform: scale(0.8);
+        }
+
+        .laser.one {
+          right: 5px;
+        }
+
+        .laser.two {
+          left: 0;
+        }
+
+        /* TOPICS */
 
         .topics-section {
-          padding: 8px 12px 30px;
+          padding: 7px 11px 30px;
         }
 
         .section-title {
           font-size: 19px;
-          gap: 10px;
-          margin-bottom: 17px;
+
+          gap: 9px;
+
+          margin-bottom: 16px;
         }
 
         .section-title::before {
           width: 4px;
-          height: 25px;
+          height: 24px;
         }
 
         .topics-grid {
           grid-template-columns: 1fr 1fr;
 
-          gap: 8px;
+          gap: 7px;
         }
 
         .topic {
-          min-height: 155px;
+          min-height: 190px;
 
-          padding: 15px 11px;
+          padding: 14px 10px;
+
+          border-radius: 13px;
         }
 
         .topic-number {
-          font-size: 31px;
+          font-size: 29px;
 
-          margin-bottom: 11px;
+          margin-bottom: 10px;
         }
 
         .topic h3 {
-          font-size: 13px;
-          line-height: 1.5;
+          font-size: 12px;
+
+          line-height: 1.55;
+
+          margin-bottom: 7px;
         }
 
         .topic p {
-          font-size: 9px;
+          font-size: 8.7px;
 
-          line-height: 1.65;
+          line-height: 1.75;
         }
 
         .topic-icon {
           font-size: 19px;
-          left: 9px;
-          bottom: 8px;
+
+          left: 8px;
+          bottom: 7px;
         }
 
         .topic.full {
           grid-column: span 2;
 
-          min-height: 130px;
+          min-height: 145px;
         }
 
-        .features-section {
-          margin: 0 12px 30px;
+        /* FEATURES */
 
-          padding: 20px 10px;
+        .features-section {
+          margin: 0 11px 30px;
+
+          padding: 20px 9px;
+
+          border-radius: 15px;
         }
 
         .features-title {
-          font-size: 20px;
-          margin-bottom: 17px;
+          font-size: 19px;
+
+          margin-bottom: 16px;
         }
 
         .features-grid {
@@ -1405,20 +2425,28 @@
 
         .feature {
           min-height: 82px;
-          padding: 10px 5px;
+
+          padding: 9px 5px;
+
+          border-radius: 10px;
         }
 
         .feature-icon {
-          font-size: 22px;
+          font-size: 21px;
+
           margin-bottom: 5px;
         }
 
         .feature span {
-          font-size: 9px;
+          font-size: 8px;
+
+          line-height: 1.6;
         }
 
+        /* OFFER */
+
         .offer {
-          margin: 0 12px 30px;
+          margin: 0 11px 28px;
 
           gap: 8px;
         }
@@ -1426,111 +2454,119 @@
         .slogan-box,
         .price-box {
           padding: 23px 15px;
+
+          border-radius: 14px;
+        }
+
+        .slogan-small {
+          font-size: 10px;
         }
 
         .slogan {
-          font-size: 29px;
+          font-size: 28px;
         }
 
         .price-label {
-          font-size: 12px;
+          font-size: 11px;
         }
 
         .price {
-          font-size: 36px;
+          font-size: 39px;
         }
 
         .price small {
-          font-size: 13px;
+          font-size: 12px;
         }
 
+        /* BUTTON */
+
         .button-area {
-          margin: -3px 12px 30px;
+          margin: 0 11px 30px;
         }
 
         .btn {
           width: 100%;
-          min-width: 0;
 
-          padding: 15px 18px;
+          min-height: 53px;
 
-          font-size: 14px;
+          padding: 14px 15px;
+
+          font-size: 13px;
+
+          border-radius: 50px;
         }
 
+        /* CONTACT */
+
         .contact-section {
-          margin: 0 12px 28px;
+          margin: 0 11px 28px;
         }
 
         .contact-grid {
           grid-template-columns: 1fr;
+
+          gap: 8px;
         }
 
         .contact {
-          padding: 15px;
-          gap: 11px;
+          padding: 13px;
+
+          gap: 10px;
+
+          border-radius: 11px;
         }
 
         .contact-icon {
-          width: 45px;
-          height: 45px;
-          font-size: 20px;
+          width: 43px;
+          height: 43px;
+
+          font-size: 19px;
         }
 
         .contact h3 {
-          font-size: 12px;
-        }
-
-        .contact p {
-          font-size: 10px;
-        }
-
-        footer {
-          padding: 18px 12px;
-
-          flex-direction: column;
-
-          gap: 8px;
-
-          text-align: center;
-
           font-size: 11px;
         }
 
+        .contact p {
+          font-size: 9px;
+        }
+
+        /* FOOTER */
+
+        footer {
+          padding: 18px 11px;
+
+          flex-direction: column;
+
+          text-align: center;
+
+          gap: 7px;
+
+          font-size: 9px;
+        }
+
         .copyright {
-          padding: 14px 10px;
-          font-size: 10px;
+          padding: 13px 8px;
+
+          font-size: 8px;
         }
       }
 
       /* =========================================================
-         SMALL MOBILE
-      ========================================================= */
+       SMALL PHONES
+    ========================================================= */
 
       @media (max-width: 380px) {
-        .container {
-          width: calc(100% - 6px);
-        }
-
-        .brand-name {
-          font-size: 17px;
-        }
-
-        .brand-mark {
-          width: 34px;
-          height: 34px;
-        }
-
-        .hero {
-          padding-left: 10px;
-          padding-right: 10px;
-        }
-
         .hero h1 {
-          font-size: 33px;
+          font-size: 30px;
+        }
+
+        .hero h1 .cyber-title {
+          font-size: 28px;
         }
 
         .hero-description {
-          font-size: 12px;
+          font-size: 10.5px;
         }
 
         .course-mini-info {
@@ -1542,48 +2578,11 @@
         }
 
         .cyber-visual {
-          min-height: 220px;
+          min-height: 295px;
         }
 
-        .circle {
-          width: 185px;
-          height: 185px;
-        }
-
-        .circle::before {
-          inset: 17px;
-        }
-
-        .circle::after {
-          inset: 43px;
-        }
-
-        .shield {
-          width: 84px;
-          height: 105px;
-
-          top: 39px;
-          left: 50px;
-
-          font-size: 32px;
-        }
-
-        .shield::after {
-          font-size: 43px;
-        }
-
-        .node {
-          width: 28px;
-          height: 28px;
-        }
-
-        .node.n1 {
-          left: 78px;
-        }
-
-        .node.n4 {
-          right: -10px;
-          top: 65px;
+        .cyber-stage {
+          transform: scale(0.77);
         }
 
         .topics-grid {
@@ -1591,86 +2590,83 @@
         }
 
         .topic {
-          min-height: 145px;
+          min-height: 180px;
 
           padding: 12px 8px;
         }
 
         .topic-number {
-          font-size: 28px;
+          font-size: 27px;
         }
 
         .topic h3 {
-          font-size: 11px;
+          font-size: 10.5px;
         }
 
         .topic p {
           font-size: 8px;
         }
 
-        .topic-icon {
-          font-size: 17px;
+        .topic.full {
+          min-height: 138px;
+        }
+
+        .slogan {
+          font-size: 25px;
+        }
+
+        .price {
+          font-size: 35px;
+        }
+      }
+
+      /* =========================================================
+       VERY SMALL
+    ========================================================= */
+
+      @media (max-width: 320px) {
+        .hero h1 {
+          font-size: 27px;
+        }
+
+        .hero h1 .cyber-title {
+          font-size: 25px;
+        }
+
+        .cyber-stage {
+          transform: scale(0.68);
+        }
+
+        .topic {
+          min-height: 172px;
+        }
+
+        .topic h3 {
+          font-size: 9.5px;
+        }
+
+        .topic p {
+          font-size: 7.4px;
         }
 
         .feature span {
-          font-size: 8px;
+          font-size: 7.5px;
         }
 
         .price {
           font-size: 31px;
         }
-
-        .contact {
-          padding: 12px;
-        }
-
-        .contact h3 {
-          font-size: 11px;
-        }
       }
 
       /* =========================================================
-         VERY SMALL DEVICES
-      ========================================================= */
-
-      @media (max-width: 320px) {
-        .hero h1 {
-          font-size: 29px;
-        }
-
-        .section-title {
-          font-size: 17px;
-        }
-
-        .topic {
-          min-height: 138px;
-        }
-
-        .topic h3 {
-          font-size: 10px;
-        }
-
-        .topic p {
-          font-size: 7.5px;
-        }
-
-        .price {
-          font-size: 28px;
-        }
-
-        .btn {
-          font-size: 13px;
-        }
-      }
-
-      /* =========================================================
-         ACCESSIBILITY / TOUCH
-      ========================================================= */
+       TOUCH / REDUCED MOTION
+    ========================================================= */
 
       @media (hover: none) {
         .topic:hover,
         .feature:hover,
         .contact:hover,
+        .mini-card:hover,
         .btn:hover {
           transform: none;
         }
@@ -1681,13 +2677,11 @@
           scroll-behavior: auto;
         }
 
-        .circle::before {
-          animation: none;
-        }
-
         *,
         *::before,
         *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
         }
       }
@@ -1697,8 +2691,8 @@
   <body>
     <div class="container">
       <!-- =====================================================
-           TOP BAR
-      ====================================================== -->
+       TOP BAR
+  ====================================================== -->
 
       <div class="topbar">
         <div class="brand">
@@ -1711,8 +2705,8 @@
       </div>
 
       <!-- =====================================================
-           HERO
-      ====================================================== -->
+       HERO
+  ====================================================== -->
 
       <header class="hero">
         <div class="hero-content">
@@ -1720,23 +2714,24 @@
 
           <h1>
             معسكر
-            <span>الأمن السيبراني</span>
+            <span class="cyber-title"> الأمن السيبراني </span>
           </h1>
 
           <p class="hero-description">
-            معسكر عملي مكثف يؤهلك لاكتساب المهارات اللازمة لحماية الأنظمة، فهم
-            التهديدات، وتحليل الهجمات السيبرانية ضمن بيئة تدريبية عملية.
+            رحلة تدريبية متكاملة تأخذك من أساسيات الأمن السيبراني إلى فهم طريقة
+            تفكير المهاجمين وآليات حماية الأنظمة والشبكات. ستتعرف على بيئات
+            العمل الأمنية، تحليل التهديدات، اكتشاف الثغرات، الاستجابة للحوادث،
+            ومهارات الفريقين الأحمر والأزرق ضمن منهج تدريبي عملي ومنظم.
           </p>
-
-          <!-- COURSE MINI INFO -->
 
           <div class="course-mini-info">
             <div class="mini-card">
               <div class="mini-icon">⏱</div>
 
               <div class="mini-text">
-                <small>مدة المعسكر</small>
-                <strong>5 أشهر</strong>
+                <small> مدة المعسكر </small>
+
+                <strong> 5 أشهر </strong>
               </div>
             </div>
 
@@ -1744,13 +2739,12 @@
               <div class="mini-icon">📚</div>
 
               <div class="mini-text">
-                <small>عدد الجلسات</small>
-                <strong>45 جلسة</strong>
+                <small> عدد الجلسات </small>
+
+                <strong> 45 جلسة </strong>
               </div>
             </div>
           </div>
-
-          <!-- START DATE -->
 
           <div class="start-box">
             <div class="start-icon">⏳</div>
@@ -1763,115 +2757,229 @@
           </div>
         </div>
 
-        <!-- CYBER VISUAL -->
+        <!-- =====================================================
+         CREATIVE CYBER SCENE
+    ====================================================== -->
 
         <div class="cyber-visual">
-          <div class="circle">
-            <div class="shield">C</div>
+          <div class="cyber-stage">
+            <div class="tech-orbit"></div>
+            <div class="tech-orbit two"></div>
 
-            <div class="node n1">⚡</div>
+            <div class="command-floor"></div>
 
-            <div class="node n2">◉</div>
+            <!-- Defense Building -->
 
-            <div class="node n3">#</div>
+            <div class="defense-building">
+              <div class="building-flag"></div>
 
-            <div class="node n4">◇</div>
+              <div class="building-roof"></div>
+
+              <div class="building-main">
+                <div class="building-title">DEFENSE COMMAND</div>
+
+                <div class="building-windows">
+                  <div class="building-window"></div>
+                  <div class="building-window"></div>
+                  <div class="building-window"></div>
+                  <div class="building-window"></div>
+                  <div class="building-window"></div>
+
+                  <div class="building-window"></div>
+                  <div class="building-window"></div>
+                  <div class="building-window"></div>
+                  <div class="building-window"></div>
+                  <div class="building-window"></div>
+                </div>
+
+                <div class="building-door"></div>
+              </div>
+            </div>
+
+            <!-- Left Security Vehicle -->
+
+            <div class="security-car left">
+              <div class="car-body"></div>
+
+              <div class="car-light"></div>
+
+              <div class="wheel one"></div>
+              <div class="wheel two"></div>
+            </div>
+
+            <!-- Right Security Vehicle -->
+
+            <div class="security-car right">
+              <div class="car-body"></div>
+
+              <div class="car-light"></div>
+
+              <div class="wheel one"></div>
+              <div class="wheel two"></div>
+            </div>
+
+            <!-- Drone -->
+
+            <div class="drone">
+              <div class="drone-prop left"></div>
+
+              <div class="drone-prop right"></div>
+
+              <div class="drone-arm left"></div>
+
+              <div class="drone-arm right"></div>
+
+              <div class="drone-body"></div>
+            </div>
+
+            <!-- Code Terminal -->
+
+            <div class="code-terminal">
+              <div class="terminal-head">
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+
+                <div class="terminal-title">CYBER OPS</div>
+              </div>
+
+              <div class="code-line">
+                <span>root@defense:</span>
+              </div>
+
+              <div class="code-line typing">scan --network --secure</div>
+
+              <div class="code-line">
+                <span>[+]</span>
+                perimeter protected
+              </div>
+
+              <div class="code-line">
+                <span>[+]</span>
+                threat blocked
+              </div>
+            </div>
+
+            <!-- Floating Nodes -->
+
+            <div class="data-node node1"></div>
+            <div class="data-node node2"></div>
+            <div class="data-node node3"></div>
+
+            <!-- Laser Connections -->
+
+            <div class="laser one"></div>
+            <div class="laser two"></div>
           </div>
         </div>
       </header>
 
       <!-- =====================================================
-           TOPICS
-      ====================================================== -->
+       TOPICS
+  ====================================================== -->
 
       <section class="topics-section">
-        <div class="section-title">محاور المعسكر</div>
+        <div class="section-title">ماذا ستتعلم في المعسكر؟</div>
 
         <div class="topics-grid">
-          <!-- 01 -->
-
           <article class="topic">
             <div class="topic-number">01</div>
 
-            <h3>الأساسيات</h3>
+            <h3>أساسيات الأمن السيبراني</h3>
 
             <p>
-              مفاهيم الأمن السيبراني · التهديدات والهجمات · الأدوات والموارد
+              تبدأ من الصورة الكبيرة: ما هو الأمن السيبراني؟ وما الفرق بين
+              التهديد والثغرة والهجوم؟ تتعرف على أنواع المخاطر الأمنية، مبادئ
+              حماية
+              <strong>السرية والسلامة والتوافر</strong>، وأساسيات التفكير الأمني
+              والأدوات المستخدمة في المجال.
             </p>
 
             <div class="topic-icon">🛡️</div>
           </article>
-
-          <!-- 02 -->
 
           <article class="topic">
             <div class="topic-number">02</div>
 
             <h3>أنظمة التشغيل</h3>
 
-            <p>Windows · أمان الأنظمة · إدارة النظام والأدوات</p>
+            <p>
+              تتعرف على طريقة عمل أنظمة التشغيل وخصوصًا Windows، وإدارة
+              المستخدمين والصلاحيات والملفات، الخدمات والعمليات، وأهم الإعدادات
+              التي تؤثر على أمن الجهاز، مع فهم كيفية مراقبة النظام واكتشاف
+              السلوكيات غير الطبيعية.
+            </p>
 
             <div class="topic-icon">💻</div>
           </article>
-
-          <!-- 03 -->
 
           <article class="topic">
             <div class="topic-number">03</div>
 
             <h3>أساسيات الشبكات</h3>
 
-            <p>مفهوم الشبكات · TCP/IP · تحليل وحل المشكلات</p>
+            <p>
+              تفهم كيف تنتقل البيانات بين الأجهزة، وتتعلم أساسيات
+              <strong>TCP/IP وDNS وHTTP</strong>، عناوين IP والمنافذ
+              والبروتوكولات، وكيفية قراءة حركة الشبكة وتحليل المشكلات لفهم ما
+              يحدث داخل البيئة الشبكية.
+            </p>
 
             <div class="topic-icon">🌐</div>
           </article>
 
-          <!-- 04 -->
-
           <article class="topic">
             <div class="topic-number">04</div>
 
-            <h3>فك الشيفرات</h3>
+            <h3>التشفير وفك الشيفرات</h3>
 
-            <p>أساسيات التشفير · خوارزميات التشفير · التحليل</p>
+            <p>
+              تتعرف على الفكرة الأساسية وراء التشفير، الفرق بين التشفير والترميز
+              والتجزئة، ومفاهيم المفاتيح والخوارزميات، وكيفية تحليل البيانات
+              المشفرة وفهم نقاط القوة والضعف في طرق الحماية الحديثة.
+            </p>
 
             <div class="topic-icon">🔐</div>
           </article>
 
-          <!-- 05 -->
-
           <article class="topic">
             <div class="topic-number">05</div>
 
-            <h3>كسر كلمات المرور</h3>
+            <h3>أمن كلمات المرور</h3>
 
-            <p>تقييم كلمات المرور · أدوات الهجوم · أساليب الحماية</p>
+            <p>
+              تتعلم لماذا تعتبر كلمات المرور نقطة حساسة، وكيف يتم تقييم قوتها،
+              وفهم أساليب اختبارها داخل بيئات تدريبية آمنة، إضافة إلى أفضل
+              ممارسات إنشاء كلمات مرور قوية واستخدام المصادقة متعددة العوامل.
+            </p>
 
             <div class="topic-icon">🔑</div>
           </article>
-
-          <!-- 06 -->
 
           <article class="topic">
             <div class="topic-number">06</div>
 
             <h3>مهارات الفريق الأحمر</h3>
 
-            <p>الاستطلاع وجمع المعلومات · استغلال الثغرات · الاختبار</p>
+            <p>
+              تتعرف على طريقة عمل فرق اختبار الاختراق: جمع المعلومات، الاستطلاع،
+              اكتشاف نقاط الضعف، تقييم المخاطر، وفهم مسار الهجوم من منظور
+              المهاجم، ضمن مختبرات تعليمية وبيئات مصرح بها.
+            </p>
 
             <div class="topic-icon">🎯</div>
           </article>
 
-          <!-- 07 -->
-
           <article class="topic full">
             <div class="topic-number">07</div>
 
-            <h3>مهارات الفريق الأزرق</h3>
+            <h3>مهارات الفريق الأزرق والدفاع السيبراني</h3>
 
             <p>
-              المراقبة وكشف التهديدات · الاستجابة للحوادث · التحليل الجنائي
-              الرقمي
+              تتعلم كيف يفكر المدافع وكيف يكتشف الهجمات قبل أن تتوسع: مراقبة
+              الأنظمة والشبكات، قراءة السجلات، اكتشاف المؤشرات المشبوهة، تحليل
+              التنبيهات، الاستجابة للحوادث، احتواء التهديدات، والتعرف على
+              أساسيات التحليل الجنائي الرقمي وبناء دفاع أمني أكثر فعالية.
             </p>
 
             <div class="topic-icon">🔵</div>
@@ -1880,42 +2988,54 @@
       </section>
 
       <!-- =====================================================
-           FEATURES
-      ====================================================== -->
+       FEATURES
+  ====================================================== -->
 
       <section class="features-section">
-        <div class="features-title">مميزات المعسكر</div>
+        <div class="features-title">لماذا هذا المعسكر؟</div>
 
         <div class="features-grid">
           <div class="feature">
             <div class="feature-icon">👨‍🏫</div>
-
-            <span> مدربون محترفون </span>
+            <span>
+              مدربون محترفون
+              <br />
+              وخبرة عملية
+            </span>
           </div>
 
           <div class="feature">
             <div class="feature-icon">🧪</div>
-
-            <span> مشاريع عملية </span>
+            <span>
+              تطبيقات ومشاريع
+              <br />
+              عملية
+            </span>
           </div>
 
           <div class="feature">
             <div class="feature-icon">🏅</div>
-
-            <span> شهادة خبرة معتمدة </span>
+            <span>
+              شهادة خبرة
+              <br />
+              معتمدة
+            </span>
           </div>
 
           <div class="feature">
             <div class="feature-icon">🤝</div>
-
-            <span> دعم ومتابعة طوال المعسكر </span>
+            <span>
+              دعم ومتابعة
+              <br />
+              طوال المعسكر
+            </span>
           </div>
 
           <div class="feature">
-            <div class="feature-icon">💰</div>
-
+            <div class="feature-icon">💎</div>
             <span>
-              سعر المعسكر<br />
+              قيمة الاشتراك
+              <br />
               150 دولار
             </span>
           </div>
@@ -1923,8 +3043,8 @@
       </section>
 
       <!-- =====================================================
-           OFFER
-      ====================================================== -->
+       OFFER
+  ====================================================== -->
 
       <section class="offer">
         <div class="slogan-box">
@@ -1938,7 +3058,7 @@
         </div>
 
         <div class="price-box">
-          <div class="price-label">قيمة الاشتراك في المعسكر</div>
+          <div class="price-label">قيمة الاشتراك الكاملة في المعسكر</div>
 
           <div class="price">
             150
@@ -1948,8 +3068,8 @@
       </section>
 
       <!-- =====================================================
-           CTA
-      ====================================================== -->
+       CTA
+  ====================================================== -->
 
       <div class="button-area">
         <a
@@ -1963,8 +3083,8 @@
       </div>
 
       <!-- =====================================================
-           CONTACT
-      ====================================================== -->
+       CONTACT
+  ====================================================== -->
 
       <section class="contact-section">
         <div class="section-title">معلومات التواصل</div>
@@ -2003,8 +3123,8 @@
       </section>
 
       <!-- =====================================================
-           FOOTER
-      ====================================================== -->
+       FOOTER
+  ====================================================== -->
 
       <footer>
         <span> ✈ Coursyria_team </span>
@@ -2013,10 +3133,6 @@
 
         <span> 📸 coursyria.team </span>
       </footer>
-
-      <!-- =====================================================
-           COPYRIGHT
-      ====================================================== -->
 
       <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
     </div>
