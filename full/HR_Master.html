@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="ar" dir="rtl">
   <head>
@@ -28,6 +29,8 @@
         --text: #f6f0e5;
         --muted: #b9b0a0;
         --border: rgba(216, 170, 85, 0.3);
+        --mouse-x: 50%;
+        --mouse-y: 50%;
       }
 
       html {
@@ -37,6 +40,11 @@
       body {
         font-family: "Cairo", sans-serif;
         background:
+          radial-gradient(
+            circle at var(--mouse-x) var(--mouse-y),
+            rgba(216, 170, 85, 0.1),
+            transparent 22%
+          ),
           radial-gradient(circle at 50% 0%, #30200c 0%, transparent 35%),
           linear-gradient(135deg, #050505, #15120d 50%, #050505);
         color: var(--text);
@@ -44,7 +52,40 @@
         overflow-x: hidden;
       }
 
-      /* ---------- TOP BAR ---------- */
+      /* =========================
+       BACKGROUND PARTICLES
+    ========================== */
+
+      .particles {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: -1;
+      }
+
+      .particle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: var(--gold-light);
+        border-radius: 50%;
+        opacity: 0.25;
+        animation: floatParticle linear infinite;
+      }
+
+      @keyframes floatParticle {
+        from {
+          transform: translateY(110vh) scale(0.5);
+        }
+        to {
+          transform: translateY(-10vh) scale(1.4);
+        }
+      }
+
+      /* =========================
+       TOP BAR
+    ========================== */
 
       .topbar {
         width: 100%;
@@ -53,8 +94,8 @@
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid var(--border);
-        background: rgba(5, 5, 5, 0.8);
-        backdrop-filter: blur(12px);
+        background: rgba(5, 5, 5, 0.78);
+        backdrop-filter: blur(15px);
         position: sticky;
         top: 0;
         z-index: 100;
@@ -76,6 +117,12 @@
         color: var(--gold-light);
         font-size: 23px;
         box-shadow: 0 0 20px rgba(216, 170, 85, 0.15);
+        transition: 0.4s;
+      }
+
+      .brand:hover .brand-icon {
+        transform: rotate(-10deg) scale(1.08);
+        box-shadow: 0 0 30px rgba(216, 170, 85, 0.4);
       }
 
       .brand h2 {
@@ -102,14 +149,27 @@
         color: var(--gold-light);
         font-size: 13px;
         background: rgba(216, 170, 85, 0.07);
+        animation: badgePulse 3s infinite;
       }
 
-      /* ---------- HERO ---------- */
+      @keyframes badgePulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 rgba(216, 170, 85, 0);
+        }
+        50% {
+          box-shadow: 0 0 22px rgba(216, 170, 85, 0.16);
+        }
+      }
+
+      /* =========================
+       HERO
+    ========================== */
 
       .hero {
         width: min(1180px, 92%);
         margin: auto;
-        min-height: 600px;
+        min-height: 650px;
         display: grid;
         grid-template-columns: 1fr 1.1fr;
         align-items: center;
@@ -118,7 +178,7 @@
       }
 
       .hero-content {
-        animation: fadeUp 0.8s ease;
+        animation: fadeUp 0.9s ease both;
       }
 
       .eyebrow {
@@ -129,6 +189,29 @@
         color: var(--gold-light);
         margin-bottom: 20px;
         font-size: 14px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .eyebrow::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transform: translateX(-100%);
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        50%,
+        100% {
+          transform: translateX(100%);
+        }
       }
 
       .hero h1 {
@@ -138,6 +221,12 @@
         color: var(--gold-light);
         letter-spacing: 3px;
         text-shadow: 0 0 30px rgba(216, 170, 85, 0.18);
+        transition: 0.4s;
+      }
+
+      .hero h1:hover {
+        letter-spacing: 7px;
+        text-shadow: 0 0 45px rgba(216, 170, 85, 0.4);
       }
 
       .hero h2 {
@@ -148,6 +237,24 @@
 
       .hero h2 span {
         color: var(--gold);
+        position: relative;
+      }
+
+      .hero h2 span::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--gold);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: 0.5s;
+      }
+
+      .hero h2:hover span::after {
+        transform: scaleX(1);
       }
 
       .hero p {
@@ -158,6 +265,10 @@
         font-size: 16px;
       }
 
+      /* =========================
+       INTERACTIVE HERO
+    ========================== */
+
       .hero-image {
         min-height: 470px;
         position: relative;
@@ -165,9 +276,9 @@
         border: 1px solid var(--border);
         background:
           radial-gradient(
-            circle at center,
-            rgba(216, 170, 85, 0.18),
-            transparent 50%
+            circle at var(--hero-x, 50%) var(--hero-y, 50%),
+            rgba(216, 170, 85, 0.25),
+            transparent 28%
           ),
           linear-gradient(145deg, #20170d, #080706);
         display: grid;
@@ -176,6 +287,8 @@
         box-shadow:
           0 0 60px rgba(216, 170, 85, 0.08),
           inset 0 0 60px rgba(216, 170, 85, 0.04);
+        transform-style: preserve-3d;
+        transition: transform 0.15s ease;
       }
 
       .hero-image::before {
@@ -188,6 +301,23 @@
         box-shadow:
           0 0 0 40px rgba(216, 170, 85, 0.03),
           0 0 0 80px rgba(216, 170, 85, 0.02);
+        animation: rotateRing 15s linear infinite;
+      }
+
+      .hero-image::after {
+        content: "";
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        border-radius: 50%;
+        border: 1px dashed rgba(216, 170, 85, 0.12);
+        animation: rotateRing 25s linear infinite reverse;
+      }
+
+      @keyframes rotateRing {
+        to {
+          transform: rotate(360deg);
+        }
       }
 
       .hr-symbol {
@@ -202,6 +332,46 @@
         box-shadow:
           0 0 35px rgba(216, 170, 85, 0.2),
           inset 0 0 35px rgba(216, 170, 85, 0.08);
+        animation: hrFloat 4s ease-in-out infinite;
+        background: rgba(8, 7, 6, 0.25);
+      }
+
+      .hr-symbol::before,
+      .hr-symbol::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(216, 170, 85, 0.35);
+      }
+
+      .hr-symbol::before {
+        inset: 15px;
+        animation: spin 8s linear infinite;
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+      }
+
+      .hr-symbol::after {
+        inset: -15px;
+        animation: spin 12s linear infinite reverse;
+        border-right-color: transparent;
+        border-top-color: transparent;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes hrFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-13px) rotate(2deg);
+        }
       }
 
       .hr-symbol span {
@@ -209,6 +379,7 @@
         font-size: 65px;
         color: var(--gold-light);
         letter-spacing: 5px;
+        text-shadow: 0 0 20px rgba(244, 213, 139, 0.35);
       }
 
       .floating-card {
@@ -220,6 +391,14 @@
         padding: 15px 22px;
         border-radius: 12px;
         z-index: 3;
+        backdrop-filter: blur(8px);
+        transition: 0.4s;
+      }
+
+      .floating-card:hover {
+        transform: translateY(-7px) scale(1.03);
+        border-color: var(--gold);
+        box-shadow: 0 12px 35px rgba(216, 170, 85, 0.15);
       }
 
       .floating-card strong {
@@ -232,7 +411,9 @@
         color: var(--muted);
       }
 
-      /* ---------- BUTTON ---------- */
+      /* =========================
+       BUTTONS
+    ========================== */
 
       .hero-buttons {
         display: flex;
@@ -248,6 +429,28 @@
         font-weight: 700;
         transition: 0.3s;
         display: inline-block;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.35),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .btn:hover::after {
+        left: 120%;
       }
 
       .btn-primary {
@@ -272,9 +475,12 @@
 
       .btn-outline:hover {
         background: rgba(216, 170, 85, 0.1);
+        transform: translateY(-3px);
       }
 
-      /* ---------- INFO CARDS ---------- */
+      /* =========================
+       STATS
+    ========================== */
 
       .stats {
         width: min(1180px, 92%);
@@ -290,32 +496,75 @@
         background: linear-gradient(145deg, #1c1812, #0e0d0b);
         border: 1px solid var(--border);
         border-radius: 14px;
-        transition: 0.3s;
+        transition: 0.4s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at center,
+          rgba(216, 170, 85, 0.12),
+          transparent 60%
+        );
+        opacity: 0;
+        transition: 0.4s;
       }
 
       .stat:hover {
-        transform: translateY(-5px);
+        transform: translateY(-8px) scale(1.02);
         border-color: var(--gold);
+      }
+
+      .stat:hover::before {
+        opacity: 1;
       }
 
       .stat .icon {
         font-size: 28px;
-        color: var(--gold);
         margin-bottom: 8px;
+        position: relative;
+        transition: 0.4s;
+      }
+
+      .stat:hover .icon {
+        transform: scale(1.25) rotate(5deg);
       }
 
       .stat h3 {
         font-size: 15px;
         color: #fff;
+        position: relative;
       }
 
       .stat p {
         color: var(--muted);
         font-size: 12px;
         margin-top: 5px;
+        position: relative;
       }
 
-      /* ---------- SECTIONS ---------- */
+      /* =========================
+       REVEAL
+    ========================== */
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(45px);
+        transition: 1s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* =========================
+       SECTIONS
+    ========================== */
 
       .section {
         width: min(1180px, 92%);
@@ -346,9 +595,17 @@
         height: 2px;
         background: var(--gold);
         margin: 13px auto;
+        transition: 0.5s;
       }
 
-      /* ---------- MODULES ---------- */
+      .section-title:hover h2::after {
+        width: 120px;
+        box-shadow: 0 0 15px rgba(216, 170, 85, 0.5);
+      }
+
+      /* =========================
+       MODULES
+    ========================== */
 
       .modules {
         display: grid;
@@ -364,13 +621,36 @@
         display: flex;
         align-items: center;
         gap: 18px;
-        transition: 0.3s;
+        transition: 0.4s;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .module::before {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(
+          circle,
+          rgba(216, 170, 85, 0.14),
+          transparent 70%
+        );
+        right: -60px;
+        top: -60px;
+        transition: 0.4s;
+      }
+
+      .module:hover::before {
+        width: 260px;
+        height: 260px;
       }
 
       .module:hover {
-        transform: translateX(-5px);
+        transform: translateX(-8px);
         border-color: var(--gold);
-        box-shadow: 0 10px 30px rgba(216, 170, 85, 0.06);
+        box-shadow: 0 10px 30px rgba(216, 170, 85, 0.08);
       }
 
       .number {
@@ -382,6 +662,22 @@
         place-items: center;
         color: var(--gold-light);
         font-weight: 800;
+        transition: 0.4s;
+        position: relative;
+        z-index: 2;
+      }
+
+      .module:hover .number {
+        background: var(--gold);
+        color: #17110a;
+        transform: rotate(-8deg);
+        box-shadow: 0 0 20px rgba(216, 170, 85, 0.3);
+      }
+
+      .module-content {
+        position: relative;
+        z-index: 2;
+        flex: 1;
       }
 
       .module h3 {
@@ -393,9 +689,38 @@
         color: var(--muted);
         font-size: 12px;
         margin-top: 5px;
+        line-height: 1.7;
       }
 
-      /* ---------- WHY ---------- */
+      .module-extra {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: 0.45s ease;
+        color: var(--gold-light);
+        font-size: 12px;
+        line-height: 1.8;
+      }
+
+      .module.open .module-extra {
+        max-height: 100px;
+        opacity: 1;
+        margin-top: 10px;
+      }
+
+      .module-arrow {
+        color: var(--gold);
+        font-size: 20px;
+        transition: 0.4s;
+      }
+
+      .module.open .module-arrow {
+        transform: rotate(180deg);
+      }
+
+      /* =========================
+       WHY
+    ========================== */
 
       .why {
         display: grid;
@@ -409,22 +734,48 @@
         border: 1px solid var(--border);
         border-radius: 15px;
         background: #11100e;
-        transition: 0.3s;
+        transition: 0.4s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .why-card::before {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: rgba(216, 170, 85, 0.06);
+        top: -100px;
+        left: -100px;
+        transition: 0.5s;
+      }
+
+      .why-card:hover::before {
+        transform: scale(2.2);
       }
 
       .why-card:hover {
         border-color: var(--gold);
-        transform: translateY(-5px);
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(216, 170, 85, 0.07);
       }
 
       .why-card .icon {
         font-size: 35px;
         margin-bottom: 15px;
+        transition: 0.4s;
+        position: relative;
+      }
+
+      .why-card:hover .icon {
+        transform: scale(1.2) rotate(-5deg);
       }
 
       .why-card h3 {
         color: var(--gold-light);
         font-size: 17px;
+        position: relative;
       }
 
       .why-card p {
@@ -432,9 +783,12 @@
         font-size: 13px;
         line-height: 1.8;
         margin-top: 8px;
+        position: relative;
       }
 
-      /* ---------- COURSE INFO ---------- */
+      /* =========================
+       COURSE INFO
+    ========================== */
 
       .course-box {
         display: grid;
@@ -447,6 +801,13 @@
         border-radius: 17px;
         padding: 30px;
         background: linear-gradient(145deg, #191612, #0b0a08);
+        transition: 0.4s;
+      }
+
+      .info-box:hover {
+        border-color: var(--gold);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(216, 170, 85, 0.06);
       }
 
       .info-box h3 {
@@ -463,6 +824,12 @@
         padding: 11px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         color: #ddd;
+        transition: 0.3s;
+      }
+
+      .info-box li:hover {
+        color: var(--gold-light);
+        padding-right: 8px;
       }
 
       .info-box li::before {
@@ -471,7 +838,9 @@
         margin-left: 10px;
       }
 
-      /* ---------- COURSE QUICK DETAILS ---------- */
+      /* =========================
+       QUICK DETAILS
+    ========================== */
 
       .quick-details {
         margin-top: 25px;
@@ -486,11 +855,22 @@
         border: 1px solid var(--border);
         border-radius: 14px;
         background: linear-gradient(145deg, #191612, #0d0c0a);
+        transition: 0.4s;
+      }
+
+      .quick-detail:hover {
+        transform: translateY(-6px);
+        border-color: var(--gold);
       }
 
       .quick-detail .detail-icon {
         font-size: 28px;
         margin-bottom: 7px;
+        transition: 0.4s;
+      }
+
+      .quick-detail:hover .detail-icon {
+        transform: scale(1.25);
       }
 
       .quick-detail strong {
@@ -506,7 +886,9 @@
         margin-top: 4px;
       }
 
-      /* ---------- PRICE ---------- */
+      /* =========================
+       PRICE
+    ========================== */
 
       .price-section {
         width: min(900px, 92%);
@@ -523,6 +905,13 @@
           ),
           #0d0b08;
         box-shadow: 0 0 60px rgba(216, 170, 85, 0.06);
+        transition: 0.4s;
+      }
+
+      .price-section:hover {
+        box-shadow:
+          0 0 70px rgba(216, 170, 85, 0.12),
+          inset 0 0 40px rgba(216, 170, 85, 0.04);
       }
 
       .price-section small {
@@ -535,6 +924,7 @@
         color: var(--gold-light);
         font-size: 52px;
         font-weight: 900;
+        text-shadow: 0 0 20px rgba(244, 213, 139, 0.15);
       }
 
       .price span {
@@ -542,7 +932,9 @@
         color: var(--muted);
       }
 
-      /* ---------- CONTACT ---------- */
+      /* =========================
+       CONTACT
+    ========================== */
 
       .contact-grid {
         display: grid;
@@ -561,11 +953,11 @@
         background: linear-gradient(145deg, #191612, #0d0c0a);
         border: 1px solid var(--border);
         border-radius: 16px;
-        transition: all 0.3s ease;
+        transition: 0.4s;
       }
 
       .contact-card:hover {
-        transform: translateY(-6px);
+        transform: translateY(-8px);
         border-color: var(--gold);
         box-shadow: 0 12px 35px rgba(216, 170, 85, 0.12);
       }
@@ -580,6 +972,12 @@
         border-radius: 14px;
         font-size: 28px;
         background: rgba(216, 170, 85, 0.08);
+        transition: 0.4s;
+      }
+
+      .contact-card:hover .contact-icon {
+        transform: rotate(-8deg) scale(1.08);
+        background: rgba(216, 170, 85, 0.16);
       }
 
       .contact-card h3 {
@@ -593,7 +991,9 @@
         font-size: 13px;
       }
 
-      /* ---------- FOOTER ---------- */
+      /* =========================
+       FOOTER
+    ========================== */
 
       footer {
         margin-top: 70px;
@@ -611,13 +1011,13 @@
 
       footer div {
         transition: 0.3s ease;
+        cursor: pointer;
       }
 
       footer div:hover {
         color: var(--gold-light);
+        transform: translateY(-2px);
       }
-
-      /* ---------- COPYRIGHT ---------- */
 
       .copyright {
         padding: 18px 20px;
@@ -628,21 +1028,24 @@
         font-size: 12px;
       }
 
-      /* ---------- ANIMATION ---------- */
+      /* =========================
+       ANIMATIONS
+    ========================== */
 
       @keyframes fadeUp {
         from {
           opacity: 0;
           transform: translateY(25px);
         }
-
         to {
           opacity: 1;
           transform: translateY(0);
         }
       }
 
-      /* ---------- RESPONSIVE ---------- */
+      /* =========================
+       MOBILE
+    ========================== */
 
       @media (max-width: 850px) {
         .hero {
@@ -651,7 +1054,7 @@
         }
 
         .hero-image {
-          min-height: 350px;
+          min-height: 380px;
         }
 
         .stats {
@@ -735,7 +1138,7 @@
         }
 
         .hero-image {
-          min-height: 300px;
+          min-height: 310px;
         }
 
         .hr-symbol {
@@ -825,10 +1228,25 @@
           font-size: 15px;
         }
       }
+
+      /* منع حركات مزعجة على الأجهزة التي تفضل تقليل الحركة */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
     </style>
   </head>
 
   <body>
+    <!-- PARTICLES -->
+    <div class="particles" id="particles"></div>
+
     <!-- HEADER -->
     <header class="topbar">
       <div class="brand">
@@ -850,7 +1268,10 @@
 
         <h1>HR<br />MASTER</h1>
 
-        <h2>إتقان <span>إدارة الموارد البشرية</span></h2>
+        <h2>
+          إتقان
+          <span>إدارة الموارد البشرية</span>
+        </h2>
 
         <p>
           دورة متقدمة وشاملة لصناعة قادة الموارد البشرية، تجمع بين الاستراتيجية
@@ -864,7 +1285,8 @@
         </div>
       </div>
 
-      <div class="hero-image">
+      <!-- INTERACTIVE HR -->
+      <div class="hero-image" id="heroInteractive">
         <div class="hr-symbol">
           <span>HR</span>
         </div>
@@ -878,25 +1300,25 @@
 
     <!-- STATS -->
     <section class="stats">
-      <div class="stat">
+      <div class="stat reveal">
         <div class="icon">🎯</div>
         <h3>تطوير استراتيجي</h3>
         <p>مهارات قيادة الموارد البشرية</p>
       </div>
 
-      <div class="stat">
+      <div class="stat reveal">
         <div class="icon">📊</div>
         <h3>HR Analytics</h3>
         <p>تحليل بيانات الموارد البشرية</p>
       </div>
 
-      <div class="stat">
+      <div class="stat reveal">
         <div class="icon">👥</div>
         <h3>قيادة الفرق</h3>
         <p>بناء فرق عالية الأداء</p>
       </div>
 
-      <div class="stat">
+      <div class="stat reveal">
         <div class="icon">🏆</div>
         <h3>شهادة معتمدة</h3>
         <p>من Coursyria</p>
@@ -904,7 +1326,7 @@
     </section>
 
     <!-- MODULES -->
-    <section class="section" id="modules">
+    <section class="section reveal" id="modules">
       <div class="section-title">
         <span>HR MASTER</span>
         <h2>محاور الدورة</h2>
@@ -913,88 +1335,138 @@
       <div class="modules">
         <div class="module">
           <div class="number">01</div>
-          <div>
+          <div class="module-content">
             <h3>قيادة الموارد البشرية</h3>
             <p>الاستراتيجية وتخطيط الموارد البشرية</p>
+            <div class="module-extra">
+              ستتعلم كيف تربط استراتيجية الموارد البشرية بأهداف المؤسسة وتبني
+              خططاً عملية لإدارة المواهب والكفاءات.
+            </div>
           </div>
+          <div class="module-arrow">⌄</div>
         </div>
 
         <div class="module">
           <div class="number">02</div>
-          <div>
+          <div class="module-content">
             <h3>استقطاب واختيار المواهب</h3>
             <p>بناء عمليات توظيف احترافية</p>
+            <div class="module-extra">
+              من تحليل الوظيفة إلى المقابلات والاختيار، مع بناء تجربة توظيف
+              احترافية تساعد المؤسسة على جذب الكفاءات المناسبة.
+            </div>
           </div>
+          <div class="module-arrow">⌄</div>
         </div>
 
         <div class="module">
           <div class="number">03</div>
-          <div>
+          <div class="module-content">
             <h3>إدارة الأداء</h3>
             <p>تقييم الأداء وتحقيق التميز</p>
+            <div class="module-extra">
+              فهم مؤشرات الأداء، التقييم المستمر، التغذية الراجعة، وربط أداء
+              الموظفين بالأهداف المؤسسية.
+            </div>
           </div>
+          <div class="module-arrow">⌄</div>
         </div>
 
         <div class="module">
           <div class="number">04</div>
-          <div>
+          <div class="module-content">
             <h3>التدريب والتطوير</h3>
             <p>تطوير الكفاءات والمهارات</p>
+            <div class="module-extra">
+              تصميم خطط تدريب وتطوير تساعد الموظفين على النمو وتحقيق احتياجات
+              المؤسسة المستقبلية.
+            </div>
           </div>
+          <div class="module-arrow">⌄</div>
         </div>
 
         <div class="module">
           <div class="number">05</div>
-          <div>
+          <div class="module-content">
             <h3>نظم التعويضات والمزايا</h3>
             <p>تصميم أنظمة المكافآت الاستراتيجية</p>
+            <div class="module-extra">
+              التعرف على أساليب بناء أنظمة عادلة للمكافآت والحوافز والمزايا
+              وربطها بالأداء.
+            </div>
           </div>
+          <div class="module-arrow">⌄</div>
         </div>
 
         <div class="module">
           <div class="number">06</div>
-          <div>
+          <div class="module-content">
             <h3>تحليل بيانات الموارد البشرية</h3>
             <p>HR Analytics واتخاذ القرارات</p>
+            <div class="module-extra">
+              استخدام البيانات والمؤشرات لفهم القوى العاملة ودعم القرارات
+              الإدارية بطريقة أكثر دقة.
+            </div>
           </div>
+          <div class="module-arrow">⌄</div>
         </div>
 
         <div class="module">
           <div class="number">07</div>
-          <div>
+          <div class="module-content">
             <h3>إدارة الثقافة والتغيير</h3>
             <p>بناء ثقافة مؤسسية قوية</p>
+            <div class="module-extra">
+              فهم الثقافة المؤسسية وإدارة التغيير ومساعدة الفرق على التكيف مع
+              التحولات داخل بيئة العمل.
+            </div>
           </div>
+          <div class="module-arrow">⌄</div>
         </div>
 
         <div class="module">
           <div class="number">08</div>
-          <div>
+          <div class="module-content">
             <h3>العلاقات العمالية</h3>
             <p>إدارة العلاقات واللوائح التنظيمية</p>
+            <div class="module-extra">
+              بناء علاقات مهنية صحية وإدارة التواصل والسياسات الداخلية بطريقة
+              منظمة واحترافية.
+            </div>
           </div>
+          <div class="module-arrow">⌄</div>
         </div>
 
         <div class="module">
           <div class="number">09</div>
-          <div>
+          <div class="module-content">
             <h3>إدارة الامتثال والحوكمة</h3>
             <p>القوانين والسياسات المهنية</p>
+            <div class="module-extra">
+              التعرف على أهمية السياسات والحوكمة والامتثال داخل بيئة الموارد
+              البشرية.
+            </div>
           </div>
+          <div class="module-arrow">⌄</div>
         </div>
 
         <div class="module">
           <div class="number">10</div>
-          <div>
+          <div class="module-content">
             <h3>قيادة الموارد البشرية الاستراتيجية</h3>
             <p>تحويل HR إلى شريك استراتيجي</p>
+            <div class="module-extra">
+              الانتقال من الدور الإداري التقليدي إلى دور استراتيجي يساهم مباشرة
+              في نمو المؤسسة ونجاحها.
+            </div>
           </div>
+          <div class="module-arrow">⌄</div>
         </div>
       </div>
     </section>
 
     <!-- WHY -->
-    <section class="section">
+    <section class="section reveal">
       <div class="section-title">
         <span>WHY HR MASTER?</span>
         <h2>لماذا هذه الدورة؟</h2>
@@ -1043,7 +1515,7 @@
     </section>
 
     <!-- COURSE INFORMATION -->
-    <section class="section">
+    <section class="section reveal">
       <div class="section-title">
         <span>COURSE DETAILS</span>
         <h2>تفاصيل الدورة</h2>
@@ -1081,7 +1553,6 @@
         </div>
       </div>
 
-      <!-- COURSE QUICK DETAILS -->
       <div class="quick-details">
         <div class="quick-detail">
           <div class="detail-icon">📅</div>
@@ -1098,8 +1569,8 @@
     </section>
 
     <!-- PRICE -->
-    <section class="price-section" id="price">
-      <small>استثمر في مهاراتك ومستقبلك المهني</small>
+    <section class="price-section reveal" id="price">
+      <small> استثمر في مهاراتك ومستقبلك المهني </small>
 
       <div class="price">
         2,300
@@ -1110,9 +1581,11 @@
     </section>
 
     <!-- CONTACT -->
-
-    <section class="section">
-      <h2 class="section-title">📞 معلومات التواصل</h2>
+    <section class="section reveal">
+      <div class="section-title">
+        <span>CONTACT</span>
+        <h2>📞 معلومات التواصل</h2>
+      </div>
 
       <div class="contact-grid">
         <a
@@ -1146,15 +1619,145 @@
     </section>
 
     <!-- FOOTER -->
-
     <footer>
       <div>✈ Coursyria_team</div>
       <div>🌐 coursyria.com</div>
       <div>📸 coursyria.team</div>
     </footer>
 
-    <!-- COPYRIGHT -->
-
     <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
+
+    <script>
+      /* =========================
+       PARTICLES
+    ========================== */
+
+      const particles = document.getElementById("particles");
+
+      for (let i = 0; i < 35; i++) {
+        const particle = document.createElement("div");
+
+        particle.className = "particle";
+
+        particle.style.left = Math.random() * 100 + "%";
+        particle.style.animationDuration = 8 + Math.random() * 15 + "s";
+
+        particle.style.animationDelay = Math.random() * 10 + "s";
+
+        particle.style.opacity = 0.1 + Math.random() * 0.4;
+
+        particles.appendChild(particle);
+      }
+
+      /* =========================
+       MOUSE LIGHT
+    ========================== */
+
+      document.addEventListener("mousemove", (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+
+        document.documentElement.style.setProperty("--mouse-x", x + "%");
+
+        document.documentElement.style.setProperty("--mouse-y", y + "%");
+      });
+
+      /* =========================
+       HERO 3D TILT
+    ========================== */
+
+      const hero = document.getElementById("heroInteractive");
+
+      hero.addEventListener("mousemove", (e) => {
+        if (window.innerWidth <= 850) return;
+
+        const rect = hero.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const rotateY = (x / rect.width - 0.5) * 8;
+
+        const rotateX = (y / rect.height - 0.5) * -8;
+
+        hero.style.transform = `perspective(900px)
+         rotateX(${rotateX}deg)
+         rotateY(${rotateY}deg)
+         scale(1.01)`;
+
+        hero.style.setProperty("--hero-x", x + "px");
+
+        hero.style.setProperty("--hero-y", y + "px");
+      });
+
+      hero.addEventListener("mouseleave", () => {
+        hero.style.transform =
+          "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
+
+        hero.style.setProperty("--hero-x", "50%");
+        hero.style.setProperty("--hero-y", "50%");
+      });
+
+      /* =========================
+       MODULE ACCORDION
+    ========================== */
+
+      document.querySelectorAll(".module").forEach((module) => {
+        module.addEventListener("click", () => {
+          const isOpen = module.classList.contains("open");
+
+          document
+            .querySelectorAll(".module")
+            .forEach((item) => item.classList.remove("open"));
+
+          if (!isOpen) {
+            module.classList.add("open");
+          }
+        });
+      });
+
+      /* =========================
+       SCROLL REVEAL
+    ========================== */
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+        },
+      );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      /* =========================
+       SMOOTH BUTTON FEEDBACK
+    ========================== */
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", function (e) {
+          const target = document.querySelector(this.getAttribute("href"));
+
+          if (target) {
+            e.preventDefault();
+
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
+```
