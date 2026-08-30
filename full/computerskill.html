@@ -127,13 +127,17 @@
       ========================================================= */
 
       header {
-        min-height: 500px;
+        min-height: 570px;
 
         padding: 55px;
 
         display: grid;
 
-        grid-template-columns: 1fr 1.5fr;
+        /*
+          النص على اليسار
+          اللابتوب على اليمين
+        */
+        grid-template-columns: 1fr 1.25fr;
 
         align-items: center;
 
@@ -148,8 +152,8 @@
         background:
           radial-gradient(
             circle at 78% 50%,
-            rgba(39, 216, 255, 0.12),
-            transparent 28%
+            rgba(39, 216, 255, 0.15),
+            transparent 32%
           ),
           linear-gradient(135deg, #06101a, #081722 55%, #07121c);
       }
@@ -172,100 +176,8 @@
         box-shadow:
           0 0 0 45px rgba(39, 216, 255, 0.025),
           0 0 0 90px rgba(39, 216, 255, 0.018);
-      }
 
-      /* =========================================================
-         BRAND
-      ========================================================= */
-
-      .brand {
-        position: relative;
-        z-index: 2;
-      }
-
-      .logo {
-        width: 150px;
-        height: 105px;
-
-        border: 2px solid var(--cyan);
-
-        border-radius: 12px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        font-size: 62px;
-
-        font-weight: 900;
-
-        color: var(--cyan);
-
-        position: relative;
-
-        margin-bottom: 25px;
-
-        background: #06131e;
-
-        box-shadow:
-          0 0 28px rgba(39, 216, 255, 0.15),
-          inset 0 0 25px rgba(39, 216, 255, 0.06);
-      }
-
-      .logo::before {
-        content: "";
-
-        position: absolute;
-
-        width: 178px;
-        height: 8px;
-
-        bottom: -13px;
-        left: 50%;
-
-        transform: translateX(-50%);
-
-        background: var(--cyan);
-
-        border-radius: 10px;
-
-        box-shadow: 0 0 12px rgba(39, 216, 255, 0.5);
-      }
-
-      .logo::after {
-        content: "";
-
-        position: absolute;
-
-        width: 60px;
-        height: 7px;
-
-        bottom: -22px;
-        left: 50%;
-
-        transform: translateX(-50%);
-
-        border-radius: 8px;
-
-        background: #16475c;
-      }
-
-      .brand h3 {
-        color: var(--cyan2);
-
-        letter-spacing: 5px;
-
-        font-size: 27px;
-
-        margin-top: 32px;
-      }
-
-      .brand small {
-        color: #7594a5;
-
-        letter-spacing: 3px;
+        pointer-events: none;
       }
 
       /* =========================================================
@@ -275,9 +187,11 @@
       .title {
         position: relative;
 
-        z-index: 2;
+        z-index: 5;
 
         min-width: 0;
+
+        direction: rtl;
       }
 
       .badge {
@@ -310,6 +224,19 @@
         font-size: 9px;
 
         text-shadow: 0 0 10px var(--green);
+
+        animation: liveDot 1.2s infinite;
+      }
+
+      @keyframes liveDot {
+        0%,
+        100% {
+          opacity: 1;
+        }
+
+        50% {
+          opacity: 0.3;
+        }
       }
 
       .title h1 {
@@ -326,10 +253,18 @@
         text-shadow: 0 0 25px rgba(39, 216, 255, 0.13);
 
         overflow-wrap: anywhere;
+
+        direction: ltr;
+
+        text-align: right;
       }
 
       .title h1 span {
         color: var(--cyan);
+
+        text-shadow:
+          0 0 10px rgba(39, 216, 255, 0.4),
+          0 0 25px rgba(39, 216, 255, 0.15);
       }
 
       .title h2 {
@@ -353,7 +288,436 @@
       }
 
       /* =========================================================
-         SECTION
+         LAPTOP AREA
+      ========================================================= */
+
+      .laptop-area {
+        position: relative;
+
+        z-index: 5;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        min-width: 0;
+
+        height: 100%;
+      }
+
+      /* =========================================================
+         LAPTOP
+      ========================================================= */
+
+      .laptop {
+        position: relative;
+
+        width: min(480px, 100%);
+
+        animation: laptopFloat 4s ease-in-out infinite;
+
+        filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.5))
+          drop-shadow(0 0 25px rgba(39, 216, 255, 0.08));
+      }
+
+      @keyframes laptopFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotateY(-2deg);
+        }
+
+        50% {
+          transform: translateY(-8px) rotateY(2deg);
+        }
+      }
+
+      /* =========================================================
+         SCREEN
+      ========================================================= */
+
+      .screen-frame {
+        position: relative;
+
+        width: 100%;
+
+        aspect-ratio: 16 / 10;
+
+        background: #172b38;
+
+        border: 9px solid #2b4657;
+
+        border-bottom-width: 12px;
+
+        border-radius: 15px 15px 8px 8px;
+
+        box-shadow:
+          inset 0 0 0 2px #0c1821,
+          0 0 0 1px rgba(39, 216, 255, 0.15),
+          0 0 35px rgba(39, 216, 255, 0.12);
+
+        overflow: hidden;
+      }
+
+      .screen-frame::before {
+        content: "";
+
+        position: absolute;
+
+        top: 7px;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        width: 6px;
+
+        height: 6px;
+
+        border-radius: 50%;
+
+        background: #526d7b;
+
+        z-index: 5;
+      }
+
+      /* =========================================================
+         SCREEN CONTENT
+      ========================================================= */
+
+      .screen {
+        position: absolute;
+
+        inset: 0;
+
+        overflow: hidden;
+
+        background:
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(39, 216, 255, 0.09),
+            transparent 55%
+          ),
+          #020b12;
+      }
+
+      .screen::before {
+        content: "";
+
+        position: absolute;
+
+        inset: 0;
+
+        background:
+          linear-gradient(rgba(39, 216, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(39, 216, 255, 0.035) 1px, transparent 1px);
+
+        background-size: 18px 18px;
+
+        pointer-events: none;
+      }
+
+      /* =========================================================
+         TERMINAL TOP BAR
+      ========================================================= */
+
+      .terminal-bar {
+        height: 25px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 6px;
+
+        padding: 0 9px;
+
+        background: #081822;
+
+        border-bottom: 1px solid rgba(39, 216, 255, 0.12);
+
+        direction: ltr;
+      }
+
+      .terminal-dot {
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        background: #31505d;
+      }
+
+      .terminal-name {
+        margin-left: auto;
+
+        margin-right: 5px;
+
+        color: #527888;
+
+        font-family: "Share Tech Mono", monospace;
+
+        font-size: 8px;
+      }
+
+      /* =========================================================
+         TYPING AREA
+      ========================================================= */
+
+      .typing-area {
+        position: absolute;
+
+        inset: 25px 0 0;
+
+        padding: 18px;
+
+        font-family: "Share Tech Mono", monospace;
+
+        font-size: clamp(10px, 1.15vw, 14px);
+
+        line-height: 1.8;
+
+        color: #8befff;
+
+        direction: ltr;
+
+        text-align: left;
+
+        overflow: hidden;
+      }
+
+      .typing-line {
+        min-height: 1.8em;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+      }
+
+      .prompt {
+        color: var(--green);
+
+        text-shadow: 0 0 8px rgba(82, 240, 177, 0.45);
+      }
+
+      .command {
+        color: #d9faff;
+      }
+
+      .success {
+        color: #55f0bd;
+
+        text-shadow: 0 0 7px rgba(82, 240, 177, 0.25);
+      }
+
+      .info {
+        color: #6bdcff;
+      }
+
+      .cursor {
+        display: inline-block;
+
+        width: 7px;
+
+        height: 1.1em;
+
+        margin-left: 3px;
+
+        vertical-align: -2px;
+
+        background: var(--cyan);
+
+        box-shadow: 0 0 9px rgba(39, 216, 255, 0.7);
+
+        animation: cursorBlink 0.7s infinite;
+      }
+
+      @keyframes cursorBlink {
+        0%,
+        45% {
+          opacity: 1;
+        }
+
+        46%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* =========================================================
+         LAPTOP BASE
+      ========================================================= */
+
+      .laptop-base {
+        position: relative;
+
+        width: 112%;
+
+        height: 27px;
+
+        margin-left: -6%;
+
+        background: linear-gradient(180deg, #405d6d, #263f4e);
+
+        border-radius: 0 0 22px 22px;
+
+        box-shadow:
+          0 7px 15px rgba(0, 0, 0, 0.45),
+          inset 0 2px 2px rgba(255, 255, 255, 0.08);
+      }
+
+      .laptop-base::before {
+        content: "";
+
+        position: absolute;
+
+        width: 25%;
+
+        height: 5px;
+
+        left: 50%;
+
+        top: 6px;
+
+        transform: translateX(-50%);
+
+        border-radius: 8px;
+
+        background: #1c3340;
+      }
+
+      .laptop-base::after {
+        content: "";
+
+        position: absolute;
+
+        width: 35%;
+
+        height: 4px;
+
+        left: 50%;
+
+        bottom: -5px;
+
+        transform: translateX(-50%);
+
+        border-radius: 0 0 10px 10px;
+
+        background: #17303d;
+      }
+
+      /* =========================================================
+         TYPING LIGHT
+      ========================================================= */
+
+      .typing-light {
+        position: absolute;
+
+        width: 170px;
+
+        height: 170px;
+
+        right: 15%;
+
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        border-radius: 50%;
+
+        background: radial-gradient(
+          circle,
+          rgba(39, 216, 255, 0.1),
+          transparent 68%
+        );
+
+        pointer-events: none;
+
+        animation: lightPulse 2.5s ease-in-out infinite;
+      }
+
+      @keyframes lightPulse {
+        0%,
+        100% {
+          opacity: 0.45;
+
+          transform: translateY(-50%) scale(0.9);
+        }
+
+        50% {
+          opacity: 1;
+
+          transform: translateY(-50%) scale(1.1);
+        }
+      }
+
+      /* =========================================================
+         FLOATING CODE PARTICLES
+      ========================================================= */
+
+      .code-particle {
+        position: absolute;
+
+        color: rgba(39, 216, 255, 0.5);
+
+        font-family: "Share Tech Mono", monospace;
+
+        font-size: 11px;
+
+        pointer-events: none;
+
+        animation: particleFloat 5s linear infinite;
+      }
+
+      .particle-1 {
+        right: 5%;
+        top: 10%;
+        animation-delay: 0s;
+      }
+
+      .particle-2 {
+        right: 3%;
+        bottom: 25%;
+        animation-delay: 1.5s;
+      }
+
+      .particle-3 {
+        left: 7%;
+        top: 20%;
+        animation-delay: 2.5s;
+      }
+
+      .particle-4 {
+        left: 4%;
+        bottom: 15%;
+        animation-delay: 3.5s;
+      }
+
+      @keyframes particleFloat {
+        0% {
+          opacity: 0;
+
+          transform: translateY(15px);
+        }
+
+        20% {
+          opacity: 0.8;
+        }
+
+        70% {
+          opacity: 0.5;
+        }
+
+        100% {
+          opacity: 0;
+
+          transform: translateY(-35px);
+        }
+      }
+
+      /* =========================================================
+         MODULES
       ========================================================= */
 
       .section {
@@ -392,10 +756,6 @@
       .section-title::after {
         background: linear-gradient(90deg, var(--cyan), transparent);
       }
-
-      /* =========================================================
-         MODULES
-      ========================================================= */
 
       .modules {
         display: grid;
@@ -842,11 +1202,23 @@
 
       @media (max-width: 1000px) {
         header {
-          grid-template-columns: 1fr 1.3fr;
+          grid-template-columns: 1fr 1fr;
 
           padding: 40px 30px;
 
-          gap: 35px;
+          gap: 30px;
+
+          min-height: 500px;
+        }
+
+        .laptop {
+          width: min(400px, 100%);
+        }
+
+        .typing-area {
+          font-size: 11px;
+
+          padding: 14px;
         }
 
         .modules {
@@ -884,23 +1256,60 @@
 
           text-align: center;
 
-          padding: 42px 20px;
+          padding: 32px 16px 42px;
 
-          gap: 35px;
+          gap: 28px;
 
           min-height: auto;
         }
 
-        .brand {
-          display: flex;
+        /*
+          اللابتوب يظهر أولاً على اليمين/وسط الواجهة
+          والنص تحته
+        */
 
-          flex-direction: column;
+        .laptop-area {
+          order: 1;
 
-          align-items: center;
+          width: 100%;
+
+          min-height: 260px;
+
+          justify-content: flex-end;
+
+          padding-right: 3%;
+        }
+
+        .title {
+          order: 2;
+        }
+
+        .laptop {
+          width: min(400px, 92vw);
+
+          margin-right: 0;
+        }
+
+        .typing-area {
+          font-size: 10px;
+
+          padding: 12px;
+
+          line-height: 1.7;
+        }
+
+        .terminal-bar {
+          height: 22px;
+        }
+
+        .typing-area {
+          inset: 22px 0 0;
         }
 
         .title h1 {
           font-size: clamp(42px, 12vw, 55px);
+
+          text-align: center;
         }
 
         .title h2 {
@@ -961,37 +1370,67 @@
 
       @media (max-width: 430px) {
         header {
-          padding: 35px 14px;
+          padding: 28px 11px 38px;
         }
 
-        .logo {
-          width: 135px;
+        .laptop-area {
+          min-height: 220px;
 
-          height: 95px;
-
-          font-size: 52px;
+          padding-right: 0;
         }
 
-        .logo::before {
-          width: 155px;
+        .laptop {
+          width: 96vw;
+
+          max-width: 350px;
         }
 
-        .brand h3 {
-          font-size: 23px;
+        .screen-frame {
+          border-width: 7px;
 
-          letter-spacing: 3px;
+          border-bottom-width: 9px;
+
+          border-radius: 11px 11px 6px 6px;
         }
 
-        .brand small {
-          font-size: 10px;
+        .typing-area {
+          font-size: 8px;
 
-          letter-spacing: 2px;
+          padding: 9px;
+
+          line-height: 1.7;
         }
 
-        .badge {
-          font-size: 12px;
+        .terminal-bar {
+          height: 19px;
 
-          padding: 7px 14px;
+          padding: 0 6px;
+        }
+
+        .terminal-dot {
+          width: 5px;
+
+          height: 5px;
+        }
+
+        .terminal-name {
+          font-size: 6px;
+        }
+
+        .typing-area {
+          inset: 19px 0 0;
+        }
+
+        .laptop-base {
+          height: 21px;
+
+          border-radius: 0 0 15px 15px;
+        }
+
+        .typing-light {
+          width: 120px;
+
+          height: 120px;
         }
 
         .title h1 {
@@ -1135,9 +1574,25 @@
         }
 
         header {
-          padding-left: 10px;
+          padding-left: 8px;
 
-          padding-right: 10px;
+          padding-right: 8px;
+        }
+
+        .laptop-area {
+          min-height: 195px;
+        }
+
+        .laptop {
+          width: 98vw;
+
+          max-width: 310px;
+        }
+
+        .typing-area {
+          font-size: 7px;
+
+          padding: 8px;
         }
 
         .title h1 {
@@ -1209,6 +1664,19 @@
           transform: none;
         }
       }
+
+      /* =========================================================
+         REDUCED MOTION
+      ========================================================= */
+
+      @media (prefers-reduced-motion: reduce) {
+        .laptop,
+        .typing-light,
+        .badge::before,
+        .cursor {
+          animation: none;
+        }
+      }
     </style>
   </head>
 
@@ -1219,13 +1687,9 @@
       ====================================================== -->
 
       <header>
-        <div class="brand">
-          <div class="logo">⌘</div>
-
-          <h3>COURSYRIA</h3>
-
-          <small>LEARN • GROW • LEAD</small>
-        </div>
+        <!-- ===================================================
+             TEXT
+        ==================================================== -->
 
         <div class="title">
           <div class="badge">دورة احترافية</div>
@@ -1241,6 +1705,68 @@
             دورة عملية شاملة تعلمك أهم مهارات استخدام الكمبيوتر، إدارة النظام
             بكفاءة، حماية بياناتك، وصيانة جهازك وحل المشكلات اليومية باحتراف.
           </p>
+        </div>
+
+        <!-- ===================================================
+             LAPTOP
+        ==================================================== -->
+
+        <div class="laptop-area">
+          <div class="laptop">
+            <div class="typing-light"></div>
+
+            <div class="code-particle particle-1">&lt;/&gt;</div>
+
+            <div class="code-particle particle-2">0101</div>
+
+            <div class="code-particle particle-3">CMD</div>
+
+            <div class="code-particle particle-4">{ }</div>
+
+            <div class="screen-frame">
+              <div class="screen">
+                <div class="terminal-bar">
+                  <div class="terminal-dot"></div>
+                  <div class="terminal-dot"></div>
+                  <div class="terminal-dot"></div>
+
+                  <div class="terminal-name">computer_skills.exe</div>
+                </div>
+
+                <div class="typing-area">
+                  <div class="typing-line">
+                    <span class="prompt">C:\Users\Student&gt;</span>
+                    <span class="command" id="line1"></span>
+                  </div>
+
+                  <div class="typing-line">
+                    <span class="success" id="line2"></span>
+                  </div>
+
+                  <div class="typing-line">
+                    <span class="prompt">C:\Skills&gt;</span>
+                    <span class="command" id="line3"></span>
+                  </div>
+
+                  <div class="typing-line">
+                    <span class="info" id="line4"></span>
+                  </div>
+
+                  <div class="typing-line">
+                    <span class="success" id="line5"></span>
+                  </div>
+
+                  <div class="typing-line">
+                    <span class="prompt">C:\Skills&gt;</span>
+                    <span class="command" id="line6"></span>
+                    <span class="cursor"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="laptop-base"></div>
+          </div>
         </div>
       </header>
 
@@ -1445,13 +1971,11 @@
       <div class="course-info">
         <div class="info-box">
           <small>مدة الدورة</small>
-
           <strong>شهر واحد</strong>
         </div>
 
         <div class="info-box">
           <small>عدد الجلسات</small>
-
           <strong>7 جلسات</strong>
         </div>
       </div>
@@ -1526,6 +2050,79 @@
 
       <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
     </div>
+
+    <!-- =======================================================
+         TYPING SCRIPT
+    ======================================================== -->
+
+    <script>
+      const lines = [
+        {
+          id: "line1",
+          text: "systeminfo",
+        },
+        {
+          id: "line2",
+          text: "✓ System Skills loaded successfully...",
+        },
+        {
+          id: "line3",
+          text: "learn-computer-skills",
+        },
+        {
+          id: "line4",
+          text: "→ Managing files...",
+        },
+        {
+          id: "line5",
+          text: "✓ Productivity increased by 100%",
+        },
+        {
+          id: "line6",
+          text: "start-learning",
+        },
+      ];
+
+      const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+      async function typeText(element, text, speed = 55) {
+        element.textContent = "";
+
+        for (let i = 0; i < text.length; i++) {
+          element.textContent += text[i];
+
+          await sleep(speed + Math.random() * 35);
+        }
+      }
+
+      async function runTyping() {
+        while (true) {
+          for (const item of lines) {
+            const element = document.getElementById(item.id);
+
+            if (!element) continue;
+
+            await typeText(element, item.text, item.id === "line6" ? 75 : 35);
+
+            await sleep(500);
+          }
+
+          await sleep(1600);
+
+          for (const item of lines) {
+            const element = document.getElementById(item.id);
+
+            if (element) {
+              element.textContent = "";
+            }
+          }
+
+          await sleep(500);
+        }
+      }
+
+      runTyping();
+    </script>
   </body>
 </html>
 ```
