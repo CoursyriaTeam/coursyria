@@ -13,10 +13,6 @@
     />
 
     <style>
-      /* =====================================================
-   ROOT
-===================================================== */
-
       :root {
         --bg: #020d1c;
         --bg2: #06182b;
@@ -30,10 +26,6 @@
         --white: #f5f9ff;
         --muted: #b7c7d5;
       }
-
-      /* =====================================================
-   RESET
-===================================================== */
 
       * {
         margin: 0;
@@ -64,10 +56,6 @@
         overflow-x: hidden;
       }
 
-      /* =====================================================
-   MAIN PAGE
-===================================================== */
-
       .page {
         width: 100%;
         max-width: 1200px;
@@ -77,8 +65,8 @@
       }
 
       /* =====================================================
-   HERO
-===================================================== */
+       HERO
+    ===================================================== */
 
       .hero {
         min-height: 650px;
@@ -116,6 +104,8 @@
         box-shadow:
           0 0 50px rgba(0, 255, 220, 0.08),
           inset 0 0 50px rgba(0, 255, 220, 0.05);
+
+        animation: heroRing 8s ease-in-out infinite;
       }
 
       .hero::after {
@@ -139,11 +129,39 @@
         transform: rotate(-10deg);
 
         opacity: 0.5;
+
+        animation: scanLine 4s ease-in-out infinite;
+      }
+
+      @keyframes heroRing {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 0.7;
+        }
+
+        50% {
+          transform: scale(1.08) rotate(8deg);
+          opacity: 1;
+        }
+      }
+
+      @keyframes scanLine {
+        0%,
+        100% {
+          opacity: 0.15;
+          transform: translateX(0) rotate(-10deg);
+        }
+
+        50% {
+          opacity: 0.6;
+          transform: translateX(-70px) rotate(-10deg);
+        }
       }
 
       /* =====================================================
-   TOP
-===================================================== */
+       TOP
+    ===================================================== */
 
       .top {
         display: flex;
@@ -178,6 +196,21 @@
         font-weight: 900;
 
         box-shadow: 0 0 20px rgba(100, 255, 50, 0.35);
+
+        animation: logoPulse 3s ease-in-out infinite;
+      }
+
+      @keyframes logoPulse {
+        0%,
+        100% {
+          transform: translateY(0);
+          box-shadow: 0 0 20px rgba(100, 255, 50, 0.35);
+        }
+
+        50% {
+          transform: translateY(-4px);
+          box-shadow: 0 0 30px rgba(100, 255, 50, 0.55);
+        }
       }
 
       .brand-text {
@@ -209,11 +242,24 @@
         font-size: 14px;
 
         box-shadow: 0 0 20px rgba(170, 255, 24, 0.18);
+
+        animation: badgeFloat 3s ease-in-out infinite;
+      }
+
+      @keyframes badgeFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-4px);
+        }
       }
 
       /* =====================================================
-   HERO CONTENT
-===================================================== */
+       HERO CONTENT
+    ===================================================== */
 
       .hero-content {
         position: relative;
@@ -259,6 +305,7 @@
         background: linear-gradient(90deg, var(--green), var(--cyan));
 
         background-clip: text;
+        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
@@ -280,14 +327,39 @@
       }
 
       /* =====================================================
-   LAPTOP
-===================================================== */
+       LAPTOP - INTERACTIVE
+    ===================================================== */
+
+      .laptop-wrap {
+        position: absolute;
+
+        left: 35px;
+        bottom: 55px;
+
+        width: 365px;
+        height: 245px;
+
+        z-index: 4;
+
+        animation: laptopFloat 4s ease-in-out infinite;
+      }
+
+      @keyframes laptopFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+          transform: translateY(-8px) rotate(-0.5deg);
+        }
+      }
 
       .laptop {
         position: absolute;
 
-        left: 55px;
-        bottom: 70px;
+        left: 15px;
+        top: 0;
 
         width: 330px;
         height: 190px;
@@ -310,6 +382,26 @@
           inset 0 0 30px rgba(0, 220, 255, 0.08);
 
         transform: perspective(500px) rotateY(8deg);
+
+        overflow: hidden;
+      }
+
+      /* شاشة مضيئة */
+
+      .laptop::before {
+        content: "";
+
+        position: absolute;
+
+        inset: 5px;
+
+        border-radius: 5px;
+
+        border: 1px solid rgba(0, 230, 208, 0.22);
+
+        pointer-events: none;
+
+        box-shadow: inset 0 0 18px rgba(0, 230, 208, 0.08);
       }
 
       .laptop::after {
@@ -331,25 +423,381 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
       }
 
-      .screen-code {
-        padding: 22px;
+      /* انعكاس متحرك على الشاشة */
 
-        font-family: monospace;
+      .screen-glare {
+        position: absolute;
 
-        color: var(--cyan);
+        top: 0;
+        left: -80px;
 
-        line-height: 1.7;
+        width: 55px;
+        height: 100%;
 
-        font-size: 12px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 255, 220, 0.16),
+          transparent
+        );
+
+        transform: skewX(-15deg);
+
+        animation: screenGlare 4s linear infinite;
+
+        pointer-events: none;
+
+        z-index: 4;
       }
 
-      .screen-code span {
-        color: var(--green);
+      @keyframes screenGlare {
+        0% {
+          left: -90px;
+        }
+
+        55%,
+        100% {
+          left: 380px;
+        }
       }
 
       /* =====================================================
-   FEATURES
-===================================================== */
+       TERMINAL SCREEN
+    ===================================================== */
+
+      .screen-code {
+        position: relative;
+
+        padding: 19px 20px;
+
+        height: 100%;
+
+        font-family: "Courier New", monospace;
+
+        color: var(--cyan);
+
+        line-height: 1.65;
+
+        font-size: 11px;
+
+        direction: ltr;
+
+        text-align: left;
+
+        overflow: hidden;
+
+        z-index: 2;
+      }
+
+      .terminal-top {
+        display: flex;
+
+        align-items: center;
+
+        gap: 5px;
+
+        margin-bottom: 10px;
+
+        opacity: 0.8;
+      }
+
+      .terminal-dot {
+        width: 6px;
+        height: 6px;
+
+        border-radius: 50%;
+
+        background: var(--cyan);
+
+        box-shadow: 0 0 7px var(--cyan);
+      }
+
+      .terminal-title {
+        margin-left: auto;
+
+        font-size: 8px;
+
+        color: #698a9d;
+
+        letter-spacing: 1px;
+      }
+
+      .code-line {
+        white-space: nowrap;
+
+        opacity: 0;
+
+        transform: translateX(-8px);
+
+        animation: codeAppear 0.4s forwards;
+      }
+
+      .code-line:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+
+      .code-line:nth-child(3) {
+        animation-delay: 0.8s;
+      }
+
+      .code-line:nth-child(4) {
+        animation-delay: 1.2s;
+      }
+
+      .code-line:nth-child(5) {
+        animation-delay: 1.6s;
+      }
+
+      .code-line:nth-child(6) {
+        animation-delay: 2s;
+      }
+
+      .code-line:nth-child(7) {
+        animation-delay: 2.4s;
+      }
+
+      @keyframes codeAppear {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .code-green {
+        color: var(--green);
+      }
+
+      .code-blue {
+        color: var(--blue);
+      }
+
+      .code-muted {
+        color: #7892a2;
+      }
+
+      /* مؤشر الكتابة */
+
+      .typing-cursor {
+        display: inline-block;
+
+        width: 6px;
+        height: 13px;
+
+        background: var(--green);
+
+        margin-left: 4px;
+
+        vertical-align: middle;
+
+        box-shadow: 0 0 8px rgba(170, 255, 24, 0.7);
+
+        animation: cursorBlink 0.7s infinite;
+      }
+
+      @keyframes cursorBlink {
+        0%,
+        45% {
+          opacity: 1;
+        }
+
+        46%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* =====================================================
+       KEYBOARD LIGHT
+    ===================================================== */
+
+      .keyboard {
+        position: absolute;
+
+        left: -5px;
+        bottom: 10px;
+
+        width: 355px;
+        height: 30px;
+
+        background: linear-gradient(180deg, #3b5262, #253947);
+
+        clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%);
+
+        border-radius: 3px;
+
+        padding: 5px 25px;
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 3px;
+
+        justify-content: center;
+
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .key {
+        width: 15px;
+        height: 7px;
+
+        border-radius: 2px;
+
+        background: #172b38;
+
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+
+        animation: keyPress 2.8s infinite;
+      }
+
+      .key:nth-child(2n) {
+        animation-delay: 0.15s;
+      }
+
+      .key:nth-child(3n) {
+        animation-delay: 0.3s;
+      }
+
+      .key:nth-child(4n) {
+        animation-delay: 0.45s;
+      }
+
+      @keyframes keyPress {
+        0%,
+        80%,
+        100% {
+          background: #172b38;
+
+          box-shadow: 0 0 0 rgba(170, 255, 24, 0);
+        }
+
+        84% {
+          background: var(--green);
+
+          box-shadow: 0 0 8px rgba(170, 255, 24, 0.65);
+
+          transform: translateY(1px);
+        }
+      }
+
+      /* =====================================================
+       TYPING HANDS - تأثير بصري بسيط
+    ===================================================== */
+
+      .typing-hands {
+        position: absolute;
+
+        left: 105px;
+        bottom: -2px;
+
+        width: 190px;
+        height: 55px;
+
+        pointer-events: none;
+
+        z-index: 8;
+      }
+
+      .hand {
+        position: absolute;
+
+        width: 55px;
+        height: 23px;
+
+        background: #172b38;
+
+        border-radius: 20px 20px 8px 8px;
+
+        opacity: 0.85;
+
+        box-shadow: 0 0 12px rgba(0, 230, 208, 0.08);
+      }
+
+      .hand.left-hand {
+        left: 20px;
+        transform: rotate(8deg);
+
+        animation: handTypeLeft 0.8s infinite alternate;
+      }
+
+      .hand.right-hand {
+        right: 20px;
+        transform: rotate(-8deg);
+
+        animation: handTypeRight 0.65s infinite alternate;
+      }
+
+      @keyframes handTypeLeft {
+        from {
+          transform: rotate(8deg) translateY(0);
+        }
+
+        to {
+          transform: rotate(8deg) translateY(5px);
+        }
+      }
+
+      @keyframes handTypeRight {
+        from {
+          transform: rotate(-8deg) translateY(4px);
+        }
+
+        to {
+          transform: rotate(-8deg) translateY(0);
+        }
+      }
+
+      /* مؤشر النشاط */
+
+      .typing-status {
+        position: absolute;
+
+        left: 24px;
+        top: 4px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 5px;
+
+        font-family: Arial, sans-serif;
+
+        font-size: 8px;
+
+        color: #7892a2;
+
+        direction: ltr;
+      }
+
+      .status-dot {
+        width: 5px;
+        height: 5px;
+
+        border-radius: 50%;
+
+        background: var(--green);
+
+        box-shadow: 0 0 7px var(--green);
+
+        animation: statusPulse 1s infinite;
+      }
+
+      @keyframes statusPulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+
+        50% {
+          opacity: 0.25;
+        }
+      }
+
+      /* =====================================================
+       FEATURES
+    ===================================================== */
 
       .features {
         margin: -5px 35px 0;
@@ -376,6 +824,7 @@
         padding: 20px 15px;
 
         display: flex;
+
         align-items: center;
 
         gap: 13px;
@@ -409,8 +858,8 @@
       }
 
       /* =====================================================
-   SECTIONS
-===================================================== */
+       SECTIONS
+    ===================================================== */
 
       .section {
         padding: 65px 35px;
@@ -440,8 +889,8 @@
       }
 
       /* =====================================================
-   MODULES
-===================================================== */
+       MODULES
+    ===================================================== */
 
       .modules {
         display: grid;
@@ -554,8 +1003,8 @@
       }
 
       /* =====================================================
-   INFO BOXES
-===================================================== */
+       INFO BOXES
+    ===================================================== */
 
       .two-columns {
         display: grid;
@@ -640,8 +1089,8 @@
       }
 
       /* =====================================================
-   COURSE DETAILS
-===================================================== */
+       COURSE DETAILS
+    ===================================================== */
 
       .course-details {
         display: grid;
@@ -698,8 +1147,8 @@
       }
 
       /* =====================================================
-   PRICE
-===================================================== */
+       PRICE
+    ===================================================== */
 
       .price-box {
         margin-top: 25px;
@@ -783,8 +1232,8 @@
       }
 
       /* =====================================================
-   START BUTTON
-===================================================== */
+       BUTTON
+    ===================================================== */
 
       .start-button {
         display: inline-flex;
@@ -823,8 +1272,8 @@
       }
 
       /* =====================================================
-   CONTACT
-===================================================== */
+       CONTACT
+    ===================================================== */
 
       .contact-grid {
         display: grid;
@@ -903,8 +1352,8 @@
       }
 
       /* =====================================================
-   CTA
-===================================================== */
+       CTA
+    ===================================================== */
 
       .cta {
         position: relative;
@@ -975,8 +1424,8 @@
       }
 
       /* =====================================================
-   FOOTER
-===================================================== */
+       FOOTER
+    ===================================================== */
 
       footer {
         padding: 25px;
@@ -1006,10 +1455,6 @@
         text-align: center;
       }
 
-      /* =====================================================
-   COPYRIGHT
-===================================================== */
-
       .copyright {
         padding: 15px 20px;
 
@@ -1033,8 +1478,8 @@
       }
 
       /* =====================================================
-   RESPONSIVE - TABLET
-===================================================== */
+       TABLET
+    ===================================================== */
 
       @media (max-width: 1000px) {
         .hero {
@@ -1045,22 +1490,25 @@
           grid-template-columns: repeat(3, 1fr);
         }
 
-        .laptop {
-          opacity: 0.35;
+        .laptop-wrap {
+          left: -25px;
 
-          left: -30px;
+          opacity: 0.45;
+
+          transform: scale(0.9);
+          transform-origin: bottom left;
         }
       }
 
       /* =====================================================
-   RESPONSIVE - MOBILE
-===================================================== */
+       MOBILE
+    ===================================================== */
 
       @media (max-width: 700px) {
         .hero {
           padding: 25px 20px 45px;
 
-          min-height: 620px;
+          min-height: 650px;
 
           text-align: center;
         }
@@ -1075,8 +1523,29 @@
           justify-content: center;
         }
 
+        .brand-text {
+          font-size: 24px;
+        }
+
+        .brand-small {
+          font-size: 8px;
+        }
+
+        .logo {
+          width: 54px;
+          height: 54px;
+
+          font-size: 25px;
+        }
+
+        .badge {
+          font-size: 12px;
+
+          padding: 8px 20px;
+        }
+
         .hero-content {
-          margin-top: 45px;
+          margin-top: 42px;
         }
 
         .hero h1 {
@@ -1087,20 +1556,87 @@
 
         .hero-sub {
           font-size: 17px;
+
+          line-height: 1.8;
+        }
+
+        /* =================================================
+         LAPTOP MOBILE
+      ================================================= */
+
+        .laptop-wrap {
+          left: 50%;
+
+          bottom: 22px;
+
+          width: 285px;
+          height: 190px;
+
+          transform: translateX(-50%) scale(0.82);
+
+          transform-origin: center bottom;
+
+          opacity: 1;
+
+          animation: mobileLaptopFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes mobileLaptopFloat {
+          0%,
+          100% {
+            transform: translateX(-50%) translateY(0) scale(0.82);
+          }
+
+          50% {
+            transform: translateX(-50%) translateY(-6px) scale(0.82);
+          }
         }
 
         .laptop {
-          width: 250px;
+          left: 0;
 
-          height: 145px;
+          width: 285px;
+          height: 165px;
 
-          left: 50%;
+          border-width: 7px;
+          border-bottom-width: 12px;
 
-          transform: translateX(-50%);
+          transform: perspective(500px) rotateY(5deg);
+        }
 
-          bottom: 35px;
+        .screen-code {
+          padding: 15px;
 
-          opacity: 0.18;
+          font-size: 9px;
+
+          line-height: 1.6;
+        }
+
+        .typing-status {
+          font-size: 7px;
+
+          left: 17px;
+        }
+
+        .typing-cursor {
+          width: 5px;
+          height: 10px;
+        }
+
+        .keyboard {
+          width: 305px;
+
+          left: -10px;
+
+          bottom: 7px;
+        }
+
+        .typing-hands {
+          left: 72px;
+
+          bottom: -1px;
+
+          transform: scale(0.82);
         }
 
         /* FEATURES */
@@ -1178,7 +1714,7 @@
           padding: 25px 20px;
         }
 
-        /* COURSE DETAILS */
+        /* DETAILS */
 
         .course-details {
           grid-template-columns: 1fr;
@@ -1212,16 +1748,41 @@
       }
 
       /* =====================================================
-   SMALL PHONES
-===================================================== */
+       SMALL PHONES
+    ===================================================== */
 
       @media (max-width: 420px) {
+        .hero {
+          min-height: 625px;
+        }
+
         .hero h1 {
           font-size: 39px;
         }
 
+        .hero-sub {
+          font-size: 15px;
+        }
+
         .badge {
-          font-size: 12px;
+          font-size: 11px;
+        }
+
+        .laptop-wrap {
+          bottom: 18px;
+
+          transform: translateX(-50%) scale(0.72);
+        }
+
+        @keyframes mobileLaptopFloat {
+          0%,
+          100% {
+            transform: translateX(-50%) translateY(0) scale(0.72);
+          }
+
+          50% {
+            transform: translateX(-50%) translateY(-5px) scale(0.72);
+          }
         }
 
         .features {
@@ -1270,14 +1831,48 @@
           font-size: 10px;
         }
       }
+
+      /* =====================================================
+       TOUCH DEVICES
+       نخلي التأثير شغال حتى بدون hover
+    ===================================================== */
+
+      @media (hover: none) and (pointer: coarse) {
+        .module:hover,
+        .detail-card:hover,
+        .contact-card:hover,
+        .start-button:hover {
+          transform: none;
+        }
+
+        .laptop-wrap {
+          animation-duration: 3.5s;
+        }
+
+        .key {
+          animation-duration: 2.2s;
+        }
+      }
+
+      /* تقليل الحركة إذا المستخدم فعّل Reduce Motion */
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
     </style>
   </head>
 
   <body>
     <div class="page">
       <!-- =====================================================
-     HERO
-===================================================== -->
+         HERO
+    ===================================================== -->
 
       <section class="hero">
         <div class="top">
@@ -1305,35 +1900,111 @@
 
           <p class="hero-sub">
             أتقن مهارات الحاسوب الأساسية
-
             <br />
-
             وطوّر قدراتك الرقمية
-
             <span> بثقة وكفاءة </span>
           </p>
         </div>
 
-        <div class="laptop">
-          <div class="screen-code">
-            <span>></span> System Skills<br />
+        <!-- =================================================
+           INTERACTIVE LAPTOP
+      ================================================= -->
 
-            <span>✓</span> إدارة الملفات<br />
+        <div class="laptop-wrap">
+          <div class="laptop">
+            <div class="screen-glare"></div>
 
-            <span>✓</span> إعدادات النظام<br />
+            <div class="typing-status">
+              <span class="status-dot"></span>
+              USER TYPING...
+            </div>
 
-            <span>✓</span> صيانة النظام<br />
+            <div class="screen-code">
+              <div class="terminal-top">
+                <span class="terminal-dot"></span>
+                <span class="terminal-dot"></span>
+                <span class="terminal-dot"></span>
 
-            <span>✓</span> سطر الأوامر<br />
+                <span class="terminal-title"> Coursyria_System </span>
+              </div>
 
-            <span>✓</span> الأمان والنسخ الاحتياطي
+              <div class="code-line">
+                <span class="code-green">></span>
+                System Skills
+                <span class="typing-cursor"></span>
+              </div>
+
+              <div class="code-line">
+                <span class="code-green">✓</span>
+                Managing Files
+              </div>
+
+              <div class="code-line">
+                <span class="code-green">✓</span>
+                System Settings
+              </div>
+
+              <div class="code-line">
+                <span class="code-blue">></span>
+                Cleaning System...
+              </div>
+
+              <div class="code-line">
+                <span class="code-green">✓</span>
+                Command Line
+              </div>
+
+              <div class="code-line">
+                <span class="code-green">✓</span>
+                Backup & Security
+              </div>
+
+              <div class="code-line">
+                <span class="code-muted"> _ </span>
+                <span class="typing-cursor"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Keyboard -->
+
+          <div class="keyboard">
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+            <span class="key"></span>
+          </div>
+
+          <!-- Hands -->
+
+          <div class="typing-hands">
+            <div class="hand left-hand"></div>
+
+            <div class="hand right-hand"></div>
           </div>
         </div>
       </section>
 
       <!-- =====================================================
-     FEATURES
-===================================================== -->
+         FEATURES
+    ===================================================== -->
 
       <section class="features">
         <div class="feature">
@@ -1341,7 +2012,6 @@
 
           <div>
             <h4>شهادة إنجاز</h4>
-
             <p>معتمدة</p>
           </div>
         </div>
@@ -1351,7 +2021,6 @@
 
           <div>
             <h4>مهارات مطلوبة</h4>
-
             <p>في سوق العمل</p>
           </div>
         </div>
@@ -1361,7 +2030,6 @@
 
           <div>
             <h4>تعلّم بسرعة</h4>
-
             <p>وبأسلوب سهل</p>
           </div>
         </div>
@@ -1371,19 +2039,18 @@
 
           <div>
             <h4>محتوى عملي</h4>
-
             <p>وتطبيقات واقعية</p>
           </div>
         </div>
       </section>
 
       <!-- =====================================================
-     COURSE INFORMATION
-===================================================== -->
+         COURSE INFORMATION
+    ===================================================== -->
 
       <section class="section">
         <div class="section-title">
-          <span> 📋 معلومات الدورة </span>
+          <span>📋 معلومات الدورة</span>
         </div>
 
         <div class="course-details">
@@ -1419,7 +2086,6 @@
 
           <div class="price">
             1500
-
             <span class="price-currency"> SP </span>
           </div>
 
@@ -1437,17 +2103,15 @@
       </section>
 
       <!-- =====================================================
-     COURSE MODULES
-===================================================== -->
+         COURSE MODULES
+    ===================================================== -->
 
       <section class="section">
         <div class="section-title">
-          <span> 📚 محاور الدورة </span>
+          <span>📚 محاور الدورة</span>
         </div>
 
         <div class="modules">
-          <!-- 01 -->
-
           <div class="module">
             <div class="module-icon">🛡️</div>
 
@@ -1455,16 +2119,11 @@
 
             <ul>
               <li>حماية النظام والبيانات</li>
-
               <li>إنشاء نسخ احتياطية</li>
-
               <li>استعادة الملفات</li>
-
               <li>الحفاظ على أمان جهازك</li>
             </ul>
           </div>
-
-          <!-- 02 -->
 
           <div class="module">
             <div class="module-icon">💻</div>
@@ -1473,16 +2132,11 @@
 
             <ul>
               <li>التنقل بين المجلدات</li>
-
               <li>عرض محتويات المجلد</li>
-
               <li>إدارة الملفات والأوامر</li>
-
               <li>أوامر مفيدة وعملية</li>
             </ul>
           </div>
-
-          <!-- 03 -->
 
           <div class="module">
             <div class="module-icon">🧹</div>
@@ -1491,16 +2145,11 @@
 
             <ul>
               <li>تفريغ مساحة القرص</li>
-
               <li>إدارة البرامج المثبتة</li>
-
               <li>تنظيف الملفات المؤقتة</li>
-
               <li>تحسين أداء النظام</li>
             </ul>
           </div>
-
-          <!-- 04 -->
 
           <div class="module">
             <div class="module-icon">⚙️</div>
@@ -1509,16 +2158,11 @@
 
             <ul>
               <li>ضبط إعدادات النظام</li>
-
               <li>إدارة المستخدمين</li>
-
               <li>تخصيص بيئة العمل</li>
-
               <li>خيارات الطاقة</li>
             </ul>
           </div>
-
-          <!-- 05 -->
 
           <div class="module">
             <div class="module-icon">📁</div>
@@ -1527,11 +2171,8 @@
 
             <ul>
               <li>إنشاء الملفات والمجلدات</li>
-
               <li>نسخ ونقل وحذف</li>
-
               <li>إعادة تسمية الملفات</li>
-
               <li>تنظيم الملفات بكفاءة</li>
             </ul>
           </div>
@@ -1539,8 +2180,8 @@
       </section>
 
       <!-- =====================================================
-     WHAT YOU WILL LEARN
-===================================================== -->
+         WHAT YOU WILL LEARN
+    ===================================================== -->
 
       <section class="section">
         <div class="two-columns">
@@ -1577,13 +2218,12 @@
       </section>
 
       <!-- =====================================================
-     CTA
-===================================================== -->
+         CTA
+    ===================================================== -->
 
       <section class="cta">
         <h2>
           طوّر مهاراتك وكن
-
           <span> أكثر إنتاجية كل يوم! </span>
         </h2>
 
@@ -1600,12 +2240,12 @@
       </section>
 
       <!-- =====================================================
-     CONTACT
-===================================================== -->
+         CONTACT
+    ===================================================== -->
 
       <section class="section">
         <div class="section-title">
-          <span> 📞 معلومات التواصل </span>
+          <span>📞 معلومات التواصل</span>
         </div>
 
         <div class="contact-grid">
@@ -1628,7 +2268,7 @@
             href="https://wa.me/963937015714"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-card contact-person-card"
+            class="contact-card"
           >
             <div class="contact-icon">💬</div>
 
@@ -1642,8 +2282,8 @@
       </section>
 
       <!-- =====================================================
-     FOOTER
-===================================================== -->
+         FOOTER
+    ===================================================== -->
 
       <footer>
         <div>✈ Coursyria_team</div>
@@ -1652,10 +2292,6 @@
 
         <div>📸 coursyria.team</div>
       </footer>
-
-      <!-- =====================================================
-     COPYRIGHT
-===================================================== -->
 
       <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
     </div>
