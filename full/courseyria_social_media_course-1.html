@@ -1,10 +1,12 @@
+```html
 <!doctype html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
 
     <title>منصات التواصل الاجتماعي | Coursyria</title>
@@ -42,6 +44,7 @@
           ),
           linear-gradient(135deg, #f8fbff, #eef5ff);
         color: #102b59;
+        -webkit-tap-highlight-color: transparent;
       }
 
       :root {
@@ -55,8 +58,8 @@
       }
 
       /* =====================================================
-         MAIN CONTAINER
-      ===================================================== */
+       MAIN CONTAINER
+    ===================================================== */
 
       .poster {
         width: min(1100px, 94%);
@@ -69,8 +72,8 @@
       }
 
       /* =====================================================
-         HEADER
-      ===================================================== */
+       HEADER
+    ===================================================== */
 
       .header {
         padding: 50px 55px 25px;
@@ -81,8 +84,8 @@
       }
 
       /* =====================================================
-         LOGO
-      ===================================================== */
+       LOGO
+    ===================================================== */
 
       .brand {
         text-align: center;
@@ -140,8 +143,8 @@
       }
 
       /* =====================================================
-         HERO TEXT
-      ===================================================== */
+       HERO TEXT
+    ===================================================== */
 
       .hero-copy {
         text-align: right;
@@ -193,8 +196,8 @@
       }
 
       /* =====================================================
-         HERO VISUAL
-      ===================================================== */
+       HERO VISUAL
+    ===================================================== */
 
       .hero-art {
         height: 300px;
@@ -203,7 +206,13 @@
         align-items: center;
         position: relative;
         width: 100%;
+        perspective: 900px;
       }
+
+      /*
+      الدائرة الخارجية:
+      تدور مع عقارب الساعة
+    */
 
       .social-orbit {
         width: 290px;
@@ -216,9 +225,21 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         box-shadow:
           0 0 0 18px rgba(23, 105, 224, 0.025),
           0 0 0 38px rgba(23, 105, 224, 0.02);
+
+        /*
+        دوران مع عقارب الساعة
+      */
+        animation: orbitClockwise 14s linear infinite;
+
+        transform-style: preserve-3d;
+
+        transition:
+          transform 0.25s ease-out,
+          box-shadow 0.3s ease;
       }
 
       .social-orbit::before {
@@ -229,6 +250,28 @@
         border: 1px dashed #b8d0f4;
         border-radius: 50%;
       }
+
+      /*
+      حلقة ضوء إضافية
+    */
+
+      .social-orbit::after {
+        content: "";
+        position: absolute;
+        width: 245px;
+        height: 245px;
+        border-radius: 50%;
+        border: 1px solid rgba(23, 105, 224, 0.12);
+        box-shadow:
+          0 0 18px rgba(23, 105, 224, 0.08),
+          inset 0 0 18px rgba(23, 105, 224, 0.05);
+        pointer-events: none;
+      }
+
+      /*
+      حرف S
+      يدور عكس عقارب الساعة
+    */
 
       .social-center {
         width: 135px;
@@ -241,13 +284,45 @@
         align-items: center;
         font-size: 58px;
         font-weight: 900;
+
         box-shadow:
           0 20px 35px rgba(23, 105, 224, 0.28),
           inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
         position: relative;
         z-index: 3;
-        transform: rotate(-6deg);
+
+        /*
+        عكس اتجاه عقارب الساعة
+      */
+        animation: sCounterClockwise 5s linear infinite;
+
+        transform-style: preserve-3d;
+
+        text-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+
+        transition:
+          box-shadow 0.3s ease,
+          scale 0.3s ease;
       }
+
+      /*
+      توهج خلف حرف S
+    */
+
+      .social-center::before {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border-radius: 42px;
+        border: 1px solid rgba(23, 105, 224, 0.18);
+        animation: centerPulse 2.4s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      /*
+      المربعات
+    */
 
       .social-icon {
         position: absolute;
@@ -256,12 +331,49 @@
         border-radius: 17px;
         background: white;
         border: 1px solid #d7e5f8;
+
         display: flex;
         justify-content: center;
         align-items: center;
+
         font-size: 25px;
+
         box-shadow: 0 10px 22px rgba(24, 75, 145, 0.12);
+
         z-index: 5;
+
+        /*
+        المربعات تتحرك مع دوران الدائرة
+      */
+        transform-origin: center;
+
+        transition:
+          box-shadow 0.3s ease,
+          scale 0.3s ease;
+      }
+
+      /*
+      لمعان صغير على المربعات
+    */
+
+      .social-icon::before {
+        content: "";
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #8ab6f5;
+        top: 6px;
+        right: 7px;
+        opacity: 0.75;
+        box-shadow: 0 0 8px rgba(23, 105, 224, 0.4);
+      }
+
+      .social-icon:hover {
+        scale: 1.12;
+        box-shadow:
+          0 15px 30px rgba(23, 105, 224, 0.22),
+          0 0 15px rgba(23, 105, 224, 0.1);
       }
 
       .icon-one {
@@ -290,8 +402,45 @@
       }
 
       /* =====================================================
-         COURSE INFO
-      ===================================================== */
+       ANIMATIONS
+    ===================================================== */
+
+      @keyframes orbitClockwise {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes sCounterClockwise {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+
+      @keyframes centerPulse {
+        0%,
+        100% {
+          opacity: 0.25;
+          transform: scale(0.96);
+        }
+
+        50% {
+          opacity: 0.8;
+          transform: scale(1.04);
+        }
+      }
+
+      /* =====================================================
+       COURSE INFO
+    ===================================================== */
 
       .course-info {
         width: min(850px, 92%);
@@ -309,11 +458,14 @@
         background: linear-gradient(145deg, #ffffff, #f1f7ff);
         border: 1px solid #d7e5f8;
         box-shadow: 0 12px 28px rgba(23, 105, 224, 0.09);
+
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 15px;
+
         padding: 18px;
+
         transition: 0.3s ease;
       }
 
@@ -341,10 +493,13 @@
         border-radius: 18px;
         background: linear-gradient(145deg, #1769e0, #0b43a7);
         color: white;
+
         display: flex;
         align-items: center;
         justify-content: center;
+
         font-size: 28px;
+
         box-shadow: 0 10px 20px rgba(23, 105, 224, 0.2);
       }
 
@@ -368,8 +523,8 @@
       }
 
       /* =====================================================
-         SECTIONS
-      ===================================================== */
+       SECTIONS
+    ===================================================== */
 
       .section {
         padding: 15px 55px 30px;
@@ -381,6 +536,7 @@
         font-size: 27px;
         font-weight: 900;
         margin: 18px 0 22px;
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -400,8 +556,8 @@
       }
 
       /* =====================================================
-         COURSE TOPICS
-      ===================================================== */
+       COURSE TOPICS
+    ===================================================== */
 
       .topics {
         display: grid;
@@ -444,9 +600,11 @@
         border-radius: 18px;
         background: #eef6ff;
         border: 2px solid #c9ddfa;
+
         display: flex;
         justify-content: center;
         align-items: center;
+
         font-size: 29px;
       }
 
@@ -466,14 +624,16 @@
       }
 
       /* =====================================================
-         WHY COURSE
-      ===================================================== */
+       WHY COURSE
+    ===================================================== */
 
       .why {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
+
         border: 1px solid var(--border);
         border-radius: 20px;
+
         background: #fbfdff;
         overflow: hidden;
       }
@@ -482,7 +642,9 @@
         min-height: 120px;
         padding: 16px 7px;
         text-align: center;
+
         border-left: 1px solid var(--border);
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -504,8 +666,8 @@
       }
 
       /* =====================================================
-         CONTACT
-      ===================================================== */
+       CONTACT
+    ===================================================== */
 
       .contact-grid {
         display: grid;
@@ -515,15 +677,21 @@
 
       .contact-card {
         position: relative;
+
         display: flex;
         align-items: center;
         gap: 17px;
+
         padding: 20px;
+
         background: linear-gradient(145deg, #ffffff, #f5f9ff);
+
         border: 1px solid #d9e6f8;
         border-radius: 22px;
+
         text-decoration: none;
         color: inherit;
+
         overflow: hidden;
         transition: 0.35s ease;
       }
@@ -531,10 +699,14 @@
       .contact-card::after {
         content: "";
         position: absolute;
+
         width: 100px;
         height: 100px;
+
         border-radius: 50%;
+
         background: rgba(23, 105, 224, 0.06);
+
         left: -35px;
         bottom: -45px;
       }
@@ -549,12 +721,17 @@
         width: 67px;
         height: 67px;
         flex-shrink: 0;
+
         border-radius: 19px;
+
         background: linear-gradient(145deg, #1769e0, #0c49ad);
+
         display: flex;
         align-items: center;
         justify-content: center;
+
         font-size: 30px;
+
         box-shadow: 0 10px 20px rgba(23, 105, 224, 0.22);
       }
 
@@ -576,15 +753,18 @@
       }
 
       /* =====================================================
-         CALL TO ACTION / PRICE
-      ===================================================== */
+       CALL TO ACTION / PRICE
+    ===================================================== */
 
       .bottom {
         margin: 10px 55px 35px;
         padding: 25px 0;
+
         border-top: 1px solid var(--border);
+
         display: grid;
         grid-template-columns: 1fr auto 1fr;
+
         gap: 20px;
         align-items: center;
       }
@@ -606,9 +786,13 @@
         min-width: 220px;
         padding: 17px 30px;
         text-align: center;
+
         border-radius: 22px;
+
         background: linear-gradient(145deg, #1769e0, #0a419f);
+
         color: white;
+
         box-shadow: 0 15px 30px rgba(23, 105, 224, 0.22);
       }
 
@@ -636,19 +820,25 @@
       }
 
       /* =====================================================
-         FOOTER
-      ===================================================== */
+       FOOTER
+    ===================================================== */
 
       footer {
         background: linear-gradient(135deg, #092f80, #1769e0);
+
         color: white;
+
         display: flex;
         justify-content: center;
         align-items: center;
+
         gap: 45px;
+
         padding: 22px 25px;
+
         font-size: 13px;
         font-weight: 800;
+
         flex-wrap: wrap;
       }
 
@@ -662,21 +852,24 @@
       }
 
       /* =====================================================
-         COPYRIGHT
-      ===================================================== */
+       COPYRIGHT
+    ===================================================== */
 
       .copyright {
         text-align: center;
+
         background: #07265f;
         color: #bcd2f4;
+
         padding: 12px;
+
         font-size: 12px;
         font-weight: 700;
       }
 
       /* =====================================================
-         TABLET
-      ===================================================== */
+       TABLET
+    ===================================================== */
 
       @media (max-width: 900px) {
         .header {
@@ -708,6 +901,7 @@
         .bottom {
           grid-template-columns: 1fr;
           text-align: center;
+
           margin-left: 25px;
           margin-right: 25px;
         }
@@ -726,8 +920,8 @@
       }
 
       /* =====================================================
-         MOBILE
-      ===================================================== */
+       MOBILE
+    ===================================================== */
 
       @media (max-width: 600px) {
         body {
@@ -794,15 +988,23 @@
           margin-top: 14px;
         }
 
-        /* HERO ART */
+        /* ===================================================
+         HERO ART MOBILE
+      =================================================== */
 
         .hero-art {
           height: 230px;
+          overflow: visible;
         }
 
         .social-orbit {
           width: 215px;
           height: 215px;
+
+          /*
+          تسريع الحركة قليلاً على الهاتف
+        */
+          animation-duration: 12s;
         }
 
         .social-orbit::before {
@@ -810,11 +1012,27 @@
           height: 150px;
         }
 
+        .social-orbit::after {
+          width: 180px;
+          height: 180px;
+        }
+
         .social-center {
           width: 98px;
           height: 98px;
+
           border-radius: 28px;
+
           font-size: 42px;
+
+          /*
+          حركة S عكس عقارب الساعة
+        */
+          animation-duration: 4.5s;
+        }
+
+        .social-center::before {
+          border-radius: 32px;
         }
 
         .social-icon {
@@ -822,6 +1040,13 @@
           height: 41px;
           border-radius: 12px;
           font-size: 18px;
+        }
+
+        .social-icon::before {
+          width: 5px;
+          height: 5px;
+          top: 4px;
+          right: 5px;
         }
 
         .icon-one {
@@ -849,28 +1074,38 @@
           top: 84px;
         }
 
-        /* COURSE INFO */
+        /* ===================================================
+         COURSE INFO
+      =================================================== */
 
         .course-info {
           width: calc(100% - 24px);
           grid-template-columns: repeat(2, minmax(0, 1fr));
+
           gap: 9px;
+
           margin-bottom: 25px;
         }
 
         .info-card {
           min-height: 105px;
+
           padding: 12px 7px;
+
           flex-direction: column;
           gap: 5px;
+
           text-align: center;
+
           border-radius: 18px;
         }
 
         .info-icon {
           width: 43px;
           height: 43px;
+
           border-radius: 13px;
+
           font-size: 21px;
         }
 
@@ -886,7 +1121,9 @@
           font-size: 17px;
         }
 
-        /* SECTIONS */
+        /* ===================================================
+         SECTIONS
+      =================================================== */
 
         .section {
           padding-left: 11px;
@@ -905,10 +1142,13 @@
           width: 35px;
         }
 
-        /* TOPICS */
+        /* ===================================================
+         TOPICS
+      =================================================== */
 
         .topics {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+
           gap: 8px;
         }
 
@@ -921,7 +1161,9 @@
         .icon {
           width: 50px;
           height: 50px;
+
           border-radius: 15px;
+
           font-size: 23px;
         }
 
@@ -934,16 +1176,20 @@
           line-height: 1.6;
         }
 
-        /* WHY */
+        /* ===================================================
+         WHY
+      =================================================== */
 
         .why {
           grid-template-columns: repeat(3, minmax(0, 1fr));
+
           border-radius: 17px;
         }
 
         .why-item {
           min-height: 92px;
           padding: 12px 3px;
+
           border-left: 1px solid var(--border);
         }
 
@@ -962,7 +1208,9 @@
           line-height: 1.55;
         }
 
-        /* CONTACT */
+        /* ===================================================
+         CONTACT
+      =================================================== */
 
         .contact-grid {
           grid-template-columns: 1fr;
@@ -978,7 +1226,9 @@
         .contact-icon {
           width: 52px;
           height: 52px;
+
           border-radius: 15px;
+
           font-size: 23px;
         }
 
@@ -990,11 +1240,15 @@
           font-size: 10px;
         }
 
-        /* BOTTOM */
+        /* ===================================================
+         BOTTOM
+      =================================================== */
 
         .bottom {
           margin: 5px 12px 23px;
+
           padding: 20px 0;
+
           gap: 15px;
         }
 
@@ -1021,12 +1275,16 @@
           font-size: 24px;
         }
 
-        /* FOOTER */
+        /* ===================================================
+         FOOTER
+      =================================================== */
 
         footer {
           flex-direction: column;
           gap: 7px;
+
           padding: 17px 10px;
+
           font-size: 11px;
         }
 
@@ -1037,8 +1295,8 @@
       }
 
       /* =====================================================
-         VERY SMALL PHONES
-      ===================================================== */
+       VERY SMALL PHONES
+    ===================================================== */
 
       @media (max-width: 360px) {
         .poster {
@@ -1066,6 +1324,8 @@
         .social-orbit {
           width: 195px;
           height: 195px;
+
+          animation-duration: 11s;
         }
 
         .social-orbit::before {
@@ -1073,10 +1333,17 @@
           height: 135px;
         }
 
+        .social-orbit::after {
+          width: 165px;
+          height: 165px;
+        }
+
         .social-center {
           width: 88px;
           height: 88px;
           font-size: 37px;
+
+          animation-duration: 4.2s;
         }
 
         .social-icon {
@@ -1117,14 +1384,31 @@
           font-size: 8px;
         }
       }
+
+      /* =====================================================
+       REDUCED MOTION
+       لمن يفعّل تقليل الحركة على جهازه
+    ===================================================== */
+
+      @media (prefers-reduced-motion: reduce) {
+        .social-orbit,
+        .social-center,
+        .social-center::before {
+          animation: none;
+        }
+
+        * {
+          scroll-behavior: auto !important;
+        }
+      }
     </style>
   </head>
 
   <body>
     <div class="poster">
       <!-- =====================================================
-           HEADER
-      ===================================================== -->
+         HEADER
+    ===================================================== -->
 
       <header class="header">
         <div class="brand">
@@ -1154,32 +1438,41 @@
       </header>
 
       <!-- =====================================================
-           HERO VISUAL
-      ===================================================== -->
+         HERO VISUAL
+    ===================================================== -->
 
       <div class="hero-art">
         <div class="social-orbit">
+          <!-- S عكس عقارب الساعة -->
+
           <div class="social-center">S</div>
 
+          <!-- المربعات تدور مع الدائرة -->
+
           <div class="social-icon icon-one">📱</div>
+
           <div class="social-icon icon-two">💬</div>
+
           <div class="social-icon icon-three">📸</div>
+
           <div class="social-icon icon-four">▶</div>
+
           <div class="social-icon icon-five">👥</div>
         </div>
       </div>
 
       <!-- =====================================================
-           COURSE INFORMATION
-      ===================================================== -->
+         COURSE INFORMATION
+    ===================================================== -->
 
       <div class="course-info">
         <div class="info-card">
           <div class="info-icon">⏳</div>
 
           <div class="info-text">
-            <small>مدة الدورة</small>
-            <strong>شهر واحد</strong>
+            <small> مدة الدورة </small>
+
+            <strong> شهر واحد </strong>
           </div>
         </div>
 
@@ -1187,15 +1480,16 @@
           <div class="info-icon">📚</div>
 
           <div class="info-text">
-            <small>عدد الجلسات</small>
-            <strong>7 جلسات</strong>
+            <small> عدد الجلسات </small>
+
+            <strong> 7 جلسات </strong>
           </div>
         </div>
       </div>
 
       <!-- =====================================================
-           COURSE TOPICS
-      ===================================================== -->
+         COURSE TOPICS
+    ===================================================== -->
 
       <section class="section">
         <div class="section-title">محاور الدورة</div>
@@ -1203,6 +1497,7 @@
         <div class="topics">
           <article class="card">
             <div class="icon">🎯</div>
+
             <div class="number">01</div>
 
             <h3>
@@ -1213,6 +1508,7 @@
 
           <article class="card">
             <div class="icon">👥</div>
+
             <div class="number">02</div>
 
             <h3>
@@ -1223,6 +1519,7 @@
 
           <article class="card">
             <div class="icon">📝</div>
+
             <div class="number">03</div>
 
             <h3>
@@ -1233,6 +1530,7 @@
 
           <article class="card">
             <div class="icon">📈</div>
+
             <div class="number">04</div>
 
             <h3>
@@ -1243,6 +1541,7 @@
 
           <article class="card">
             <div class="icon">📣</div>
+
             <div class="number">05</div>
 
             <h3>
@@ -1254,8 +1553,8 @@
       </section>
 
       <!-- =====================================================
-           WHY COURSE
-      ===================================================== -->
+         WHY COURSE
+    ===================================================== -->
 
       <section class="section">
         <div class="section-title">لماذا هذه الدورة؟</div>
@@ -1318,8 +1617,8 @@
       </section>
 
       <!-- =====================================================
-           CONTACT
-      ===================================================== -->
+         CONTACT
+    ===================================================== -->
 
       <section class="section">
         <h2 class="section-title">📞 معلومات التواصل</h2>
@@ -1358,8 +1657,8 @@
       </section>
 
       <!-- =====================================================
-           PRICE / CTA
-      ===================================================== -->
+         PRICE / CTA
+    ===================================================== -->
 
       <section class="bottom">
         <div class="cta-text">
@@ -1382,8 +1681,8 @@
       </section>
 
       <!-- =====================================================
-           FOOTER
-      ===================================================== -->
+         FOOTER
+    ===================================================== -->
 
       <footer>
         <div>✈ Coursyria_team</div>
@@ -1394,10 +1693,104 @@
       </footer>
 
       <!-- =====================================================
-           COPYRIGHT
-      ===================================================== -->
+         COPYRIGHT
+    ===================================================== -->
 
       <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
     </div>
+
+    <!-- =======================================================
+       INTERACTION
+       حركة خفيفة مع الماوس واللمس
+  ======================================================= -->
+
+    <script>
+      const heroArt = document.querySelector(".hero-art");
+      const orbit = document.querySelector(".social-orbit");
+
+      let targetX = 0;
+      let targetY = 0;
+
+      let currentX = 0;
+      let currentY = 0;
+
+      /*
+      حركة الماوس
+    */
+
+      heroArt.addEventListener("mousemove", function (event) {
+        const rect = heroArt.getBoundingClientRect();
+
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+        targetX = x * 8;
+        targetY = y * -8;
+      });
+
+      /*
+      عند خروج الماوس يرجع للوضع الطبيعي
+    */
+
+      heroArt.addEventListener("mouseleave", function () {
+        targetX = 0;
+        targetY = 0;
+      });
+
+      /*
+      دعم اللمس على الهاتف
+    */
+
+      heroArt.addEventListener(
+        "touchmove",
+        function (event) {
+          const touch = event.touches[0];
+
+          const rect = heroArt.getBoundingClientRect();
+
+          const x = (touch.clientX - rect.left) / rect.width - 0.5;
+
+          const y = (touch.clientY - rect.top) / rect.height - 0.5;
+
+          targetX = x * 6;
+          targetY = y * -6;
+        },
+        { passive: true },
+      );
+
+      /*
+      رجوع للوضع الطبيعي عند انتهاء اللمس
+    */
+
+      heroArt.addEventListener("touchend", function () {
+        targetX = 0;
+        targetY = 0;
+      });
+
+      /*
+      حركة ناعمة جداً
+    */
+
+      function animateInteraction() {
+        currentX += (targetX - currentX) * 0.08;
+
+        currentY += (targetY - currentY) * 0.08;
+
+        /*
+        نحافظ على دوران CSS
+        ونضيف فقط ميل خفيف
+      */
+
+        orbit.style.setProperty("--tiltX", currentX + "deg");
+
+        orbit.style.setProperty("--tiltY", currentY + "deg");
+
+        requestAnimationFrame(animateInteraction);
+      }
+
+      animateInteraction();
+    </script>
   </body>
 </html>
+```
