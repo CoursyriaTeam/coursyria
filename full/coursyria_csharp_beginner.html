@@ -1,8 +1,12 @@
+```html
 <!doctype html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
 
     <title>برمجة C# للمبتدئين | Coursyria</title>
 
@@ -11,6 +15,10 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
@@ -29,9 +37,101 @@
           linear-gradient(135deg, #08061d, #15102f 45%, #09071c);
         color: #fff;
         min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* خلفية جزيئات */
+
+      .background-particles {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .particle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: rgba(221, 186, 104, 0.7);
+        box-shadow: 0 0 10px rgba(190, 118, 255, 0.7);
+        animation: floatParticle linear infinite;
+      }
+
+      .particle:nth-child(1) {
+        left: 8%;
+        top: 20%;
+        animation-duration: 8s;
+      }
+
+      .particle:nth-child(2) {
+        left: 18%;
+        top: 70%;
+        animation-duration: 11s;
+      }
+
+      .particle:nth-child(3) {
+        left: 34%;
+        top: 15%;
+        animation-duration: 9s;
+      }
+
+      .particle:nth-child(4) {
+        left: 52%;
+        top: 80%;
+        animation-duration: 12s;
+      }
+
+      .particle:nth-child(5) {
+        left: 70%;
+        top: 18%;
+        animation-duration: 10s;
+      }
+
+      .particle:nth-child(6) {
+        left: 86%;
+        top: 65%;
+        animation-duration: 13s;
+      }
+
+      .particle:nth-child(7) {
+        left: 93%;
+        top: 30%;
+        animation-duration: 9s;
+      }
+
+      .particle:nth-child(8) {
+        left: 43%;
+        top: 45%;
+        animation-duration: 14s;
+      }
+
+      @keyframes floatParticle {
+        0% {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+
+        20% {
+          opacity: 1;
+        }
+
+        50% {
+          transform: translateY(-80px);
+          opacity: 0.8;
+        }
+
+        100% {
+          transform: translateY(-160px);
+          opacity: 0;
+        }
       }
 
       .course-page {
+        position: relative;
+        z-index: 1;
         width: min(1100px, 94%);
         margin: 30px auto;
         padding: 25px;
@@ -45,6 +145,7 @@
         box-shadow:
           0 0 50px rgba(103, 47, 180, 0.18),
           inset 0 0 40px rgba(255, 255, 255, 0.015);
+        overflow: hidden;
       }
 
       /* ================= HEADER ================= */
@@ -76,6 +177,12 @@
         color: #e7c574;
         background: linear-gradient(145deg, #211044, #0b0924);
         box-shadow: 0 0 25px rgba(219, 169, 66, 0.3);
+        transition: 0.35s;
+      }
+
+      .logo-icon:hover {
+        transform: rotate(-8deg) scale(1.08);
+        box-shadow: 0 0 35px rgba(219, 169, 66, 0.55);
       }
 
       .logo-text h2 {
@@ -126,6 +233,7 @@
         color: #e8c879;
         margin-bottom: 18px;
         background: rgba(70, 35, 85, 0.3);
+        box-shadow: 0 0 15px rgba(211, 167, 77, 0.08);
       }
 
       .hero h1 {
@@ -157,12 +265,122 @@
         max-width: 580px;
       }
 
+      /* ================= C# ART ================= */
+
       .code-art {
-        min-height: 360px;
+        min-height: 400px;
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
+        perspective: 1000px;
+        isolation: isolate;
+      }
+
+      .code-art::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(151, 76, 222, 0.3),
+          transparent 65%
+        );
+        filter: blur(20px);
+        animation: auraPulse 3s ease-in-out infinite;
+        z-index: -2;
+      }
+
+      @keyframes auraPulse {
+        0%,
+        100% {
+          transform: scale(0.9);
+          opacity: 0.5;
+        }
+
+        50% {
+          transform: scale(1.15);
+          opacity: 1;
+        }
+      }
+
+      .art-orbit {
+        position: absolute;
+        width: 355px;
+        height: 355px;
+        border-radius: 50%;
+        border: 1px solid rgba(224, 187, 104, 0.22);
+        transform: rotateX(68deg);
+        animation: orbitTilt 8s linear infinite;
+      }
+
+      @keyframes orbitTilt {
+        from {
+          transform: rotateX(68deg) rotateZ(0deg);
+        }
+
+        to {
+          transform: rotateX(68deg) rotateZ(360deg);
+        }
+      }
+
+      .glow-ring {
+        position: absolute;
+        width: 330px;
+        height: 330px;
+        border-radius: 50%;
+        border: 2px solid rgba(193, 133, 245, 0.5);
+        box-shadow:
+          0 0 30px #823ed0,
+          inset 0 0 30px rgba(164, 92, 225, 0.25);
+        animation: ringRotate 10s linear infinite;
+      }
+
+      .glow-ring::before,
+      .glow-ring::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .glow-ring::before {
+        width: 12px;
+        height: 12px;
+        top: 22px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #e7c36f;
+        box-shadow:
+          0 0 10px #e7c36f,
+          0 0 25px #e7c36f;
+      }
+
+      .glow-ring::after {
+        width: 7px;
+        height: 7px;
+        bottom: 35px;
+        right: 25px;
+        background: #b879ed;
+        box-shadow: 0 0 15px #b879ed;
+      }
+
+      @keyframes ringRotate {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .csharp-wrap {
+        position: relative;
+        z-index: 5;
+        transition: transform 0.15s ease-out;
+        transform-style: preserve-3d;
       }
 
       .csharp-symbol {
@@ -173,7 +391,6 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        z-index: 2;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 105px;
         font-weight: 900;
@@ -193,6 +410,30 @@
           inset 0 0 30px rgba(255, 255, 255, 0.12);
         text-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
         transform: rotate(-3deg);
+        animation: csharpFloat 4s ease-in-out infinite;
+        transition:
+          box-shadow 0.3s,
+          filter 0.3s;
+      }
+
+      .csharp-symbol:hover {
+        filter: brightness(1.12);
+        box-shadow:
+          0 0 0 10px rgba(137, 72, 190, 0.12),
+          0 0 50px rgba(169, 83, 235, 0.8),
+          0 0 100px rgba(122, 54, 184, 0.4),
+          inset 0 0 40px rgba(255, 255, 255, 0.18);
+      }
+
+      @keyframes csharpFloat {
+        0%,
+        100% {
+          transform: rotate(-3deg) translateY(0);
+        }
+
+        50% {
+          transform: rotate(3deg) translateY(-12px);
+        }
       }
 
       .csharp-symbol::before {
@@ -215,17 +456,57 @@
         background: rgba(228, 188, 102, 0.14);
         border: 1px solid rgba(228, 188, 102, 0.55);
         box-shadow: 0 0 25px rgba(228, 188, 102, 0.35);
+        animation: smallOrb 3s ease-in-out infinite;
       }
 
-      .glow-ring {
+      @keyframes smallOrb {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+
+        50% {
+          transform: translate(8px, -8px) scale(1.12);
+        }
+      }
+
+      .code-line {
         position: absolute;
-        width: 330px;
-        height: 330px;
-        border-radius: 50%;
-        border: 2px solid rgba(193, 133, 245, 0.5);
-        box-shadow:
-          0 0 30px #823ed0,
-          inset 0 0 30px rgba(164, 92, 225, 0.25);
+        color: rgba(217, 181, 249, 0.5);
+        font-family: monospace;
+        font-size: 15px;
+        white-space: nowrap;
+        animation: codeFloat 5s ease-in-out infinite;
+      }
+
+      .code-line.one {
+        top: 45px;
+        right: 5px;
+      }
+
+      .code-line.two {
+        bottom: 48px;
+        left: 5px;
+        animation-delay: 1.5s;
+      }
+
+      .code-line.three {
+        top: 100px;
+        left: 0;
+        animation-delay: 3s;
+      }
+
+      @keyframes codeFloat {
+        0%,
+        100% {
+          opacity: 0.25;
+          transform: translateY(0);
+        }
+
+        50% {
+          opacity: 0.8;
+          transform: translateY(-8px);
+        }
       }
 
       /* ================= INFO ================= */
@@ -376,6 +657,12 @@
         border: 1px solid rgba(212, 172, 91, 0.4);
         border-radius: 18px;
         background: rgba(20, 12, 39, 0.75);
+        transition: 0.3s;
+      }
+
+      .why-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 25px rgba(181, 108, 229, 0.2);
       }
 
       .why-card .icon {
@@ -408,6 +695,12 @@
         border-radius: 15px;
         padding: 22px;
         background: linear-gradient(145deg, #20123c, #0e0924);
+        transition: 0.3s;
+      }
+
+      .target-item:hover {
+        transform: translateY(-5px);
+        border-color: #d7aa59;
       }
 
       .target-item strong {
@@ -516,25 +809,6 @@
         box-shadow: 0 0 20px rgba(202, 137, 49, 0.4);
       }
 
-      /* ================= FOOTER ================= */
-
-      footer {
-        margin-top: 30px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 15px;
-        color: #a99dbb;
-        font-size: 13px;
-      }
-
-      footer strong {
-        color: #d7b36a;
-      }
-
       /* ================= CONTACT ================= */
 
       .contact-grid {
@@ -589,6 +863,25 @@
         line-height: 1.7;
       }
 
+      /* ================= FOOTER ================= */
+
+      footer {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        color: #a99dbb;
+        font-size: 13px;
+      }
+
+      footer strong {
+        color: #d7b36a;
+      }
+
       .copyright {
         margin-top: 18px;
         padding-top: 16px;
@@ -598,9 +891,9 @@
         font-size: 12px;
       }
 
-      /* ================= RESPONSIVE ================= */
+      /* ================= TABLET ================= */
 
-      @media (max-width: 850px) {
+      @media (max-width: 900px) {
         .hero {
           grid-template-columns: 1fr;
           text-align: center;
@@ -612,6 +905,10 @@
 
         .hero-description {
           margin: auto;
+        }
+
+        .code-art {
+          min-height: 360px;
         }
 
         .modules {
@@ -630,94 +927,311 @@
         }
       }
 
-      @media (max-width: 550px) {
+      /* ================= PHONE ================= */
+
+      @media (max-width: 600px) {
+        body {
+          font-size: 14px;
+        }
+
         .course-page {
-          width: 96%;
-          padding: 14px;
-          margin: 10px auto;
+          width: calc(100% - 14px);
+          margin: 7px auto;
+          padding: 12px;
+          border-radius: 20px;
         }
 
         .header {
           flex-direction: column;
           text-align: center;
+          gap: 18px;
+          padding: 12px 5px 22px;
         }
 
         .logo {
           justify-content: center;
+          gap: 10px;
+        }
+
+        .logo-icon {
+          width: 58px;
+          height: 58px;
+          font-size: 28px;
+          border-radius: 15px;
         }
 
         .logo-text h2 {
-          font-size: 25px;
+          font-size: 24px;
+        }
+
+        .logo-text p {
+          font-size: 10px;
+        }
+
+        .badge {
+          padding: 9px 22px;
+          font-size: 13px;
         }
 
         .hero {
-          padding: 30px 5px;
+          padding: 28px 4px 10px;
+          gap: 5px;
+        }
+
+        .small-title {
+          padding: 7px 18px;
+          font-size: 13px;
+          margin-bottom: 15px;
         }
 
         .hero h1 {
-          font-size: 48px;
+          font-size: clamp(38px, 13vw, 55px);
         }
 
         .hero h2 {
-          font-size: 21px;
+          font-size: 19px;
+          line-height: 1.5;
+          margin: 15px 0 8px;
+        }
+
+        .hero-description {
+          font-size: 14px;
+          line-height: 1.9;
+        }
+
+        /* رسمة C# للهاتف */
+
+        .code-art {
+          min-height: 290px;
+          width: 100%;
+          margin-top: 10px;
+          overflow: hidden;
+        }
+
+        .csharp-wrap {
+          transform: scale(0.78);
         }
 
         .csharp-symbol {
           width: 190px;
           height: 190px;
-          border-radius: 45px;
+          border-radius: 43px;
           font-size: 78px;
           letter-spacing: -6px;
         }
 
+        .csharp-symbol::before {
+          inset: 8px;
+          border-radius: 36px;
+        }
+
         .csharp-symbol::after {
-          width: 62px;
-          height: 62px;
-          left: -18px;
-          bottom: -16px;
+          width: 60px;
+          height: 60px;
+          left: -16px;
+          bottom: -13px;
         }
 
         .glow-ring {
-          width: 230px;
-          height: 230px;
+          width: 235px;
+          height: 235px;
         }
 
-        .modules,
+        .art-orbit {
+          width: 260px;
+          height: 260px;
+        }
+
+        .code-line {
+          font-size: 10px;
+        }
+
+        .code-line.one {
+          top: 22px;
+          right: 3px;
+        }
+
+        .code-line.two {
+          bottom: 28px;
+          left: 3px;
+        }
+
+        .code-line.three {
+          top: 65px;
+          left: 3px;
+        }
+
         .info-row,
+        .modules,
         .why,
-        .target {
+        .target,
+        .contact-grid {
           grid-template-columns: 1fr;
+        }
+
+        .info-row {
+          margin: 20px 0 30px;
+          gap: 10px;
+        }
+
+        .info-card {
+          padding: 17px 12px;
+        }
+
+        .section-title {
+          margin: 32px 0 20px;
         }
 
         .section-title span {
-          font-size: 18px;
-          padding: 10px 25px;
+          font-size: 17px;
+          padding: 9px 20px;
         }
 
-        .contact-grid {
-          grid-template-columns: 1fr;
-          margin: 0;
+        .module {
+          min-height: auto;
+          padding: 22px 15px;
         }
 
-        .contact-card {
+        .why-card {
+          padding: 22px 14px;
+        }
+
+        .target-item {
           padding: 18px;
         }
 
+        .quote {
+          margin: 30px 0;
+          padding: 25px 12px;
+        }
+
+        .quote-text {
+          font-size: 18px;
+          line-height: 1.9;
+        }
+
+        .quote-small {
+          font-size: 12px;
+        }
+
+        .cta {
+          padding: 22px 15px;
+          gap: 18px;
+        }
+
+        .cta h2 {
+          font-size: 22px;
+        }
+
+        .cta p {
+          font-size: 13px;
+          line-height: 1.8;
+        }
+
+        .price {
+          min-width: 0;
+          width: 100%;
+        }
+
+        .price strong {
+          font-size: 28px;
+        }
+
+        .price button {
+          width: 100%;
+          max-width: 250px;
+        }
+
+        .contact-grid {
+          margin: 0;
+          gap: 12px;
+        }
+
+        .contact-card {
+          padding: 15px;
+          gap: 12px;
+        }
+
+        .contact-icon {
+          width: 48px;
+          height: 48px;
+          border-radius: 13px;
+          font-size: 23px;
+        }
+
         .contact-card h3 {
-          font-size: 15px;
+          font-size: 14px;
+          line-height: 1.5;
+        }
+
+        .contact-card p {
+          font-size: 11px;
         }
 
         footer {
+          flex-direction: column;
           justify-content: center;
           text-align: center;
+          font-size: 11px;
+        }
+
+        .copyright {
+          font-size: 10px;
+        }
+      }
+
+      /* شاشات صغيرة جداً */
+
+      @media (max-width: 360px) {
+        .hero h1 {
+          font-size: 36px;
+        }
+
+        .csharp-wrap {
+          transform: scale(0.68);
+        }
+
+        .code-art {
+          min-height: 260px;
+        }
+
+        .section-title span {
+          font-size: 15px;
+          padding: 8px 17px;
+        }
+      }
+
+      /* تقليل الحركة إذا كان المستخدم يفضل ذلك */
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
         }
       }
     </style>
   </head>
 
   <body>
+    <!-- الخلفية المتحركة -->
+
+    <div class="background-particles">
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+    </div>
+
     <div class="course-page">
       <!-- HEADER -->
+
       <header class="header">
         <div class="logo">
           <div class="logo-icon">C#</div>
@@ -732,6 +1246,7 @@
       </header>
 
       <!-- HERO -->
+
       <section class="hero">
         <div class="hero-content">
           <div class="small-title">C# للمبتدئين</div>
@@ -749,13 +1264,27 @@
           </p>
         </div>
 
-        <div class="code-art">
+        <!-- C# INTERACTIVE ART -->
+
+        <div class="code-art" id="codeArt">
+          <div class="art-orbit"></div>
+
           <div class="glow-ring"></div>
-          <div class="csharp-symbol">C#</div>
+
+          <div class="code-line one">&lt; CSharp /&gt;</div>
+
+          <div class="code-line two">Console.WriteLine();</div>
+
+          <div class="code-line three">int x = 10;</div>
+
+          <div class="csharp-wrap" id="csharpWrap">
+            <div class="csharp-symbol">C#</div>
+          </div>
         </div>
       </section>
 
       <!-- INFO -->
+
       <div class="info-row">
         <div class="info-card">
           <div class="info-icon">🎓</div>
@@ -777,6 +1306,7 @@
       </div>
 
       <!-- MODULES -->
+
       <div class="section-title">
         <span>محاور الدورة</span>
       </div>
@@ -851,6 +1381,7 @@
       </section>
 
       <!-- WHY -->
+
       <div class="section-title">
         <span>لماذا هذه الدورة؟</span>
       </div>
@@ -894,6 +1425,7 @@
       </section>
 
       <!-- TARGET -->
+
       <div class="section-title">
         <span>لمن هذه الدورة؟</span>
       </div>
@@ -916,6 +1448,7 @@
       </section>
 
       <!-- QUOTE -->
+
       <div class="quote">
         <div class="quote-text">
           "كل مبرمج بدأ بخطوة بسيطة… وهذه هي خطوتك الأولى."
@@ -925,6 +1458,7 @@
       </div>
 
       <!-- CTA -->
+
       <section class="cta">
         <div>
           <h2>ابدأ رحلتك الآن</h2>
@@ -947,6 +1481,7 @@
       </section>
 
       <!-- CONTACT -->
+
       <section class="section">
         <div class="section-title">
           <span>📞 معلومات التواصل</span>
@@ -984,16 +1519,98 @@
       </section>
 
       <!-- FOOTER -->
+
       <footer>
         <div>✈ Coursyria_team</div>
-
         <div>🌐 coursyria.com</div>
-
         <div>📸 coursyria.team</div>
       </footer>
 
-      <!-- COPYRIGHT -->
       <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
     </div>
+
+    <!-- ================= INTERACTION ================= -->
+
+    <script>
+      const art = document.getElementById("codeArt");
+      const symbol = document.getElementById("csharpWrap");
+
+      /*
+        حركة 3D مع الماوس على الكمبيوتر
+      */
+
+      let mouseX = 0;
+      let mouseY = 0;
+
+      art.addEventListener("mousemove", (e) => {
+        const rect = art.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        mouseX = (x / rect.width - 0.5) * 2;
+        mouseY = (y / rect.height - 0.5) * 2;
+
+        const rotateX = mouseY * -10;
+        const rotateY = mouseX * 12;
+
+        symbol.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
+      });
+
+      art.addEventListener("mouseleave", () => {
+        symbol.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+      });
+
+      /*
+        حركة تلقائية للهاتف
+        حتى تظل رسمة C# متحركة بدون ماوس
+      */
+
+      let mobileTime = 0;
+
+      function mobileAnimation() {
+        const isMobile = window.innerWidth <= 600;
+
+        if (isMobile) {
+          mobileTime += 0.025;
+
+          const rotateY = Math.sin(mobileTime) * 7;
+          const rotateX = Math.cos(mobileTime * 0.8) * 4;
+          const scale = 1 + Math.sin(mobileTime * 1.4) * 0.025;
+
+          symbol.style.transform = `rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             scale(${scale})`;
+        }
+
+        requestAnimationFrame(mobileAnimation);
+      }
+
+      mobileAnimation();
+
+      /*
+        تأثير لمس الهاتف
+      */
+
+      art.addEventListener(
+        "touchmove",
+        (e) => {
+          if (!e.touches.length) return;
+
+          const touch = e.touches[0];
+          const rect = art.getBoundingClientRect();
+
+          const x = (touch.clientX - rect.left) / rect.width - 0.5;
+
+          const y = (touch.clientY - rect.top) / rect.height - 0.5;
+
+          symbol.style.transform = `rotateX(${y * -15}deg)
+             rotateY(${x * 18}deg)
+             scale(1.04)`;
+        },
+        { passive: true },
+      );
+    </script>
   </body>
 </html>
+```
