@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -44,6 +43,67 @@
       background: #ffffff;
       overflow: hidden;
       box-shadow: 0 0 50px rgba(15, 80, 100, 0.08);
+      position: relative;
+    }
+
+    /* =====================================================
+       SCROLL PROGRESS BAR
+    ===================================================== */
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 4px;
+      z-index: 9999;
+
+      background: transparent;
+    }
+
+    .scroll-progress-fill {
+      height: 100%;
+      width: 0%;
+
+      background: linear-gradient(90deg, #159c9c, #35c2b8, #2768a5);
+      background-size: 200% 100%;
+
+      box-shadow: 0 0 12px rgba(24, 165, 165, 0.6);
+
+      transition: width 0.1s ease-out;
+
+      animation: progressShine 3s linear infinite;
+    }
+
+    @keyframes progressShine {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    /* =====================================================
+       REVEAL ON SCROLL
+    ===================================================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(24px) scale(0.97);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .stagger-item.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
     /* =====================================================
@@ -75,6 +135,8 @@
       border-radius: 50%;
       left: -190px;
       bottom: -220px;
+
+      animation: driftOne 9s ease-in-out infinite;
     }
 
     .hero::after {
@@ -86,6 +148,18 @@
       border-radius: 50%;
       right: -130px;
       top: -120px;
+
+      animation: driftTwo 11s ease-in-out infinite;
+    }
+
+    @keyframes driftOne {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(20px, -15px) scale(1.05); }
+    }
+
+    @keyframes driftTwo {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-15px, 18px) scale(1.08); }
     }
 
     /* =====================================================
@@ -120,6 +194,13 @@
         inset 0 2px 10px rgba(255,255,255,0.2);
 
       position: relative;
+
+      animation: logoFloat 4.5s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-9px) rotate(-2deg); }
     }
 
     .brand-logo::before {
@@ -169,6 +250,7 @@
     }
 
     .course-badge {
+      position: relative;
       display: inline-block;
       padding: 9px 25px;
       border-radius: 30px;
@@ -181,6 +263,26 @@
 
       box-shadow: 0 8px 20px rgba(24, 165, 165, 0.18);
       margin-bottom: 20px;
+
+      overflow: hidden;
+    }
+
+    .course-badge::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -60%;
+      width: 45%;
+      height: 100%;
+
+      background: linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
+
+      animation: shimmer 3.2s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { right: 130%; }
+      55%, 100% { right: -60%; }
     }
 
     .hero-title {
@@ -231,11 +333,25 @@
       border: 1px solid #d8eeee;
 
       box-shadow: 0 8px 20px rgba(30, 120, 130, 0.05);
+
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      border-color: #2cb8b4;
+      box-shadow: 0 14px 28px rgba(20, 150, 150, 0.14);
     }
 
     .info-icon {
       font-size: 27px;
       margin-bottom: 5px;
+      display: inline-block;
+      transition: transform 0.35s ease;
+    }
+
+    .info-card:hover .info-icon {
+      transform: scale(1.18) rotate(-6deg);
     }
 
     .info-card strong {
@@ -310,6 +426,12 @@
     .benefit-icon {
       font-size: 38px;
       margin-bottom: 10px;
+      display: inline-block;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .benefit-card:hover .benefit-icon {
+      transform: scale(1.2) rotate(8deg);
     }
 
     .benefit-card h3 {
@@ -331,6 +453,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
+      perspective: 1200px;
     }
 
     .module-card {
@@ -345,7 +468,10 @@
       border: 1px solid #d5eeee;
 
       overflow: hidden;
-      transition: .35s;
+      transition: transform 0.2s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+
+      transform-style: preserve-3d;
+      will-change: transform;
     }
 
     .module-card::after {
@@ -360,9 +486,8 @@
     }
 
     .module-card:hover {
-      transform: translateY(-8px);
       border-color: #2cb6b3;
-      box-shadow: 0 18px 35px rgba(20, 130, 140, 0.12);
+      box-shadow: 0 18px 35px rgba(20, 130, 140, 0.15);
     }
 
     .module-number {
@@ -381,6 +506,14 @@
       font-weight: 900;
 
       margin-bottom: 15px;
+
+      transition: transform 0.35s ease, background 0.35s ease, color 0.35s ease;
+    }
+
+    .module-card:hover .module-number {
+      background: #159c9c;
+      color: #ffffff;
+      transform: scale(1.1);
     }
 
     .module-card h3 {
@@ -429,6 +562,13 @@
 
       color: #586c74;
       font-size: 13px;
+
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    .learning-list li:hover {
+      transform: translateX(-6px);
+      color: #0a4a63;
     }
 
     .learning-list li:last-child {
@@ -440,6 +580,13 @@
       color: #16aaa9;
       font-weight: 900;
       margin-left: 10px;
+
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+
+    .learning-list li:hover::before {
+      transform: scale(1.3);
     }
 
     /* =====================================================
@@ -471,6 +618,12 @@
     .who-icon {
       font-size: 38px;
       margin-bottom: 9px;
+      display: inline-block;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .who-card:hover .who-icon {
+      transform: scale(1.2) rotate(-8deg);
     }
 
     .who-card strong {
@@ -494,6 +647,7 @@
     }
 
     .price-box {
+      position: relative;
       max-width: 500px;
       margin: auto;
 
@@ -508,6 +662,8 @@
         linear-gradient(135deg, #063e5a, #159f9f);
 
       box-shadow: 0 20px 45px rgba(15, 120, 130, .2);
+
+      overflow: hidden;
     }
 
     .price-label {
@@ -534,7 +690,9 @@
     }
 
     .start-button {
+      position: relative;
       display: inline-block;
+      overflow: hidden;
 
       margin-top: 22px;
       padding: 14px 38px;
@@ -558,6 +716,30 @@
     }
 
     /* =====================================================
+       RIPPLE EFFECT
+    ===================================================== */
+
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: rippleAnim 0.6s ease-out;
+      background: rgba(20, 160, 160, 0.35);
+      pointer-events: none;
+    }
+
+    .start-button .ripple {
+      background: rgba(8, 126, 131, 0.25);
+    }
+
+    @keyframes rippleAnim {
+      to {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+    /* =====================================================
        CONTACT
     ===================================================== */
 
@@ -570,6 +752,9 @@
     }
 
     .contact-card {
+      position: relative;
+      overflow: hidden;
+
       display: flex;
       align-items: center;
       gap: 18px;
@@ -605,6 +790,13 @@
 
       background: #e1f7f7;
       font-size: 28px;
+
+      transition: transform 0.35s ease, background 0.35s ease;
+    }
+
+    .contact-card:hover .contact-icon {
+      transform: rotate(-8deg) scale(1.08);
+      background: #c9f2f2;
     }
 
     .contact-card h3 {
@@ -846,10 +1038,20 @@
       }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
   </style>
 </head>
 
 <body>
+
+<div class="scroll-progress"><div class="scroll-progress-fill" id="scrollFill"></div></div>
 
 <div class="course-page">
 
@@ -931,7 +1133,7 @@
        BENEFITS
   ====================================================== -->
 
-  <section class="section">
+  <section class="section reveal">
 
     <div class="section-title">
       لماذا <span>هذه الدورة؟</span>
@@ -939,25 +1141,25 @@
 
     <div class="benefits-grid">
 
-      <div class="benefit-card">
+      <div class="benefit-card stagger-item">
         <div class="benefit-icon">👨‍🏫</div>
         <h3>مدربون محترفون</h3>
         <p>خبرة وتوجيه مستمر</p>
       </div>
 
-      <div class="benefit-card">
+      <div class="benefit-card stagger-item">
         <div class="benefit-icon">📊</div>
         <h3>تطبيق عملي</h3>
         <p>تمارين وأمثلة واقعية</p>
       </div>
 
-      <div class="benefit-card">
+      <div class="benefit-card stagger-item">
         <div class="benefit-icon">🏅</div>
         <h3>شهادة</h3>
         <p>تعزز مسارك التعليمي</p>
       </div>
 
-      <div class="benefit-card">
+      <div class="benefit-card stagger-item">
         <div class="benefit-icon">🎧</div>
         <h3>دعم ومتابعة</h3>
         <p>مساعدة أثناء رحلة التعلم</p>
@@ -972,7 +1174,7 @@
        MODULES
   ====================================================== -->
 
-  <section class="section">
+  <section class="section reveal">
 
     <div class="section-title">
       محاور <span>الدورة</span>
@@ -980,7 +1182,7 @@
 
     <div class="modules-grid">
 
-      <div class="module-card">
+      <div class="module-card stagger-item">
         <div class="module-number">01</div>
         <h3>مبادئ المحاسبة</h3>
         <p>
@@ -989,7 +1191,7 @@
         </p>
       </div>
 
-      <div class="module-card">
+      <div class="module-card stagger-item">
         <div class="module-number">02</div>
         <h3>القيود اليومية</h3>
         <p>
@@ -998,7 +1200,7 @@
         </p>
       </div>
 
-      <div class="module-card">
+      <div class="module-card stagger-item">
         <div class="module-number">03</div>
         <h3>دفتر الأستاذ</h3>
         <p>
@@ -1007,7 +1209,7 @@
         </p>
       </div>
 
-      <div class="module-card">
+      <div class="module-card stagger-item">
         <div class="module-number">04</div>
         <h3>ميزان المراجعة</h3>
         <p>
@@ -1016,7 +1218,7 @@
         </p>
       </div>
 
-      <div class="module-card">
+      <div class="module-card stagger-item">
         <div class="module-number">05</div>
         <h3>القوائم المالية</h3>
         <p>
@@ -1025,7 +1227,7 @@
         </p>
       </div>
 
-      <div class="module-card">
+      <div class="module-card stagger-item">
         <div class="module-number">06</div>
         <h3>التطبيق العملي</h3>
         <p>
@@ -1043,7 +1245,7 @@
        LEARNING
   ====================================================== -->
 
-  <section class="section">
+  <section class="section reveal">
 
     <div class="section-title">
       ماذا <span>ستتعلم؟</span>
@@ -1121,7 +1323,7 @@
        WHO IS THIS COURSE FOR
   ====================================================== -->
 
-  <section class="section">
+  <section class="section reveal">
 
     <div class="section-title">
       لمن <span>هذه الدورة؟</span>
@@ -1129,25 +1331,25 @@
 
     <div class="who-grid">
 
-      <div class="who-card">
+      <div class="who-card stagger-item">
         <div class="who-icon">🎓</div>
         <strong>طلاب المحاسبة</strong>
         <span>لتطوير المعرفة والمهارات</span>
       </div>
 
-      <div class="who-card">
+      <div class="who-card stagger-item">
         <div class="who-icon">💼</div>
         <strong>الموظفون</strong>
         <span>لتطوير المهارات المهنية</span>
       </div>
 
-      <div class="who-card">
+      <div class="who-card stagger-item">
         <div class="who-icon">🏢</div>
         <strong>أصحاب الأعمال</strong>
         <span>لفهم الجانب المالي</span>
       </div>
 
-      <div class="who-card">
+      <div class="who-card stagger-item">
         <div class="who-icon">📊</div>
         <strong>المبتدئون</strong>
         <span>لبداية قوية في المحاسبة</span>
@@ -1162,7 +1364,7 @@
        PRICE
   ====================================================== -->
 
-  <section class="price-section">
+  <section class="price-section reveal">
 
     <div class="price-box">
 
@@ -1170,8 +1372,8 @@
         سعر الدورة
       </div>
 
-      <div class="price">
-        1000
+      <div class="price" id="priceNumber" data-target="1000">
+        0
       </div>
 
       <div class="price-currency">
@@ -1200,7 +1402,7 @@
        CONTACT
   ====================================================== -->
 
-  <section class="section">
+  <section class="section reveal">
 
     <div class="section-title">
       <span>📞 معلومات التواصل</span>
@@ -1268,7 +1470,7 @@
        CTA
   ====================================================== -->
 
-  <section class="cta-section">
+  <section class="cta-section reveal">
 
     <h2>
       📊 ابدأ رحلتك في عالم المحاسبة
@@ -1309,6 +1511,125 @@
   </div>
 
 </div>
+
+<script>
+
+  /* =====================================================
+     SCROLL PROGRESS BAR
+  ===================================================== */
+
+  const scrollFill = document.getElementById('scrollFill');
+
+  function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollFill.style.width = progress + '%';
+  }
+
+  window.addEventListener('scroll', updateScrollProgress);
+  updateScrollProgress();
+
+  /* =====================================================
+     REVEAL ON SCROLL (sections + staggered grid items)
+  ===================================================== */
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+
+        const staggerItems = entry.target.querySelectorAll('.stagger-item');
+        staggerItems.forEach((item, i) => {
+          setTimeout(() => item.classList.add('show'), i * 110);
+        });
+
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+  /* =====================================================
+     PRICE COUNT-UP
+  ===================================================== */
+
+  const priceEl = document.getElementById('priceNumber');
+
+  function animateCount(el, target, duration) {
+    const start = 0;
+    const startTime = performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.round(start + (target - start) * eased);
+      el.textContent = value;
+
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  const priceObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const target = parseInt(entry.target.dataset.target, 10);
+        animateCount(entry.target, target, 1400);
+        priceObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  if (priceEl) priceObserver.observe(priceEl);
+
+  /* =====================================================
+     3D TILT ON MODULE CARDS
+  ===================================================== */
+
+  document.querySelectorAll('.module-card').forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const rotateX = ((y / rect.height) - 0.5) * -10;
+      const rotateY = ((x / rect.width) - 0.5) * 10;
+
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(900px) rotateX(0) rotateY(0) translateY(0)';
+    });
+  });
+
+  /* =====================================================
+     RIPPLE EFFECT ON BUTTONS / CARDS
+  ===================================================== */
+
+  function attachRipple(el) {
+    el.addEventListener('click', function (e) {
+      const rect = el.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      const size = Math.max(rect.width, rect.height);
+
+      ripple.className = 'ripple';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+
+      el.appendChild(ripple);
+
+      setTimeout(() => ripple.remove(), 650);
+    });
+  }
+
+  document.querySelectorAll('.start-button, .contact-card').forEach(attachRipple);
+
+</script>
 
 </body>
 </html>
