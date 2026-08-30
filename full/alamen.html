@@ -456,12 +456,19 @@
         background: rgba(214, 173, 85, 0.08);
 
         border: 1px solid rgba(214, 173, 85, 0.16);
+
+        transition:
+          background 0.5s ease,
+          border-color 0.5s ease,
+          box-shadow 0.5s ease;
       }
 
       .ledger-cell.active {
         background: rgba(214, 173, 85, 0.3);
 
         border-color: var(--gold);
+
+        box-shadow: 0 0 10px rgba(214, 173, 85, 0.35);
       }
 
       /* آلة حاسبة */
@@ -514,6 +521,31 @@
         font-size: 18px;
 
         font-weight: 800;
+
+        letter-spacing: 0.5px;
+
+        overflow: hidden;
+
+        white-space: nowrap;
+
+        text-shadow: 0 0 8px rgba(245, 220, 150, 0.35);
+
+        position: relative;
+      }
+
+      .calculator-screen::after {
+        content: "";
+
+        position: absolute;
+
+        left: 8px;
+
+        width: 2px;
+        height: 16px;
+
+        background: var(--gold-light);
+
+        animation: blink 1s step-end infinite;
       }
 
       .calc-buttons {
@@ -532,12 +564,28 @@
         background: #151515;
 
         border: 1px solid #333;
+
+        transition:
+          background 0.15s ease,
+          border-color 0.15s ease,
+          box-shadow 0.15s ease,
+          transform 0.15s ease;
       }
 
       .calc-button.gold {
         background: rgba(214, 173, 85, 0.22);
 
         border-color: var(--gold-dark);
+      }
+
+      .calc-button.pressed {
+        background: var(--gold);
+
+        border-color: var(--gold-light);
+
+        box-shadow: 0 0 14px rgba(214, 173, 85, 0.65);
+
+        transform: scale(0.92);
       }
 
       /* العملات */
@@ -567,6 +615,8 @@
         box-shadow:
           0 12px 30px rgba(0, 0, 0, 0.5),
           inset 0 0 0 3px rgba(255, 255, 255, 0.2);
+
+        animation: coinSpin 6s ease-in-out infinite;
       }
 
       .coin-one {
@@ -574,6 +624,8 @@
         top: 30px;
 
         transform: rotate(-10deg);
+
+        animation-delay: 0s;
       }
 
       .coin-two {
@@ -584,6 +636,8 @@
         height: 50px;
 
         font-size: 18px;
+
+        animation-delay: 1.2s;
       }
 
       .coin-three {
@@ -594,6 +648,8 @@
         height: 43px;
 
         font-size: 16px;
+
+        animation-delay: 2.4s;
       }
 
       /* مخطط */
@@ -640,6 +696,8 @@
         );
 
         border-radius: 4px 4px 0 0;
+
+        transition: height 0.9s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .bar:nth-child(1) {
@@ -1327,6 +1385,29 @@
         }
       }
 
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes coinSpin {
+        0%,
+        100% {
+          transform: rotateY(0deg);
+        }
+        45% {
+          transform: rotateY(180deg);
+        }
+        55% {
+          transform: rotateY(180deg);
+        }
+      }
+
       .reveal {
         opacity: 0;
 
@@ -1591,7 +1672,6 @@
   ===================================================== -->
 
     <header>
-      ```
       <nav class="navbar">
         <a href="#" class="logo"> Coursyria<span>.</span> </a>
 
@@ -1615,7 +1695,6 @@
 
         <a href="#register" class="nav-btn"> التسجيل </a>
       </nav>
-      ```
     </header>
 
     <!-- =====================================================
@@ -1623,7 +1702,6 @@
   ===================================================== -->
 
     <main>
-      ```
       <!-- ===================================================
      HERO
 =================================================== -->
@@ -1699,9 +1777,9 @@
               <!-- آلة حاسبة -->
 
               <div class="calculator">
-                <div class="calculator-screen">1000</div>
+                <div class="calculator-screen" id="calcScreen">0</div>
 
-                <div class="calc-buttons">
+                <div class="calc-buttons" id="calcButtons">
                   <div class="calc-button"></div>
                   <div class="calc-button"></div>
                   <div class="calc-button gold"></div>
@@ -2081,7 +2159,6 @@
           </a>
         </div>
       </section>
-      ```
     </main>
 
     <!-- =====================================================
@@ -2089,7 +2166,6 @@
   ===================================================== -->
 
     <footer>
-      ```
       <div class="footer-container">
         <div class="footer-item">
           <strong> ✈ Coursyria_team </strong>
@@ -2109,7 +2185,6 @@
           coursyria.team
         </div>
       </div>
-      ```
     </footer>
 
     <!-- =====================================================
@@ -2117,10 +2192,10 @@
   ===================================================== -->
 
     <div class="copyright">
-      ``` © 2026 -
+      © 2026 -
       <strong> إعداد وتصميم لين الكردي </strong>
 
-      — جميع الحقوق محفوظة ```
+      — جميع الحقوق محفوظة
     </div>
 
     <!-- =====================================================
@@ -2169,6 +2244,125 @@
           header.style.boxShadow = "none";
         }
       });
+
+      /* =====================================================
+       CALCULATOR — عمليات حسابية حيّة تُكتب وتُمحى
+    ===================================================== */
+
+      (function initCalculator() {
+        const screen = document.getElementById("calcScreen");
+        const buttons = document.querySelectorAll("#calcButtons .calc-button");
+
+        if (!screen || !buttons.length) return;
+
+        const operations = [
+          { text: "250+150", result: "= 400" },
+          { text: "1000-300", result: "= 700" },
+          { text: "75×2", result: "= 150" },
+          { text: "900÷3", result: "= 300" },
+          { text: "620+180", result: "= 800" },
+        ];
+
+        let opIndex = 0;
+
+        function pressRandomButtons(times) {
+          for (let i = 0; i < times; i++) {
+            setTimeout(() => {
+              const btn = buttons[Math.floor(Math.random() * buttons.length)];
+              btn.classList.add("pressed");
+              setTimeout(() => btn.classList.remove("pressed"), 200);
+            }, i * 180);
+          }
+        }
+
+        function typeText(text, onDone) {
+          screen.textContent = "";
+          let i = 0;
+
+          const typer = setInterval(() => {
+            screen.textContent += text[i];
+            i++;
+
+            if (i >= text.length) {
+              clearInterval(typer);
+              if (onDone) onDone();
+            }
+          }, 160);
+        }
+
+        function eraseText(onDone) {
+          const eraser = setInterval(() => {
+            const current = screen.textContent;
+            screen.textContent = current.slice(0, -1);
+
+            if (screen.textContent.length === 0) {
+              clearInterval(eraser);
+              if (onDone) onDone();
+            }
+          }, 70);
+        }
+
+        function runCycle() {
+          const op = operations[opIndex % operations.length];
+          opIndex++;
+
+          pressRandomButtons(op.text.length);
+
+          typeText(op.text, () => {
+            setTimeout(() => {
+              pressRandomButtons(3);
+
+              setTimeout(() => {
+                screen.textContent = op.result;
+
+                setTimeout(() => {
+                  eraseText(() => {
+                    setTimeout(runCycle, 600);
+                  });
+                }, 1500);
+              }, 500);
+            }, 400);
+          });
+        }
+
+        setTimeout(runCycle, 800);
+      })();
+
+      /* =====================================================
+       LEDGER — قيود تُسجَّل بشكل دوري
+    ===================================================== */
+
+      (function initLedger() {
+        const cells = document.querySelectorAll(".ledger-cell");
+        if (!cells.length) return;
+
+        setInterval(() => {
+          cells.forEach((cell) => cell.classList.remove("active"));
+
+          const activateCount = 2 + Math.floor(Math.random() * 3);
+          const shuffled = [...cells].sort(() => 0.5 - Math.random());
+
+          shuffled.slice(0, activateCount).forEach((cell, i) => {
+            setTimeout(() => cell.classList.add("active"), i * 150);
+          });
+        }, 1800);
+      })();
+
+      /* =====================================================
+       CHART — أعمدة بيانات متحركة
+    ===================================================== */
+
+      (function initChart() {
+        const bars = document.querySelectorAll(".chart .bar");
+        if (!bars.length) return;
+
+        setInterval(() => {
+          bars.forEach((bar) => {
+            const newHeight = 25 + Math.random() * 70;
+            bar.style.height = newHeight + "%";
+          });
+        }, 2000);
+      })();
     </script>
   </body>
 </html>
