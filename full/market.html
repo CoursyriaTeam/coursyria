@@ -29,19 +29,19 @@
         color: #f7fbff;
         background:
           radial-gradient(
-            circle at 20% 10%,
-            rgba(0, 112, 255, 0.22),
+            circle at 15% 10%,
+            rgba(0, 140, 255, 0.22),
             transparent 25%
           ),
           radial-gradient(
-            circle at 85% 30%,
-            rgba(0, 174, 255, 0.14),
-            transparent 25%
+            circle at 85% 25%,
+            rgba(0, 220, 255, 0.12),
+            transparent 28%
           ),
           radial-gradient(
             circle at 50% 90%,
-            rgba(0, 78, 255, 0.14),
-            transparent 30%
+            rgba(0, 80, 255, 0.16),
+            transparent 32%
           ),
           linear-gradient(135deg, #010611, #031124 50%, #010611);
         min-height: 100vh;
@@ -49,17 +49,30 @@
         overflow-x: hidden;
       }
 
-      img {
-        max-width: 100%;
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px
+          );
+        background-size: 45px 45px;
+        mask-image: linear-gradient(to bottom, black, transparent);
+        z-index: 0;
       }
 
       a {
         -webkit-tap-highlight-color: transparent;
       }
 
-      /* ================= CONTAINER ================= */
-
       .container {
+        position: relative;
+        z-index: 1;
         width: min(1200px, 94%);
         margin: auto;
         padding: 25px 0 60px;
@@ -99,6 +112,21 @@
         box-shadow:
           0 0 12px #087cff,
           0 0 35px rgba(0, 119, 255, 0.4);
+        animation: logoPulse 3s infinite;
+      }
+
+      @keyframes logoPulse {
+        0%,
+        100% {
+          box-shadow:
+            0 0 12px #087cff,
+            0 0 35px rgba(0, 119, 255, 0.35);
+        }
+        50% {
+          box-shadow:
+            0 0 25px #087cff,
+            0 0 55px rgba(0, 119, 255, 0.65);
+        }
       }
 
       .logo-name {
@@ -137,7 +165,7 @@
         grid-template-columns: 1fr 1fr;
         gap: 35px;
         align-items: center;
-        min-height: 540px;
+        min-height: 560px;
         padding: 45px 35px;
         border-radius: 28px;
         border: 1px solid rgba(0, 132, 255, 0.5);
@@ -151,25 +179,33 @@
         box-shadow:
           0 0 35px rgba(0, 102, 255, 0.12),
           inset 0 0 50px rgba(0, 119, 255, 0.06);
+        isolation: isolate;
       }
 
       .hero::before {
         content: "";
         position: absolute;
-        width: 450px;
-        height: 450px;
+        width: 500px;
+        height: 500px;
         border-radius: 50%;
         border: 1px solid rgba(0, 144, 255, 0.15);
-        right: -180px;
-        top: -170px;
+        right: -210px;
+        top: -190px;
         box-shadow:
           0 0 60px rgba(0, 119, 255, 0.12),
           inset 0 0 50px rgba(0, 119, 255, 0.08);
+        animation: orbRotate 18s linear infinite;
+      }
+
+      @keyframes orbRotate {
+        to {
+          transform: rotate(360deg);
+        }
       }
 
       .hero-content {
         position: relative;
-        z-index: 2;
+        z-index: 3;
         min-width: 0;
       }
 
@@ -185,6 +221,17 @@
           0 0 10px #087cff,
           inset 0 0 15px rgba(0, 145, 255, 0.2);
         margin-bottom: 20px;
+        animation: badgeFloat 3s ease-in-out infinite;
+      }
+
+      @keyframes badgeFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-4px);
+        }
       }
 
       .hero h1 {
@@ -219,7 +266,7 @@
         max-width: 580px;
       }
 
-      /* ================= COURSE INFO ================= */
+      /* ================= INFO ================= */
 
       .course-info {
         display: grid;
@@ -234,6 +281,13 @@
         border: 1px solid rgba(0, 140, 255, 0.4);
         background: rgba(3, 26, 55, 0.75);
         box-shadow: inset 0 0 15px rgba(0, 125, 255, 0.05);
+        transition: 0.3s;
+      }
+
+      .info-box:hover {
+        transform: translateY(-4px);
+        border-color: #42c4ff;
+        box-shadow: 0 8px 25px rgba(0, 130, 255, 0.18);
       }
 
       .info-label {
@@ -292,146 +346,529 @@
       }
 
       .cta:hover {
-        transform: translateY(-4px);
+        transform: translateY(-4px) scale(1.02);
         box-shadow: 0 8px 25px rgba(0, 128, 255, 0.45);
       }
 
-      /* ================= DIGITAL ART ================= */
+      /* =========================================================
+       MARKETING DASHBOARD
+    ========================================================= */
 
       .hero-art {
-        height: 410px;
+        height: 450px;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
+        perspective: 1200px;
       }
 
-      .laptop {
+      .dashboard {
         position: relative;
-        width: 300px;
-        height: 205px;
-        background: linear-gradient(145deg, #172b47, #030a15);
-        border: 4px solid #3179c8;
-        border-radius: 16px 16px 10px 10px;
-        box-shadow:
-          0 0 25px #087cff,
-          0 0 65px rgba(0, 113, 255, 0.45);
-        transform: perspective(700px) rotateX(5deg) rotateY(-5deg);
-      }
-
-      .laptop-screen {
-        position: absolute;
-        inset: 14px;
-        background: linear-gradient(135deg, #071b39, #020813);
-        border: 1px solid #168dff;
-        border-radius: 7px;
-        padding: 15px;
-      }
-
-      .screen-title {
-        color: #7fd5ff;
-        font-size: 11px;
-        margin-bottom: 15px;
-      }
-
-      .screen-bars {
-        display: flex;
-        gap: 7px;
-        align-items: end;
-        height: 80px;
-      }
-
-      .screen-bars span {
-        flex: 1;
-        background: linear-gradient(to top, #076dff, #30c4ff);
-        border-radius: 4px 4px 0 0;
-        box-shadow: 0 0 8px #008cff;
-      }
-
-      .screen-bars span:nth-child(1) {
-        height: 35%;
-      }
-
-      .screen-bars span:nth-child(2) {
-        height: 70%;
-      }
-
-      .screen-bars span:nth-child(3) {
-        height: 50%;
-      }
-
-      .screen-bars span:nth-child(4) {
-        height: 85%;
-      }
-
-      .screen-bars span:nth-child(5) {
-        height: 65%;
-      }
-
-      .laptop-base {
-        position: absolute;
-        width: 360px;
-        height: 28px;
-        bottom: -31px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-radius: 5px 5px 25px 25px;
-        background: linear-gradient(#315b86, #071326);
-        border: 2px solid #2c75bc;
-        box-shadow: 0 12px 25px #000;
-      }
-
-      .platform {
-        position: absolute;
-        bottom: 15px;
         width: 410px;
-        height: 50px;
-        border-radius: 50%;
-        border: 2px solid #087cff;
-        background: rgba(0, 51, 112, 0.3);
+        height: 310px;
+        border-radius: 22px;
+        padding: 15px;
+        background: linear-gradient(
+          145deg,
+          rgba(13, 47, 88, 0.97),
+          rgba(2, 10, 24, 0.98)
+        );
+        border: 1px solid rgba(49, 164, 255, 0.7);
         box-shadow:
-          0 0 15px #008cff,
-          0 0 50px rgba(0, 120, 255, 0.4),
-          inset 0 0 20px rgba(0, 120, 255, 0.25);
+          0 25px 70px rgba(0, 0, 0, 0.55),
+          0 0 35px rgba(0, 126, 255, 0.3),
+          inset 0 0 35px rgba(0, 126, 255, 0.06);
+        transform: rotateX(5deg) rotateY(-7deg);
+        transition: transform 0.25s ease;
+        z-index: 4;
       }
 
-      /* ================= FLOATING ICONS ================= */
-
-      .float-icon {
+      .dashboard::before {
+        content: "";
         position: absolute;
-        width: 55px;
-        height: 55px;
+        inset: -1px;
+        border-radius: 22px;
+        padding: 1px;
+        background: linear-gradient(120deg, transparent, #27baff, transparent);
+        mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      .dashboard-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(90, 190, 255, 0.15);
+        padding: 3px 3px 11px;
+      }
+
+      .dash-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: #a9dcff;
+        font-weight: 800;
+      }
+
+      .dash-dot {
+        width: 8px;
+        height: 8px;
+        background: #31c5ff;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #20bfff;
+        animation: live 1.5s infinite;
+      }
+
+      @keyframes live {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.35;
+          transform: scale(0.7);
+        }
+      }
+
+      .dash-time {
+        font-size: 9px;
+        color: #6087a7;
+      }
+
+      .dashboard-body {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 12px;
+        height: 250px;
+        padding-top: 12px;
+      }
+
+      /* chart */
+
+      .chart-card {
+        border: 1px solid rgba(0, 140, 255, 0.22);
+        background: rgba(1, 14, 32, 0.75);
+        border-radius: 13px;
+        padding: 11px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .chart-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 9px;
+        color: #9dc4df;
+        margin-bottom: 10px;
+      }
+
+      .growth {
+        color: #36d5a0;
+        font-weight: 900;
+      }
+
+      .chart {
+        position: relative;
+        height: 160px;
+        overflow: hidden;
+        border-radius: 8px;
+        background:
+          linear-gradient(rgba(47, 157, 220, 0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(47, 157, 220, 0.07) 1px, transparent 1px);
+        background-size: 30px 30px;
+      }
+
+      .chart svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+
+      .chart-line {
+        fill: none;
+        stroke: #22baff;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: drop-shadow(0 0 6px #008cff);
+        stroke-dasharray: 500;
+        stroke-dashoffset: 500;
+        animation: drawChart 3s ease forwards infinite;
+      }
+
+      @keyframes drawChart {
+        0% {
+          stroke-dashoffset: 500;
+        }
+        45%,
+        80% {
+          stroke-dashoffset: 0;
+        }
+        100% {
+          stroke-dashoffset: -500;
+        }
+      }
+
+      .chart-area {
+        fill: url(#chartGradient);
+        opacity: 0.25;
+      }
+
+      .chart-point {
+        fill: #5dd6ff;
+        filter: drop-shadow(0 0 5px #00aaff);
+        animation: pointPulse 1.8s infinite;
+      }
+
+      @keyframes pointPulse {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* social cards */
+
+      .social-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .social-card {
+        flex: 1;
+        border-radius: 12px;
+        padding: 10px;
+        background: rgba(4, 25, 50, 0.8);
+        border: 1px solid rgba(0, 140, 255, 0.22);
+        position: relative;
+        overflow: hidden;
+        transition: 0.4s;
+      }
+
+      .social-card:hover {
+        transform: translateX(-5px);
+        border-color: #39c6ff;
+        box-shadow: 0 0 18px rgba(0, 145, 255, 0.2);
+      }
+
+      .social-head {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 8px;
+      }
+
+      .avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
         display: grid;
         place-items: center;
-        border-radius: 15px;
-        font-size: 26px;
-        background: rgba(4, 35, 73, 0.75);
-        border: 1px solid #168cff;
-        box-shadow: 0 0 18px rgba(0, 128, 255, 0.6);
-        color: #52c8ff;
+        font-size: 11px;
+        background: linear-gradient(135deg, #148eff, #0b3973);
+        border: 1px solid #49c8ff;
       }
 
-      .i1 {
-        top: 30px;
-        right: 30px;
+      .social-name {
+        font-size: 8px;
+        color: #b4d4e8;
       }
 
-      .i2 {
-        top: 100px;
-        right: -15px;
+      .social-status {
+        margin-right: auto;
+        font-size: 8px;
+        color: #39d9a1;
       }
 
-      .i3 {
-        bottom: 110px;
-        left: 20px;
+      .mini-post {
+        height: 34px;
+        border-radius: 7px;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 140, 255, 0.24),
+          rgba(18, 44, 75, 0.35)
+        );
+        border: 1px solid rgba(83, 188, 255, 0.1);
+        margin-bottom: 7px;
+        position: relative;
+        overflow: hidden;
       }
 
-      .i4 {
-        bottom: 45px;
-        right: 30px;
+      .mini-post::after {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.15),
+          transparent
+        );
+        transform: translateX(-100%);
+        animation: shine 3s infinite;
       }
 
-      /* ================= TITLES ================= */
+      @keyframes shine {
+        to {
+          transform: translateX(220%);
+        }
+      }
+
+      .social-actions {
+        display: flex;
+        justify-content: space-between;
+        font-size: 8px;
+        color: #789bb4;
+      }
+
+      .heart {
+        color: #ff6eab;
+        animation: heartBeat 2s infinite;
+      }
+
+      @keyframes heartBeat {
+        0%,
+        80%,
+        100% {
+          transform: scale(1);
+        }
+        85% {
+          transform: scale(1.35);
+        }
+      }
+
+      /* floating notification */
+
+      .notification {
+        position: absolute;
+        right: -35px;
+        top: 65px;
+        z-index: 7;
+        width: 145px;
+        padding: 11px;
+        border-radius: 13px;
+        background: rgba(4, 22, 43, 0.95);
+        border: 1px solid #2ebcff;
+        box-shadow: 0 0 25px rgba(0, 140, 255, 0.3);
+        animation: notificationFloat 4s ease-in-out infinite;
+      }
+
+      @keyframes notificationFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(2deg);
+        }
+        50% {
+          transform: translateY(-12px) rotate(-2deg);
+        }
+      }
+
+      .notification-top {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: #66d3ff;
+        font-size: 9px;
+        font-weight: 800;
+      }
+
+      .notification-icon {
+        width: 26px;
+        height: 26px;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        background: rgba(0, 140, 255, 0.15);
+        font-size: 14px;
+      }
+
+      .notification p {
+        color: #91b0c8;
+        font-size: 8px;
+        line-height: 1.6;
+        margin-top: 7px;
+      }
+
+      .notification strong {
+        color: #fff;
+      }
+
+      /* floating metrics */
+
+      .metric {
+        position: absolute;
+        z-index: 8;
+        min-width: 105px;
+        padding: 9px 12px;
+        border-radius: 12px;
+        background: rgba(3, 21, 42, 0.94);
+        border: 1px solid rgba(41, 180, 255, 0.65);
+        box-shadow: 0 0 18px rgba(0, 130, 255, 0.25);
+        backdrop-filter: blur(8px);
+      }
+
+      .metric.one {
+        left: -18px;
+        top: 78px;
+        animation: metric1 4s ease-in-out infinite;
+      }
+
+      .metric.two {
+        left: 5px;
+        bottom: 65px;
+        animation: metric2 4.5s ease-in-out infinite;
+      }
+
+      @keyframes metric1 {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(9px);
+        }
+      }
+
+      @keyframes metric2 {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-9px);
+        }
+      }
+
+      .metric-label {
+        font-size: 8px;
+        color: #7597b1;
+      }
+
+      .metric-value {
+        font-size: 15px;
+        color: #4bd0ff;
+        font-weight: 900;
+      }
+
+      .metric-up {
+        color: #38dca2;
+        font-size: 8px;
+        margin-right: 4px;
+      }
+
+      /* cursor */
+
+      .fake-cursor {
+        position: absolute;
+        z-index: 10;
+        width: 18px;
+        height: 25px;
+        right: 105px;
+        bottom: 80px;
+        transform: rotate(-12deg);
+        animation: cursorMove 5s ease-in-out infinite;
+        filter: drop-shadow(0 0 5px rgba(0, 174, 255, 0.7));
+      }
+
+      .fake-cursor::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 9px solid white;
+        border-top: 13px solid transparent;
+        border-bottom: 8px solid transparent;
+      }
+
+      @keyframes cursorMove {
+        0% {
+          transform: translate(0, 0) rotate(-12deg);
+        }
+        25% {
+          transform: translate(-70px, -45px) rotate(-12deg);
+        }
+        50% {
+          transform: translate(-120px, 15px) rotate(-12deg);
+        }
+        75% {
+          transform: translate(-45px, 70px) rotate(-12deg);
+        }
+        100% {
+          transform: translate(0, 0) rotate(-12deg);
+        }
+      }
+
+      /* particles */
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #28bfff;
+        box-shadow: 0 0 10px #008cff;
+        opacity: 0.6;
+        animation: particleFloat 6s linear infinite;
+      }
+
+      .p1 {
+        top: 25px;
+        left: 80px;
+        animation-delay: 0s;
+      }
+      .p2 {
+        top: 180px;
+        right: 20px;
+        animation-delay: 1s;
+      }
+      .p3 {
+        bottom: 75px;
+        left: 100px;
+        animation-delay: 2s;
+      }
+      .p4 {
+        bottom: 30px;
+        right: 130px;
+        animation-delay: 3s;
+      }
+      .p5 {
+        top: 90px;
+        left: 170px;
+        animation-delay: 4s;
+      }
+
+      @keyframes particleFloat {
+        0% {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        20% {
+          opacity: 0.7;
+        }
+        70% {
+          opacity: 0.7;
+        }
+        100% {
+          transform: translateY(-55px);
+          opacity: 0;
+        }
+      }
+
+      /* ================= SECTION ================= */
 
       .section-title {
         text-align: center;
@@ -483,7 +920,7 @@
       }
 
       .module:hover {
-        transform: translateY(-7px);
+        transform: translateY(-7px) scale(1.02);
         border-color: #3cc4ff;
         box-shadow: 0 12px 30px rgba(0, 108, 255, 0.25);
       }
@@ -529,6 +966,12 @@
         padding: 25px 12px;
         text-align: center;
         border-left: 1px solid rgba(0, 136, 255, 0.2);
+        transition: 0.3s;
+      }
+
+      .why-item:hover {
+        background: rgba(0, 125, 255, 0.08);
+        transform: translateY(-3px);
       }
 
       .why-item:last-child {
@@ -564,6 +1007,20 @@
         border-radius: 20px;
         background: radial-gradient(circle, #08275a, #020914);
         box-shadow: inset 0 0 40px rgba(0, 118, 255, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .quote::after {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 1px solid rgba(0, 168, 255, 0.12);
+        border-radius: 50%;
+        left: -100px;
+        bottom: -130px;
+        animation: orbRotate 10s linear infinite;
       }
 
       .quote-mark {
@@ -703,8 +1160,6 @@
         text-shadow: 0 0 10px rgba(0, 145, 255, 0.6);
       }
 
-      /* ================= COPYRIGHT ================= */
-
       .copyright {
         text-align: center;
         padding: 15px 10px 25px;
@@ -739,7 +1194,7 @@
         }
 
         .hero-art {
-          min-height: 380px;
+          min-height: 410px;
         }
 
         .modules {
@@ -804,7 +1259,7 @@
         .hero {
           padding: 27px 15px;
           border-radius: 21px;
-          gap: 8px;
+          gap: 5px;
           min-height: auto;
         }
 
@@ -830,8 +1285,6 @@
           line-height: 1.9;
         }
 
-        /* معلومات الدورة على الموبايل */
-
         .course-info {
           grid-template-columns: 1fr 1fr;
           gap: 8px;
@@ -851,8 +1304,6 @@
           font-size: 14px;
         }
 
-        /* السعر */
-
         .price-box {
           flex-direction: column;
           gap: 13px;
@@ -870,53 +1321,125 @@
           font-size: 13px;
         }
 
-        /* الرسم */
+        /* dashboard mobile */
 
         .hero-art {
-          height: 285px;
-          min-height: 285px;
-          transform: scale(0.72);
-          margin-top: -25px;
-          margin-bottom: -45px;
+          height: 330px;
+          min-height: 330px;
+          margin-top: 0;
+          margin-bottom: -15px;
+          transform: none;
         }
 
-        .laptop {
-          width: 285px;
-          height: 195px;
+        .dashboard {
+          width: 315px;
+          height: 245px;
+          padding: 10px;
+          transform: scale(0.9);
         }
 
-        .laptop-base {
-          width: 335px;
+        .dashboard-body {
+          height: 198px;
+          gap: 7px;
+          padding-top: 8px;
         }
 
-        .platform {
-          width: 380px;
+        .chart-card {
+          padding: 7px;
         }
 
-        .float-icon {
-          width: 48px;
-          height: 48px;
-          font-size: 22px;
+        .chart-title {
+          font-size: 7px;
+          margin-bottom: 6px;
         }
 
-        .i1 {
-          top: 30px;
-          right: 15px;
+        .chart {
+          height: 130px;
+          background-size: 22px 22px;
         }
 
-        .i2 {
-          right: -5px;
+        .social-card {
+          padding: 7px;
         }
 
-        .i3 {
-          left: 10px;
+        .social-head {
+          margin-bottom: 5px;
         }
 
-        .i4 {
-          right: 15px;
+        .avatar {
+          width: 19px;
+          height: 19px;
+          font-size: 8px;
         }
 
-        /* العناوين */
+        .social-name,
+        .social-status,
+        .social-actions {
+          font-size: 6px;
+        }
+
+        .mini-post {
+          height: 27px;
+          margin-bottom: 5px;
+        }
+
+        .notification {
+          width: 120px;
+          right: -15px;
+          top: 28px;
+          padding: 8px;
+        }
+
+        .notification p {
+          font-size: 7px;
+        }
+
+        .notification-top {
+          font-size: 7px;
+        }
+
+        .notification-icon {
+          width: 22px;
+          height: 22px;
+        }
+
+        .metric {
+          min-width: 88px;
+          padding: 7px 9px;
+        }
+
+        .metric.one {
+          left: -12px;
+          top: 65px;
+        }
+
+        .metric.two {
+          left: -4px;
+          bottom: 52px;
+        }
+
+        .metric-label {
+          font-size: 6px;
+        }
+
+        .metric-value {
+          font-size: 12px;
+        }
+
+        .metric-up {
+          font-size: 6px;
+        }
+
+        .fake-cursor {
+          display: none;
+        }
+
+        .particle {
+          width: 3px;
+          height: 3px;
+        }
+
+        /* sections */
 
         .section-title {
           font-size: 21px;
@@ -927,8 +1450,6 @@
           width: 75px;
           margin: 9px auto;
         }
-
-        /* المحاور */
 
         .modules {
           grid-template-columns: 1fr 1fr;
@@ -961,8 +1482,6 @@
           font-size: 10px;
           line-height: 1.6;
         }
-
-        /* لماذا الدورة */
 
         .why {
           grid-template-columns: 1fr 1fr;
@@ -999,8 +1518,6 @@
           line-height: 1.6;
         }
 
-        /* الاقتباس */
-
         .quote {
           margin-top: 30px;
           padding: 25px 15px;
@@ -1015,8 +1532,6 @@
           font-size: 16px;
           line-height: 1.9;
         }
-
-        /* النهائي */
 
         .final {
           margin-top: 28px;
@@ -1042,8 +1557,6 @@
           width: auto;
           min-width: 160px;
         }
-
-        /* التواصل */
 
         .contact-grid {
           grid-template-columns: 1fr;
@@ -1072,8 +1585,6 @@
           font-size: 10px;
         }
 
-        /* الفوتر */
-
         footer {
           flex-direction: column;
           gap: 7px;
@@ -1091,10 +1602,6 @@
       /* ================= SMALL PHONES ================= */
 
       @media (max-width: 380px) {
-        .container {
-          width: 95%;
-        }
-
         .hero {
           padding: 23px 12px;
         }
@@ -1120,9 +1627,9 @@
         }
 
         .hero-art {
-          transform: scale(0.63);
-          margin-top: -35px;
-          margin-bottom: -60px;
+          transform: scale(0.88);
+          margin-top: -5px;
+          margin-bottom: -25px;
         }
 
         .modules {
@@ -1154,12 +1661,24 @@
           font-size: 26px;
         }
       }
+
+      /* ================= REDUCE MOTION ================= */
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+        }
+      }
     </style>
   </head>
 
   <body>
     <div class="container">
-      <!-- ================= HEADER ================= -->
+      <!-- HEADER -->
 
       <header class="header">
         <div class="logo">
@@ -1175,7 +1694,7 @@
         <div class="header-badge">دورة احترافية</div>
       </header>
 
-      <!-- ================= HERO ================= -->
+      <!-- HERO -->
 
       <section class="hero">
         <div class="hero-content">
@@ -1183,7 +1702,7 @@
 
           <h1>
             إدارة المحتوى
-            <span class="blue">التسويقي</span>
+            <span class="blue"> التسويقي </span>
           </h1>
 
           <div class="english-title">MARKETING CONTENT MANAGEMENT</div>
@@ -1192,8 +1711,6 @@
             تعلّم كيف تخطط لإنشاء محتوى جذاب، تديره بذكاء، وتحوله إلى نتائج
             تسويقية حقيقية.
           </p>
-
-          <!-- معلومات الدورة -->
 
           <div class="course-info">
             <div class="info-box">
@@ -1209,8 +1726,6 @@
             </div>
           </div>
 
-          <!-- السعر -->
-
           <div class="price-box">
             <div>
               <div class="price-title">سعر الدورة</div>
@@ -1222,125 +1737,326 @@
           </div>
         </div>
 
-        <!-- ================= DIGITAL ART ================= -->
+        <!-- MARKETING DASHBOARD -->
 
-        <div class="hero-art">
-          <div class="platform"></div>
+        <div class="hero-art" id="heroArt">
+          <div class="particle p1"></div>
+          <div class="particle p2"></div>
+          <div class="particle p3"></div>
+          <div class="particle p4"></div>
+          <div class="particle p5"></div>
 
-          <div class="laptop">
-            <div class="laptop-screen">
-              <div class="screen-title">CONTENT STRATEGY</div>
+          <div class="metric one">
+            <div class="metric-label">التفاعل</div>
 
-              <div class="screen-bars">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
+            <div class="metric-value">
+              87%
+              <span class="metric-up"> ↑ 24% </span>
             </div>
-
-            <div class="laptop-base"></div>
           </div>
 
-          <div class="float-icon i1">♥</div>
-          <div class="float-icon i2">▶</div>
-          <div class="float-icon i3">◎</div>
-          <div class="float-icon i4">#</div>
+          <div class="metric two">
+            <div class="metric-label">الوصول</div>
+
+            <div class="metric-value">
+              24.8K
+              <span class="metric-up"> ↑ 18% </span>
+            </div>
+          </div>
+
+          <div class="notification">
+            <div class="notification-top">
+              <div class="notification-icon">♥</div>
+
+              محتوى جديد
+            </div>
+
+            <p>
+              المنشور الأخير حصل على
+              <strong>+1.2K تفاعل</strong>
+            </p>
+          </div>
+
+          <div class="dashboard" id="dashboard">
+            <div class="dashboard-top">
+              <div class="dash-brand">
+                <span class="dash-dot"></span>
+
+                MARKETING DASHBOARD
+              </div>
+
+              <div class="dash-time">LIVE • 24/7</div>
+            </div>
+
+            <div class="dashboard-body">
+              <!-- CHART -->
+
+              <div class="chart-card">
+                <div class="chart-title">
+                  <span> أداء المحتوى </span>
+
+                  <span class="growth"> +32.6% </span>
+                </div>
+
+                <div class="chart">
+                  <svg viewBox="0 0 300 160" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient
+                        id="chartGradient"
+                        x1="0"
+                        x2="0"
+                        y1="0"
+                        y2="1"
+                      >
+                        <stop
+                          offset="0%"
+                          stop-color="#20bfff"
+                          stop-opacity=".7"
+                        />
+
+                        <stop
+                          offset="100%"
+                          stop-color="#20bfff"
+                          stop-opacity="0"
+                        />
+                      </linearGradient>
+                    </defs>
+
+                    <path
+                      class="chart-area"
+                      d="
+                    M0 135
+                    L30 120
+                    L65 128
+                    L100 90
+                    L135 103
+                    L170 70
+                    L205 82
+                    L240 43
+                    L270 55
+                    L300 20
+                    L300 160
+                    L0 160
+                    Z
+                  "
+                    ></path>
+
+                    <path
+                      class="chart-line"
+                      d="
+                    M0 135
+                    L30 120
+                    L65 128
+                    L100 90
+                    L135 103
+                    L170 70
+                    L205 82
+                    L240 43
+                    L270 55
+                    L300 20
+                  "
+                    ></path>
+
+                    <circle class="chart-point" cx="100" cy="90" r="4"></circle>
+
+                    <circle
+                      class="chart-point"
+                      cx="170"
+                      cy="70"
+                      r="4"
+                      style="animation-delay: 0.4s"
+                    ></circle>
+
+                    <circle
+                      class="chart-point"
+                      cx="240"
+                      cy="43"
+                      r="4"
+                      style="animation-delay: 0.8s"
+                    ></circle>
+
+                    <circle
+                      class="chart-point"
+                      cx="300"
+                      cy="20"
+                      r="5"
+                      style="animation-delay: 1.2s"
+                    ></circle>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- SOCIAL -->
+
+              <div class="social-stack">
+                <div class="social-card">
+                  <div class="social-head">
+                    <div class="avatar">C</div>
+
+                    <div class="social-name">Coursyria</div>
+
+                    <div class="social-status">●</div>
+                  </div>
+
+                  <div class="mini-post"></div>
+
+                  <div class="social-actions">
+                    <span class="heart"> ♥ 1.2K </span>
+
+                    <span> 💬 248 </span>
+
+                    <span> ↗ 89 </span>
+                  </div>
+                </div>
+
+                <div class="social-card">
+                  <div class="social-head">
+                    <div class="avatar">M</div>
+
+                    <div class="social-name">Marketing</div>
+
+                    <div class="social-status">●</div>
+                  </div>
+
+                  <div class="mini-post"></div>
+
+                  <div class="social-actions">
+                    <span class="heart"> ♥ 846 </span>
+
+                    <span> 💬 126 </span>
+
+                    <span> ↗ 54 </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fake-cursor"></div>
         </div>
       </section>
 
-      <!-- ================= MODULES ================= -->
+      <!-- MODULES -->
 
       <h2 class="section-title">محاور الدورة</h2>
 
       <section class="modules">
         <div class="module">
           <div class="module-number">01</div>
+
           <div class="module-icon">◎</div>
+
           <h3>استراتيجية المحتوى</h3>
+
           <p>بناء استراتيجية واضحة تناسب أهدافك وجمهورك.</p>
         </div>
 
         <div class="module">
           <div class="module-number">02</div>
+
           <div class="module-icon">▤</div>
+
           <h3>تخطيط المحتوى</h3>
+
           <p>تنظيم الأفكار ووضع خطة محتوى فعالة.</p>
         </div>
 
         <div class="module">
           <div class="module-number">03</div>
+
           <div class="module-icon">✎</div>
+
           <h3>إنشاء محتوى جذاب</h3>
+
           <p>كتابة وتصميم محتوى يجذب الجمهور.</p>
         </div>
 
         <div class="module">
           <div class="module-number">04</div>
+
           <div class="module-icon">▣</div>
+
           <h3>إدارة وتنظيم المحتوى</h3>
+
           <p>إدارة المحتوى وتنظيم عملية النشر والمتابعة.</p>
         </div>
 
         <div class="module">
           <div class="module-number">05</div>
+
           <div class="module-icon">↗</div>
+
           <h3>تحليل الأداء والتحسين</h3>
+
           <p>قياس النتائج وتحسين المحتوى باستمرار.</p>
         </div>
 
         <div class="module">
           <div class="module-number">06</div>
+
           <div class="module-icon">📣</div>
+
           <h3>توزيع المحتوى والترويج</h3>
+
           <p>إيصال المحتوى للجمهور المناسب بالطريقة الصحيحة.</p>
         </div>
       </section>
 
-      <!-- ================= WHY ================= -->
+      <!-- WHY -->
 
       <h2 class="section-title">لماذا هذه الدورة؟</h2>
 
       <section class="why">
         <div class="why-item">
           <div class="why-icon">★</div>
+
           <h3>مناسبة لجميع المستويات</h3>
+
           <p>ابدأ من الأساس وتطور خطوة بخطوة.</p>
         </div>
 
         <div class="why-item">
           <div class="why-icon">◷</div>
+
           <h3>نتائج ملموسة</h3>
+
           <p>تعلم مهارات قابلة للتطبيق.</p>
         </div>
 
         <div class="why-item">
           <div class="why-icon">♟</div>
+
           <h3>وفر وقتك وجهدك</h3>
+
           <p>منهج منظم ومباشر.</p>
         </div>
 
         <div class="why-item">
           <div class="why-icon">▤</div>
+
           <h3>محتوى محدث</h3>
+
           <p>أدوات وأفكار حديثة.</p>
         </div>
 
         <div class="why-item">
           <div class="why-icon">▶</div>
+
           <h3>تطبيقات عملية</h3>
+
           <p>تعلّم من خلال التطبيق.</p>
         </div>
 
         <div class="why-item">
           <div class="why-icon">♜</div>
+
           <h3>شهادة معتمدة</h3>
+
           <p>شهادة عند إتمام الدورة.</p>
         </div>
       </section>
 
-      <!-- ================= QUOTE ================= -->
+      <!-- QUOTE -->
 
       <section class="quote">
         <div class="quote-mark">“</div>
@@ -1348,7 +2064,7 @@
         <p>المحتوى القوي لا يُنشر فقط... بل يُخطط له، يُقاس، ويُطوّر.</p>
       </section>
 
-      <!-- ================= FINAL ================= -->
+      <!-- FINAL -->
 
       <section class="final" id="register">
         <h2>ابدأ رحلتك الآن</h2>
@@ -1367,7 +2083,7 @@
         </a>
       </section>
 
-      <!-- ================= CONTACT ================= -->
+      <!-- CONTACT -->
 
       <section>
         <div class="section-title">📞 معلومات التواصل</div>
@@ -1405,7 +2121,7 @@
         </div>
       </section>
 
-      <!-- ================= FOOTER ================= -->
+      <!-- FOOTER -->
 
       <footer>
         <div>✈ Coursyria_team</div>
@@ -1415,9 +2131,118 @@
         <div>📸 coursyria.team</div>
       </footer>
 
-      <!-- ================= COPYRIGHT ================= -->
-
       <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
     </div>
+
+    <script>
+      /* =========================================
+     INTERACTIVE 3D DASHBOARD
+  ========================================= */
+
+      const hero = document.querySelector(".hero");
+      const dashboard = document.getElementById("dashboard");
+
+      if (hero && dashboard) {
+        hero.addEventListener("mousemove", (e) => {
+          if (window.innerWidth <= 950) return;
+
+          const rect = hero.getBoundingClientRect();
+
+          const x = (e.clientX - rect.left) / rect.width;
+          const y = (e.clientY - rect.top) / rect.height;
+
+          const rotateY = (x - 0.5) * 12;
+          const rotateX = (y - 0.5) * -10;
+
+          dashboard.style.transform = `rotateX(${5 + rotateX}deg) rotateY(${-7 + rotateY}deg)`;
+        });
+
+        hero.addEventListener("mouseleave", () => {
+          dashboard.style.transform = "rotateX(5deg) rotateY(-7deg)";
+        });
+      }
+
+      /* =========================================
+     AUTO UPDATE METRICS
+  ========================================= */
+
+      const metricValues = document.querySelectorAll(".metric-value");
+
+      let counter = 0;
+
+      setInterval(() => {
+        counter++;
+
+        metricValues.forEach((el, index) => {
+          if (index === 0) {
+            const value = 84 + Math.floor(Math.random() * 7);
+
+            el.innerHTML = `${value}% <span class="metric-up">↑ ${20 + Math.floor(Math.random() * 9)}%</span>`;
+          }
+
+          if (index === 1) {
+            const value = (23 + Math.random() * 3).toFixed(1);
+
+            el.innerHTML = `${value}K <span class="metric-up">↑ ${15 + Math.floor(Math.random() * 8)}%</span>`;
+          }
+        });
+      }, 3500);
+
+      /* =========================================
+     TOUCH FEEDBACK
+  ========================================= */
+
+      document.querySelectorAll(".module").forEach((card) => {
+        card.addEventListener(
+          "touchstart",
+          () => {
+            card.style.transform = "translateY(-5px) scale(1.02)";
+          },
+          { passive: true },
+        );
+
+        card.addEventListener(
+          "touchend",
+          () => {
+            setTimeout(() => {
+              card.style.transform = "";
+            }, 180);
+          },
+          { passive: true },
+        );
+      });
+
+      /* =========================================
+     SCROLL REVEAL
+  ========================================= */
+
+      const revealItems = document.querySelectorAll(
+        ".module,.why-item,.quote,.final,.contact-card",
+      );
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+        },
+      );
+
+      revealItems.forEach((item) => {
+        item.style.opacity = "0";
+        item.style.transform = "translateY(20px)";
+        item.style.transition = "opacity .7s ease, transform .7s ease";
+
+        observer.observe(item);
+      });
+    </script>
   </body>
 </html>
