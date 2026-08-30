@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="ar" dir="rtl">
   <head>
@@ -7,7 +8,7 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
 
-    <title>UI UX - Coursyria</title>
+    <title>UI UX | Coursyria</title>
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap");
@@ -19,566 +20,881 @@
       }
 
       html {
-        width: 100%;
-        overflow-x: hidden;
         scroll-behavior: smooth;
+        overflow-x: hidden;
       }
 
       body {
-        width: 100%;
         min-height: 100vh;
         overflow-x: hidden;
         font-family: "Cairo", sans-serif;
+        color: #fff;
         background:
           radial-gradient(
-            circle at 80% 10%,
-            rgba(40, 255, 140, 0.12),
-            transparent 30%
+            circle at 10% 10%,
+            rgba(139, 92, 246, 0.2),
+            transparent 28%
           ),
           radial-gradient(
-            circle at 10% 80%,
-            rgba(40, 255, 140, 0.08),
+            circle at 90% 20%,
+            rgba(236, 72, 153, 0.16),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 50% 90%,
+            rgba(59, 130, 246, 0.12),
             transparent 30%
           ),
-          #03130d;
-        color: white;
+          #080612;
       }
 
       :root {
-        --bg: #03130d;
-        --bg2: #061f15;
-        --card: #08271a;
-        --green: #42ff9b;
-        --green2: #8dffbf;
-        --light: #eafff3;
-        --muted: #a8c8b6;
-        --border: rgba(71, 255, 157, 0.38);
-        --glow: rgba(40, 255, 140, 0.22);
+        --bg: #080612;
+        --panel: #11101d;
+        --panel2: #171526;
+        --purple: #a78bfa;
+        --violet: #8b5cf6;
+        --pink: #f472b6;
+        --blue: #60a5fa;
+        --cyan: #67e8f9;
+        --white: #ffffff;
+        --muted: #aaa6bc;
+        --line: rgba(255, 255, 255, 0.1);
+        --glow: rgba(139, 92, 246, 0.3);
       }
 
-      /* =====================================================
-         PAGE
-      ===================================================== */
+      /* =========================
+       PAGE
+    ========================= */
 
       .page {
-        width: min(1100px, 94%);
-        margin: 30px auto;
+        width: min(1150px, 94%);
+        margin: 25px auto;
         padding: 25px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 32px;
         background: linear-gradient(
           145deg,
-          rgba(10, 47, 31, 0.97),
-          rgba(2, 16, 11, 0.98)
+          rgba(21, 19, 35, 0.98),
+          rgba(7, 6, 15, 0.99)
         );
-        border: 1px solid rgba(95, 255, 167, 0.2);
-        border-radius: 28px;
         box-shadow:
-          0 0 70px rgba(30, 255, 130, 0.08),
-          inset 0 0 50px rgba(30, 255, 130, 0.025);
-        overflow: hidden;
+          0 30px 100px rgba(0, 0, 0, 0.45),
+          0 0 80px rgba(139, 92, 246, 0.06);
       }
 
-      /* =====================================================
-         LOGO
-      ===================================================== */
+      /* =========================
+       BACKGROUND GRID
+    ========================= */
+
+      .page::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.25;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+        background-size: 40px 40px;
+        mask-image: linear-gradient(to bottom, black, transparent 80%);
+      }
+
+      /* =========================
+       LOGO
+    ========================= */
 
       .logo {
+        position: relative;
+        z-index: 2;
         display: flex;
         align-items: center;
-        gap: 14px;
-        margin-bottom: 35px;
+        gap: 13px;
+        margin-bottom: 30px;
       }
 
       .logo-icon {
-        width: 58px;
-        height: 58px;
-        flex-shrink: 0;
-        border: 2px solid var(--green);
-        border-radius: 16px 4px 16px 4px;
+        width: 56px;
+        height: 56px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 27px;
+        border-radius: 17px;
+        font-size: 26px;
         font-weight: 900;
-        color: var(--green);
-        box-shadow: 0 0 25px var(--glow);
+        color: #fff;
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        box-shadow:
+          0 0 30px rgba(139, 92, 246, 0.3),
+          inset 0 0 20px rgba(255, 255, 255, 0.12);
+        transform: rotate(-5deg);
+        transition: 0.4s;
+      }
+
+      .logo:hover .logo-icon {
+        transform: rotate(5deg) scale(1.06);
       }
 
       .logo h2 {
-        font-size: 27px;
+        font-size: 25px;
         font-weight: 900;
         letter-spacing: 1px;
       }
 
       .logo p {
+        font-size: 10px;
         color: var(--muted);
-        font-size: 12px;
-        margin-top: -5px;
+        letter-spacing: 2px;
       }
 
-      /* =====================================================
-         HERO
-      ===================================================== */
+      /* =========================
+       HERO
+    ========================= */
 
       .hero {
+        min-height: 500px;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 35px;
+        gap: 45px;
         align-items: center;
-        min-height: 470px;
+        position: relative;
+        z-index: 2;
       }
 
       .hero-content {
-        text-align: right;
         min-width: 0;
       }
 
       .badge {
-        display: inline-block;
+        width: max-content;
         max-width: 100%;
-        padding: 7px 25px;
-        border: 1px solid var(--green);
+        padding: 7px 18px;
+        border: 1px solid rgba(167, 139, 250, 0.45);
         border-radius: 30px;
-        color: var(--green);
-        font-size: 14px;
+        color: var(--purple);
+        background: rgba(139, 92, 246, 0.08);
+        font-size: 13px;
         font-weight: 700;
-        margin-bottom: 20px;
-        box-shadow: 0 0 18px var(--glow);
+        margin-bottom: 18px;
+        box-shadow: 0 0 25px rgba(139, 92, 246, 0.1);
       }
 
       .hero h1 {
-        font-size: clamp(42px, 6vw, 78px);
+        font-size: clamp(45px, 6vw, 76px);
         line-height: 1;
         font-weight: 900;
-        color: var(--green);
-        text-shadow: 0 0 30px rgba(65, 255, 153, 0.3);
-        overflow-wrap: break-word;
+        letter-spacing: -2px;
+        background: linear-gradient(90deg, #fff, var(--purple), var(--pink));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: titleGlow 4s ease-in-out infinite alternate;
+      }
+
+      @keyframes titleGlow {
+        from {
+          filter: drop-shadow(0 0 5px rgba(167, 139, 250, 0.05));
+        }
+        to {
+          filter: drop-shadow(0 0 22px rgba(244, 114, 182, 0.18));
+        }
       }
 
       .hero h2 {
-        font-size: clamp(30px, 4vw, 55px);
+        font-size: clamp(31px, 4vw, 54px);
         line-height: 1.15;
-        margin-top: 5px;
-        color: white;
-        overflow-wrap: break-word;
+        margin-top: 6px;
       }
 
       .english {
         direction: ltr;
         text-align: right;
-        color: var(--green2);
-        font-size: clamp(28px, 4vw, 43px);
-        font-weight: 800;
         margin: 12px 0 18px;
-        overflow-wrap: break-word;
+        font-size: clamp(25px, 4vw, 42px);
+        font-weight: 900;
+        color: var(--cyan);
+        letter-spacing: 2px;
       }
 
       .hero-description {
+        max-width: 570px;
         color: var(--muted);
-        font-size: 17px;
         line-height: 2;
-        max-width: 550px;
+        font-size: 16px;
       }
 
-      /* =====================================================
-         VISUAL
-      ===================================================== */
+      /* =========================
+       CREATIVE DESIGN BOARD
+    ========================= */
 
       .visual {
-        min-height: 400px;
-        border: 1px solid var(--border);
-        border-radius: 35px;
-        background:
-          radial-gradient(
-            circle at 50% 45%,
-            rgba(56, 255, 145, 0.18),
-            transparent 38%
-          ),
-          linear-gradient(145deg, #0b3020, #020c08);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        height: 440px;
         position: relative;
         overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        border-radius: 30px;
+        background:
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(139, 92, 246, 0.17),
+            transparent 42%
+          ),
+          linear-gradient(145deg, #18162a, #0b0914);
+        box-shadow:
+          inset 0 0 50px rgba(255, 255, 255, 0.025),
+          0 0 50px rgba(139, 92, 246, 0.07);
       }
 
-      .visual::before,
-      .visual::after {
-        content: "";
+      /* floating dots */
+
+      .dot {
         position: absolute;
-        border: 1px solid rgba(80, 255, 158, 0.3);
+        width: 7px;
+        height: 7px;
         border-radius: 50%;
-        pointer-events: none;
+        background: var(--pink);
+        box-shadow: 0 0 15px currentColor;
+        animation: float 4s ease-in-out infinite;
       }
 
-      .visual::before {
-        width: 330px;
-        height: 330px;
+      .dot:nth-child(1) {
+        top: 12%;
+        left: 13%;
+      }
+      .dot:nth-child(2) {
+        top: 25%;
+        right: 12%;
+        background: var(--cyan);
+        animation-delay: 1s;
+      }
+      .dot:nth-child(3) {
+        bottom: 18%;
+        left: 18%;
+        background: var(--purple);
+        animation-delay: 2s;
+      }
+      .dot:nth-child(4) {
+        bottom: 12%;
+        right: 17%;
+        background: var(--pink);
+        animation-delay: 1.5s;
       }
 
-      .visual::after {
-        width: 250px;
-        height: 250px;
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
       }
 
-      .visual-icon {
-        width: 170px;
-        height: 170px;
-        border: 3px solid var(--green);
-        border-radius: 35px;
+      /* design canvas */
+
+      .canvas {
+        position: absolute;
+        width: 310px;
+        height: 300px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-4deg);
+        border-radius: 18px;
+        background: #fafafa;
+        box-shadow:
+          0 30px 70px rgba(0, 0, 0, 0.45),
+          0 0 40px rgba(139, 92, 246, 0.15);
+        transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .visual:hover .canvas {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1.03);
+      }
+
+      .canvas-top {
+        height: 36px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 12px;
+        background: #f1f1f4;
+        border-radius: 18px 18px 0 0;
+      }
+
+      .canvas-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #bbb;
+      }
+
+      .canvas-body {
+        height: calc(100% - 36px);
+        position: relative;
+        padding: 20px;
+        overflow: hidden;
+      }
+
+      .wire-title {
+        width: 65%;
+        height: 17px;
+        border-radius: 5px;
+        background: #222;
+        margin-bottom: 12px;
+      }
+
+      .wire-subtitle {
+        width: 48%;
+        height: 8px;
+        border-radius: 4px;
+        background: #c8c8ce;
+        margin-bottom: 20px;
+      }
+
+      .wire-card {
+        width: 100%;
+        height: 85px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #eee, #fafafa);
+        border: 2px dashed #c7c7ce;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 80px;
-        font-weight: 900;
-        color: var(--green);
-        box-shadow:
-          0 0 30px var(--glow),
-          inset 0 0 35px rgba(60, 255, 150, 0.1);
-        transform: rotate(-6deg);
-        z-index: 2;
+        margin-bottom: 15px;
+        color: #999;
+        font-size: 11px;
       }
 
-      .visual-label {
+      .wire-buttons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .wire-btn {
+        width: 75px;
+        height: 28px;
+        border-radius: 7px;
+        background: #8b5cf6;
+      }
+
+      .wire-btn.alt {
+        background: #ececf1;
+      }
+
+      /* floating UX labels */
+
+      .design-label {
         position: absolute;
-        bottom: 35px;
-        width: 90%;
-        text-align: center;
-        font-size: 17px;
-        color: var(--green2);
-        letter-spacing: 3px;
+        padding: 9px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 12px;
+        background: rgba(17, 16, 29, 0.88);
+        backdrop-filter: blur(12px);
+        font-size: 11px;
+        color: #fff;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        animation: labelFloat 5s ease-in-out infinite;
       }
 
-      /* =====================================================
-         INFO STRIP
-      ===================================================== */
+      .label1 {
+        top: 18%;
+        left: 8%;
+        color: var(--pink);
+      }
+
+      .label2 {
+        right: 6%;
+        bottom: 25%;
+        color: var(--cyan);
+        animation-delay: 1.5s;
+      }
+
+      .label3 {
+        left: 10%;
+        bottom: 12%;
+        color: var(--purple);
+        animation-delay: 2.5s;
+      }
+
+      @keyframes labelFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      .visual-caption {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+        color: #8e899f;
+        font-size: 10px;
+        letter-spacing: 2px;
+        direction: ltr;
+      }
+
+      /* =========================
+       INFO
+    ========================= */
 
       .info-strip {
+        position: relative;
+        z-index: 3;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        border: 1px solid var(--border);
-        border-radius: 18px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
         overflow: hidden;
         margin: 20px 0 35px;
+        background: rgba(255, 255, 255, 0.025);
+        backdrop-filter: blur(10px);
       }
 
       .info-item {
-        text-align: center;
         padding: 22px 10px;
-        border-left: 1px solid rgba(90, 255, 160, 0.2);
-        min-width: 0;
+        text-align: center;
+        border-left: 1px solid var(--line);
+        transition: 0.3s;
       }
 
       .info-item:last-child {
         border-left: 0;
       }
 
+      .info-item:hover {
+        background: rgba(139, 92, 246, 0.07);
+      }
+
       .info-icon {
-        font-size: 28px;
-        color: var(--green);
-        margin-bottom: 8px;
+        font-size: 27px;
+        margin-bottom: 6px;
+      }
+
+      .info-item:nth-child(1) .info-icon {
+        color: var(--pink);
+      }
+      .info-item:nth-child(2) .info-icon {
+        color: var(--cyan);
+      }
+      .info-item:nth-child(3) .info-icon {
+        color: var(--purple);
+      }
+      .info-item:nth-child(4) .info-icon {
+        color: #c4b5fd;
       }
 
       .info-item h4 {
-        font-size: 15px;
-        color: white;
+        font-size: 14px;
       }
 
       .info-item p {
         color: var(--muted);
-        font-size: 12px;
+        font-size: 11px;
+        margin-top: 3px;
       }
 
-      /* =====================================================
-         SECTION TITLES
-      ===================================================== */
+      /* =========================
+       TITLES
+    ========================= */
 
       .section-title {
         text-align: center;
-        margin: 45px 0 25px;
-        font-size: 27px;
-        font-weight: 800;
-        color: var(--green2);
+        margin: 48px 0 25px;
       }
 
       .section-title span {
+        position: relative;
         display: inline-block;
-        max-width: 100%;
-        padding: 7px 30px;
-        border-bottom: 2px solid var(--green);
-        text-shadow: 0 0 15px var(--glow);
+        padding: 8px 25px;
+        font-size: 26px;
+        font-weight: 900;
       }
 
-      /* =====================================================
-         MODULES
-      ===================================================== */
+      .section-title span::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 20%;
+        width: 60%;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          var(--pink),
+          var(--purple),
+          var(--cyan)
+        );
+        box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+      }
+
+      /* =========================
+       MODULES
+    ========================= */
 
       .modules {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
+        gap: 15px;
       }
 
       .module {
-        min-height: 180px;
-        padding: 22px 16px;
-        border: 1px solid var(--border);
-        border-radius: 18px;
+        min-height: 195px;
+        position: relative;
+        overflow: hidden;
+        padding: 23px 18px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
         background: linear-gradient(
           145deg,
-          rgba(19, 63, 40, 0.8),
-          rgba(3, 25, 16, 0.9)
+          rgba(26, 23, 43, 0.95),
+          rgba(13, 11, 23, 0.98)
         );
-        text-align: center;
-        transition: 0.3s;
+        transition: 0.4s;
+      }
+
+      .module::before {
+        content: "";
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        top: -45px;
+        left: -45px;
+        background: var(--purple);
+        opacity: 0.08;
+        filter: blur(20px);
+        transition: 0.4s;
       }
 
       .module:hover {
-        transform: translateY(-6px);
-        border-color: var(--green);
-        box-shadow: 0 0 25px var(--glow);
+        transform: translateY(-8px);
+        border-color: rgba(167, 139, 250, 0.45);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      }
+
+      .module:hover::before {
+        transform: scale(2);
+        opacity: 0.15;
       }
 
       .module-number {
-        display: inline-flex;
-        width: 40px;
-        height: 40px;
-        border: 1px solid var(--green);
-        border-radius: 50%;
+        width: 42px;
+        height: 42px;
+        display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--green);
-        font-weight: 800;
-        margin-bottom: 12px;
+        border-radius: 12px;
+        margin-bottom: 14px;
+        font-size: 12px;
+        font-weight: 900;
+        color: #fff;
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        box-shadow: 0 8px 20px rgba(139, 92, 246, 0.18);
+      }
+
+      .module:nth-child(2) .module-number {
+        background: linear-gradient(135deg, #3b82f6, #22d3ee);
+      }
+
+      .module:nth-child(3) .module-number {
+        background: linear-gradient(135deg, #ec4899, #f97316);
+      }
+
+      .module:nth-child(4) .module-number {
+        background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      }
+
+      .module:nth-child(5) .module-number {
+        background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      }
+
+      .module:nth-child(6) .module-number {
+        background: linear-gradient(135deg, #d946ef, #8b5cf6);
       }
 
       .module h3 {
-        color: white;
-        font-size: 17px;
+        font-size: 16px;
         margin-bottom: 8px;
       }
 
       .module p {
         color: var(--muted);
-        font-size: 13px;
-        line-height: 1.8;
+        font-size: 12px;
+        line-height: 1.9;
       }
 
-      /* =====================================================
-         WHY
-      ===================================================== */
+      /* =========================
+       WHY
+    ========================= */
 
       .why {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
-        border: 1px solid var(--border);
+        border: 1px solid var(--line);
         border-radius: 20px;
         overflow: hidden;
+        background: rgba(255, 255, 255, 0.025);
       }
 
       .why-item {
         padding: 25px 8px;
         text-align: center;
-        border-left: 1px solid rgba(80, 255, 160, 0.2);
-        min-width: 0;
+        border-left: 1px solid var(--line);
+        transition: 0.3s;
       }
 
       .why-item:last-child {
         border-left: 0;
       }
 
+      .why-item:hover {
+        background: rgba(139, 92, 246, 0.07);
+        transform: translateY(-3px);
+      }
+
       .why-icon {
-        font-size: 32px;
-        color: var(--green);
-        margin-bottom: 12px;
+        font-size: 28px;
+        margin-bottom: 10px;
+        background: linear-gradient(
+          135deg,
+          var(--pink),
+          var(--purple),
+          var(--cyan)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
 
       .why-item p {
-        color: white;
-        font-size: 13px;
+        font-size: 12px;
         line-height: 1.7;
+        color: #e9e6f0;
       }
 
-      /* =====================================================
-         PRICE
-      ===================================================== */
+      /* =========================
+       PRICE
+    ========================= */
 
       .price-box {
-        margin: 45px auto 20px;
         width: min(500px, 100%);
-        padding: 25px;
-        border: 2px solid var(--green);
-        border-radius: 25px;
+        margin: 45px auto 20px;
+        padding: 28px 20px;
+        position: relative;
+        overflow: hidden;
         text-align: center;
+        border: 1px solid rgba(167, 139, 250, 0.45);
+        border-radius: 25px;
         background:
-          radial-gradient(circle, rgba(50, 255, 140, 0.13), transparent 65%),
-          #061b11;
-        box-shadow: 0 0 35px rgba(50, 255, 140, 0.12);
+          radial-gradient(
+            circle at 50% 0%,
+            rgba(139, 92, 246, 0.18),
+            transparent 60%
+          ),
+          rgba(17, 16, 29, 0.95);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      }
+
+      .price-box::before {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 1px solid rgba(244, 114, 182, 0.15);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        animation: pulseRing 3s infinite;
+      }
+
+      @keyframes pulseRing {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(0.8);
+          opacity: 0.2;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.2);
+          opacity: 0.6;
+        }
       }
 
       .price-box small {
         color: var(--muted);
-        font-size: 15px;
+        font-size: 13px;
+        position: relative;
+        z-index: 2;
       }
 
       .price {
-        font-size: 44px;
-        color: var(--green);
-        font-weight: 900;
+        position: relative;
+        z-index: 2;
         margin: 5px 0;
-        overflow-wrap: break-word;
+        font-size: 45px;
+        font-weight: 900;
+        background: linear-gradient(90deg, var(--purple), var(--pink));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
 
       .price span {
-        font-size: 19px;
-        color: white;
+        font-size: 18px;
+        color: #fff;
       }
 
-      /* =====================================================
-         CTA
-      ===================================================== */
+      /* =========================
+       CTA
+    ========================= */
 
       .cta {
         margin-top: 30px;
         padding: 30px;
-        border-radius: 22px;
-        border: 1px solid var(--border);
-        background: linear-gradient(90deg, #0a3924, #061d13);
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
         gap: 20px;
+        border: 1px solid var(--line);
+        border-radius: 23px;
+        background:
+          radial-gradient(
+            circle at 100% 50%,
+            rgba(139, 92, 246, 0.15),
+            transparent 40%
+          ),
+          linear-gradient(90deg, #141223, #0d0b18);
       }
 
       .cta h2 {
-        color: var(--green);
-        font-size: 28px;
+        font-size: 27px;
+        background: linear-gradient(90deg, var(--purple), var(--pink));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
 
       .cta p {
         color: var(--muted);
+        font-size: 13px;
         margin-top: 5px;
       }
 
       .cta-button {
-        display: inline-block;
         padding: 14px 30px;
-        background: var(--green);
-        color: #032014;
-        font-weight: 900;
         border-radius: 30px;
         text-decoration: none;
-        box-shadow: 0 0 25px rgba(50, 255, 140, 0.25);
+        color: #fff;
+        font-weight: 900;
         white-space: nowrap;
-        transition: 0.3s;
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        box-shadow: 0 12px 30px rgba(139, 92, 246, 0.22);
+        transition: 0.35s;
       }
 
       .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 0 30px rgba(50, 255, 140, 0.4);
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 18px 40px rgba(139, 92, 246, 0.35);
       }
 
-      /* =====================================================
-         CONTACT
-      ===================================================== */
+      /* =========================
+       CONTACT
+    ========================= */
 
       .contact-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 18px;
+        gap: 16px;
         margin-top: 25px;
       }
 
       .contact-card {
         display: flex;
         align-items: center;
-        gap: 18px;
-        padding: 22px;
+        gap: 17px;
+        padding: 20px;
         text-decoration: none;
         color: white;
-        background: linear-gradient(
-          145deg,
-          rgba(19, 63, 40, 0.85),
-          rgba(3, 25, 16, 0.95)
-        );
-        border: 1px solid var(--border);
+        border: 1px solid var(--line);
         border-radius: 20px;
-        transition: 0.3s;
-        min-width: 0;
+        background: linear-gradient(145deg, #19172a, #0e0c18);
+        transition: 0.35s;
       }
 
       .contact-card:hover {
         transform: translateY(-6px);
-        border-color: var(--green);
-        box-shadow: 0 0 25px rgba(65, 255, 153, 0.18);
+        border-color: rgba(167, 139, 250, 0.4);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
       }
 
       .contact-icon {
-        width: 58px;
-        height: 58px;
-        min-width: 58px;
+        width: 55px;
+        height: 55px;
+        min-width: 55px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid var(--green);
-        border-radius: 16px;
-        background: rgba(50, 255, 140, 0.08);
-        font-size: 27px;
-        box-shadow: 0 0 18px rgba(50, 255, 140, 0.12);
+        border-radius: 15px;
+        font-size: 25px;
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(167, 139, 250, 0.35);
       }
 
       .contact-card h3 {
-        color: white;
-        font-size: 16px;
+        font-size: 15px;
         margin-bottom: 5px;
-        overflow-wrap: anywhere;
       }
 
       .contact-card p {
-        color: var(--green2);
-        font-size: 13px;
+        color: var(--purple);
+        font-size: 11px;
       }
 
-      /* =====================================================
-         FOOTER
-      ===================================================== */
+      /* =========================
+       FOOTER
+    ========================= */
 
       footer {
         margin-top: 45px;
         padding: 25px 10px;
-        border-top: 1px solid rgba(100, 255, 170, 0.2);
+        border-top: 1px solid var(--line);
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 45px;
-        color: var(--muted);
-        font-size: 14px;
         flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 12px;
         text-align: center;
       }
 
       footer div {
-        transition: 0.3s ease;
+        transition: 0.3s;
       }
 
       footer div:hover {
-        color: var(--green);
+        color: var(--purple);
       }
-
-      /* =====================================================
-         COPYRIGHT
-      ===================================================== */
 
       .copyright {
         text-align: center;
-        padding: 15px 10px 5px;
-        color: rgba(168, 200, 182, 0.75);
-        font-size: 12px;
-        overflow-wrap: break-word;
+        padding: 12px 5px 3px;
+        color: #777386;
+        font-size: 10px;
       }
 
-      /* =====================================================
-         TABLET
-      ===================================================== */
+      /* =========================
+       TABLET
+    ========================= */
 
       @media (max-width: 900px) {
         .page {
@@ -593,7 +909,9 @@
         }
 
         .hero-content {
-          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
 
         .hero-description {
@@ -601,7 +919,7 @@
         }
 
         .visual {
-          min-height: 330px;
+          height: 380px;
         }
 
         .modules {
@@ -617,7 +935,7 @@
         }
 
         .why-item {
-          border-bottom: 1px solid rgba(80, 255, 160, 0.2);
+          border-bottom: 1px solid var(--line);
         }
 
         .cta {
@@ -626,49 +944,44 @@
         }
       }
 
-      /* =====================================================
-         MOBILE
-      ===================================================== */
+      /* =========================
+       MOBILE
+    ========================= */
 
       @media (max-width: 600px) {
         .page {
-          width: calc(100% - 14px);
-          margin: 7px auto;
-          padding: 15px 12px 25px;
-          border-radius: 20px;
+          width: calc(100% - 12px);
+          margin: 6px auto;
+          padding: 14px 11px 22px;
+          border-radius: 21px;
         }
 
         .logo {
           justify-content: center;
-          margin-bottom: 25px;
+          margin-bottom: 23px;
         }
 
         .logo-icon {
-          width: 48px;
-          height: 48px;
-          font-size: 22px;
+          width: 47px;
+          height: 47px;
+          font-size: 21px;
         }
 
         .logo h2 {
-          font-size: 22px;
-        }
-
-        .logo p {
-          font-size: 10px;
+          font-size: 21px;
         }
 
         .hero {
           min-height: auto;
-          padding: 10px 0;
         }
 
         .badge {
-          font-size: 12px;
-          padding: 6px 18px;
+          font-size: 11px;
+          padding: 6px 15px;
         }
 
         .hero h1 {
-          font-size: clamp(36px, 12vw, 50px);
+          font-size: clamp(38px, 12vw, 50px);
         }
 
         .hero h2 {
@@ -676,49 +989,86 @@
         }
 
         .english {
-          font-size: clamp(25px, 8vw, 34px);
+          font-size: clamp(24px, 8vw, 33px);
         }
 
         .hero-description {
-          font-size: 14px;
+          font-size: 13px;
           line-height: 1.9;
         }
 
+        /* mobile design board */
+
         .visual {
-          min-height: 270px;
-          border-radius: 24px;
+          height: 285px;
+          border-radius: 23px;
         }
 
-        .visual::before {
-          width: 230px;
-          height: 230px;
+        .canvas {
+          width: 220px;
+          height: 215px;
         }
 
-        .visual::after {
-          width: 175px;
-          height: 175px;
+        .canvas-body {
+          padding: 14px;
         }
 
-        .visual-icon {
-          width: 125px;
-          height: 125px;
-          font-size: 58px;
-          border-radius: 27px;
+        .wire-title {
+          height: 12px;
+          margin-bottom: 8px;
         }
 
-        .visual-label {
-          bottom: 20px;
-          font-size: 10px;
-          letter-spacing: 1px;
+        .wire-subtitle {
+          height: 6px;
+          margin-bottom: 12px;
+        }
+
+        .wire-card {
+          height: 58px;
+          font-size: 8px;
+          margin-bottom: 10px;
+        }
+
+        .wire-buttons {
+          gap: 6px;
+        }
+
+        .wire-btn {
+          width: 52px;
+          height: 20px;
+        }
+
+        .design-label {
+          padding: 6px 9px;
+          font-size: 8px;
+        }
+
+        .label1 {
+          top: 12%;
+          left: 4%;
+        }
+
+        .label2 {
+          right: 3%;
+          bottom: 25%;
+        }
+
+        .label3 {
+          left: 4%;
+          bottom: 12%;
+        }
+
+        .visual-caption {
+          font-size: 7px;
+          bottom: 12px;
         }
 
         .info-strip {
           grid-template-columns: repeat(2, 1fr);
-          margin-bottom: 25px;
         }
 
         .info-item {
-          padding: 17px 7px;
+          padding: 16px 6px;
         }
 
         .info-item:nth-child(2) {
@@ -727,7 +1077,7 @@
 
         .info-item:nth-child(3),
         .info-item:nth-child(4) {
-          border-top: 1px solid rgba(90, 255, 160, 0.2);
+          border-top: 1px solid var(--line);
         }
 
         .info-item:nth-child(4) {
@@ -735,48 +1085,50 @@
         }
 
         .info-icon {
-          font-size: 24px;
-        }
-
-        .info-item h4 {
-          font-size: 13px;
-        }
-
-        .info-item p {
-          font-size: 10px;
-        }
-
-        .section-title {
-          margin: 35px 0 20px;
           font-size: 22px;
         }
 
+        .info-item h4 {
+          font-size: 12px;
+        }
+
+        .info-item p {
+          font-size: 9px;
+        }
+
+        .section-title {
+          margin: 35px 0 18px;
+        }
+
         .section-title span {
-          padding: 6px 20px;
+          font-size: 21px;
+          padding: 6px 18px;
         }
 
         .modules {
           grid-template-columns: 1fr 1fr;
-          gap: 10px;
+          gap: 9px;
         }
 
         .module {
           min-height: 175px;
-          padding: 18px 10px;
+          padding: 17px 10px;
+          border-radius: 16px;
         }
 
         .module-number {
-          width: 35px;
-          height: 35px;
-          font-size: 12px;
+          width: 33px;
+          height: 33px;
+          font-size: 10px;
+          border-radius: 10px;
         }
 
         .module h3 {
-          font-size: 14px;
+          font-size: 13px;
         }
 
         .module p {
-          font-size: 11px;
+          font-size: 10px;
           line-height: 1.7;
         }
 
@@ -785,11 +1137,11 @@
         }
 
         .why-item {
-          padding: 20px 8px;
+          padding: 18px 6px;
         }
 
         .why-item:nth-child(3n) {
-          border-left: 1px solid rgba(80, 255, 160, 0.2);
+          border-left: 1px solid var(--line);
         }
 
         .why-item:nth-child(even) {
@@ -797,36 +1149,36 @@
         }
 
         .why-icon {
-          font-size: 27px;
+          font-size: 24px;
         }
 
         .why-item p {
-          font-size: 11px;
+          font-size: 10px;
         }
 
         .price-box {
-          padding: 20px 12px;
-          margin-top: 35px;
+          padding: 22px 12px;
+          margin-top: 32px;
         }
 
         .price {
-          font-size: clamp(30px, 9vw, 40px);
+          font-size: 36px;
         }
 
         .price span {
-          font-size: 16px;
+          font-size: 15px;
         }
 
         .cta {
-          padding: 23px 15px;
+          padding: 22px 14px;
         }
 
         .cta h2 {
-          font-size: 22px;
+          font-size: 21px;
         }
 
         .cta p {
-          font-size: 12px;
+          font-size: 11px;
           line-height: 1.8;
         }
 
@@ -838,58 +1190,45 @@
 
         .contact-grid {
           grid-template-columns: 1fr;
-          gap: 12px;
+          gap: 10px;
         }
 
         .contact-card {
-          padding: 16px 12px;
-          gap: 12px;
+          padding: 15px 11px;
+          gap: 11px;
         }
 
         .contact-icon {
-          width: 50px;
-          height: 50px;
-          min-width: 50px;
-          font-size: 23px;
+          width: 48px;
+          height: 48px;
+          min-width: 48px;
+          font-size: 21px;
         }
 
         .contact-card h3 {
-          font-size: 13px;
+          font-size: 12px;
         }
 
         .contact-card p {
-          font-size: 10px;
+          font-size: 9px;
         }
 
         footer {
           flex-direction: column;
-          gap: 10px;
-          font-size: 12px;
+          gap: 9px;
+          font-size: 10px;
         }
 
         .copyright {
-          font-size: 10px;
+          font-size: 9px;
         }
       }
 
-      /* =====================================================
-         SMALL PHONES
-      ===================================================== */
+      /* =========================
+       VERY SMALL PHONES
+    ========================= */
 
       @media (max-width: 380px) {
-        .page {
-          width: calc(100% - 8px);
-          padding: 12px 9px 20px;
-        }
-
-        .logo {
-          gap: 9px;
-        }
-
-        .logo h2 {
-          font-size: 20px;
-        }
-
         .modules {
           grid-template-columns: 1fr;
         }
@@ -910,20 +1249,13 @@
           border-bottom: 0;
         }
 
-        .info-item h4 {
-          font-size: 12px;
+        .visual {
+          height: 270px;
         }
 
-        .info-item p {
-          font-size: 9px;
-        }
-
-        .price {
-          font-size: 29px;
-        }
-
-        .contact-card h3 {
-          font-size: 12px;
+        .canvas {
+          width: 205px;
+          height: 200px;
         }
       }
     </style>
@@ -944,49 +1276,80 @@
       <!-- HERO -->
       <section class="hero">
         <div class="hero-content">
-          <div class="badge">دورة احترافية</div>
+          <div class="badge">✦ دورة إبداعية احترافية</div>
 
-          <h1>تصميم وتجربة</h1>
+          <h1>صمّم</h1>
 
-          <h2>المستخدم</h2>
+          <h2>تجربة لا تُنسى</h2>
 
-          <div class="english">UI UX</div>
+          <div class="english">UI / UX DESIGN</div>
 
           <p class="hero-description">
-            تعلم كيفية تصميم واجهات احترافية وتجارب مستخدم سلسة ومميزة، من
-            الفكرة إلى المنتج النهائي.
+            تعلّم كيف تحوّل الأفكار إلى واجهات جذابة وتجارب مستخدم ذكية، وابنِ
+            تصاميم احترافية تبدأ من فهم المستخدم وتنتهي بمنتج رقمي متكامل.
           </p>
         </div>
 
+        <!-- CREATIVE VISUAL -->
         <div class="visual">
-          <div class="visual-icon">UI</div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
 
-          <div class="visual-label">USER INTERFACE & USER EXPERIENCE</div>
+          <div class="design-label label1">✦ UI Design</div>
+
+          <div class="design-label label2">♢ UX Research</div>
+
+          <div class="design-label label3">◇ Prototype</div>
+
+          <div class="canvas">
+            <div class="canvas-top">
+              <div class="canvas-dot"></div>
+              <div class="canvas-dot"></div>
+              <div class="canvas-dot"></div>
+            </div>
+
+            <div class="canvas-body">
+              <div class="wire-title"></div>
+
+              <div class="wire-subtitle"></div>
+
+              <div class="wire-card">USER EXPERIENCE</div>
+
+              <div class="wire-buttons">
+                <div class="wire-btn"></div>
+                <div class="wire-btn alt"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-caption">DESIGN • PROTOTYPE • EXPERIENCE</div>
         </div>
       </section>
 
       <!-- INFO -->
       <div class="info-strip">
         <div class="info-item">
-          <div class="info-icon">🏆</div>
+          <div class="info-icon">✦</div>
           <h4>شهادة معتمدة</h4>
           <p>بعد إتمام الدورة</p>
         </div>
 
         <div class="info-item">
-          <div class="info-icon">▶</div>
+          <div class="info-icon">◈</div>
           <h4>15 جلسة</h4>
           <p>تدريب وتطبيق عملي</p>
         </div>
 
         <div class="info-item">
-          <div class="info-icon">▣</div>
+          <div class="info-icon">◫</div>
           <h4>مدة الدورة</h4>
           <p>3 أشهر</p>
         </div>
 
         <div class="info-item">
-          <div class="info-icon">♙</div>
+          <div class="info-icon">∞</div>
           <h4>دعم مستمر</h4>
           <p>متابعة وتوجيه</p>
         </div>
@@ -1000,38 +1363,56 @@
       <section class="modules">
         <div class="module">
           <div class="module-number">01</div>
-          <h3>مبادئ UI UX</h3>
-          <p>التعرف على أساسيات تصميم واجهات المستخدم وتجربة المستخدم.</p>
+          <h3>مبادئ UI / UX</h3>
+          <p>
+            فهم الفرق بين تصميم الواجهة وتجربة المستخدم، والتعرف على المبادئ
+            الأساسية للتصميم الرقمي.
+          </p>
         </div>
 
         <div class="module">
           <div class="module-number">02</div>
-          <h3>البحث وفهم المستخدم</h3>
-          <p>فهم احتياجات المستخدم وتحليل سلوكه للوصول إلى حلول أفضل.</p>
+          <h3>البحث عن المستخدم</h3>
+          <p>
+            دراسة احتياجات المستخدم وتحليل سلوكه وبناء Personas تساعدك على اتخاذ
+            قرارات تصميم أفضل.
+          </p>
         </div>
 
         <div class="module">
           <div class="module-number">03</div>
-          <h3>تصميم الواجهات</h3>
-          <p>إنشاء واجهات حديثة ومنظمة وقابلة للاستخدام.</p>
+          <h3>Wireframe & Layout</h3>
+          <p>
+            تحويل الأفكار إلى مخططات واضحة وتنظيم المحتوى بطريقة تجعل المنتج سهل
+            الاستخدام.
+          </p>
         </div>
 
         <div class="module">
           <div class="module-number">04</div>
-          <h3>تصميم تجربة المستخدم</h3>
-          <p>بناء رحلة مستخدم سلسة وواضحة من البداية حتى النهاية.</p>
+          <h3>تصميم الواجهات</h3>
+          <p>
+            اختيار الألوان والخطوط والمكونات وبناء واجهات حديثة ومتناسقة وقابلة
+            للتوسع.
+          </p>
         </div>
 
         <div class="module">
           <div class="module-number">05</div>
-          <h3>النماذج الأولية والتفاعلية</h3>
-          <p>تحويل الأفكار إلى نماذج أولية قابلة للاختبار والتطوير.</p>
+          <h3>Prototype & Interaction</h3>
+          <p>
+            إنشاء نماذج تفاعلية تحاكي المنتج الحقيقي وتجربة الانتقالات
+            والتفاعلات قبل التنفيذ.
+          </p>
         </div>
 
         <div class="module">
           <div class="module-number">06</div>
-          <h3>اختبار وتحسين التجربة</h3>
-          <p>اختبار التصميم وتحليل النتائج وتحسين تجربة المستخدم.</p>
+          <h3>اختبار وتحسين التصميم</h3>
+          <p>
+            اختبار التصميم مع المستخدمين واكتشاف المشاكل وتحسين التجربة للوصول
+            إلى منتج أكثر فعالية.
+          </p>
         </div>
       </section>
 
@@ -1042,33 +1423,33 @@
 
       <section class="why">
         <div class="why-item">
-          <div class="why-icon">☆</div>
+          <div class="why-icon">✦</div>
           <p>مناسبة لجميع المستويات</p>
         </div>
 
         <div class="why-item">
-          <div class="why-icon">◷</div>
-          <p>نتائج ملموسة</p>
+          <div class="why-icon">◈</div>
+          <p>مشاريع تطبيقية حقيقية</p>
         </div>
 
         <div class="why-item">
-          <div class="why-icon">♙</div>
-          <p>وفر وقتك وجهدك</p>
+          <div class="why-icon">⌁</div>
+          <p>تطوير الحس الإبداعي</p>
         </div>
 
         <div class="why-item">
-          <div class="why-icon">▤</div>
-          <p>محتوى محدث</p>
+          <div class="why-icon">▦</div>
+          <p>محتوى منظم ومحدث</p>
         </div>
 
         <div class="why-item">
-          <div class="why-icon">▣</div>
-          <p>تطبيقات عملية</p>
+          <div class="why-icon">◇</div>
+          <p>تطبيق عملي مستمر</p>
         </div>
 
         <div class="why-item">
           <div class="why-icon">🏅</div>
-          <p>شهادة معتمدة</p>
+          <p>شهادة إتمام</p>
         </div>
       </section>
 
@@ -1088,9 +1469,9 @@
       <!-- CTA -->
       <section class="cta">
         <div>
-          <h2>ابدأ رحلتك الآن</h2>
+          <h2>جاهز تصمّم بشكل مختلف؟</h2>
 
-          <p>طوّر مهاراتك وصمّم تجارب مستخدم احترافية</p>
+          <p>ابدأ رحلتك في عالم UI / UX وحوّل أفكارك إلى تجارب رقمية حقيقية.</p>
         </div>
 
         <a
@@ -1099,13 +1480,15 @@
           rel="noopener noreferrer"
           class="cta-button"
         >
-          ابدأ الآن
+          ابدأ الآن ↗
         </a>
       </section>
 
       <!-- CONTACT -->
-      <section class="section">
-        <div class="section-title">📞 معلومات التواصل</div>
+      <section>
+        <div class="section-title">
+          <span>📞 معلومات التواصل</span>
+        </div>
 
         <div class="contact-grid">
           <a
@@ -1147,8 +1530,8 @@
         <div>📸 coursyria.team</div>
       </footer>
 
-      <!-- COPYRIGHT -->
       <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
     </div>
   </body>
 </html>
+```
