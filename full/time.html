@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="ar" dir="rtl">
   <head>
@@ -12,6 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
@@ -311,7 +311,9 @@
         z-index: 3;
       }
 
-      /* الماسات حول الساعة */
+      /* =====================================================
+         DIAMONDS
+      ===================================================== */
 
       .diamond {
         position: absolute;
@@ -412,7 +414,9 @@
         animation-delay: 2.45s;
       }
 
-      /* حلقات ضوئية */
+      /* =====================================================
+         CLOCK RING
+      ===================================================== */
 
       .clock-ring {
         position: absolute;
@@ -466,6 +470,10 @@
           transform: rotate(360deg);
         }
       }
+
+      /* =====================================================
+         CLOCK
+      ===================================================== */
 
       .clock {
         position: relative;
@@ -589,44 +597,86 @@
       }
 
       /* =====================================================
-         CLOCK HANDS
+         REAL CLOCK HANDS
       ===================================================== */
 
       .hand {
         position: absolute;
-
-        width: 8px;
-        border-radius: 10px;
-
-        background: #172360;
 
         left: 50%;
         bottom: 50%;
 
         transform-origin: bottom center;
 
+        border-radius: 10px;
+
         z-index: 5;
+
+        /* يمنع الاهتزاز */
+        will-change: transform;
+
+        /* الحركة ناعمة */
+        transition: transform 0.15s linear;
       }
+
+      /* عقرب الساعات */
 
       .hour {
         height: 75px;
-        transform: rotate(305deg);
+        width: 8px;
+
+        background: linear-gradient(to top, #172360, #263c91);
+
+        transform: translateX(-50%) rotate(0deg);
       }
+
+      /* عقرب الدقائق */
 
       .minute {
         height: 105px;
         width: 6px;
-        transform: rotate(50deg);
+
+        background: linear-gradient(to top, #172360, #3154b5);
+
+        transform: translateX(-50%) rotate(0deg);
       }
+
+      /* عقرب الثواني */
 
       .second {
         height: 120px;
         width: 3px;
 
+        background: linear-gradient(to top, #7355df, #9b7cff);
+
+        box-shadow: 0 0 8px rgba(115, 85, 223, 0.45);
+
+        transform: translateX(-50%) rotate(0deg);
+      }
+
+      /* رأس العقرب الأحمر/البنفسجي الصغير */
+
+      .second:after {
+        content: "";
+
+        position: absolute;
+
+        width: 3px;
+        height: 22px;
+
+        bottom: -22px;
+        left: 50%;
+
+        transform: translateX(-50%);
+
         background: #7355df;
 
-        transform: rotate(205deg);
+        border-radius: 0 0 5px 5px;
       }
+
+      /* =====================================================
+         CENTER DOT
+      ===================================================== */
 
       .center-dot {
         position: absolute;
@@ -634,7 +684,12 @@
         width: 17px;
         height: 17px;
 
-        background: #7650df;
+        background: radial-gradient(
+          circle at 35% 30%,
+          #a990ff,
+          #7650df 55%,
+          #4930b2
+        );
 
         border: 4px solid #1b2d72;
 
@@ -647,7 +702,9 @@
 
         z-index: 10;
 
-        box-shadow: 0 0 12px rgba(117, 80, 223, 0.5);
+        box-shadow:
+          0 0 12px rgba(117, 80, 223, 0.5),
+          0 0 22px rgba(117, 80, 223, 0.18);
       }
 
       /* =====================================================
@@ -1101,14 +1158,19 @@
 
       .contact-grid {
         display: grid;
+
         grid-template-columns: repeat(2, 1fr);
+
         gap: 18px;
+
         margin-top: 25px;
       }
 
       .contact-card {
         display: flex;
+
         align-items: center;
+
         gap: 18px;
 
         padding: 22px;
@@ -1147,7 +1209,9 @@
         border-radius: 18px;
 
         display: flex;
+
         align-items: center;
+
         justify-content: center;
 
         font-size: 29px;
@@ -1159,6 +1223,7 @@
 
       .contact-card h3 {
         font-size: 17px;
+
         font-weight: 900;
 
         color: #182b66;
@@ -1252,7 +1317,9 @@
 
         .slogan {
           border-right: 0;
+
           border-top: 3px solid #7553df;
+
           padding: 10px 0 0;
         }
 
@@ -1289,7 +1356,9 @@
 
         .poster {
           width: 100%;
+
           border-radius: 0;
+
           box-shadow: none;
         }
 
@@ -1299,6 +1368,7 @@
 
         .logo {
           margin: auto;
+
           gap: 10px;
         }
 
@@ -1313,17 +1383,21 @@
         .logo-icon {
           width: 56px;
           height: 56px;
+
           font-size: 30px;
+
           border-radius: 16px;
         }
 
         .hero-content {
           gap: 15px;
+
           margin-top: 28px;
         }
 
         .course-badge {
           font-size: 14px;
+
           padding: 8px 20px;
         }
 
@@ -1333,6 +1407,7 @@
 
         .english {
           font-size: clamp(19px, 6vw, 23px);
+
           letter-spacing: 0;
         }
 
@@ -1346,35 +1421,45 @@
 
         .duration-badge {
           font-size: 13px;
+
           padding: 8px 17px;
         }
 
-        /* الساعة */
+        /* =====================================================
+           MOBILE CLOCK
+        ===================================================== */
 
         .visual {
           min-height: 315px;
+
           width: 100%;
+
           overflow: visible;
         }
 
         .visual-glow {
           width: 280px;
+
           height: 280px;
         }
 
         .clock-wrapper {
           width: 285px;
+
           height: 285px;
         }
 
         .clock-ring {
           width: 275px;
+
           height: 275px;
         }
 
         .clock {
           width: 235px;
+
           height: 235px;
+
           border-width: 14px;
         }
 
@@ -1388,8 +1473,11 @@
 
         .mark {
           top: 5px;
+
           transform-origin: 50% 108px;
+
           height: 10px;
+
           width: 2.5px;
         }
 
@@ -1441,29 +1529,45 @@
           transform: rotate(330deg);
         }
 
+        /* عقارب الموبايل */
+
         .hour {
           height: 58px;
+
           width: 7px;
         }
 
         .minute {
           height: 80px;
+
           width: 5px;
         }
 
         .second {
           height: 90px;
+
+          width: 2.5px;
+        }
+
+        .second:after {
+          height: 16px;
+
+          bottom: -16px;
+
           width: 2.5px;
         }
 
         .center-dot {
           width: 15px;
+
           height: 15px;
+
           border-width: 3px;
         }
 
         .diamond {
           width: 11px;
+
           height: 11px;
         }
 
@@ -1473,6 +1577,7 @@
 
         .d2 {
           top: 42px;
+
           right: 42px;
         }
 
@@ -1482,6 +1587,7 @@
 
         .d4 {
           bottom: 42px;
+
           right: 42px;
         }
 
@@ -1491,6 +1597,7 @@
 
         .d6 {
           bottom: 42px;
+
           left: 42px;
         }
 
@@ -1500,22 +1607,33 @@
 
         .d8 {
           top: 42px;
+
           left: 42px;
         }
 
         .books {
           right: 2px;
+
           bottom: 8px;
+
           transform: scale(0.7);
+
           transform-origin: right bottom;
         }
 
         .plant {
           left: 2px;
+
           bottom: 15px;
+
           transform: scale(0.72);
+
           transform-origin: left bottom;
         }
+
+        /* =====================================================
+           SECTIONS
+        ===================================================== */
 
         .section {
           padding: 28px 14px;
@@ -1523,7 +1641,9 @@
 
         .section-title {
           font-size: 21px;
+
           gap: 10px;
+
           margin-bottom: 22px;
         }
 
@@ -1534,23 +1654,29 @@
 
         .modules {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+
           gap: 10px;
         }
 
         .module {
           min-height: 165px;
+
           padding: 18px 8px;
+
           border-radius: 15px;
         }
 
         .module-number {
           width: 40px;
+
           height: 40px;
+
           font-size: 12px;
         }
 
         .module-icon {
           font-size: 27px;
+
           margin: 9px 0 6px;
         }
 
@@ -1560,11 +1686,13 @@
 
         .module p {
           font-size: 11px;
+
           line-height: 1.6;
         }
 
         .why-box {
           padding: 18px 8px;
+
           border-radius: 20px;
         }
 
@@ -1574,7 +1702,9 @@
 
         .why-card {
           border-left: none;
+
           border-bottom: 1px solid #dddff0;
+
           padding: 15px;
         }
 
@@ -1584,7 +1714,9 @@
 
         .cta {
           margin: 10px 14px 25px;
+
           padding: 24px 16px;
+
           border-radius: 20px;
         }
 
@@ -1598,13 +1730,17 @@
 
         .cta-button {
           width: 100%;
+
           text-align: center;
+
           padding: 13px 20px;
         }
 
         .price {
           margin: 0 14px 25px;
+
           padding: 27px 15px;
+
           border-radius: 20px;
         }
 
@@ -1618,18 +1754,23 @@
 
         .contact-grid {
           grid-template-columns: 1fr;
+
           gap: 12px;
         }
 
         .contact-card {
           padding: 16px;
+
           gap: 13px;
         }
 
         .contact-icon {
           width: 52px;
+
           height: 52px;
+
           font-size: 23px;
+
           border-radius: 15px;
         }
 
@@ -1643,10 +1784,15 @@
 
         .footer {
           padding: 20px 15px;
+
           gap: 12px;
+
           flex-direction: column;
+
           align-items: center;
+
           text-align: center;
+
           font-size: 12px;
         }
 
@@ -1662,6 +1808,7 @@
       @media (max-width: 360px) {
         .hero {
           padding-left: 12px;
+
           padding-right: 12px;
         }
 
@@ -1695,6 +1842,7 @@
 
         .module {
           padding-left: 5px;
+
           padding-right: 5px;
         }
 
@@ -1721,12 +1869,14 @@
       ===================================================== */
 
       @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
+        .visual-glow,
+        .diamond,
+        .clock-ring {
+          animation: none !important;
+        }
+
+        .hand {
+          transition: none !important;
         }
       }
     </style>
@@ -1734,7 +1884,9 @@
 
   <body>
     <div class="poster">
-      <!-- ================= HEADER ================= -->
+      <!-- ===================================================
+           HEADER
+      =================================================== -->
 
       <header class="hero">
         <div class="logo">
@@ -1748,6 +1900,8 @@
         </div>
 
         <div class="hero-content">
+          <!-- TEXT -->
+
           <div class="hero-text">
             <div class="course-badge">دورة احترافية</div>
 
@@ -1765,8 +1919,6 @@
               واصنع مستقبلك
             </div>
 
-            <!-- مدة الكورس -->
-
             <div class="course-duration">
               <div class="duration-badge">
                 ⏳ مدة الدورة: شهر واحد وهي 5 جلسات
@@ -1774,13 +1926,15 @@
             </div>
           </div>
 
-          <!-- ================= PREMIUM CLOCK ================= -->
+          <!-- =================================================
+               PREMIUM CLOCK
+          ================================================== -->
 
           <div class="visual">
             <div class="visual-glow"></div>
 
             <div class="clock-wrapper">
-              <!-- الماسات -->
+              <!-- DIAMONDS -->
 
               <div class="diamond d1"></div>
               <div class="diamond d2"></div>
@@ -1791,13 +1945,15 @@
               <div class="diamond d7"></div>
               <div class="diamond d8"></div>
 
-              <!-- الحلقة المضيئة -->
+              <!-- RING -->
 
               <div class="clock-ring"></div>
 
-              <!-- الساعة -->
+              <!-- CLOCK -->
 
               <div class="clock">
+                <!-- MARKS -->
+
                 <div class="mark m1"></div>
                 <div class="mark m2"></div>
                 <div class="mark m3"></div>
@@ -1811,23 +1967,31 @@
                 <div class="mark m11"></div>
                 <div class="mark m12"></div>
 
+                <!-- REAL HANDS -->
+
                 <div class="hand hour"></div>
+
                 <div class="hand minute"></div>
+
                 <div class="hand second"></div>
+
+                <!-- CENTER -->
 
                 <div class="center-dot"></div>
               </div>
             </div>
 
-            <!-- الكتب -->
+            <!-- BOOKS -->
 
             <div class="books">
               <div class="book"></div>
+
               <div class="book"></div>
+
               <div class="book"></div>
             </div>
 
-            <!-- النبتة -->
+            <!-- PLANT -->
 
             <div class="plant">
               <div class="leaf"></div>
@@ -1840,7 +2004,9 @@
         </div>
       </header>
 
-      <!-- ================= MODULES ================= -->
+      <!-- ===================================================
+           MODULES
+      =================================================== -->
 
       <section class="section">
         <h2 class="section-title">محاور الدورة</h2>
@@ -1898,7 +2064,9 @@
         </div>
       </section>
 
-      <!-- ================= WHY ================= -->
+      <!-- ===================================================
+           WHY
+      =================================================== -->
 
       <section class="section">
         <div class="why-box">
@@ -1948,7 +2116,9 @@
         </div>
       </section>
 
-      <!-- ================= CTA ================= -->
+      <!-- ===================================================
+           CTA
+      =================================================== -->
 
       <section class="cta">
         <div class="cta-text">
@@ -1967,14 +2137,17 @@
         </a>
       </section>
 
-      <!-- ================= PRICE ================= -->
+      <!-- ===================================================
+           PRICE
+      =================================================== -->
 
       <section class="price">
         <small> سعر الدورة </small>
 
         <div class="price-number">
           350
-          <span>ل.س</span>
+
+          <span> ل.س </span>
         </div>
 
         <p>استثمر في وقتك اليوم، وابنِ مستقبلك غداً.</p>
@@ -1989,7 +2162,9 @@
         </a>
       </section>
 
-      <!-- ================= CONTACT ================= -->
+      <!-- ===================================================
+           CONTACT
+      =================================================== -->
 
       <section class="section">
         <h2 class="section-title">📞 معلومات التواصل</h2>
@@ -2027,11 +2202,15 @@
         </div>
       </section>
 
-      <!-- ================= COPYRIGHT ================= -->
+      <!-- ===================================================
+           COPYRIGHT
+      =================================================== -->
 
       <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
 
-      <!-- ================= FOOTER ================= -->
+      <!-- ===================================================
+           FOOTER
+      =================================================== -->
 
       <footer class="footer">
         <span> 🌐 <b>coursyria.com</b> </span>
@@ -2041,5 +2220,78 @@
         <span> 📷 coursyria.team </span>
       </footer>
     </div>
+
+    <!-- =====================================================
+         REAL TIME CLOCK JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+      const hourHand = document.querySelector(".hour");
+      const minuteHand = document.querySelector(".minute");
+      const secondHand = document.querySelector(".second");
+
+      function updateClock() {
+        const now = new Date();
+
+        const hours = now.getHours() % 12;
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        const milliseconds = now.getMilliseconds();
+
+        /*
+         * عقرب الثواني
+         *
+         * 60 ثانية = 360 درجة
+         * كل ثانية = 6 درجات
+         *
+         * أضفنا milliseconds حتى تكون
+         * الحركة ناعمة وليست قفزات.
+         */
+
+        const secondAngle = seconds * 6 + milliseconds * 0.006;
+
+        /*
+         * عقرب الدقائق
+         *
+         * كل دقيقة = 6 درجات
+         *
+         * يتحرك تدريجياً مع مرور الثواني.
+         */
+
+        const minuteAngle = minutes * 6 + seconds * 0.1;
+
+        /*
+         * عقرب الساعات
+         *
+         * كل ساعة = 30 درجة
+         *
+         * يتحرك تدريجياً حسب الدقائق.
+         */
+
+        const hourAngle = hours * 30 + minutes * 0.5;
+
+        /*
+         * تطبيق الحركة
+         */
+
+        secondHand.style.transform = `translateX(-50%) rotate(${secondAngle}deg)`;
+
+        minuteHand.style.transform = `translateX(-50%) rotate(${minuteAngle}deg)`;
+
+        hourHand.style.transform = `translateX(-50%) rotate(${hourAngle}deg)`;
+
+        /*
+         * تحديث مستمر
+         */
+
+        requestAnimationFrame(updateClock);
+      }
+
+      /*
+       * تشغيل الساعة
+       */
+
+      updateClock();
+    </script>
   </body>
 </html>
