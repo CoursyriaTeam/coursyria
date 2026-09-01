@@ -1282,70 +1282,138 @@
         font-size: 13px;
       }
 
-      /* =====================================================
-       FOOTER
-    ===================================================== */
+/* =====================================================
+   FOOTER
+===================================================== */
 
-      footer {
-        border-top: 1px solid #202020;
+footer {
+  width: 100%;
+  margin-top: 70px;
+  padding: 28px 20px;
 
-        padding: 45px 25px;
+  background:
+    linear-gradient(
+      135deg,
+      #080808 0%,
+      #111111 50%,
+      #080808 100%
+    );
 
-        background: #050505;
-      }
+  border-top: 1px solid rgba(214, 173, 85, 0.35);
+  border-bottom: 1px solid rgba(214, 173, 85, 0.12);
 
-      .footer-container {
-        max-width: 1150px;
+  text-align: center;
 
-        margin: auto;
+  color: #bdbdbd;
+  font-size: 14px;
+  letter-spacing: 0.5px;
 
-        display: grid;
+  box-shadow:
+    0 -10px 35px rgba(214, 173, 85, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 
-        grid-template-columns: repeat(3, 1fr);
+  position: relative;
+  overflow: hidden;
+}
 
-        gap: 20px;
+/* خط إضاءة علوي */
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 180px;
+  height: 1px;
 
-        text-align: center;
+  transform: translateX(-50%);
 
-        color: #888;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #d6ad55,
+    transparent
+  );
 
-        font-size: 13px;
-      }
+  box-shadow: 0 0 12px rgba(214, 173, 85, 0.6);
+}
 
-      .footer-item {
-        padding: 12px;
-      }
+/* تأثير ضوء خفيف */
+footer::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
 
-      .footer-item strong {
-        color: var(--gold-light);
+  top: -180px;
+  left: 50%;
 
-        display: block;
+  transform: translateX(-50%);
 
-        font-size: 16px;
+  background: rgba(214, 173, 85, 0.07);
+  filter: blur(70px);
 
-        margin-bottom: 5px;
-      }
+  pointer-events: none;
+}
 
-      .copyright {
-        text-align: center;
+footer strong {
+  position: relative;
+  z-index: 2;
 
-        padding: 18px 15px;
+  color: #f5dc96;
 
-        background: #020202;
+  font-size: 20px;
+  font-weight: 800;
 
-        border-top: 1px solid #171717;
+  letter-spacing: 1px;
 
-        color: #666;
+  text-shadow:
+    0 0 8px rgba(214, 173, 85, 0.35),
+    0 0 18px rgba(214, 173, 85, 0.15);
+}
 
-        font-size: 12px;
-      }
+/* =====================================================
+   COPYRIGHT
+===================================================== */
 
-      .copyright strong {
-        color: var(--gold);
+.copyright {
+  width: 100%;
 
-        font-weight: 800;
-      }
+  padding: 16px 20px;
 
+  background: #050505;
+
+  color: #777;
+
+  text-align: center;
+
+  font-size: 12px;
+  line-height: 1.8;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  footer {
+    margin-top: 50px;
+    padding: 24px 15px;
+
+    font-size: 13px;
+  }
+
+  footer strong {
+    font-size: 18px;
+  }
+
+  .copyright {
+    padding: 14px 12px;
+    font-size: 11px;
+  }
+}
       /* =====================================================
        ANIMATIONS
     ===================================================== */
@@ -2118,85 +2186,59 @@
         </div>
       </section>
 
-      <!-- ===================================================
-     CONTACT
-================================================== -->
+<!-- =====================================================
+     CONTACT SECTION
+====================================================== -->
+<section class="contact-section" id="contact">
+  <div class="section-heading">
+    <h2>معلومات التواصل</h2>
+    <div class="blue-line"></div>
+    <p>للاستفسارات المتعلقة بالموقع والمساعدة التقنية</p>
+  </div>
 
-      <section class="contact-section reveal" id="contact">
-        <div class="section-title">
-          <span> 📞 معلومات التواصل </span>
-        </div>
+  <div class="contact-grid">
 
-        <div class="contact-grid">
-          <a
-            href="https://wa.me/963995980568"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="contact-card"
-          >
-            <div class="contact-icon">👨‍🏫</div>
+    <!-- المدرب -->
+    <a
+      href="https://wa.me/963995980568"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="contact-card"
+    >
+      <div class="contact-icon">🎓</div>
 
-            <div>
-              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+      <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
 
-              <p>اضغط للتواصل عبر واتساب</p>
-            </div>
-          </a>
+      <p>للاستفسارات المتعلقة بالكورسات</p>
+    </a>
 
-          <a
-            href="https://wa.me/963937015714"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="contact-card"
-          >
-            <div class="contact-icon">💬</div>
+    <!-- المهندسة - بدون رقم -->
+    <div class="contact-card no-link">
+      <div class="contact-icon">💻</div>
 
-            <div>
-              <h3>لين الكردي</h3>
-
-              <p>اضغط للتواصل عبر واتساب</p>
-            </div>
-          </a>
-        </div>
-      </section>
-    </main>
-
-    <!-- =====================================================
-       FOOTER
-  ===================================================== -->
-
-    <footer>
-      <div class="footer-container">
-        <div class="footer-item">
-          <strong> ✈ Coursyria_team </strong>
-
-          فريق كورسيريا للتدريب والتطوير
-        </div>
-
-        <div class="footer-item">
-          <strong> 🌐 Website </strong>
-
-          coursyria.com
-        </div>
-
-        <div class="footer-item">
-          <strong> 📸 Instagram </strong>
-
-          coursyria.team
-        </div>
-      </div>
-    </footer>
-
-    <!-- =====================================================
-       COPYRIGHT
-  ===================================================== -->
-
-    <div class="copyright">
-      © 2026 -
-      <strong> إعداد وتصميم لين الكردي </strong>
-
-      — جميع الحقوق محفوظة
+      <h3>المهندسة لين حسن الكردي</h3>
     </div>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+<footer>
+  <strong>Coursyria</strong> — Learn • Build • Protect
+</footer>
+
+
+<!-- =====================================================
+     COPYRIGHT
+====================================================== -->
+<div class="copyright">
+  © 2027 Coursyria — جميع الحقوق محفوظة
+</div>
+```
+
 
     <!-- =====================================================
        JAVASCRIPT
