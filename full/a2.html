@@ -1,9 +1,11 @@
 <!doctype html>
+
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    ```
     <title>English A2 - Coursyria</title>
 
     <style>
@@ -126,6 +128,18 @@
       .hero-content {
         grid-column: 2;
         padding-top: 60px;
+        animation: heroTextIn 1s ease both;
+      }
+
+      @keyframes heroTextIn {
+        from {
+          opacity: 0;
+          transform: translateX(35px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
 
       .course-badge {
@@ -211,6 +225,8 @@
         margin-top: 18px;
       }
 
+      /* ================= FLOATING WORDS ================= */
+
       .floating-word {
         position: absolute;
         background: rgba(50, 77, 146, 0.8);
@@ -219,21 +235,34 @@
         border-radius: 20px;
         font-size: 18px;
         box-shadow: var(--shadow);
+        animation: floatWord 3s ease-in-out infinite;
+        transition: transform 0.2s ease;
+        z-index: 5;
+      }
+
+      @keyframes floatWord {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-8deg);
+        }
+
+        50% {
+          transform: translateY(-13px) rotate(-3deg);
+        }
       }
 
       .word-one {
         top: 210px;
         right: 40%;
-        transform: rotate(-8deg);
       }
 
       .word-two {
         top: 315px;
         right: 47%;
-        transform: rotate(3deg);
+        animation-delay: 1s;
       }
 
-      /* ================= MOCKUP ================= */
+      /* ================= INTERACTIVE LONDON VISUAL ================= */
 
       .hero-visual {
         grid-column: 1;
@@ -243,6 +272,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        perspective: 1000px;
       }
 
       .london-card {
@@ -254,8 +284,27 @@
           linear-gradient(145deg, #db7d68, #22356c 55%, #0c1d55);
         position: relative;
         overflow: hidden;
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+        box-shadow:
+          0 25px 60px rgba(0, 0, 0, 0.55),
+          0 0 45px rgba(63, 113, 225, 0.12);
         border: 1px solid rgba(255, 255, 255, 0.1);
+        transform-style: preserve-3d;
+        transition: transform 0.18s ease-out;
+        animation: visualEntrance 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+
+      @keyframes visualEntrance {
+        from {
+          opacity: 0;
+          transform: perspective(1000px) rotateY(-14deg) rotateX(7deg)
+            scale(0.88) translateY(30px);
+        }
+
+        to {
+          opacity: 1;
+          transform: perspective(1000px) rotateY(0) rotateX(0) scale(1)
+            translateY(0);
+        }
       }
 
       .london-card::before {
@@ -266,7 +315,38 @@
         font-size: 18px;
         letter-spacing: 8px;
         color: rgba(255, 255, 255, 0.7);
+        z-index: 5;
       }
+
+      /* Light glow */
+      .london-card::after {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        top: -80px;
+        right: -50px;
+        border-radius: 50%;
+        background: rgba(255, 220, 140, 0.22);
+        filter: blur(25px);
+        animation: sunGlow 4s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      @keyframes sunGlow {
+        0%,
+        100% {
+          opacity: 0.45;
+          transform: scale(1);
+        }
+
+        50% {
+          opacity: 0.8;
+          transform: scale(1.15);
+        }
+      }
+
+      /* ================= BIG BEN ================= */
 
       .big-ben {
         position: absolute;
@@ -287,7 +367,22 @@
           25% 8%
         );
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        animation: towerFloat 4s ease-in-out infinite;
+        z-index: 2;
       }
+
+      @keyframes towerFloat {
+        0%,
+        100% {
+          margin-top: 0;
+        }
+
+        50% {
+          margin-top: -5px;
+        }
+      }
+
+      /* ================= CLOCK ================= */
 
       .clock {
         position: absolute;
@@ -299,12 +394,60 @@
         background: #eee5c6;
         border: 5px solid #624839;
         border-radius: 50%;
-        color: #222;
-        display: grid;
-        place-items: center;
-        font-size: 12px;
-        font-weight: bold;
+        color: transparent;
+        display: block;
+        box-shadow: 0 0 15px rgba(255, 231, 163, 0.35);
       }
+
+      .clock::before {
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: 17px;
+        left: 50%;
+        top: 7px;
+        background: #222;
+        transform-origin: bottom center;
+        transform: translateX(-50%) rotate(25deg);
+        border-radius: 3px;
+        animation: minuteHand 4s linear infinite;
+      }
+
+      .clock::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 12px;
+        left: 50%;
+        top: 12px;
+        background: #222;
+        transform-origin: bottom center;
+        transform: translateX(-50%) rotate(120deg);
+        border-radius: 3px;
+        animation: hourHand 48s linear infinite;
+      }
+
+      @keyframes minuteHand {
+        from {
+          transform: translateX(-50%) rotate(0deg);
+        }
+
+        to {
+          transform: translateX(-50%) rotate(360deg);
+        }
+      }
+
+      @keyframes hourHand {
+        from {
+          transform: translateX(-50%) rotate(0deg);
+        }
+
+        to {
+          transform: translateX(-50%) rotate(360deg);
+        }
+      }
+
+      /* ================= BUS ================= */
 
       .bus {
         position: absolute;
@@ -315,6 +458,8 @@
         background: #bd252b;
         border-radius: 12px 12px 4px 4px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        animation: busDrive 6s ease-in-out infinite;
+        z-index: 4;
       }
 
       .bus::before {
@@ -334,6 +479,35 @@
         font-weight: bold;
       }
 
+      .bus {
+        --wheel-size: 18px;
+      }
+
+      .bus::marker {
+        display: none;
+      }
+
+      @keyframes busDrive {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+
+        45% {
+          transform: translateX(115px);
+        }
+
+        55% {
+          transform: translateX(115px);
+        }
+
+        85% {
+          transform: translateX(0);
+        }
+      }
+
+      /* ================= PHONE ================= */
+
       .phone {
         position: absolute;
         bottom: 0;
@@ -343,6 +517,8 @@
         background: linear-gradient(#ed2428, #9e121c);
         border-radius: 8px 8px 0 0;
         box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+        animation: phoneFloat 3.5s ease-in-out infinite;
+        z-index: 3;
       }
 
       .phone::before {
@@ -358,6 +534,30 @@
         padding: 5px;
       }
 
+      .phone::after {
+        content: "☎";
+        position: absolute;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%);
+        font-size: 45px;
+        color: #f8e5bd;
+        text-shadow: 0 0 12px rgba(255, 236, 176, 0.4);
+      }
+
+      @keyframes phoneFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+          transform: translateY(-10px) rotate(-2deg);
+        }
+      }
+
+      /* ================= NOTEBOOK ================= */
+
       .notebook {
         position: absolute;
         bottom: -20px;
@@ -372,11 +572,74 @@
         font-size: 25px;
         font-weight: bold;
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        z-index: 5;
+        transition: transform 0.25s ease;
+        animation: notebookFloat 4s ease-in-out infinite;
       }
 
       .notebook::before {
         content: "Let's\A learn\A English!";
         white-space: pre;
+      }
+
+      @keyframes notebookFloat {
+        0%,
+        100% {
+          transform: rotate(7deg) translateY(0);
+        }
+
+        50% {
+          transform: rotate(4deg) translateY(-7px);
+        }
+      }
+
+      /* ================= ENGLISH SPARKLES ================= */
+
+      .spark {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #fff5b5;
+        box-shadow: 0 0 12px #fff2a2;
+        animation: sparkle 2.5s ease-in-out infinite;
+        z-index: 6;
+      }
+
+      .spark-1 {
+        top: 95px;
+        left: 55px;
+      }
+
+      .spark-2 {
+        top: 150px;
+        right: 45px;
+        animation-delay: 0.7s;
+      }
+
+      .spark-3 {
+        top: 230px;
+        left: 90px;
+        animation-delay: 1.3s;
+      }
+
+      .spark-4 {
+        top: 80px;
+        right: 125px;
+        animation-delay: 1.8s;
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          opacity: 0.15;
+          transform: scale(0.6);
+        }
+
+        50% {
+          opacity: 1;
+          transform: scale(1.5);
+        }
       }
 
       /* ================= SECTION ================= */
@@ -569,6 +832,18 @@
         overflow: hidden;
         color: #101b45;
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        animation: calendarFloat 3s ease-in-out infinite;
+      }
+
+      @keyframes calendarFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-6px);
+        }
       }
 
       .calendar-top {
@@ -634,6 +909,11 @@
         position: relative;
         z-index: 1;
         text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .step:hover {
+        transform: translateY(-7px);
       }
 
       .step-circle {
@@ -743,6 +1023,12 @@
         background: linear-gradient(145deg, #0c2862, #071744);
         border: 1px solid var(--border);
         border-radius: 16px;
+        transition: 0.3s ease;
+      }
+
+      .bottom-card:hover {
+        transform: translateY(-6px);
+        border-color: #708be0;
       }
 
       .bottom-card .big-icon {
@@ -763,6 +1049,35 @@
 
       /* ================= CONTACT ================= */
 
+      .contact-section {
+        margin: 55px 0 25px;
+      }
+
+      .section-heading {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      .section-heading h2 {
+        font-size: 28px;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+
+      .blue-line {
+        width: 75px;
+        height: 4px;
+        margin: 0 auto 10px;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #36a2df, #7441d7);
+        box-shadow: 0 0 15px rgba(54, 162, 223, 0.5);
+      }
+
+      .section-heading p {
+        color: #cbd5ef;
+        font-size: 14px;
+      }
+
       .contact-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -779,11 +1094,13 @@
         text-decoration: none;
         color: white;
         border: 1px solid var(--border);
-        background: linear-gradient(
-          145deg,
-          rgba(13, 38, 94, 0.98),
-          rgba(5, 18, 54, 0.98)
-        );
+        background:
+          radial-gradient(
+            circle at 90% 20%,
+            rgba(76, 131, 213, 0.13),
+            transparent 35%
+          ),
+          linear-gradient(145deg, rgba(13, 38, 94, 0.98), rgba(5, 18, 54, 0.98));
         box-shadow: var(--shadow);
         transition: 0.3s ease;
       }
@@ -791,7 +1108,17 @@
       .contact-card:hover {
         transform: translateY(-6px);
         border-color: #8299ed;
-        box-shadow: 0 18px 40px rgba(39, 81, 190, 0.3);
+        box-shadow:
+          0 18px 40px rgba(39, 81, 190, 0.3),
+          0 0 25px rgba(54, 162, 223, 0.08);
+      }
+
+      .contact-card.no-link {
+        cursor: default;
+      }
+
+      .contact-card.no-link:hover {
+        transform: translateY(-4px);
       }
 
       .contact-icon {
@@ -805,7 +1132,7 @@
         background: linear-gradient(145deg, #7441d7, #34207e);
       }
 
-      .contact-person-card .contact-icon {
+      .contact-card.no-link .contact-icon {
         background: linear-gradient(145deg, #36a2df, #1767b1);
       }
 
@@ -820,34 +1147,29 @@
         font-size: 14px;
       }
 
-      /* ================= COPYRIGHT ================= */
+      /* ================= FOOTER ================= */
+
+      footer {
+        margin-top: 40px;
+        padding: 28px 15px;
+        text-align: center;
+        color: #cbd5ef;
+        border-top: 1px solid rgba(119, 147, 225, 0.2);
+        background: rgba(2, 10, 35, 0.45);
+        font-size: 15px;
+      }
+
+      footer strong {
+        color: var(--yellow);
+        font-size: 20px;
+        letter-spacing: 1px;
+      }
 
       .copyright {
         text-align: center;
         color: #8fa1ca;
         font-size: 13px;
-        padding: 25px 0 35px;
-      }
-
-      /* ================= ANIMATIONS ================= */
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      .floating-word {
-        animation: float 3s ease-in-out infinite;
-      }
-
-      .word-two {
-        animation-delay: 1s;
+        padding: 20px 0 35px;
       }
 
       /* ================= RESPONSIVE ================= */
@@ -937,12 +1259,38 @@
 
         .big-ben {
           height: 250px;
+          width: 75px;
+        }
+
+        .clock {
+          top: 35px;
+          width: 45px;
+          height: 45px;
+        }
+
+        .bus {
+          width: 105px;
+          height: 58px;
+          bottom: 28px;
+          left: 20px;
+        }
+
+        .phone {
+          width: 95px;
+          height: 120px;
+          right: 15px;
+        }
+
+        .phone::after {
+          font-size: 35px;
+          bottom: 15px;
         }
 
         .notebook {
           width: 145px;
           height: 180px;
           font-size: 20px;
+          padding-top: 45px;
         }
 
         .price-box {
@@ -1010,12 +1358,28 @@
         .detail-box p {
           font-size: 13px;
         }
+
+        .section-heading h2 {
+          font-size: 24px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
       }
     </style>
+    ```
   </head>
 
   <body>
     <div class="container">
+      ```
       <!-- ================= HEADER ================= -->
 
       <header>
@@ -1024,7 +1388,6 @@
 
           <div class="brand-text">
             <h2>Cours<span>yria</span></h2>
-
             <p>LEARN • BUILD • PROTECT</p>
           </div>
         </div>
@@ -1037,13 +1400,9 @@
             <span>A2</span>
           </h1>
 
-          <!-- PRICE -->
-
           <div class="price-box">
             <span>سعر الدورة</span>
-
             <strong>1000</strong>
-
             <small>ليرة سورية</small>
           </div>
 
@@ -1059,15 +1418,19 @@
         </div>
 
         <div class="floating-word word-one">Let's Grow!</div>
-
         <div class="floating-word word-two">Together!</div>
 
-        <!-- CSS ART -->
+        <!-- ================= INTERACTIVE ENGLISH SCENE ================= -->
 
-        <div class="hero-visual">
-          <div class="london-card">
+        <div class="hero-visual" id="heroVisual">
+          <div class="london-card" id="londonCard">
+            <div class="spark spark-1"></div>
+            <div class="spark spark-2"></div>
+            <div class="spark spark-3"></div>
+            <div class="spark spark-4"></div>
+
             <div class="big-ben">
-              <div class="clock">12:00</div>
+              <div class="clock"></div>
             </div>
 
             <div class="bus"></div>
@@ -1087,33 +1450,25 @@
         <div class="course-details">
           <div class="detail-box">
             <div class="detail-icon">📅</div>
-
             <h3>مدة الدورة</h3>
-
             <p>شهر واحد</p>
           </div>
 
           <div class="detail-box">
             <div class="detail-icon">🎓</div>
-
             <h3>عدد الجلسات</h3>
-
             <p>8 جلسات</p>
           </div>
 
           <div class="detail-box">
             <div class="detail-icon">💰</div>
-
             <h3>السعر</h3>
-
             <p>1000 ليرة سورية</p>
           </div>
 
           <div class="detail-box">
             <div class="detail-icon">📘</div>
-
             <h3>المستوى</h3>
-
             <p>English A2</p>
           </div>
         </div>
@@ -1127,49 +1482,37 @@
         <div class="info-grid">
           <div class="info-card">
             <div class="icon">🎧</div>
-
             <h3>الاستماع</h3>
-
             <p>فهم المحادثات اليومية والعبارات المستخدمة في مواقف مختلفة</p>
           </div>
 
           <div class="info-card">
             <div class="icon">💬</div>
-
             <h3>التحدث</h3>
-
             <p>التحدث بجمل أطول والتعبير عن أفكارك وآرائك بثقة أكبر</p>
           </div>
 
           <div class="info-card">
             <div class="icon">📖</div>
-
             <h3>القراءة</h3>
-
             <p>قراءة وفهم النصوص والرسائل والمعلومات اليومية</p>
           </div>
 
           <div class="info-card">
             <div class="icon">✍️</div>
-
             <h3>الكتابة</h3>
-
             <p>كتابة جمل وفقرات ورسائل قصيرة بطريقة صحيحة</p>
           </div>
 
           <div class="info-card">
             <div class="icon">Aa</div>
-
             <h3>القواعد</h3>
-
             <p>تطوير استخدام الأزمنة والقواعد الأساسية والمتوسطة</p>
           </div>
 
           <div class="info-card">
             <div class="icon">📚</div>
-
             <h3>المفردات</h3>
-
             <p>اكتساب كلمات وعبارات جديدة للاستخدام في الحياة اليومية</p>
           </div>
         </div>
@@ -1184,32 +1527,27 @@
 
             <div class="feature">
               <div class="feature-icon">👨‍🏫</div>
-
-              <span> مدربون ذوو خبرة في تعليم اللغة الإنجليزية </span>
+              <span>مدربون ذوو خبرة في تعليم اللغة الإنجليزية</span>
             </div>
 
             <div class="feature">
               <div class="feature-icon">💻</div>
-
-              <span> شرح مبسط وأمثلة من مواقف الحياة الواقعية </span>
+              <span>شرح مبسط وأمثلة من مواقف الحياة الواقعية</span>
             </div>
 
             <div class="feature">
               <div class="feature-icon">👥</div>
-
-              <span> أنشطة ومحادثات وتدريبات تفاعلية </span>
+              <span>أنشطة ومحادثات وتدريبات تفاعلية</span>
             </div>
 
             <div class="feature">
               <div class="feature-icon">📈</div>
-
-              <span> متابعة مستمرة وتقييم تطور مستواك </span>
+              <span>متابعة مستمرة وتقييم تطور مستواك</span>
             </div>
 
             <div class="feature">
               <div class="feature-icon">🎧</div>
-
-              <span> دعم ومتابعة طوال فترة الدورة </span>
+              <span>دعم ومتابعة طوال فترة الدورة</span>
             </div>
           </div>
 
@@ -1217,7 +1555,6 @@
             <div class="month-box">
               <div class="calendar">
                 <div class="calendar-top"></div>
-
                 <div class="calendar-number">1</div>
               </div>
 
@@ -1229,26 +1566,22 @@
 
               <div class="feature">
                 <div class="feature-icon">📈</div>
-
-                <span> تطوير مستواك بعد A1 </span>
+                <span>تطوير مستواك بعد A1</span>
               </div>
 
               <div class="feature">
                 <div class="feature-icon">💬</div>
-
-                <span> تواصل بثقة أكبر </span>
+                <span>تواصل بثقة أكبر</span>
               </div>
 
               <div class="feature">
                 <div class="feature-icon">🎧</div>
-
-                <span> تدريبات تفاعلية عملية </span>
+                <span>تدريبات تفاعلية عملية</span>
               </div>
 
               <div class="feature">
                 <div class="feature-icon">🏆</div>
-
-                <span> شهادة خبرة ومشروع </span>
+                <span>شهادة خبرة ومشروع</span>
               </div>
             </div>
           </div>
@@ -1264,49 +1597,37 @@
           <div class="roadmap">
             <div class="step">
               <div class="step-circle">🎧</div>
-
               <h4>الوحدة 1</h4>
-
               <p>الاستماع والتحدث</p>
             </div>
 
             <div class="step">
               <div class="step-circle">📚</div>
-
               <h4>الوحدة 2</h4>
-
               <p>القواعد والمفردات</p>
             </div>
 
             <div class="step">
               <div class="step-circle">📖</div>
-
               <h4>الوحدة 3</h4>
-
               <p>القراءة والكتابة</p>
             </div>
 
             <div class="step">
               <div class="step-circle">✈️</div>
-
               <h4>الوحدة 4</h4>
-
               <p>السفر والمواصلات</p>
             </div>
 
             <div class="step">
               <div class="step-circle">💼</div>
-
               <h4>الوحدة 5</h4>
-
               <p>العمل والتسوق</p>
             </div>
 
             <div class="step">
               <div class="step-circle">🌍</div>
-
               <h4>الوحدة 6</h4>
-
               <p>الحياة اليومية</p>
             </div>
           </div>
@@ -1341,41 +1662,31 @@
         <div class="bottom-grid">
           <div class="bottom-card">
             <div class="big-icon">🎯</div>
-
             <h3>طوّر مستواك</h3>
-
             <p>بعد إتمام A1</p>
           </div>
 
           <div class="bottom-card">
             <div class="big-icon">💬</div>
-
             <h3>تحدث بثقة</h3>
-
             <p>في مواقف مختلفة</p>
           </div>
 
           <div class="bottom-card">
             <div class="big-icon">🌐</div>
-
             <h3>فرص أكبر</h3>
-
             <p>للدراسة والعمل</p>
           </div>
 
           <div class="bottom-card">
             <div class="big-icon">🎓</div>
-
             <h3>شهادة ومشروع</h3>
-
             <p>في نهاية الدورة</p>
           </div>
 
           <div class="bottom-card">
             <div class="big-icon">📚</div>
-
             <h3>تعلم مستمر</h3>
-
             <p>وطوّر نفسك</p>
           </div>
         </div>
@@ -1395,47 +1706,122 @@
         </div>
       </section>
 
-      <!-- ================= CONTACT ================= -->
+      <!-- =====================================================
+       CONTACT SECTION
+  ====================================================== -->
 
-      <section>
-        <div class="section-title">📞 معلومات التواصل</div>
+      <section class="contact-section" id="contact">
+        <div class="section-heading">
+          <h2>معلومات التواصل</h2>
+          <div class="blue-line"></div>
+          <p>للاستفسارات المتعلقة بالموقع والمساعدة التقنية</p>
+        </div>
 
         <div class="contact-grid">
+          <!-- المدرب -->
           <a
             href="https://wa.me/963995980568"
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
           >
-            <div class="contact-icon">👨‍🏫</div>
+            <div class="contact-icon">🎓</div>
 
             <div>
               <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
-
-              <p>اضغط للتواصل عبر واتساب</p>
+              <p>للاستفسارات المتعلقة بالكورسات</p>
             </div>
           </a>
 
-          <a
-            href="https://wa.me/963937015714"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="contact-card contact-person-card"
-          >
-            <div class="contact-icon">💬</div>
+          <!-- المهندسة بدون رقم -->
+          <div class="contact-card no-link">
+            <div class="contact-icon">💻</div>
 
             <div>
-              <h3>لين الكردي</h3>
-
-              <p>اضغط للتواصل عبر واتساب</p>
+              <h3>المهندسة لين حسن الكردي</h3>
             </div>
-          </a>
+          </div>
         </div>
       </section>
 
-      <!-- ================= COPYRIGHT ================= -->
+      <!-- =====================================================
+       FOOTER
+  ====================================================== -->
 
-      <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
+      <footer><strong>Coursyria</strong> — Learn • Build • Protect</footer>
+
+      <!-- =====================================================
+       COPYRIGHT
+  ====================================================== -->
+
+      <div class="copyright">© 2027 Coursyria — جميع الحقوق محفوظة</div>
     </div>
+
+    <!-- =====================================================
+     INTERACTIVE ENGLISH ANIMATION
+====================================================== -->
+
+    <script>
+      const visual = document.getElementById("heroVisual");
+      const card = document.getElementById("londonCard");
+
+      if (visual && card) {
+        let targetX = 0;
+        let targetY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
+        function moveScene(x, y) {
+          const rect = visual.getBoundingClientRect();
+
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+
+          const percentX = (x - centerX) / (rect.width / 2);
+          const percentY = (y - centerY) / (rect.height / 2);
+
+          targetX = Math.max(-1, Math.min(1, percentX));
+          targetY = Math.max(-1, Math.min(1, percentY));
+        }
+
+        visual.addEventListener("mousemove", function (e) {
+          moveScene(e.clientX, e.clientY);
+        });
+
+        visual.addEventListener(
+          "touchmove",
+          function (e) {
+            if (e.touches.length) {
+              moveScene(e.touches[0].clientX, e.touches[0].clientY);
+            }
+          },
+          { passive: true },
+        );
+
+        visual.addEventListener("mouseleave", function () {
+          targetX = 0;
+          targetY = 0;
+        });
+
+        function animateScene() {
+          currentX += (targetX - currentX) * 0.08;
+          currentY += (targetY - currentY) * 0.08;
+
+          card.style.transform =
+            "perspective(1000px) " +
+            "rotateY(" +
+            currentX * 8 +
+            "deg) " +
+            "rotateX(" +
+            currentY * -6 +
+            "deg)";
+
+          requestAnimationFrame(animateScene);
+        }
+
+        animateScene();
+      }
+    </script>
+
   </body>
 </html>
