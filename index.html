@@ -7,7 +7,10 @@
     <title>Coursyria | Courses</title>
 
     <link rel="preload" as="image" href="image/logoo.png" />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap");
 
@@ -1402,29 +1405,20 @@
       }
 
       /* =====================================================
-         SHAM CASH CURTAIN
-      ====================================================== */
+   SHAM CASH CURTAIN
+===================================================== */
 
       .shamcash-curtain {
         display: none;
-
         position: fixed;
-
         inset: 0;
-
         background: rgba(2, 18, 50, 0.78);
-
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
-
         z-index: 10000;
-
         align-items: flex-start;
-
         justify-content: center;
-
         overflow-y: auto;
-
         padding: 35px 20px;
       }
 
@@ -1434,63 +1428,40 @@
 
       .shamcash-sheet {
         width: min(520px, 95vw);
-
         margin-top: 0;
-
         padding: 14px;
-
         border-radius: 25px;
-
         background: linear-gradient(145deg, #ffffff, #eaf8ff);
-
         box-shadow: 0 30px 80px rgba(0, 20, 60, 0.45);
-
         transform-origin: top center;
-
         animation: shamCashDrop 0.9s cubic-bezier(0.22, 0.8, 0.25, 1) forwards;
       }
 
       .shamcash-sheet img {
         width: 100%;
-
         max-height: 75vh;
-
         object-fit: contain;
-
         display: block;
-
         border-radius: 18px;
       }
 
       .shamcash-close {
         margin-top: 12px;
-
         width: 100%;
-
         border: none;
-
         border-radius: 13px;
-
         padding: 12px;
-
         background: linear-gradient(135deg, #42baff, #0752b7);
-
         color: white;
-
         font-family: inherit;
-
         font-size: 15px;
-
         font-weight: 800;
-
         cursor: pointer;
-
         transition: 0.3s;
       }
 
       .shamcash-close:hover {
         transform: translateY(-2px);
-
         box-shadow: 0 8px 20px rgba(7, 82, 186, 0.25);
       }
 
@@ -1499,20 +1470,16 @@
           transform: translateY(-120px) scaleY(0.15);
           opacity: 0;
         }
-
         35% {
           transform: translateY(15px) scaleY(1.04);
           opacity: 1;
         }
-
         60% {
           transform: translateY(-6px) scaleY(0.98);
         }
-
         80% {
           transform: translateY(3px) scaleY(1.01);
         }
-
         100% {
           transform: translateY(0) scaleY(1);
           opacity: 1;
@@ -1528,7 +1495,6 @@
           transform: translateY(0) scaleY(1);
           opacity: 1;
         }
-
         100% {
           transform: translateY(-100px) scaleY(0.15);
           opacity: 0;
@@ -1840,66 +1806,44 @@
       }
 
       /* =====================================================
-         RANK MODAL
-      ====================================================== */
+   RANK MODAL
+===================================================== */
 
       .modal {
         display: none;
-
         position: fixed;
-
         inset: 0;
-
         background: rgba(2, 18, 50, 0.78);
-
         backdrop-filter: blur(8px);
-
         justify-content: center;
-
         align-items: center;
-
         z-index: 9999;
-
         padding: 20px;
       }
 
       .modal-content {
         background: linear-gradient(145deg, #fff, #e9f7ff);
-
         padding: 18px;
-
         border-radius: 22px;
-
         max-width: 90%;
-
         box-shadow: 0 25px 70px rgba(0, 20, 60, 0.35);
       }
 
       .modal-content img {
         width: 100%;
-
         max-width: 450px;
-
         border-radius: 14px;
-
         display: block;
       }
 
       .close {
         margin-top: 12px;
-
         background: linear-gradient(135deg, #42baff, #0752b7);
-
         color: #fff;
-
         padding: 10px 20px;
-
         border-radius: 10px;
-
         cursor: pointer;
-
         font-weight: 800;
-
         text-align: center;
       }
 
@@ -3721,6 +3665,62 @@
           letter-spacing: 2px;
         }
       }
+      /* =====================================================
+   SOCIAL LINKS - FOOTER
+===================================================== */
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        margin: 16px 0 18px;
+      }
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #ffffff, #e6f4ff);
+        border: 1px solid rgba(20, 121, 220, 0.25);
+        color: #0752aa;
+        font-size: 22px;
+        text-decoration: none;
+        transition: 0.3s ease;
+        box-shadow: 0 4px 12px rgba(8, 74, 155, 0.08);
+      }
+
+      .social-link:hover {
+        transform: translateY(-5px) scale(1.05);
+        border-color: rgba(20, 121, 220, 0.5);
+        box-shadow: 0 10px 25px rgba(7, 82, 186, 0.2);
+      }
+
+      /* ألوان خاصة لكل منصة عند التمرير */
+      .social-link:hover .fa-facebook-f {
+        color: #1877f2;
+      }
+
+      .social-link:hover .fa-instagram {
+        color: #e4405f;
+      }
+
+      .social-link:hover .fa-youtube {
+        color: #ff0000;
+      }
+
+      /* حجم الأيقونات في الشاشات الصغيرة */
+      @media (max-width: 650px) {
+        .social-link {
+          width: 44px;
+          height: 44px;
+          font-size: 18px;
+          gap: 12px;
+        }
+      }
     </style>
   </head>
 
@@ -3953,7 +3953,7 @@
 
                 <div class="feature-item">
                   <span class="feature-icon">🏆</span>
-                  <span>شهادات معتمدة</span>
+                  <span>شهادات خبرة</span>
                 </div>
               </div>
             </div>
@@ -4549,6 +4549,21 @@
 
               <div class="arrow">←</div>
             </a>
+            <!-- 33 -->
+            <a href="full/makeCvPro.html" class="course" data-category="tech">
+              <div class="course-number">33</div>
+
+              <div class="course-content">
+                <span class="course-icon">▱</span>
+                <div class="course-name">
+                  <div class="course-name-ar">اصنع سيرتك الذاتية</div>
+
+                  <div class="course-name-en">MakeCvPro</div>
+                </div>
+              </div>
+
+              <div class="arrow">←</div>
+            </a>
           </div>
         </section>
 
@@ -4834,73 +4849,93 @@
      CONTACT
 ===================================================== -->
 
-<section class="contact-section" id="contact">
-  <div class="section-title">
-    <h2>معلومات التواصل</h2>
+        <section class="contact-section" id="contact">
+          <div class="section-title">
+            <h2>معلومات التواصل</h2>
 
-```
-<div class="blue-line"></div>
+            <div class="blue-line"></div>
 
-<p>للاستفسارات المتعلقة بالموقع والمساعدة التقنية</p>
-```
+            <p>للاستفسارات المتعلقة بالموقع والمساعدة التقنية</p>
+          </div>
 
-  </div>
+          <div class="contact-grid">
+            <!-- المدرب -->
+            <a
+              href="https://wa.me/963995980568"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-card"
+            >
+              <div class="contact-icon">🎓</div>
 
-  <div class="contact-grid">
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
 
-```
-<!-- المدرب -->
-<a
-  href="https://wa.me/963995980568"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="contact-card"
->
-  <div class="contact-icon">🎓</div>
+              <p>للاستفسارات المتعلقة بالكورسات</p>
+            </a>
 
-  <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+            <!-- المهندسة -->
+            <a
+              href="https://wa.me/963937015714"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-card"
+            >
+              <div class="contact-icon">💻</div>
 
-  <p>للاستفسارات المتعلقة بالكورسات</p>
+              <h3>المهندسة لين حسن الكردي</h3>
 
-</a>
+              <p>للاستفسارات المتعلقة بالموقع</p>
+            </a>
+          </div>
+        </section>
+        <footer class="footer">
+          <strong>COURSYRIA</strong>
+          <br />
+          <span>تعلّم • تطوّر • قد</span>
 
-<!-- المهندسة -->
-<a
-  href="https://wa.me/963937015714"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="contact-card"
->
-  <div class="contact-icon">💻</div>
+          <!-- روابط التواصل الاجتماعي -->
+          <div class="social-links">
+            <a
+              href="https://www.facebook.com/share/19SoUFGhky/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label="فيسبوك"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
 
-  <h3>المهندسة لين حسن الكردي</h3>
+            <a
+              href="https://www.instagram.com/cour_syria"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label="إنستغرام"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
 
-  <p>للاستفسارات المتعلقة بالموقع</p>
- 
-</a>
+            <a
+              href="https://youtube.com/@coursyria"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label="يوتيوب"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
 
-  </div>
-</section>
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer class="footer">
-  <strong>COURSYRIA</strong>
-
-  <br />
-
-<span>تعلّم • تطوّر • قد</span>
-
-  <div class="copyright">
-    © 2027 Coursyria — جميع الحقوق محفوظة
-  </div>
-</footer>
+          <div class="copyright">© 2027 Coursyria — جميع الحقوق محفوظة</div>
+        </footer>
+      </div>
+      <!-- =====================================================
+         إغلاق .page
+      ====================================================== -->
 
       <!-- =====================================================
-         SHAM CASH CURTAIN
-      ====================================================== -->
+   SHAM CASH CURTAIN (خارج .page)
+===================================================== -->
 
       <div
         id="shamCashCurtain"
@@ -4909,7 +4944,6 @@
       >
         <div class="shamcash-sheet">
           <img src="image/shamcash.png" alt="باركود شام كاش" />
-
           <button class="shamcash-close" onclick="closeShamCash()">
             إغلاق
           </button>
@@ -4917,8 +4951,8 @@
       </div>
 
       <!-- =====================================================
-         RANK MODAL
-      ====================================================== -->
+   RANK MODAL (خارج .page)
+===================================================== -->
 
       <div
         id="rankModal"
@@ -4927,11 +4961,13 @@
       >
         <div class="modal-content">
           <img id="rankImg" src="" alt="Rank" />
-
           <div class="close" onclick="closeRank()">إغلاق</div>
         </div>
       </div>
     </div>
+    <!-- =====================================================
+       إغلاق #main-content
+    ====================================================== -->
 
     <!-- =====================================================
        JAVASCRIPT
@@ -5110,53 +5146,41 @@
       });
 
       /* =====================================================
-         RANK MODAL
-      ====================================================== */
+   RANK MODAL
+===================================================== */
 
       function openRank(imgSrc) {
         document.getElementById("rankImg").src = imgSrc;
-
         document.getElementById("rankModal").style.display = "flex";
-
         document.body.style.overflow = "hidden";
       }
 
       function closeRank() {
         document.getElementById("rankModal").style.display = "none";
-
         document.getElementById("rankImg").src = "";
-
         document.body.style.overflow = "";
       }
 
       /* =====================================================
-         SHAM CASH
-      ====================================================== */
+   SHAM CASH
+===================================================== */
 
       function openShamCash() {
         const curtain = document.getElementById("shamCashCurtain");
-
         curtain.classList.remove("closing");
-
         curtain.classList.add("show");
-
         document.body.style.overflow = "hidden";
       }
 
       function closeShamCash() {
         const curtain = document.getElementById("shamCashCurtain");
-
         curtain.classList.add("closing");
-
         setTimeout(function () {
           curtain.classList.remove("show");
-
           curtain.classList.remove("closing");
-
           document.body.style.overflow = "";
         }, 450);
       }
-
       /* =====================================================
          ESC KEY
       ====================================================== */
