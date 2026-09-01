@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="ar" dir="rtl">
   <head>
@@ -679,29 +680,74 @@
         box-shadow: 0 0 40px rgba(176, 40, 255, 0.8);
       }
 
-      /* ================= CONTACT ================= */
+      /* ================= CONTACT SECTION ================= */
+
+      .contact-section {
+        margin-top: 45px;
+        padding: 10px 0 5px;
+      }
+
+      .section-heading {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      .section-heading h2 {
+        font-size: 25px;
+        font-weight: 900;
+        color: #fff;
+        text-shadow:
+          0 0 10px rgba(0, 229, 255, 0.3),
+          0 0 25px rgba(138, 45, 255, 0.25);
+      }
+
+      .blue-line {
+        width: 75px;
+        height: 3px;
+        margin: 10px auto;
+        border-radius: 20px;
+        background: linear-gradient(90deg, #00e5ff, #7b35ff);
+        box-shadow:
+          0 0 10px #00e5ff,
+          0 0 20px rgba(123, 53, 255, 0.7);
+      }
+
+      .section-heading p {
+        color: #bfc5e8;
+        font-size: 13px;
+        line-height: 1.8;
+      }
 
       .contact-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-        margin-top: 20px;
       }
 
       .contact-card {
         display: flex;
         align-items: center;
-        gap: 18px;
-        padding: 22px;
+        justify-content: center;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 170px;
+        padding: 25px 20px;
         text-decoration: none;
         color: #fff;
-        background: linear-gradient(
-          145deg,
-          rgba(25, 20, 85, 0.96),
-          rgba(8, 8, 42, 0.96)
-        );
+        text-align: center;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(0, 229, 255, 0.12),
+            transparent 45%
+          ),
+          linear-gradient(
+            145deg,
+            rgba(25, 20, 85, 0.96),
+            rgba(8, 8, 42, 0.96)
+          );
         border: 1px solid #00d9ff;
-        border-radius: 18px;
+        border-radius: 20px;
         box-shadow:
           0 0 15px rgba(0, 217, 255, 0.15),
           inset 0 0 25px rgba(0, 217, 255, 0.04);
@@ -712,18 +758,31 @@
       }
 
       .contact-card:hover {
-        transform: translateY(-6px);
+        transform: translateY(-7px);
         border-color: #00f2ff;
         box-shadow:
           0 0 25px rgba(0, 225, 255, 0.4),
           0 0 55px rgba(108, 40, 255, 0.18);
       }
 
-      .contact-person-card {
+      .contact-card.no-link {
+        cursor: default;
         border-color: #c238ff;
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(210, 50, 255, 0.12),
+            transparent 45%
+          ),
+          linear-gradient(
+            145deg,
+            rgba(25, 20, 85, 0.96),
+            rgba(8, 8, 42, 0.96)
+          );
       }
 
-      .contact-person-card:hover {
+      .contact-card.no-link:hover {
+        transform: translateY(-7px);
         border-color: #ed6cff;
         box-shadow:
           0 0 25px rgba(213, 50, 255, 0.4),
@@ -731,35 +790,36 @@
       }
 
       .contact-icon {
-        width: 58px;
-        height: 58px;
-        flex-shrink: 0;
+        width: 65px;
+        height: 65px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 16px;
-        font-size: 28px;
+        border-radius: 18px;
+        font-size: 31px;
         background: linear-gradient(
           145deg,
           rgba(0, 210, 255, 0.18),
           rgba(30, 20, 100, 0.8)
         );
         border: 1px solid #00dfff;
-        box-shadow: 0 0 15px rgba(0, 220, 255, 0.3);
+        box-shadow: 0 0 18px rgba(0, 220, 255, 0.3);
       }
 
-      .contact-person-card .contact-icon {
+      .contact-card.no-link .contact-icon {
         border-color: #d33cff;
         background: linear-gradient(
           145deg,
           rgba(210, 50, 255, 0.18),
           rgba(30, 15, 90, 0.8)
         );
+        box-shadow: 0 0 18px rgba(210, 50, 255, 0.3);
       }
 
       .contact-card h3 {
         font-size: 16px;
-        margin-bottom: 5px;
+        font-weight: 800;
+        margin-bottom: 4px;
         color: #fff;
       }
 
@@ -769,36 +829,28 @@
         color: #aeefff;
       }
 
-      .contact-person-card p {
-        color: #e8b5ff;
-      }
-
       /* ================= FOOTER ================= */
 
       footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 35px;
-        margin-top: 40px;
+        margin-top: 45px;
         padding: 25px 15px;
+        text-align: center;
         border-top: 1px solid rgba(100, 100, 220, 0.3);
+        background: rgba(5, 5, 30, 0.35);
         color: #bfc5e8;
         font-size: 13px;
-        background: rgba(5, 5, 30, 0.35);
       }
 
-      footer div {
-        transition:
-          color 0.3s ease,
-          transform 0.3s ease;
+      footer strong {
+        color: #ffffff;
+        font-size: 17px;
+        font-weight: 900;
+        text-shadow:
+          0 0 8px rgba(0, 229, 255, 0.5),
+          0 0 18px rgba(138, 45, 255, 0.4);
       }
 
-      footer div:hover {
-        color: #00e5ff;
-        transform: translateY(-2px);
-      }
+      /* ================= COPYRIGHT ================= */
 
       .copyright {
         text-align: center;
@@ -977,20 +1029,32 @@
           padding: 9px 18px;
         }
 
+        .contact-section {
+          margin-top: 35px;
+        }
+
+        .section-heading h2 {
+          font-size: 21px;
+        }
+
+        .section-heading p {
+          font-size: 11px;
+        }
+
         .contact-grid {
           grid-template-columns: 1fr;
           gap: 14px;
         }
 
         .contact-card {
-          padding: 18px;
-          gap: 14px;
+          min-height: 155px;
+          padding: 20px 15px;
         }
 
         .contact-icon {
-          width: 52px;
-          height: 52px;
-          font-size: 24px;
+          width: 56px;
+          height: 56px;
+          font-size: 27px;
         }
 
         .contact-card h3 {
@@ -1002,9 +1066,13 @@
         }
 
         footer {
-          flex-direction: column;
-          gap: 13px;
+          margin-top: 35px;
           padding: 22px 10px;
+          font-size: 12px;
+        }
+
+        footer strong {
+          font-size: 16px;
         }
 
         .copyright {
@@ -1339,7 +1407,9 @@
           7 جلسات تدريبية خلال شهر كامل
         </p>
 
-        <p style="color: #c4c8e8; margin-top: 5px">تعلّم أذكى .. أنجز أكثر!</p>
+        <p style="color: #c4c8e8; margin-top: 5px">
+          تعلّم أذكى .. أنجز أكثر!
+        </p>
 
         <a
           href="https://wa.me/963937015714"
@@ -1351,50 +1421,58 @@
         </a>
       </section>
 
-      <!-- CONTACT -->
-      <div class="section-title">
-        <span>📞 معلومات التواصل</span>
-      </div>
+      <!-- =====================================================
+           CONTACT SECTION
+      ====================================================== -->
 
-      <section class="contact-grid">
-        <a
-          href="https://wa.me/963995980568"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-card"
-        >
-          <div class="contact-icon">👨‍🏫</div>
+      <section class="contact-section" id="contact">
+        <div class="section-heading">
+          <h2>معلومات التواصل</h2>
+          <div class="blue-line"></div>
+          <p>للاستفسارات المتعلقة بالموقع والمساعدة التقنية</p>
+        </div>
 
-          <div>
+        <div class="contact-grid">
+
+          <!-- المدرب -->
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+          >
+            <div class="contact-icon">🎓</div>
+
             <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
-            <p>اضغط للتواصل عبر واتساب</p>
-          </div>
-        </a>
 
-        <a
-          href="https://wa.me/963937015714"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-card contact-person-card"
-        >
-          <div class="contact-icon">💬</div>
+            <p>للاستفسارات المتعلقة بالكورسات</p>
+          </a>
 
-          <div>
-            <h3>لين الكردي</h3>
-            <p>اضغط للتواصل عبر واتساب</p>
+          <!-- المهندسة بدون رقم -->
+          <div class="contact-card no-link">
+            <div class="contact-icon">💻</div>
+
+            <h3>المهندسة لين حسن الكردي</h3>
           </div>
-        </a>
+
+        </div>
       </section>
+
+      <!-- =====================================================
+           FOOTER
+      ====================================================== -->
+
+      <footer>
+        <strong>Coursyria</strong> — Learn • Build • Protect
+      </footer>
+
+      <!-- =====================================================
+           COPYRIGHT
+      ====================================================== -->
+
+      <div class="copyright">
+        © 2027 Coursyria — جميع الحقوق محفوظة
+      </div>
     </div>
-
-    <!-- FOOTER -->
-    <footer>
-      <div>✈ Coursyria_team</div>
-      <div>🌐 coursyria.com</div>
-      <div>📸 coursyria.team</div>
-    </footer>
-
-    <!-- COPYRIGHT -->
-    <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
   </body>
 </html>
