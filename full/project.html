@@ -1,8 +1,8 @@
-```html
 <!doctype html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
@@ -12,6 +12,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
@@ -19,8 +20,8 @@
 
     <style>
       /* =========================================================
-   ROOT
-========================================================= */
+         ROOT
+      ========================================================= */
 
       :root {
         --bg: #050914;
@@ -45,8 +46,8 @@
       }
 
       /* =========================================================
-   RESET
-========================================================= */
+         RESET
+      ========================================================= */
 
       * {
         margin: 0;
@@ -62,6 +63,7 @@
       body {
         min-height: 100vh;
         overflow-x: hidden;
+
         font-family: "Cairo", sans-serif;
         color: var(--white);
 
@@ -85,13 +87,15 @@
       }
 
       /* =========================================================
-   BACKGROUND GRID
-========================================================= */
+         BACKGROUND GRID
+      ========================================================= */
 
       body::before {
         content: "";
+
         position: fixed;
         inset: 0;
+
         z-index: -5;
         pointer-events: none;
 
@@ -109,25 +113,33 @@
       }
 
       /* =========================================================
-   FLOATING PARTICLES
-========================================================= */
+         FLOATING PARTICLES
+      ========================================================= */
 
       .particles {
         position: fixed;
         inset: 0;
+
         pointer-events: none;
         z-index: -1;
+
         overflow: hidden;
       }
 
       .particle {
         position: absolute;
+
         width: 4px;
         height: 4px;
+
         border-radius: 50%;
+
         background: var(--gold);
+
         box-shadow: 0 0 15px var(--gold);
+
         opacity: 0.5;
+
         animation: float 8s infinite ease-in-out;
       }
 
@@ -136,31 +148,37 @@
         top: 20%;
         animation-delay: 0s;
       }
+
       .particle:nth-child(2) {
         left: 22%;
         top: 70%;
         animation-delay: 2s;
       }
+
       .particle:nth-child(3) {
         left: 40%;
         top: 15%;
         animation-delay: 4s;
       }
+
       .particle:nth-child(4) {
         left: 58%;
         top: 80%;
         animation-delay: 1s;
       }
+
       .particle:nth-child(5) {
         left: 75%;
         top: 30%;
         animation-delay: 3s;
       }
+
       .particle:nth-child(6) {
         left: 90%;
         top: 65%;
         animation-delay: 5s;
       }
+
       .particle:nth-child(7) {
         left: 50%;
         top: 45%;
@@ -173,6 +191,7 @@
           transform: translateY(0) scale(1);
           opacity: 0.3;
         }
+
         50% {
           transform: translateY(-45px) scale(1.7);
           opacity: 1;
@@ -180,24 +199,27 @@
       }
 
       /* =========================================================
-   CONTAINER
-========================================================= */
+         CONTAINER
+      ========================================================= */
 
       .container {
         width: min(1200px, 94%);
         margin: auto;
+
         padding: 25px 0 60px;
       }
 
       /* =========================================================
-   HEADER
-========================================================= */
+         HEADER
+      ========================================================= */
 
       .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         padding: 16px 5px 22px;
+
         margin-bottom: 30px;
 
         border-bottom: 1px solid var(--border);
@@ -206,6 +228,7 @@
       .logo {
         display: flex;
         align-items: center;
+
         gap: 12px;
       }
 
@@ -240,31 +263,41 @@
 
       .logo-text small {
         display: block;
+
         color: var(--muted);
+
         font-size: 10px;
+
         letter-spacing: 2px;
       }
 
       .header-badge {
         padding: 9px 18px;
+
         border: 1px solid rgba(245, 185, 66, 0.3);
+
         border-radius: 50px;
+
         color: var(--gold2);
+
         background: rgba(245, 185, 66, 0.06);
+
         font-size: 13px;
         font-weight: 700;
       }
 
       /* =========================================================
-   HERO
-========================================================= */
+         HERO
+      ========================================================= */
 
       .hero {
         position: relative;
         overflow: hidden;
 
         display: grid;
+
         grid-template-columns: 1fr 1fr;
+
         align-items: center;
 
         min-height: 620px;
@@ -272,6 +305,7 @@
         padding: 55px 45px;
 
         border: 1px solid var(--border);
+
         border-radius: 35px;
 
         background:
@@ -285,34 +319,39 @@
         box-shadow: var(--shadow);
       }
 
-      /* glowing corners */
-
       .hero::before,
       .hero::after {
         content: "";
+
         position: absolute;
+
         width: 180px;
         height: 180px;
+
         border-radius: 50%;
+
         filter: blur(50px);
+
         pointer-events: none;
       }
 
       .hero::before {
         background: rgba(245, 185, 66, 0.08);
+
         top: -80px;
         right: -50px;
       }
 
       .hero::after {
         background: rgba(56, 189, 248, 0.07);
+
         bottom: -80px;
         left: -50px;
       }
 
       /* =========================================================
-   HERO CONTENT
-========================================================= */
+         HERO CONTENT
+      ========================================================= */
 
       .hero-content {
         position: relative;
@@ -322,6 +361,7 @@
       .badge {
         display: inline-flex;
         align-items: center;
+
         gap: 8px;
 
         padding: 8px 17px;
@@ -342,10 +382,14 @@
 
       .badge::before {
         content: "";
+
         width: 7px;
         height: 7px;
+
         border-radius: 50%;
+
         background: #07101a;
+
         animation: pulse 1.5s infinite;
       }
 
@@ -358,8 +402,11 @@
 
       .hero h1 {
         font-size: clamp(43px, 6vw, 78px);
+
         line-height: 1.05;
+
         letter-spacing: -2px;
+
         margin-bottom: 15px;
       }
 
@@ -376,6 +423,7 @@
         background-size: 200%;
 
         background-clip: text;
+
         color: transparent;
 
         animation: goldMove 4s linear infinite;
@@ -389,7 +437,9 @@
 
       .hero h3 {
         color: #bcd0e2;
+
         font-size: 21px;
+
         margin-bottom: 18px;
       }
 
@@ -399,15 +449,17 @@
         color: var(--muted);
 
         font-size: 16px;
+
         line-height: 2;
       }
 
       /* =========================================================
-   PROGRESS
-========================================================= */
+         PROGRESS
+      ========================================================= */
 
       .project-progress {
         margin-top: 28px;
+
         max-width: 550px;
       }
 
@@ -415,14 +467,20 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         margin-bottom: 9px;
 
         color: #a9bbcd;
+
         font-size: 12px;
       }
 
       .progress-head strong {
         color: var(--gold);
+
+        min-width: 42px;
+
+        text-align: left;
       }
 
       .progress-bar {
@@ -433,6 +491,8 @@
         border-radius: 50px;
 
         background: #17283a;
+
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.35);
       }
 
       .progress-fill {
@@ -448,25 +508,54 @@
           var(--green)
         );
 
-        box-shadow: 0 0 15px rgba(245, 185, 66, 0.4);
+        background-size: 200% 100%;
 
-        animation: progressLoad 2s 1s forwards ease-out;
+        box-shadow:
+          0 0 15px rgba(245, 185, 66, 0.4),
+          0 0 30px rgba(245, 185, 66, 0.15);
+
+        animation:
+          progressLoad 4s infinite ease-in-out,
+          progressGlow 2s infinite linear;
       }
 
       @keyframes progressLoad {
-        to {
-          width: 82%;
+        0% {
+          width: 0%;
+        }
+
+        45% {
+          width: 100%;
+        }
+
+        55% {
+          width: 100%;
+        }
+
+        100% {
+          width: 0%;
+        }
+      }
+
+      @keyframes progressGlow {
+        0% {
+          background-position: 0% 50%;
+        }
+
+        100% {
+          background-position: 200% 50%;
         }
       }
 
       /* =========================================================
-   PRICE
-========================================================= */
+         PRICE
+      ========================================================= */
 
       .price-box {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         gap: 18px;
 
         max-width: 590px;
@@ -476,6 +565,7 @@
         padding: 18px;
 
         border: 1px solid rgba(245, 185, 66, 0.18);
+
         border-radius: 20px;
 
         background: rgba(255, 255, 255, 0.035);
@@ -485,12 +575,15 @@
 
       .price-label {
         color: var(--muted);
+
         font-size: 12px;
       }
 
       .price {
         color: var(--gold2);
+
         font-size: 30px;
+
         font-weight: 900;
       }
 
@@ -504,6 +597,7 @@
         border-radius: 13px;
 
         color: #07101a;
+
         text-decoration: none;
 
         font-weight: 900;
@@ -522,8 +616,8 @@
       }
 
       /* =========================================================
-   CREATIVE BUILDING SCENE
-========================================================= */
+         CREATIVE BUILDING SCENE
+      ========================================================= */
 
       .hero-art {
         position: relative;
@@ -531,11 +625,11 @@
         min-height: 500px;
 
         display: flex;
+
         align-items: center;
+
         justify-content: center;
       }
-
-      /* orbit */
 
       .orbit {
         position: absolute;
@@ -553,6 +647,7 @@
       .orbit::before,
       .orbit::after {
         content: "";
+
         position: absolute;
 
         width: 9px;
@@ -573,7 +668,9 @@
       .orbit::after {
         bottom: 45px;
         right: 30px;
+
         background: var(--green);
+
         box-shadow: 0 0 20px var(--green);
       }
 
@@ -583,7 +680,9 @@
         }
       }
 
-      /* blueprint */
+      /* =========================================================
+         BLUEPRINT
+      ========================================================= */
 
       .blueprint {
         position: absolute;
@@ -604,17 +703,18 @@
         opacity: 0.8;
       }
 
-      /* building */
+      /* =========================================================
+         BUILDING
+      ========================================================= */
 
       .building-scene {
         position: relative;
+
         z-index: 2;
 
         width: 300px;
         height: 310px;
       }
-
-      /* tower */
 
       .tower {
         position: absolute;
@@ -626,6 +726,8 @@
         height: 230px;
 
         transform: translateX(-50%);
+
+        z-index: 5;
 
         border: 3px solid #e4a938;
 
@@ -651,7 +753,9 @@
         }
       }
 
-      /* roof */
+      /* =========================================================
+         ROOF
+      ========================================================= */
 
       .roof {
         position: absolute;
@@ -671,7 +775,9 @@
         filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.4));
       }
 
-      /* floors */
+      /* =========================================================
+         FLOORS
+      ========================================================= */
 
       .floor {
         position: absolute;
@@ -687,11 +793,14 @@
       .floor:nth-child(1) {
         top: 76px;
       }
+
       .floor:nth-child(2) {
         top: 152px;
       }
 
-      /* windows */
+      /* =========================================================
+         WINDOWS
+      ========================================================= */
 
       .window {
         position: absolute;
@@ -728,6 +837,7 @@
         top: 22px;
         left: 22px;
       }
+
       .w2 {
         top: 22px;
         right: 22px;
@@ -737,6 +847,7 @@
         top: 98px;
         left: 22px;
       }
+
       .w4 {
         top: 98px;
         right: 22px;
@@ -746,12 +857,15 @@
         top: 174px;
         left: 22px;
       }
+
       .w6 {
         top: 174px;
         right: 22px;
       }
 
-      /* door */
+      /* =========================================================
+         DOOR
+      ========================================================= */
 
       .door {
         position: absolute;
@@ -769,7 +883,9 @@
         background: #06101b;
       }
 
-      /* foundation */
+      /* =========================================================
+         FOUNDATION
+      ========================================================= */
 
       .foundation {
         position: absolute;
@@ -794,12 +910,18 @@
         );
 
         box-shadow: 0 0 30px rgba(245, 185, 66, 0.3);
+
+        z-index: 4;
       }
 
-      /* floating labels */
+      /* =========================================================
+         FLOATING LABELS
+      ========================================================= */
 
       .build-label {
         position: absolute;
+
+        z-index: 20;
 
         padding: 8px 13px;
 
@@ -808,13 +930,15 @@
         font-size: 11px;
         font-weight: 800;
 
-        background: rgba(7, 17, 29, 0.9);
+        background: rgba(7, 17, 29, 0.96);
 
-        border: 1px solid var(--border);
+        border: 1px solid rgba(245, 185, 66, 0.3);
 
         backdrop-filter: blur(10px);
 
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        box-shadow:
+          0 10px 25px rgba(0, 0, 0, 0.3),
+          0 0 20px rgba(245, 185, 66, 0.1);
 
         animation: labelFloat 3s infinite ease-in-out;
       }
@@ -826,17 +950,25 @@
       .label1 {
         top: 50px;
         right: -10px;
+
+        z-index: 21;
       }
 
       .label2 {
         top: 175px;
         left: -20px;
+
+        z-index: 21;
+
         animation-delay: 1s;
       }
 
       .label3 {
         bottom: 55px;
         right: -20px;
+
+        z-index: 21;
+
         animation-delay: 2s;
       }
 
@@ -847,8 +979,8 @@
       }
 
       /* =========================================================
-   SECTION TITLE
-========================================================= */
+         SECTION TITLE
+      ========================================================= */
 
       .section-title {
         text-align: center;
@@ -890,17 +1022,20 @@
       }
 
       /* =========================================================
-   INFO
-========================================================= */
+         INFO
+      ========================================================= */
 
       .course-info {
         display: grid;
+
         grid-template-columns: repeat(2, 1fr);
+
         gap: 18px;
       }
 
       .course-info-card {
         position: relative;
+
         overflow: hidden;
 
         padding: 28px;
@@ -938,12 +1073,14 @@
 
       .course-info-card:hover {
         transform: translateY(-6px);
+
         border-color: rgba(245, 185, 66, 0.4);
       }
 
       .info-top {
         display: flex;
         align-items: center;
+
         gap: 15px;
       }
 
@@ -965,6 +1102,7 @@
 
       .course-info-card h3 {
         font-size: 16px;
+
         color: #b8cadb;
       }
 
@@ -972,23 +1110,27 @@
         margin-top: 3px;
 
         font-size: 18px;
+
         font-weight: 800;
 
         color: var(--gold2);
       }
 
       /* =========================================================
-   MODULES
-========================================================= */
+         MODULES
+      ========================================================= */
 
       .modules {
         display: grid;
+
         grid-template-columns: repeat(5, 1fr);
+
         gap: 14px;
       }
 
       .module {
         position: relative;
+
         overflow: hidden;
 
         min-height: 230px;
@@ -998,6 +1140,7 @@
         text-align: center;
 
         border: 1px solid var(--border);
+
         border-radius: 22px;
 
         background: linear-gradient(145deg, #102033, #08121e);
@@ -1060,7 +1203,9 @@
 
       .module h3 {
         color: #edf5fc;
+
         font-size: 15px;
+
         line-height: 1.6;
 
         margin-bottom: 10px;
@@ -1068,19 +1213,23 @@
 
       .module p {
         color: var(--muted);
+
         font-size: 12px;
+
         line-height: 1.8;
       }
 
       /* =========================================================
-   WHY
-========================================================= */
+         WHY
+      ========================================================= */
 
       .why {
         display: grid;
+
         grid-template-columns: repeat(6, 1fr);
 
         border: 1px solid var(--border);
+
         border-radius: 24px;
 
         overflow: hidden;
@@ -1110,6 +1259,7 @@
 
       .icon {
         font-size: 30px;
+
         margin-bottom: 12px;
 
         color: var(--gold);
@@ -1117,28 +1267,35 @@
 
       .why-item h4 {
         color: #eaf2f9;
+
         font-size: 14px;
       }
 
       .why-item p {
         color: var(--muted);
+
         font-size: 11px;
+
         line-height: 1.8;
+
         margin-top: 7px;
       }
 
       /* =========================================================
-   AUDIENCE
-========================================================= */
+         AUDIENCE
+      ========================================================= */
 
       .audience {
         display: grid;
+
         grid-template-columns: repeat(4, 1fr);
+
         gap: 18px;
       }
 
       .audience-card {
         position: relative;
+
         overflow: hidden;
 
         padding: 28px 20px;
@@ -1146,6 +1303,7 @@
         text-align: center;
 
         border: 1px solid var(--border);
+
         border-radius: 22px;
 
         background: linear-gradient(145deg, #102033, #08121e);
@@ -1155,6 +1313,7 @@
 
       .audience-card:hover {
         transform: translateY(-7px);
+
         border-color: rgba(69, 224, 168, 0.35);
       }
 
@@ -1164,25 +1323,31 @@
 
       .audience-card h3 {
         color: var(--gold2);
+
         margin: 8px 0;
+
         font-size: 17px;
       }
 
       .audience-card p {
         color: var(--muted);
+
         font-size: 12px;
+
         line-height: 1.9;
       }
 
       /* =========================================================
-   QUOTE
-========================================================= */
+         QUOTE
+      ========================================================= */
 
       .quote {
         position: relative;
+
         overflow: hidden;
 
         margin-top: 50px;
+
         padding: 55px 25px;
 
         text-align: center;
@@ -1202,17 +1367,21 @@
 
       .quote .mark {
         color: var(--gold);
+
         font-size: 55px;
+
         line-height: 0.7;
       }
 
       .quote p {
         max-width: 850px;
+
         margin: auto;
 
         color: #f0f6fb;
 
         font-size: 24px;
+
         line-height: 2;
 
         font-weight: 800;
@@ -1220,17 +1389,19 @@
 
       .quote small {
         display: block;
+
         margin-top: 12px;
 
         color: var(--green);
       }
 
       /* =========================================================
-   FINAL CTA
-========================================================= */
+         FINAL CTA
+      ========================================================= */
 
       .final {
         position: relative;
+
         overflow: hidden;
 
         margin-top: 50px;
@@ -1279,16 +1450,19 @@
 
       .final h2 {
         font-size: 34px;
+
         color: var(--gold2);
       }
 
       .final p {
         color: var(--muted);
+
         margin: 10px 0 20px;
       }
 
       .big-price {
         font-size: 42px;
+
         font-weight: 900;
 
         color: #fff;
@@ -1297,36 +1471,63 @@
       }
 
       /* =========================================================
-   CONTACT
-========================================================= */
+         CONTACT
+      ========================================================= */
+
+      .contact-section {
+        width: 100%;
+      }
 
       .contact-grid {
         display: grid;
+
         grid-template-columns: repeat(2, 1fr);
+
         gap: 18px;
       }
 
       .contact-card {
         display: flex;
         align-items: center;
+
         gap: 17px;
 
         padding: 22px;
 
         text-decoration: none;
+
         color: white;
 
         border: 1px solid var(--border);
+
         border-radius: 20px;
 
         background: linear-gradient(145deg, #102033, #08121e);
 
-        transition: 0.3s;
+        transition:
+          transform 0.3s,
+          border-color 0.3s,
+          box-shadow 0.3s;
       }
 
       .contact-card:hover {
         transform: translateY(-6px);
+
         border-color: rgba(245, 185, 66, 0.4);
+
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.25),
+          0 0 20px rgba(245, 185, 66, 0.06);
+      }
+
+      /* بطاقة المهندسة ليست رابط */
+
+      .contact-card.no-link {
+        cursor: default;
+      }
+
+      .contact-card.no-link:hover {
+        transform: translateY(-6px);
       }
 
       .contact-icon {
@@ -1349,43 +1550,59 @@
         );
 
         border: 1px solid rgba(245, 185, 66, 0.25);
+
+        box-shadow: 0 0 20px rgba(245, 185, 66, 0.06);
       }
 
       .contact-card h3 {
         color: #edf5fc;
+
         font-size: 15px;
       }
 
       .contact-card p {
         color: var(--muted);
+
         font-size: 11px;
+
         margin-top: 4px;
       }
 
       /* =========================================================
-   FOOTER
-========================================================= */
+         FOOTER
+      ========================================================= */
 
       footer {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
 
-        gap: 30px;
+        justify-content: center;
+
+        align-items: center;
 
         margin-top: 45px;
+
         padding: 25px 10px;
 
         border-top: 1px solid var(--border);
 
         color: var(--muted);
+
         font-size: 12px;
+
+        text-align: center;
       }
 
-      footer div:hover {
-        color: var(--gold);
+      footer strong {
+        color: var(--gold2);
+
+        font-size: 15px;
+
+        margin-left: 5px;
       }
+
+      /* =========================================================
+         COPYRIGHT
+      ========================================================= */
 
       .copyright {
         padding: 15px 10px;
@@ -1400,12 +1617,14 @@
       }
 
       /* =========================================================
-   REVEAL
-========================================================= */
+         REVEAL
+      ========================================================= */
 
       .reveal {
         opacity: 0;
+
         transform: translateY(35px);
+
         transition:
           opacity 0.8s ease,
           transform 0.8s ease;
@@ -1413,17 +1632,20 @@
 
       .reveal.show {
         opacity: 1;
+
         transform: translateY(0);
       }
 
       /* =========================================================
-   MOBILE
-========================================================= */
+         TABLET
+      ========================================================= */
 
       @media (max-width: 1000px) {
         .hero {
           grid-template-columns: 1fr;
+
           text-align: center;
+
           padding: 45px 28px;
         }
 
@@ -1455,17 +1677,19 @@
       }
 
       /* =========================================================
-   MOBILE
-========================================================= */
+         MOBILE
+      ========================================================= */
 
       @media (max-width: 600px) {
         .container {
           width: calc(100% - 18px);
+
           padding-top: 10px;
         }
 
         .header {
           justify-content: center;
+
           margin-bottom: 18px;
         }
 
@@ -1476,6 +1700,7 @@
         .logo-icon {
           width: 43px;
           height: 43px;
+
           font-size: 21px;
         }
 
@@ -1486,6 +1711,8 @@
         .logo-text small {
           font-size: 8px;
         }
+
+        /* HERO */
 
         .hero {
           min-height: auto;
@@ -1499,27 +1726,35 @@
 
         .badge {
           font-size: 11px;
+
           padding: 7px 13px;
         }
 
         .hero h1 {
           font-size: clamp(38px, 12vw, 52px);
+
           letter-spacing: -1.5px;
         }
 
         .hero h3 {
           font-size: 16px;
+
           line-height: 1.7;
         }
 
         .hero p {
           font-size: 12px;
+
           line-height: 1.9;
         }
 
+        /* PRICE */
+
         .price-box {
           flex-direction: column;
+
           text-align: center;
+
           padding: 16px 13px;
         }
 
@@ -1529,7 +1764,9 @@
 
         .cta {
           width: 100%;
+
           padding: 12px 15px;
+
           font-size: 13px;
         }
 
@@ -1537,6 +1774,7 @@
 
         .hero-art {
           min-height: 330px;
+
           margin-top: 10px;
         }
 
@@ -1548,6 +1786,7 @@
         .blueprint {
           width: 250px;
           height: 250px;
+
           background-size: 20px 20px;
         }
 
@@ -1571,6 +1810,7 @@
 
         .section-title {
           margin: 42px 0 20px;
+
           font-size: 21px;
         }
 
@@ -1582,6 +1822,7 @@
 
         .course-info {
           grid-template-columns: 1fr;
+
           gap: 10px;
         }
 
@@ -1593,18 +1834,22 @@
 
         .modules {
           grid-template-columns: 1fr 1fr;
+
           gap: 9px;
         }
 
         .module {
           min-height: 180px;
+
           padding: 17px 9px;
         }
 
         .module .number {
           width: 42px;
           height: 42px;
+
           border-radius: 12px;
+
           margin-bottom: 11px;
         }
 
@@ -1614,6 +1859,7 @@
 
         .module p {
           font-size: 10px;
+
           line-height: 1.7;
         }
 
@@ -1621,6 +1867,7 @@
 
         .why {
           grid-template-columns: 1fr 1fr;
+
           border-radius: 18px;
         }
 
@@ -1644,6 +1891,7 @@
 
         .audience {
           grid-template-columns: 1fr;
+
           gap: 10px;
         }
 
@@ -1655,6 +1903,7 @@
 
         .quote {
           margin-top: 30px;
+
           padding: 30px 14px;
         }
 
@@ -1664,6 +1913,7 @@
 
         .quote p {
           font-size: 17px;
+
           line-height: 1.9;
         }
 
@@ -1671,6 +1921,7 @@
 
         .final {
           margin-top: 32px;
+
           padding: 34px 15px;
         }
 
@@ -1680,6 +1931,7 @@
 
         .final p {
           font-size: 12px;
+
           line-height: 1.8;
         }
 
@@ -1691,39 +1943,61 @@
 
         .contact-grid {
           grid-template-columns: 1fr;
+
           gap: 10px;
         }
 
         .contact-card {
           padding: 15px;
+
           gap: 12px;
         }
 
         .contact-icon {
           width: 48px;
           height: 48px;
+
           min-width: 48px;
+
           font-size: 21px;
         }
 
         .contact-card h3 {
           font-size: 12px;
+
+          line-height: 1.7;
         }
 
         .contact-card p {
           font-size: 9px;
         }
 
+        /* FOOTER */
+
         footer {
-          flex-direction: column;
-          gap: 9px;
+          flex-direction: row;
+
+          gap: 5px;
+
+          flex-wrap: wrap;
+
           font-size: 10px;
+        }
+
+        footer strong {
+          font-size: 12px;
+        }
+
+        .copyright {
+          font-size: 9px;
+
+          line-height: 1.8;
         }
       }
 
       /* =========================================================
-   VERY SMALL
-========================================================= */
+         VERY SMALL
+      ========================================================= */
 
       @media (max-width: 360px) {
         .container {
@@ -1752,6 +2026,7 @@
 
         .module {
           padding: 14px 6px;
+
           min-height: 170px;
         }
 
@@ -1765,14 +2040,15 @@
       }
 
       /* =========================================================
-   REDUCED MOTION
-========================================================= */
+         REDUCED MOTION
+      ========================================================= */
 
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
         *::after {
           animation: none !important;
+
           transition: none !important;
         }
       }
@@ -1780,7 +2056,9 @@
   </head>
 
   <body>
-    <!-- FLOATING PARTICLES -->
+    <!-- =====================================================
+         FLOATING PARTICLES
+    ====================================================== -->
 
     <div class="particles">
       <div class="particle"></div>
@@ -1793,9 +2071,9 @@
     </div>
 
     <div class="container">
-      <!-- ======================================================
-     HEADER
-====================================================== -->
+      <!-- =====================================================
+           HEADER
+      ====================================================== -->
 
       <header class="header">
         <div class="logo">
@@ -1803,16 +2081,17 @@
 
           <div class="logo-text">
             <h2>Cours<span>yria</span></h2>
-            <small>تعلم · تطور · أنجز</small>
+
+            <small> تعلم · تطور · أنجز </small>
           </div>
         </div>
 
         <div class="header-badge">🚀 دورة احترافية</div>
       </header>
 
-      <!-- ======================================================
-     HERO
-====================================================== -->
+      <!-- =====================================================
+           HERO
+      ====================================================== -->
 
       <section class="hero">
         <div class="hero-content">
@@ -1820,7 +2099,7 @@
 
           <h1>
             بناء
-            <span>المشاريع الصغيرة</span>
+            <span> المشاريع الصغيرة </span>
           </h1>
 
           <h3>من فكرة بسيطة إلى مشروع قابل للنمو</h3>
@@ -1834,12 +2113,13 @@
 
           <div class="project-progress">
             <div class="progress-head">
-              <span>رحلة بناء المشروع</span>
-              <strong>82%</strong>
+              <span> رحلة بناء المشروع </span>
+
+              <strong id="progressPercent"> 0% </strong>
             </div>
 
             <div class="progress-bar">
-              <div class="progress-fill"></div>
+              <div class="progress-fill" id="progressFill"></div>
             </div>
           </div>
 
@@ -1848,6 +2128,7 @@
           <div class="price-box">
             <div>
               <div class="price-label">استثمر في فكرتك</div>
+
               <div class="price">1,700 SP</div>
             </div>
 
@@ -1855,9 +2136,9 @@
           </div>
         </div>
 
-        <!-- ====================================================
-       CREATIVE ART
-  ==================================================== -->
+        <!-- =====================================================
+             CREATIVE ART
+        ====================================================== -->
 
         <div class="hero-art">
           <div class="orbit"></div>
@@ -1865,20 +2146,30 @@
           <div class="blueprint"></div>
 
           <div class="building-scene">
+            <!-- LABELS -->
+
             <div class="build-label label1">
-              💡 <strong>فكرة</strong><br />
+              💡
+              <strong>فكرة</strong>
+              <br />
               فرصة جديدة
             </div>
 
             <div class="build-label label2">
-              📐 <strong>خطة</strong><br />
+              📐
+              <strong>خطة</strong>
+              <br />
               خطوات واضحة
             </div>
 
             <div class="build-label label3">
-              📈 <strong>نمو</strong><br />
+              📈
+              <strong>نمو</strong>
+              <br />
               مشروع مستدام
             </div>
+
+            <!-- BUILDING -->
 
             <div class="tower">
               <div class="roof"></div>
@@ -1903,13 +2194,15 @@
         </div>
       </section>
 
-      <!-- ======================================================
-     COURSE INFO
-====================================================== -->
+      <!-- =====================================================
+           COURSE INFO
+      ====================================================== -->
 
       <h2 class="section-title reveal">
         معلومات الدورة
-        <small>كل ما تحتاج معرفته قبل الانطلاق</small>
+
+        <small> كل ما تحتاج معرفته قبل الانطلاق </small>
+
         <span></span>
       </h2>
 
@@ -1920,6 +2213,7 @@
 
             <div>
               <h3>مدة الكورس</h3>
+
               <p>شهرين</p>
             </div>
           </div>
@@ -1931,19 +2225,22 @@
 
             <div>
               <h3>عدد الجلسات</h3>
+
               <p>15 جلسة تدريبية</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ======================================================
-     MODULES
-====================================================== -->
+      <!-- =====================================================
+           MODULES
+      ====================================================== -->
 
       <h2 class="section-title reveal">
         مراحل بناء المشروع
-        <small>خمس مراحل تنقلك من الفكرة إلى مشروع حقيقي</small>
+
+        <small> خمس مراحل تنقلك من الفكرة إلى مشروع حقيقي </small>
+
         <span></span>
       </h2>
 
@@ -2003,61 +2300,77 @@
         </div>
       </section>
 
-      <!-- ======================================================
-     WHY
-====================================================== -->
+      <!-- =====================================================
+           WHY
+      ====================================================== -->
 
       <h2 class="section-title reveal">
         لماذا هذه الدورة؟
-        <small>لأن الفكرة وحدها لا تكفي</small>
+
+        <small> لأن الفكرة وحدها لا تكفي </small>
+
         <span></span>
       </h2>
 
       <section class="why reveal">
         <div class="why-item">
           <div class="icon">★</div>
+
           <h4>مناسبة للمبتدئين</h4>
+
           <p>ابدأ من الصفر دون الحاجة إلى خبرة سابقة.</p>
         </div>
 
         <div class="why-item">
           <div class="icon">◷</div>
+
           <h4>نتائج ملموسة</h4>
+
           <p>حوّل أفكارك إلى خطوات عملية واضحة.</p>
         </div>
 
         <div class="why-item">
           <div class="icon">⌁</div>
+
           <h4>توفير الوقت</h4>
+
           <p>تعلّم بطريقة منظمة بعيداً عن العشوائية.</p>
         </div>
 
         <div class="why-item">
           <div class="icon">▣</div>
+
           <h4>محتوى عملي</h4>
+
           <p>أفكار وأدوات قابلة للتطبيق.</p>
         </div>
 
         <div class="why-item">
           <div class="icon">▶</div>
+
           <h4>تطبيقات عملية</h4>
+
           <p>انتقل من المعرفة إلى التنفيذ.</p>
         </div>
 
         <div class="why-item">
           <div class="icon">♛</div>
+
           <h4>شهادة معتمدة</h4>
+
           <p>شهادة عند إتمام الدورة.</p>
         </div>
       </section>
 
-      <!-- ======================================================
-     AUDIENCE
-====================================================== -->
+      <!-- =====================================================
+           AUDIENCE
+      ====================================================== -->
 
       <h2 class="section-title reveal">
         لمن هذه الدورة؟
-        <small>إذا كنت ترى نفسك هنا، فأنت في المكان الصحيح</small>
+
+        <small> إذا كنت ترى نفسك هنا، فأنت في المكان الصحيح </small>
+
         <span></span>
       </h2>
 
@@ -2095,9 +2408,9 @@
         </div>
       </section>
 
-      <!-- ======================================================
-     QUOTE
-====================================================== -->
+      <!-- =====================================================
+           QUOTE
+      ====================================================== -->
 
       <section class="quote reveal">
         <div class="mark">“</div>
@@ -2110,9 +2423,9 @@
         <small> ابدأ صغيراً، تعلّم سريعاً، وانمُ بثبات. </small>
       </section>
 
-      <!-- ======================================================
-     FINAL CTA
-====================================================== -->
+      <!-- =====================================================
+           FINAL CTA
+      ====================================================== -->
 
       <section class="final reveal" id="register">
         <h2>جاهز تبني مشروعك؟</h2>
@@ -2131,73 +2444,73 @@
         </a>
       </section>
 
-      <!-- ======================================================
-     CONTACT
-====================================================== -->
+      <!-- =====================================================
+           CONTACT SECTION
+      ====================================================== -->
 
-      <h2 class="section-title reveal">
-        معلومات التواصل
-        <small>تواصل معنا وابدأ رحلتك</small>
-        <span></span>
-      </h2>
+      <section class="contact-section" id="contact">
+        <div class="section-title reveal">
+          معلومات التواصل
 
-      <section class="contact-grid reveal">
-        <a
-          href="https://wa.me/963995980568"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-card"
-        >
-          <div class="contact-icon">👨‍🏫</div>
+          <small> للاستفسارات المتعلقة بالموقع والمساعدة التقنية </small>
 
-          <div>
-            <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+          <span></span>
+        </div>
 
-            <p>اضغط للتواصل عبر واتساب</p>
+        <section class="contact-grid reveal">
+          <!-- المدرب -->
+
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+          >
+            <div class="contact-icon">🎓</div>
+
+            <div>
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>للاستفسارات المتعلقة بالكورسات</p>
+            </div>
+          </a>
+
+          <!-- المهندسة بدون رقم -->
+
+          <div class="contact-card no-link">
+            <div class="contact-icon">💻</div>
+
+            <div>
+              <h3>المهندسة لين حسن الكردي</h3>
+            </div>
           </div>
-        </a>
-
-        <a
-          href="https://wa.me/963937015714"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-card"
-        >
-          <div class="contact-icon">💬</div>
-
-          <div>
-            <h3>لين الكردي</h3>
-
-            <p>اضغط للتواصل عبر واتساب</p>
-          </div>
-        </a>
+        </section>
       </section>
 
-      <!-- ======================================================
-     FOOTER
-====================================================== -->
+      <!-- =====================================================
+           FOOTER
+      ====================================================== -->
 
       <footer>
-        <div>تعلم · تطور · أنجز</div>
-
-        <div>coursyria.com</div>
-
-        <div>coursyria_team</div>
-
-        <div>@coursyria.team</div>
+        <strong>Coursyria</strong>
+        — Learn • Build • Protect
       </footer>
 
-      <div class="copyright">2026 - إعداد وتصميم لين الكردي</div>
+      <!-- =====================================================
+           COPYRIGHT
+      ====================================================== -->
+
+      <div class="copyright">© 2027 Coursyria — جميع الحقوق محفوظة</div>
     </div>
 
-    <!-- ======================================================
-     JAVASCRIPT
-====================================================== -->
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
     <script>
       /* =========================================================
-   SCROLL REVEAL
-========================================================= */
+         SCROLL REVEAL
+      ========================================================= */
 
       const revealElements = document.querySelectorAll(".reveal");
 
@@ -2219,8 +2532,8 @@
       revealElements.forEach((el) => observer.observe(el));
 
       /* =========================================================
-   3D CARD TILT
-========================================================= */
+         3D CARD TILT
+      ========================================================= */
 
       const cards = document.querySelectorAll(
         ".module,.audience-card,.course-info-card",
@@ -2245,9 +2558,9 @@
           const rotateY = ((x - centerX) / centerX) * 3;
 
           card.style.transform = `perspective(700px)
-       rotateX(${rotateX}deg)
-       rotateY(${rotateY}deg)
-       translateY(-5px)`;
+               rotateX(${rotateX}deg)
+               rotateY(${rotateY}deg)
+               translateY(-5px)`;
         });
 
         card.addEventListener("mouseleave", () => {
@@ -2256,8 +2569,8 @@
       });
 
       /* =========================================================
-   MOUSE PARALLAX HERO ART
-========================================================= */
+         MOUSE PARALLAX HERO ART
+      ========================================================= */
 
       const heroArt = document.querySelector(".hero-art");
 
@@ -2275,17 +2588,27 @@
 
           const y = e.clientY / window.innerHeight - 0.5;
 
-          orbit.style.transform = `translate(${x * 15}px,${y * 15}px)`;
+          orbit.style.transform = `translate(
+                ${x * 15}px,
+                ${y * 15}px
+              )`;
 
-          blueprint.style.transform = `translate(${x * -10}px,${y * -10}px) rotate(-4deg)`;
+          blueprint.style.transform = `translate(
+                ${x * -10}px,
+                ${y * -10}px
+              )
+              rotate(-4deg)`;
 
-          building.style.transform = `translate(${x * 8}px,${y * 8}px)`;
+          building.style.transform = `translate(
+                ${x * 8}px,
+                ${y * 8}px
+              )`;
         });
       }
 
       /* =========================================================
-   CTA CLICK EFFECT
-========================================================= */
+         CTA CLICK EFFECT
+      ========================================================= */
 
       document.querySelectorAll(".cta").forEach((button) => {
         button.addEventListener("click", () => {
@@ -2296,7 +2619,45 @@
           }, 150);
         });
       });
+
+      /* =========================================================
+         ANIMATED PROGRESS PERCENTAGE
+      ========================================================= */
+
+      const progressFill = document.getElementById("progressFill");
+
+      const progressPercent = document.getElementById("progressPercent");
+
+      let progressStart = performance.now();
+
+      function animateProgress(time) {
+        const duration = 4000;
+
+        const elapsed = (time - progressStart) % duration;
+
+        const progress = elapsed / duration;
+
+        let percentage;
+
+        /*
+          0% → 100%
+          ثم 100% → 0%
+        */
+
+        if (progress <= 0.5) {
+          percentage = progress * 2 * 100;
+        } else {
+          percentage = (1 - (progress - 0.5) * 2) * 100;
+        }
+
+        const rounded = Math.round(percentage);
+
+        progressPercent.textContent = rounded + "%";
+
+        requestAnimationFrame(animateProgress);
+      }
+
+      requestAnimationFrame(animateProgress);
     </script>
   </body>
 </html>
-```
