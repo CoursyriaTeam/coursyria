@@ -1,0 +1,1978 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
+    />
+
+    <title>C++ | Coursyria</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #020914;
+        --bg2: #04162a;
+        --card: #071d37;
+        --blue: #168cff;
+        --blue2: #63bdff;
+        --cyan: #8bd9ff;
+        --white: #f4f9ff;
+        --muted: #a7bfd8;
+        --border: rgba(44, 145, 255, 0.42);
+        --glow: rgba(0, 130, 255, 0.35);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Cairo", sans-serif;
+
+        background:
+          radial-gradient(
+            circle at 75% 10%,
+            rgba(0, 120, 255, 0.18),
+            transparent 30%
+          ),
+          radial-gradient(
+            circle at 15% 65%,
+            rgba(0, 80, 180, 0.14),
+            transparent 35%
+          ),
+          linear-gradient(145deg, #010914, #03172d);
+
+        color: var(--white);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* =====================================================
+       PAGE
+    ====================================================== */
+
+      .page {
+        width: min(1120px, 95%);
+        margin: 25px auto;
+        padding: 28px;
+        border-radius: 30px;
+        overflow: hidden;
+
+        background:
+          radial-gradient(
+            circle at 85% 5%,
+            rgba(0, 135, 255, 0.08),
+            transparent 28%
+          ),
+          linear-gradient(145deg, rgba(4, 25, 48, 0.98), rgba(1, 10, 21, 0.99));
+
+        border: 1px solid rgba(50, 145, 255, 0.3);
+
+        box-shadow:
+          0 0 90px rgba(0, 100, 255, 0.12),
+          inset 0 0 70px rgba(0, 100, 255, 0.03);
+      }
+
+      /* =====================================================
+       LOGO
+    ====================================================== */
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 35px;
+      }
+
+      .logo-icon {
+        width: 62px;
+        height: 62px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 2px solid var(--blue2);
+
+        border-radius: 18px 5px 18px 5px;
+
+        font-size: 32px;
+        font-weight: 900;
+
+        color: white;
+
+        background: radial-gradient(
+          circle,
+          rgba(60, 180, 255, 0.2),
+          transparent 70%
+        );
+
+        box-shadow:
+          0 0 25px var(--glow),
+          inset 0 0 20px rgba(0, 130, 255, 0.12);
+      }
+
+      .logo h2 {
+        font-size: 28px;
+        font-weight: 900;
+        letter-spacing: 2px;
+      }
+
+      .logo p {
+        color: var(--muted);
+        font-size: 11px;
+        letter-spacing: 3px;
+      }
+
+      /* =====================================================
+       HERO
+    ====================================================== */
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+        min-height: 510px;
+      }
+
+      .hero-content {
+        text-align: right;
+      }
+
+      .badge {
+        display: inline-block;
+
+        padding: 8px 25px;
+
+        border-radius: 30px;
+
+        background: linear-gradient(135deg, #087cf0, #174d9b);
+
+        border: 1px solid #4caaff;
+
+        font-weight: 800;
+        font-size: 14px;
+
+        box-shadow: 0 0 22px rgba(0, 130, 255, 0.35);
+
+        margin-bottom: 20px;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 5vw, 65px);
+
+        font-weight: 900;
+
+        line-height: 1.15;
+
+        color: white;
+
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.18);
+      }
+
+      .hero-subtitle {
+        font-size: 25px;
+
+        color: var(--blue2);
+
+        font-weight: 800;
+
+        margin: 15px 0;
+      }
+
+      .english-title {
+        direction: ltr;
+
+        font-size: 21px;
+
+        letter-spacing: 3px;
+
+        color: #d8ecff;
+
+        margin-bottom: 18px;
+      }
+
+      .description {
+        color: var(--muted);
+
+        line-height: 2;
+
+        font-size: 15px;
+      }
+
+      /* =====================================================
+       VISUAL STUDIO CODE
+    ====================================================== */
+
+      .visual {
+        position: relative;
+
+        height: 440px;
+
+        border-radius: 25px;
+
+        overflow: hidden;
+
+        background: #07111e;
+
+        border: 1px solid rgba(75, 175, 255, 0.45);
+
+        box-shadow:
+          0 0 45px rgba(0, 120, 255, 0.16),
+          inset 0 0 45px rgba(0, 100, 255, 0.05);
+
+        direction: ltr;
+
+        transition:
+          transform 0.35s ease,
+          border-color 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+
+      .visual:hover {
+        transform: translateY(-6px);
+
+        border-color: rgba(100, 200, 255, 0.75);
+
+        box-shadow:
+          0 15px 55px rgba(0, 120, 255, 0.24),
+          0 0 30px rgba(0, 130, 255, 0.18);
+      }
+
+      /* =====================================================
+       VS CODE TOP BAR
+    ====================================================== */
+
+      .vscode-top {
+        height: 48px;
+
+        display: flex;
+
+        align-items: center;
+
+        padding: 0 15px;
+
+        background: linear-gradient(180deg, #101b29, #0b1521);
+
+        border-bottom: 1px solid rgba(120, 180, 230, 0.12);
+      }
+
+      .vscode-logo {
+        width: 28px;
+        height: 28px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        color: #4daaff;
+
+        font-size: 18px;
+
+        font-weight: 900;
+
+        margin-right: 12px;
+      }
+
+      .window-buttons {
+        display: flex;
+        gap: 7px;
+      }
+
+      .window-buttons span {
+        width: 9px;
+        height: 9px;
+
+        border-radius: 50%;
+
+        background: #4d7da6;
+
+        box-shadow: 0 0 8px rgba(50, 160, 255, 0.2);
+      }
+
+      .vscode-title {
+        position: absolute;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        color: #9bb3ca;
+
+        font-family: monospace;
+
+        font-size: 11px;
+
+        letter-spacing: 0.5px;
+
+        white-space: nowrap;
+      }
+
+      /* =====================================================
+       SIDEBAR
+    ====================================================== */
+
+      .vscode-body {
+        display: flex;
+        height: calc(100% - 48px);
+      }
+
+      .vscode-sidebar {
+        width: 52px;
+
+        flex-shrink: 0;
+
+        background: #091521;
+
+        border-right: 1px solid rgba(100, 170, 220, 0.1);
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        padding-top: 17px;
+
+        gap: 20px;
+      }
+
+      .side-icon {
+        width: 30px;
+        height: 30px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        color: #66839e;
+
+        font-size: 17px;
+
+        border-left: 2px solid transparent;
+
+        transition: 0.3s;
+      }
+
+      .side-icon.active {
+        color: #6fc6ff;
+
+        border-left-color: #168cff;
+
+        text-shadow: 0 0 10px rgba(0, 140, 255, 0.7);
+      }
+
+      /* =====================================================
+       EDITOR AREA
+    ====================================================== */
+
+      .code-area {
+        flex: 1;
+
+        min-width: 0;
+
+        background:
+          radial-gradient(
+            circle at 70% 60%,
+            rgba(0, 110, 255, 0.07),
+            transparent 40%
+          ),
+          #07111d;
+
+        position: relative;
+
+        overflow: hidden;
+      }
+
+      .file-tab {
+        height: 40px;
+
+        display: flex;
+
+        align-items: center;
+
+        padding: 0 17px;
+
+        background: #0a1724;
+
+        border-bottom: 1px solid rgba(100, 170, 220, 0.1);
+
+        color: #c1d7e9;
+
+        font-family: monospace;
+
+        font-size: 11px;
+      }
+
+      .file-tab .cpp-file {
+        color: #61baff;
+        margin-right: 7px;
+      }
+
+      /* =====================================================
+       ANIMATED CODE
+    ====================================================== */
+
+      .code-window {
+        position: absolute;
+
+        top: 58px;
+
+        left: 0;
+        right: 0;
+        bottom: 40px;
+
+        padding: 10px 18px;
+
+        font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+
+        font-size: 12px;
+
+        line-height: 1.85;
+
+        direction: ltr;
+
+        text-align: left;
+
+        overflow: hidden;
+
+        scrollbar-width: none;
+      }
+
+      .code-window::-webkit-scrollbar {
+        display: none;
+      }
+
+      .code-line {
+        display: flex;
+
+        min-height: 22px;
+
+        white-space: pre;
+
+        animation: lineAppear 0.25s ease;
+      }
+
+      @keyframes lineAppear {
+        from {
+          opacity: 0;
+          transform: translateX(-8px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .line-number {
+        width: 34px;
+
+        flex-shrink: 0;
+
+        color: #3e596f;
+
+        text-align: right;
+
+        margin-right: 15px;
+
+        user-select: none;
+      }
+
+      .code {
+        color: #c8d8e8;
+
+        min-width: 0;
+      }
+
+      .keyword {
+        color: #6dbdff;
+      }
+
+      .type {
+        color: #55d4ff;
+      }
+
+      .function {
+        color: #e5f3ff;
+      }
+
+      .string {
+        color: #78d6b0;
+      }
+
+      .comment {
+        color: #59748b;
+        font-style: italic;
+      }
+
+      .operator {
+        color: #d5e8f8;
+      }
+
+      .number-code {
+        color: #bca8ff;
+      }
+
+      /* =====================================================
+       TYPING CURSOR
+    ====================================================== */
+
+      .cursor {
+        display: inline-block;
+
+        width: 7px;
+
+        height: 15px;
+
+        margin-left: 2px;
+
+        vertical-align: -2px;
+
+        background: #65c7ff;
+
+        box-shadow: 0 0 10px #168cff;
+
+        animation: blink 0.8s steps(1) infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* =====================================================
+       STATUS BAR
+    ====================================================== */
+
+      .status-bar {
+        position: absolute;
+
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        height: 40px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        padding: 0 14px;
+
+        background: linear-gradient(90deg, #087bd7, #0965b5);
+
+        color: white;
+
+        font-family: monospace;
+
+        font-size: 10px;
+
+        direction: ltr;
+      }
+
+      .status-left,
+      .status-right {
+        display: flex;
+
+        align-items: center;
+
+        gap: 14px;
+      }
+
+      .status-dot {
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        background: #a7e2ff;
+
+        box-shadow: 0 0 8px white;
+
+        animation: statusPulse 1.2s infinite;
+      }
+
+      @keyframes statusPulse {
+        50% {
+          opacity: 0.45;
+        }
+      }
+
+      /* =====================================================
+       INFO
+    ====================================================== */
+
+      .info {
+        display: grid;
+
+        grid-template-columns: repeat(4, 1fr);
+
+        border: 1px solid var(--border);
+
+        border-radius: 20px;
+
+        overflow: hidden;
+
+        margin: 25px 0 40px;
+
+        background: rgba(3, 23, 44, 0.75);
+      }
+
+      .info-item {
+        text-align: center;
+
+        padding: 22px 10px;
+
+        border-left: 1px solid rgba(60, 150, 255, 0.2);
+
+        transition: 0.3s;
+      }
+
+      .info-item:hover {
+        background: rgba(0, 120, 255, 0.05);
+      }
+
+      .info-item:last-child {
+        border-left: 0;
+      }
+
+      .info-icon {
+        font-size: 30px;
+
+        color: var(--blue2);
+
+        margin-bottom: 7px;
+
+        text-shadow: 0 0 12px #168cff;
+      }
+
+      .info-item h4 {
+        font-size: 15px;
+      }
+
+      .info-item p {
+        font-size: 12px;
+
+        color: var(--muted);
+      }
+
+      /* =====================================================
+       TITLES
+    ====================================================== */
+
+      .section-title {
+        text-align: center;
+
+        margin: 45px 0 27px;
+      }
+
+      .section-title span {
+        position: relative;
+
+        display: inline-block;
+
+        padding: 7px 35px;
+
+        color: white;
+
+        font-size: 25px;
+
+        font-weight: 800;
+
+        text-shadow: 0 0 15px rgba(0, 130, 255, 0.5);
+      }
+
+      .section-title span::after {
+        content: "";
+
+        position: absolute;
+
+        left: 20%;
+        right: 20%;
+
+        bottom: -5px;
+
+        height: 2px;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          #168cff,
+          #8ed7ff,
+          #168cff,
+          transparent
+        );
+
+        box-shadow: 0 0 12px #168cff;
+      }
+
+      /* =====================================================
+       MODULES
+    ====================================================== */
+
+      .modules {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 15px;
+      }
+
+      .module {
+        min-height: 190px;
+
+        padding: 22px 15px;
+
+        text-align: center;
+
+        border-radius: 18px;
+
+        background: linear-gradient(145deg, #092849, #04172c);
+
+        border: 1px solid var(--border);
+
+        transition: 0.3s;
+
+        position: relative;
+
+        overflow: hidden;
+      }
+
+      .module:hover {
+        transform: translateY(-7px);
+
+        border-color: #5ab4ff;
+
+        box-shadow: 0 0 30px rgba(0, 130, 255, 0.25);
+      }
+
+      .number {
+        width: 43px;
+        height: 43px;
+
+        margin: auto auto 12px;
+
+        border-radius: 50%;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid var(--blue);
+
+        color: var(--blue2);
+
+        font-weight: 900;
+
+        box-shadow: 0 0 15px rgba(0, 130, 255, 0.2);
+      }
+
+      .module h3 {
+        font-size: 17px;
+
+        margin-bottom: 8px;
+      }
+
+      .module p {
+        color: var(--muted);
+
+        font-size: 13px;
+
+        line-height: 1.8;
+      }
+
+      /* =====================================================
+       WHY
+    ====================================================== */
+
+      .why {
+        display: grid;
+
+        grid-template-columns: repeat(6, 1fr);
+
+        border: 1px solid var(--border);
+
+        border-radius: 20px;
+
+        overflow: hidden;
+
+        background: #04172b;
+      }
+
+      .why-item {
+        text-align: center;
+
+        padding: 25px 8px;
+
+        border-left: 1px solid rgba(50, 140, 255, 0.2);
+      }
+
+      .why-item:last-child {
+        border-left: 0;
+      }
+
+      .why-icon {
+        font-size: 31px;
+
+        color: var(--blue2);
+
+        margin-bottom: 10px;
+
+        text-shadow: 0 0 15px #168cff;
+      }
+
+      .why-item p {
+        font-size: 13px;
+
+        line-height: 1.7;
+      }
+
+      /* =====================================================
+       PRICE
+    ====================================================== */
+
+      .price-box {
+        max-width: 520px;
+
+        margin: 45px auto 25px;
+
+        padding: 25px;
+
+        text-align: center;
+
+        border-radius: 25px;
+
+        border: 2px solid var(--blue);
+
+        background:
+          radial-gradient(circle, rgba(0, 130, 255, 0.15), transparent 65%),
+          #031426;
+
+        box-shadow: 0 0 35px rgba(0, 120, 255, 0.2);
+      }
+
+      .price-box small {
+        color: var(--muted);
+      }
+
+      .price {
+        color: #68baff;
+
+        font-size: 46px;
+
+        font-weight: 900;
+
+        text-shadow: 0 0 20px rgba(0, 140, 255, 0.5);
+      }
+
+      .price span {
+        font-size: 19px;
+
+        color: white;
+      }
+
+      /* =====================================================
+       CTA
+    ====================================================== */
+
+      .cta {
+        margin-top: 30px;
+
+        padding: 30px;
+
+        border-radius: 22px;
+
+        border: 1px solid var(--border);
+
+        background: linear-gradient(90deg, #062c52, #041a31);
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        gap: 20px;
+      }
+
+      .cta h2 {
+        color: #66baff;
+
+        font-size: 28px;
+
+        text-shadow: 0 0 15px rgba(0, 130, 255, 0.4);
+      }
+
+      .cta p {
+        color: var(--muted);
+
+        margin-top: 5px;
+      }
+
+      .button {
+        padding: 14px 32px;
+
+        border-radius: 30px;
+
+        background: linear-gradient(135deg, #168cff, #0756b7);
+
+        color: white;
+
+        text-decoration: none;
+
+        font-weight: 900;
+
+        box-shadow: 0 0 25px rgba(0, 130, 255, 0.35);
+
+        transition: 0.3s;
+      }
+
+      .button:hover {
+        transform: translateY(-3px);
+
+        box-shadow: 0 0 35px rgba(0, 140, 255, 0.55);
+      }
+
+      /* =====================================================
+       CONTACT
+    ====================================================== */
+
+      .contact-section {
+        margin-top: 50px;
+      }
+
+      .contact-wrapper {
+        max-width: 800px;
+
+        margin: 0 auto;
+      }
+
+      .contact-card {
+        position: relative;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 18px;
+
+        padding: 23px;
+
+        text-decoration: none;
+
+        color: white;
+
+        border-radius: 23px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(9, 43, 78, 0.97),
+          rgba(3, 19, 37, 0.99)
+        );
+
+        border: 1px solid rgba(45, 150, 255, 0.5);
+
+        box-shadow:
+          0 0 30px rgba(0, 120, 255, 0.1),
+          inset 0 0 30px rgba(0, 120, 255, 0.04);
+
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-6px);
+
+        border-color: #65bdff;
+
+        box-shadow:
+          0 15px 45px rgba(0, 130, 255, 0.18),
+          0 0 30px rgba(0, 130, 255, 0.2);
+      }
+
+      .contact-icon-box {
+        width: 65px;
+        height: 65px;
+
+        flex-shrink: 0;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 19px;
+
+        background: linear-gradient(135deg, #087ff0, #063d82);
+
+        border: 1px solid #58baff;
+
+        font-size: 30px;
+
+        box-shadow: 0 0 25px rgba(0, 130, 255, 0.3);
+      }
+
+      .contact-content {
+        flex: 1;
+      }
+
+      .contact-content h3 {
+        font-size: 18px;
+
+        margin-bottom: 5px;
+
+        color: #f2f8ff;
+      }
+
+      .contact-content p {
+        color: #8eb2d5;
+
+        font-size: 13px;
+      }
+
+      .whatsapp-btn {
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 8px;
+
+        padding: 12px 18px;
+
+        border-radius: 30px;
+
+        color: white;
+
+        text-decoration: none;
+
+        background: linear-gradient(135deg, #168cff, #0756b7);
+
+        border: 1px solid rgba(120, 205, 255, 0.55);
+
+        font-size: 13px;
+
+        font-weight: 800;
+
+        white-space: nowrap;
+
+        box-shadow: 0 0 20px rgba(0, 130, 255, 0.2);
+
+        transition: 0.3s;
+      }
+
+      .whatsapp-btn:hover {
+        transform: translateY(-3px);
+
+        box-shadow: 0 0 30px rgba(0, 140, 255, 0.45);
+      }
+
+      .arrow {
+        font-size: 17px;
+
+        transition: 0.3s;
+      }
+
+      .whatsapp-btn:hover .arrow {
+        transform: translateX(-4px);
+      }
+
+      /* =====================================================
+       FOOTER
+    ====================================================== */
+
+      footer {
+        margin-top: 50px;
+
+        padding: 27px 15px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 15px 50px;
+
+        border-top: 1px solid rgba(60, 150, 255, 0.22);
+
+        color: #8daecc;
+
+        font-size: 14px;
+      }
+
+      footer div {
+        transition: 0.3s;
+      }
+
+      footer div:hover {
+        color: #62baff;
+
+        text-shadow: 0 0 12px rgba(0, 140, 255, 0.5);
+
+        transform: translateY(-2px);
+      }
+
+      footer strong {
+        color: #65baff;
+      }
+
+      /* =====================================================
+       COPYRIGHT
+    ====================================================== */
+
+      .copyright {
+        text-align: center;
+
+        padding: 18px 10px 8px;
+
+        color: #6686a5;
+
+        font-size: 13px;
+
+        border-top: 1px solid rgba(60, 150, 255, 0.1);
+
+        letter-spacing: 0.3px;
+      }
+
+      /* =====================================================
+       RESPONSIVE
+    ====================================================== */
+
+      @media (max-width: 850px) {
+        .page {
+          width: 97%;
+          padding: 18px;
+          margin: 10px auto;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 25px;
+        }
+
+        .hero-content {
+          text-align: center;
+        }
+
+        .description {
+          max-width: 650px;
+          margin: auto;
+        }
+
+        .visual {
+          height: 370px;
+        }
+
+        .info {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .info-item:nth-child(2) {
+          border-left: 0;
+        }
+
+        .modules {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .why {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .why-item:nth-child(even) {
+          border-left: 0;
+        }
+
+        .cta {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .contact-card {
+          flex-wrap: wrap;
+        }
+
+        .whatsapp-btn {
+          width: 100%;
+        }
+
+        footer {
+          flex-direction: column;
+          text-align: center;
+          gap: 12px;
+        }
+      }
+
+      @media (max-width: 550px) {
+        .logo h2 {
+          font-size: 23px;
+        }
+
+        .logo p {
+          font-size: 9px;
+        }
+
+        .hero h1 {
+          font-size: 38px;
+        }
+
+        .hero-subtitle {
+          font-size: 20px;
+        }
+
+        .english-title {
+          font-size: 16px;
+          letter-spacing: 2px;
+        }
+
+        .description {
+          font-size: 13px;
+          line-height: 1.9;
+        }
+
+        /* MOBILE CODE EDITOR */
+
+        .visual {
+          height: 320px;
+          border-radius: 19px;
+        }
+
+        .vscode-sidebar {
+          width: 42px;
+          gap: 16px;
+        }
+
+        .side-icon {
+          font-size: 15px;
+        }
+
+        .code-window {
+          top: 52px;
+          padding: 8px 8px;
+        }
+
+        .code-line {
+          min-height: 20px;
+        }
+
+        .line-number {
+          width: 24px;
+          margin-right: 9px;
+        }
+
+        .code {
+          font-size: 9px;
+        }
+
+        .file-tab {
+          height: 36px;
+          padding: 0 10px;
+          font-size: 9px;
+        }
+
+        .vscode-top {
+          height: 42px;
+        }
+
+        .vscode-title {
+          font-size: 9px;
+        }
+
+        .status-bar {
+          height: 32px;
+          padding: 0 8px;
+          font-size: 8px;
+        }
+
+        .status-left,
+        .status-right {
+          gap: 7px;
+        }
+
+        .info {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .modules {
+          grid-template-columns: 1fr;
+        }
+
+        .why {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .price {
+          font-size: 38px;
+        }
+
+        .cta {
+          padding: 25px 18px;
+        }
+
+        .cta h2 {
+          font-size: 24px;
+        }
+
+        .cta p {
+          font-size: 13px;
+        }
+
+        .contact-card {
+          padding: 18px;
+          gap: 12px;
+        }
+
+        .contact-icon-box {
+          width: 55px;
+          height: 55px;
+          font-size: 25px;
+        }
+
+        .contact-content h3 {
+          font-size: 14px;
+        }
+
+        .contact-content p {
+          font-size: 11px;
+        }
+
+        footer {
+          font-size: 12px;
+        }
+
+        .copyright {
+          font-size: 11px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .code {
+          font-size: 7.5px;
+        }
+
+        .line-number {
+          width: 20px;
+          margin-right: 6px;
+        }
+
+        .vscode-sidebar {
+          width: 36px;
+        }
+
+        .visual {
+          height: 290px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- =====================================================
+         LOGO
+    ====================================================== -->
+
+      <div class="logo">
+        <div class="logo-icon">C</div>
+
+        <div>
+          <h2>COURSYRIA</h2>
+
+          <p>LEARN • GROW • LEAD</p>
+        </div>
+      </div>
+
+      <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+      <section class="hero">
+        <div class="hero-content">
+          <div class="badge">دورة تأسيسية للمبتدئين</div>
+
+          <h1>أساسيات البرمجة</h1>
+
+          <div class="hero-subtitle">المستوى الأول في C++</div>
+
+          <div class="english-title">C++ BEGINNER LEVEL</div>
+
+          <p class="description">
+            ابدأ من الصفر وتعرّف على أساسيات البرمجة بلغة C++، وتعلم طريقة كتابة
+            البرامج وفهم مكوناتها الأساسية من خلال شرح مبسط وتطبيقات عملية
+            مناسبة للمبتدئين.
+          </p>
+        </div>
+
+        <!-- =====================================================
+           VISUAL STUDIO CODE
+      ====================================================== -->
+
+        <div class="visual">
+          <!-- TOP -->
+
+          <div class="vscode-top">
+            <div class="vscode-logo">&lt;/&gt;</div>
+
+            <div class="window-buttons">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="vscode-title">C++ — Visual Studio Code</div>
+          </div>
+
+          <div class="vscode-body">
+            <!-- SIDEBAR -->
+
+            <div class="vscode-sidebar">
+              <div class="side-icon active">▣</div>
+
+              <div class="side-icon">◇</div>
+
+              <div class="side-icon">⎇</div>
+
+              <div class="side-icon">▤</div>
+            </div>
+
+            <!-- CODE -->
+
+            <div class="code-area">
+              <div class="file-tab">
+                <span class="cpp-file"> C++ </span>
+
+                main.cpp
+              </div>
+
+              <!-- الكود سيتم إنشاؤه هنا تلقائياً -->
+
+              <div class="code-window" id="codeWindow"></div>
+
+              <!-- STATUS -->
+
+              <div class="status-bar">
+                <div class="status-left">
+                  <span> C++ </span>
+
+                  <span> UTF-8 </span>
+
+                  <span> LF </span>
+                </div>
+
+                <div class="status-right">
+                  <span> Spaces: 4 </span>
+
+                  <span id="lineStatus"> Ln 1, Col 1 </span>
+
+                  <span class="status-dot"></span>
+
+                  <span id="readyStatus"> Typing... </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+         INFO
+    ====================================================== -->
+
+      <div class="info">
+        <div class="info-item">
+          <div class="info-icon">🏅</div>
+
+          <h4>شهادة خبرة</h4>
+
+          <p>بعد إتمام الدورة</p>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">▶</div>
+
+          <h4>تطبيقات عملية</h4>
+
+          <p>مشروع تخرج</p>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">▤</div>
+
+          <h4>شرح تأسيسي</h4>
+
+          <p>من الصفر خطوة بخطوة</p>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">♙</div>
+
+          <h4>دعم ومتابعة</h4>
+
+          <p>طوال الدورة</p>
+        </div>
+      </div>
+
+      <!-- =====================================================
+         MODULES
+    ====================================================== -->
+
+      <div class="section-title">
+        <span> محاور الدورة </span>
+      </div>
+
+      <section class="modules">
+        <div class="module">
+          <div class="number">01</div>
+
+          <h3>مقدمة إلى البرمجة و C++</h3>
+
+          <p>
+            التعرف على مفهوم البرمجة ولغة C++ واستخداماتها والتعرف على طريقة
+            التفكير البرمجي بشكل مبسط.
+          </p>
+        </div>
+
+        <div class="module">
+          <div class="number">02</div>
+
+          <h3>بيئة البرمجة وكتابة أول برنامج</h3>
+
+          <p>
+            التعرف على بيئة العمل وكتابة أول برنامج بلغة C++ وفهم الشكل الأساسي
+            للبرنامج.
+          </p>
+        </div>
+
+        <div class="module">
+          <div class="number">03</div>
+
+          <h3>مكونات البرنامج والتعليقات</h3>
+
+          <p>
+            فهم أجزاء برنامج C++ الأساسية والتعرف على التعليقات وطريقة تنظيم
+            الكود وكتابته بشكل واضح.
+          </p>
+        </div>
+
+        <div class="module">
+          <div class="number">04</div>
+
+          <h3>المتغيرات والثوابت</h3>
+
+          <p>
+            التعرف على مفهوم المتغير والثابت وكيفية تعريفهما واستخدامهما بطريقة
+            صحيحة داخل البرنامج.
+          </p>
+        </div>
+
+        <div class="module">
+          <div class="number">05</div>
+
+          <h3>أنواع البيانات الأساسية</h3>
+
+          <p>
+            التعرف على أنواع البيانات الأساسية مثل الأعداد والنصوص والقيم
+            المنطقية وفهم استخدام كل نوع.
+          </p>
+        </div>
+
+        <div class="module">
+          <div class="number">06</div>
+
+          <h3>الإدخال والإخراج والعمليات الحسابية</h3>
+
+          <p>
+            تعلم استخدام cin و cout والتعامل مع البيانات وإجراء العمليات
+            الحسابية الأساسية وبناء برامج بسيطة.
+          </p>
+        </div>
+      </section>
+
+      <!-- =====================================================
+         WHY
+    ====================================================== -->
+
+      <div class="section-title">
+        <span> لماذا هذه الدورة؟ </span>
+      </div>
+
+      <section class="why">
+        <div class="why-item">
+          <div class="why-icon">☆</div>
+
+          <p>مناسبة للمبتدئين من الصفر</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">◷</div>
+
+          <p>تدرج بسيط في التعلم</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">♙</div>
+
+          <p>دعم ومتابعة مستمرة</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">▤</div>
+
+          <p>شرح واضح وتأسيسي</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">▶</div>
+
+          <p>تطبيقات عملية بسيطة</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">🏅</div>
+
+          <p>شهادة بعد إتمام الدورة</p>
+        </div>
+      </section>
+
+      <!-- =====================================================
+         PRICE
+    ====================================================== -->
+
+      <div class="price-box">
+        <small> سعر دورة C++ - المستوى الأول </small>
+
+        <div class="price">
+          800
+
+          <span> SP </span>
+        </div>
+
+        <small> مدة الدورة: شهر واحد وعدد الجلسات 10 </small>
+      </div>
+
+      <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+      <section class="cta">
+        <div>
+          <h2>ابدأ من الصفر</h2>
+
+          <p>
+            ابنِ أساسًا قويًا في البرمجة قبل الانتقال إلى المستويات المتقدمة
+          </p>
+        </div>
+
+        <a href="#contact" class="button"> ابدأ الآن </a>
+      </section>
+
+      <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+      <section class="section contact-section" id="contact">
+        <div class="section-title">
+          <span> 📞 التواصل </span>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-card">
+            <div class="contact-icon-box">
+              <span> 👨‍🏫 </span>
+            </div>
+
+            <div class="contact-content">
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>يمكنك التواصل مباشرة عبر واتساب</p>
+            </div>
+
+            <a
+              href="https://wa.me/963995980568"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="whatsapp-btn"
+            >
+              <span> ◉ </span>
+
+              <span> تواصل عبر واتساب </span>
+
+              <span class="arrow"> ← </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+      <footer>
+        <div>
+          ✈️
+
+          <strong> Coursyria_team </strong>
+        </div>
+
+        <div>
+          🌐
+
+          <strong> coursyria.com </strong>
+        </div>
+
+        <div>
+          📸
+
+          <strong> coursyria.team </strong>
+        </div>
+      </footer>
+
+      <!-- =====================================================
+         COPYRIGHT
+    ====================================================== -->
+
+      <div class="copyright">
+        جميع الحقوق محفوظة © 2027
+
+        <br />
+
+        اعداد المهندسة لين حسن الكردي
+      </div>
+    </div>
+
+    <!-- =====================================================
+       C++ TYPING ANIMATION
+  ====================================================== -->
+
+    <script>
+      const codeLines = [
+        "#include <iostream>",
+        "using namespace std;",
+        "",
+        "int main() {",
+        '    cout << "Hello C++";',
+        "    return 0;",
+        "}",
+        "",
+        "// Start coding your future...",
+      ];
+
+      const codeWindow = document.getElementById("codeWindow");
+
+      const lineStatus = document.getElementById("lineStatus");
+
+      const readyStatus = document.getElementById("readyStatus");
+
+      let lineIndex = 0;
+
+      let charIndex = 0;
+
+      let currentLine = null;
+
+      /* =====================================================
+       تلوين الكود
+    ====================================================== */
+
+      function colorize(text) {
+        let escaped = text
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+
+        escaped = escaped.replace(
+          /(#include|using|namespace|int|return)/g,
+          '<span class="keyword">$1</span>',
+        );
+
+        escaped = escaped.replace(
+          /(&lt;iostream&gt;)/g,
+          '<span class="type">$1</span>',
+        );
+
+        escaped = escaped.replace(
+          /\b(cout)\b/g,
+          '<span class="type">$1</span>',
+        );
+
+        escaped = escaped.replace(
+          /\b(main)\b/g,
+          '<span class="function">$1</span>',
+        );
+
+        escaped = escaped.replace(
+          /(&quot;.*?&quot;|".*?")/g,
+          '<span class="string">$1</span>',
+        );
+
+        escaped = escaped.replace(
+          /(\/\/.*)/g,
+          '<span class="comment">$1</span>',
+        );
+
+        escaped = escaped.replace(
+          /\b(0)\b/g,
+          '<span class="number-code">$1</span>',
+        );
+
+        escaped = escaped.replace(
+          /(&lt;&lt;|;|\{|\})/g,
+          '<span class="operator">$1</span>',
+        );
+
+        return escaped;
+      }
+
+      /* =====================================================
+       إنشاء سطر
+    ====================================================== */
+
+      function createLine() {
+        const line = document.createElement("div");
+
+        line.className = "code-line";
+
+        const number = document.createElement("span");
+
+        number.className = "line-number";
+
+        number.textContent = lineIndex + 1;
+
+        const code = document.createElement("span");
+
+        code.className = "code";
+
+        line.appendChild(number);
+
+        line.appendChild(code);
+
+        codeWindow.appendChild(line);
+
+        currentLine = code;
+      }
+
+      /* =====================================================
+       الكتابة
+    ====================================================== */
+
+      function typeCode() {
+        if (lineIndex >= codeLines.length) {
+          readyStatus.textContent = "Ready";
+
+          setTimeout(resetCode, 3500);
+
+          return;
+        }
+
+        if (!currentLine) {
+          createLine();
+        }
+
+        const fullLine = codeLines[lineIndex];
+
+        /* السطر الفارغ */
+
+        if (fullLine === "") {
+          currentLine.innerHTML = "&nbsp;";
+
+          currentLine = null;
+
+          lineIndex++;
+
+          lineStatus.textContent = `Ln ${lineIndex + 1}, Col 1`;
+
+          setTimeout(typeCode, 350);
+
+          return;
+        }
+
+        /* الكتابة حرفاً حرفاً */
+
+        if (charIndex < fullLine.length) {
+          const typedText = fullLine.substring(0, charIndex + 1);
+
+          currentLine.innerHTML =
+            colorize(typedText) + '<span class="cursor"></span>';
+
+          charIndex++;
+
+          lineStatus.textContent = `Ln ${lineIndex + 1}, Col ${charIndex + 1}`;
+
+          readyStatus.textContent = "Typing...";
+
+          setTimeout(typeCode, 40);
+        } else {
+          /* انتهى السطر */
+
+          currentLine.innerHTML = colorize(fullLine);
+
+          currentLine = null;
+
+          charIndex = 0;
+
+          lineIndex++;
+
+          lineStatus.textContent = `Ln ${lineIndex + 1}, Col 1`;
+
+          /* الانتقال للسطر التالي */
+
+          setTimeout(typeCode, 500);
+        }
+
+        /* تمرير تلقائي */
+
+        codeWindow.scrollTop = codeWindow.scrollHeight;
+      }
+
+      /* =====================================================
+       إعادة تشغيل الأنيميشن
+    ====================================================== */
+
+      function resetCode() {
+        codeWindow.innerHTML = "";
+
+        lineIndex = 0;
+
+        charIndex = 0;
+
+        currentLine = null;
+
+        lineStatus.textContent = "Ln 1, Col 1";
+
+        readyStatus.textContent = "Starting...";
+
+        setTimeout(typeCode, 800);
+      }
+
+      /* =====================================================
+       START
+    ====================================================== */
+
+      setTimeout(typeCode, 1000);
+    </script>
+  </body>
+</html>

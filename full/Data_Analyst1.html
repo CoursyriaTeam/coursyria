@@ -1,0 +1,2564 @@
+<!doctype html>
+
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <title>أساسيات تحليل البيانات | Coursyria</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Cairo", sans-serif;
+        background: #eef3f8;
+        color: #102b4c;
+        overflow-x: hidden;
+      }
+
+      .page {
+        max-width: 1200px;
+        margin: 30px auto;
+        background: #fff;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(10, 40, 80, 0.15);
+      }
+
+      /* =========================================================
+     HERO
+  ========================================================= */
+
+      .hero {
+        min-height: 610px;
+        position: relative;
+        overflow: hidden;
+
+        background:
+          radial-gradient(
+            circle at 80% 15%,
+            rgba(35, 147, 255, 0.16),
+            transparent 30%
+          ),
+          linear-gradient(135deg, #ffffff 0%, #f8fbff 45%, #eef5fb 100%);
+
+        padding: 45px 55px 55px;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        left: -170px;
+        top: -180px;
+        border-radius: 50%;
+        background: #092d55;
+        opacity: 0.06;
+        pointer-events: none;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 5;
+        gap: 20px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .logo-icon {
+        width: 68px;
+        height: 78px;
+
+        background: linear-gradient(145deg, #0a3563, #061d3a);
+
+        clip-path: polygon(50% 0, 92% 15%, 85% 75%, 50% 100%, 15% 75%, 8% 15%);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: white;
+        font-size: 30px;
+        font-weight: 900;
+
+        border: 2px solid #d6a62b;
+
+        transition: 0.4s ease;
+      }
+
+      .logo-icon:hover {
+        transform: rotate(8deg) scale(1.08);
+        box-shadow: 0 0 30px rgba(214, 166, 43, 0.3);
+      }
+
+      .logo-text {
+        font-size: 32px;
+        font-weight: 900;
+        color: #0c2d50;
+      }
+
+      .logo-text span {
+        color: #1877d2;
+      }
+
+      .logo-sub {
+        font-size: 11px;
+        color: #6b7d90;
+        letter-spacing: 2px;
+        margin-top: -5px;
+      }
+
+      .certificate {
+        background: #0b3158;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 14px;
+        font-weight: 800;
+        border: 2px solid #d6a62b;
+        box-shadow: 0 8px 20px rgba(5, 35, 70, 0.15);
+        white-space: nowrap;
+
+        transition: 0.3s ease;
+      }
+
+      .certificate:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(5, 35, 70, 0.25);
+      }
+
+      /* =========================================================
+     HERO CONTENT
+  ========================================================= */
+
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 50px;
+        align-items: center;
+        margin-top: 55px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-text small {
+        display: inline-block;
+        color: #1573cf;
+        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .hero-text h1 {
+        font-size: 60px;
+        line-height: 1.05;
+        color: #092d55;
+        font-weight: 900;
+        letter-spacing: -2px;
+      }
+
+      .hero-text h2 {
+        font-size: 55px;
+        line-height: 1.1;
+        color: #1776d2;
+        font-weight: 900;
+        text-shadow: 2px 3px 0 #dceeff;
+        margin-top: 5px;
+      }
+
+      .level {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 10px 30px;
+        background: #1776d2;
+        color: white;
+        border-radius: 12px;
+        font-size: 20px;
+        font-weight: 800;
+        box-shadow: 0 8px 18px rgba(23, 118, 210, 0.25);
+
+        transition: 0.3s ease;
+      }
+
+      .level:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 13px 25px rgba(23, 118, 210, 0.32);
+      }
+
+      .hero-description {
+        margin-top: 22px;
+        font-size: 18px;
+        line-height: 2;
+        color: #34495e;
+        max-width: 650px;
+      }
+
+      .hero-description strong {
+        color: #1776d2;
+      }
+
+      /* =========================================================
+     LIVE DATA DASHBOARD
+  ========================================================= */
+
+      .dashboard {
+        position: relative;
+        height: 370px;
+
+        background:
+          radial-gradient(
+            circle at 90% 10%,
+            rgba(24, 120, 212, 0.12),
+            transparent 30%
+          ),
+          linear-gradient(145deg, #ffffff, #edf5fb);
+
+        border-radius: 30px;
+        border: 1px solid #d9e7f3;
+
+        box-shadow:
+          0 20px 45px rgba(20, 70, 110, 0.14),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+        padding: 25px;
+        overflow: hidden;
+
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+
+      .dashboard:hover {
+        transform: translateY(-5px);
+        box-shadow:
+          0 28px 55px rgba(20, 70, 110, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      .dashboard::before {
+        content: "";
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        background: #1878d4;
+        opacity: 0.06;
+        right: -90px;
+        top: -90px;
+
+        animation: dashboardPulse 4s ease-in-out infinite;
+      }
+
+      @keyframes dashboardPulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.05;
+        }
+
+        50% {
+          transform: scale(1.2);
+          opacity: 0.1;
+        }
+      }
+
+      .dash-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        z-index: 5;
+      }
+
+      .dash-title {
+        font-size: 17px;
+        font-weight: 800;
+        color: #0b3158;
+      }
+
+      .live {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+
+        font-size: 10px;
+        color: #15945f;
+        font-weight: 800;
+
+        background: #eaf8f1;
+        border: 1px solid #bfead4;
+
+        padding: 5px 10px;
+        border-radius: 30px;
+      }
+
+      .live-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #19a968;
+
+        box-shadow: 0 0 0 0 rgba(25, 169, 104, 0.5);
+
+        animation: livePulse 1.5s infinite;
+      }
+
+      @keyframes livePulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(25, 169, 104, 0.5);
+        }
+
+        70% {
+          box-shadow: 0 0 0 8px rgba(25, 169, 104, 0);
+        }
+
+        100% {
+          box-shadow: 0 0 0 0 rgba(25, 169, 104, 0);
+        }
+      }
+
+      /* DATA TABLE */
+
+      .simple-table {
+        margin-top: 18px;
+        background: white;
+        border: 1px solid #dce8f2;
+        border-radius: 14px;
+        overflow: hidden;
+        position: relative;
+        z-index: 4;
+
+        box-shadow: 0 6px 18px rgba(20, 70, 110, 0.06);
+      }
+
+      .table-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        text-align: center;
+        border-bottom: 1px solid #e7eef5;
+
+        transition: 0.25s ease;
+      }
+
+      .table-row:last-child {
+        border-bottom: none;
+      }
+
+      .table-row div {
+        padding: 7px 5px;
+        font-size: 11px;
+        color: #617385;
+      }
+
+      .table-row:first-child div {
+        background: #092d55;
+        color: white;
+        font-weight: 800;
+      }
+
+      .data-value {
+        font-weight: 800;
+        color: #1476d2 !important;
+        transition: 0.25s ease;
+      }
+
+      .table-row.data-row:hover {
+        background: #f2f8fd;
+        transform: scale(1.01);
+      }
+
+      .table-row.data-row:hover .data-value {
+        color: #0c5eae !important;
+      }
+
+      /* =========================================================
+     LIVE CHART
+  ========================================================= */
+
+      .chart-area {
+        height: 145px;
+        margin-top: 15px;
+
+        position: relative;
+        z-index: 3;
+
+        border-radius: 15px;
+        overflow: hidden;
+
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.9),
+          rgba(239, 247, 253, 0.8)
+        );
+
+        border: 1px solid #e0ebf4;
+      }
+
+      .grid-lines {
+        position: absolute;
+        inset: 0;
+
+        background-image:
+          linear-gradient(
+            to bottom,
+            rgba(25, 90, 140, 0.08) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to right,
+            rgba(25, 90, 140, 0.045) 1px,
+            transparent 1px
+          );
+
+        background-size:
+          100% 25%,
+          10% 100%;
+
+        pointer-events: none;
+      }
+
+      .chart-label {
+        position: absolute;
+        top: 7px;
+        right: 10px;
+
+        font-size: 9px;
+        font-weight: 800;
+        color: #7890a4;
+
+        z-index: 8;
+      }
+
+      .bars {
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        top: 30px;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        gap: 9px;
+
+        z-index: 3;
+      }
+
+      .bar-wrap {
+        height: 100%;
+        flex: 1;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        position: relative;
+
+        cursor: pointer;
+      }
+
+      .bar {
+        width: 70%;
+        min-width: 16px;
+        max-width: 35px;
+
+        height: var(--h);
+
+        border-radius: 7px 7px 2px 2px;
+
+        background: linear-gradient(
+          to top,
+          #086ec1 0%,
+          #1688df 55%,
+          #5fc1ff 100%
+        );
+
+        box-shadow:
+          0 5px 12px rgba(8, 110, 193, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+        transform-origin: bottom;
+
+        transition:
+          height 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+          filter 0.25s ease,
+          transform 0.25s ease;
+
+        animation: barIntro 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      .bar-wrap:nth-child(1) .bar {
+        animation-delay: 0.05s;
+      }
+
+      .bar-wrap:nth-child(2) .bar {
+        animation-delay: 0.12s;
+      }
+
+      .bar-wrap:nth-child(3) .bar {
+        animation-delay: 0.19s;
+      }
+
+      .bar-wrap:nth-child(4) .bar {
+        animation-delay: 0.26s;
+      }
+
+      .bar-wrap:nth-child(5) .bar {
+        animation-delay: 0.33s;
+      }
+
+      .bar-wrap:nth-child(6) .bar {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes barIntro {
+        from {
+          transform: scaleY(0);
+          opacity: 0;
+        }
+
+        to {
+          transform: scaleY(1);
+          opacity: 1;
+        }
+      }
+
+      .bar-wrap:hover .bar {
+        transform: scaleX(1.18);
+        filter: brightness(1.08);
+      }
+
+      .bar-value {
+        position: absolute;
+
+        bottom: calc(var(--h) + 4px);
+
+        font-size: 8px;
+        font-weight: 900;
+        color: #0b5eae;
+
+        opacity: 0;
+
+        transform: translateY(4px);
+
+        transition: 0.25s ease;
+
+        pointer-events: none;
+      }
+
+      .bar-wrap:hover .bar-value {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* =========================================================
+     ANALYSIS LINE
+  ========================================================= */
+
+      .analysis-line {
+        position: absolute;
+
+        left: 20px;
+        right: 20px;
+
+        bottom: 18px;
+
+        height: 105px;
+
+        z-index: 5;
+
+        pointer-events: none;
+      }
+
+      .analysis-svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+
+      .analysis-path {
+        fill: none;
+
+        stroke: #f0ad20;
+
+        stroke-width: 2.4;
+
+        stroke-linecap: round;
+
+        stroke-dasharray: 7 5;
+
+        animation: dashMove 2s linear infinite;
+
+        filter: drop-shadow(0 2px 4px rgba(240, 173, 32, 0.25));
+      }
+
+      @keyframes dashMove {
+        to {
+          stroke-dashoffset: -24;
+        }
+      }
+
+      .data-point {
+        fill: white;
+        stroke: #f0ad20;
+        stroke-width: 2;
+
+        animation: pointPulse 1.8s ease-in-out infinite;
+      }
+
+      .data-point:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+
+      .data-point:nth-child(3) {
+        animation-delay: 0.5s;
+      }
+
+      .data-point:nth-child(4) {
+        animation-delay: 0.75s;
+      }
+
+      .data-point:nth-child(5) {
+        animation-delay: 1s;
+      }
+
+      .data-point:nth-child(6) {
+        animation-delay: 1.25s;
+      }
+
+      @keyframes pointPulse {
+        0%,
+        100% {
+          r: 3;
+        }
+
+        50% {
+          r: 5;
+        }
+      }
+
+      /* =========================================================
+     CHART FOOTER
+  ========================================================= */
+
+      .chart-footer {
+        position: absolute;
+
+        bottom: 3px;
+        left: 18px;
+        right: 18px;
+
+        display: flex;
+        justify-content: space-around;
+
+        color: #8295a6;
+
+        font-size: 8px;
+
+        z-index: 8;
+      }
+
+      .analysis-status {
+        position: absolute;
+
+        left: 14px;
+        bottom: 7px;
+
+        font-size: 8px;
+
+        color: #1684df;
+
+        font-weight: 800;
+
+        z-index: 10;
+
+        animation: statusBlink 2s ease-in-out infinite;
+      }
+
+      @keyframes statusBlink {
+        0%,
+        100% {
+          opacity: 0.55;
+        }
+
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* =========================================================
+     INFO STRIP
+  ========================================================= */
+
+      .info-strip {
+        background: #092d55;
+        color: white;
+
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        padding: 0 25px;
+      }
+
+      .info {
+        text-align: center;
+        padding: 22px 15px;
+        border-left: 1px solid rgba(255, 255, 255, 0.15);
+
+        transition: 0.3s ease;
+      }
+
+      .info:last-child {
+        border-left: none;
+      }
+
+      .info:hover {
+        background: rgba(255, 255, 255, 0.035);
+        transform: translateY(-3px);
+      }
+
+      .info .icon {
+        font-size: 32px;
+        margin-bottom: 5px;
+
+        transition: 0.3s ease;
+      }
+
+      .info:hover .icon {
+        transform: scale(1.15) translateY(-3px);
+      }
+
+      .info h4 {
+        color: #48b8ff;
+        font-size: 15px;
+      }
+
+      .info p {
+        font-size: 12px;
+        color: #dce8f5;
+        margin-top: 3px;
+      }
+
+      /* =========================================================
+     SECTIONS
+  ========================================================= */
+
+      .section {
+        padding: 45px 45px 20px;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .section-title span {
+        display: inline-block;
+        background: #092d55;
+        color: white;
+        padding: 9px 35px;
+        border-radius: 0 0 15px 15px;
+        font-size: 22px;
+        font-weight: 800;
+        border-bottom: 4px solid #1d85df;
+
+        transition: 0.3s ease;
+      }
+
+      .section-title span:hover {
+        transform: translateY(3px);
+        padding-left: 42px;
+        padding-right: 42px;
+      }
+
+      /* =========================================================
+     FOUR GRID
+  ========================================================= */
+
+      .four-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+      }
+
+      .box {
+        border: 1px solid #dce6ee;
+        border-radius: 16px;
+        padding: 22px 18px;
+        background: white;
+
+        box-shadow: 0 8px 25px rgba(15, 55, 90, 0.06);
+
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .box:hover {
+        transform: translateY(-8px);
+
+        box-shadow: 0 18px 35px rgba(15, 80, 140, 0.13);
+
+        border-color: #9bcff1;
+      }
+
+      .box-icon {
+        width: 55px;
+        height: 55px;
+        border-radius: 15px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 26px;
+
+        background: #e6f4ff;
+        color: #1476d2;
+
+        margin-bottom: 12px;
+
+        transition: 0.3s ease;
+      }
+
+      .box:hover .box-icon {
+        transform: rotate(-5deg) scale(1.08);
+      }
+
+      .box h3 {
+        color: #0b3158;
+        font-size: 17px;
+        margin-bottom: 12px;
+      }
+
+      .box p {
+        font-size: 13px;
+        line-height: 1.9;
+        color: #586b7c;
+      }
+
+      .box ul {
+        list-style: none;
+      }
+
+      .box li {
+        font-size: 13px;
+        line-height: 1.9;
+        color: #586b7c;
+        position: relative;
+        padding-right: 15px;
+      }
+
+      .box li::before {
+        content: "✓";
+        position: absolute;
+        right: 0;
+        color: #1a9b68;
+        font-weight: 900;
+      }
+
+      /* =========================================================
+     MODULES
+  ========================================================= */
+
+      .modules-section {
+        background: #f5f9fc;
+        padding: 50px 45px;
+      }
+
+      .modules {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .module {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        background: white;
+        border-radius: 14px;
+        padding: 17px;
+
+        border: 1px solid #dce8f1;
+
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .module:hover {
+        transform: translateX(-7px);
+        border-color: #39a2e9;
+        box-shadow: 0 10px 25px rgba(20, 90, 140, 0.08);
+      }
+
+      .number {
+        width: 48px;
+        height: 48px;
+
+        border-radius: 12px;
+
+        background: #1877d2;
+        color: white;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-weight: 900;
+        font-size: 17px;
+
+        flex-shrink: 0;
+
+        transition: 0.3s ease;
+      }
+
+      .module:hover .number {
+        transform: scale(1.08) rotate(-4deg);
+      }
+
+      .module h4 {
+        color: #0b3158;
+        font-size: 15px;
+      }
+
+      .module p {
+        color: #718292;
+        font-size: 11px;
+        margin-top: 3px;
+      }
+
+      /* =========================================================
+     TOOLS
+  ========================================================= */
+
+      .tools {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        max-width: 850px;
+        margin: auto;
+      }
+
+      .tool {
+        background: white;
+        border: 1px solid #dce6ee;
+        border-radius: 16px;
+        padding: 25px 10px;
+        text-align: center;
+        transition: 0.3s;
+
+        box-shadow: 0 8px 25px rgba(15, 55, 90, 0.05);
+      }
+
+      .tool:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 15px 30px rgba(15, 80, 140, 0.1);
+      }
+
+      .tool-icon {
+        font-size: 38px;
+        margin-bottom: 8px;
+
+        transition: 0.3s ease;
+      }
+
+      .tool:hover .tool-icon {
+        transform: scale(1.12) translateY(-3px);
+      }
+
+      .tool:nth-child(1) .tool-icon {
+        color: #1684df;
+      }
+
+      .tool:nth-child(2) .tool-icon {
+        color: #8c5fd5;
+      }
+
+      .tool:nth-child(3) .tool-icon {
+        color: #3a9b72;
+      }
+
+      .tool h4 {
+        font-size: 15px;
+        color: #183c60;
+      }
+
+      .tool p {
+        font-size: 11px;
+        color: #718292;
+        margin-top: 5px;
+      }
+
+      /* =========================================================
+     ACHIEVEMENTS
+  ========================================================= */
+
+      .two-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+      }
+
+      .dark-box {
+        background: #092d55;
+        color: white;
+        padding: 30px;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+
+        transition: 0.3s ease;
+      }
+
+      .dark-box:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 35px rgba(5, 35, 70, 0.18);
+      }
+
+      .dark-box::before {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: #1783dd;
+        opacity: 0.08;
+        left: -60px;
+        bottom: -60px;
+
+        transition: 0.5s ease;
+      }
+
+      .dark-box:hover::before {
+        transform: scale(1.4);
+      }
+
+      .dark-box h3 {
+        color: #52bbff;
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+
+      .dark-box ul {
+        list-style: none;
+        position: relative;
+        z-index: 2;
+      }
+
+      .dark-box li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 14px;
+      }
+
+      .dark-box li::before {
+        content: "●";
+        color: #f1b82c;
+        margin-left: 10px;
+      }
+
+      /* =========================================================
+     SKILLS
+  ========================================================= */
+
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .skill {
+        text-align: center;
+        padding: 25px 15px;
+
+        background: #f7fbfe;
+        border-radius: 18px;
+        border: 1px solid #dbe8f2;
+
+        transition: 0.3s;
+      }
+
+      .skill:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 25px rgba(15, 80, 140, 0.08);
+      }
+
+      .skill-icon {
+        font-size: 32px;
+        color: #1777d2;
+        margin-bottom: 8px;
+
+        transition: 0.3s ease;
+      }
+
+      .skill:hover .skill-icon {
+        transform: scale(1.12);
+      }
+
+      .skill h4 {
+        font-size: 15px;
+        color: #0b3158;
+      }
+
+      .skill p {
+        color: #718292;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+
+      /* =========================================================
+     PRICE
+  ========================================================= */
+
+      .price-section {
+        padding: 55px 30px;
+
+        background:
+          radial-gradient(
+            circle at 10% 50%,
+            rgba(39, 157, 239, 0.2),
+            transparent 25%
+          ),
+          linear-gradient(135deg, #082c54, #061d39);
+
+        text-align: center;
+        color: white;
+      }
+
+      .price-section h2 {
+        font-size: 25px;
+        color: #52bdff;
+      }
+
+      .price {
+        font-size: 62px;
+        font-weight: 900;
+        color: white;
+        margin: 10px 0;
+      }
+
+      .currency {
+        color: #f1bb35;
+        font-size: 20px;
+        font-weight: 800;
+      }
+
+      .price-note {
+        color: #d6e3ef;
+        margin-bottom: 25px;
+      }
+
+      .join {
+        display: inline-block;
+
+        background: linear-gradient(135deg, #1879d5, #0c5eae);
+
+        color: white;
+        padding: 14px 45px;
+
+        border-radius: 14px;
+
+        font-size: 20px;
+        font-weight: 900;
+
+        border: 2px solid #f0bd3b;
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+        transition: 0.3s;
+
+        text-decoration: none;
+      }
+
+      .join:hover {
+        transform: scale(1.05) translateY(-3px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.32);
+      }
+
+      /* =========================================================
+     DURATION
+  ========================================================= */
+
+      .duration {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 15px;
+
+        margin-top: 25px;
+
+        color: #dceafa;
+
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .calendar {
+        font-size: 35px;
+        color: #f0b82f;
+
+        animation: calendarFloat 2s ease-in-out infinite;
+      }
+
+      @keyframes calendarFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      /* =========================================================
+     CONTACT
+  ========================================================= */
+
+      .contact-section {
+        padding-bottom: 45px;
+      }
+
+      .contact-wrapper {
+        max-width: 850px;
+        margin: 0 auto;
+      }
+
+      .contact-card {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 20px;
+
+        background: #ffffff;
+
+        border: 1px solid #dce8f2;
+        border-radius: 20px;
+
+        padding: 25px;
+
+        color: #0b3158;
+
+        box-shadow: 0 10px 30px rgba(15, 55, 90, 0.08);
+
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          border-color 0.3s ease;
+
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-card::before {
+        content: "";
+
+        position: absolute;
+
+        right: 0;
+        top: 0;
+
+        width: 6px;
+        height: 100%;
+
+        background: linear-gradient(to bottom, #19a463, #1688d8);
+      }
+
+      .contact-card:hover {
+        transform: translateY(-6px);
+
+        box-shadow: 0 18px 40px rgba(15, 80, 140, 0.14);
+
+        border-color: #8ec8ee;
+      }
+
+      .contact-icon-box {
+        width: 68px;
+        height: 68px;
+        min-width: 68px;
+
+        border-radius: 18px;
+
+        background: #eaf4ff;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 32px;
+
+        transition: 0.3s ease;
+      }
+
+      .contact-card:hover .contact-icon-box {
+        transform: scale(1.08) rotate(-4deg);
+      }
+
+      .contact-content h3 {
+        font-size: 18px;
+        color: #0b3158;
+        margin-bottom: 7px;
+      }
+
+      .contact-content p {
+        font-size: 13px;
+        color: #718292;
+        margin: 0;
+      }
+
+      .whatsapp-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+
+        background: linear-gradient(135deg, #20b96d, #15945a);
+
+        color: white;
+
+        padding: 13px 20px;
+
+        border-radius: 13px;
+
+        text-decoration: none;
+
+        font-size: 13px;
+        font-weight: 800;
+
+        white-space: nowrap;
+
+        box-shadow: 0 8px 20px rgba(25, 164, 99, 0.2);
+
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .whatsapp-btn:hover {
+        transform: translateY(-3px) scale(1.03);
+
+        box-shadow: 0 12px 28px rgba(25, 164, 99, 0.3);
+      }
+
+      .whatsapp-icon {
+        width: 23px;
+        height: 23px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 2px solid rgba(255, 255, 255, 0.9);
+
+        border-radius: 50%;
+
+        font-size: 10px;
+        font-weight: 900;
+      }
+
+      .arrow {
+        font-size: 17px;
+        transition: transform 0.3s ease;
+      }
+
+      .whatsapp-btn:hover .arrow {
+        transform: translateX(-4px);
+      }
+
+      /* =========================================================
+     FOOTER
+  ========================================================= */
+
+      footer {
+        background: #061d39;
+        color: #dce8f5;
+
+        text-align: center;
+
+        padding: 24px 20px;
+
+        font-size: 14px;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      footer p {
+        line-height: 2;
+        margin: 0;
+      }
+
+      footer p:first-line {
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      /* =========================================================
+     RESPONSIVE
+  ========================================================= */
+
+      @media (max-width: 900px) {
+        .hero {
+          padding: 30px 25px 40px;
+        }
+
+        .hero-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .hero-text {
+          text-align: center;
+        }
+
+        .hero-description {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .hero-text h1 {
+          font-size: 48px;
+        }
+
+        .hero-text h2 {
+          font-size: 48px;
+        }
+
+        .four-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .modules {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .skills {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .tools {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .contact-card {
+          grid-template-columns: auto 1fr;
+        }
+
+        .whatsapp-btn {
+          grid-column: 1 / -1;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .page {
+          margin: 0;
+          width: 100%;
+        }
+
+        .topbar {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .logo-text {
+          font-size: 27px;
+        }
+
+        .logo-sub {
+          font-size: 9px;
+        }
+
+        .certificate {
+          font-size: 13px;
+          padding: 10px 18px;
+        }
+
+        .hero-content {
+          margin-top: 35px;
+        }
+
+        .hero-text h1 {
+          font-size: 38px;
+          letter-spacing: -1px;
+        }
+
+        .hero-text h2 {
+          font-size: 34px;
+          letter-spacing: 0;
+        }
+
+        .hero-text small {
+          font-size: 17px;
+        }
+
+        .level {
+          font-size: 16px;
+          padding: 9px 22px;
+        }
+
+        .hero-description {
+          font-size: 14px;
+          line-height: 1.9;
+        }
+
+        /* DASHBOARD MOBILE */
+
+        .dashboard {
+          height: 340px;
+          padding: 18px;
+          border-radius: 24px;
+        }
+
+        .dash-title {
+          font-size: 14px;
+        }
+
+        .live {
+          font-size: 8px;
+          padding: 4px 8px;
+        }
+
+        .simple-table {
+          margin-top: 14px;
+        }
+
+        .table-row div {
+          font-size: 9px;
+          padding: 7px 3px;
+        }
+
+        .chart-area {
+          height: 140px;
+          margin-top: 13px;
+        }
+
+        .bars {
+          left: 12px;
+          right: 12px;
+          gap: 5px;
+        }
+
+        .bar {
+          width: 72%;
+          min-width: 13px;
+        }
+
+        .analysis-line {
+          left: 14px;
+          right: 14px;
+          height: 100px;
+        }
+
+        .chart-label {
+          font-size: 8px;
+        }
+
+        .chart-footer {
+          font-size: 7px;
+          left: 12px;
+          right: 12px;
+        }
+
+        .analysis-status {
+          font-size: 7px;
+          left: 9px;
+        }
+
+        .info-strip {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .info {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .section,
+        .modules-section {
+          padding: 35px 18px;
+        }
+
+        .section-title {
+          margin-bottom: 22px;
+        }
+
+        .section-title span {
+          font-size: 18px;
+          padding: 8px 25px;
+        }
+
+        .four-grid,
+        .modules,
+        .two-grid,
+        .skills {
+          grid-template-columns: 1fr;
+        }
+
+        .tools {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .tool {
+          padding: 20px 8px;
+        }
+
+        .tool h4 {
+          font-size: 13px;
+        }
+
+        .price-section {
+          padding: 45px 20px;
+        }
+
+        .price {
+          font-size: 46px;
+        }
+
+        .price-section h2 {
+          font-size: 21px;
+        }
+
+        .duration {
+          font-size: 14px;
+        }
+
+        .join {
+          width: 100%;
+          max-width: 320px;
+          padding: 13px 20px;
+          font-size: 17px;
+        }
+
+        /* CONTACT MOBILE */
+
+        .contact-section {
+          padding-bottom: 35px;
+        }
+
+        .contact-card {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+
+          gap: 15px;
+
+          padding: 22px 18px;
+        }
+
+        .contact-icon-box {
+          width: 65px;
+          height: 65px;
+          min-width: 65px;
+        }
+
+        .contact-content h3 {
+          font-size: 15px;
+        }
+
+        .contact-content p {
+          font-size: 12px;
+        }
+
+        .whatsapp-btn {
+          width: 100%;
+          grid-column: auto;
+
+          padding: 13px 15px;
+
+          font-size: 13px;
+        }
+
+        footer {
+          padding: 22px 15px;
+          font-size: 13px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .hero-text h1 {
+          font-size: 33px;
+        }
+
+        .hero-text h2 {
+          font-size: 29px;
+        }
+
+        .tools {
+          grid-template-columns: 1fr;
+        }
+
+        .info .icon {
+          font-size: 27px;
+        }
+
+        .info h4 {
+          font-size: 13px;
+        }
+
+        .dashboard {
+          height: 330px;
+          padding: 16px;
+        }
+
+        .contact-content h3 {
+          font-size: 14px;
+        }
+      }
+
+      /* =========================================================
+     REDUCED MOTION
+  ========================================================= */
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- =====================================================
+       HERO
+  ====================================================== -->
+
+      <section class="hero">
+        <div class="topbar">
+          <div class="logo">
+            <div class="logo-icon">C</div>
+
+            <div>
+              <div class="logo-text">Cours<span>yria</span></div>
+              <div class="logo-sub">تعلم • تطور • أنجز</div>
+            </div>
+          </div>
+
+          <div class="certificate">🏅 شهادة إتمام الدورة</div>
+        </div>
+
+        <div class="hero-content">
+          <div class="hero-text">
+            <small>مدخل إلى عالم البيانات</small>
+
+            <h1>أساسيات تحليل البيانات</h1>
+
+            <h2>DATA ANALYST 1</h2>
+
+            <div class="level">المستوى التمهيدي</div>
+
+            <p class="hero-description">
+              دورة مبسطة جدًا للمبتدئين تساعدك على فهم
+              <strong>ما هو تحليل البيانات؟</strong>
+              وكيف نستخدم البيانات بطريقة سهلة وواضحة، مع التعرف على أساسيات
+              <strong>Excel</strong>
+              و
+              <strong>Power BI</strong>
+              دون الحاجة إلى خبرة سابقة.
+            </p>
+          </div>
+
+          <!-- =================================================
+           INTERACTIVE DATA DASHBOARD
+      ================================================== -->
+
+          <div class="dashboard" id="dashboard">
+            <div class="dash-head">
+              <div class="dash-title">📊 تحليل البيانات المباشر</div>
+
+              <div class="live">
+                <span class="live-dot"></span>
+                LIVE DATA
+              </div>
+            </div>
+
+            <!-- TABLE -->
+
+            <div class="simple-table">
+              <div class="table-row">
+                <div>الشهر</div>
+                <div>المبيعات</div>
+                <div>المنتجات</div>
+              </div>
+
+              <div class="table-row data-row">
+                <div>يناير</div>
+                <div class="data-value" id="sales1">120</div>
+                <div class="data-value" id="products1">25</div>
+              </div>
+
+              <div class="table-row data-row">
+                <div>فبراير</div>
+                <div class="data-value" id="sales2">180</div>
+                <div class="data-value" id="products2">32</div>
+              </div>
+
+              <div class="table-row data-row">
+                <div>مارس</div>
+                <div class="data-value" id="sales3">240</div>
+                <div class="data-value" id="products3">41</div>
+              </div>
+            </div>
+
+            <!-- CHART -->
+
+            <div class="chart-area">
+              <div class="grid-lines"></div>
+
+              <div class="chart-label">مؤشرات المبيعات</div>
+
+              <div class="bars">
+                <div class="bar-wrap" data-index="0">
+                  <span class="bar-value">120</span>
+                  <div class="bar" style="--h: 38%"></div>
+                </div>
+
+                <div class="bar-wrap" data-index="1">
+                  <span class="bar-value">155</span>
+                  <div class="bar" style="--h: 51%"></div>
+                </div>
+
+                <div class="bar-wrap" data-index="2">
+                  <span class="bar-value">132</span>
+                  <div class="bar" style="--h: 44%"></div>
+                </div>
+
+                <div class="bar-wrap" data-index="3">
+                  <span class="bar-value">190</span>
+                  <div class="bar" style="--h: 64%"></div>
+                </div>
+
+                <div class="bar-wrap" data-index="4">
+                  <span class="bar-value">225</span>
+                  <div class="bar" style="--h: 77%"></div>
+                </div>
+
+                <div class="bar-wrap" data-index="5">
+                  <span class="bar-value">250</span>
+                  <div class="bar" style="--h: 88%"></div>
+                </div>
+              </div>
+
+              <!-- ANALYSIS LINE -->
+
+              <div class="analysis-line">
+                <svg
+                  class="analysis-svg"
+                  viewBox="0 0 600 105"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    class="analysis-path"
+                    d="
+                  M 10 82
+                  C 65 72,
+                  95 60,
+                  125 67
+                  S 190 80,
+                  235 55
+                  S 300 40,
+                  345 48
+                  S 410 60,
+                  455 35
+                  S 520 18,
+                  590 12
+                "
+                  />
+
+                  <circle class="data-point" cx="10" cy="82" r="3" />
+
+                  <circle class="data-point" cx="125" cy="67" r="3" />
+
+                  <circle class="data-point" cx="235" cy="55" r="3" />
+
+                  <circle class="data-point" cx="345" cy="48" r="3" />
+
+                  <circle class="data-point" cx="455" cy="35" r="3" />
+
+                  <circle class="data-point" cx="590" cy="12" r="3" />
+                </svg>
+              </div>
+
+              <div class="analysis-status">↗ تحليل الاتجاه...</div>
+
+              <div class="chart-footer">
+                <span>يناير</span>
+                <span>فبراير</span>
+                <span>مارس</span>
+                <span>أبريل</span>
+                <span>مايو</span>
+                <span>يونيو</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+       INFO
+  ====================================================== -->
+
+      <section class="info-strip">
+        <div class="info">
+          <div class="icon">🌱</div>
+          <h4>للمبتدئين</h4>
+          <p>لا تحتاج خبرة سابقة</p>
+        </div>
+
+        <div class="info">
+          <div class="icon">📊</div>
+          <h4>تحليل البيانات</h4>
+          <p>فهم المفهوم بطريقة بسيطة</p>
+        </div>
+
+        <div class="info">
+          <div class="icon">📗</div>
+          <h4>Excel</h4>
+          <p>أساسيات التعامل مع البيانات</p>
+        </div>
+
+        <div class="info">
+          <div class="icon">📈</div>
+          <h4>Power BI</h4>
+          <p>التعرف على التقارير والرسوم</p>
+        </div>
+      </section>
+
+      <!-- =====================================================
+       WHAT YOU LEARN
+  ====================================================== -->
+
+      <section class="section">
+        <div class="section-title">
+          <span>ماذا ستتعلم؟</span>
+        </div>
+
+        <div class="four-grid">
+          <div class="box">
+            <div class="box-icon">💡</div>
+
+            <h3>ما هو تحليل البيانات؟</h3>
+
+            <ul>
+              <li>معنى تحليل البيانات</li>
+              <li>لماذا نحتاج تحليل البيانات؟</li>
+              <li>أمثلة بسيطة من الحياة والعمل</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <div class="box-icon">📗</div>
+
+            <h3>أساسيات Excel</h3>
+
+            <ul>
+              <li>إدخال وترتيب البيانات</li>
+              <li>الجداول والخلايا</li>
+              <li>العمليات والحسابات البسيطة</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <div class="box-icon">📊</div>
+
+            <h3>قراءة البيانات</h3>
+
+            <ul>
+              <li>فهم الجداول</li>
+              <li>قراءة الأرقام</li>
+              <li>المقارنة بين البيانات</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <div class="box-icon">📈</div>
+
+            <h3>Power BI</h3>
+
+            <ul>
+              <li>التعرف على Power BI</li>
+              <li>إنشاء رسم بسيط</li>
+              <li>عرض البيانات بشكل واضح</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+       MODULES
+  ====================================================== -->
+
+      <section class="modules-section">
+        <div class="section-title">
+          <span>محاور الدورة</span>
+        </div>
+
+        <div class="modules">
+          <div class="module">
+            <div class="number">01</div>
+            <div>
+              <h4>مقدمة في تحليل البيانات</h4>
+              <p>ما هي البيانات؟ وما معنى تحليل البيانات؟</p>
+            </div>
+          </div>
+
+          <div class="module">
+            <div class="number">02</div>
+            <div>
+              <h4>فهم البيانات والجداول</h4>
+              <p>قراءة البيانات وترتيبها وفهمها</p>
+            </div>
+          </div>
+
+          <div class="module">
+            <div class="number">03</div>
+            <div>
+              <h4>Excel للمبتدئين</h4>
+              <p>أساسيات Excel والتعامل مع الخلايا والجداول</p>
+            </div>
+          </div>
+
+          <div class="module">
+            <div class="number">04</div>
+            <div>
+              <h4>الحسابات البسيطة</h4>
+              <p>الجمع والمتوسط والنسب والحسابات الأساسية</p>
+            </div>
+          </div>
+
+          <div class="module">
+            <div class="number">05</div>
+            <div>
+              <h4>الرسوم البيانية</h4>
+              <p>تحويل الأرقام إلى رسوم سهلة القراءة</p>
+            </div>
+          </div>
+
+          <div class="module">
+            <div class="number">06</div>
+            <div>
+              <h4>أساسيات الإحصاء</h4>
+              <p>المتوسط والنسب والمقارنة بين القيم</p>
+            </div>
+          </div>
+
+          <div class="module">
+            <div class="number">07</div>
+            <div>
+              <h4>مقدمة في Power BI</h4>
+              <p>التعرف على البرنامج وفكرته الأساسية</p>
+            </div>
+          </div>
+
+          <div class="module">
+            <div class="number">08</div>
+            <div>
+              <h4>تقرير بسيط</h4>
+              <p>إنشاء عرض بسيط للبيانات والنتائج</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+       TOOLS
+  ====================================================== -->
+
+      <section class="section">
+        <div class="section-title">
+          <span>الأدوات المستخدمة</span>
+        </div>
+
+        <div class="tools">
+          <div class="tool">
+            <div class="tool-icon">📗</div>
+            <h4>Microsoft Excel</h4>
+            <p>أساسيات الجداول والحسابات</p>
+          </div>
+
+          <div class="tool">
+            <div class="tool-icon">📊</div>
+            <h4>Power BI</h4>
+            <p>أساسيات عرض البيانات</p>
+          </div>
+
+          <div class="tool">
+            <div class="tool-icon">📄</div>
+            <h4>ملفات البيانات</h4>
+            <p>التعامل مع بيانات بسيطة</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+       WHAT YOU GET
+  ====================================================== -->
+
+      <section class="section">
+        <div class="two-grid">
+          <div class="dark-box">
+            <h3>🎯 ماذا ستحصل؟</h3>
+
+            <ul>
+              <li>فهم واضح لمفهوم تحليل البيانات</li>
+              <li>معرفة أساسيات Excel</li>
+              <li>التعرف على Power BI</li>
+              <li>تطبيقات بسيطة على البيانات</li>
+              <li>شهادة خبرة ومشروع تخرج في الدورة</li>
+            </ul>
+          </div>
+
+          <div class="dark-box">
+            <h3>🚀 ماذا ستكتسب؟</h3>
+
+            <ul>
+              <li>قراءة وفهم الجداول</li>
+              <li>التعامل مع بيانات بسيطة</li>
+              <li>إجراء حسابات أساسية</li>
+              <li>إنشاء رسوم بيانية بسيطة</li>
+              <li>فهم فكرة التقارير ولوحات البيانات</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+       WHO IS IT FOR
+  ====================================================== -->
+
+      <section class="section">
+        <div class="section-title">
+          <span>الدورة مناسبة لـ</span>
+        </div>
+
+        <div class="four-grid">
+          <div class="box">
+            <div class="box-icon">🎓</div>
+            <h3>الطلاب</h3>
+            <p>لكل طالب يريد التعرف على مجال تحليل البيانات من البداية.</p>
+          </div>
+
+          <div class="box">
+            <div class="box-icon">🌱</div>
+            <h3>المبتدئين</h3>
+            <p>مناسبة لمن لا يملك أي خبرة سابقة في تحليل البيانات.</p>
+          </div>
+
+          <div class="box">
+            <div class="box-icon">💼</div>
+            <h3>الموظفين</h3>
+            <p>لمن يريد فهم البيانات واستخدام Excel في عمله بشكل أفضل.</p>
+          </div>
+
+          <div class="box">
+            <div class="box-icon">🚀</div>
+            <h3>الراغبين بدخول المجال</h3>
+            <p>
+              كبداية بسيطة قبل الانتقال إلى مستويات تحليل البيانات المتقدمة.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+       SKILLS
+  ====================================================== -->
+
+      <section class="section">
+        <div class="section-title">
+          <span>المهارات المكتسبة</span>
+        </div>
+
+        <div class="skills">
+          <div class="skill">
+            <div class="skill-icon">📊</div>
+            <h4>فهم البيانات</h4>
+            <p>التعرف على أنواع البيانات وكيفية قراءتها</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">📗</div>
+            <h4>أساسيات Excel</h4>
+            <p>التعامل مع الجداول والخلايا والحسابات</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">➗</div>
+            <h4>حسابات بسيطة</h4>
+            <p>المتوسط والنسب والمقارنات الأساسية</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">📈</div>
+            <h4>الرسوم البيانية</h4>
+            <p>تحويل البيانات إلى رسوم واضحة</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">🧮</div>
+            <h4>إحصاء بسيط</h4>
+            <p>التعرف على المفاهيم الإحصائية الأساسية</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">📊</div>
+            <h4>Power BI</h4>
+            <p>التعرف على البرنامج وطريقة عرض البيانات</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">🔎</div>
+            <h4>قراءة النتائج</h4>
+            <p>فهم ما تخبرنا به البيانات</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">💡</div>
+            <h4>التفكير التحليلي</h4>
+            <p>بداية التفكير بطريقة منظمة مع البيانات</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+       COURSE INFO
+  ====================================================== -->
+
+      <section class="section">
+        <div class="two-grid">
+          <div class="box">
+            <div class="box-icon">⏱️</div>
+
+            <h3>مدة الدورة</h3>
+
+            <p
+              style="
+                font-size: 30px;
+                font-weight: 900;
+                color: #1777d2;
+                margin-top: 10px;
+              "
+            >
+              شهر واحد وعدد الجلسات 6
+            </p>
+
+            <p style="color: #718292">
+              دورة تمهيدية ومبسطة جدًا، مناسبة للبدء من الصفر.
+            </p>
+          </div>
+
+          <div class="box">
+            <div class="box-icon">⭐</div>
+
+            <h3>مميزات الدورة</h3>
+
+            <ul>
+              <li>شرح مبسط للمبتدئين</li>
+              <li>أمثلة عملية سهلة</li>
+              <li>تطبيق على Excel</li>
+              <li>مقدمة في Power BI</li>
+              <li>لا تحتاج خبرة سابقة</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+       QUOTE
+  ====================================================== -->
+
+      <section
+        style="padding: 45px 30px; text-align: center; background: #f4f8fc"
+      >
+        <div
+          style="
+            max-width: 800px;
+            margin: auto;
+            font-size: 25px;
+            line-height: 1.9;
+            font-weight: 800;
+            color: #0b3158;
+          "
+        >
+          ❝ البيانات وحدها لا تكفي، المهم أن تعرف كيف تفهمها ❞
+
+          <div
+            style="
+              margin-top: 10px;
+              font-size: 14px;
+              color: #1a82d9;
+              font-weight: 700;
+            "
+          >
+            ابدأ من الأساسيات وافهم عالم البيانات خطوة بخطوة
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+       PRICE
+  ====================================================== -->
+
+      <section class="price-section">
+        <h2>ابدأ الآن</h2>
+
+        <div class="price">
+          700
+          <span class="currency"> ل.س </span>
+        </div>
+
+        <p class="price-note">سعر الدورة الكامل</p>
+
+        <div class="duration">
+          <span class="calendar"> 📅 </span>
+
+          <span> مدة الدورة: شهر واحد وعدد الجلسات 6 </span>
+        </div>
+
+        <br />
+
+        <a
+          href="https://wa.me/96337015714"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="join"
+        >
+          🚀 ابدأ رحلتك الآن
+        </a>
+      </section>
+
+      <!-- =====================================================
+       CONTACT
+  ====================================================== -->
+
+      <section class="section contact-section" id="contact">
+        <div class="section-title">
+          <span>📞 التواصل</span>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-card">
+            <div class="contact-icon-box">
+              <span>👨‍🏫</span>
+            </div>
+
+            <div class="contact-content">
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>يمكنك التواصل مباشرة عبر واتساب</p>
+            </div>
+
+            <a
+              href="https://wa.me/963995980568"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="whatsapp-btn"
+            >
+              <span class="whatsapp-icon"> ◉ </span>
+
+              <span> تواصل عبر واتساب </span>
+
+              <span class="arrow"> ← </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+      <footer>
+        <p>
+          جميع الحقوق محفوظة © 2027
+          <br />
+          اعداد المهندسة لين حسن الكردي
+        </p>
+      </footer>
+    </div>
+
+    <!-- =========================================================
+     INTERACTIVE DATA JAVASCRIPT
+========================================================== -->
+
+    <script>
+      const bars = document.querySelectorAll(".bar-wrap");
+
+      const sales = [
+        document.getElementById("sales1"),
+        document.getElementById("sales2"),
+        document.getElementById("sales3"),
+      ];
+
+      const products = [
+        document.getElementById("products1"),
+        document.getElementById("products2"),
+        document.getElementById("products3"),
+      ];
+
+      let chartData = [120, 155, 132, 190, 225, 250];
+
+      function randomVariation(value) {
+        const variation = Math.floor(Math.random() * 41) - 20;
+
+        return Math.max(70, Math.min(280, value + variation));
+      }
+
+      function updateChart() {
+        chartData = chartData.map((value) => {
+          return randomVariation(value);
+        });
+
+        bars.forEach((wrapper, index) => {
+          const value = chartData[index];
+
+          const percentage = Math.max(20, Math.min(92, (value / 280) * 100));
+
+          const bar = wrapper.querySelector(".bar");
+
+          const label = wrapper.querySelector(".bar-value");
+
+          bar.style.setProperty("--h", percentage + "%");
+
+          label.textContent = Math.round(value);
+        });
+
+        const firstSales = Math.round(
+          chartData[0] * (0.95 + Math.random() * 0.1),
+        );
+
+        const secondSales = Math.round(
+          chartData[2] * (1.05 + Math.random() * 0.1),
+        );
+
+        const thirdSales = Math.round(
+          chartData[5] * (0.95 + Math.random() * 0.12),
+        );
+
+        sales[0].textContent = firstSales;
+
+        sales[1].textContent = secondSales;
+
+        sales[2].textContent = thirdSales;
+
+        products[0].textContent = Math.round(firstSales / 4.8);
+
+        products[1].textContent = Math.round(secondSales / 4.6);
+
+        products[2].textContent = Math.round(thirdSales / 4.4);
+
+        [...sales, ...products].forEach((element) => {
+          element.animate(
+            [
+              {
+                transform: "scale(1)",
+                opacity: 0.65,
+              },
+              {
+                transform: "scale(1.12)",
+                opacity: 1,
+              },
+              {
+                transform: "scale(1)",
+                opacity: 1,
+              },
+            ],
+            {
+              duration: 500,
+              easing: "ease-out",
+            },
+          );
+        });
+      }
+
+      setTimeout(() => {
+        updateChart();
+      }, 900);
+
+      setInterval(() => {
+        updateChart();
+      }, 2200);
+
+      bars.forEach((wrapper) => {
+        wrapper.addEventListener("mouseenter", () => {
+          bars.forEach((other) => {
+            other.style.opacity = "0.45";
+          });
+
+          wrapper.style.opacity = "1";
+
+          const bar = wrapper.querySelector(".bar");
+
+          bar.style.filter = "brightness(1.15) saturate(1.15)";
+        });
+
+        wrapper.addEventListener("mouseleave", () => {
+          bars.forEach((other) => {
+            other.style.opacity = "1";
+          });
+
+          const bar = wrapper.querySelector(".bar");
+
+          bar.style.filter = "";
+        });
+      });
+
+      const dashboard = document.getElementById("dashboard");
+
+      dashboard.addEventListener("mousemove", (event) => {
+        if (window.innerWidth <= 900) return;
+
+        const rect = dashboard.getBoundingClientRect();
+
+        const x = event.clientX - rect.left;
+
+        const y = event.clientY - rect.top;
+
+        const rotateY = (x / rect.width - 0.5) * 4;
+
+        const rotateX = (y / rect.height - 0.5) * -4;
+
+        dashboard.style.transform = `
+        perspective(900px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        translateY(-5px)
+      `;
+      });
+
+      dashboard.addEventListener("mouseleave", () => {
+        dashboard.style.transform =
+          "perspective(900px) rotateX(0) rotateY(0) translateY(0)";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1624 @@
+<!doctype html>
+
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>البيان للمحاسبة | Coursyria</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Cairo", sans-serif;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(28, 190, 190, 0.12),
+            transparent 30%
+          ),
+          linear-gradient(135deg, #f4ffff, #eef7fb);
+        color: #123b50;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .course-page {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        background: #ffffff;
+        overflow: hidden;
+        box-shadow: 0 0 50px rgba(15, 80, 100, 0.08);
+        position: relative;
+      }
+
+      /* =====================================================
+         SCROLL PROGRESS BAR
+      ====================================================== */
+
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 4px;
+        z-index: 9999;
+        background: transparent;
+      }
+
+      .scroll-progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #159c9c, #35c2b8, #2768a5);
+        background-size: 200% 100%;
+        box-shadow: 0 0 12px rgba(24, 165, 165, 0.6);
+        transition: width 0.1s ease-out;
+        animation: progressShine 3s linear infinite;
+      }
+
+      @keyframes progressShine {
+        0% {
+          background-position: 0% 50%;
+        }
+
+        100% {
+          background-position: 200% 50%;
+        }
+      }
+
+      /* =====================================================
+         REVEAL ON SCROLL
+      ====================================================== */
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .stagger-item {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+
+      .stagger-item.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      /* =====================================================
+         HEADER
+      ====================================================== */
+
+      .hero {
+        position: relative;
+        min-height: 560px;
+        padding: 60px 55px;
+        display: grid;
+        grid-template-columns: 0.8fr 1.5fr;
+        gap: 50px;
+        align-items: center;
+        overflow: hidden;
+
+        background:
+          radial-gradient(
+            circle at 90% 10%,
+            rgba(36, 190, 187, 0.2),
+            transparent 30%
+          ),
+          radial-gradient(
+            circle at 10% 90%,
+            rgba(36, 112, 180, 0.1),
+            transparent 30%
+          ),
+          linear-gradient(135deg, #ffffff, #effbfb);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        border: 35px solid rgba(23, 172, 172, 0.06);
+        border-radius: 50%;
+        left: -190px;
+        bottom: -220px;
+        animation: driftOne 9s ease-in-out infinite;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        border: 25px solid rgba(30, 107, 170, 0.06);
+        border-radius: 50%;
+        right: -130px;
+        top: -120px;
+        animation: driftTwo 11s ease-in-out infinite;
+      }
+
+      @keyframes driftOne {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+
+        50% {
+          transform: translate(20px, -15px) scale(1.05);
+        }
+      }
+
+      @keyframes driftTwo {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+
+        50% {
+          transform: translate(-15px, 18px) scale(1.08);
+        }
+      }
+
+      /* =====================================================
+         BRAND
+      ====================================================== */
+
+      .brand-box {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+      }
+
+      .brand-logo {
+        width: 145px;
+        height: 145px;
+        margin: auto;
+        border-radius: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(145deg, #073f5c, #18aaa8);
+        color: #ffffff;
+        font-size: 76px;
+        font-weight: 900;
+
+        box-shadow:
+          0 20px 50px rgba(12, 91, 111, 0.25),
+          inset 0 2px 10px rgba(255, 255, 255, 0.2);
+
+        position: relative;
+        animation: logoFloat 4.5s ease-in-out infinite;
+      }
+
+      @keyframes logoFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+          transform: translateY(-9px) rotate(-2deg);
+        }
+      }
+
+      .brand-logo::before {
+        content: "";
+        position: absolute;
+        inset: -12px;
+        border: 2px solid rgba(25, 174, 174, 0.35);
+        border-radius: 42px;
+        animation: pulse 3s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.4;
+        }
+
+        50% {
+          transform: scale(1.08);
+          opacity: 0.1;
+        }
+      }
+
+      .brand-name {
+        margin-top: 25px;
+        font-size: 34px;
+        font-weight: 900;
+        letter-spacing: 4px;
+        color: #123d55;
+      }
+
+      .brand-subtitle {
+        margin-top: 5px;
+        color: #1ba7a6;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 2px;
+      }
+
+      /* =====================================================
+         HERO CONTENT
+      ====================================================== */
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .course-badge {
+        position: relative;
+        display: inline-block;
+        padding: 9px 25px;
+        border-radius: 30px;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 800;
+        background: linear-gradient(90deg, #159c9c, #35c2b8);
+        box-shadow: 0 8px 20px rgba(24, 165, 165, 0.18);
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+
+      .course-badge::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -60%;
+        width: 45%;
+        height: 100%;
+
+        background: linear-gradient(
+          115deg,
+          transparent,
+          rgba(255, 255, 255, 0.55),
+          transparent
+        );
+
+        animation: shimmer 3.2s ease-in-out infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          right: 130%;
+        }
+
+        55%,
+        100% {
+          right: -60%;
+        }
+      }
+
+      .hero-title {
+        font-size: clamp(45px, 6vw, 76px);
+        line-height: 1.1;
+        color: #073d59;
+        font-weight: 900;
+      }
+
+      .hero-title span {
+        color: #16aaa9;
+      }
+
+      .english-title {
+        margin-top: 8px;
+        font-size: 34px;
+        font-weight: 900;
+        color: #2768a5;
+        letter-spacing: 3px;
+      }
+
+      .hero-description {
+        margin-top: 18px;
+        max-width: 700px;
+        color: #60737b;
+        line-height: 2.1;
+        font-size: 17px;
+      }
+
+      /* =====================================================
+         COURSE INFO
+      ====================================================== */
+
+      .course-info {
+        margin-top: 28px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .info-card {
+        padding: 17px 10px;
+        border-radius: 15px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #d8eeee;
+        box-shadow: 0 8px 20px rgba(30, 120, 130, 0.05);
+
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .info-card:hover {
+        transform: translateY(-5px);
+        border-color: #2cb8b4;
+        box-shadow: 0 14px 28px rgba(20, 150, 150, 0.14);
+      }
+
+      .info-icon {
+        font-size: 27px;
+        margin-bottom: 5px;
+        display: inline-block;
+        transition: transform 0.35s ease;
+      }
+
+      .info-card:hover .info-icon {
+        transform: scale(1.18) rotate(-6deg);
+      }
+
+      .info-card strong {
+        display: block;
+        color: #12455d;
+        font-size: 14px;
+      }
+
+      .info-card span {
+        color: #16aaa9;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      /* =====================================================
+         SECTION
+      ====================================================== */
+
+      .section {
+        padding: 60px 45px;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 31px;
+        color: #073e5b;
+        font-weight: 900;
+        margin-bottom: 35px;
+      }
+
+      .section-title span {
+        color: #16aaa9;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        content: "";
+        display: inline-block;
+        width: 65px;
+        height: 2px;
+        background: #2cb8b4;
+        margin: 0 15px 8px;
+      }
+
+      /* =====================================================
+         BENEFITS
+      ====================================================== */
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .benefit-card {
+        padding: 25px 15px;
+        text-align: center;
+        border-radius: 18px;
+        background: linear-gradient(145deg, #ffffff, #f1fbfb);
+        border: 1px solid #d7eeee;
+        transition: 0.3s;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 15px 30px rgba(22, 160, 160, 0.12);
+        border-color: #36bbb7;
+      }
+
+      .benefit-icon {
+        font-size: 38px;
+        margin-bottom: 10px;
+        display: inline-block;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .benefit-card:hover .benefit-icon {
+        transform: scale(1.2) rotate(8deg);
+      }
+
+      .benefit-card h3 {
+        color: #15445b;
+        font-size: 16px;
+      }
+
+      .benefit-card p {
+        margin-top: 5px;
+        color: #75858b;
+        font-size: 11px;
+      }
+
+      /* =====================================================
+         MODULES
+      ====================================================== */
+
+      .modules-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        perspective: 1200px;
+      }
+
+      .module-card {
+        position: relative;
+        padding: 27px 22px;
+        min-height: 230px;
+        border-radius: 20px;
+        background: linear-gradient(145deg, #ffffff, #f3fbfb);
+        border: 1px solid #d5eeee;
+        overflow: hidden;
+
+        transition:
+          transform 0.2s ease-out,
+          box-shadow 0.3s ease,
+          border-color 0.3s ease;
+
+        transform-style: preserve-3d;
+        will-change: transform;
+      }
+
+      .module-card::after {
+        content: "";
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: rgba(24, 175, 174, 0.06);
+        left: -35px;
+        bottom: -35px;
+      }
+
+      .module-card:hover {
+        border-color: #2cb6b3;
+        box-shadow: 0 18px 35px rgba(20, 130, 140, 0.15);
+      }
+
+      .module-number {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #e1f7f7;
+        border: 2px solid #20aaa8;
+        color: #148f92;
+        font-weight: 900;
+        margin-bottom: 15px;
+
+        transition:
+          transform 0.35s ease,
+          background 0.35s ease,
+          color 0.35s ease;
+      }
+
+      .module-card:hover .module-number {
+        background: #159c9c;
+        color: #ffffff;
+        transform: scale(1.1);
+      }
+
+      .module-card h3 {
+        color: #123f57;
+        font-size: 19px;
+        margin-bottom: 12px;
+      }
+
+      .module-card p {
+        color: #65767d;
+        font-size: 12px;
+        line-height: 2;
+      }
+
+      /* =====================================================
+         LEARNING
+      ====================================================== */
+
+      .learning-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+      }
+
+      .learning-card {
+        padding: 30px;
+        border-radius: 20px;
+        background: #f5fbfc;
+        border: 1px solid #d7eeee;
+      }
+
+      .learning-card h3 {
+        color: #0a4a63;
+        font-size: 21px;
+        margin-bottom: 18px;
+      }
+
+      .learning-list {
+        list-style: none;
+      }
+
+      .learning-list li {
+        position: relative;
+        padding: 11px 0;
+        border-bottom: 1px solid #dceeee;
+        color: #586c74;
+        font-size: 13px;
+
+        transition:
+          transform 0.25s ease,
+          color 0.25s ease;
+      }
+
+      .learning-list li:hover {
+        transform: translateX(-6px);
+        color: #0a4a63;
+      }
+
+      .learning-list li:last-child {
+        border-bottom: none;
+      }
+
+      .learning-list li::before {
+        content: "✓";
+        color: #16aaa9;
+        font-weight: 900;
+        margin-left: 10px;
+        display: inline-block;
+        transition: transform 0.25s ease;
+      }
+
+      .learning-list li:hover::before {
+        transform: scale(1.3);
+      }
+
+      /* =====================================================
+         WHO
+      ====================================================== */
+
+      .who-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 17px;
+      }
+
+      .who-card {
+        padding: 25px 12px;
+        text-align: center;
+        border-radius: 17px;
+        background: linear-gradient(145deg, #ffffff, #f4fbfb);
+        border: 1px solid #d7eeee;
+        transition: 0.3s;
+      }
+
+      .who-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 30px rgba(30, 130, 140, 0.1);
+      }
+
+      .who-icon {
+        font-size: 38px;
+        margin-bottom: 9px;
+        display: inline-block;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .who-card:hover .who-icon {
+        transform: scale(1.2) rotate(-8deg);
+      }
+
+      .who-card strong {
+        display: block;
+        color: #143f57;
+        font-size: 15px;
+      }
+
+      .who-card span {
+        color: #74848a;
+        font-size: 11px;
+      }
+
+      /* =====================================================
+         PRICE
+      ====================================================== */
+
+      .price-section {
+        padding: 25px 20px 55px;
+        text-align: center;
+      }
+
+      .price-box {
+        position: relative;
+        max-width: 500px;
+        margin: auto;
+        padding: 35px 25px;
+        border-radius: 25px;
+        color: #ffffff;
+
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(255, 255, 255, 0.15),
+            transparent 35%
+          ),
+          linear-gradient(135deg, #063e5a, #159f9f);
+
+        box-shadow: 0 20px 45px rgba(15, 120, 130, 0.2);
+        overflow: hidden;
+      }
+
+      .price-label {
+        font-size: 15px;
+        opacity: 0.85;
+      }
+
+      .price {
+        margin: 5px 0;
+        font-size: 56px;
+        font-weight: 900;
+        line-height: 1.2;
+      }
+
+      .price-currency {
+        font-size: 19px;
+        font-weight: 700;
+      }
+
+      .price-description {
+        margin-top: 10px;
+        font-size: 13px;
+        opacity: 0.85;
+      }
+
+      .start-button {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        margin-top: 22px;
+        padding: 14px 38px;
+        border-radius: 35px;
+        background: #ffffff;
+        color: #087e83;
+        font-size: 15px;
+        font-weight: 900;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        transition: 0.3s;
+      }
+
+      .start-button:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+      }
+
+      /* =====================================================
+         RIPPLE EFFECT
+      ====================================================== */
+
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        transform: scale(0);
+        animation: rippleAnim 0.6s ease-out;
+        background: rgba(20, 160, 160, 0.35);
+        pointer-events: none;
+      }
+
+      .start-button .ripple {
+        background: rgba(8, 126, 131, 0.25);
+      }
+
+      @keyframes rippleAnim {
+        to {
+          transform: scale(3);
+          opacity: 0;
+        }
+      }
+
+      /* =====================================================
+         CONTACT - NEW DESIGN
+      ====================================================== */
+
+      .contact-section {
+        padding: 60px 45px;
+        text-align: center;
+      }
+
+      .section-heading {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      .section-heading > span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: #073e5b;
+        font-size: 31px;
+        font-weight: 900;
+      }
+
+      .contact-wrapper {
+        max-width: 850px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      .contact-card {
+        position: relative;
+        width: 100%;
+        max-width: 700px;
+        padding: 30px 28px;
+        border-radius: 22px;
+        background: linear-gradient(145deg, #ffffff, #f2fbfb);
+        border: 1px solid #d5eeee;
+        box-shadow: 0 10px 28px rgba(20, 130, 140, 0.06);
+        display: grid;
+        grid-template-columns: 75px 1fr auto;
+        align-items: center;
+        gap: 20px;
+        text-align: right;
+        overflow: hidden;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .contact-card::before {
+        content: "";
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: rgba(22, 170, 169, 0.06);
+        top: -80px;
+        left: -80px;
+        pointer-events: none;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-7px);
+        border-color: #27aaa9;
+        box-shadow: 0 18px 35px rgba(20, 130, 140, 0.14);
+      }
+
+      .contact-icon-box {
+        position: relative;
+        z-index: 1;
+        width: 75px;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        background: #e1f7f7;
+        font-size: 36px;
+        box-shadow: 0 7px 18px rgba(20, 160, 160, 0.08);
+        transition:
+          transform 0.35s ease,
+          background 0.35s ease;
+      }
+
+      .contact-card:hover .contact-icon-box {
+        transform: rotate(-8deg) scale(1.08);
+        background: #c9f2f2;
+      }
+
+      .contact-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .contact-content h3 {
+        color: #123f57;
+        font-size: 17px;
+        font-weight: 900;
+        margin-bottom: 5px;
+      }
+
+      .contact-content p {
+        color: #18a1a1;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .whatsapp-btn {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-width: 185px;
+        padding: 12px 18px;
+        border-radius: 30px;
+        background: linear-gradient(135deg, #159c9c, #18aaa8);
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 900;
+        box-shadow: 0 8px 20px rgba(20, 160, 160, 0.18);
+        overflow: hidden;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .whatsapp-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 13px 27px rgba(20, 160, 160, 0.25);
+      }
+
+      .whatsapp-icon {
+        width: 24px;
+        height: 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        font-size: 12px;
+      }
+
+      .arrow {
+        font-size: 18px;
+        transition: transform 0.25s ease;
+      }
+
+      .whatsapp-btn:hover .arrow {
+        transform: translateX(-4px);
+      }
+
+      /* =====================================================
+         FOOTER - NEW DESIGN
+      ====================================================== */
+
+      footer {
+        padding: 28px 20px;
+        text-align: center;
+        background: linear-gradient(135deg, #063e59, #07546a, #087d7d);
+        color: #d9eeee;
+        font-size: 14px;
+        box-shadow: 0 -10px 30px rgba(6, 62, 89, 0.08);
+      }
+
+      footer p {
+        line-height: 2;
+      }
+
+      footer p::first-line {
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      /* =====================================================
+         RESPONSIVE
+      ====================================================== */
+
+      @media (max-width: 950px) {
+        .hero {
+          grid-template-columns: 1fr;
+          text-align: center;
+          padding: 55px 30px;
+        }
+
+        .hero-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .hero-description {
+          max-width: 650px;
+        }
+
+        .benefits-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .modules-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .who-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .contact-card {
+          grid-template-columns: 75px 1fr;
+        }
+
+        .whatsapp-btn {
+          grid-column: 1 / -1;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 650px) {
+        .hero {
+          padding: 45px 18px;
+          min-height: auto;
+        }
+
+        .brand-logo {
+          width: 115px;
+          height: 115px;
+          border-radius: 28px;
+          font-size: 60px;
+        }
+
+        .brand-name {
+          font-size: 27px;
+        }
+
+        .hero-title {
+          font-size: 43px;
+        }
+
+        .english-title {
+          font-size: 25px;
+        }
+
+        .hero-description {
+          font-size: 14px;
+          line-height: 2;
+        }
+
+        .course-info {
+          grid-template-columns: 1fr;
+          width: 100%;
+          max-width: 400px;
+        }
+
+        .section {
+          padding: 45px 18px;
+        }
+
+        .section-title {
+          font-size: 25px;
+        }
+
+        .section-title::before,
+        .section-title::after {
+          width: 30px;
+          margin: 0 8px 7px;
+        }
+
+        .benefits-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+
+        .benefit-card {
+          padding: 20px 8px;
+        }
+
+        .modules-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .learning-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .who-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* CONTACT MOBILE */
+
+        .contact-section {
+          padding: 45px 18px;
+        }
+
+        .section-heading {
+          margin-bottom: 28px;
+        }
+
+        .section-heading > span {
+          font-size: 25px;
+        }
+
+        .contact-wrapper {
+          width: 100%;
+        }
+
+        .contact-card {
+          grid-template-columns: 1fr;
+          text-align: center;
+          justify-items: center;
+          gap: 14px;
+          padding: 25px 18px;
+        }
+
+        .contact-icon-box {
+          width: 65px;
+          height: 65px;
+          font-size: 30px;
+        }
+
+        .contact-content h3 {
+          font-size: 15px;
+        }
+
+        .contact-content p {
+          font-size: 11px;
+        }
+
+        .whatsapp-btn {
+          width: 100%;
+          min-width: 0;
+          padding: 13px 15px;
+        }
+
+        footer {
+          padding: 25px 15px;
+          font-size: 13px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .hero-title {
+          font-size: 36px;
+        }
+
+        .english-title {
+          font-size: 21px;
+        }
+
+        .benefits-grid,
+        .who-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-title::before,
+        .section-title::after {
+          display: none;
+        }
+
+        .price-box {
+          padding: 30px 15px;
+        }
+
+        .price {
+          font-size: 40px;
+        }
+
+        .start-button {
+          width: 100%;
+          padding: 13px 15px;
+        }
+
+        .section-heading > span {
+          font-size: 23px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =====================================================
+         SCROLL PROGRESS
+    ====================================================== -->
+
+    <div class="scroll-progress">
+      <div class="scroll-progress-fill" id="scrollFill"></div>
+    </div>
+
+    <div class="course-page">
+      <!-- =====================================================
+           HERO
+      ====================================================== -->
+
+      <header class="hero">
+        <div class="brand-box">
+          <div class="brand-logo">C</div>
+
+          <div class="brand-name">COURSYRIA</div>
+
+          <div class="brand-subtitle">LEARN • GROW • LEAD</div>
+        </div>
+
+        <div class="hero-content">
+          <div class="course-badge">⭐ دورة احترافية في المحاسبة</div>
+
+          <h1 class="hero-title">
+            البيان
+            <span>للمحاسبة</span>
+          </h1>
+
+          <div class="english-title">ACCOUNTING</div>
+
+          <p class="hero-description">
+            تعلّم أساسيات المحاسبة بطريقة عملية ومنظمة، واكتسب المهارات التي
+            تساعدك على فهم العمليات المالية وإعداد القيود والتقارير والقوائم
+            المالية.
+          </p>
+
+          <!-- COURSE INFO -->
+
+          <div class="course-info">
+            <div class="info-card">
+              <div class="info-icon">⏱️</div>
+              <strong>مدة الدورة</strong>
+              <span>شهر واحد</span>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">🎓</div>
+              <strong>عدد الجلسات</strong>
+              <span>9 جلسات</span>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">📚</div>
+              <strong>المستوى</strong>
+              <span>المستوى الأول</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- =====================================================
+           BENEFITS
+      ====================================================== -->
+
+      <section class="section reveal">
+        <div class="section-title">لماذا <span>هذه الدورة؟</span></div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card stagger-item">
+            <div class="benefit-icon">👨‍🏫</div>
+            <h3>مدربون محترفون</h3>
+            <p>خبرة وتوجيه مستمر</p>
+          </div>
+
+          <div class="benefit-card stagger-item">
+            <div class="benefit-icon">📊</div>
+            <h3>تطبيق عملي</h3>
+            <p>تمارين وأمثلة واقعية</p>
+          </div>
+
+          <div class="benefit-card stagger-item">
+            <div class="benefit-icon">🏅</div>
+            <h3>شهادة خبرة ومشروع تخرج</h3>
+            <p>تعزز مسارك التعليمي</p>
+          </div>
+
+          <div class="benefit-card stagger-item">
+            <div class="benefit-icon">🎧</div>
+            <h3>دعم ومتابعة</h3>
+            <p>مساعدة أثناء رحلة التعلم</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           MODULES
+      ====================================================== -->
+
+      <section class="section reveal">
+        <div class="section-title">محاور <span>الدورة</span></div>
+
+        <div class="modules-grid">
+          <div class="module-card stagger-item">
+            <div class="module-number">01</div>
+            <h3>مبادئ المحاسبة</h3>
+            <p>
+              مفهوم المحاسبة وأهميتها، أنواع الحسابات، المعادلة المحاسبية،
+              وأساسيات العمل المحاسبي.
+            </p>
+          </div>
+
+          <div class="module-card stagger-item">
+            <div class="module-number">02</div>
+            <h3>القيود اليومية</h3>
+            <p>
+              فهم المدين والدائن، تسجيل العمليات المالية وإعداد القيود المحاسبية
+              بطريقة صحيحة.
+            </p>
+          </div>
+
+          <div class="module-card stagger-item">
+            <div class="module-number">03</div>
+            <h3>دفتر الأستاذ</h3>
+            <p>
+              ترحيل القيود إلى الحسابات، تنظيم الحسابات واستخراج الأرصدة بطريقة
+              عملية.
+            </p>
+          </div>
+
+          <div class="module-card stagger-item">
+            <div class="module-number">04</div>
+            <h3>ميزان المراجعة</h3>
+            <p>
+              إعداد ميزان المراجعة وفهم الأخطاء المحاسبية وكيفية اكتشافها
+              وتصحيحها.
+            </p>
+          </div>
+
+          <div class="module-card stagger-item">
+            <div class="module-number">05</div>
+            <h3>القوائم المالية</h3>
+            <p>
+              التعرف على قائمة الدخل والميزانية العمومية وفهم البيانات المالية
+              الأساسية.
+            </p>
+          </div>
+
+          <div class="module-card stagger-item">
+            <div class="module-number">06</div>
+            <h3>التطبيق العملي</h3>
+            <p>
+              تطبيق دورة محاسبية متكاملة من تسجيل العمليات حتى إعداد التقارير
+              المالية.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           LEARNING
+      ====================================================== -->
+
+      <section class="section reveal">
+        <div class="section-title">ماذا <span>ستتعلم؟</span></div>
+
+        <div class="learning-grid">
+          <div class="learning-card">
+            <h3>📚 المهارات المكتسبة</h3>
+
+            <ul class="learning-list">
+              <li>فهم أساسيات ومبادئ المحاسبة</li>
+              <li>تسجيل العمليات المالية والقيود</li>
+              <li>التعامل مع المدين والدائن</li>
+              <li>إعداد دفتر الأستاذ وميزان المراجعة</li>
+              <li>فهم القوائم المالية الأساسية</li>
+            </ul>
+          </div>
+
+          <div class="learning-card">
+            <h3>📈 الجانب العملي</h3>
+
+            <ul class="learning-list">
+              <li>حل تمارين محاسبية تطبيقية</li>
+              <li>تحليل العمليات المالية</li>
+              <li>تطبيق دورة محاسبية كاملة</li>
+              <li>إعداد التقارير المالية</li>
+              <li>التدريب على حالات عملية</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           WHO IS THIS COURSE FOR
+      ====================================================== -->
+
+      <section class="section reveal">
+        <div class="section-title">لمن <span>هذه الدورة؟</span></div>
+
+        <div class="who-grid">
+          <div class="who-card stagger-item">
+            <div class="who-icon">🎓</div>
+            <strong>طلاب المحاسبة</strong>
+            <span>لتطوير المعرفة والمهارات</span>
+          </div>
+
+          <div class="who-card stagger-item">
+            <div class="who-icon">💼</div>
+            <strong>الموظفون</strong>
+            <span>لتطوير المهارات المهنية</span>
+          </div>
+
+          <div class="who-card stagger-item">
+            <div class="who-icon">🏢</div>
+            <strong>أصحاب الأعمال</strong>
+            <span>لفهم الجانب المالي</span>
+          </div>
+
+          <div class="who-card stagger-item">
+            <div class="who-icon">📊</div>
+            <strong>المبتدئون</strong>
+            <span>لبداية قوية في المحاسبة</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           PRICE
+      ====================================================== -->
+
+      <section class="price-section reveal">
+        <div class="price-box">
+          <div class="price-label">سعر الدورة</div>
+
+          <div class="price" id="priceNumber" data-target="1000">0</div>
+
+          <div class="price-currency">ليرة سورية SP</div>
+
+          <div class="price-description">السعر الكامل للمستوى الأول</div>
+
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="start-button"
+          >
+            🚀 ابدأ رحلتك الآن
+          </a>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           CONTACT
+      ====================================================== -->
+
+      <section class="section contact-section" id="contact">
+        <div class="section-heading">
+          <span> 📞 التواصل </span>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-card">
+            <div class="contact-icon-box">
+              <span>👨‍🏫</span>
+            </div>
+
+            <div class="contact-content">
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>يمكنك التواصل مباشرة عبر واتساب</p>
+            </div>
+
+            <a
+              href="https://wa.me/963995980568"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="whatsapp-btn"
+            >
+              <span class="whatsapp-icon"> ◉ </span>
+
+              <span> تواصل عبر واتساب </span>
+
+              <span class="arrow"> ← </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           FOOTER
+      ====================================================== -->
+
+      <footer>
+        <p>
+          جميع الحقوق محفوظة © 2027
+          <br />
+          اعداد المهندسة لين حسن الكردي
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      /* =====================================================
+         SCROLL PROGRESS BAR
+      ====================================================== */
+
+      const scrollFill = document.getElementById("scrollFill");
+
+      function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+        scrollFill.style.width = progress + "%";
+      }
+
+      window.addEventListener("scroll", updateScrollProgress);
+
+      updateScrollProgress();
+
+      /* =====================================================
+         REVEAL ON SCROLL
+      ====================================================== */
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+
+              const staggerItems =
+                entry.target.querySelectorAll(".stagger-item");
+
+              staggerItems.forEach((item, i) => {
+                setTimeout(() => {
+                  item.classList.add("show");
+                }, i * 110);
+              });
+
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+        },
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => {
+        revealObserver.observe(el);
+      });
+
+      /* =====================================================
+         PRICE COUNT-UP
+      ====================================================== */
+
+      const priceEl = document.getElementById("priceNumber");
+
+      function animateCount(el, target, duration) {
+        const start = 0;
+
+        const startTime = performance.now();
+
+        function step(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+
+          const eased = 1 - Math.pow(1 - progress, 3);
+
+          const value = Math.round(start + (target - start) * eased);
+
+          el.textContent = value;
+
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      const priceObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const target = parseInt(entry.target.dataset.target, 10);
+
+              animateCount(entry.target, target, 1400);
+
+              priceObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+        },
+      );
+
+      if (priceEl) {
+        priceObserver.observe(priceEl);
+      }
+
+      /* =====================================================
+         3D TILT ON MODULE CARDS
+      ====================================================== */
+
+      document.querySelectorAll(".module-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+
+          const x = e.clientX - rect.left;
+
+          const y = e.clientY - rect.top;
+
+          const rotateX = (y / rect.height - 0.5) * -10;
+
+          const rotateY = (x / rect.width - 0.5) * 10;
+
+          card.style.transform = `perspective(900px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-6px)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform =
+            "perspective(900px) rotateX(0) rotateY(0) translateY(0)";
+        });
+      });
+
+      /* =====================================================
+         RIPPLE EFFECT
+      ====================================================== */
+
+      function attachRipple(el) {
+        el.addEventListener("click", function (e) {
+          const rect = el.getBoundingClientRect();
+
+          const ripple = document.createElement("span");
+
+          const size = Math.max(rect.width, rect.height);
+
+          ripple.className = "ripple";
+
+          ripple.style.width = ripple.style.height = size + "px";
+
+          ripple.style.left = e.clientX - rect.left - size / 2 + "px";
+
+          ripple.style.top = e.clientY - rect.top - size / 2 + "px";
+
+          el.appendChild(ripple);
+
+          setTimeout(() => ripple.remove(), 650);
+        });
+      }
+
+      document
+        .querySelectorAll(".start-button, .whatsapp-btn")
+        .forEach(attachRipple);
+    </script>
+  </body>
+</html>

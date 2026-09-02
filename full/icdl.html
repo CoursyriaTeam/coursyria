@@ -1,0 +1,2184 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <meta name="theme-color" content="#071b3a" />
+
+    <meta
+      name="description"
+      content="دورة ICDL - الرخصة الدولية لقيادة الحاسوب | Coursyria"
+    />
+
+    <title>ICDL | Coursyria</title>
+
+    <style>
+      :root {
+        --bg: #06152f;
+        --bg2: #0a2854;
+        --blue: #1688e8;
+        --cyan: #38d9ff;
+        --green: #25b86b;
+        --orange: #ff8845;
+        --red: #f0526b;
+        --purple: #866cff;
+        --gold: #ffd166;
+        --windows: #00a4ef;
+        --white: #fff;
+        --muted: #b9c9df;
+        --card: rgba(255, 255, 255, 0.075);
+        --border: rgba(255, 255, 255, 0.14);
+        --shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: "Tahoma", "Arial", sans-serif;
+        background:
+          radial-gradient(
+            circle at 15% 10%,
+            rgba(22, 136, 232, 0.22),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 85% 30%,
+            rgba(134, 108, 255, 0.14),
+            transparent 25%
+          ),
+          linear-gradient(135deg, #031027, #071b3a 48%, #041126);
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      /* =====================================================
+         PROGRESS
+      ====================================================== */
+
+      .progress {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 4px;
+        width: 0;
+        background: linear-gradient(
+          90deg,
+          var(--cyan),
+          var(--blue),
+          var(--gold)
+        );
+        z-index: 9999;
+        box-shadow: 0 0 15px rgba(56, 217, 255, 0.7);
+      }
+
+      /* =====================================================
+         BACKGROUND
+      ====================================================== */
+
+      .bg-grid {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.25;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+        background-size: 45px 45px;
+        z-index: -2;
+      }
+
+      .orb {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(70px);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .orb.one {
+        width: 220px;
+        height: 220px;
+        background: rgba(22, 136, 232, 0.12);
+        top: 20%;
+        left: -100px;
+      }
+
+      .orb.two {
+        width: 260px;
+        height: 260px;
+        background: rgba(134, 108, 255, 0.1);
+        bottom: 5%;
+        right: -120px;
+      }
+
+      .container {
+        width: min(1180px, 94%);
+        margin: auto;
+      }
+
+      /* =====================================================
+         BRAND
+      ====================================================== */
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        direction: ltr;
+        padding-top: 25px;
+      }
+
+      .logo {
+        width: 58px;
+        height: 68px;
+        display: grid;
+        place-items: center;
+        font-size: 30px;
+        font-weight: 900;
+        border: 2px solid var(--cyan);
+        background: linear-gradient(145deg, #123d70, #07172f);
+        clip-path: polygon(50% 0, 100% 15%, 88% 78%, 50% 100%, 12% 78%, 0 15%);
+        box-shadow: 0 0 25px rgba(56, 217, 255, 0.25);
+      }
+
+      .brand-name {
+        font-size: 29px;
+        font-weight: 900;
+      }
+
+      .brand-name span {
+        color: var(--cyan);
+      }
+
+      .brand-sub {
+        font-size: 9px;
+        color: #9db1cb;
+        letter-spacing: 2px;
+        margin-top: 3px;
+      }
+
+      /* =====================================================
+         HERO
+      ====================================================== */
+
+      .hero {
+        min-height: 720px;
+        display: grid;
+        grid-template-columns: 47% 53%;
+        align-items: center;
+        gap: 20px;
+        padding: 55px 0 50px;
+      }
+
+      .hero-content {
+        order: 1;
+      }
+
+      .course-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 22px;
+        border-radius: 30px;
+        color: #fff;
+        background: rgba(22, 136, 232, 0.14);
+        border: 1px solid rgba(56, 217, 255, 0.5);
+        font-size: 14px;
+        box-shadow: 0 0 25px rgba(22, 136, 232, 0.1);
+      }
+
+      .course-label::before {
+        content: "●";
+        color: #3cff9b;
+        animation: pulse 1.5s infinite;
+      }
+
+      .hero-title {
+        font-size: clamp(75px, 10vw, 125px);
+        line-height: 0.9;
+        margin: 18px 0 12px;
+        font-weight: 1000;
+        letter-spacing: 4px;
+        background: linear-gradient(
+          90deg,
+          #fff,
+          var(--cyan),
+          #fff,
+          var(--gold)
+        );
+        background-size: 250% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: titleFlow 5s linear infinite;
+        filter: drop-shadow(0 10px 25px rgba(56, 217, 255, 0.2));
+      }
+
+      .hero-subtitle {
+        font-size: clamp(21px, 3vw, 34px);
+        font-weight: 900;
+        line-height: 1.4;
+      }
+
+      .hero-gold {
+        margin-top: 7px;
+        color: var(--gold);
+        font-size: 16px;
+      }
+
+      .hero-description {
+        max-width: 590px;
+        margin-top: 17px;
+        color: #cbd8e8;
+        font-size: 16px;
+        line-height: 2;
+      }
+
+      .hero-description strong {
+        color: #fff;
+      }
+
+      /* =====================================================
+         PRICE
+      ====================================================== */
+
+      .price-box {
+        margin-top: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 470px;
+        padding: 14px 19px;
+        border-radius: 15px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.035)
+        );
+        border: 1px solid rgba(255, 209, 102, 0.4);
+        backdrop-filter: blur(12px);
+      }
+
+      .price-label {
+        color: #b8c9dd;
+        font-size: 14px;
+      }
+
+      .price {
+        color: var(--gold);
+        font-size: 27px;
+        font-weight: 900;
+      }
+
+      .price small {
+        color: #a9b7ca;
+        font-size: 10px;
+      }
+
+      /* =====================================================
+         BADGES
+      ====================================================== */
+
+      .badges {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .badge {
+        padding: 12px 5px;
+        text-align: center;
+        border: 1px solid var(--border);
+        border-radius: 13px;
+        background: rgba(255, 255, 255, 0.055);
+        transition: 0.35s;
+      }
+
+      .badge:hover {
+        transform: translateY(-7px);
+        border-color: var(--cyan);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      }
+
+      .badge-icon {
+        font-size: 23px;
+        margin-bottom: 5px;
+      }
+
+      .badge span {
+        font-size: 10px;
+      }
+
+      /* =====================================================
+         DIGITAL DESK
+      ====================================================== */
+
+      .hero-visual {
+        position: relative;
+        height: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        order: 2;
+      }
+
+      .tech-ring {
+        position: absolute;
+        width: 470px;
+        height: 470px;
+        border: 1px solid rgba(56, 217, 255, 0.12);
+        border-radius: 50%;
+        animation: spin 18s linear infinite;
+      }
+
+      .tech-ring::before,
+      .tech-ring::after {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--cyan);
+        box-shadow: 0 0 18px var(--cyan);
+      }
+
+      .tech-ring::before {
+        top: 30px;
+        right: 100px;
+      }
+
+      .tech-ring::after {
+        bottom: 55px;
+        left: 65px;
+        background: var(--gold);
+        box-shadow: 0 0 18px var(--gold);
+      }
+
+      /* =====================================================
+         LAPTOP
+      ====================================================== */
+
+      .laptop {
+        position: relative;
+        width: 440px;
+        height: 290px;
+        border-radius: 20px 20px 9px 9px;
+        background: linear-gradient(145deg, #233b59, #050c18);
+        border: 4px solid #263f5d;
+        transform: perspective(900px) rotateY(-5deg) rotateX(3deg);
+        box-shadow:
+          0 35px 55px rgba(0, 0, 0, 0.6),
+          0 0 50px rgba(22, 136, 232, 0.12);
+        transition: 0.5s;
+      }
+
+      .laptop:hover {
+        transform: perspective(900px) rotateY(0deg) rotateX(0deg)
+          translateY(-8px);
+      }
+
+      .screen {
+        position: absolute;
+        inset: 14px;
+        padding: 14px;
+        border-radius: 10px;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            circle at 70% 20%,
+            rgba(56, 217, 255, 0.16),
+            transparent 30%
+          ),
+          linear-gradient(135deg, #0a3975, #061a38);
+        border: 1px solid #38658e;
+      }
+
+      .screen-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        font-size: 10px;
+        color: #b8d1ec;
+      }
+
+      .online {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .online i {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #38ff98;
+        box-shadow: 0 0 10px #38ff98;
+      }
+
+      /* =====================================================
+         APP GRID
+      ====================================================== */
+
+      .apps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 9px;
+      }
+
+      .app {
+        height: 75px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 10px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: 0.35s;
+      }
+
+      .app::after {
+        content: "";
+        position: absolute;
+        width: 70px;
+        height: 150px;
+        background: rgba(255, 255, 255, 0.15);
+        transform: rotate(25deg) translateX(-100px);
+        transition: 0.5s;
+      }
+
+      .app:hover {
+        transform: translateY(-7px) scale(1.04);
+        filter: brightness(1.15);
+      }
+
+      .app:hover::after {
+        transform: rotate(25deg) translateX(120px);
+      }
+
+      .app-icon {
+        font-size: 27px;
+        font-weight: 900;
+      }
+
+      .word {
+        background: linear-gradient(145deg, #168df0, #064887);
+      }
+
+      .excel {
+        background: linear-gradient(145deg, #25bd69, #08702f);
+      }
+
+      .powerpoint {
+        background: linear-gradient(145deg, #ff8244, #a83b1b);
+      }
+
+      .access {
+        background: linear-gradient(145deg, #ed536b, #791e31);
+      }
+
+      .internet {
+        background: linear-gradient(145deg, #407dd0, #173a70);
+      }
+
+      .security {
+        background: linear-gradient(145deg, #806dff, #342878);
+      }
+
+      .windows-app {
+        background: linear-gradient(135deg, #00a4ef, #0078d4 50%, #005a9e);
+      }
+
+      /* =====================================================
+         SCREEN TYPING
+      ====================================================== */
+
+      .typing {
+        margin-top: 9px;
+        height: 22px;
+        padding: 5px 8px;
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.22);
+        color: #8eeaff;
+        font-size: 8px;
+        overflow: hidden;
+      }
+
+      .typing::after {
+        content: "تعلّم المهارات الرقمية بثقة...";
+        animation: typing 5s steps(30) infinite;
+      }
+
+      /* =====================================================
+         LAPTOP BASE
+      ====================================================== */
+
+      .laptop-base {
+        position: absolute;
+        width: 500px;
+        height: 24px;
+        bottom: -27px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(#b8c4d0, #36485a);
+        border-radius: 4px 4px 35px 35px;
+        box-shadow: 0 18px 25px rgba(0, 0, 0, 0.55);
+      }
+
+      /* =====================================================
+         FLOATING WINDOWS
+      ====================================================== */
+
+      .float-card {
+        position: absolute;
+        padding: 11px 14px;
+        border-radius: 11px;
+        background: rgba(5, 21, 45, 0.85);
+        border: 1px solid rgba(56, 217, 255, 0.35);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        font-size: 10px;
+        color: #dcecff;
+        animation: floatCard 4s ease-in-out infinite;
+      }
+
+      .float-card strong {
+        display: block;
+        color: var(--cyan);
+        font-size: 15px;
+        margin-bottom: 3px;
+      }
+
+      .card-one {
+        top: 50px;
+        right: 0;
+      }
+
+      .card-two {
+        bottom: 75px;
+        left: 0;
+        animation-delay: 1.5s;
+      }
+
+      .card-three {
+        top: 170px;
+        left: -15px;
+        animation-delay: 2.5s;
+      }
+
+      /* =====================================================
+         MOUSE
+      ====================================================== */
+
+      .mouse {
+        position: absolute;
+        right: 15px;
+        bottom: 55px;
+        width: 75px;
+        height: 100px;
+        border-radius: 35px 35px 25px 25px;
+        background: linear-gradient(145deg, #243d5b, #0b1727);
+        border: 2px solid #506a86;
+        transform: rotate(-15deg);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.45);
+      }
+
+      .mouse::before {
+        content: "";
+        position: absolute;
+        top: 17px;
+        left: 50%;
+        width: 5px;
+        height: 20px;
+        border-radius: 5px;
+        transform: translateX(-50%);
+        background: var(--cyan);
+        box-shadow: 0 0 12px var(--cyan);
+      }
+
+      /* =====================================================
+         SECTIONS
+      ====================================================== */
+
+      .section {
+        margin: 50px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 23px;
+        font-weight: 900;
+        margin-bottom: 20px;
+      }
+
+      .section-title span {
+        display: inline-block;
+        padding: 10px 35px;
+        border-radius: 50px;
+        background: rgba(22, 136, 232, 0.1);
+        border: 1px solid rgba(56, 217, 255, 0.25);
+      }
+
+      /* =====================================================
+         MODULES
+      ====================================================== */
+
+      .modules {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+      }
+
+      .module {
+        min-height: 290px;
+        padding: 15px 9px;
+        border-radius: 17px;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.095),
+          rgba(255, 255, 255, 0.035)
+        );
+        border: 1px solid var(--border);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: 0.4s;
+      }
+
+      .module::before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: var(--module-color);
+        opacity: 0.12;
+        top: -45px;
+        right: -35px;
+        filter: blur(10px);
+      }
+
+      .module:hover {
+        transform: translateY(-10px);
+        border-color: var(--module-color);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .module-number {
+        display: inline-grid;
+        place-items: center;
+        width: 40px;
+        height: 25px;
+        border-radius: 7px;
+        background: var(--module-color);
+        color: #fff;
+        font-size: 10px;
+        font-weight: bold;
+      }
+
+      .module-icon {
+        width: 67px;
+        height: 67px;
+        margin: 13px auto;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        background: var(--module-color);
+        font-size: 33px;
+        font-weight: 900;
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        transition: 0.4s;
+      }
+
+      .module:hover .module-icon {
+        transform: rotate(-6deg) scale(1.1);
+      }
+
+      .module h3 {
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+
+      .module ul {
+        list-style: none;
+        text-align: right;
+      }
+
+      .module li {
+        color: #aebfd3;
+        font-size: 9px;
+        line-height: 1.8;
+        padding-right: 12px;
+        position: relative;
+      }
+
+      .module li::before {
+        content: "";
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        position: absolute;
+        right: 0;
+        top: 9px;
+        background: var(--module-color);
+        box-shadow: 0 0 8px var(--module-color);
+      }
+
+      .m1 {
+        --module-color: #168df0;
+      }
+
+      .m2 {
+        --module-color: #25bd69;
+      }
+
+      .m3 {
+        --module-color: #ff8244;
+      }
+
+      .m4 {
+        --module-color: #ed536b;
+      }
+
+      .m5 {
+        --module-color: #407dd0;
+      }
+
+      .m6 {
+        --module-color: #806dff;
+      }
+
+      .m7 {
+        --module-color: #00a4ef;
+      }
+
+      /* =====================================================
+         WINDOWS MODULE
+      ====================================================== */
+
+      .windows-logo {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 3px;
+      }
+
+      .windows-logo span {
+        display: block;
+        background: #fff;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+      }
+
+      .windows-version {
+        margin-top: 8px;
+        color: #9edfff;
+        font-size: 8px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+
+      /* =====================================================
+         PANELS
+      ====================================================== */
+
+      .two-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .panel {
+        padding: 25px;
+        border-radius: 20px;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.085),
+          rgba(255, 255, 255, 0.035)
+        );
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .panel-title {
+        color: var(--cyan);
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 17px;
+      }
+
+      .list {
+        list-style: none;
+      }
+
+      .list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        font-size: 13px;
+      }
+
+      .list li:last-child {
+        border-bottom: 0;
+      }
+
+      .list-icon {
+        min-width: 35px;
+        width: 35px;
+        height: 35px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        background: rgba(56, 217, 255, 0.1);
+        border: 1px solid rgba(56, 217, 255, 0.2);
+      }
+
+      /* =====================================================
+         SKILL
+      ====================================================== */
+
+      .skill {
+        text-align: center;
+        padding: 30px;
+      }
+
+      .skill-orbit {
+        width: 190px;
+        height: 190px;
+        margin: auto;
+        position: relative;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: radial-gradient(circle, #115da2, #071a37 65%, #030d1d);
+        border: 2px solid var(--cyan);
+        box-shadow: 0 0 50px rgba(56, 217, 255, 0.16);
+      }
+
+      .skill-orbit::before,
+      .skill-orbit::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        border: 1px dashed rgba(56, 217, 255, 0.4);
+      }
+
+      .skill-orbit::before {
+        inset: -15px;
+        animation: spin 9s linear infinite;
+      }
+
+      .skill-orbit::after {
+        inset: 12px;
+        border-color: rgba(255, 209, 102, 0.3);
+        animation: spin 6s linear reverse infinite;
+      }
+
+      .skill-main {
+        font-size: 60px;
+        font-weight: 900;
+        color: #fff;
+      }
+
+      .skill-title {
+        margin-top: 20px;
+        color: var(--gold);
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      .skill-text {
+        color: #aebed3;
+        font-size: 13px;
+        margin-top: 7px;
+      }
+
+      /* =====================================================
+         CTA
+      ====================================================== */
+
+      .cta {
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        padding: 45px 25px;
+        border-radius: 25px;
+        background:
+          radial-gradient(
+            circle at 50% 0%,
+            rgba(56, 217, 255, 0.18),
+            transparent 35%
+          ),
+          linear-gradient(135deg, #0b315e, #06162f);
+        border: 1px solid rgba(56, 217, 255, 0.3);
+        box-shadow: var(--shadow);
+      }
+
+      .cta h2 {
+        font-size: 30px;
+      }
+
+      .cta h2 span {
+        color: var(--cyan);
+      }
+
+      .cta p {
+        max-width: 650px;
+        margin: 12px auto;
+        color: #b9c9dc;
+        font-size: 14px;
+        line-height: 1.9;
+      }
+
+      .cta-price {
+        color: var(--gold);
+        font-size: 38px;
+        font-weight: 900;
+        margin: 18px;
+      }
+
+      .cta-price small {
+        font-size: 13px;
+        color: #aebed0;
+      }
+
+      .join {
+        display: inline-block;
+        padding: 14px 50px;
+        border-radius: 12px;
+        color: #06152d;
+        background: linear-gradient(135deg, #38d9ff, #8aeaff);
+        text-decoration: none;
+        font-weight: 900;
+        box-shadow: 0 12px 30px rgba(56, 217, 255, 0.22);
+        transition: 0.35s;
+      }
+
+      .join:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 18px 40px rgba(56, 217, 255, 0.35);
+      }
+
+      /* =====================================================
+         CONTACT
+      ====================================================== */
+
+      .contact-section {
+        margin-top: 65px;
+        margin-bottom: 30px;
+      }
+
+      .section-heading {
+        text-align: center;
+        margin-bottom: 22px;
+      }
+
+      .section-heading span {
+        display: inline-block;
+        padding: 10px 35px;
+        border-radius: 50px;
+        background: rgba(22, 136, 232, 0.1);
+        border: 1px solid rgba(56, 217, 255, 0.25);
+        font-size: 23px;
+        font-weight: 900;
+      }
+
+      .contact-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+
+      .contact-card {
+        width: min(800px, 100%);
+        min-height: 105px;
+        display: grid;
+        grid-template-columns: 60px 1fr auto;
+        align-items: center;
+        gap: 18px;
+        padding: 18px 20px;
+        border-radius: 20px;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.09),
+          rgba(255, 255, 255, 0.035)
+        );
+        border: 1px solid rgba(56, 217, 255, 0.2);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+        transition: 0.4s;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-7px);
+        border-color: var(--cyan);
+        box-shadow:
+          0 25px 60px rgba(0, 0, 0, 0.35),
+          0 0 30px rgba(56, 217, 255, 0.1);
+      }
+
+      .contact-icon-box {
+        width: 60px;
+        height: 60px;
+        display: grid;
+        place-items: center;
+        border-radius: 17px;
+        background: linear-gradient(145deg, #126cc0, #092c58);
+        border: 1px solid rgba(56, 217, 255, 0.35);
+        font-size: 27px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      }
+
+      .contact-content h3 {
+        color: var(--cyan);
+        font-size: 17px;
+        margin-bottom: 7px;
+      }
+
+      .contact-content p {
+        color: #aebfd3;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+
+      /* =====================================================
+         WHATSAPP BUTTON
+      ====================================================== */
+
+      .whatsapp-btn {
+        min-width: 190px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 13px 18px;
+        border-radius: 12px;
+        color: #fff;
+        background: linear-gradient(135deg, #20c66b, #0b8f4c);
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 900;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 10px 25px rgba(32, 198, 107, 0.2);
+        transition: 0.35s;
+      }
+
+      .whatsapp-btn:hover {
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 15px 35px rgba(32, 198, 107, 0.35);
+      }
+
+      .whatsapp-icon {
+        width: 24px;
+        height: 24px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.16);
+        font-size: 12px;
+      }
+
+      .arrow {
+        font-size: 17px;
+        transition: 0.3s;
+      }
+
+      .whatsapp-btn:hover .arrow {
+        transform: translateX(-5px);
+      }
+
+      /* =====================================================
+         FOOTER
+      ====================================================== */
+
+      footer {
+        margin-top: 25px;
+        padding: 25px 15px 35px;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      footer p {
+        color: #8094ad;
+        font-size: 11px;
+        line-height: 2;
+      }
+
+      footer p::first-line {
+        color: #b8c9dc;
+        font-weight: bold;
+      }
+
+      /* =====================================================
+         REVEAL
+      ====================================================== */
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(35px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+
+      .reveal.show {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* =====================================================
+         ANIMATIONS
+      ====================================================== */
+
+      @keyframes titleFlow {
+        to {
+          background-position: 250% center;
+        }
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+
+        50% {
+          opacity: 0.35;
+        }
+      }
+
+      @keyframes floatCard {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+
+      @keyframes typing {
+        0%,
+        15% {
+          content: "تعلّم المهارات الرقمية بثقة...";
+        }
+
+        25%,
+        45% {
+          content: "Word • Excel • PowerPoint";
+        }
+
+        55%,
+        75% {
+          content: "Windows 10 or Windows 11";
+        }
+
+        85%,
+        100% {
+          content: "ابدأ رحلتك الرقمية الآن ✓";
+        }
+      }
+
+      /* =====================================================
+         TABLET
+      ====================================================== */
+
+      @media (max-width: 1100px) {
+        .modules {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media (max-width: 1000px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 40px;
+        }
+
+        .hero-content {
+          text-align: center;
+          order: 1;
+        }
+
+        .hero-description {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .price-box {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .hero-visual {
+          order: 2;
+        }
+
+        .modules {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .two-columns {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* =====================================================
+         MOBILE
+      ====================================================== */
+
+      @media (max-width: 600px) {
+        .container {
+          width: calc(100% - 20px);
+        }
+
+        .brand {
+          justify-content: center;
+          padding-top: 17px;
+        }
+
+        .logo {
+          width: 45px;
+          height: 54px;
+          font-size: 23px;
+        }
+
+        .brand-name {
+          font-size: 21px;
+        }
+
+        .brand-sub {
+          font-size: 6px;
+          letter-spacing: 1px;
+        }
+
+        .hero {
+          min-height: auto;
+          padding: 35px 0 25px;
+          gap: 15px;
+        }
+
+        .course-label {
+          font-size: 11px;
+          padding: 7px 17px;
+        }
+
+        .hero-title {
+          font-size: clamp(58px, 19vw, 78px);
+          margin-top: 14px;
+        }
+
+        .hero-subtitle {
+          font-size: 20px;
+        }
+
+        .hero-gold {
+          font-size: 12px;
+        }
+
+        .hero-description {
+          font-size: 12px;
+          line-height: 1.9;
+        }
+
+        .price-box {
+          padding: 11px 13px;
+        }
+
+        .price-label {
+          font-size: 11px;
+        }
+
+        .price {
+          font-size: 20px;
+        }
+
+        .badges {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .badge {
+          min-height: 72px;
+        }
+
+        .hero-visual {
+          height: 300px;
+          margin-top: 10px;
+        }
+
+        .tech-ring {
+          width: 280px;
+          height: 280px;
+        }
+
+        .laptop {
+          width: min(82vw, 315px);
+          height: min(55vw, 205px);
+          border-width: 3px;
+        }
+
+        .screen {
+          inset: 8px;
+          padding: 8px;
+        }
+
+        .screen-top {
+          font-size: 7px;
+          margin-bottom: 6px;
+        }
+
+        .apps {
+          gap: 4px;
+        }
+
+        .app {
+          height: 42px;
+          border-radius: 5px;
+          font-size: 5px;
+        }
+
+        .app-icon {
+          font-size: 16px;
+        }
+
+        .typing {
+          height: 16px;
+          font-size: 5px;
+          padding: 4px;
+        }
+
+        .laptop-base {
+          width: calc(min(82vw, 315px) + 25px);
+          height: 14px;
+          bottom: -16px;
+        }
+
+        .float-card {
+          padding: 7px 9px;
+          font-size: 6px;
+        }
+
+        .float-card strong {
+          font-size: 9px;
+        }
+
+        .card-one {
+          top: 20px;
+          right: 0;
+        }
+
+        .card-two {
+          bottom: 25px;
+          left: 0;
+        }
+
+        .card-three {
+          top: 120px;
+          left: -3px;
+        }
+
+        .mouse {
+          display: none;
+        }
+
+        .section {
+          margin: 30px 0;
+        }
+
+        .section-title {
+          font-size: 17px;
+        }
+
+        .section-title span {
+          padding: 8px 20px;
+        }
+
+        .modules {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 7px;
+          padding: 0;
+        }
+
+        .module {
+          min-height: 225px;
+          padding: 10px 5px;
+        }
+
+        .module-number {
+          width: 32px;
+          height: 22px;
+          font-size: 9px;
+        }
+
+        .module-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 25px;
+          margin: 9px auto;
+          border-radius: 11px;
+        }
+
+        .windows-logo {
+          width: 35px;
+          height: 35px;
+          gap: 2px;
+        }
+
+        .windows-version {
+          font-size: 6px;
+        }
+
+        .module h3 {
+          font-size: 10px;
+        }
+
+        .module li {
+          font-size: 7.5px;
+          line-height: 1.7;
+        }
+
+        .two-columns {
+          gap: 10px;
+        }
+
+        .panel {
+          padding: 16px 12px;
+          border-radius: 15px;
+        }
+
+        .panel-title {
+          font-size: 16px;
+        }
+
+        .list li {
+          font-size: 10px;
+          gap: 8px;
+        }
+
+        .list-icon {
+          min-width: 30px;
+          width: 30px;
+          height: 30px;
+          font-size: 12px;
+        }
+
+        .skill {
+          padding: 15px;
+        }
+
+        .skill-orbit {
+          width: 135px;
+          height: 135px;
+        }
+
+        .skill-main {
+          font-size: 45px;
+        }
+
+        .skill-title {
+          font-size: 17px;
+        }
+
+        .skill-text {
+          font-size: 10px;
+        }
+
+        .cta {
+          padding: 28px 13px;
+          border-radius: 18px;
+        }
+
+        .cta h2 {
+          font-size: 20px;
+          line-height: 1.6;
+        }
+
+        .cta p {
+          font-size: 11px;
+        }
+
+        .cta-price {
+          font-size: 29px;
+        }
+
+        .join {
+          width: 100%;
+          padding: 13px;
+          font-size: 13px;
+        }
+
+        /* CONTACT MOBILE */
+
+        .contact-section {
+          margin-top: 40px;
+        }
+
+        .section-heading span {
+          font-size: 17px;
+          padding: 8px 20px;
+        }
+
+        .contact-card {
+          grid-template-columns: 48px 1fr;
+          gap: 11px;
+          padding: 14px;
+          min-height: auto;
+        }
+
+        .contact-icon-box {
+          width: 48px;
+          height: 48px;
+          border-radius: 13px;
+          font-size: 21px;
+        }
+
+        .contact-content h3 {
+          font-size: 11px;
+          line-height: 1.6;
+        }
+
+        .contact-content p {
+          font-size: 8px;
+        }
+
+        .whatsapp-btn {
+          grid-column: 1 / -1;
+          width: 100%;
+          min-width: 0;
+          padding: 11px;
+          font-size: 10px;
+        }
+
+        footer {
+          margin-top: 20px;
+          padding: 22px 10px 30px;
+        }
+
+        footer p {
+          font-size: 9px;
+        }
+      }
+
+      /* =====================================================
+         SMALL
+      ====================================================== */
+
+      @media (max-width: 380px) {
+        .hero-title {
+          font-size: 55px;
+        }
+
+        .hero-subtitle {
+          font-size: 17px;
+        }
+
+        .module {
+          min-height: 215px;
+        }
+
+        .module li {
+          font-size: 7px;
+        }
+
+        .hero-visual {
+          height: 275px;
+        }
+
+        .float-card {
+          transform: scale(0.9);
+        }
+      }
+
+      /* =====================================================
+         TOUCH
+      ====================================================== */
+
+      @media (hover: none) {
+        .module:hover,
+        .badge:hover,
+        .contact-card:hover,
+        .join:hover,
+        .whatsapp-btn:hover,
+        .laptop:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="progress"></div>
+
+    <div class="bg-grid"></div>
+
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+
+    <div class="container">
+      <!-- =====================================================
+           BRAND
+      ====================================================== -->
+
+      <div class="brand">
+        <div class="logo">C</div>
+
+        <div>
+          <div class="brand-name">Cours<span>yria</span></div>
+
+          <div class="brand-sub">تعلم • طوّر • احمِ مستقبلك</div>
+        </div>
+      </div>
+
+      <!-- =====================================================
+           HERO
+      ====================================================== -->
+
+      <header class="hero">
+        <div class="hero-content reveal">
+          <div class="course-label">دورة المهارات الرقمية</div>
+
+          <h1 class="hero-title">ICDL</h1>
+
+          <div class="hero-subtitle">الرخصة الدولية لقيادة الحاسوب</div>
+
+          <div class="hero-gold">مهارات أساسية ... لمستقبل رقمي أفضل</div>
+
+          <p class="hero-description">
+            اكتسب المهارات الرقمية الأساسية التي تحتاجها في
+            <strong>الدراسة والعمل والحياة اليومية</strong>
+            من خلال تجربة تدريبية عملية وتفاعلية تساعدك على استخدام الحاسوب بثقة
+            واحتراف.
+          </p>
+
+          <div class="price-box">
+            <div class="price-label">سعر الدورة</div>
+
+            <div class="price">
+              1300
+              <small>ليرة سورية</small>
+            </div>
+          </div>
+
+          <div class="badges">
+            <div class="badge">
+              <div class="badge-icon">🏅</div>
+              شهادة خبرة
+            </div>
+
+            <div class="badge">
+              <div class="badge-icon">💻</div>
+              تطبيقات عملية
+            </div>
+
+            <div class="badge">
+              <div class="badge-icon">👨‍🏫</div>
+              مدربون محترفون
+            </div>
+
+            <div class="badge">
+              <div class="badge-icon">⚡</div>
+              محتوى تفاعلي
+            </div>
+          </div>
+        </div>
+
+        <!-- =====================================================
+             DIGITAL DESK
+        ====================================================== -->
+
+        <div class="hero-visual reveal">
+          <div class="tech-ring"></div>
+
+          <div class="float-card card-one">
+            <strong>7</strong>
+            محاور تدريبية
+          </div>
+
+          <div class="float-card card-two">
+            <strong>100%</strong>
+            تطبيق عملي
+          </div>
+
+          <div class="float-card card-three">
+            <strong>✓</strong>
+            مهارات رقمية
+          </div>
+
+          <div class="laptop">
+            <div class="screen">
+              <div class="screen-top">
+                <span> ICDL DIGITAL WORKSPACE </span>
+
+                <span class="online">
+                  <i></i>
+                  متصل
+                </span>
+              </div>
+
+              <div class="apps">
+                <div class="app word">
+                  <div class="app-icon">W</div>
+                  معالجة النصوص
+                </div>
+
+                <div class="app excel">
+                  <div class="app-icon">X</div>
+                  الجداول
+                </div>
+
+                <div class="app powerpoint">
+                  <div class="app-icon">P</div>
+                  العروض
+                </div>
+
+                <div class="app access">
+                  <div class="app-icon">A</div>
+                  قواعد البيانات
+                </div>
+
+                <div class="app internet">
+                  <div class="app-icon">◎</div>
+                  الإنترنت
+                </div>
+
+                <div class="app security">
+                  <div class="app-icon">♢</div>
+                  الأمن الرقمي
+                </div>
+              </div>
+
+              <div class="typing"></div>
+            </div>
+
+            <div class="laptop-base"></div>
+          </div>
+
+          <div class="mouse"></div>
+        </div>
+      </header>
+
+      <!-- =====================================================
+           MODULES
+      ====================================================== -->
+
+      <section class="section reveal">
+        <div class="section-title">
+          <span>🚀 محاور الدورة</span>
+        </div>
+
+        <div class="modules">
+          <!-- 01 -->
+
+          <div class="module m1">
+            <div class="module-number">01</div>
+
+            <div class="module-icon">W</div>
+
+            <h3>معالجة النصوص</h3>
+
+            <ul>
+              <li>إنشاء وتنسيق المستندات</li>
+              <li>الجداول والفهارس</li>
+              <li>دمج المراسلات</li>
+              <li>الطباعة والتصدير</li>
+            </ul>
+          </div>
+
+          <!-- 02 -->
+
+          <div class="module m2">
+            <div class="module-number">02</div>
+
+            <div class="module-icon">X</div>
+
+            <h3>الجداول الإلكترونية</h3>
+
+            <ul>
+              <li>إدخال البيانات ومعالجتها</li>
+              <li>الدوال والمعادلات</li>
+              <li>الجداول والرسوم البيانية</li>
+              <li>الفرز والتصفية</li>
+            </ul>
+          </div>
+
+          <!-- 03 -->
+
+          <div class="module m3">
+            <div class="module-number">03</div>
+
+            <div class="module-icon">P</div>
+
+            <h3>العروض التقديمية</h3>
+
+            <ul>
+              <li>تصميم عرض احترافي</li>
+              <li>الحركات والانتقالات</li>
+              <li>إدراج الوسائط</li>
+              <li>عرض الشرائح</li>
+            </ul>
+          </div>
+
+          <!-- 04 -->
+
+          <div class="module m4">
+            <div class="module-number">04</div>
+
+            <div class="module-icon">A</div>
+
+            <h3>قواعد البيانات</h3>
+
+            <ul>
+              <li>إنشاء قواعد البيانات</li>
+              <li>الجداول والعلاقات</li>
+              <li>الاستعلامات والتقارير</li>
+              <li>النماذج</li>
+            </ul>
+          </div>
+
+          <!-- 05 -->
+
+          <div class="module m5">
+            <div class="module-number">05</div>
+
+            <div class="module-icon">◎</div>
+
+            <h3>الإنترنت</h3>
+
+            <ul>
+              <li>البحث الفعّال</li>
+              <li>البريد الإلكتروني</li>
+              <li>التواصل الرقمي</li>
+              <li>الخدمات السحابية</li>
+            </ul>
+          </div>
+
+          <!-- 06 -->
+
+          <div class="module m6">
+            <div class="module-number">06</div>
+
+            <div class="module-icon">♢</div>
+
+            <h3>أمن المعلومات</h3>
+
+            <ul>
+              <li>حماية البيانات</li>
+              <li>أمن الأجهزة والشبكات</li>
+              <li>كلمات المرور</li>
+              <li>الخصوصية الرقمية</li>
+            </ul>
+          </div>
+
+          <!-- 07 WINDOWS -->
+
+          <div class="module m7">
+            <div class="module-number">07</div>
+
+            <div class="module-icon">
+              <div class="windows-logo">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <h3>نظام Windows</h3>
+
+            <div class="windows-version">Windows 10 or Windows 11</div>
+
+            <ul>
+              <li>أساسيات نظام التشغيل</li>
+              <li>إدارة الملفات والمجلدات</li>
+              <li>إعدادات النظام</li>
+              <li>التطبيقات والأجهزة</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           PANELS
+      ====================================================== -->
+
+      <section class="section reveal">
+        <div class="two-columns">
+          <div class="panel">
+            <div class="panel-title">✨ ماذا ستكتسب؟</div>
+
+            <ul class="list">
+              <li>
+                <div class="list-icon">🏅</div>
+                <span>شهادة معترف بها عالميًا</span>
+              </li>
+
+              <li>
+                <div class="list-icon">💻</div>
+                <span>إتقان استخدام التطبيقات الأساسية</span>
+              </li>
+
+              <li>
+                <div class="list-icon">💼</div>
+                <span>زيادة فرص الدراسة والعمل</span>
+              </li>
+
+              <li>
+                <div class="list-icon">📈</div>
+                <span>رفع إنتاجيتك في الدراسة والعمل</span>
+              </li>
+
+              <li>
+                <div class="list-icon">🚀</div>
+                <span>بناء أساس رقمي قوي للمستقبل</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">🎯 هذه الدورة لك إذا كنت...</div>
+
+            <ul class="list">
+              <li>
+                <div class="list-icon">🎓</div>
+                <span>طالبًا وتريد تطوير مهاراتك</span>
+              </li>
+
+              <li>
+                <div class="list-icon">💼</div>
+                <span>موظفًا وترغب برفع كفاءتك</span>
+              </li>
+
+              <li>
+                <div class="list-icon">🔎</div>
+                <span>باحثًا عن عمل وتريد التميز</span>
+              </li>
+
+              <li>
+                <div class="list-icon">⚡</div>
+                <span>تريد استخدام الحاسوب بسرعة وكفاءة</span>
+              </li>
+
+              <li>
+                <div class="list-icon">🌐</div>
+                <span>تطمح لمستقبل رقمي أفضل</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           SKILL
+      ====================================================== -->
+
+      <section class="section reveal">
+        <div class="skill">
+          <div class="skill-orbit">
+            <div class="skill-main">✓</div>
+          </div>
+
+          <div class="skill-title">مهارات رقمية بثقة</div>
+
+          <div class="skill-text">تعلّم • طبّق • أتقن • تطوّر</div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           CTA
+      ====================================================== -->
+
+      <section class="section reveal">
+        <div class="cta">
+          <h2>
+            جاهز تبدأ رحلتك
+            <span>الرقمية؟</span>
+          </h2>
+
+          <p>
+            لا تجعل استخدام الحاسوب مهارة عادية. تعلّم الأساسيات بطريقة عملية،
+            وطوّر مهاراتك التي ستحتاجها في دراستك وعملك وحياتك اليومية.
+          </p>
+
+          <div class="cta-price">
+            1300
+            <small>ليرة سورية</small>
+          </div>
+
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="join"
+          >
+            🚀 ابدأ رحلتك الآن
+          </a>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           CONTACT
+      ====================================================== -->
+
+      <section class="section contact-section reveal" id="contact">
+        <div class="section-heading">
+          <span>📞 التواصل</span>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-card">
+            <div class="contact-icon-box">
+              <span>👨‍🏫</span>
+            </div>
+
+            <div class="contact-content">
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>يمكنك التواصل مباشرة عبر واتساب</p>
+            </div>
+
+            <a
+              href="https://wa.me/963995980568"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="whatsapp-btn"
+            >
+              <span class="whatsapp-icon"> ◉ </span>
+
+              <span> تواصل عبر واتساب </span>
+
+              <span class="arrow"> ← </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           FOOTER
+      ====================================================== -->
+
+      <footer>
+        <p>
+          جميع الحقوق محفوظة © 2027
+          <br />
+          اعداد المهندسة لين حسن الكردي
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      /* =====================================================
+         PAGE PROGRESS
+      ====================================================== */
+
+      window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY;
+
+        const height =
+          document.documentElement.scrollHeight - window.innerHeight;
+
+        const progress = height > 0 ? (scrollTop / height) * 100 : 0;
+
+        document.querySelector(".progress").style.width = progress + "%";
+      });
+
+      /* =====================================================
+         SCROLL REVEAL
+      ====================================================== */
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+        },
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => {
+        observer.observe(el);
+      });
+
+      /* =====================================================
+         APP INTERACTION
+      ====================================================== */
+
+      document.querySelectorAll(".app").forEach((app) => {
+        app.addEventListener("click", () => {
+          document.querySelectorAll(".app").forEach((a) => {
+            a.style.filter = "";
+          });
+
+          app.style.filter = "brightness(1.35) saturate(1.25)";
+        });
+      });
+
+      /* =====================================================
+         MOUSE PARALLAX
+      ====================================================== */
+
+      const visual = document.querySelector(".hero-visual");
+
+      const laptop = document.querySelector(".laptop");
+
+      if (window.matchMedia("(hover:hover)").matches) {
+        visual.addEventListener("mousemove", (e) => {
+          const rect = visual.getBoundingClientRect();
+
+          const x = e.clientX - rect.left;
+
+          const y = e.clientY - rect.top;
+
+          const rotateY = (x / rect.width - 0.5) * 8;
+
+          const rotateX = (y / rect.height - 0.5) * -6;
+
+          laptop.style.transform = `perspective(900px)
+             rotateY(${rotateY}deg)
+             rotateX(${rotateX}deg)`;
+        });
+
+        visual.addEventListener("mouseleave", () => {
+          laptop.style.transform =
+            "perspective(900px) rotateY(-5deg) rotateX(3deg)";
+        });
+      }
+    </script>
+  </body>
+</html>
