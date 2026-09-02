@@ -92,6 +92,7 @@
       .page {
         width: min(1220px, 94%);
         margin: 24px auto;
+        padding-top: 10px;
 
         background: rgba(255, 255, 255, 0.78);
 
@@ -106,6 +107,61 @@
         -webkit-backdrop-filter: blur(18px);
 
         position: relative;
+      }
+
+      /* =====================================================
+         SCROLL PROGRESS BAR
+      ====================================================== */
+
+      .scroll-progress-bar {
+        position: fixed;
+        top: 0;
+        right: 0; /* يبدأ من اليمين في العربية */
+        width: 0%;
+        height: 4px;
+        background: linear-gradient(90deg, #1478e8, #2da8ff, #8ed8ff);
+        z-index: 100000;
+        border-radius: 0 0 4px 4px;
+        box-shadow: 0 2px 10px rgba(20, 120, 232, 0.5);
+        transition: width 0.1s ease-out;
+      }
+
+      /* =====================================================
+         BACK TO TOP BUTTON
+      ====================================================== */
+
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        left: 30px; /* يسار الشاشة في العربية */
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #1478e8, #06245f);
+        color: white;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(6, 36, 95, 0.3);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+        z-index: 9998;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .back-to-top:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(6, 36, 95, 0.4);
       }
 
       /* =====================================================
@@ -322,6 +378,14 @@
         background: linear-gradient(90deg, #1478e8, #65d1ff);
 
         transition: 0.3s ease;
+      }
+
+      .nav-link.active-nav {
+        color: #0757ae;
+        background: rgba(72, 181, 255, 0.15);
+      }
+      .nav-link.active-nav::after {
+        width: 55%;
       }
 
       .nav-link:hover::after {
@@ -1278,7 +1342,7 @@
       }
 
       .course:hover .arrow {
-        transform: translateX(-5px);
+        transform: translateX(5px); /* تحريك لليمين في العربية */
       }
 
       /* =====================================================
@@ -1984,6 +2048,8 @@
 
         z-index: 25;
 
+        will-change: transform;
+
         animation: stageFloat 4s ease-in-out infinite;
       }
 
@@ -2044,6 +2110,8 @@
         pointer-events: none;
 
         transform: rotate(-8deg);
+
+        will-change: transform;
 
         filter: drop-shadow(0 0 4px #ffffff) drop-shadow(0 0 12px #38c4ff)
           drop-shadow(0 0 25px rgba(30, 157, 255, 0.95))
@@ -2478,6 +2546,27 @@
         font-size: 12px;
 
         font-weight: 900;
+      }
+
+      .skip-splash {
+        position: relative;
+        z-index: 30;
+        margin-top: 22px;
+        padding: 9px 22px;
+        border: 1px solid rgba(20, 121, 220, 0.35);
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.6);
+        color: #0752aa;
+        font-family: "Cairo", sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: 0.25s ease;
+      }
+
+      .skip-splash:hover {
+        background: rgba(255, 255, 255, 0.9);
+        transform: translateY(-2px);
       }
 
       /* =====================================================
@@ -3523,7 +3612,10 @@
         .logo-stage {
           width: min(92vw, 390px);
           height: min(47vh, 390px);
-          margin-bottom: 12px;
+          margin: 0 auto 12px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
         .logo-3d {
@@ -3532,7 +3624,14 @@
         }
 
         .logo-rope {
-          inset: 1%;
+          inset: 0; /* إلغاء الإزاحة */
+          transform: rotate(0deg); /* إلغاء الميلان في الجوال ليبدو متوازناً */
+          filter: drop-shadow(0 0 3px #ffffff) drop-shadow(0 0 8px #38c4ff)
+            drop-shadow(0 0 16px rgba(30, 157, 255, 0.85));
+        }
+
+        .logo-stage::before {
+          filter: blur(6px);
         }
 
         .logo-rope::before {
@@ -3725,6 +3824,8 @@
   </head>
 
   <body>
+    <div class="scroll-progress-bar" id="scrollProgress"></div>
+
     <!-- =====================================================
          AUDIO
     ====================================================== -->
@@ -3795,6 +3896,8 @@
 
           <div id="loader-text">جارِ تحميل الموقع... 0%</div>
         </div>
+
+        <button id="skipSplash" class="skip-splash">تخطي ⏭</button>
       </div>
     </div>
 
@@ -3973,600 +4076,585 @@
             <p>اختر التصنيف المناسب واستكشف الدورات</p>
           </div>
 
-          <div class="course-filters">
-            <button class="filter-btn active" data-filter="all">الكل</button>
-
-            <button class="filter-btn" data-filter="tech">💻 تقنية</button>
-
-            <button class="filter-btn" data-filter="cyber">
-              🔐 أمن سيبراني
-            </button>
-
-            <button class="filter-btn" data-filter="business">
-              📊 إدارة ومحاسبة
-            </button>
-
-            <button class="filter-btn" data-filter="languages">🌎 لغات</button>
-
-            <button class="filter-btn" data-filter="design">
-              🎨 تصميم وتسويق
-            </button>
-          </div>
-
-          <div class="courses">
-            <!-- 01 -->
-            <a href="full/excel.html" class="course" data-category="tech">
-              <div class="course-number">01</div>
-
-              <div class="course-content">
-                <span class="course-icon">▦</span>
-                <div class="course-name">
-                  <div class="course-name-ar">إكسل ماستر</div>
-
-                  <div class="course-name-en">Excel Master</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 02 -->
-            <a href="full/canva.html" class="course" data-category="design">
-              <div class="course-number">02</div>
-
-              <div class="course-content">
-                <span class="course-icon">✎</span>
-                <div class="course-name">
-                  <div class="course-name-ar">كانفا A1</div>
-
-                  <div class="course-name-en">Canva A1</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 03 -->
-            <a href="full/ai.html" class="course" data-category="tech">
-              <div class="course-number">03</div>
-
-              <div class="course-content">
-                <span class="course-icon">✦</span>
-                <div class="course-name">
-                  <div class="course-name-ar">
-                    التعلّم باستخدام الذكاء الاصطناعي
-                  </div>
-
-                  <div class="course-name-en">Learning With AI</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 04 -->
-            <a href="full/secure.html" class="course" data-category="cyber">
-              <div class="course-number">04</div>
-
-              <div class="course-content">
-                <span class="course-icon">⌁</span>
-                <div class="course-name">
-                  <div class="course-name-ar">أمن المعلومات</div>
-
-                  <div class="course-name-en">Information Security</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 05 -->
-            <a href="full/time.html" class="course" data-category="business">
-              <div class="course-number">05</div>
-
-              <div class="course-content">
-                <span class="course-icon">◷</span>
-                <div class="course-name">
-                  <div class="course-name-ar">فن إدارة الوقت</div>
-
-                  <div class="course-name-en">Time Management Art</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 06 -->
-            <a
-              href="full/courseyria_social_media_course-1.html"
-              class="course"
-              data-category="design"
-            >
-              <div class="course-number">06</div>
-
-              <div class="course-content">
-                <span class="course-icon">◎</span>
-                <div class="course-name">
-                  <div class="course-name-ar">منصات التواصل الاجتماعي</div>
-
-                  <div class="course-name-en">Social Media Platform</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 07 -->
-            <a href="full/project.html" class="course" data-category="tech">
-              <div class="course-number">07</div>
-
-              <div class="course-content">
-                <span class="course-icon">⌘</span>
-                <div class="course-name">
-                  <div class="course-name-ar">بناء مشروع صغير</div>
-
-                  <div class="course-name-en">Small Project Building</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 08 -->
-            <a href="full/market.html" class="course" data-category="design">
-              <div class="course-number">08</div>
-
-              <div class="course-content">
-                <span class="course-icon">◈</span>
-                <div class="course-name">
-                  <div class="course-name-ar">إدارة المحتوى التسويقي</div>
-
-                  <div class="course-name-en">Marketing Content Management</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 09 -->
-            <a href="full/uiux.html" class="course" data-category="design">
-              <div class="course-number">09</div>
-
-              <div class="course-content">
-                <span class="course-icon">▣</span>
-                <div class="course-name">
-                  <div class="course-name-ar">
-                    تصميم واجهات المستخدم وتجربة المستخدم
-                  </div>
-
-                  <div class="course-name-en">UI UX</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 10 -->
-            <a href="full/cpp.html" class="course" data-category="tech">
-              <div class="course-number">10</div>
-
-              <div class="course-content">
-                <span class="course-icon">C++</span>
-                <div class="course-name">
-                  <div class="course-name-ar">سي بلس بلس</div>
-
-                  <div class="course-name-en">C++</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 11 -->
-            <a
-              href="full/coursyria_csharp_beginner.html"
-              class="course"
-              data-category="tech"
-            >
-              <div class="course-number">11</div>
-
-              <div class="course-content">
-                <span class="course-icon">C#</span>
-                <div class="course-name">
-                  <div class="course-name-ar">سي شارب</div>
-
-                  <div class="course-name-en">C#</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 12 -->
-            <a href="full/hr.html" class="course" data-category="business">
-              <div class="course-number">12</div>
-
-              <div class="course-content">
-                <span class="course-icon">♙</span>
-                <div class="course-name">
-                  <div class="course-name-ar">الموارد البشرية</div>
-
-                  <div class="course-name-en">HR</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 13 -->
-            <a
-              href="full/HR_Master.html"
-              class="course"
-              data-category="business"
-            >
-              <div class="course-number">13</div>
-
-              <div class="course-content">
-                <span class="course-icon">◆</span>
-                <div class="course-name">
-                  <div class="course-name-ar">ماستر الموارد البشرية</div>
-
-                  <div class="course-name-en">HR Master</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 14 -->
-            <a
-              href="full/computerskill.html"
-              class="course"
-              data-category="tech"
-            >
-              <div class="course-number">14</div>
-
-              <div class="course-content">
-                <span class="course-icon">⌨</span>
-                <div class="course-name">
-                  <div class="course-name-ar">مهارات الحاسوب</div>
-
-                  <div class="course-name-en">Computer Skills</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 15 -->
-            <a href="full/cyber.html" class="course" data-category="cyber">
-              <div class="course-number">15</div>
-
-              <div class="course-content">
-                <span class="course-icon">⚡</span>
-                <div class="course-name">
-                  <div class="course-name-ar">معسكر الأمن السيبراني</div>
-
-                  <div class="course-name-en">Cyber Security Camp</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 16 -->
-            <a
-              href="full/Conversation_A1.html"
-              class="course"
-              data-category="languages"
-            >
-              <div class="course-number">16</div>
-
-              <div class="course-content">
-                <span class="course-icon">A1</span>
-                <div class="course-name">
-                  <div class="course-name-ar">محادثة إنكليزية A1</div>
-
-                  <div class="course-name-en">English Conversation A1</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 17 -->
-            <a
-              href="full/Conversation_A2.html"
-              class="course"
-              data-category="languages"
-            >
-              <div class="course-number">17</div>
-
-              <div class="course-content">
-                <span class="course-icon">A2</span>
-                <div class="course-name">
-                  <div class="course-name-ar">محادثة إنكليزية A2</div>
-
-                  <div class="course-name-en">English Conversation A2</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 18 -->
-            <a href="full/blueTeam.html" class="course" data-category="cyber">
-              <div class="course-number">18</div>
-
-              <div class="course-content">
-                <span class="course-icon">◉</span>
-                <div class="course-name">
-                  <div class="course-name-ar">
-                    الفريق الأزرق للأمن السيبراني
-                  </div>
-
-                  <div class="course-name-en">Blue Team Cyber Security</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 19 -->
-            <a
-              href="full/Data_Analyst1.html"
-              class="course"
-              data-category="tech"
-            >
-              <div class="course-number">19</div>
-
-              <div class="course-content">
-                <span class="course-icon">▥</span>
-                <div class="course-name">
-                  <div class="course-name-ar">محلل البيانات 1</div>
-
-                  <div class="course-name-en">Data Analyst 1</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 20 -->
-            <a
-              href="full/Data_Analyst_2.html"
-              class="course"
-              data-category="tech"
-            >
-              <div class="course-number">20</div>
-
-              <div class="course-content">
-                <span class="course-icon">▥</span>
-                <div class="course-name">
-                  <div class="course-name-ar">محلل البيانات 2</div>
-
-                  <div class="course-name-en">Data Analyst 2</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 21 -->
-            <a href="full/a1.html" class="course" data-category="languages">
-              <div class="course-number">21</div>
-
-              <div class="course-content">
-                <span class="course-icon">A1</span>
-                <div class="course-name">
-                  <div class="course-name-ar">الإنكليزية A1</div>
-
-                  <div class="course-name-en">A1 English</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 22 -->
-            <a href="full/a2.html" class="course" data-category="languages">
-              <div class="course-number">22</div>
-
-              <div class="course-content">
-                <span class="course-icon">A2</span>
-                <div class="course-name">
-                  <div class="course-name-ar">الإنكليزية A2</div>
-
-                  <div class="course-name-en">A2 English</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 23 -->
-            <a href="full/b1.html" class="course" data-category="languages">
-              <div class="course-number">23</div>
-
-              <div class="course-content">
-                <span class="course-icon">B1</span>
-                <div class="course-name">
-                  <div class="course-name-ar">الإنكليزية B1</div>
-
-                  <div class="course-name-en">B1 English</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 24 -->
-            <a href="full/b2.html" class="course" data-category="languages">
-              <div class="course-number">24</div>
-
-              <div class="course-content">
-                <span class="course-icon">B2</span>
-                <div class="course-name">
-                  <div class="course-name-ar">الإنكليزية B2</div>
-
-                  <div class="course-name-en">B2 English</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 25 -->
-            <a href="full/icdl.html" class="course" data-category="tech">
-              <div class="course-number">25</div>
-
-              <div class="course-content">
-                <span class="course-icon">▤</span>
-                <div class="course-name">
-                  <div class="course-name-ar">
-                    الرخصة الدولية لقيادة الحاسوب
-                  </div>
-
-                  <div class="course-name-en">ICDL</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 26 -->
-            <a href="full/alamen.html" class="course" data-category="business">
-              <div class="course-number">26</div>
-
-              <div class="course-content">
-                <span class="course-icon">◫</span>
-                <div class="course-name">
-                  <div class="course-name-ar">الأمين للمحاسبة</div>
-
-                  <div class="course-name-en">Al-Ameen Accounting</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 27 -->
-            <a href="full/albayan.html" class="course" data-category="business">
-              <div class="course-number">27</div>
-
-              <div class="course-content">
-                <span class="course-icon">◫</span>
-                <div class="course-name">
-                  <div class="course-name-ar">البيان للمحاسبة</div>
-
-                  <div class="course-name-en">Al-Bayan Accounting</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 28 -->
-            <a
-              href="full/computermaster.html"
-              class="course"
-              data-category="tech"
-            >
-              <div class="course-number">28</div>
-
-              <div class="course-content">
-                <span class="course-icon">⌨</span>
-                <div class="course-name">
-                  <div class="course-name-ar">ماستر مهارات الحاسوب</div>
-
-                  <div class="course-name-en">Computer Skills Master</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 29 -->
-            <a href="full/data3.html" class="course" data-category="tech">
-              <div class="course-number">29</div>
-
-              <div class="course-content">
-                <span class="course-icon">▥</span>
-                <div class="course-name">
-                  <div class="course-name-ar">محلل البيانات 3</div>
-
-                  <div class="course-name-en">Data Analyst 3</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 30 -->
-            <a href="full/data4.html" class="course" data-category="tech">
-              <div class="course-number">30</div>
-
-              <div class="course-content">
-                <span class="course-icon">▥</span>
-                <div class="course-name">
-                  <div class="course-name-ar">محلل البيانات 4</div>
-
-                  <div class="course-name-en">Data Analyst 4</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 31 -->
-            <a href="full/software.html" class="course" data-category="tech">
-              <div class="course-number">31</div>
-
-              <div class="course-content">
-                <span class="course-icon">▱</span>
-                <div class="course-name">
-                  <div class="course-name-ar">برامج الحاسوب</div>
-
-                  <div class="course-name-en">Computer Software</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-
-            <!-- 32 -->
-            <a href="full/pythonn.html" class="course" data-category="tech">
-              <div class="course-number">32</div>
-
-              <div class="course-content">
-                <span class="course-icon">🐍</span>
-                <div class="course-name">
-                  <div class="course-name-ar">بايثون</div>
-
-                  <div class="course-name-en">Python</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-            <!-- 33 -->
-            <a href="full/makeCvPro.html" class="course" data-category="tech">
-              <div class="course-number">33</div>
-
-              <div class="course-content">
-                <span class="course-icon">▱</span>
-                <div class="course-name">
-                  <div class="course-name-ar">اصنع سيرتك الذاتية</div>
-
-                  <div class="course-name-en">MakeCvPro</div>
-                </div>
-              </div>
-
-              <div class="arrow">←</div>
-            </a>
-          </div>
-        </section>
-
+         <div class="course-filters">
+
+  <button class="filter-btn active" data-filter="all">
+    📚 الكل
+  </button>
+
+  <button class="filter-btn" data-filter="tech">
+    💻 تقنية
+  </button>
+
+  <button class="filter-btn" data-filter="programming">
+    👨‍💻 برمجة وتطوير
+  </button>
+
+  <button class="filter-btn" data-filter="data">
+    📊 تحليل البيانات
+  </button>
+
+  <button class="filter-btn" data-filter="design">
+    🎨 تصميم
+  </button>
+
+  <button class="filter-btn" data-filter="marketing">
+    📣 تسويق
+  </button>
+
+  <button class="filter-btn" data-filter="cyber">
+    🔐 أمن سيبراني
+  </button>
+
+  <button class="filter-btn" data-filter="business">
+    💼 إدارة ومحاسبة
+  </button>
+
+  <button class="filter-btn" data-filter="career">
+    🧑‍💼 عمل ووظيفة
+  </button>
+
+  <button class="filter-btn" data-filter="languages">
+    🌎 لغات
+  </button>
+
+</div>
+<div class="courses">
+
+  <!-- =====================================================
+       COMPUTER & DIGITAL SKILLS
+  ====================================================== -->
+
+  <!-- 01 -->
+  <a href="full/excel.html" class="course" data-category="tech">
+    <div class="course-number">01</div>
+    <div class="course-content">
+      <span class="course-icon">▦</span>
+      <div class="course-name">
+        <div class="course-name-en">Excel Master</div>
+        <div class="course-name-ar">إكسل ماستر</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 02 -->
+  <a href="full/computerskill.html" class="course" data-category="tech">
+    <div class="course-number">02</div>
+    <div class="course-content">
+      <span class="course-icon">⌨</span>
+      <div class="course-name">
+        <div class="course-name-en">Computer Skills</div>
+        <div class="course-name-ar">مهارات الحاسوب</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 03 -->
+  <a href="full/computermaster.html" class="course" data-category="tech">
+    <div class="course-number">03</div>
+    <div class="course-content">
+      <span class="course-icon">⌨</span>
+      <div class="course-name">
+        <div class="course-name-en">Computer Skills Master</div>
+        <div class="course-name-ar">ماستر مهارات الحاسوب</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 04 -->
+  <a href="full/icdl.html" class="course" data-category="tech">
+    <div class="course-number">04</div>
+    <div class="course-content">
+      <span class="course-icon">▤</span>
+      <div class="course-name">
+        <div class="course-name-en">ICDL</div>
+        <div class="course-name-ar">الرخصة الدولية لقيادة الحاسوب</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 05 -->
+  <a href="full/software.html" class="course" data-category="tech">
+    <div class="course-number">05</div>
+    <div class="course-content">
+      <span class="course-icon">▱</span>
+      <div class="course-name">
+        <div class="course-name-en">Computer Software</div>
+        <div class="course-name-ar">برامج الحاسوب</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 06 -->
+  <a href="full/ai.html" class="course" data-category="tech">
+    <div class="course-number">06</div>
+    <div class="course-content">
+      <span class="course-icon">✦</span>
+      <div class="course-name">
+        <div class="course-name-en">Learning With AI</div>
+        <div class="course-name-ar">التعلّم باستخدام الذكاء الاصطناعي</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+
+  <!-- =====================================================
+       PROGRAMMING & DEVELOPMENT
+  ====================================================== -->
+
+  <!-- 07 -->
+  <a href="full/cpp.html" class="course" data-category="programming">
+    <div class="course-number">07</div>
+    <div class="course-content">
+      <span class="course-icon">++C</span>
+      <div class="course-name">
+        <div class="course-name-en">C++ Programming</div>
+        <div class="course-name-ar">برمجة سي بلس بلس</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 08 -->
+  <a href="full/coursyria_csharp_beginner.html" class="course" data-category="programming">
+    <div class="course-number">08</div>
+    <div class="course-content">
+      <span class="course-icon">#C</span>
+      <div class="course-name">
+        <div class="course-name-en">C# Programming</div>
+        <div class="course-name-ar">برمجة سي شارب</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 09 -->
+  <a href="full/pythonn.html" class="course" data-category="programming">
+    <div class="course-number">09</div>
+    <div class="course-content">
+      <span class="course-icon">🐍</span>
+      <div class="course-name">
+        <div class="course-name-en">Python Programming</div>
+        <div class="course-name-ar">بايثون</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 10 -->
+  <a href="full/project.html" class="course" data-category="programming">
+    <div class="course-number">10</div>
+    <div class="course-content">
+      <span class="course-icon">⌘</span>
+      <div class="course-name">
+        <div class="course-name-en">Small Project Building</div>
+        <div class="course-name-ar">بناء مشروع صغير</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 11 -->
+  <a href="full/website.html" class="course" data-category="programming">
+    <div class="course-number">11</div>
+    <div class="course-content">
+      <span class="course-icon">WEB</span>
+      <div class="course-name">
+        <div class="course-name-en">Website Development</div>
+        <div class="course-name-ar">تطوير وتصميم المواقع</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+
+  <!-- =====================================================
+       DATA ANALYSIS
+  ====================================================== -->
+
+  <!-- 12 -->
+  <a href="full/Data_Analyst1.html" class="course" data-category="data">
+    <div class="course-number">12</div>
+    <div class="course-content">
+      <span class="course-icon">▥</span>
+      <div class="course-name">
+        <div class="course-name-en">Data Analyst 1</div>
+        <div class="course-name-ar">محلل البيانات 1</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 13 -->
+  <a href="full/Data_Analyst_2.html" class="course" data-category="data">
+    <div class="course-number">13</div>
+    <div class="course-content">
+      <span class="course-icon">▥</span>
+      <div class="course-name">
+        <div class="course-name-en">Data Analyst 2</div>
+        <div class="course-name-ar">محلل البيانات 2</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 14 -->
+  <a href="full/data3.html" class="course" data-category="data">
+    <div class="course-number">14</div>
+    <div class="course-content">
+      <span class="course-icon">▥</span>
+      <div class="course-name">
+        <div class="course-name-en">Data Analyst 3</div>
+        <div class="course-name-ar">محلل البيانات 3</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 15 -->
+  <a href="full/data4.html" class="course" data-category="data">
+    <div class="course-number">15</div>
+    <div class="course-content">
+      <span class="course-icon">▥</span>
+      <div class="course-name">
+        <div class="course-name-en">Data Analyst 4</div>
+        <div class="course-name-ar">محلل البيانات 4</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+
+  <!-- =====================================================
+       DESIGN & MARKETING
+  ====================================================== -->
+
+  <!-- 16 -->
+  <a href="full/canva.html" class="course" data-category="design">
+    <div class="course-number">16</div>
+    <div class="course-content">
+      <span class="course-icon">✎</span>
+      <div class="course-name">
+        <div class="course-name-en">Canva A1</div>
+        <div class="course-name-ar">كانفا A1</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 17 -->
+  <a href="full/uiux.html" class="course" data-category="design">
+    <div class="course-number">17</div>
+    <div class="course-content">
+      <span class="course-icon">▣</span>
+      <div class="course-name">
+        <div class="course-name-en">UI/UX Design</div>
+        <div class="course-name-ar">تصميم واجهات وتجربة المستخدم</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 18 -->
+  <a href="full/courseyria_social_media_course-1.html" class="course" data-category="marketing">
+    <div class="course-number">18</div>
+    <div class="course-content">
+      <span class="course-icon">◎</span>
+      <div class="course-name">
+        <div class="course-name-en">Social Media Platforms</div>
+        <div class="course-name-ar">منصات التواصل الاجتماعي</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 19 -->
+  <a href="full/market.html" class="course" data-category="marketing">
+    <div class="course-number">19</div>
+    <div class="course-content">
+      <span class="course-icon">◈</span>
+      <div class="course-name">
+        <div class="course-name-en">Marketing Content Management</div>
+        <div class="course-name-ar">إدارة المحتوى التسويقي</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 20 -->
+  <a href="full/marketing1.html" class="course" data-category="marketing">
+    <div class="course-number">20</div>
+    <div class="course-content">
+      <span class="course-icon">M1</span>
+      <div class="course-name">
+        <div class="course-name-en">Marketing 1</div>
+        <div class="course-name-ar">التسويق 1</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 21 -->
+  <a href="full/marketing2.html" class="course" data-category="marketing">
+    <div class="course-number">21</div>
+    <div class="course-content">
+      <span class="course-icon">M2</span>
+      <div class="course-name">
+        <div class="course-name-en">Marketing 2</div>
+        <div class="course-name-ar">التسويق 2</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 22 -->
+  <a href="full/marketing3.html" class="course" data-category="marketing">
+    <div class="course-number">22</div>
+    <div class="course-content">
+      <span class="course-icon">M3</span>
+      <div class="course-name">
+        <div class="course-name-en">Marketing 3</div>
+        <div class="course-name-ar">التسويق 3</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+
+  <!-- =====================================================
+       CYBER SECURITY
+  ====================================================== -->
+
+  <!-- 23 -->
+  <a href="full/secure.html" class="course" data-category="cyber">
+    <div class="course-number">23</div>
+    <div class="course-content">
+      <span class="course-icon">⌁</span>
+      <div class="course-name">
+        <div class="course-name-en">Information Security</div>
+        <div class="course-name-ar">أمن المعلومات</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 24 -->
+  <a href="full/cyber.html" class="course" data-category="cyber">
+    <div class="course-number">24</div>
+    <div class="course-content">
+      <span class="course-icon">⚡</span>
+      <div class="course-name">
+        <div class="course-name-en">Cyber Security Camp</div>
+        <div class="course-name-ar">معسكر الأمن السيبراني</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 25 -->
+  <a href="full/blueTeam.html" class="course" data-category="cyber">
+    <div class="course-number">25</div>
+    <div class="course-content">
+      <span class="course-icon">◉</span>
+      <div class="course-name">
+        <div class="course-name-en">Blue Team Cyber Security</div>
+        <div class="course-name-ar">الفريق الأزرق للأمن السيبراني</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+
+  <!-- =====================================================
+       BUSINESS & PROFESSIONAL SKILLS
+  ====================================================== -->
+
+  <!-- 26 -->
+  <a href="full/hr.html" class="course" data-category="business">
+    <div class="course-number">26</div>
+    <div class="course-content">
+      <span class="course-icon">♙</span>
+      <div class="course-name">
+        <div class="course-name-en">Human Resources</div>
+        <div class="course-name-ar">الموارد البشرية</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 27 -->
+  <a href="full/HR_Master.html" class="course" data-category="business">
+    <div class="course-number">27</div>
+    <div class="course-content">
+      <span class="course-icon">◆</span>
+      <div class="course-name">
+        <div class="course-name-en">HR Master</div>
+        <div class="course-name-ar">ماستر الموارد البشرية</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 28 -->
+  <a href="full/alamen.html" class="course" data-category="business">
+    <div class="course-number">28</div>
+    <div class="course-content">
+      <span class="course-icon">◫</span>
+      <div class="course-name">
+        <div class="course-name-en">Al-Ameen Accounting</div>
+        <div class="course-name-ar">الأمين للمحاسبة</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 29 -->
+  <a href="full/albayan.html" class="course" data-category="business">
+    <div class="course-number">29</div>
+    <div class="course-content">
+      <span class="course-icon">◫</span>
+      <div class="course-name">
+        <div class="course-name-en">Al-Bayan Accounting</div>
+        <div class="course-name-ar">البيان للمحاسبة</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 30 -->
+  <a href="full/time.html" class="course" data-category="business">
+    <div class="course-number">30</div>
+    <div class="course-content">
+      <span class="course-icon">◷</span>
+      <div class="course-name">
+        <div class="course-name-en">Time Management Art</div>
+        <div class="course-name-ar">فن إدارة الوقت</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+
+  <!-- =====================================================
+       ENGLISH LANGUAGE
+  ====================================================== -->
+
+  <!-- 31 -->
+  <a href="full/a1.html" class="course" data-category="languages">
+    <div class="course-number">31</div>
+    <div class="course-content">
+      <span class="course-icon">A1</span>
+      <div class="course-name">
+        <div class="course-name-en">A1 English</div>
+        <div class="course-name-ar">الإنكليزية A1</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 32 -->
+  <a href="full/a2.html" class="course" data-category="languages">
+    <div class="course-number">32</div>
+    <div class="course-content">
+      <span class="course-icon">A2</span>
+      <div class="course-name">
+        <div class="course-name-en">A2 English</div>
+        <div class="course-name-ar">الإنكليزية A2</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 33 -->
+  <a href="full/b1.html" class="course" data-category="languages">
+    <div class="course-number">33</div>
+    <div class="course-content">
+      <span class="course-icon">B1</span>
+      <div class="course-name">
+        <div class="course-name-en">B1 English</div>
+        <div class="course-name-ar">الإنكليزية B1</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 34 -->
+  <a href="full/b2.html" class="course" data-category="languages">
+    <div class="course-number">34</div>
+    <div class="course-content">
+      <span class="course-icon">B2</span>
+      <div class="course-name">
+        <div class="course-name-en">B2 English</div>
+        <div class="course-name-ar">الإنكليزية B2</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 35 -->
+  <a href="full/Conversation_A1.html" class="course" data-category="languages">
+    <div class="course-number">35</div>
+    <div class="course-content">
+      <span class="course-icon">A1</span>
+      <div class="course-name">
+        <div class="course-name-en">English Conversation A1</div>
+        <div class="course-name-ar">محادثة إنكليزية A1</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 36 -->
+  <a href="full/Conversation_A2.html" class="course" data-category="languages">
+    <div class="course-number">36</div>
+    <div class="course-content">
+      <span class="course-icon">A2</span>
+      <div class="course-name">
+        <div class="course-name-en">English Conversation A2</div>
+        <div class="course-name-ar">محادثة إنكليزية A2</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+
+  <!-- =====================================================
+       CAREER & EMPLOYMENT
+  ====================================================== -->
+
+  <!-- 37 -->
+  <a href="full/makeCvPro.html" class="course" data-category="career">
+    <div class="course-number">37</div>
+    <div class="course-content">
+      <span class="course-icon">CV</span>
+      <div class="course-name">
+        <div class="course-name-en">Make CV Pro</div>
+        <div class="course-name-ar">اصنع سيرتك الذاتية</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- 38 -->
+  <a href="full/job.html" class="course" data-category="career">
+    <div class="course-number">38</div>
+    <div class="course-content">
+      <span class="course-icon">JOB</span>
+      <div class="course-name">
+        <div class="course-name-en">Job Skills</div>
+        <div class="course-name-ar">مهارات الحصول على وظيفة</div>
+      </div>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+</div>
         <!-- =====================================================
            RANKS
         ====================================================== -->
@@ -4580,124 +4668,7 @@
             <p>اضغط على الرتبة لعرض الصورة</p>
           </div>
 
-          <div class="courses">
-            <div class="course" onclick="openRank('ranks/rank1.jpg')">
-              <div class="course-number">01</div>
-              <div class="course-content">
-                <span class="rank-icon">✧</span>
-                <div class="course-name">المتأهب</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-
-            <div class="course" onclick="openRank('ranks/rank2.jpg')">
-              <div class="course-number">02</div>
-              <div class="course-content">
-                <span class="rank-icon">➤</span>
-                <div class="course-name">المنطلق</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-
-            <div class="course" onclick="openRank('ranks/rank3.jpg')">
-              <div class="course-number">03</div>
-              <div class="course-content">
-                <span class="rank-icon">⚑</span>
-                <div class="course-name">الساعي</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-
-            <div class="course" onclick="openRank('ranks/rank4.jpg')">
-              <div class="course-number">04</div>
-              <div class="course-content">
-                <span class="rank-icon">◇</span>
-                <div class="course-name">الريادي</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-
-            <div class="course" onclick="openRank('ranks/rank5.jpg')">
-              <div class="course-number">05</div>
-              <div class="course-content">
-                <span class="rank-icon">♟</span>
-                <div class="course-name">الإستراتيجي</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-
-            <div class="course" onclick="openRank('ranks/rank6.jpg')">
-              <div class="course-number">06</div>
-              <div class="course-content">
-                <span class="rank-icon">◈</span>
-                <div class="course-name">ملازم</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-
-            <div class="course" onclick="openRank('ranks/rank7.jpg')">
-              <div class="course-number">07</div>
-              <div class="course-content">
-                <span class="rank-icon">☼</span>
-                <div class="course-name">مفكر</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-
-            <div class="course" onclick="openRank('ranks/rank8.jpg')">
-              <div class="course-number">08</div>
-              <div class="course-content">
-                <span class="rank-icon">✦</span>
-                <div class="course-name">المبدع</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-
-            <div class="course" onclick="openRank('ranks/rank9.jpg')">
-              <div class="course-number">09</div>
-              <div class="course-content">
-                <span class="rank-icon">◆</span>
-                <div class="course-name">الخبير</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-
-            <div class="course" onclick="openRank('ranks/rank10.jpg')">
-              <div class="course-number">10</div>
-              <div class="course-content">
-                <span class="rank-icon">⌘</span>
-                <div class="course-name">المهندس</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-
-            <div class="course" onclick="openRank('ranks/rank11.jpg')">
-              <div class="course-number">11</div>
-              <div class="course-content">
-                <span class="rank-icon">✪</span>
-                <div class="course-name">الماستر</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-
-            <div class="course" onclick="openRank('ranks/rank12.jpg')">
-              <div class="course-number">12</div>
-              <div class="course-content">
-                <span class="rank-icon">♛</span>
-                <div class="course-name">الأسطورة</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-
-            <div class="course" onclick="openRank('ranks/rank13.jpg')">
-              <div class="course-number">13</div>
-              <div class="course-content">
-                <span class="rank-icon">✧</span>
-                <div class="course-name">الألماس</div>
-              </div>
-              <div class="arrow">←</div>
-            </div>
-          </div>
+          <div class="courses" id="ranksContainer"></div>
         </section>
 
         <!-- =====================================================
@@ -4714,7 +4685,7 @@
           </div>
 
           <div class="info-image-card">
-            <img src="image/ترقية.jpeg" alt="شروط الترقية" loading="lazy" />
+            <img src="image/condition.jpeg" alt="شروط الترقية" loading="lazy" />
           </div>
         </section>
 
@@ -4731,7 +4702,7 @@
             <p>اضغط على البطاقة لإظهار معلومات الدفع</p>
           </div>
 
-          <div class="shamcash-trigger" onclick="openShamCash()">
+          <div class="shamcash-trigger" role="button" tabindex="0" onclick="openShamCash()">
             <div class="shamcash-icon">💳</div>
 
             <h3>الدفع عن طريق شام كاش</h3>
@@ -4969,11 +4940,90 @@
        إغلاق #main-content
     ====================================================== -->
 
+    <button id="backToTop" class="back-to-top" aria-label="العودة للأعلى">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- =====================================================
        JAVASCRIPT
     ====================================================== -->
 
     <script>
+      /* =====================================================
+         RANKS DATA + DYNAMIC RENDER
+      ====================================================== */
+
+      const ranksData = [
+        { icon: "✧", name: "المتأهب" },
+        { icon: "➤", name: "المنطلق" },
+        { icon: "⚑", name: "الساعي" },
+        { icon: "◇", name: "الريادي" },
+        { icon: "♟", name: "الإستراتيجي" },
+        { icon: "◈", name: "ملازم" },
+        { icon: "☼", name: "مفكر" },
+        { icon: "✦", name: "المبدع" },
+        { icon: "◆", name: "الخبير" },
+        { icon: "⌘", name: "المهندس" },
+        { icon: "✪", name: "الماستر" },
+        { icon: "♛", name: "الأسطورة" },
+        { icon: "✧", name: "الألماس" },
+      ];
+
+      function renderRanks() {
+        const container = document.getElementById("ranksContainer");
+        if (!container) return;
+
+        const html = ranksData
+          .map(function (rank, i) {
+            const num = String(i + 1).padStart(2, "0");
+            return (
+              '<div class="course" role="button" tabindex="0" onclick="openRank(\'ranks/rank' +
+              (i + 1) +
+              '.jpg\')">' +
+              '<div class="course-number">' +
+              num +
+              "</div>" +
+              '<div class="course-content">' +
+              '<span class="rank-icon">' +
+              rank.icon +
+              "</span>" +
+              '<div class="course-name">' +
+              rank.name +
+              "</div>" +
+              "</div>" +
+              '<div class="arrow">←</div>' +
+              "</div>"
+            );
+          })
+          .join("");
+
+        container.innerHTML = html;
+      }
+
+      renderRanks();
+
+      /* =====================================================
+         IMAGE FALLBACK (broken image handling)
+      ====================================================== */
+
+      const FALLBACK_IMG =
+        "data:image/svg+xml;charset=UTF-8," +
+        encodeURIComponent(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300">' +
+            '<rect width="100%" height="100%" fill="#eef8ff"/>' +
+            '<text x="50%" y="50%" font-family="Cairo, sans-serif" font-size="16" fill="#5f7392" text-anchor="middle" dominant-baseline="middle">الصورة غير متوفرة</text>' +
+            "</svg>",
+        );
+
+      function attachImageFallback(img) {
+        img.addEventListener("error", function handleImgError() {
+          if (!img.src || img.src === FALLBACK_IMG) return;
+          img.src = FALLBACK_IMG;
+        });
+      }
+
+      document.querySelectorAll("img").forEach(attachImageFallback);
+
       /* =====================================================
          AUDIO
       ====================================================== */
@@ -5091,37 +5141,44 @@
         });
       });
 
-      /* =====================================================
-         COURSE FILTER
-      ====================================================== */
+     /* =====================================================
+   COURSE FILTER
+===================================================== */
 
-      const filterButtons = document.querySelectorAll(".filter-btn");
+const filterButtons = document.querySelectorAll(".filter-btn");
 
-      const courseCards = document.querySelectorAll(
-        ".courses-section#courses .course",
-      );
+const courseCards = document.querySelectorAll(
+  ".courses-section#courses .course"
+);
 
-      filterButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-          const filter = button.getAttribute("data-filter");
+filterButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
 
-          filterButtons.forEach(function (btn) {
-            btn.classList.remove("active");
-          });
+    const filter = button.getAttribute("data-filter");
 
-          button.classList.add("active");
+    // إزالة التفعيل عن جميع الأزرار
+    filterButtons.forEach(function (btn) {
+      btn.classList.remove("active");
+    });
 
-          courseCards.forEach(function (course) {
-            const category = course.getAttribute("data-category");
+    // تفعيل الزر الحالي
+    button.classList.add("active");
 
-            if (filter === "all" || category === filter) {
-              course.classList.remove("hidden-course");
-            } else {
-              course.classList.add("hidden-course");
-            }
-          });
-        });
-      });
+    // إظهار وإخفاء الكورسات
+    courseCards.forEach(function (course) {
+
+      const category = course.getAttribute("data-category");
+
+      if (filter === "all" || category === filter) {
+        course.classList.remove("hidden-course");
+      } else {
+        course.classList.add("hidden-course");
+      }
+
+    });
+
+  });
+});
 
       /* =====================================================
          FAQ ACCORDION
@@ -5157,7 +5214,6 @@
 
       function closeRank() {
         document.getElementById("rankModal").style.display = "none";
-        document.getElementById("rankImg").src = "";
         document.body.style.overflow = "";
       }
 
@@ -5181,6 +5237,19 @@
           document.body.style.overflow = "";
         }, 450);
       }
+      /* =====================================================
+         KEYBOARD ACTIVATION FOR role="button" DIVs
+      ====================================================== */
+
+      document.querySelectorAll('[role="button"]').forEach(function (el) {
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            el.click();
+          }
+        });
+      });
+
       /* =====================================================
          ESC KEY
       ====================================================== */
@@ -5212,11 +5281,46 @@
 
         const loaderText = document.getElementById("loader-text");
 
+        const skipBtn = document.getElementById("skipSplash");
+
         startIntroMusic();
 
         const totalTime = 3200;
 
         let current = 0;
+
+        let finished = false;
+
+        function finishSplash() {
+          if (finished) return;
+          finished = true;
+
+          splash.classList.add("hide");
+
+          mainContent.classList.remove("hidden");
+
+          if (!introAudio.paused) {
+            introAudio.pause();
+          }
+
+          introAudio.currentTime = 0;
+
+          if (musicEnabled) {
+            backgroundAudio.currentTime = 0;
+
+            backgroundAudio
+              .play()
+              .then(function () {
+                musicEnabled = true;
+                updateMusicButton();
+              })
+              .catch(function () {});
+          }
+
+          setTimeout(function () {
+            splash.remove();
+          }, 900);
+        }
 
         const loading = setInterval(function () {
           current += 1;
@@ -5228,35 +5332,16 @@
           if (current >= 100) {
             clearInterval(loading);
 
-            setTimeout(function () {
-              splash.classList.add("hide");
-
-              mainContent.classList.remove("hidden");
-
-              if (!introAudio.paused) {
-                introAudio.pause();
-              }
-
-              introAudio.currentTime = 0;
-
-              if (musicEnabled) {
-                backgroundAudio.currentTime = 0;
-
-                backgroundAudio
-                  .play()
-                  .then(function () {
-                    musicEnabled = true;
-                    updateMusicButton();
-                  })
-                  .catch(function () {});
-              }
-
-              setTimeout(function () {
-                splash.remove();
-              }, 900);
-            }, 250);
+            setTimeout(finishSplash, 250);
           }
         }, totalTime / 100);
+
+        if (skipBtn) {
+          skipBtn.addEventListener("click", function () {
+            clearInterval(loading);
+            finishSplash();
+          });
+        }
       });
 
       document.addEventListener(
@@ -5283,6 +5368,63 @@
         },
         { once: true },
       );
+
+      /* =====================================================
+         SCROLL PROGRESS BAR
+      ====================================================== */
+
+      window.addEventListener("scroll", function () {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("scrollProgress").style.width =
+          scrolled + "%";
+      });
+
+      /* =====================================================
+         BACK TO TOP BUTTON
+      ====================================================== */
+
+      const backToTopBtn = document.getElementById("backToTop");
+
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 400) {
+          backToTopBtn.classList.add("show");
+        } else {
+          backToTopBtn.classList.remove("show");
+        }
+      });
+
+      backToTopBtn.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      /* =====================================================
+         ACTIVE NAV LINK ON SCROLL
+      ====================================================== */
+
+      const sections = document.querySelectorAll("section, header");
+      const navLi = document.querySelectorAll(".nav-link");
+
+      window.addEventListener("scroll", function () {
+        let current = "";
+        sections.forEach(function (section) {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLi.forEach(function (li) {
+          li.classList.remove("active-nav");
+          if (current && li.getAttribute("href").includes(current)) {
+            li.classList.add("active-nav");
+          }
+        });
+      });
     </script>
   </body>
 </html>
