@@ -19,10 +19,6 @@
     />
 
     <style>
-      /* =====================================================
-       ROOT
-    ====================================================== */
-
       :root {
         --bg: #06100a;
         --bg-2: #0a1910;
@@ -41,10 +37,6 @@
         --radius-lg: 30px;
         --radius-md: 20px;
       }
-
-      /* =====================================================
-       RESET
-    ====================================================== */
 
       * {
         margin: 0;
@@ -207,7 +199,7 @@
           minmax(0, 1.05fr)
           minmax(0, 0.95fr);
 
-        gap: 65px;
+        gap: 55px;
 
         align-items: center;
 
@@ -369,13 +361,13 @@
       }
 
       /* =====================================================
-       NEW INTERACTIVE EXCEL VISUAL
+       REAL EXCEL INTERACTIVE VISUAL
     ====================================================== */
 
       .excel-wrapper {
         position: relative;
 
-        min-height: 430px;
+        min-height: 440px;
 
         display: flex;
         align-items: center;
@@ -384,529 +376,594 @@
         animation: fadeLeft 0.9s ease both;
       }
 
+      .excel-orbit {
+        position: absolute;
+
+        width: 430px;
+        height: 430px;
+
+        border: 1px solid rgba(33, 197, 107, 0.1);
+
+        border-radius: 50%;
+
+        animation: orbitRotate 18s linear infinite;
+
+        pointer-events: none;
+      }
+
+      .excel-orbit::before,
+      .excel-orbit::after {
+        content: "";
+
+        position: absolute;
+
+        width: 9px;
+        height: 9px;
+
+        border-radius: 50%;
+
+        background: var(--green);
+
+        box-shadow:
+          0 0 15px var(--green),
+          0 0 35px rgba(33, 197, 107, 0.7);
+      }
+
+      .excel-orbit::before {
+        top: 30px;
+        left: 80px;
+      }
+
+      .excel-orbit::after {
+        bottom: 50px;
+        right: 40px;
+      }
+
       .excel-glow {
         position: absolute;
 
-        width: 240px;
-        height: 240px;
+        width: 260px;
+        height: 260px;
 
         background: var(--green);
 
         filter: blur(100px);
 
-        opacity: 0.18;
+        opacity: 0.16;
 
         animation: glowMove 5s ease-in-out infinite;
       }
 
-      .excel-dashboard {
+      /* MAIN EXCEL WINDOW */
+
+      .excel-window {
         position: relative;
 
         width: min(100%, 500px);
 
-        padding: 12px;
+        background: #ffffff;
 
-        border-radius: 30px;
-
-        background: linear-gradient(
-          145deg,
-          rgba(255, 255, 255, 0.12),
-          rgba(255, 255, 255, 0.025)
-        );
-
-        border: 1px solid rgba(255, 255, 255, 0.13);
-
-        box-shadow:
-          0 35px 80px rgba(0, 0, 0, 0.42),
-          0 0 60px rgba(33, 197, 107, 0.07);
-
-        transform: perspective(1200px) rotateY(-6deg) rotateX(2deg);
-
-        transition: 0.6s ease;
-
-        overflow: visible;
-      }
-
-      .excel-dashboard:hover {
-        transform: perspective(1200px) rotateY(0deg) rotateX(0deg)
-          translateY(-8px);
-      }
-
-      .dashboard-inner {
-        position: relative;
+        border-radius: 22px;
 
         overflow: hidden;
 
-        border-radius: 21px;
+        border: 6px solid rgba(255, 255, 255, 0.08);
 
-        background: linear-gradient(145deg, #f8fbf9, #edf5ef);
+        box-shadow:
+          0 35px 80px rgba(0, 0, 0, 0.45),
+          0 0 70px rgba(33, 197, 107, 0.13);
 
-        color: #173021;
+        transform: perspective(1200px) rotateY(-8deg) rotateX(3deg);
 
-        min-height: 390px;
+        transition:
+          transform 0.5s ease,
+          box-shadow 0.5s ease;
+
+        z-index: 3;
       }
 
-      /* TOP BAR */
+      .excel-window:hover {
+        transform: perspective(1200px) rotateY(0deg) rotateX(0deg)
+          translateY(-7px);
 
-      .dashboard-top {
-        height: 48px;
+        box-shadow:
+          0 45px 90px rgba(0, 0, 0, 0.48),
+          0 0 80px rgba(33, 197, 107, 0.2);
+      }
+
+      /* EXCEL TITLE BAR */
+
+      .excel-titlebar {
+        height: 39px;
 
         display: flex;
+
         align-items: center;
 
-        padding: 0 15px;
+        padding: 0 11px;
 
-        background: linear-gradient(90deg, #107c41, #18a65b);
+        background: #107c41;
 
         color: white;
-      }
-
-      .excel-brand {
-        display: flex;
-        align-items: center;
 
         gap: 9px;
-
-        font-size: 12px;
-        font-weight: 800;
       }
 
-      .excel-symbol {
-        width: 27px;
-        height: 27px;
+      .excel-app-icon {
+        width: 24px;
+        height: 24px;
 
         display: flex;
         align-items: center;
         justify-content: center;
 
-        border-radius: 7px;
-
-        background: rgba(255, 255, 255, 0.16);
-
-        font-size: 12px;
-
-        box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.08);
-      }
-
-      .dashboard-live {
-        display: flex;
-        align-items: center;
-
-        gap: 6px;
-
-        margin-right: auto;
-
-        font-size: 8px;
-
-        color: #d9ffe8;
-      }
-
-      .dashboard-live-dot {
-        width: 6px;
-        height: 6px;
-
-        border-radius: 50%;
-
-        background: #a3ffc4;
-
-        box-shadow: 0 0 10px #a3ffc4;
-
-        animation: blink 1s infinite;
-      }
-
-      /* TOOLBAR */
-
-      .dashboard-toolbar {
-        display: flex;
-        align-items: center;
-
-        gap: 17px;
-
-        padding: 10px 14px;
-
         background: white;
 
-        border-bottom: 1px solid #dce6df;
-
-        color: #718078;
-
-        font-size: 8px;
-
-        overflow: hidden;
-        white-space: nowrap;
-      }
-
-      .dashboard-toolbar span {
-        transition: 0.2s;
-      }
-
-      .dashboard-toolbar span:hover {
         color: #107c41;
+
+        border-radius: 4px;
+
+        font-size: 10px;
         font-weight: 900;
       }
 
-      /* CONTENT */
-
-      .dashboard-content {
-        padding: 17px;
+      .excel-file-name {
+        font-size: 9px;
+        font-weight: 700;
       }
 
-      .dashboard-heading {
+      .excel-window-buttons {
         display: flex;
 
-        align-items: center;
-        justify-content: space-between;
+        gap: 5px;
 
-        margin-bottom: 13px;
+        margin-right: auto;
       }
 
-      .dashboard-heading strong {
-        font-size: 14px;
-      }
-
-      .dashboard-heading span {
-        font-size: 8px;
-
-        color: #718078;
-      }
-
-      /* MINI STATS */
-
-      .mini-stats {
-        display: grid;
-
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-
-        gap: 8px;
-
-        margin-bottom: 15px;
-      }
-
-      .mini-stat {
-        position: relative;
-
-        overflow: hidden;
-
-        padding: 11px;
-
-        border-radius: 11px;
-
-        background: white;
-
-        border: 1px solid #dfe9e2;
-
-        box-shadow: 0 4px 15px rgba(18, 60, 34, 0.05);
-
-        transition: 0.3s;
-      }
-
-      .mini-stat:hover {
-        transform: translateY(-4px);
-
-        border-color: #8bdcaf;
-
-        box-shadow: 0 10px 22px rgba(33, 197, 107, 0.12);
-      }
-
-      .mini-stat small {
-        display: block;
-
-        color: #718078;
-
-        font-size: 7px;
-
-        margin-bottom: 4px;
-      }
-
-      .mini-stat strong {
-        font-size: 14px;
-
-        color: #107c41;
-      }
-
-      .mini-stat .up {
-        font-size: 7px;
-
-        color: #21a95f;
-
-        margin-right: 3px;
-      }
-
-      /* CHART */
-
-      .chart-box {
-        position: relative;
-
-        height: 190px;
-
-        padding: 13px;
-
-        border-radius: 14px;
-
-        background: white;
-
-        border: 1px solid #dfe9e2;
-
-        overflow: hidden;
-
-        box-shadow: 0 5px 18px rgba(18, 60, 34, 0.05);
-      }
-
-      .chart-title {
-        font-size: 8px;
-
-        color: #68776e;
-
-        margin-bottom: 8px;
-      }
-
-      .chart-area {
-        position: relative;
-
-        height: 140px;
-
-        display: flex;
-
-        align-items: flex-end;
-
-        justify-content: space-around;
-
-        gap: 10px;
-
-        padding: 15px 8px 5px;
-      }
-
-      .chart-grid {
-        position: absolute;
-
-        inset: 0;
-
-        display: flex;
-
-        flex-direction: column;
-
-        justify-content: space-between;
-
-        pointer-events: none;
-      }
-
-      .chart-grid span {
-        width: 100%;
-
-        height: 1px;
-
-        background: #e9efeb;
-      }
-
-      .bar {
-        position: relative;
-
-        width: 10%;
-
-        min-width: 20px;
-
-        max-width: 35px;
-
-        height: var(--height);
-
-        border-radius: 7px 7px 3px 3px;
-
-        background: linear-gradient(180deg, #21c56b, #0d8c47);
-
-        box-shadow: 0 7px 14px rgba(33, 197, 107, 0.15);
-
-        animation:
-          barGrow 1.5s ease both,
-          barPulse 3s ease-in-out infinite;
-
-        transform-origin: bottom;
-      }
-
-      .bar:nth-child(2) {
-        animation-delay: 0.15s;
-      }
-
-      .bar:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-
-      .bar:nth-child(4) {
-        animation-delay: 0.45s;
-      }
-
-      .bar:nth-child(5) {
-        animation-delay: 0.6s;
-      }
-
-      .bar:nth-child(6) {
-        animation-delay: 0.75s;
-      }
-
-      .bar:nth-child(7) {
-        animation-delay: 0.9s;
-      }
-
-      .bar-label {
-        position: absolute;
-
-        bottom: -15px;
-
-        left: 50%;
-
-        transform: translateX(-50%);
-
-        font-size: 6px;
-
-        color: #7c8981;
-      }
-
-      /* LINE */
-
-      .chart-line {
-        position: absolute;
-
-        left: 7%;
-        right: 7%;
-
-        top: 35%;
-
-        height: 60px;
-
-        border-top: 2px solid rgba(16, 124, 65, 0.35);
-
-        transform: rotate(-5deg) skewX(-12deg);
-
-        opacity: 0.8;
-
-        pointer-events: none;
-      }
-
-      .chart-point {
-        position: absolute;
-
+      .excel-window-buttons span {
         width: 7px;
         height: 7px;
 
         border-radius: 50%;
 
-        background: #0b8744;
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      /* RIBBON */
+
+      .excel-ribbon {
+        height: 37px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 16px;
+
+        padding: 0 12px;
+
+        background: #f7f7f7;
+
+        border-bottom: 1px solid #d8ddd9;
+
+        color: #4e5953;
+
+        font-size: 7px;
+
+        white-space: nowrap;
+      }
+
+      .excel-ribbon span {
+        transition: 0.2s;
+      }
+
+      .excel-ribbon span:hover {
+        color: #107c41;
+
+        font-weight: 900;
+
+        transform: translateY(-1px);
+      }
+
+      .ribbon-active {
+        color: #107c41 !important;
+
+        font-weight: 900;
+
+        border-bottom: 2px solid #107c41;
+
+        padding-bottom: 10px;
+      }
+
+      /* FORMULA BAR */
+
+      .formula-bar {
+        height: 38px;
+
+        display: flex;
+
+        align-items: center;
+
+        padding: 5px 8px;
+
+        gap: 6px;
+
+        background: #ffffff;
+
+        border-bottom: 1px solid #dce3de;
+      }
+
+      .name-box {
+        width: 48px;
+
+        height: 25px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid #cdd6d0;
+
+        color: #303a34;
+
+        font-size: 7px;
+
+        font-weight: 800;
+
+        background: #f8faf8;
+
+        border-radius: 3px;
+      }
+
+      .fx {
+        color: #107c41;
+
+        font-size: 11px;
+
+        font-family: serif;
+
+        font-weight: 900;
+      }
+
+      .formula-input {
+        flex: 1;
+
+        height: 25px;
+
+        display: flex;
+
+        align-items: center;
+
+        padding: 0 7px;
+
+        border: 1px solid #cdd6d0;
+
+        border-radius: 3px;
+
+        color: #222;
+
+        font-family: Arial, sans-serif;
+
+        font-size: 8px;
+
+        direction: ltr;
+
+        text-align: left;
+
+        overflow: hidden;
+
+        white-space: nowrap;
+      }
+
+      /* SHEET */
+
+      .sheet-area {
+        position: relative;
+
+        overflow: hidden;
+
+        background: #fff;
+
+        height: 265px;
+      }
+
+      .sheet-scroll {
+        width: 100%;
+        height: 100%;
+
+        overflow: hidden;
+      }
+
+      .spreadsheet {
+        display: grid;
+
+        grid-template-columns: 32px repeat(6, minmax(52px, 1fr));
+
+        grid-template-rows: 27px repeat(8, 27px);
+
+        min-width: 390px;
+
+        font-family: Arial, sans-serif;
+
+        direction: ltr;
+      }
+
+      .corner {
+        background: #eef2ef;
+
+        border-right: 1px solid #d4dbd6;
+        border-bottom: 1px solid #d4dbd6;
+      }
+
+      .column-head,
+      .row-head {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        background: #f1f4f2;
+
+        color: #68736c;
+
+        font-size: 7px;
+
+        font-weight: 700;
+
+        border-right: 1px solid #d9dfdb;
+        border-bottom: 1px solid #d9dfdb;
+      }
+
+      .cell {
+        position: relative;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: flex-start;
+
+        padding: 0 6px;
+
+        background: #ffffff;
+
+        color: #253029;
+
+        font-size: 7px;
+
+        border-right: 1px solid #e0e5e2;
+        border-bottom: 1px solid #e0e5e2;
+
+        cursor: pointer;
+
+        transition:
+          background 0.2s,
+          box-shadow 0.2s,
+          transform 0.2s;
+      }
+
+      .cell:hover {
+        background: #f0fff6;
+
+        z-index: 2;
+      }
+
+      .cell.selected {
+        background: #e9fff1;
 
         box-shadow:
-          0 0 0 4px rgba(33, 197, 107, 0.13),
-          0 0 15px rgba(33, 197, 107, 0.45);
+          inset 0 0 0 2px #21a95f,
+          0 0 10px rgba(33, 197, 107, 0.18);
 
-        animation: pointPulse 1.7s infinite;
+        z-index: 5;
       }
 
-      .point-1 {
-        top: 48%;
-        left: 18%;
-      }
+      .cell.selected::after {
+        content: "";
 
-      .point-2 {
-        top: 38%;
-        left: 37%;
-        animation-delay: 0.3s;
-      }
-
-      .point-3 {
-        top: 55%;
-        left: 56%;
-        animation-delay: 0.6s;
-      }
-
-      .point-4 {
-        top: 25%;
-        left: 76%;
-        animation-delay: 0.9s;
-      }
-
-      /* FORMULA FLOATING CARD */
-
-      .formula-floating {
         position: absolute;
 
-        top: 34px;
-        left: -32px;
+        width: 5px;
+        height: 5px;
 
-        width: 150px;
+        right: -2px;
+        bottom: -2px;
 
-        padding: 11px 13px;
+        background: #107c41;
+      }
 
-        border-radius: 13px;
+      .header-cell {
+        color: #107c41;
 
-        background: rgba(7, 25, 15, 0.92);
+        font-weight: 800;
+
+        background: #f5faf6;
+      }
+
+      .money {
+        color: #107c41;
+
+        font-weight: 800;
+      }
+
+      .formula-cell {
+        color: #08763b;
+
+        font-weight: 700;
+
+        direction: ltr;
+      }
+
+      /* ACTIVE ROW / COLUMN */
+
+      .active-header {
+        background: #d9f5e3 !important;
+
+        color: #107c41 !important;
+
+        font-weight: 900 !important;
+      }
+
+      /* SHEET TABS */
+
+      .sheet-bottom {
+        height: 30px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 5px;
+
+        padding: 0 7px;
+
+        background: #f2f4f3;
+
+        border-top: 1px solid #d8dfda;
+      }
+
+      .sheet-tab {
+        height: 22px;
+
+        padding: 0 13px;
+
+        display: flex;
+
+        align-items: center;
+
+        border-radius: 4px 4px 0 0;
+
+        font-family: Arial, sans-serif;
+
+        font-size: 7px;
+
+        color: #59645d;
+
+        cursor: pointer;
+      }
+
+      .sheet-tab.active {
+        background: white;
+
+        color: #107c41;
+
+        font-weight: 900;
+
+        border-top: 2px solid #107c41;
+      }
+
+      /* FLOATING EXCEL CARDS */
+
+      .excel-badge {
+        position: absolute;
+
+        z-index: 6;
+
+        padding: 10px 13px;
+
+        border-radius: 12px;
+
+        background: rgba(5, 24, 14, 0.94);
 
         border: 1px solid rgba(141, 240, 181, 0.18);
 
         backdrop-filter: blur(12px);
 
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+        box-shadow:
+          0 18px 40px rgba(0, 0, 0, 0.35),
+          0 0 25px rgba(33, 197, 107, 0.08);
 
-        animation: floating 4s ease-in-out infinite;
+        pointer-events: none;
       }
 
-      .formula-floating small {
+      .excel-badge small {
         display: block;
 
-        color: var(--muted);
+        color: #84958b;
 
-        font-size: 7px;
+        font-size: 6px;
 
-        margin-bottom: 4px;
+        margin-bottom: 3px;
       }
 
-      .formula-floating strong {
+      .excel-badge strong {
         display: block;
 
-        color: var(--green-light);
+        color: #9af5bd;
 
-        font-size: 10px;
+        font-family: Arial, sans-serif;
+
+        font-size: 9px;
 
         direction: ltr;
 
         text-align: left;
       }
 
-      /* ANALYSIS FLOATING CARD */
+      .formula-badge {
+        top: 22px;
 
-      .analysis-floating {
-        position: absolute;
-
-        right: -28px;
-        bottom: 34px;
-
-        padding: 12px 15px;
-
-        border-radius: 14px;
-
-        background: rgba(7, 25, 15, 0.92);
-
-        border: 1px solid rgba(141, 240, 181, 0.18);
-
-        backdrop-filter: blur(12px);
-
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+        left: -25px;
 
         animation: floating 4s ease-in-out infinite;
-
-        animation-delay: 1.2s;
       }
 
-      .analysis-floating small {
-        display: block;
+      .pivot-badge {
+        right: -28px;
 
-        color: var(--muted);
+        bottom: 35px;
 
-        font-size: 8px;
-
-        margin-bottom: 3px;
+        animation: floating 4s ease-in-out infinite 1s;
       }
 
-      .analysis-floating strong {
-        color: var(--green-light);
+      .auto-badge {
+        right: 8px;
 
-        font-size: 14px;
+        top: -12px;
+
+        padding: 7px 10px;
+
+        border-radius: 50px;
+
+        animation: autoFloat 3s ease-in-out infinite;
+      }
+
+      .auto-badge strong {
+        font-size: 7px;
+      }
+
+      /* EXCEL CURSOR */
+
+      .excel-cursor {
+        position: absolute;
+
+        width: 19px;
+        height: 27px;
+
+        z-index: 8;
+
+        pointer-events: none;
+
+        animation: cursorMove 6s ease-in-out infinite;
+      }
+
+      .excel-cursor::before {
+        content: "";
+
+        position: absolute;
+
+        width: 0;
+        height: 0;
+
+        border-left: 8px solid transparent;
+        border-right: 4px solid transparent;
+
+        border-bottom: 21px solid #18251d;
+
+        transform: rotate(-25deg);
+
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25));
       }
 
       /* =====================================================
@@ -1004,7 +1061,7 @@
       }
 
       /* =====================================================
-       COURSE CARDS
+       CARDS
     ====================================================== */
 
       .cards {
@@ -1379,10 +1436,7 @@
 
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
 
-        transition:
-          transform 0.35s ease,
-          border-color 0.35s ease,
-          box-shadow 0.35s ease;
+        transition: 0.35s ease;
       }
 
       .contact-card:hover {
@@ -1602,6 +1656,17 @@
         }
       }
 
+      @keyframes autoFloat {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+
+        50% {
+          transform: translateY(-5px) scale(1.04);
+        }
+      }
+
       @keyframes glowMove {
         0%,
         100% {
@@ -1613,37 +1678,49 @@
         }
       }
 
-      @keyframes barGrow {
+      @keyframes orbitRotate {
         from {
-          transform: scaleY(0);
-          opacity: 0;
+          transform: rotate(0deg);
         }
 
         to {
-          transform: scaleY(1);
-          opacity: 1;
+          transform: rotate(360deg);
         }
       }
 
-      @keyframes barPulse {
-        0%,
-        100% {
-          filter: brightness(1);
+      @keyframes cursorMove {
+        0% {
+          transform: translate(90px, 100px);
         }
 
-        50% {
-          filter: brightness(1.25);
+        20% {
+          transform: translate(185px, 145px);
+        }
+
+        40% {
+          transform: translate(280px, 190px);
+        }
+
+        60% {
+          transform: translate(185px, 215px);
+        }
+
+        80% {
+          transform: translate(330px, 145px);
+        }
+
+        100% {
+          transform: translate(90px, 100px);
         }
       }
 
-      @keyframes pointPulse {
-        0%,
-        100% {
-          transform: scale(1);
+      @keyframes scan {
+        0% {
+          transform: translateX(-60%);
         }
 
-        50% {
-          transform: scale(1.45);
+        100% {
+          transform: translateX(60%);
         }
       }
 
@@ -1655,16 +1732,6 @@
 
         50% {
           transform: translateY(-7px);
-        }
-      }
-
-      @keyframes scan {
-        0% {
-          transform: translateX(-60%);
-        }
-
-        100% {
-          transform: translateX(60%);
         }
       }
 
@@ -1698,7 +1765,7 @@
           justify-content: center;
         }
 
-        .excel-dashboard {
+        .excel-window {
           transform: none;
 
           max-width: 520px;
@@ -1706,15 +1773,15 @@
           margin: auto;
         }
 
-        .excel-dashboard:hover {
+        .excel-window:hover {
           transform: translateY(-5px);
         }
 
-        .formula-floating {
+        .formula-badge {
           left: 0;
         }
 
-        .analysis-floating {
+        .pivot-badge {
           right: 0;
         }
 
@@ -1808,158 +1875,161 @@
           max-width: 200px;
         }
 
-        /* MOBILE DASHBOARD */
+        /* MOBILE EXCEL */
 
         .excel-wrapper {
-          min-height: 350px;
+          min-height: 330px;
+
+          width: 100%;
         }
 
-        .excel-dashboard {
+        .excel-orbit {
+          width: 320px;
+          height: 320px;
+        }
+
+        .excel-window {
           width: 100%;
 
-          padding: 7px;
+          border-width: 4px;
 
-          border-radius: 22px;
+          border-radius: 17px;
         }
 
-        .dashboard-inner {
-          min-height: 320px;
+        .excel-titlebar {
+          height: 34px;
 
-          border-radius: 16px;
+          padding: 0 8px;
         }
 
-        .dashboard-top {
-          height: 40px;
+        .excel-app-icon {
+          width: 21px;
+          height: 21px;
 
-          padding: 0 10px;
+          font-size: 8px;
         }
 
-        .excel-brand {
-          font-size: 9px;
-        }
-
-        .excel-symbol {
-          width: 23px;
-          height: 23px;
-
-          font-size: 9px;
-        }
-
-        .dashboard-live {
-          font-size: 6px;
-        }
-
-        .dashboard-toolbar {
-          gap: 10px;
-
-          padding: 8px 10px;
-
-          font-size: 6px;
-        }
-
-        .dashboard-content {
-          padding: 10px;
-        }
-
-        .dashboard-heading strong {
-          font-size: 10px;
-        }
-
-        .dashboard-heading span {
-          font-size: 6px;
-        }
-
-        .mini-stats {
-          gap: 5px;
-
-          margin-bottom: 9px;
-        }
-
-        .mini-stat {
-          padding: 7px;
-
-          border-radius: 8px;
-        }
-
-        .mini-stat small {
-          font-size: 5px;
-        }
-
-        .mini-stat strong {
-          font-size: 10px;
-        }
-
-        .mini-stat .up {
-          font-size: 5px;
-        }
-
-        .chart-box {
-          height: 155px;
-
-          padding: 9px;
-
-          border-radius: 10px;
-        }
-
-        .chart-title {
-          font-size: 6px;
-
-          margin-bottom: 4px;
-        }
-
-        .chart-area {
-          height: 115px;
-
-          gap: 5px;
-
-          padding: 10px 4px 5px;
-        }
-
-        .bar {
-          min-width: 14px;
-        }
-
-        .bar-label {
-          font-size: 5px;
-
-          bottom: -12px;
-        }
-
-        .formula-floating {
-          width: 115px;
-
-          top: 15px;
-          left: -2px;
-
-          padding: 8px 9px;
-
-          border-radius: 10px;
-        }
-
-        .formula-floating small {
-          font-size: 5px;
-        }
-
-        .formula-floating strong {
+        .excel-file-name {
           font-size: 7px;
         }
 
-        .analysis-floating {
-          right: -2px;
+        .excel-ribbon {
+          height: 31px;
 
-          bottom: 20px;
+          gap: 9px;
 
-          padding: 8px 10px;
+          padding: 0 8px;
 
-          border-radius: 10px;
+          font-size: 5.5px;
         }
 
-        .analysis-floating small {
+        .ribbon-active {
+          padding-bottom: 8px;
+        }
+
+        .formula-bar {
+          height: 33px;
+
+          padding: 4px 5px;
+        }
+
+        .name-box {
+          width: 39px;
+
+          height: 22px;
+
           font-size: 6px;
         }
 
-        .analysis-floating strong {
+        .fx {
           font-size: 9px;
+        }
+
+        .formula-input {
+          height: 22px;
+
+          font-size: 6px;
+        }
+
+        .sheet-area {
+          height: 225px;
+        }
+
+        .spreadsheet {
+          grid-template-columns:
+            26px
+            repeat(6, minmax(46px, 1fr));
+
+          grid-template-rows:
+            23px
+            repeat(8, 25px);
+
+          min-width: 302px;
+        }
+
+        .column-head,
+        .row-head {
+          font-size: 6px;
+        }
+
+        .cell {
+          padding: 0 4px;
+
+          font-size: 6px;
+        }
+
+        .sheet-bottom {
+          height: 26px;
+
+          padding: 0 5px;
+        }
+
+        .sheet-tab {
+          height: 20px;
+
+          padding: 0 9px;
+
+          font-size: 6px;
+        }
+
+        .excel-badge {
+          padding: 7px 9px;
+
+          border-radius: 9px;
+        }
+
+        .excel-badge small {
+          font-size: 5px;
+        }
+
+        .excel-badge strong {
+          font-size: 7px;
+        }
+
+        .formula-badge {
+          top: 8px;
+
+          left: -3px;
+        }
+
+        .pivot-badge {
+          right: -3px;
+
+          bottom: 20px;
+        }
+
+        .auto-badge {
+          top: -9px;
+
+          right: 3px;
+        }
+
+        .auto-badge strong {
+          font-size: 6px;
+        }
+
+        .excel-cursor {
+          display: none;
         }
 
         .info-bar {
@@ -2081,6 +2151,15 @@
           font-size: 29px;
         }
 
+        .excel-orbit {
+          width: 285px;
+          height: 285px;
+        }
+
+        .excel-badge {
+          display: none;
+        }
+
         .circle {
           width: 185px;
           height: 185px;
@@ -2096,14 +2175,6 @@
         .cta h2 {
           font-size: 25px;
         }
-
-        .formula-floating {
-          display: none;
-        }
-
-        .analysis-floating {
-          display: none;
-        }
       }
     </style>
   </head>
@@ -2111,8 +2182,8 @@
   <body>
     <main class="container">
       <!-- =====================================================
-         NAVBAR
-    ====================================================== -->
+       NAVBAR
+  ====================================================== -->
 
       <nav class="navbar">
         <div class="logo">
@@ -2125,8 +2196,8 @@
       </nav>
 
       <!-- =====================================================
-         HERO
-    ====================================================== -->
+       HERO
+  ====================================================== -->
 
       <section class="hero">
         <div class="hero-content">
@@ -2164,151 +2235,259 @@
         </div>
 
         <!-- =====================================================
-           NEW EXCEL DATA VISUAL
-      ====================================================== -->
+         REAL EXCEL VISUAL
+    ====================================================== -->
 
         <div class="excel-wrapper">
           <div class="excel-glow"></div>
 
-          <div class="excel-dashboard">
-            <div class="dashboard-inner">
-              <!-- TOP -->
+          <div class="excel-orbit"></div>
 
-              <div class="dashboard-top">
-                <div class="excel-brand">
-                  <div class="excel-symbol">XLS</div>
+          <!-- FORMULA BADGE -->
 
-                  <span> Excel Analytics </span>
-                </div>
+          <div class="excel-badge formula-badge">
+            <small> معادلة Excel </small>
 
-                <div class="dashboard-live">
-                  <span class="dashboard-live-dot"></span>
+            <strong> =SUM(B2:B8) </strong>
+          </div>
 
-                  LIVE DATA
-                </div>
+          <!-- AUTO BADGE -->
+
+          <div class="excel-badge auto-badge">
+            <strong> ⚡ AutoSum </strong>
+          </div>
+
+          <!-- PIVOT BADGE -->
+
+          <div class="excel-badge pivot-badge">
+            <small> تحليل البيانات </small>
+
+            <strong> PivotTable ✓ </strong>
+          </div>
+
+          <!-- EXCEL WINDOW -->
+
+          <div class="excel-window">
+            <!-- TITLE -->
+
+            <div class="excel-titlebar">
+              <div class="excel-app-icon">X</div>
+
+              <div class="excel-file-name">Excel Master.xlsx</div>
+
+              <div class="excel-window-buttons">
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
+            </div>
 
-              <!-- TOOLBAR -->
+            <!-- RIBBON -->
 
-              <div class="dashboard-toolbar">
-                <span>Home</span>
-                <span>Insert</span>
-                <span>Data</span>
-                <span>Formulas</span>
-                <span>Charts</span>
-                <span>Analysis</span>
-              </div>
+            <div class="excel-ribbon">
+              <span class="ribbon-active"> Home </span>
 
-              <!-- CONTENT -->
+              <span> Insert </span>
 
-              <div class="dashboard-content">
-                <div class="dashboard-heading">
-                  <strong> لوحة تحليل البيانات </strong>
+              <span> Page Layout </span>
 
-                  <span> تحديث مباشر </span>
-                </div>
+              <span> Formulas </span>
 
-                <!-- STATS -->
+              <span> Data </span>
 
-                <div class="mini-stats">
-                  <div class="mini-stat">
-                    <small> إجمالي المبيعات </small>
+              <span> Review </span>
+            </div>
 
-                    <strong> 4,650 </strong>
+            <!-- FORMULA BAR -->
 
-                    <span class="up"> +18% </span>
+            <div class="formula-bar">
+              <div class="name-box" id="selectedName">B3</div>
+
+              <div class="fx">fx</div>
+
+              <div class="formula-input" id="formulaInput">=SUM(B2:B8)</div>
+            </div>
+
+            <!-- SPREADSHEET -->
+
+            <div class="sheet-area">
+              <div class="sheet-scroll">
+                <div class="spreadsheet">
+                  <!-- CORNER -->
+
+                  <div class="corner"></div>
+
+                  <!-- COLUMN HEADERS -->
+
+                  <div class="column-head">A</div>
+
+                  <div class="column-head" id="head-B">B</div>
+
+                  <div class="column-head">C</div>
+
+                  <div class="column-head">D</div>
+
+                  <div class="column-head">E</div>
+
+                  <div class="column-head">F</div>
+
+                  <!-- ROW 1 -->
+
+                  <div class="row-head">1</div>
+
+                  <div class="cell header-cell" data-cell="A1">المنتج</div>
+
+                  <div class="cell header-cell" data-cell="B1">المبيعات</div>
+
+                  <div class="cell header-cell" data-cell="C1">النمو</div>
+
+                  <div class="cell header-cell" data-cell="D1">الربح</div>
+
+                  <div class="cell header-cell" data-cell="E1">الحالة</div>
+
+                  <div class="cell header-cell" data-cell="F1">النتيجة</div>
+
+                  <!-- ROW 2 -->
+
+                  <div class="row-head">2</div>
+
+                  <div class="cell" data-cell="A2">Excel</div>
+
+                  <div class="cell money" data-cell="B2">850</div>
+
+                  <div class="cell" data-cell="C2">+12%</div>
+
+                  <div class="cell money" data-cell="D2">320</div>
+
+                  <div class="cell" data-cell="E2">ممتاز</div>
+
+                  <div class="cell formula-cell" data-cell="F2">=B2-D2</div>
+
+                  <!-- ROW 3 -->
+
+                  <div class="row-head" id="row-3">3</div>
+
+                  <div class="cell" data-cell="A3">Canva</div>
+
+                  <div
+                    class="cell money selected"
+                    data-cell="B3"
+                    data-formula="=SUM(B2:B8)"
+                  >
+                    1240
                   </div>
 
-                  <div class="mini-stat">
-                    <small> معدل النمو </small>
+                  <div class="cell" data-cell="C3">+25%</div>
 
-                    <strong> 35% </strong>
+                  <div class="cell money" data-cell="D3">510</div>
 
-                    <span class="up"> ↑ </span>
-                  </div>
+                  <div class="cell" data-cell="E3">ممتاز</div>
 
-                  <div class="mini-stat">
-                    <small> الأداء </small>
+                  <div class="cell formula-cell" data-cell="F3">=B3-D3</div>
 
-                    <strong> 92% </strong>
+                  <!-- ROW 4 -->
 
-                    <span class="up"> ممتاز </span>
-                  </div>
-                </div>
+                  <div class="row-head">4</div>
 
-                <!-- CHART -->
+                  <div class="cell" data-cell="A4">C++</div>
 
-                <div class="chart-box">
-                  <div class="chart-title">تحليل الأداء الشهري</div>
+                  <div class="cell money" data-cell="B4">970</div>
 
-                  <div class="chart-area">
-                    <div class="chart-grid">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
+                  <div class="cell" data-cell="C4">+18%</div>
 
-                    <div class="bar" style="--height: 48%">
-                      <span class="bar-label"> Jan </span>
-                    </div>
+                  <div class="cell money" data-cell="D4">390</div>
 
-                    <div class="bar" style="--height: 62%">
-                      <span class="bar-label"> Feb </span>
-                    </div>
+                  <div class="cell" data-cell="E4">جيد</div>
 
-                    <div class="bar" style="--height: 55%">
-                      <span class="bar-label"> Mar </span>
-                    </div>
+                  <div class="cell formula-cell" data-cell="F4">=B4-D4</div>
 
-                    <div class="bar" style="--height: 75%">
-                      <span class="bar-label"> Apr </span>
-                    </div>
+                  <!-- ROW 5 -->
 
-                    <div class="bar" style="--height: 66%">
-                      <span class="bar-label"> May </span>
-                    </div>
+                  <div class="row-head">5</div>
 
-                    <div class="bar" style="--height: 90%">
-                      <span class="bar-label"> Jun </span>
-                    </div>
+                  <div class="cell" data-cell="A5">C#</div>
 
-                    <!-- GRAPH LINE -->
+                  <div class="cell money" data-cell="B5">1430</div>
 
-                    <div class="chart-line"></div>
+                  <div class="cell" data-cell="C5">+31%</div>
 
-                    <div class="chart-point point-1"></div>
-                    <div class="chart-point point-2"></div>
-                    <div class="chart-point point-3"></div>
-                    <div class="chart-point point-4"></div>
-                  </div>
+                  <div class="cell money" data-cell="D5">620</div>
+
+                  <div class="cell" data-cell="E5">ممتاز</div>
+
+                  <div class="cell formula-cell" data-cell="F5">=B5-D5</div>
+
+                  <!-- ROW 6 -->
+
+                  <div class="row-head">6</div>
+
+                  <div class="cell" data-cell="A6">AI</div>
+
+                  <div class="cell money" data-cell="B6">1680</div>
+
+                  <div class="cell" data-cell="C6">+42%</div>
+
+                  <div class="cell money" data-cell="D6">740</div>
+
+                  <div class="cell" data-cell="E6">ممتاز</div>
+
+                  <div class="cell formula-cell" data-cell="F6">=B6-D6</div>
+
+                  <!-- ROW 7 -->
+
+                  <div class="row-head">7</div>
+
+                  <div class="cell" data-cell="A7">HR</div>
+
+                  <div class="cell money" data-cell="B7">760</div>
+
+                  <div class="cell" data-cell="C7">+15%</div>
+
+                  <div class="cell money" data-cell="D7">280</div>
+
+                  <div class="cell" data-cell="E7">جيد</div>
+
+                  <div class="cell formula-cell" data-cell="F7">=B7-D7</div>
+
+                  <!-- ROW 8 -->
+
+                  <div class="row-head">8</div>
+
+                  <div class="cell" data-cell="A8">Security</div>
+
+                  <div class="cell money" data-cell="B8">1890</div>
+
+                  <div class="cell" data-cell="C8">+47%</div>
+
+                  <div class="cell money" data-cell="D8">850</div>
+
+                  <div class="cell" data-cell="E8">ممتاز</div>
+
+                  <div class="cell formula-cell" data-cell="F8">=B8-D8</div>
                 </div>
               </div>
             </div>
 
-            <!-- FLOATING FORMULA -->
+            <!-- SHEET TABS -->
 
-            <div class="formula-floating">
-              <small> معادلة ذكية </small>
+            <div class="sheet-bottom">
+              <div class="sheet-tab active">Data</div>
 
-              <strong> =SUM(B2:B8) </strong>
-            </div>
+              <div class="sheet-tab">Analysis</div>
 
-            <!-- FLOATING ANALYSIS -->
-
-            <div class="analysis-floating">
-              <small> تحليل تلقائي </small>
-
-              <strong> +35% </strong>
+              <div class="sheet-tab">Dashboard</div>
             </div>
           </div>
+
+          <!-- FAKE CURSOR -->
+
+          <div class="excel-cursor"></div>
         </div>
       </section>
 
       <!-- =====================================================
-         INFO
-    ====================================================== -->
+       INFO
+  ====================================================== -->
 
       <section class="info-bar">
         <div class="info-item">
@@ -2337,8 +2516,8 @@
       </section>
 
       <!-- =====================================================
-         COURSE CONTENT
-    ====================================================== -->
+       COURSE CONTENT
+  ====================================================== -->
 
       <section>
         <div class="section-heading">
@@ -2412,8 +2591,8 @@
       </section>
 
       <!-- =====================================================
-         BENEFITS
-    ====================================================== -->
+       BENEFITS
+  ====================================================== -->
 
       <section class="benefits">
         <div class="benefits-visual">
@@ -2467,8 +2646,8 @@
       </section>
 
       <!-- =====================================================
-         CTA
-    ====================================================== -->
+       CTA
+  ====================================================== -->
 
       <section class="cta">
         <div class="cta-label">YOUR NEXT STEP</div>
@@ -2500,8 +2679,8 @@
       </section>
 
       <!-- =====================================================
-         CONTACT
-    ====================================================== -->
+       CONTACT
+  ====================================================== -->
 
       <section class="contact-section" id="contact">
         <div class="section-heading">
@@ -2539,8 +2718,8 @@
       </section>
 
       <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+       FOOTER
+  ====================================================== -->
 
       <footer>
         <p>
@@ -2552,5 +2731,139 @@
         </p>
       </footer>
     </main>
+
+    <script>
+      /* =====================================================
+     INTERACTIVE EXCEL CELLS
+  ====================================================== */
+
+      const cells = document.querySelectorAll(".cell");
+      const selectedName = document.getElementById("selectedName");
+      const formulaInput = document.getElementById("formulaInput");
+
+      const columnHeaders = document.querySelectorAll(".column-head");
+
+      const rowHeaders = document.querySelectorAll(".row-head");
+
+      cells.forEach((cell) => {
+        cell.addEventListener("click", () => {
+          /* إزالة التحديد السابق */
+
+          cells.forEach((c) => {
+            c.classList.remove("selected");
+          });
+
+          columnHeaders.forEach((h) => {
+            h.classList.remove("active-header");
+          });
+
+          rowHeaders.forEach((h) => {
+            h.classList.remove("active-header");
+          });
+
+          /* تحديد الخلية */
+
+          cell.classList.add("selected");
+
+          const address = cell.dataset.cell || "";
+
+          selectedName.textContent = address;
+
+          /* إظهار المعادلة */
+
+          const formula = cell.dataset.formula;
+
+          if (formula) {
+            formulaInput.textContent = formula;
+          } else {
+            formulaInput.textContent = cell.textContent.trim();
+          }
+
+          /* تحديد العمود */
+
+          const column = address.charAt(0);
+
+          const row = address.substring(1);
+
+          columnHeaders.forEach((header) => {
+            if (header.textContent.trim() === column) {
+              header.classList.add("active-header");
+            }
+          });
+
+          /* تحديد الصف */
+
+          rowHeaders.forEach((header) => {
+            if (header.textContent.trim() === row) {
+              header.classList.add("active-header");
+            }
+          });
+        });
+      });
+
+      /* =====================================================
+     AUTOMATIC EXCEL ACTIVITY
+  ====================================================== */
+
+      const demoCells = ["B2", "C3", "D4", "B5", "F6", "B8", "C6"];
+
+      let demoIndex = 0;
+
+      function autoExcelAnimation() {
+        cells.forEach((cell) => {
+          cell.classList.remove("selected");
+        });
+
+        const target = document.querySelector(
+          `[data-cell="${demoCells[demoIndex]}"]`,
+        );
+
+        if (target) {
+          target.click();
+        }
+
+        demoIndex++;
+
+        if (demoIndex >= demoCells.length) {
+          demoIndex = 0;
+        }
+      }
+
+      setInterval(autoExcelAnimation, 2300);
+
+      /* =====================================================
+     SHEET TABS
+  ====================================================== */
+
+      const tabs = document.querySelectorAll(".sheet-tab");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => {
+            t.classList.remove("active");
+          });
+
+          tab.classList.add("active");
+        });
+      });
+
+      /* =====================================================
+     MOBILE TOUCH FEEDBACK
+  ====================================================== */
+
+      cells.forEach((cell) => {
+        cell.addEventListener(
+          "touchstart",
+          () => {
+            cell.style.transform = "scale(.97)";
+
+            setTimeout(() => {
+              cell.style.transform = "";
+            }, 120);
+          },
+          { passive: true },
+        );
+      });
+    </script>
   </body>
 </html>
