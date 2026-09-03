@@ -436,17 +436,17 @@
       }
 
       /* =====================================================
-         APP GRID
+         APP GRID - 7 MODULES
       ====================================================== */
 
       .apps {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 9px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
       }
 
       .app {
-        height: 75px;
+        height: 67px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -454,11 +454,12 @@
         gap: 4px;
         border-radius: 10px;
         color: #fff;
-        font-size: 10px;
+        font-size: 9px;
         cursor: pointer;
         position: relative;
         overflow: hidden;
         transition: 0.35s;
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
 
       .app::after {
@@ -481,8 +482,13 @@
       }
 
       .app-icon {
-        font-size: 27px;
+        font-size: 25px;
         font-weight: 900;
+        z-index: 1;
+      }
+
+      .app > div:not(.app-icon):not(.windows-app-logo) {
+        z-index: 1;
       }
 
       .word {
@@ -509,8 +515,35 @@
         background: linear-gradient(145deg, #806dff, #342878);
       }
 
+      /* =====================================================
+         WINDOWS APP
+      ====================================================== */
+
       .windows-app {
         background: linear-gradient(135deg, #00a4ef, #0078d4 50%, #005a9e);
+      }
+
+      .windows-app-logo {
+        position: relative;
+        width: 27px;
+        height: 27px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 2px;
+        z-index: 2;
+        transform: skewY(-3deg);
+        transition: 0.35s;
+      }
+
+      .windows-app-logo span {
+        display: block;
+        background: #fff;
+        box-shadow: 0 0 7px rgba(255, 255, 255, 0.55);
+      }
+
+      .windows-app:hover .windows-app-logo {
+        transform: skewY(-3deg) scale(1.15) rotate(-2deg);
       }
 
       /* =====================================================
@@ -518,8 +551,8 @@
       ====================================================== */
 
       .typing {
-        margin-top: 9px;
-        height: 22px;
+        margin-top: 8px;
+        height: 21px;
         padding: 5px 8px;
         border-radius: 5px;
         background: rgba(0, 0, 0, 0.22);
@@ -712,6 +745,8 @@
         font-weight: 900;
         box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
         transition: 0.4s;
+        position: relative;
+        z-index: 1;
       }
 
       .module:hover .module-icon {
@@ -721,11 +756,15 @@
       .module h3 {
         font-size: 13px;
         margin-bottom: 10px;
+        position: relative;
+        z-index: 1;
       }
 
       .module ul {
         list-style: none;
         text-align: right;
+        position: relative;
+        z-index: 1;
       }
 
       .module li {
@@ -788,6 +827,7 @@
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         gap: 3px;
+        transform: skewY(-4deg);
       }
 
       .windows-logo span {
@@ -798,6 +838,7 @@
 
       .windows-version {
         margin-top: 8px;
+        margin-bottom: 9px;
         color: #9edfff;
         font-size: 8px;
         font-weight: bold;
@@ -1203,7 +1244,7 @@
 
         55%,
         75% {
-          content: "Windows 10 or Windows 11";
+          content: "Windows 10 • Windows 11";
         }
 
         85%,
@@ -1360,18 +1401,26 @@
           margin-bottom: 6px;
         }
 
+        /* 7 تطبيقات داخل اللابتوب */
         .apps {
+          grid-template-columns: repeat(4, 1fr);
           gap: 4px;
         }
 
         .app {
-          height: 42px;
+          height: 39px;
           border-radius: 5px;
           font-size: 5px;
         }
 
         .app-icon {
-          font-size: 16px;
+          font-size: 15px;
+        }
+
+        .windows-app-logo {
+          width: 18px;
+          height: 18px;
+          gap: 1.5px;
         }
 
         .typing {
@@ -1459,6 +1508,8 @@
 
         .windows-version {
           font-size: 6px;
+          margin-top: 5px;
+          margin-bottom: 7px;
         }
 
         .module h3 {
@@ -1657,7 +1708,6 @@
 
         <div>
           <div class="brand-name">Cours<span>yria</span></div>
-
           <div class="brand-sub">تعلم • طوّر • احمِ مستقبلك</div>
         </div>
       </div>
@@ -1729,6 +1779,7 @@
 
           <div class="float-card card-two">
             <strong>100%</strong>
+            تطبيق عملي
           </div>
 
           <div class="float-card card-three">
@@ -1747,35 +1798,57 @@
                 </span>
               </div>
 
+              <!-- =================================================
+                   7 ICDL MODULES INSIDE LAPTOP
+              ================================================== -->
+
               <div class="apps">
+                <!-- 01 -->
                 <div class="app word">
                   <div class="app-icon">W</div>
                   معالجة النصوص
                 </div>
 
+                <!-- 02 -->
                 <div class="app excel">
                   <div class="app-icon">X</div>
                   الجداول
                 </div>
 
+                <!-- 03 -->
                 <div class="app powerpoint">
                   <div class="app-icon">P</div>
                   العروض
                 </div>
 
+                <!-- 04 -->
                 <div class="app access">
                   <div class="app-icon">A</div>
                   قواعد البيانات
                 </div>
 
+                <!-- 05 -->
                 <div class="app internet">
                   <div class="app-icon">◎</div>
                   الإنترنت
                 </div>
 
+                <!-- 06 -->
                 <div class="app security">
                   <div class="app-icon">♢</div>
                   الأمن الرقمي
+                </div>
+
+                <!-- 07 WINDOWS -->
+                <div class="app windows-app">
+                  <div class="windows-app-logo">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+
+                  نظام Windows
                 </div>
               </div>
 
@@ -1795,11 +1868,13 @@
 
       <section class="section reveal">
         <div class="section-title">
-          <span>🚀 محاور الدورة</span>
+          <span> 🚀 محاور الدورة </span>
         </div>
 
         <div class="modules">
-          <!-- 01 -->
+          <!-- =================================================
+               01 WORD
+          ================================================== -->
 
           <div class="module m1">
             <div class="module-number">01</div>
@@ -1816,7 +1891,9 @@
             </ul>
           </div>
 
-          <!-- 02 -->
+          <!-- =================================================
+               02 EXCEL
+          ================================================== -->
 
           <div class="module m2">
             <div class="module-number">02</div>
@@ -1833,7 +1910,9 @@
             </ul>
           </div>
 
-          <!-- 03 -->
+          <!-- =================================================
+               03 POWERPOINT
+          ================================================== -->
 
           <div class="module m3">
             <div class="module-number">03</div>
@@ -1850,7 +1929,9 @@
             </ul>
           </div>
 
-          <!-- 04 -->
+          <!-- =================================================
+               04 ACCESS
+          ================================================== -->
 
           <div class="module m4">
             <div class="module-number">04</div>
@@ -1867,7 +1948,9 @@
             </ul>
           </div>
 
-          <!-- 05 -->
+          <!-- =================================================
+               05 INTERNET
+          ================================================== -->
 
           <div class="module m5">
             <div class="module-number">05</div>
@@ -1884,7 +1967,9 @@
             </ul>
           </div>
 
-          <!-- 06 -->
+          <!-- =================================================
+               06 SECURITY
+          ================================================== -->
 
           <div class="module m6">
             <div class="module-number">06</div>
@@ -1901,7 +1986,9 @@
             </ul>
           </div>
 
-          <!-- 07 WINDOWS -->
+          <!-- =================================================
+               07 WINDOWS
+          ================================================== -->
 
           <div class="module m7">
             <div class="module-number">07</div>
@@ -1917,7 +2004,7 @@
 
             <h3>نظام Windows</h3>
 
-            <div class="windows-version">Windows 10 or Windows 11</div>
+            <div class="windows-version">Windows 10 • Windows 11</div>
 
             <ul>
               <li>أساسيات نظام التشغيل</li>
@@ -1946,22 +2033,22 @@
 
               <li>
                 <div class="list-icon">💻</div>
-                <span>إتقان استخدام التطبيقات الأساسية</span>
+                <span> إتقان استخدام التطبيقات الأساسية </span>
               </li>
 
               <li>
                 <div class="list-icon">💼</div>
-                <span>زيادة فرص الدراسة والعمل</span>
+                <span> زيادة فرص الدراسة والعمل </span>
               </li>
 
               <li>
                 <div class="list-icon">📈</div>
-                <span>رفع إنتاجيتك في الدراسة والعمل</span>
+                <span> رفع إنتاجيتك في الدراسة والعمل </span>
               </li>
 
               <li>
                 <div class="list-icon">🚀</div>
-                <span>بناء أساس رقمي قوي للمستقبل</span>
+                <span> بناء أساس رقمي قوي للمستقبل </span>
               </li>
             </ul>
           </div>
@@ -1972,27 +2059,27 @@
             <ul class="list">
               <li>
                 <div class="list-icon">🎓</div>
-                <span>طالبًا وتريد تطوير مهاراتك</span>
+                <span> طالبًا وتريد تطوير مهاراتك </span>
               </li>
 
               <li>
                 <div class="list-icon">💼</div>
-                <span>موظفًا وترغب برفع كفاءتك</span>
+                <span> موظفًا وترغب برفع كفاءتك </span>
               </li>
 
               <li>
                 <div class="list-icon">🔎</div>
-                <span>باحثًا عن عمل وتريد التميز</span>
+                <span> باحثًا عن عمل وتريد التميز </span>
               </li>
 
               <li>
                 <div class="list-icon">⚡</div>
-                <span>تريد استخدام الحاسوب بسرعة وكفاءة</span>
+                <span> تريد استخدام الحاسوب بسرعة وكفاءة </span>
               </li>
 
               <li>
                 <div class="list-icon">🌐</div>
-                <span>تطمح لمستقبل رقمي أفضل</span>
+                <span> تطمح لمستقبل رقمي أفضل </span>
               </li>
             </ul>
           </div>
@@ -2023,7 +2110,7 @@
         <div class="cta">
           <h2>
             جاهز تبدأ رحلتك
-            <span>الرقمية؟</span>
+            <span> الرقمية؟ </span>
           </h2>
 
           <p>
@@ -2033,7 +2120,7 @@
 
           <div class="cta-price">
             1300
-            <small>ليرة سورية</small>
+            <small> ليرة سورية </small>
           </div>
 
           <a
@@ -2053,7 +2140,7 @@
 
       <section class="section contact-section reveal" id="contact">
         <div class="section-heading">
-          <span>📞 التواصل</span>
+          <span> 📞 التواصل </span>
         </div>
 
         <div class="contact-wrapper">
@@ -2169,8 +2256,8 @@
           const rotateX = (y / rect.height - 0.5) * -6;
 
           laptop.style.transform = `perspective(900px)
-             rotateY(${rotateY}deg)
-             rotateX(${rotateX}deg)`;
+               rotateY(${rotateY}deg)
+               rotateX(${rotateX}deg)`;
         });
 
         visual.addEventListener("mouseleave", () => {
