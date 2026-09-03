@@ -1795,78 +1795,348 @@
 
       .footer {
         border-top: 1px solid rgba(23, 119, 220, 0.16);
-
         background: linear-gradient(
           135deg,
           rgba(255, 255, 255, 0.88),
           rgba(224, 243, 255, 0.84)
         );
-
-        padding: 34px 20px;
-
+        padding: 34px 20px 20px;
         text-align: center;
-
         color: #607795;
-
         font-size: 13px;
-
         line-height: 2.2;
+        overflow: hidden;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-main {
+        margin-bottom: 20px;
       }
 
       .footer strong {
         display: inline-block;
-
         color: #0752aa;
-
         font-family: "Playfair Display", serif;
-
         font-size: 27px;
-
         letter-spacing: 2px;
       }
 
-      .designer-link {
-        display: inline-block;
+      /* =====================================================
+         قسم التعاون الفخم
+      ====================================================== */
 
-        margin-top: 7px;
-
-        padding: 6px 15px;
-
-        color: #0757ae;
-
-        text-decoration: none;
-
-        font-weight: 800;
-
-        font-size: 14px;
-
-        border: 1px solid rgba(20, 121, 220, 0.22);
-
-        border-radius: 20px;
-
-        transition: 0.3s;
-
+      .collaboration-section {
+        margin: 25px 0 30px;
+        padding: 20px;
         background: rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        border: 1px solid rgba(23, 119, 220, 0.12);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
       }
 
-      .designer-link:hover {
-        color: #fff;
+      /* تأثير الخلفية المتحركة */
+      .collaboration-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background:
+          radial-gradient(
+            circle at 30% 50%,
+            rgba(23, 119, 220, 0.03),
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 50%,
+            rgba(23, 119, 220, 0.03),
+            transparent 50%
+          );
+        animation: shimmer 8s ease-in-out infinite;
+        pointer-events: none;
+      }
 
-        background: linear-gradient(135deg, #35adff, #0751b7);
+      @keyframes shimmer {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(180deg);
+        }
+      }
 
+      .collaboration-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* =====================================================
+         روابط الأسماء (قابلة للضغط)
+      ====================================================== */
+
+      .collaborator-link {
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .collaborator-link:hover {
         transform: translateY(-3px);
       }
 
-      .copyright {
-        margin-top: 10px;
+      .collaborator-link:hover .collaborator {
+        background: white;
+        box-shadow: 0 10px 30px rgba(23, 119, 220, 0.2);
+        border-color: rgba(23, 119, 220, 0.3);
+      }
 
-        padding-top: 10px;
+      /* إضافة أيقونة واتساب صغيرة عند hover */
+      .collaborator-link::after {
+        content: "💬";
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        font-size: 16px;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 2px 8px rgba(37, 211, 102, 0.3));
+      }
 
-        border-top: 1px solid rgba(26, 118, 218, 0.12);
+      .collaborator-link:hover::after {
+        opacity: 1;
+        transform: scale(1);
+      }
 
+      .collaborator {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0752aa;
+        padding: 8px 25px;
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(23, 119, 220, 0.15);
+        transition: all 0.4s ease;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        display: inline-block;
+      }
+
+      /* =====================================================
+         تأثير VS الفخم
+      ====================================================== */
+
+      .vs-container {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      /* الحلقات الدائرية */
+      .vs-ring {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 2px solid rgba(23, 119, 220, 0.15);
+        border-radius: 50%;
+        animation: ringPulse 3s ease-in-out infinite;
+      }
+
+      .vs-ring-2 {
+        width: 85%;
+        height: 85%;
+        animation-delay: 0.5s;
+        border-color: rgba(23, 119, 220, 0.08);
+      }
+
+      @keyframes ringPulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.15);
+          opacity: 0.5;
+        }
+      }
+
+      /* نص VS */
+      .vs-text {
+        font-family: "Playfair Display", serif;
+        font-size: 28px;
+        font-weight: 900;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a24, #ff6b6b);
+        background-size: 200% 200%;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: vsGradient 3s ease-in-out infinite;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 0 40px rgba(238, 90, 36, 0.2);
+        letter-spacing: 1px;
+      }
+
+      @keyframes vsGradient {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      /* النص الفرعي */
+      .collaboration-sub {
+        font-size: 13px;
         color: #8294ad;
+        margin-top: 12px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        position: relative;
+        z-index: 1;
+      }
 
+      .collaboration-sub::before,
+      .collaboration-sub::after {
+        content: "✦";
+        margin: 0 10px;
+        color: #0752aa;
+        font-size: 10px;
+        opacity: 0.5;
+      }
+
+      /* =====================================================
+         باقي عناصر الفوتر
+      ====================================================== */
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 15px 0 10px;
+        flex-wrap: wrap;
+      }
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        color: #0752aa;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(23, 119, 220, 0.12);
+        font-size: 18px;
+      }
+
+      .social-link:hover {
+        background: linear-gradient(135deg, #0752aa, #35adff);
+        color: white;
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(7, 82, 170, 0.3);
+        border-color: transparent;
+      }
+
+      .copyright {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(26, 118, 218, 0.12);
+        color: #8294ad;
         font-size: 12px;
+      }
+
+      /* =====================================================
+         Responsive
+      ====================================================== */
+
+      @media (max-width: 600px) {
+        .collaboration-wrapper {
+          gap: 8px;
+        }
+
+        .collaborator {
+          font-size: 14px;
+          padding: 6px 16px;
+        }
+
+        .collaborator-link::after {
+          font-size: 14px;
+          top: -8px;
+          right: -8px;
+        }
+
+        .vs-container {
+          width: 55px;
+          height: 55px;
+        }
+
+        .vs-text {
+          font-size: 22px;
+        }
+
+        .collaboration-sub {
+          font-size: 11px;
+        }
+
+        .collaboration-sub::before,
+        .collaboration-sub::after {
+          margin: 0 5px;
+        }
+      }
+      /* =====================================================
+         Responsive
+      ====================================================== */
+
+      @media (max-width: 600px) {
+        .collaboration-wrapper {
+          gap: 8px;
+        }
+
+        .collaborator {
+          font-size: 14px;
+          padding: 4px 14px;
+        }
+
+        .vs-container {
+          width: 55px;
+          height: 55px;
+        }
+
+        .vs-text {
+          font-size: 22px;
+        }
+
+        .collaboration-sub {
+          font-size: 11px;
+        }
+
+        .collaboration-sub::before,
+        .collaboration-sub::after {
+          margin: 0 5px;
+        }
       }
 
       /* =====================================================
@@ -4076,829 +4346,854 @@
             <p>اختر التصنيف المناسب واستكشف الدورات</p>
           </div>
 
-         <div class="course-filters">
+          <div class="course-filters">
+            <button class="filter-btn active" data-filter="all">📚 الكل</button>
 
-  <button class="filter-btn active" data-filter="all">
-    📚 الكل
-  </button>
+            <button class="filter-btn" data-filter="tech">💻 تقنية</button>
 
-  <button class="filter-btn" data-filter="tech">
-    💻 تقنية
-  </button>
+            <button class="filter-btn" data-filter="programming">
+              👨‍💻 برمجة وتطوير
+            </button>
 
-  <button class="filter-btn" data-filter="programming">
-    👨‍💻 برمجة وتطوير
-  </button>
+            <button class="filter-btn" data-filter="data">
+              📊 تحليل البيانات
+            </button>
 
-  <button class="filter-btn" data-filter="data">
-    📊 تحليل البيانات
-  </button>
+            <button class="filter-btn" data-filter="design">🎨 تصميم</button>
 
-  <button class="filter-btn" data-filter="design">
-    🎨 تصميم
-  </button>
+            <button class="filter-btn" data-filter="marketing">📣 تسويق</button>
 
-  <button class="filter-btn" data-filter="marketing">
-    📣 تسويق
-  </button>
+            <button class="filter-btn" data-filter="cyber">
+              🔐 أمن سيبراني
+            </button>
 
-  <button class="filter-btn" data-filter="cyber">
-    🔐 أمن سيبراني
-  </button>
+            <button class="filter-btn" data-filter="business">
+              💼 إدارة ومحاسبة
+            </button>
 
-  <button class="filter-btn" data-filter="business">
-    💼 إدارة ومحاسبة
-  </button>
+            <button class="filter-btn" data-filter="career">
+              🧑‍💼 عمل ووظيفة
+            </button>
 
-  <button class="filter-btn" data-filter="career">
-    🧑‍💼 عمل ووظيفة
-  </button>
-
-  <button class="filter-btn" data-filter="languages">
-    🌎 لغات
-  </button>
-
-</div>
-<div class="courses">
-
-  <!-- =====================================================
+            <button class="filter-btn" data-filter="languages">🌎 لغات</button>
+          </div>
+          <div class="courses">
+            <!-- =====================================================
        COMPUTER & DIGITAL SKILLS
   ====================================================== -->
 
-  <!-- 01 -->
-  <a href="full/excel.html" class="course" data-category="tech">
-    <div class="course-number">01</div>
-    <div class="course-content">
-      <span class="course-icon">▦</span>
-      <div class="course-name">
-        <div class="course-name-en">Excel Master</div>
-        <div class="course-name-ar">إكسل ماستر</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 01 -->
+            <a href="full/excel.html" class="course" data-category="tech">
+              <div class="course-number">01</div>
+              <div class="course-content">
+                <span class="course-icon">▦</span>
+                <div class="course-name">
+                  <div class="course-name-en">Excel Master</div>
+                  <div class="course-name-ar">إكسل ماستر</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 02 -->
-  <a href="full/computerskill.html" class="course" data-category="tech">
-    <div class="course-number">02</div>
-    <div class="course-content">
-      <span class="course-icon">⌨</span>
-      <div class="course-name">
-        <div class="course-name-en">Computer Skills</div>
-        <div class="course-name-ar">مهارات الحاسوب</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 02 -->
+            <a
+              href="full/computerskill.html"
+              class="course"
+              data-category="tech"
+            >
+              <div class="course-number">02</div>
+              <div class="course-content">
+                <span class="course-icon">⌨</span>
+                <div class="course-name">
+                  <div class="course-name-en">Computer Skills</div>
+                  <div class="course-name-ar">مهارات الحاسوب</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 03 -->
-  <a href="full/computermaster.html" class="course" data-category="tech">
-    <div class="course-number">03</div>
-    <div class="course-content">
-      <span class="course-icon">⌨</span>
-      <div class="course-name">
-        <div class="course-name-en">Computer Skills Master</div>
-        <div class="course-name-ar">ماستر مهارات الحاسوب</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 03 -->
+            <a
+              href="full/computermaster.html"
+              class="course"
+              data-category="tech"
+            >
+              <div class="course-number">03</div>
+              <div class="course-content">
+                <span class="course-icon">⌨</span>
+                <div class="course-name">
+                  <div class="course-name-en">Computer Skills Master</div>
+                  <div class="course-name-ar">ماستر مهارات الحاسوب</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 04 -->
-  <a href="full/icdl.html" class="course" data-category="tech">
-    <div class="course-number">04</div>
-    <div class="course-content">
-      <span class="course-icon">▤</span>
-      <div class="course-name">
-        <div class="course-name-en">ICDL</div>
-        <div class="course-name-ar">الرخصة الدولية لقيادة الحاسوب</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 04 -->
+            <a href="full/icdl.html" class="course" data-category="tech">
+              <div class="course-number">04</div>
+              <div class="course-content">
+                <span class="course-icon">▤</span>
+                <div class="course-name">
+                  <div class="course-name-en">ICDL</div>
+                  <div class="course-name-ar">
+                    الرخصة الدولية لقيادة الحاسوب
+                  </div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 05 -->
-  <a href="full/software.html" class="course" data-category="tech">
-    <div class="course-number">05</div>
-    <div class="course-content">
-      <span class="course-icon">▱</span>
-      <div class="course-name">
-        <div class="course-name-en">Computer Software</div>
-        <div class="course-name-ar">برامج الحاسوب</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 05 -->
+            <a href="full/software.html" class="course" data-category="tech">
+              <div class="course-number">05</div>
+              <div class="course-content">
+                <span class="course-icon">▱</span>
+                <div class="course-name">
+                  <div class="course-name-en">Computer Software</div>
+                  <div class="course-name-ar">برامج الحاسوب</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 06 -->
-  <a href="full/ai.html" class="course" data-category="tech">
-    <div class="course-number">06</div>
-    <div class="course-content">
-      <span class="course-icon">✦</span>
-      <div class="course-name">
-        <div class="course-name-en">Learning With AI</div>
-        <div class="course-name-ar">التعلّم باستخدام الذكاء الاصطناعي</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 06 -->
+            <a href="full/ai.html" class="course" data-category="tech">
+              <div class="course-number">06</div>
+              <div class="course-content">
+                <span class="course-icon">✦</span>
+                <div class="course-name">
+                  <div class="course-name-en">Learning With AI</div>
+                  <div class="course-name-ar">
+                    التعلّم باستخدام الذكاء الاصطناعي
+                  </div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-
-  <!-- =====================================================
+            <!-- =====================================================
        PROGRAMMING & DEVELOPMENT
   ====================================================== -->
 
-  <!-- 07 -->
-  <a href="full/cpp.html" class="course" data-category="programming">
-    <div class="course-number">07</div>
-    <div class="course-content">
-      <span class="course-icon">++C</span>
-      <div class="course-name">
-        <div class="course-name-en">C++ Programming</div>
-        <div class="course-name-ar">برمجة سي بلس بلس</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 07 -->
+            <a href="full/cpp.html" class="course" data-category="programming">
+              <div class="course-number">07</div>
+              <div class="course-content">
+                <span class="course-icon">++C</span>
+                <div class="course-name">
+                  <div class="course-name-en">C++ Programming</div>
+                  <div class="course-name-ar">برمجة سي بلس بلس</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 08 -->
-  <a href="full/coursyria_csharp_beginner.html" class="course" data-category="programming">
-    <div class="course-number">08</div>
-    <div class="course-content">
-      <span class="course-icon">#C</span>
-      <div class="course-name">
-        <div class="course-name-en">C# Programming</div>
-        <div class="course-name-ar">برمجة سي شارب</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 08 -->
+            <a
+              href="full/coursyria_csharp_beginner.html"
+              class="course"
+              data-category="programming"
+            >
+              <div class="course-number">08</div>
+              <div class="course-content">
+                <span class="course-icon">#C</span>
+                <div class="course-name">
+                  <div class="course-name-en">C# Programming</div>
+                  <div class="course-name-ar">برمجة سي شارب</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 09 -->
-  <a href="full/pythonn.html" class="course" data-category="programming">
-    <div class="course-number">09</div>
-    <div class="course-content">
-      <span class="course-icon">🐍</span>
-      <div class="course-name">
-        <div class="course-name-en">Python Programming</div>
-        <div class="course-name-ar">بايثون</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 09 -->
+            <a
+              href="full/pythonn.html"
+              class="course"
+              data-category="programming"
+            >
+              <div class="course-number">09</div>
+              <div class="course-content">
+                <span class="course-icon">🐍</span>
+                <div class="course-name">
+                  <div class="course-name-en">Python Programming</div>
+                  <div class="course-name-ar">بايثون</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 10 -->
-  <a href="full/project.html" class="course" data-category="programming">
-    <div class="course-number">10</div>
-    <div class="course-content">
-      <span class="course-icon">⌘</span>
-      <div class="course-name">
-        <div class="course-name-en">Small Project Building</div>
-        <div class="course-name-ar">بناء مشروع صغير</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 10 -->
+            <a
+              href="full/project.html"
+              class="course"
+              data-category="programming"
+            >
+              <div class="course-number">10</div>
+              <div class="course-content">
+                <span class="course-icon">⌘</span>
+                <div class="course-name">
+                  <div class="course-name-en">Small Project Building</div>
+                  <div class="course-name-ar">بناء مشروع صغير</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 11 -->
-  <a href="full/website.html" class="course" data-category="programming">
-    <div class="course-number">11</div>
-    <div class="course-content">
-      <span class="course-icon">WEB</span>
-      <div class="course-name">
-        <div class="course-name-en">Website Development</div>
-        <div class="course-name-ar">تطوير وتصميم المواقع</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 11 -->
+            <a
+              href="full/website.html"
+              class="course"
+              data-category="programming"
+            >
+              <div class="course-number">11</div>
+              <div class="course-content">
+                <span class="course-icon">WEB</span>
+                <div class="course-name">
+                  <div class="course-name-en">Website Development</div>
+                  <div class="course-name-ar">تطوير وتصميم المواقع</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-
-  <!-- =====================================================
+            <!-- =====================================================
        DATA ANALYSIS
   ====================================================== -->
 
-  <!-- 12 -->
-  <a href="full/Data_Analyst1.html" class="course" data-category="data">
-    <div class="course-number">12</div>
-    <div class="course-content">
-      <span class="course-icon">▥</span>
-      <div class="course-name">
-        <div class="course-name-en">Data Analyst 1</div>
-        <div class="course-name-ar">محلل البيانات 1</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 12 -->
+            <a
+              href="full/Data_Analyst1.html"
+              class="course"
+              data-category="data"
+            >
+              <div class="course-number">12</div>
+              <div class="course-content">
+                <span class="course-icon">▥</span>
+                <div class="course-name">
+                  <div class="course-name-en">Data Analyst 1</div>
+                  <div class="course-name-ar">محلل البيانات 1</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 13 -->
-  <a href="full/Data_Analyst_2.html" class="course" data-category="data">
-    <div class="course-number">13</div>
-    <div class="course-content">
-      <span class="course-icon">▥</span>
-      <div class="course-name">
-        <div class="course-name-en">Data Analyst 2</div>
-        <div class="course-name-ar">محلل البيانات 2</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 13 -->
+            <a
+              href="full/Data_Analyst_2.html"
+              class="course"
+              data-category="data"
+            >
+              <div class="course-number">13</div>
+              <div class="course-content">
+                <span class="course-icon">▥</span>
+                <div class="course-name">
+                  <div class="course-name-en">Data Analyst 2</div>
+                  <div class="course-name-ar">محلل البيانات 2</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 14 -->
-  <a href="full/data3.html" class="course" data-category="data">
-    <div class="course-number">14</div>
-    <div class="course-content">
-      <span class="course-icon">▥</span>
-      <div class="course-name">
-        <div class="course-name-en">Data Analyst 3</div>
-        <div class="course-name-ar">محلل البيانات 3</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 14 -->
+            <a href="full/data3.html" class="course" data-category="data">
+              <div class="course-number">14</div>
+              <div class="course-content">
+                <span class="course-icon">▥</span>
+                <div class="course-name">
+                  <div class="course-name-en">Data Analyst 3</div>
+                  <div class="course-name-ar">محلل البيانات 3</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 15 -->
-  <a href="full/data4.html" class="course" data-category="data">
-    <div class="course-number">15</div>
-    <div class="course-content">
-      <span class="course-icon">▥</span>
-      <div class="course-name">
-        <div class="course-name-en">Data Analyst 4</div>
-        <div class="course-name-ar">محلل البيانات 4</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 15 -->
+            <a href="full/data4.html" class="course" data-category="data">
+              <div class="course-number">15</div>
+              <div class="course-content">
+                <span class="course-icon">▥</span>
+                <div class="course-name">
+                  <div class="course-name-en">Data Analyst 4</div>
+                  <div class="course-name-ar">محلل البيانات 4</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-
-  <!-- =====================================================
+            <!-- =====================================================
        DESIGN & MARKETING
   ====================================================== -->
 
-  <!-- 16 -->
-  <a href="full/canva.html" class="course" data-category="design">
-    <div class="course-number">16</div>
-    <div class="course-content">
-      <span class="course-icon">✎</span>
-      <div class="course-name">
-        <div class="course-name-en">Canva A1</div>
-        <div class="course-name-ar">كانفا A1</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 16 -->
+            <a href="full/canva.html" class="course" data-category="design">
+              <div class="course-number">16</div>
+              <div class="course-content">
+                <span class="course-icon">✎</span>
+                <div class="course-name">
+                  <div class="course-name-en">Canva A1</div>
+                  <div class="course-name-ar">كانفا A1</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 17 -->
-  <a href="full/uiux.html" class="course" data-category="design">
-    <div class="course-number">17</div>
-    <div class="course-content">
-      <span class="course-icon">▣</span>
-      <div class="course-name">
-        <div class="course-name-en">UI/UX Design</div>
-        <div class="course-name-ar">تصميم واجهات وتجربة المستخدم</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 17 -->
+            <a href="full/uiux.html" class="course" data-category="design">
+              <div class="course-number">17</div>
+              <div class="course-content">
+                <span class="course-icon">▣</span>
+                <div class="course-name">
+                  <div class="course-name-en">UI/UX Design</div>
+                  <div class="course-name-ar">تصميم واجهات وتجربة المستخدم</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 18 -->
-  <a href="full/courseyria_social_media_course-1.html" class="course" data-category="marketing">
-    <div class="course-number">18</div>
-    <div class="course-content">
-      <span class="course-icon">◎</span>
-      <div class="course-name">
-        <div class="course-name-en">Social Media Platforms</div>
-        <div class="course-name-ar">منصات التواصل الاجتماعي</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 18 -->
+            <a
+              href="full/courseyria_social_media_course-1.html"
+              class="course"
+              data-category="marketing"
+            >
+              <div class="course-number">18</div>
+              <div class="course-content">
+                <span class="course-icon">◎</span>
+                <div class="course-name">
+                  <div class="course-name-en">Social Media Platforms</div>
+                  <div class="course-name-ar">منصات التواصل الاجتماعي</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 19 -->
-  <a href="full/market.html" class="course" data-category="marketing">
-    <div class="course-number">19</div>
-    <div class="course-content">
-      <span class="course-icon">◈</span>
-      <div class="course-name">
-        <div class="course-name-en">Marketing Content Management</div>
-        <div class="course-name-ar">إدارة المحتوى التسويقي</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 19 -->
+            <a href="full/market.html" class="course" data-category="marketing">
+              <div class="course-number">19</div>
+              <div class="course-content">
+                <span class="course-icon">◈</span>
+                <div class="course-name">
+                  <div class="course-name-en">Marketing Content Management</div>
+                  <div class="course-name-ar">إدارة المحتوى التسويقي</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 20 -->
-  <a href="full/marketing1.html" class="course" data-category="marketing">
-    <div class="course-number">20</div>
-    <div class="course-content">
-      <span class="course-icon">M1</span>
-      <div class="course-name">
-        <div class="course-name-en">Marketing 1</div>
-        <div class="course-name-ar">التسويق 1</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 20 -->
+            <a
+              href="full/marketing1.html"
+              class="course"
+              data-category="marketing"
+            >
+              <div class="course-number">20</div>
+              <div class="course-content">
+                <span class="course-icon">M1</span>
+                <div class="course-name">
+                  <div class="course-name-en">Marketing 1</div>
+                  <div class="course-name-ar">التسويق 1</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 21 -->
-  <a href="full/marketing2.html" class="course" data-category="marketing">
-    <div class="course-number">21</div>
-    <div class="course-content">
-      <span class="course-icon">M2</span>
-      <div class="course-name">
-        <div class="course-name-en">Marketing 2</div>
-        <div class="course-name-ar">التسويق 2</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 21 -->
+            <a
+              href="full/marketing2.html"
+              class="course"
+              data-category="marketing"
+            >
+              <div class="course-number">21</div>
+              <div class="course-content">
+                <span class="course-icon">M2</span>
+                <div class="course-name">
+                  <div class="course-name-en">Marketing 2</div>
+                  <div class="course-name-ar">التسويق 2</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 22 -->
-  <a href="full/marketing3.html" class="course" data-category="marketing">
-    <div class="course-number">22</div>
-    <div class="course-content">
-      <span class="course-icon">M3</span>
-      <div class="course-name">
-        <div class="course-name-en">Marketing 3</div>
-        <div class="course-name-ar">التسويق 3</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 22 -->
+            <a
+              href="full/marketing3.html"
+              class="course"
+              data-category="marketing"
+            >
+              <div class="course-number">22</div>
+              <div class="course-content">
+                <span class="course-icon">M3</span>
+                <div class="course-name">
+                  <div class="course-name-en">Marketing 3</div>
+                  <div class="course-name-ar">التسويق 3</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-
-  <!-- =====================================================
+            <!-- =====================================================
        CYBER SECURITY
   ====================================================== -->
 
-  <!-- 23 -->
-  <a href="full/secure.html" class="course" data-category="cyber">
-    <div class="course-number">23</div>
-    <div class="course-content">
-      <span class="course-icon">⌁</span>
-      <div class="course-name">
-        <div class="course-name-en">Information Security</div>
-        <div class="course-name-ar">أمن المعلومات</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 23 -->
+            <a href="full/secure.html" class="course" data-category="cyber">
+              <div class="course-number">23</div>
+              <div class="course-content">
+                <span class="course-icon">⌁</span>
+                <div class="course-name">
+                  <div class="course-name-en">Information Security</div>
+                  <div class="course-name-ar">أمن المعلومات</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 24 -->
-  <a href="full/cyber.html" class="course" data-category="cyber">
-    <div class="course-number">24</div>
-    <div class="course-content">
-      <span class="course-icon">⚡</span>
-      <div class="course-name">
-        <div class="course-name-en">Cyber Security Camp</div>
-        <div class="course-name-ar">معسكر الأمن السيبراني</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 24 -->
+            <a href="full/cyber.html" class="course" data-category="cyber">
+              <div class="course-number">24</div>
+              <div class="course-content">
+                <span class="course-icon">⚡</span>
+                <div class="course-name">
+                  <div class="course-name-en">Cyber Security Camp</div>
+                  <div class="course-name-ar">معسكر الأمن السيبراني</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 25 -->
-  <a href="full/blueTeam.html" class="course" data-category="cyber">
-    <div class="course-number">25</div>
-    <div class="course-content">
-      <span class="course-icon">◉</span>
-      <div class="course-name">
-        <div class="course-name-en">Blue Team Cyber Security</div>
-        <div class="course-name-ar">الفريق الأزرق للأمن السيبراني</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 25 -->
+            <a href="full/blueTeam.html" class="course" data-category="cyber">
+              <div class="course-number">25</div>
+              <div class="course-content">
+                <span class="course-icon">◉</span>
+                <div class="course-name">
+                  <div class="course-name-en">Blue Team Cyber Security</div>
+                  <div class="course-name-ar">
+                    الفريق الأزرق للأمن السيبراني
+                  </div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-
-  <!-- =====================================================
+            <!-- =====================================================
        BUSINESS & PROFESSIONAL SKILLS
   ====================================================== -->
 
-  <!-- 26 -->
-  <a href="full/hr.html" class="course" data-category="business">
-    <div class="course-number">26</div>
-    <div class="course-content">
-      <span class="course-icon">♙</span>
-      <div class="course-name">
-        <div class="course-name-en">Human Resources</div>
-        <div class="course-name-ar">الموارد البشرية</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 26 -->
+            <a href="full/hr.html" class="course" data-category="business">
+              <div class="course-number">26</div>
+              <div class="course-content">
+                <span class="course-icon">♙</span>
+                <div class="course-name">
+                  <div class="course-name-en">Human Resources</div>
+                  <div class="course-name-ar">الموارد البشرية</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 27 -->
-  <a href="full/HR_Master.html" class="course" data-category="business">
-    <div class="course-number">27</div>
-    <div class="course-content">
-      <span class="course-icon">◆</span>
-      <div class="course-name">
-        <div class="course-name-en">HR Master</div>
-        <div class="course-name-ar">ماستر الموارد البشرية</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 27 -->
+            <a
+              href="full/HR_Master.html"
+              class="course"
+              data-category="business"
+            >
+              <div class="course-number">27</div>
+              <div class="course-content">
+                <span class="course-icon">◆</span>
+                <div class="course-name">
+                  <div class="course-name-en">HR Master</div>
+                  <div class="course-name-ar">ماستر الموارد البشرية</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 28 -->
-  <a href="full/alamen.html" class="course" data-category="business">
-    <div class="course-number">28</div>
-    <div class="course-content">
-      <span class="course-icon">◫</span>
-      <div class="course-name">
-        <div class="course-name-en">Al-Ameen Accounting</div>
-        <div class="course-name-ar">الأمين للمحاسبة</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 28 -->
+            <a href="full/alamen.html" class="course" data-category="business">
+              <div class="course-number">28</div>
+              <div class="course-content">
+                <span class="course-icon">◫</span>
+                <div class="course-name">
+                  <div class="course-name-en">Al-Ameen Accounting</div>
+                  <div class="course-name-ar">الأمين للمحاسبة</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 29 -->
-  <a href="full/albayan.html" class="course" data-category="business">
-    <div class="course-number">29</div>
-    <div class="course-content">
-      <span class="course-icon">◫</span>
-      <div class="course-name">
-        <div class="course-name-en">Al-Bayan Accounting</div>
-        <div class="course-name-ar">البيان للمحاسبة</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 29 -->
+            <a href="full/albayan.html" class="course" data-category="business">
+              <div class="course-number">29</div>
+              <div class="course-content">
+                <span class="course-icon">◫</span>
+                <div class="course-name">
+                  <div class="course-name-en">Al-Bayan Accounting</div>
+                  <div class="course-name-ar">البيان للمحاسبة</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 30 -->
-  <a href="full/time.html" class="course" data-category="business">
-    <div class="course-number">30</div>
-    <div class="course-content">
-      <span class="course-icon">◷</span>
-      <div class="course-name">
-        <div class="course-name-en">Time Management Art</div>
-        <div class="course-name-ar">فن إدارة الوقت</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 30 -->
+            <a href="full/time.html" class="course" data-category="business">
+              <div class="course-number">30</div>
+              <div class="course-content">
+                <span class="course-icon">◷</span>
+                <div class="course-name">
+                  <div class="course-name-en">Time Management Art</div>
+                  <div class="course-name-ar">فن إدارة الوقت</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-
-  <!-- =====================================================
+            <!-- =====================================================
        ENGLISH LANGUAGE
   ====================================================== -->
 
-  <!-- 31 -->
-  <a href="full/a1.html" class="course" data-category="languages">
-    <div class="course-number">31</div>
-    <div class="course-content">
-      <span class="course-icon">A1</span>
-      <div class="course-name">
-        <div class="course-name-en">A1 English</div>
-        <div class="course-name-ar">الإنكليزية A1</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 31 -->
+            <a href="full/a1.html" class="course" data-category="languages">
+              <div class="course-number">31</div>
+              <div class="course-content">
+                <span class="course-icon">A1</span>
+                <div class="course-name">
+                  <div class="course-name-en">A1 English</div>
+                  <div class="course-name-ar">الإنكليزية A1</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 32 -->
-  <a href="full/a2.html" class="course" data-category="languages">
-    <div class="course-number">32</div>
-    <div class="course-content">
-      <span class="course-icon">A2</span>
-      <div class="course-name">
-        <div class="course-name-en">A2 English</div>
-        <div class="course-name-ar">الإنكليزية A2</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 32 -->
+            <a href="full/a2.html" class="course" data-category="languages">
+              <div class="course-number">32</div>
+              <div class="course-content">
+                <span class="course-icon">A2</span>
+                <div class="course-name">
+                  <div class="course-name-en">A2 English</div>
+                  <div class="course-name-ar">الإنكليزية A2</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 33 -->
-  <a href="full/b1.html" class="course" data-category="languages">
-    <div class="course-number">33</div>
-    <div class="course-content">
-      <span class="course-icon">B1</span>
-      <div class="course-name">
-        <div class="course-name-en">B1 English</div>
-        <div class="course-name-ar">الإنكليزية B1</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 33 -->
+            <a href="full/b1.html" class="course" data-category="languages">
+              <div class="course-number">33</div>
+              <div class="course-content">
+                <span class="course-icon">B1</span>
+                <div class="course-name">
+                  <div class="course-name-en">B1 English</div>
+                  <div class="course-name-ar">الإنكليزية B1</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 34 -->
-  <a href="full/b2.html" class="course" data-category="languages">
-    <div class="course-number">34</div>
-    <div class="course-content">
-      <span class="course-icon">B2</span>
-      <div class="course-name">
-        <div class="course-name-en">B2 English</div>
-        <div class="course-name-ar">الإنكليزية B2</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 34 -->
+            <a href="full/b2.html" class="course" data-category="languages">
+              <div class="course-number">34</div>
+              <div class="course-content">
+                <span class="course-icon">B2</span>
+                <div class="course-name">
+                  <div class="course-name-en">B2 English</div>
+                  <div class="course-name-ar">الإنكليزية B2</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 35 -->
-  <a href="full/Conversation_A1.html" class="course" data-category="languages">
-    <div class="course-number">35</div>
-    <div class="course-content">
-      <span class="course-icon">A1</span>
-      <div class="course-name">
-        <div class="course-name-en">English Conversation A1</div>
-        <div class="course-name-ar">محادثة إنكليزية A1</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 35 -->
+            <a
+              href="full/Conversation_A1.html"
+              class="course"
+              data-category="languages"
+            >
+              <div class="course-number">35</div>
+              <div class="course-content">
+                <span class="course-icon">A1</span>
+                <div class="course-name">
+                  <div class="course-name-en">English Conversation A1</div>
+                  <div class="course-name-ar">محادثة إنكليزية A1</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 36 -->
-  <a href="full/Conversation_A2.html" class="course" data-category="languages">
-    <div class="course-number">36</div>
-    <div class="course-content">
-      <span class="course-icon">A2</span>
-      <div class="course-name">
-        <div class="course-name-en">English Conversation A2</div>
-        <div class="course-name-ar">محادثة إنكليزية A2</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 36 -->
+            <a
+              href="full/Conversation_A2.html"
+              class="course"
+              data-category="languages"
+            >
+              <div class="course-number">36</div>
+              <div class="course-content">
+                <span class="course-icon">A2</span>
+                <div class="course-name">
+                  <div class="course-name-en">English Conversation A2</div>
+                  <div class="course-name-ar">محادثة إنكليزية A2</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-
-  <!-- =====================================================
+            <!-- =====================================================
        CAREER & EMPLOYMENT
   ====================================================== -->
 
-  <!-- 37 -->
-  <a href="full/makeCvPro.html" class="course" data-category="career">
-    <div class="course-number">37</div>
-    <div class="course-content">
-      <span class="course-icon">CV</span>
-      <div class="course-name">
-        <div class="course-name-en">Make CV Pro</div>
-        <div class="course-name-ar">اصنع سيرتك الذاتية</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
+            <!-- 37 -->
+            <a href="full/makeCvPro.html" class="course" data-category="career">
+              <div class="course-number">37</div>
+              <div class="course-content">
+                <span class="course-icon">CV</span>
+                <div class="course-name">
+                  <div class="course-name-en">Make CV Pro</div>
+                  <div class="course-name-ar">اصنع سيرتك الذاتية</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
 
-  <!-- 38 -->
-  <a href="full/job.html" class="course" data-category="career">
-    <div class="course-number">38</div>
-    <div class="course-content">
-      <span class="course-icon">JOB</span>
-      <div class="course-name">
-        <div class="course-name-en">Job Skills</div>
-        <div class="course-name-ar">مهارات الحصول على وظيفة</div>
-      </div>
-    </div>
-    <div class="arrow">←</div>
-  </a>
-
-</div>
-        <!-- =====================================================
+            <!-- 38 -->
+            <a href="full/job.html" class="course" data-category="career">
+              <div class="course-number">38</div>
+              <div class="course-content">
+                <span class="course-icon">JOB</span>
+                <div class="course-name">
+                  <div class="course-name-en">Job Skills</div>
+                  <div class="course-name-ar">مهارات الحصول على وظيفة</div>
+                </div>
+              </div>
+              <div class="arrow">←</div>
+            </a>
+          </div>
+          <!-- =====================================================
            RANKS
         ====================================================== -->
 
-        <section class="courses-section" id="ranks">
-          <div class="section-title">
-            <h2>الرتب</h2>
+          <section class="courses-section" id="ranks">
+            <div class="section-title">
+              <h2>الرتب</h2>
 
-            <div class="blue-line"></div>
+              <div class="blue-line"></div>
 
-            <p>اضغط على الرتبة لعرض الصورة</p>
-          </div>
+              <p>اضغط على الرتبة لعرض الصورة</p>
+            </div>
 
-          <div class="courses" id="ranksContainer"></div>
-        </section>
+            <div class="courses" id="ranksContainer"></div>
+          </section>
 
-        <!-- =====================================================
+          <!-- =====================================================
            PROMOTION CONDITIONS
         ====================================================== -->
 
-        <section class="info-section" id="promotion">
-          <div class="section-title">
-            <h2>شروط الترقية</h2>
+          <section class="info-section" id="promotion">
+            <div class="section-title">
+              <h2>شروط الترقية</h2>
 
-            <div class="blue-line"></div>
+              <div class="blue-line"></div>
 
-            <p>اطّلع على شروط ومتطلبات الانتقال بين الرتب</p>
-          </div>
+              <p>اطّلع على شروط ومتطلبات الانتقال بين الرتب</p>
+            </div>
 
-          <div class="info-image-card">
-            <img src="image/condition.jpeg" alt="شروط الترقية" loading="lazy" />
-          </div>
-        </section>
+            <div class="info-image-card">
+              <img
+                src="image/condition.jpeg"
+                alt="شروط الترقية"
+                loading="lazy"
+              />
+            </div>
+          </section>
 
-        <!-- =====================================================
+          <!-- =====================================================
            PAYMENT
         ====================================================== -->
 
-        <section class="info-section payment-section" id="payment">
-          <div class="section-title">
-            <h2>الدفع عن طريق شام كاش</h2>
+          <section class="info-section payment-section" id="payment">
+            <div class="section-title">
+              <h2>الدفع عن طريق شام كاش</h2>
 
-            <div class="blue-line"></div>
+              <div class="blue-line"></div>
 
-            <p>اضغط على البطاقة لإظهار معلومات الدفع</p>
-          </div>
+              <p>اضغط على البطاقة لإظهار معلومات الدفع</p>
+            </div>
 
-          <div class="shamcash-trigger" role="button" tabindex="0" onclick="openShamCash()">
-            <div class="shamcash-icon">💳</div>
+            <div
+              class="shamcash-trigger"
+              role="button"
+              tabindex="0"
+              onclick="openShamCash()"
+            >
+              <div class="shamcash-icon">💳</div>
 
-            <h3>الدفع عن طريق شام كاش</h3>
+              <h3>الدفع عن طريق شام كاش</h3>
 
-            <p>اضغط هنا لإظهار باركود شام كاش</p>
-          </div>
-        </section>
+              <p>اضغط هنا لإظهار باركود شام كاش</p>
+            </div>
+          </section>
 
-        <!-- =====================================================
+          <!-- =====================================================
            FAQ
         ====================================================== -->
 
-        <section class="faq-section" id="faq">
-          <div class="section-title">
-            <h2>الأسئلة الشائعة</h2>
+          <section class="faq-section" id="faq">
+            <div class="section-title">
+              <h2>الأسئلة الشائعة</h2>
 
-            <div class="blue-line"></div>
+              <div class="blue-line"></div>
 
-            <p>أهم الأسئلة التي قد تحتاج إلى معرفة إجاباتها</p>
-          </div>
+              <p>أهم الأسئلة التي قد تحتاج إلى معرفة إجاباتها</p>
+            </div>
 
-          <div class="faq-container">
-            <div class="faq-item">
-              <button class="faq-question" type="button">
-                <span>هل الدورات أونلاين؟</span>
+            <div class="faq-container">
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>هل الدورات أونلاين؟</span>
 
-                <span class="faq-icon">+</span>
-              </button>
+                  <span class="faq-icon">+</span>
+                </button>
 
-              <div class="faq-answer">
-                <div class="faq-answer-inner">
-                  نعم جميعا فيديوهات مسجلة بدقة عالية على التلغرام
+                <div class="faq-answer">
+                  <div class="faq-answer-inner">
+                    نعم جميعا فيديوهات مسجلة بدقة عالية على التلغرام
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>كيف يتم التسجيل؟</span>
+
+                  <span class="faq-icon">+</span>
+                </button>
+
+                <div class="faq-answer">
+                  <div class="faq-answer-inner">
+                    اختر الدورة التي تريدها من قسم الدورات، ثم انتقل إلى صفحة
+                    الدورة واضغط على زر بدء الرحلة أو تواصل معنا لإتمام التسجيل.
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>كيف يتم الدفع؟</span>
+
+                  <span class="faq-icon">+</span>
+                </button>
+
+                <div class="faq-answer">
+                  <div class="faq-answer-inner">
+                    يمكنك استخدام طريقة الدفع المتوفرة عبر شام كاش، وذلك من خلال
+                    قسم الدفع الموجود في الموقع.
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>هل أحصل على شهادة؟</span>
+
+                  <span class="faq-icon">+</span>
+                </button>
+
+                <div class="faq-answer">
+                  <div class="faq-answer-inner">
+                    تختلف تفاصيل الشهادة حسب الدورة والبرنامج التدريبي. يمكنك
+                    التواصل معنا لمعرفة تفاصيل الشهادة الخاصة بالدورة.
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>كم مدة الدورة؟</span>
+
+                  <span class="faq-icon">+</span>
+                </button>
+
+                <div class="faq-answer">
+                  <div class="faq-answer-inner">
+                    مدة الدورة تختلف من برنامج إلى آخر. يمكنك الدخول إلى صفحة
+                    الدورة لمعرفة المدة والمحاور والتفاصيل الكاملة.
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>هل يوجد دعم بعد الدورة؟</span>
+
+                  <span class="faq-icon">+</span>
+                </button>
+
+                <div class="faq-answer">
+                  <div class="faq-answer-inner">
+                    يمكنك التواصل مع فريق Coursyria للاستفسار عن الدعم والمتابعة
+                    المتاحة لكل دورة.
+                  </div>
                 </div>
               </div>
             </div>
-
-            <div class="faq-item">
-              <button class="faq-question" type="button">
-                <span>كيف يتم التسجيل؟</span>
-
-                <span class="faq-icon">+</span>
-              </button>
-
-              <div class="faq-answer">
-                <div class="faq-answer-inner">
-                  اختر الدورة التي تريدها من قسم الدورات، ثم انتقل إلى صفحة
-                  الدورة واضغط على زر بدء الرحلة أو تواصل معنا لإتمام التسجيل.
-                </div>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question" type="button">
-                <span>كيف يتم الدفع؟</span>
-
-                <span class="faq-icon">+</span>
-              </button>
-
-              <div class="faq-answer">
-                <div class="faq-answer-inner">
-                  يمكنك استخدام طريقة الدفع المتوفرة عبر شام كاش، وذلك من خلال
-                  قسم الدفع الموجود في الموقع.
-                </div>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question" type="button">
-                <span>هل أحصل على شهادة؟</span>
-
-                <span class="faq-icon">+</span>
-              </button>
-
-              <div class="faq-answer">
-                <div class="faq-answer-inner">
-                  تختلف تفاصيل الشهادة حسب الدورة والبرنامج التدريبي. يمكنك
-                  التواصل معنا لمعرفة تفاصيل الشهادة الخاصة بالدورة.
-                </div>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question" type="button">
-                <span>كم مدة الدورة؟</span>
-
-                <span class="faq-icon">+</span>
-              </button>
-
-              <div class="faq-answer">
-                <div class="faq-answer-inner">
-                  مدة الدورة تختلف من برنامج إلى آخر. يمكنك الدخول إلى صفحة
-                  الدورة لمعرفة المدة والمحاور والتفاصيل الكاملة.
-                </div>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question" type="button">
-                <span>هل يوجد دعم بعد الدورة؟</span>
-
-                <span class="faq-icon">+</span>
-              </button>
-
-              <div class="faq-answer">
-                <div class="faq-answer-inner">
-                  يمكنك التواصل مع فريق Coursyria للاستفسار عن الدعم والمتابعة
-                  المتاحة لكل دورة.
-                </div>
-              </div>
-            </div>
-          </div>
+          </section>
         </section>
 
-        <!-- =====================================================
-     CONTACT
+       </section>
+
+<!-- =====================================================
+FOOTER
 ===================================================== -->
+<footer class="footer">
+    <div class="footer-content">
+        <!-- القسم الرئيسي -->
+        <div class="footer-main">
+            <strong>COURSYRIA</strong>
+            <br />
+            <span>تعلّم • تطوّر • قد</span>
+        </div>
 
-        <section class="contact-section" id="contact">
-          <div class="section-title">
-            <h2>معلومات التواصل</h2>
+        <!-- قسم التعاون الفخم -->
+        <div class="collaboration-section">
+            <div class="collaboration-wrapper">
+                <!-- اسم عبدالرحمن مع رابط واتساب -->
+                <a href="https://wa.me/963995980568" target="_blank" rel="noopener noreferrer" class="collaborator-link">
+                    <span class="collaborator"> المهندس عبد الرحمن الحنفي</span>
+                </a>
+                
+                <!-- تأثير VS الفخم -->
+                <div class="vs-container">
+                    <div class="vs-ring"></div>
+                    <span class="vs-text">VS</span>
+                    <div class="vs-ring vs-ring-2"></div>
+                </div>
+                
+                <!-- اسم لين مع رابط واتساب -->
+                <a href="https://wa.me/963937015714" target="_blank" rel="noopener noreferrer" class="collaborator-link">
+                    <span class="collaborator"> المهندسة لين حسن الكردي</span>
+                </a>
+            </div>
+            <p class="collaboration-sub">بتعاون احترافي • معاً نبني المستقبل</p>
+        </div>
 
-            <div class="blue-line"></div>
-
-            <p>للاستفسارات المتعلقة بالموقع والمساعدة التقنية</p>
-          </div>
-
-          <div class="contact-grid">
-            <!-- المدرب -->
-            <a
-              href="https://wa.me/963995980568"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-card"
-            >
-              <div class="contact-icon">🎓</div>
-
-              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
-
-              <p>للاستفسارات المتعلقة بالكورسات</p>
+        <!-- روابط التواصل الاجتماعي -->
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/19SoUFGhky/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="فيسبوك">
+                <i class="fab fa-facebook-f"></i>
             </a>
-
-            <!-- المهندسة -->
-            <a
-              href="https://wa.me/963937015714"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-card"
-            >
-              <div class="contact-icon">💻</div>
-
-              <h3>المهندسة لين حسن الكردي</h3>
-
-              <p>للاستفسارات المتعلقة بالموقع</p>
+            <a href="https://www.instagram.com/cour_syria" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="إنستغرام">
+                <i class="fab fa-instagram"></i>
             </a>
-          </div>
-        </section>
-        <footer class="footer">
-          <strong>COURSYRIA</strong>
-          <br />
-          <span>تعلّم • تطوّر • قد</span>
-
-          <!-- روابط التواصل الاجتماعي -->
-          <div class="social-links">
-            <a
-              href="https://www.facebook.com/share/19SoUFGhky/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link"
-              aria-label="فيسبوك"
-            >
-              <i class="fab fa-facebook-f"></i>
+            <a href="https://youtube.com/@coursyria" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="يوتيوب">
+                <i class="fab fa-youtube"></i>
             </a>
+        </div>
 
-            <a
-              href="https://www.instagram.com/cour_syria"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link"
-              aria-label="إنستغرام"
-            >
-              <i class="fab fa-instagram"></i>
-            </a>
-
-            <a
-              href="https://youtube.com/@coursyria"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link"
-              aria-label="يوتيوب"
-            >
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
-
-          <div class="copyright">© 2027 Coursyria — جميع الحقوق محفوظة</div>
-        </footer>
+        <div class="copyright">© 2027 Coursyria — جميع الحقوق محفوظة</div>
+    </div>
+</footer>
       </div>
       <!-- =====================================================
          إغلاق .page
@@ -4979,7 +5274,7 @@
             return (
               '<div class="course" role="button" tabindex="0" onclick="openRank(\'ranks/rank' +
               (i + 1) +
-              '.jpg\')">' +
+              ".jpg')\">" +
               '<div class="course-number">' +
               num +
               "</div>" +
@@ -5141,44 +5436,40 @@
         });
       });
 
-     /* =====================================================
+      /* =====================================================
    COURSE FILTER
 ===================================================== */
 
-const filterButtons = document.querySelectorAll(".filter-btn");
+      const filterButtons = document.querySelectorAll(".filter-btn");
 
-const courseCards = document.querySelectorAll(
-  ".courses-section#courses .course"
-);
+      const courseCards = document.querySelectorAll(
+        ".courses-section#courses .course",
+      );
 
-filterButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
+      filterButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          const filter = button.getAttribute("data-filter");
 
-    const filter = button.getAttribute("data-filter");
+          // إزالة التفعيل عن جميع الأزرار
+          filterButtons.forEach(function (btn) {
+            btn.classList.remove("active");
+          });
 
-    // إزالة التفعيل عن جميع الأزرار
-    filterButtons.forEach(function (btn) {
-      btn.classList.remove("active");
-    });
+          // تفعيل الزر الحالي
+          button.classList.add("active");
 
-    // تفعيل الزر الحالي
-    button.classList.add("active");
+          // إظهار وإخفاء الكورسات
+          courseCards.forEach(function (course) {
+            const category = course.getAttribute("data-category");
 
-    // إظهار وإخفاء الكورسات
-    courseCards.forEach(function (course) {
-
-      const category = course.getAttribute("data-category");
-
-      if (filter === "all" || category === filter) {
-        course.classList.remove("hidden-course");
-      } else {
-        course.classList.add("hidden-course");
-      }
-
-    });
-
-  });
-});
+            if (filter === "all" || category === filter) {
+              course.classList.remove("hidden-course");
+            } else {
+              course.classList.add("hidden-course");
+            }
+          });
+        });
+      });
 
       /* =====================================================
          FAQ ACCORDION
@@ -5380,8 +5671,7 @@ filterButtons.forEach(function (button) {
           document.documentElement.scrollHeight -
           document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
-        document.getElementById("scrollProgress").style.width =
-          scrolled + "%";
+        document.getElementById("scrollProgress").style.width = scrolled + "%";
       });
 
       /* =====================================================
