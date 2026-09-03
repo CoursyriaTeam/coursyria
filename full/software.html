@@ -1,0 +1,3278 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Software Laptop | Coursyria</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =========================================================
+       ROOT
+    ========================================================= */
+
+      :root {
+        --bg: #050812;
+        --bg2: #08101e;
+        --surface: #0b1220;
+        --surface2: #0e1728;
+
+        --blue: #42d9ff;
+        --blue2: #1687ff;
+        --cyan: #00f0ff;
+
+        --purple: #8b5cf6;
+        --pink: #d946ef;
+
+        --green: #45f0a3;
+        --yellow: #ffd166;
+
+        --white: #f7fbff;
+        --text: #dce8f5;
+        --muted: #8c9bb0;
+
+        --border: rgba(112, 180, 255, 0.16);
+
+        --shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+
+        --glow: 0 0 45px rgba(66, 217, 255, 0.15);
+      }
+
+      /* =========================================================
+       RESET
+    ========================================================= */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Cairo", sans-serif;
+        color: var(--white);
+        background:
+          radial-gradient(
+            circle at 80% 5%,
+            rgba(66, 217, 255, 0.1),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 15% 35%,
+            rgba(139, 92, 246, 0.09),
+            transparent 25%
+          ),
+          linear-gradient(180deg, #040711 0%, #070c17 50%, #040711 100%);
+
+        overflow-x: hidden;
+      }
+
+      /* =========================================================
+       BACKGROUND GRID
+    ========================================================= */
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+
+        pointer-events: none;
+
+        opacity: 0.22;
+
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+
+        background-size: 55px 55px;
+
+        mask-image: linear-gradient(to bottom, black, transparent 85%);
+
+        z-index: -5;
+      }
+
+      /* =========================================================
+       FLOATING LIGHTS
+    ========================================================= */
+
+      .ambient {
+        position: fixed;
+        border-radius: 50%;
+        pointer-events: none;
+        filter: blur(70px);
+        z-index: -3;
+      }
+
+      .ambient.one {
+        width: 280px;
+        height: 280px;
+        background: rgba(0, 210, 255, 0.09);
+        top: 15%;
+        right: -80px;
+        animation: floatOne 9s ease-in-out infinite;
+      }
+
+      .ambient.two {
+        width: 240px;
+        height: 240px;
+        background: rgba(139, 92, 246, 0.08);
+        bottom: 20%;
+        left: -70px;
+        animation: floatTwo 11s ease-in-out infinite;
+      }
+
+      @keyframes floatOne {
+        50% {
+          transform: translate(-30px, 40px);
+        }
+      }
+
+      @keyframes floatTwo {
+        50% {
+          transform: translate(35px, -25px);
+        }
+      }
+
+      /* =========================================================
+       PARTICLES
+    ========================================================= */
+
+      .particles {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -2;
+      }
+
+      .particle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--blue);
+        box-shadow: 0 0 12px var(--blue);
+        opacity: 0.5;
+        animation: particleFloat linear infinite;
+      }
+
+      .particle:nth-child(1) {
+        left: 8%;
+        top: 20%;
+        animation-duration: 8s;
+      }
+
+      .particle:nth-child(2) {
+        left: 18%;
+        top: 70%;
+        animation-duration: 12s;
+      }
+
+      .particle:nth-child(3) {
+        left: 33%;
+        top: 15%;
+        animation-duration: 10s;
+      }
+
+      .particle:nth-child(4) {
+        left: 52%;
+        top: 80%;
+        animation-duration: 9s;
+      }
+
+      .particle:nth-child(5) {
+        left: 71%;
+        top: 22%;
+        animation-duration: 11s;
+      }
+
+      .particle:nth-child(6) {
+        left: 89%;
+        top: 65%;
+        animation-duration: 13s;
+      }
+
+      @keyframes particleFloat {
+        0% {
+          transform: translateY(0);
+          opacity: 0.15;
+        }
+
+        50% {
+          opacity: 0.8;
+        }
+
+        100% {
+          transform: translateY(-100px);
+          opacity: 0;
+        }
+      }
+
+      /* =========================================================
+       CONTAINER
+    ========================================================= */
+
+      .container {
+        width: min(1180px, 92%);
+        margin: auto;
+      }
+
+      /* =========================================================
+       NAVBAR
+    ========================================================= */
+
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+
+        background: rgba(4, 7, 17, 0.72);
+        backdrop-filter: blur(22px);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .nav-content {
+        min-height: 76px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+
+        font-size: 23px;
+        font-weight: 900;
+      }
+
+      .logo-box {
+        width: 43px;
+        height: 43px;
+
+        display: grid;
+        place-items: center;
+
+        border-radius: 13px;
+
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+
+        color: var(--blue);
+
+        background: linear-gradient(
+          145deg,
+          rgba(66, 217, 255, 0.14),
+          rgba(139, 92, 246, 0.12)
+        );
+
+        border: 1px solid rgba(66, 217, 255, 0.4);
+
+        box-shadow:
+          inset 0 0 20px rgba(66, 217, 255, 0.08),
+          0 0 20px rgba(66, 217, 255, 0.08);
+
+        transition: 0.3s;
+      }
+
+      .logo:hover .logo-box {
+        transform: rotate(-5deg) scale(1.05);
+        box-shadow:
+          inset 0 0 20px rgba(66, 217, 255, 0.12),
+          0 0 30px rgba(66, 217, 255, 0.25);
+      }
+
+      .logo span {
+        color: var(--blue);
+      }
+
+      .nav-status {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+
+        padding: 8px 15px;
+
+        border: 1px solid rgba(69, 240, 163, 0.2);
+        border-radius: 30px;
+
+        background: rgba(69, 240, 163, 0.05);
+
+        color: #b9f9dc;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 12px var(--green);
+
+        animation: statusPulse 1.8s infinite;
+      }
+
+      @keyframes statusPulse {
+        50% {
+          opacity: 0.35;
+          transform: scale(0.65);
+        }
+      }
+
+      /* =========================================================
+       HERO
+    ========================================================= */
+
+      .hero {
+        min-height: 760px;
+
+        display: grid;
+        grid-template-columns: 1fr 1.05fr;
+
+        gap: 55px;
+
+        align-items: center;
+
+        padding: 75px 0 90px;
+      }
+
+      .hero-content {
+        position: relative;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+
+        padding: 8px 15px;
+
+        margin-bottom: 22px;
+
+        border: 1px solid rgba(66, 217, 255, 0.22);
+        border-radius: 30px;
+
+        background: rgba(66, 217, 255, 0.045);
+
+        color: #a9eefe;
+
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        font-weight: 600;
+
+        box-shadow: 0 0 25px rgba(66, 217, 255, 0.05);
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        background: var(--cyan);
+        box-shadow: 0 0 12px var(--cyan);
+      }
+
+      .hero h1 {
+        font-size: clamp(48px, 7vw, 86px);
+        line-height: 1.02;
+
+        font-weight: 900;
+        letter-spacing: -3px;
+
+        margin-bottom: 22px;
+      }
+
+      .gradient-text {
+        background: linear-gradient(
+          100deg,
+          #fff 0%,
+          #72e4ff 30%,
+          #5ba6ff 55%,
+          #a78bfa 80%,
+          #f0abfc 100%
+        );
+
+        background-size: 200%;
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+
+        animation: gradientShift 6s ease infinite;
+      }
+
+      @keyframes gradientShift {
+        50% {
+          background-position: 100%;
+        }
+      }
+
+      .hero-subtitle {
+        color: #edf5ff;
+
+        font-size: 20px;
+        font-weight: 800;
+
+        margin-bottom: 14px;
+      }
+
+      .hero-description {
+        max-width: 560px;
+
+        color: var(--muted);
+
+        font-size: 15px;
+        line-height: 2.05;
+      }
+
+      /* =========================================================
+       HERO BUTTONS
+    ========================================================= */
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+
+        margin-top: 30px;
+      }
+
+      .btn {
+        position: relative;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+
+        padding: 14px 23px;
+
+        border-radius: 13px;
+
+        text-decoration: none;
+
+        font-weight: 800;
+        font-size: 14px;
+
+        transition: 0.3s;
+
+        overflow: hidden;
+      }
+
+      .btn::before {
+        content: "";
+
+        position: absolute;
+
+        inset: 0;
+
+        transform: translateX(-110%);
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.16),
+          transparent
+        );
+
+        transition: 0.6s;
+      }
+
+      .btn:hover::before {
+        transform: translateX(110%);
+      }
+
+      .btn-primary {
+        color: #03101b;
+
+        background: linear-gradient(110deg, #67e8f9, #38bdf8, #818cf8);
+
+        box-shadow: 0 10px 30px rgba(56, 189, 248, 0.16);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 40px rgba(56, 189, 248, 0.28);
+      }
+
+      .btn-outline {
+        color: #bdeeff;
+
+        border: 1px solid rgba(66, 217, 255, 0.25);
+
+        background: rgba(66, 217, 255, 0.04);
+      }
+
+      .btn-outline:hover {
+        transform: translateY(-4px);
+
+        border-color: rgba(66, 217, 255, 0.6);
+
+        background: rgba(66, 217, 255, 0.08);
+      }
+
+      /* =========================================================
+       HERO MINI INFO
+    ========================================================= */
+
+      .hero-mini {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+
+        margin-top: 32px;
+      }
+
+      .mini-item {
+        color: #8394aa;
+        font-size: 12px;
+      }
+
+      .mini-item strong {
+        display: block;
+
+        color: #e9f5ff;
+
+        font-size: 14px;
+        margin-bottom: 2px;
+      }
+
+      .mini-divider {
+        width: 1px;
+        height: 28px;
+
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* =========================================================
+       LAPTOP AREA
+    ========================================================= */
+
+      .laptop-area {
+        min-height: 480px;
+
+        display: grid;
+        place-items: center;
+
+        position: relative;
+
+        perspective: 1200px;
+      }
+
+      .laptop-glow {
+        position: absolute;
+
+        width: 480px;
+        height: 480px;
+
+        border-radius: 50%;
+
+        background: radial-gradient(
+          circle,
+          rgba(66, 217, 255, 0.18),
+          rgba(139, 92, 246, 0.09) 35%,
+          transparent 70%
+        );
+
+        filter: blur(10px);
+
+        animation: laptopGlow 5s ease-in-out infinite;
+      }
+
+      @keyframes laptopGlow {
+        50% {
+          transform: scale(1.13);
+          opacity: 0.65;
+        }
+      }
+
+      .laptop {
+        width: min(520px, 100%);
+
+        position: relative;
+        z-index: 3;
+
+        transform: rotateY(-8deg) rotateX(4deg) rotateZ(0.5deg);
+
+        transition: transform 0.15s ease-out;
+      }
+
+      .screen-frame {
+        position: relative;
+
+        padding: 12px;
+
+        border-radius: 22px 22px 10px 10px;
+
+        background: linear-gradient(145deg, #263246, #080d18);
+
+        border: 1px solid rgba(255, 255, 255, 0.13);
+
+        box-shadow:
+          0 35px 60px rgba(0, 0, 0, 0.55),
+          0 0 0 1px rgba(66, 217, 255, 0.07);
+      }
+
+      .screen {
+        position: relative;
+
+        height: 320px;
+
+        overflow: hidden;
+
+        border-radius: 13px 13px 5px 5px;
+
+        background:
+          radial-gradient(
+            circle at 50% 10%,
+            rgba(66, 217, 255, 0.07),
+            transparent 35%
+          ),
+          #050914;
+
+        border: 1px solid rgba(66, 217, 255, 0.17);
+
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .screen::after {
+        content: "";
+
+        position: absolute;
+        left: 0;
+        right: 0;
+
+        height: 2px;
+
+        background: rgba(66, 217, 255, 0.12);
+
+        box-shadow: 0 0 15px rgba(66, 217, 255, 0.2);
+
+        animation: scan 5s linear infinite;
+
+        pointer-events: none;
+      }
+
+      @keyframes scan {
+        from {
+          top: -5px;
+        }
+
+        to {
+          top: 100%;
+        }
+      }
+
+      /* =========================================================
+       SCREEN TOPBAR
+    ========================================================= */
+
+      .screen-top {
+        height: 39px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 14px;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      .window-dots {
+        display: flex;
+        gap: 6px;
+      }
+
+      .window-dots span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      .window-dots span:nth-child(1) {
+        background: #ff6b7a;
+      }
+
+      .window-dots span:nth-child(2) {
+        background: #ffd166;
+      }
+
+      .window-dots span:nth-child(3) {
+        background: #45f0a3;
+      }
+
+      .screen-title {
+        color: #6f8198;
+        font-size: 9px;
+      }
+
+      /* =========================================================
+       SCREEN CONTENT
+    ========================================================= */
+
+      .screen-content {
+        position: relative;
+        height: calc(100% - 39px);
+        padding: 18px;
+      }
+
+      .terminal {
+        width: 58%;
+
+        color: #8ca4bb;
+
+        font-size: 10px;
+        line-height: 2;
+
+        opacity: 0.85;
+      }
+
+      .terminal .cyan {
+        color: var(--cyan);
+      }
+
+      .terminal .green {
+        color: var(--green);
+      }
+
+      .terminal .purple {
+        color: #b49cff;
+      }
+
+      .typing-line {
+        display: inline;
+      }
+
+      .cursor {
+        display: inline-block;
+
+        width: 6px;
+        height: 11px;
+
+        margin-right: 3px;
+
+        vertical-align: -2px;
+
+        background: var(--cyan);
+
+        animation: cursorBlink 0.8s infinite;
+      }
+
+      @keyframes cursorBlink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* =========================================================
+       SOFTWARE WINDOWS
+    ========================================================= */
+
+      .software-window {
+        position: absolute;
+
+        width: 175px;
+
+        padding: 10px;
+
+        border: 1px solid rgba(117, 174, 255, 0.18);
+
+        border-radius: 10px;
+
+        background: rgba(9, 17, 31, 0.86);
+
+        box-shadow:
+          0 18px 35px rgba(0, 0, 0, 0.35),
+          0 0 25px rgba(66, 217, 255, 0.05);
+
+        backdrop-filter: blur(10px);
+      }
+
+      .window-one {
+        right: 15px;
+        top: 27px;
+
+        animation: windowFloatOne 4s ease-in-out infinite;
+      }
+
+      .window-two {
+        right: 75px;
+        bottom: 24px;
+
+        width: 190px;
+
+        animation: windowFloatTwo 5s ease-in-out infinite;
+      }
+
+      @keyframes windowFloatOne {
+        50% {
+          transform: translateY(-9px);
+        }
+      }
+
+      @keyframes windowFloatTwo {
+        50% {
+          transform: translateY(8px);
+        }
+      }
+
+      .window-header {
+        display: flex;
+        justify-content: space-between;
+
+        margin-bottom: 9px;
+
+        color: #71869d;
+
+        font-size: 8px;
+      }
+
+      .window-body {
+        display: flex;
+        gap: 6px;
+      }
+
+      .bar {
+        height: 5px;
+        border-radius: 10px;
+
+        background: linear-gradient(90deg, var(--blue), var(--purple));
+      }
+
+      .bar:nth-child(1) {
+        width: 65%;
+      }
+
+      .bar:nth-child(2) {
+        width: 40%;
+      }
+
+      .bar:nth-child(3) {
+        width: 80%;
+      }
+
+      .mini-bars {
+        display: flex;
+        align-items: end;
+        gap: 5px;
+
+        height: 45px;
+      }
+
+      .mini-bars i {
+        display: block;
+
+        width: 12px;
+
+        border-radius: 3px 3px 0 0;
+
+        background: linear-gradient(to top, #1687ff, #67e8f9);
+
+        animation: barPulse 2s ease-in-out infinite;
+      }
+
+      .mini-bars i:nth-child(1) {
+        height: 30%;
+      }
+
+      .mini-bars i:nth-child(2) {
+        height: 65%;
+        animation-delay: 0.2s;
+      }
+
+      .mini-bars i:nth-child(3) {
+        height: 45%;
+        animation-delay: 0.4s;
+      }
+
+      .mini-bars i:nth-child(4) {
+        height: 85%;
+        animation-delay: 0.6s;
+      }
+
+      .mini-bars i:nth-child(5) {
+        height: 60%;
+        animation-delay: 0.8s;
+      }
+
+      @keyframes barPulse {
+        50% {
+          opacity: 0.45;
+          transform: scaleY(0.7);
+        }
+      }
+
+      /* =========================================================
+       TRACKPAD / LAPTOP BASE
+    ========================================================= */
+
+      .laptop-base {
+        position: relative;
+
+        width: 112%;
+        height: 28px;
+
+        margin-right: -6%;
+
+        background: linear-gradient(180deg, #58667a, #202938 65%, #111827);
+
+        border-radius: 0 0 28px 28px;
+
+        box-shadow: 0 22px 30px rgba(0, 0, 0, 0.55);
+      }
+
+      .laptop-base::after {
+        content: "";
+
+        position: absolute;
+
+        width: 110px;
+        height: 6px;
+
+        border-radius: 0 0 10px 10px;
+
+        left: 50%;
+        top: 0;
+
+        transform: translateX(-50%);
+
+        background: #182130;
+      }
+
+      /* =========================================================
+       TRUST STRIP
+    ========================================================= */
+
+      .trust-strip {
+        margin-top: -5px;
+      }
+
+      .trust-inner {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .trust-item {
+        padding: 24px;
+
+        text-align: center;
+
+        color: #8ea0b4;
+
+        font-size: 12px;
+      }
+
+      .trust-item + .trust-item {
+        border-right: 1px solid var(--border);
+      }
+
+      .trust-item strong {
+        display: block;
+
+        color: #e9f5ff;
+
+        font-size: 16px;
+
+        margin-bottom: 4px;
+      }
+
+      /* =========================================================
+       SECTIONS
+    ========================================================= */
+
+      .section {
+        padding: 105px 0;
+      }
+
+      .section-heading {
+        text-align: center;
+
+        max-width: 700px;
+
+        margin: 0 auto 48px;
+      }
+
+      .section-heading .tag {
+        display: inline-block;
+
+        margin-bottom: 12px;
+
+        color: var(--blue);
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .section-heading h2 {
+        font-size: 36px;
+        line-height: 1.25;
+
+        font-weight: 900;
+
+        margin-bottom: 12px;
+      }
+
+      .section-heading p {
+        color: var(--muted);
+
+        font-size: 14px;
+        line-height: 1.9;
+      }
+
+      /* =========================================================
+       INFO CARDS
+    ========================================================= */
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 17px;
+      }
+
+      .stat-card {
+        position: relative;
+
+        padding: 28px 22px;
+
+        border: 1px solid var(--border);
+
+        border-radius: 20px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(14, 24, 42, 0.88),
+          rgba(8, 13, 25, 0.82)
+        );
+
+        overflow: hidden;
+
+        transition: 0.35s;
+      }
+
+      .stat-card::before {
+        content: "";
+
+        position: absolute;
+
+        width: 100px;
+        height: 100px;
+
+        top: -50px;
+        left: -50px;
+
+        border-radius: 50%;
+
+        background: rgba(66, 217, 255, 0.07);
+
+        filter: blur(20px);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-8px);
+
+        border-color: rgba(66, 217, 255, 0.4);
+
+        box-shadow: var(--glow);
+      }
+
+      .stat-icon {
+        font-size: 26px;
+        margin-bottom: 12px;
+      }
+
+      .stat-card h3 {
+        font-size: 25px;
+        font-weight: 900;
+
+        color: #eef8ff;
+      }
+
+      .stat-card p {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      /* =========================================================
+       FEATURES
+    ========================================================= */
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 17px;
+      }
+
+      .feature {
+        position: relative;
+
+        min-height: 220px;
+
+        padding: 27px;
+
+        border: 1px solid var(--border);
+        border-radius: 20px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(13, 23, 40, 0.88),
+          rgba(7, 12, 23, 0.85)
+        );
+
+        overflow: hidden;
+
+        transition: 0.35s;
+      }
+
+      .feature::after {
+        content: "";
+
+        position: absolute;
+
+        width: 180px;
+        height: 180px;
+
+        border-radius: 50%;
+
+        right: -100px;
+        bottom: -100px;
+
+        background: rgba(66, 217, 255, 0.045);
+
+        filter: blur(30px);
+
+        transition: 0.4s;
+      }
+
+      .feature:hover {
+        transform: translateY(-8px);
+
+        border-color: rgba(66, 217, 255, 0.35);
+
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+      }
+
+      .feature:hover::after {
+        transform: scale(1.5);
+      }
+
+      .feature-icon {
+        width: 55px;
+        height: 55px;
+
+        display: grid;
+        place-items: center;
+
+        margin-bottom: 19px;
+
+        border-radius: 15px;
+
+        border: 1px solid rgba(66, 217, 255, 0.18);
+
+        background: rgba(66, 217, 255, 0.055);
+
+        font-size: 25px;
+
+        transition: 0.3s;
+      }
+
+      .feature:hover .feature-icon {
+        transform: rotate(-5deg) scale(1.08);
+
+        border-color: rgba(66, 217, 255, 0.45);
+
+        box-shadow: 0 0 25px rgba(66, 217, 255, 0.12);
+      }
+
+      .feature h3 {
+        font-size: 18px;
+
+        margin-bottom: 8px;
+      }
+
+      .feature p {
+        color: var(--muted);
+
+        font-size: 13px;
+
+        line-height: 1.9;
+      }
+
+      /* =========================================================
+       COURSE ROADMAP
+    ========================================================= */
+
+      .roadmap {
+        position: relative;
+
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        gap: 15px;
+      }
+
+      .roadmap::before {
+        content: "";
+
+        position: absolute;
+
+        top: 38px;
+        right: 10%;
+        left: 10%;
+
+        height: 1px;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(66, 217, 255, 0.3),
+          rgba(139, 92, 246, 0.3),
+          transparent
+        );
+
+        z-index: -1;
+      }
+
+      .road {
+        position: relative;
+
+        padding: 26px 17px 23px;
+
+        min-height: 205px;
+
+        text-align: center;
+
+        border: 1px solid rgba(66, 217, 255, 0.13);
+
+        border-radius: 18px;
+
+        background: rgba(8, 14, 26, 0.9);
+
+        transition: 0.35s;
+      }
+
+      .road:hover {
+        transform: translateY(-8px);
+
+        border-color: rgba(66, 217, 255, 0.38);
+
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .road-number {
+        width: 27px;
+        height: 27px;
+
+        display: grid;
+        place-items: center;
+
+        margin: 0 auto 13px;
+
+        border-radius: 50%;
+
+        color: #03101a;
+
+        background: linear-gradient(135deg, #67e8f9, #818cf8);
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 10px;
+        font-weight: 800;
+
+        box-shadow: 0 0 20px rgba(66, 217, 255, 0.15);
+      }
+
+      .road-icon {
+        font-size: 32px;
+        margin-bottom: 11px;
+      }
+
+      .road h3 {
+        font-size: 15px;
+        margin-bottom: 6px;
+      }
+
+      .road p {
+        color: var(--muted);
+
+        font-size: 11px;
+
+        line-height: 1.7;
+      }
+
+      /* =========================================================
+       LEARN SECTION
+    ========================================================= */
+
+      .learn-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 20px;
+      }
+
+      .learn-card {
+        position: relative;
+
+        padding: 31px;
+
+        border: 1px solid var(--border);
+
+        border-radius: 22px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(13, 23, 40, 0.9),
+          rgba(7, 12, 23, 0.86)
+        );
+
+        overflow: hidden;
+      }
+
+      .learn-card::before {
+        content: "";
+
+        position: absolute;
+
+        top: -90px;
+        left: -90px;
+
+        width: 220px;
+        height: 220px;
+
+        border-radius: 50%;
+
+        background: rgba(66, 217, 255, 0.06);
+
+        filter: blur(35px);
+      }
+
+      .learn-card h3 {
+        position: relative;
+
+        font-size: 21px;
+
+        margin-bottom: 20px;
+      }
+
+      .learn-list {
+        list-style: none;
+
+        position: relative;
+      }
+
+      .learn-list li {
+        display: flex;
+        align-items: center;
+
+        gap: 11px;
+
+        padding: 12px 0;
+
+        color: #bccbdc;
+
+        font-size: 13px;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+      }
+
+      .learn-list li:last-child {
+        border-bottom: none;
+      }
+
+      .check {
+        width: 24px;
+        height: 24px;
+
+        flex: 0 0 24px;
+
+        display: grid;
+        place-items: center;
+
+        border-radius: 8px;
+
+        color: var(--green);
+
+        background: rgba(69, 240, 163, 0.07);
+
+        border: 1px solid rgba(69, 240, 163, 0.15);
+
+        font-size: 11px;
+      }
+
+      /* =========================================================
+       PRACTICAL BOX
+    ========================================================= */
+
+      .practice {
+        margin-top: 25px;
+
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+
+        border: 1px solid rgba(66, 217, 255, 0.16);
+
+        border-radius: 23px;
+
+        overflow: hidden;
+
+        background: linear-gradient(
+          120deg,
+          rgba(9, 18, 32, 0.95),
+          rgba(11, 12, 28, 0.9)
+        );
+      }
+
+      .practice-text {
+        padding: 40px;
+      }
+
+      .practice-label {
+        color: var(--green);
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 11px;
+        font-weight: 700;
+
+        margin-bottom: 10px;
+      }
+
+      .practice h3 {
+        font-size: 27px;
+        margin-bottom: 12px;
+      }
+
+      .practice p {
+        color: var(--muted);
+
+        font-size: 13px;
+
+        line-height: 2;
+      }
+
+      .practice-visual {
+        position: relative;
+
+        min-height: 260px;
+
+        display: grid;
+        place-items: center;
+
+        background: radial-gradient(
+          circle,
+          rgba(66, 217, 255, 0.1),
+          transparent 65%
+        );
+      }
+
+      .terminal-card {
+        width: 80%;
+        padding: 17px;
+
+        border-radius: 13px;
+
+        background: #050914;
+
+        border: 1px solid rgba(66, 217, 255, 0.17);
+
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 9px;
+        line-height: 2;
+
+        color: #7d91a7;
+      }
+
+      .terminal-card .success {
+        color: var(--green);
+      }
+
+      .terminal-card .command {
+        color: var(--blue);
+      }
+
+      /* =========================================================
+       PRICE
+    ========================================================= */
+
+      .price-section {
+        padding: 110px 0;
+      }
+
+      .price-card {
+        position: relative;
+
+        max-width: 700px;
+
+        margin: auto;
+
+        padding: 48px 30px;
+
+        text-align: center;
+
+        border: 1px solid rgba(66, 217, 255, 0.25);
+
+        border-radius: 28px;
+
+        background:
+          radial-gradient(
+            circle at 50% 0%,
+            rgba(66, 217, 255, 0.1),
+            transparent 45%
+          ),
+          linear-gradient(145deg, rgba(11, 21, 37, 0.96), rgba(7, 10, 20, 0.96));
+
+        box-shadow:
+          0 30px 80px rgba(0, 0, 0, 0.4),
+          0 0 60px rgba(66, 217, 255, 0.05);
+
+        overflow: hidden;
+      }
+
+      .price-card::before {
+        content: "";
+
+        position: absolute;
+
+        width: 300px;
+        height: 300px;
+
+        border-radius: 50%;
+
+        right: -170px;
+        top: -170px;
+
+        background: rgba(139, 92, 246, 0.08);
+
+        filter: blur(35px);
+      }
+
+      .price-card::after {
+        content: "";
+
+        position: absolute;
+
+        width: 250px;
+        height: 2px;
+
+        left: 50%;
+        bottom: 0;
+
+        transform: translateX(-50%);
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--blue),
+          var(--purple),
+          transparent
+        );
+
+        box-shadow: 0 0 20px var(--blue);
+      }
+
+      .price-label {
+        color: #9eb1c5;
+
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .price {
+        margin: 9px 0;
+
+        font-size: 65px;
+        line-height: 1;
+
+        font-weight: 900;
+
+        background: linear-gradient(90deg, #67e8f9, #38bdf8, #a78bfa);
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+      }
+
+      .currency {
+        color: #dbeafe;
+
+        font-size: 20px;
+
+        margin-right: 7px;
+      }
+
+      .price-description {
+        color: var(--muted);
+
+        font-size: 12px;
+
+        margin-bottom: 25px;
+      }
+
+      .price-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+
+        padding: 15px 30px;
+
+        color: #03101b;
+
+        text-decoration: none;
+
+        border-radius: 13px;
+
+        font-weight: 900;
+
+        background: linear-gradient(110deg, #67e8f9, #38bdf8, #818cf8);
+
+        transition: 0.3s;
+      }
+
+      .price-button:hover {
+        transform: translateY(-4px) scale(1.02);
+
+        box-shadow: 0 15px 35px rgba(56, 189, 248, 0.25);
+      }
+
+      /* =========================================================
+       CONTACT - NEW DESIGN
+    ========================================================= */
+
+      .contact-section {
+        padding-top: 90px;
+        padding-bottom: 90px;
+      }
+
+      .contact-section .section-heading {
+        margin-bottom: 40px;
+      }
+
+      .contact-section .section-heading > span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 9px 18px;
+
+        border-radius: 30px;
+
+        color: #a9eefe;
+
+        background: rgba(66, 217, 255, 0.05);
+
+        border: 1px solid rgba(66, 217, 255, 0.2);
+
+        font-size: 13px;
+        font-weight: 800;
+
+        box-shadow: 0 0 25px rgba(66, 217, 255, 0.05);
+      }
+
+      .contact-wrapper {
+        width: min(850px, 100%);
+        margin: auto;
+      }
+
+      .contact-card {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+
+        gap: 20px;
+
+        padding: 24px 25px;
+
+        border: 1px solid rgba(66, 217, 255, 0.17);
+
+        border-radius: 20px;
+
+        background:
+          radial-gradient(
+            circle at 100% 50%,
+            rgba(66, 217, 255, 0.07),
+            transparent 35%
+          ),
+          linear-gradient(145deg, rgba(13, 23, 40, 0.94), rgba(7, 12, 23, 0.9));
+
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.28),
+          0 0 35px rgba(66, 217, 255, 0.035);
+
+        transition: 0.35s;
+
+        overflow: hidden;
+      }
+
+      .contact-card::before {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        right: 0;
+
+        width: 4px;
+        height: 100%;
+
+        background: linear-gradient(
+          180deg,
+          var(--cyan),
+          var(--blue),
+          var(--purple)
+        );
+
+        box-shadow: 0 0 20px rgba(66, 217, 255, 0.4);
+      }
+
+      .contact-card:hover {
+        transform: translateY(-7px);
+
+        border-color: rgba(66, 217, 255, 0.4);
+
+        box-shadow:
+          0 25px 60px rgba(0, 0, 0, 0.35),
+          0 0 40px rgba(66, 217, 255, 0.08);
+      }
+
+      .contact-icon-box {
+        width: 62px;
+        height: 62px;
+
+        flex: 0 0 62px;
+
+        display: grid;
+        place-items: center;
+
+        border-radius: 17px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(66, 217, 255, 0.1),
+          rgba(139, 92, 246, 0.08)
+        );
+
+        border: 1px solid rgba(66, 217, 255, 0.2);
+
+        font-size: 28px;
+
+        box-shadow:
+          inset 0 0 20px rgba(66, 217, 255, 0.04),
+          0 0 25px rgba(66, 217, 255, 0.05);
+
+        transition: 0.35s;
+      }
+
+      .contact-card:hover .contact-icon-box {
+        transform: scale(1.06) rotate(-4deg);
+
+        border-color: rgba(66, 217, 255, 0.45);
+
+        box-shadow: 0 0 30px rgba(66, 217, 255, 0.12);
+      }
+
+      .contact-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .contact-content h3 {
+        color: #f2f8ff;
+
+        font-size: 17px;
+        font-weight: 900;
+
+        margin-bottom: 5px;
+      }
+
+      .contact-content p {
+        color: var(--muted);
+
+        font-size: 12px;
+      }
+
+      .whatsapp-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 9px;
+
+        flex-shrink: 0;
+
+        padding: 12px 17px;
+
+        color: #d8fff0;
+
+        text-decoration: none;
+
+        border-radius: 12px;
+
+        border: 1px solid rgba(69, 240, 163, 0.25);
+
+        background: rgba(69, 240, 163, 0.07);
+
+        font-size: 12px;
+        font-weight: 800;
+
+        transition: 0.3s;
+      }
+
+      .whatsapp-btn:hover {
+        transform: translateY(-3px);
+
+        color: #06150f;
+
+        background: var(--green);
+
+        border-color: var(--green);
+
+        box-shadow: 0 10px 30px rgba(69, 240, 163, 0.2);
+      }
+
+      .whatsapp-icon {
+        width: 21px;
+        height: 21px;
+
+        display: grid;
+        place-items: center;
+
+        border-radius: 50%;
+
+        color: #06150f;
+
+        background: var(--green);
+
+        font-size: 10px;
+
+        transition: 0.3s;
+      }
+
+      .whatsapp-btn:hover .whatsapp-icon {
+        background: #06150f;
+        color: var(--green);
+      }
+
+      .arrow {
+        font-size: 15px;
+
+        transition: transform 0.3s;
+      }
+
+      .whatsapp-btn:hover .arrow {
+        transform: translateX(-4px);
+      }
+
+      /* =========================================================
+       FOOTER - NEW DESIGN
+    ========================================================= */
+
+      footer {
+        margin-top: 30px;
+
+        padding: 34px 20px;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+
+        color: #718096;
+
+        font-size: 12px;
+
+        background: rgba(3, 6, 14, 0.35);
+      }
+
+      footer p {
+        line-height: 2;
+
+        margin: 0;
+      }
+
+      footer p::first-line {
+        color: #8393a8;
+      }
+
+      footer:hover {
+        color: #a8b9cb;
+      }
+
+      /* =========================================================
+       RESPONSIVE TABLET
+    ========================================================= */
+
+      @media (max-width: 950px) {
+        .hero {
+          grid-template-columns: 1fr;
+
+          text-align: center;
+
+          gap: 35px;
+        }
+
+        .hero-description {
+          margin: auto;
+        }
+
+        .hero-actions {
+          justify-content: center;
+        }
+
+        .hero-mini {
+          justify-content: center;
+        }
+
+        .laptop {
+          width: 500px;
+        }
+
+        .features {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .roadmap {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .roadmap::before {
+          display: none;
+        }
+
+        .learn-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .practice {
+          grid-template-columns: 1fr;
+        }
+
+        .practice-visual {
+          min-height: 220px;
+        }
+      }
+
+      /* =========================================================
+       MOBILE
+    ========================================================= */
+
+      @media (max-width: 650px) {
+        .container {
+          width: 91%;
+        }
+
+        nav {
+          position: relative;
+        }
+
+        .nav-content {
+          min-height: 67px;
+        }
+
+        .logo {
+          font-size: 18px;
+        }
+
+        .logo-box {
+          width: 38px;
+          height: 38px;
+
+          font-size: 13px;
+        }
+
+        .nav-status {
+          padding: 6px 9px;
+
+          font-size: 9px;
+        }
+
+        .hero {
+          min-height: auto;
+
+          padding: 55px 0 60px;
+
+          gap: 25px;
+        }
+
+        .eyebrow {
+          font-size: 9px;
+
+          padding: 7px 12px;
+        }
+
+        .hero h1 {
+          font-size: 51px;
+
+          letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+          font-size: 16px;
+
+          line-height: 1.7;
+        }
+
+        .hero-description {
+          font-size: 12px;
+
+          line-height: 1.9;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+
+          gap: 10px;
+        }
+
+        .btn {
+          width: 100%;
+
+          padding: 13px 18px;
+
+          font-size: 13px;
+        }
+
+        .hero-mini {
+          gap: 11px;
+
+          margin-top: 24px;
+        }
+
+        .mini-item {
+          font-size: 9px;
+        }
+
+        .mini-item strong {
+          font-size: 11px;
+        }
+
+        .mini-divider {
+          height: 24px;
+        }
+
+        /* laptop */
+
+        .laptop-area {
+          min-height: 320px;
+
+          margin-top: 5px;
+        }
+
+        .laptop-glow {
+          width: 330px;
+          height: 330px;
+        }
+
+        .laptop {
+          width: 100%;
+
+          transform: rotateY(-3deg) rotateX(2deg);
+        }
+
+        .screen-frame {
+          padding: 7px;
+
+          border-radius: 15px 15px 7px 7px;
+        }
+
+        .screen {
+          height: 215px;
+
+          border-radius: 9px 9px 4px 4px;
+        }
+
+        .screen-top {
+          height: 29px;
+
+          padding: 0 9px;
+        }
+
+        .window-dots {
+          gap: 4px;
+        }
+
+        .window-dots span {
+          width: 6px;
+          height: 6px;
+        }
+
+        .screen-title {
+          font-size: 7px;
+        }
+
+        .screen-content {
+          padding: 10px;
+        }
+
+        .terminal {
+          width: 62%;
+
+          font-size: 6.5px;
+
+          line-height: 1.9;
+        }
+
+        .cursor {
+          width: 4px;
+          height: 8px;
+        }
+
+        .software-window {
+          width: 112px;
+
+          padding: 7px;
+
+          border-radius: 7px;
+        }
+
+        .window-one {
+          right: 8px;
+          top: 18px;
+        }
+
+        .window-two {
+          right: 32px;
+          bottom: 13px;
+
+          width: 125px;
+        }
+
+        .window-header {
+          font-size: 6px;
+
+          margin-bottom: 5px;
+        }
+
+        .bar {
+          height: 3px;
+        }
+
+        .mini-bars {
+          height: 27px;
+          gap: 3px;
+        }
+
+        .mini-bars i {
+          width: 7px;
+        }
+
+        .laptop-base {
+          height: 17px;
+
+          width: 108%;
+
+          margin-right: -4%;
+        }
+
+        .laptop-base::after {
+          width: 65px;
+          height: 4px;
+        }
+
+        /* trust */
+
+        .trust-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .trust-item {
+          padding: 15px;
+        }
+
+        .trust-item + .trust-item {
+          border-right: none;
+
+          border-top: 1px solid var(--border);
+        }
+
+        /* sections */
+
+        .section {
+          padding: 70px 0;
+        }
+
+        .section-heading {
+          margin-bottom: 32px;
+        }
+
+        .section-heading h2 {
+          font-size: 27px;
+        }
+
+        .section-heading p {
+          font-size: 12px;
+        }
+
+        /* stats */
+
+        .stats {
+          grid-template-columns: 1fr;
+
+          gap: 10px;
+        }
+
+        .stat-card {
+          padding: 21px;
+
+          display: grid;
+
+          grid-template-columns: auto 1fr;
+
+          column-gap: 13px;
+
+          align-items: center;
+
+          text-align: right;
+        }
+
+        .stat-icon {
+          grid-row: span 2;
+
+          margin: 0;
+
+          font-size: 25px;
+        }
+
+        .stat-card h3 {
+          font-size: 20px;
+        }
+
+        /* features */
+
+        .features {
+          grid-template-columns: 1fr;
+
+          gap: 11px;
+        }
+
+        .feature {
+          min-height: auto;
+
+          padding: 22px;
+        }
+
+        .feature-icon {
+          width: 49px;
+          height: 49px;
+
+          font-size: 22px;
+        }
+
+        .feature h3 {
+          font-size: 16px;
+        }
+
+        .feature p {
+          font-size: 12px;
+        }
+
+        /* roadmap */
+
+        .roadmap {
+          grid-template-columns: 1fr 1fr;
+
+          gap: 10px;
+        }
+
+        .road {
+          min-height: 185px;
+
+          padding: 20px 11px;
+        }
+
+        .road-number {
+          width: 24px;
+          height: 24px;
+
+          font-size: 8px;
+        }
+
+        .road-icon {
+          font-size: 27px;
+        }
+
+        .road h3 {
+          font-size: 13px;
+        }
+
+        .road p {
+          font-size: 9px;
+        }
+
+        /* learn */
+
+        .learn-card {
+          padding: 23px 18px;
+        }
+
+        .learn-card h3 {
+          font-size: 18px;
+        }
+
+        .learn-list li {
+          font-size: 11px;
+        }
+
+        .check {
+          width: 21px;
+          height: 21px;
+
+          flex-basis: 21px;
+        }
+
+        /* practice */
+
+        .practice-text {
+          padding: 27px 20px;
+        }
+
+        .practice h3 {
+          font-size: 21px;
+        }
+
+        .practice p {
+          font-size: 11px;
+        }
+
+        .practice-visual {
+          min-height: 210px;
+        }
+
+        .terminal-card {
+          width: 87%;
+          font-size: 7px;
+        }
+
+        /* price */
+
+        .price-section {
+          padding: 75px 0;
+        }
+
+        .price-card {
+          padding: 38px 20px;
+        }
+
+        .price {
+          font-size: 51px;
+        }
+
+        .currency {
+          font-size: 17px;
+        }
+
+        .price-button {
+          width: 100%;
+
+          padding: 14px;
+        }
+
+        /* =====================================================
+           CONTACT MOBILE
+        ====================================================== */
+
+        .contact-section {
+          padding-top: 65px;
+          padding-bottom: 65px;
+        }
+
+        .contact-section .section-heading > span {
+          font-size: 11px;
+          padding: 8px 15px;
+        }
+
+        .contact-card {
+          flex-direction: column;
+
+          align-items: stretch;
+
+          text-align: center;
+
+          padding: 23px 18px;
+
+          gap: 15px;
+        }
+
+        .contact-icon-box {
+          width: 56px;
+          height: 56px;
+
+          flex-basis: 56px;
+
+          margin: auto;
+
+          font-size: 25px;
+        }
+
+        .contact-content h3 {
+          font-size: 14px;
+
+          line-height: 1.7;
+        }
+
+        .contact-content p {
+          font-size: 10px;
+        }
+
+        .whatsapp-btn {
+          width: 100%;
+
+          padding: 12px;
+
+          font-size: 11px;
+        }
+
+        /* =====================================================
+           FOOTER MOBILE
+        ====================================================== */
+
+        footer {
+          margin-top: 10px;
+
+          padding: 28px 18px;
+
+          font-size: 10px;
+        }
+
+        footer p {
+          line-height: 2.2;
+        }
+      }
+
+      /* =========================================================
+       VERY SMALL PHONES
+    ========================================================= */
+
+      @media (max-width: 380px) {
+        .hero h1 {
+          font-size: 44px;
+        }
+
+        .laptop-area {
+          min-height: 285px;
+        }
+
+        .screen {
+          height: 190px;
+        }
+
+        .road {
+          min-height: 170px;
+        }
+
+        .road h3 {
+          font-size: 12px;
+        }
+
+        .road p {
+          font-size: 8px;
+        }
+
+        .price {
+          font-size: 45px;
+        }
+
+        .contact-content h3 {
+          font-size: 13px;
+        }
+      }
+
+      /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ambient background -->
+
+    <div class="ambient one"></div>
+    <div class="ambient two"></div>
+
+    <div class="particles">
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+    </div>
+
+    <!-- =======================================================
+       NAVBAR
+    ======================================================== -->
+
+    <nav>
+      <div class="container nav-content">
+        <div class="logo">
+          <div class="logo-box">&lt;/&gt;</div>
+
+          <div>Cours<span>yria</span></div>
+        </div>
+
+        <div class="nav-status">
+          <span class="status-dot"></span>
+          دورة متاحة للتسجيل
+        </div>
+      </div>
+    </nav>
+
+    <!-- =======================================================
+       HERO
+    ======================================================== -->
+
+    <header class="container hero">
+      <div class="hero-content">
+        <div class="eyebrow">SOFTWARE LAPTOP / LEVEL 01</div>
+
+        <h1>
+          SOFTWARE
+          <br />
+          <span class="gradient-text">LAPTOP</span>
+        </h1>
+
+        <div class="hero-subtitle">خلي اللابتوب أداة قوة... مو مجرد جهاز</div>
+
+        <p class="hero-description">
+          دورة عملية مصممة لتخليك تفهم جهازك وتستخدمه بثقة، من إدارة النظام
+          والملفات والبرامج، إلى حماية بياناتك، تحسين الأداء وتشخيص المشاكل
+          التقنية اليومية.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#price" class="btn btn-primary"> 🚀 ابدأ رحلتك </a>
+
+          <a href="#courses" class="btn btn-outline"> ⚡ استكشف المحاور </a>
+        </div>
+
+        <div class="hero-mini">
+          <div class="mini-item">
+            <strong>شهرين</strong>
+            مدة التدريب
+          </div>
+
+          <div class="mini-divider"></div>
+
+          <div class="mini-item">
+            <strong>8 جلسات</strong>
+            تدريب عملي
+          </div>
+
+          <div class="mini-divider"></div>
+
+          <div class="mini-item">
+            <strong>1300 SP</strong>
+            المستوى الأول
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================
+         INTERACTIVE LAPTOP
+      ====================================================== -->
+
+      <div class="laptop-area">
+        <div class="laptop-glow"></div>
+
+        <div class="laptop" id="laptop">
+          <div class="screen-frame">
+            <div class="screen">
+              <div class="screen-top">
+                <div class="window-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="screen-title">coursyria_system.exe</div>
+              </div>
+
+              <div class="screen-content">
+                <div class="terminal">
+                  <div>
+                    <span class="cyan">SYSTEM</span>
+                    :: boot sequence initiated
+                  </div>
+
+                  <div>
+                    <span class="purple">USER</span>
+                    :: coursyria_student
+                  </div>
+
+                  <div>
+                    <span class="green">✓</span>
+                    system check completed
+                  </div>
+
+                  <div>
+                    <span class="green">✓</span>
+                    storage optimized
+                  </div>
+
+                  <div>
+                    <span class="green">✓</span>
+                    security modules loaded
+                  </div>
+
+                  <div>
+                    <span class="cyan">&gt;</span>
+                    <span id="typing"></span>
+                    <span class="cursor"></span>
+                  </div>
+                </div>
+
+                <div class="software-window window-one">
+                  <div class="window-header">
+                    <span>Performance</span>
+                    <span>●</span>
+                  </div>
+
+                  <div class="window-body">
+                    <div style="width: 100%">
+                      <div class="bar"></div>
+                      <br />
+                      <div class="bar"></div>
+                      <br />
+                      <div class="bar"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="software-window window-two">
+                  <div class="window-header">
+                    <span>System Activity</span>
+                    <span>LIVE</span>
+                  </div>
+
+                  <div class="mini-bars">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="laptop-base"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- =======================================================
+       TRUST
+    ======================================================== -->
+
+    <div class="trust-strip">
+      <div class="container trust-inner">
+        <div class="trust-item">
+          <strong>💻 تطبيق عملي</strong>
+          مو مجرد شرح نظري
+        </div>
+
+        <div class="trust-item">
+          <strong>🧠 مهارات يومية</strong>
+          أشياء ستستخدمها فعلياً
+        </div>
+
+        <div class="trust-item">
+          <strong>🛡️ استخدام آمن</strong>
+          حماية وخصوصية أفضل
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================
+       COURSE INFO
+    ======================================================== -->
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div class="tag">// COURSE_INFO</div>
+
+          <h2>البداية الصحيحة مع جهازك</h2>
+
+          <p>
+            المستوى الأول يبني عندك أساس قوي يخليك تتعامل مع اللابتوب بثقة بدل
+            ما تعتمد على الآخرين في كل مشكلة.
+          </p>
+        </div>
+
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-icon">⏱️</div>
+
+            <div>
+              <h3>شهرين</h3>
+              <p>مدة الدورة</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">🎓</div>
+
+            <div>
+              <h3>8 جلسات</h3>
+              <p>جلسات تدريبية عملية</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">💎</div>
+
+            <div>
+              <h3>1300 ل.س</h3>
+              <p>السعر الكامل للمستوى الأول</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+       FEATURES
+    ======================================================== -->
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div class="tag">// WHAT_YOU_GET</div>
+
+          <h2>شو رح تقدر تعمل؟</h2>
+
+          <p>مهارات عملية بتنعكس مباشرة على استخدامك اليومي للجهاز.</p>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">🚀</div>
+
+            <h3>أداء أعلى</h3>
+
+            <p>
+              فهم أسباب البطء والتعليق وتعلم طرق عملية لتحسين أداء الجهاز وتنظيم
+              موارده.
+            </p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🧩</div>
+
+            <h3>فهم البرامج</h3>
+
+            <p>
+              معرفة البرامج والأدوات المناسبة للعمل والدراسة وكيفية تثبيتها
+              وإدارتها بشكل صحيح.
+            </p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🛡️</div>
+
+            <h3>حماية وخصوصية</h3>
+
+            <p>
+              أساسيات حماية الملفات والحسابات والجهاز أثناء استخدام الإنترنت.
+            </p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">⚙️</div>
+
+            <h3>إدارة النظام</h3>
+
+            <p>
+              التعامل مع الإعدادات والخدمات والمستخدمين وإدارة النظام بشكل أكثر
+              احترافية.
+            </p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🔧</div>
+
+            <h3>تشخيص المشاكل</h3>
+
+            <p>تتعلم كيف تفكر بالمشكلة وتحدد سببها قبل ما تبدأ بمحاولة حلها.</p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">💡</div>
+
+            <h3>مهارات عملية</h3>
+
+            <p>
+              تطبيقات وتمارين تساعدك على تحويل المعلومات إلى مهارات حقيقية قابلة
+              للاستخدام.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+       COURSE ROADMAP
+    ======================================================== -->
+
+    <section class="section" id="courses">
+      <div class="container">
+        <div class="section-heading">
+          <div class="tag">// LEARNING_PATH</div>
+
+          <h2>محاور الدورة</h2>
+
+          <p>رحلة مرتبة تبدأ من فهم الجهاز وتوصل للاستخدام الاحترافي.</p>
+        </div>
+
+        <div class="roadmap">
+          <div class="road">
+            <div class="road-number">01</div>
+            <div class="road-icon">💻</div>
+            <h3>أساسيات النظام</h3>
+            <p>التعرف على مكونات الجهاز، النظام وإعداداته الأساسية.</p>
+          </div>
+
+          <div class="road">
+            <div class="road-number">02</div>
+            <div class="road-icon">⌨️</div>
+            <h3>أدوات الكمبيوتر</h3>
+            <p>الاختصارات والأدوات التي تختصر عليك وقت العمل.</p>
+          </div>
+
+          <div class="road">
+            <div class="road-number">03</div>
+            <div class="road-icon">📂</div>
+            <h3>إدارة الملفات</h3>
+            <p>تنظيم الملفات والمجلدات والنسخ والنقل والحفظ.</p>
+          </div>
+
+          <div class="road">
+            <div class="road-number">04</div>
+            <div class="road-icon">⚙️</div>
+            <h3>إدارة النظام</h3>
+            <p>إعدادات النظام والخدمات وإدارة البرامج والمستخدمين.</p>
+          </div>
+
+          <div class="road">
+            <div class="road-number">05</div>
+            <div class="road-icon">🛡️</div>
+            <h3>أمن المعلومات</h3>
+            <p>حماية الجهاز والبيانات والحسابات والخصوصية.</p>
+          </div>
+
+          <div class="road">
+            <div class="road-number">06</div>
+            <div class="road-icon">⚡</div>
+            <h3>تحسين الأداء</h3>
+            <p>فهم أسباب البطء وتحسين استخدام موارد الجهاز.</p>
+          </div>
+
+          <div class="road">
+            <div class="road-number">07</div>
+            <div class="road-icon">🔧</div>
+            <h3>حل المشاكل</h3>
+            <p>تشخيص المشاكل التقنية والتعامل معها بشكل منطقي.</p>
+          </div>
+
+          <div class="road">
+            <div class="road-number">08</div>
+            <div class="road-icon">🌐</div>
+            <h3>الاستخدام الاحترافي</h3>
+            <p>جمع المهارات السابقة وتحويلها إلى استخدام فعلي.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+       WHAT YOU LEARN
+    ======================================================== -->
+
+    <section class="section" id="learn">
+      <div class="container">
+        <div class="section-heading">
+          <div class="tag">// SKILLS</div>
+
+          <h2>ماذا ستتعلم؟</h2>
+
+          <p>
+            بنهاية المستوى رح يكون عندك فهم عملي يساعدك تتعامل مع جهازك بثقة
+            أكبر.
+          </p>
+        </div>
+
+        <div class="learn-grid">
+          <div class="learn-card">
+            <h3>🧠 مهارات ستكتسبها</h3>
+
+            <ul class="learn-list">
+              <li>
+                <span class="check">✓</span>
+                إتقان استخدام اللابتوب
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                اختيار البرامج المناسبة
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                تنظيم الملفات والبيانات
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                حماية البيانات والخصوصية
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                تشخيص المشاكل التقنية
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                تحسين أداء الجهاز
+              </li>
+            </ul>
+          </div>
+
+          <div class="learn-card">
+            <h3>🎯 بعد انتهاء الدورة</h3>
+
+            <ul class="learn-list">
+              <li>
+                <span class="check">✓</span>
+                تتعامل مع جهازك بثقة
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                تدير النظام بشكل أفضل
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                تعرف الأدوات المناسبة
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                تحل المشاكل البسيطة بنفسك
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                تحافظ على ملفاتك وبياناتك
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                تكون جاهزاً للاستخدام الاحترافي
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="practice">
+          <div class="practice-text">
+            <div class="practice-label">PRACTICAL_MODE</div>
+
+            <h3>ما رح تتعلم "شو تعمل" فقط... رح تتعلم "ليش".</h3>
+
+            <p>
+              الهدف من الدورة إنك ما تحفظ خطوات وخلاص. رح تتعلم طريقة تفكير
+              تساعدك تفهم المشكلة، تحللها، وتجرب الحل المناسب بدل التجربة
+              العشوائية.
+            </p>
+          </div>
+
+          <div class="practice-visual">
+            <div class="terminal-card">
+              <div>
+                <span class="command">&gt;</span>
+                diagnose_system()
+              </div>
+
+              <div>checking_processes...</div>
+              <div>checking_storage...</div>
+              <div>checking_startup_apps...</div>
+
+              <div>
+                <span class="success"> ✓ problem_source_detected </span>
+              </div>
+
+              <div>
+                <span class="command">&gt;</span>
+                optimize_system()
+              </div>
+
+              <div>
+                <span class="success">✓ system_ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+       PRICE
+    ======================================================== -->
+
+    <section class="price-section" id="price">
+      <div class="container">
+        <div class="section-heading">
+          <div class="tag">// START_LEARNING</div>
+
+          <h2>جاهز تبدأ؟</h2>
+
+          <p>احجز مكانك في المستوى الأول وابدأ تبني مهاراتك خطوة بخطوة.</p>
+        </div>
+
+        <div class="price-card">
+          <div class="price-label">السعر الكامل للمستوى الأول</div>
+
+          <div class="price">
+            1300
+            <span class="currency">SP</span>
+          </div>
+
+          <div class="price-description">
+            شهرين • 8 جلسات تدريبية • تطبيق عملي
+          </div>
+
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="price-button"
+          >
+            🚀 احجز مكانك الآن
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section class="section contact-section" id="contact">
+      <div class="section-heading">
+        <span>📞 التواصل</span>
+      </div>
+
+      <div class="contact-wrapper">
+        <div class="contact-card">
+          <div class="contact-icon-box">
+            <span>👨‍🏫</span>
+          </div>
+
+          <div class="contact-content">
+            <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+            <p>يمكنك التواصل مباشرة عبر واتساب</p>
+          </div>
+
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="whatsapp-btn"
+          >
+            <span class="whatsapp-icon">◉</span>
+            <span>تواصل عبر واتساب</span>
+            <span class="arrow">←</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+      <p>
+        جميع الحقوق محفوظة © 2027
+        <br />
+        اعداد المهندسة لين حسن الكردي
+      </p>
+    </footer>
+
+    <!-- =======================================================
+       JAVASCRIPT
+    ======================================================== -->
+
+    <script>
+      /* =========================================================
+       TYPING EFFECT
+      ========================================================= */
+
+      const typingElement = document.getElementById("typing");
+
+      const messages = [
+        "optimizing_laptop()",
+        "checking_security()",
+        "organizing_files()",
+        "loading_productivity()",
+        "software.ready()",
+      ];
+
+      let messageIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      function typeEffect() {
+        const current = messages[messageIndex];
+
+        if (!deleting) {
+          typingElement.textContent = current.substring(0, charIndex + 1);
+
+          charIndex++;
+
+          if (charIndex === current.length) {
+            deleting = true;
+
+            setTimeout(typeEffect, 1200);
+
+            return;
+          }
+        } else {
+          typingElement.textContent = current.substring(0, charIndex - 1);
+
+          charIndex--;
+
+          if (charIndex === 0) {
+            deleting = false;
+
+            messageIndex = (messageIndex + 1) % messages.length;
+          }
+        }
+
+        setTimeout(typeEffect, deleting ? 45 : 75);
+      }
+
+      typeEffect();
+
+      /* =========================================================
+       LAPTOP MOUSE PARALLAX
+      ========================================================= */
+
+      const laptop = document.getElementById("laptop");
+
+      if (window.matchMedia("(pointer:fine)").matches) {
+        document.addEventListener("mousemove", function (e) {
+          const x = e.clientX / window.innerWidth - 0.5;
+
+          const y = e.clientY / window.innerHeight - 0.5;
+
+          laptop.style.transform = `
+            rotateY(${x * 10 - 5}deg)
+            rotateX(${y * -7 + 3}deg)
+            rotateZ(${x * 0.8}deg)
+          `;
+        });
+      }
+
+      /* =========================================================
+       SCROLL REVEAL
+      ========================================================= */
+
+      const revealElements = document.querySelectorAll(
+        ".stat-card, .feature, .road, .learn-card, .practice, .price-card, .contact-card",
+      );
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+
+              entry.target.style.transform = "translateY(0)";
+
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+        },
+      );
+
+      revealElements.forEach((element) => {
+        element.style.opacity = "0";
+
+        element.style.transform = "translateY(25px)";
+
+        element.style.transition = "opacity .7s ease, transform .7s ease";
+
+        observer.observe(element);
+      });
+
+      /* =========================================================
+       RANDOM PARTICLE POSITIONS
+      ========================================================= */
+
+      document.querySelectorAll(".particle").forEach((particle) => {
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,2222 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <meta
+      name="description"
+      content="دورة Computer Skills لتعلم مهارات الكمبيوتر الأساسية والمتقدمة - Coursyria"
+    />
+
+    <title>Computer Skills | Coursyria</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Share+Tech+Mono&display=swap");
+
+      /* =========================================================
+         RESET
+      ========================================================= */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        width: 100%;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+
+        font-family: "Cairo", sans-serif;
+
+        background:
+          radial-gradient(
+            circle at 15% 10%,
+            rgba(39, 216, 255, 0.12),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 85% 30%,
+            rgba(61, 141, 255, 0.1),
+            transparent 30%
+          ),
+          #040b12;
+
+        color: var(--text);
+      }
+
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      :root {
+        --bg: #07111b;
+        --panel: #0b1925;
+        --panel2: #0e2231;
+        --line: #1c5067;
+        --cyan: #27d8ff;
+        --cyan2: #76efff;
+        --blue: #3d8dff;
+        --text: #eefaff;
+        --muted: #8fa9b7;
+        --green: #52f0b1;
+      }
+
+      /* =========================================================
+         MAIN COURSE
+      ========================================================= */
+
+      .course {
+        width: min(1150px, calc(100% - 30px));
+        margin: 25px auto;
+
+        overflow: hidden;
+
+        background:
+          linear-gradient(rgba(39, 216, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(39, 216, 255, 0.025) 1px,
+            transparent 1px
+          ),
+          var(--bg);
+
+        background-size: 32px 32px;
+
+        border: 1px solid #16475c;
+
+        box-shadow:
+          0 0 55px rgba(0, 0, 0, 0.55),
+          0 0 35px rgba(39, 216, 255, 0.06);
+
+        position: relative;
+      }
+
+      .course::before {
+        content: "";
+
+        position: absolute;
+
+        inset: 0;
+
+        pointer-events: none;
+
+        background: linear-gradient(
+          120deg,
+          transparent 30%,
+          rgba(39, 216, 255, 0.035),
+          transparent 70%
+        );
+      }
+
+      /* =========================================================
+         HEADER
+      ========================================================= */
+
+      header {
+        min-height: 570px;
+
+        padding: 55px;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1.25fr;
+
+        align-items: center;
+
+        gap: 55px;
+
+        border-bottom: 1px solid var(--line);
+
+        position: relative;
+
+        overflow: hidden;
+
+        background:
+          radial-gradient(
+            circle at 78% 50%,
+            rgba(39, 216, 255, 0.15),
+            transparent 32%
+          ),
+          linear-gradient(135deg, #06101a, #081722 55%, #07121c);
+      }
+
+      header::after {
+        content: "";
+
+        position: absolute;
+
+        width: 430px;
+        height: 430px;
+
+        left: -170px;
+        top: -190px;
+
+        border: 1px solid rgba(39, 216, 255, 0.12);
+
+        border-radius: 50%;
+
+        box-shadow:
+          0 0 0 45px rgba(39, 216, 255, 0.025),
+          0 0 0 90px rgba(39, 216, 255, 0.018);
+
+        pointer-events: none;
+      }
+
+      /* =========================================================
+         TITLE
+      ========================================================= */
+
+      .title {
+        position: relative;
+
+        z-index: 5;
+
+        min-width: 0;
+
+        direction: rtl;
+      }
+
+      .badge {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 9px;
+
+        padding: 7px 19px;
+
+        border: 1px solid #287c95;
+
+        border-radius: 6px;
+
+        color: var(--cyan2);
+
+        background: rgba(39, 216, 255, 0.05);
+
+        font-size: 14px;
+
+        margin-bottom: 20px;
+      }
+
+      .badge::before {
+        content: "●";
+
+        color: var(--green);
+
+        font-size: 9px;
+
+        text-shadow: 0 0 10px var(--green);
+
+        animation: liveDot 1.2s infinite;
+      }
+
+      @keyframes liveDot {
+        0%,
+        100% {
+          opacity: 1;
+        }
+
+        50% {
+          opacity: 0.3;
+        }
+      }
+
+      .title h1 {
+        font-family: "Share Tech Mono", monospace;
+
+        font-size: clamp(42px, 6vw, 72px);
+
+        line-height: 0.95;
+
+        letter-spacing: 2px;
+
+        color: #f3fcff;
+
+        text-shadow: 0 0 25px rgba(39, 216, 255, 0.13);
+
+        overflow-wrap: anywhere;
+
+        direction: ltr;
+
+        text-align: right;
+      }
+
+      .title h1 span {
+        color: var(--cyan);
+
+        text-shadow:
+          0 0 10px rgba(39, 216, 255, 0.4),
+          0 0 25px rgba(39, 216, 255, 0.15);
+      }
+
+      .title h2 {
+        font-size: clamp(21px, 2.5vw, 29px);
+
+        color: #d7f7ff;
+
+        margin: 20px 0 12px;
+
+        line-height: 1.5;
+      }
+
+      .title p {
+        color: var(--muted);
+
+        line-height: 2;
+
+        font-size: 16px;
+
+        max-width: 720px;
+      }
+
+      /* =========================================================
+         LAPTOP AREA
+      ========================================================= */
+
+      .laptop-area {
+        position: relative;
+
+        z-index: 5;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        min-width: 0;
+
+        height: 100%;
+      }
+
+      .laptop {
+        position: relative;
+
+        width: min(480px, 100%);
+
+        animation: laptopFloat 4s ease-in-out infinite;
+
+        filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.5))
+          drop-shadow(0 0 25px rgba(39, 216, 255, 0.08));
+      }
+
+      @keyframes laptopFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotateY(-2deg);
+        }
+
+        50% {
+          transform: translateY(-8px) rotateY(2deg);
+        }
+      }
+
+      /* =========================================================
+         SCREEN
+      ========================================================= */
+
+      .screen-frame {
+        position: relative;
+
+        width: 100%;
+
+        aspect-ratio: 16 / 10;
+
+        background: #172b38;
+
+        border: 9px solid #2b4657;
+
+        border-bottom-width: 12px;
+
+        border-radius: 15px 15px 8px 8px;
+
+        box-shadow:
+          inset 0 0 0 2px #0c1821,
+          0 0 0 1px rgba(39, 216, 255, 0.15),
+          0 0 35px rgba(39, 216, 255, 0.12);
+
+        overflow: hidden;
+      }
+
+      .screen-frame::before {
+        content: "";
+
+        position: absolute;
+
+        top: 7px;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        width: 6px;
+
+        height: 6px;
+
+        border-radius: 50%;
+
+        background: #526d7b;
+
+        z-index: 5;
+      }
+
+      /* =========================================================
+         SCREEN CONTENT
+      ========================================================= */
+
+      .screen {
+        position: absolute;
+
+        inset: 0;
+
+        overflow: hidden;
+
+        background:
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(39, 216, 255, 0.09),
+            transparent 55%
+          ),
+          #020b12;
+      }
+
+      .screen::before {
+        content: "";
+
+        position: absolute;
+
+        inset: 0;
+
+        background:
+          linear-gradient(rgba(39, 216, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(39, 216, 255, 0.035) 1px, transparent 1px);
+
+        background-size: 18px 18px;
+
+        pointer-events: none;
+      }
+
+      /* =========================================================
+         TERMINAL TOP BAR
+      ========================================================= */
+
+      .terminal-bar {
+        height: 25px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 6px;
+
+        padding: 0 9px;
+
+        background: #081822;
+
+        border-bottom: 1px solid rgba(39, 216, 255, 0.12);
+
+        direction: ltr;
+      }
+
+      .terminal-dot {
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        background: #31505d;
+      }
+
+      .terminal-name {
+        margin-left: auto;
+
+        margin-right: 5px;
+
+        color: #527888;
+
+        font-family: "Share Tech Mono", monospace;
+
+        font-size: 8px;
+      }
+
+      /* =========================================================
+         TYPING AREA
+      ========================================================= */
+
+      .typing-area {
+        position: absolute;
+
+        inset: 25px 0 0;
+
+        padding: 18px;
+
+        font-family: "Share Tech Mono", monospace;
+
+        font-size: clamp(10px, 1.15vw, 14px);
+
+        line-height: 1.8;
+
+        color: #8befff;
+
+        direction: ltr;
+
+        text-align: left;
+
+        overflow: hidden;
+      }
+
+      .typing-line {
+        min-height: 1.8em;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+      }
+
+      .prompt {
+        color: var(--green);
+
+        text-shadow: 0 0 8px rgba(82, 240, 177, 0.45);
+      }
+
+      .command {
+        color: #d9faff;
+      }
+
+      .success {
+        color: #55f0bd;
+
+        text-shadow: 0 0 7px rgba(82, 240, 177, 0.25);
+      }
+
+      .info {
+        color: #6bdcff;
+      }
+
+      .cursor {
+        display: inline-block;
+
+        width: 7px;
+
+        height: 1.1em;
+
+        margin-left: 3px;
+
+        vertical-align: -2px;
+
+        background: var(--cyan);
+
+        box-shadow: 0 0 9px rgba(39, 216, 255, 0.7);
+
+        animation: cursorBlink 0.7s infinite;
+      }
+
+      @keyframes cursorBlink {
+        0%,
+        45% {
+          opacity: 1;
+        }
+
+        46%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* =========================================================
+         LAPTOP BASE
+      ========================================================= */
+
+      .laptop-base {
+        position: relative;
+
+        width: 112%;
+
+        height: 27px;
+
+        margin-left: -6%;
+
+        background: linear-gradient(180deg, #405d6d, #263f4e);
+
+        border-radius: 0 0 22px 22px;
+
+        box-shadow:
+          0 7px 15px rgba(0, 0, 0, 0.45),
+          inset 0 2px 2px rgba(255, 255, 255, 0.08);
+      }
+
+      .laptop-base::before {
+        content: "";
+
+        position: absolute;
+
+        width: 25%;
+
+        height: 5px;
+
+        left: 50%;
+
+        top: 6px;
+
+        transform: translateX(-50%);
+
+        border-radius: 8px;
+
+        background: #1c3340;
+      }
+
+      .laptop-base::after {
+        content: "";
+
+        position: absolute;
+
+        width: 35%;
+
+        height: 4px;
+
+        left: 50%;
+
+        bottom: -5px;
+
+        transform: translateX(-50%);
+
+        border-radius: 0 0 10px 10px;
+
+        background: #17303d;
+      }
+
+      /* =========================================================
+         TYPING LIGHT
+      ========================================================= */
+
+      .typing-light {
+        position: absolute;
+
+        width: 170px;
+
+        height: 170px;
+
+        right: 15%;
+
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        border-radius: 50%;
+
+        background: radial-gradient(
+          circle,
+          rgba(39, 216, 255, 0.1),
+          transparent 68%
+        );
+
+        pointer-events: none;
+
+        animation: lightPulse 2.5s ease-in-out infinite;
+      }
+
+      @keyframes lightPulse {
+        0%,
+        100% {
+          opacity: 0.45;
+
+          transform: translateY(-50%) scale(0.9);
+        }
+
+        50% {
+          opacity: 1;
+
+          transform: translateY(-50%) scale(1.1);
+        }
+      }
+
+      /* =========================================================
+         FLOATING CODE PARTICLES
+      ========================================================= */
+
+      .code-particle {
+        position: absolute;
+
+        color: rgba(39, 216, 255, 0.5);
+
+        font-family: "Share Tech Mono", monospace;
+
+        font-size: 11px;
+
+        pointer-events: none;
+
+        animation: particleFloat 5s linear infinite;
+      }
+
+      .particle-1 {
+        right: 5%;
+        top: 10%;
+        animation-delay: 0s;
+      }
+
+      .particle-2 {
+        right: 3%;
+        bottom: 25%;
+        animation-delay: 1.5s;
+      }
+
+      .particle-3 {
+        left: 7%;
+        top: 20%;
+        animation-delay: 2.5s;
+      }
+
+      .particle-4 {
+        left: 4%;
+        bottom: 15%;
+        animation-delay: 3.5s;
+      }
+
+      @keyframes particleFloat {
+        0% {
+          opacity: 0;
+
+          transform: translateY(15px);
+        }
+
+        20% {
+          opacity: 0.8;
+        }
+
+        70% {
+          opacity: 0.5;
+        }
+
+        100% {
+          opacity: 0;
+
+          transform: translateY(-35px);
+        }
+      }
+
+      /* =========================================================
+         MODULES
+      ========================================================= */
+
+      .section {
+        padding: 40px 42px;
+      }
+
+      .section-title {
+        text-align: center;
+
+        color: var(--cyan2);
+
+        font-size: clamp(22px, 3vw, 27px);
+
+        margin-bottom: 28px;
+
+        position: relative;
+
+        letter-spacing: 0.5px;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        content: "";
+
+        display: inline-block;
+
+        width: min(75px, 8vw);
+
+        height: 1px;
+
+        background: linear-gradient(90deg, transparent, var(--cyan));
+
+        margin: 0 18px 8px;
+      }
+
+      .section-title::after {
+        background: linear-gradient(90deg, var(--cyan), transparent);
+      }
+
+      .modules {
+        display: grid;
+
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+        gap: 14px;
+      }
+
+      .module {
+        min-width: 0;
+
+        background: linear-gradient(145deg, #0d202e, #08131e);
+
+        border: 1px solid #174a60;
+
+        border-radius: 8px;
+
+        padding: 23px 13px;
+
+        text-align: center;
+
+        transition: 0.3s ease;
+
+        position: relative;
+
+        overflow: hidden;
+      }
+
+      .module::before {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        left: 0;
+        right: 0;
+
+        height: 2px;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--cyan),
+          transparent
+        );
+
+        opacity: 0.5;
+      }
+
+      .module:hover {
+        transform: translateY(-6px);
+
+        border-color: var(--cyan);
+
+        box-shadow: 0 12px 35px rgba(39, 216, 255, 0.12);
+      }
+
+      .number {
+        width: 45px;
+        height: 45px;
+
+        margin: auto auto 12px;
+
+        border-radius: 6px;
+
+        border: 1px solid var(--cyan);
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: var(--cyan2);
+
+        font-family: "Share Tech Mono", monospace;
+
+        font-weight: 800;
+
+        background: rgba(39, 216, 255, 0.05);
+      }
+
+      .module h3 {
+        color: #cceefa;
+
+        font-size: 16px;
+
+        margin-bottom: 10px;
+
+        line-height: 1.6;
+      }
+
+      .module p {
+        color: #819ba9;
+
+        font-size: 12px;
+
+        line-height: 1.85;
+      }
+
+      /* =========================================================
+         WHY
+      ========================================================= */
+
+      .why {
+        display: grid;
+
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+
+        border: 1px solid #174a60;
+
+        border-radius: 8px;
+
+        overflow: hidden;
+
+        background: #08131d;
+      }
+
+      .why-item {
+        min-width: 0;
+
+        padding: 20px 8px;
+
+        text-align: center;
+
+        border-left: 1px solid #123746;
+      }
+
+      .why-item:last-child {
+        border-left: none;
+      }
+
+      .icon {
+        font-size: 30px;
+
+        color: var(--cyan);
+
+        margin-bottom: 8px;
+      }
+
+      .why-item span {
+        display: block;
+
+        color: #c5d9e2;
+
+        font-size: 12px;
+
+        line-height: 1.6;
+      }
+
+      /* =========================================================
+         SUITABLE
+      ========================================================= */
+
+      .suitable {
+        display: flex;
+
+        justify-content: center;
+
+        gap: 13px;
+
+        flex-wrap: wrap;
+      }
+
+      .person {
+        min-width: 155px;
+
+        padding: 17px 23px;
+
+        border: 1px solid #174a60;
+
+        border-radius: 8px;
+
+        text-align: center;
+
+        background: linear-gradient(145deg, #0d202e, #08131e);
+
+        color: #8fa9b7;
+
+        transition: 0.3s;
+
+        line-height: 1.7;
+      }
+
+      .person:hover {
+        border-color: var(--cyan);
+
+        transform: translateY(-4px);
+      }
+
+      .person strong {
+        display: block;
+
+        color: #cceefa;
+
+        margin-bottom: 5px;
+      }
+
+      /* =========================================================
+         COURSE INFO
+      ========================================================= */
+
+      .course-info {
+        display: flex;
+
+        justify-content: center;
+
+        align-items: stretch;
+
+        gap: 15px;
+
+        margin: 15px auto 0;
+
+        max-width: 650px;
+      }
+
+      .info-box {
+        flex: 1;
+
+        text-align: center;
+
+        padding: 16px;
+
+        border: 1px solid #174a60;
+
+        border-radius: 8px;
+
+        background: linear-gradient(145deg, #0d202e, #08131e);
+      }
+
+      .info-box small {
+        display: block;
+
+        color: #7894a3;
+
+        margin-bottom: 5px;
+      }
+
+      .info-box strong {
+        color: var(--cyan2);
+
+        font-size: 21px;
+      }
+
+      /* =========================================================
+         PRICE
+      ========================================================= */
+
+      .price-box {
+        margin: 25px auto 30px;
+
+        width: min(520px, calc(100% - 30px));
+
+        text-align: center;
+
+        padding: 28px;
+
+        border: 1px solid var(--cyan);
+
+        border-radius: 9px;
+
+        background: linear-gradient(145deg, #0c2230, #06121b);
+
+        box-shadow: 0 0 35px rgba(39, 216, 255, 0.09);
+      }
+
+      .price-box small {
+        color: #7894a3;
+
+        display: block;
+
+        margin-bottom: 5px;
+      }
+
+      .price {
+        font-family: "Share Tech Mono", monospace;
+
+        font-size: 50px;
+
+        font-weight: 900;
+
+        color: var(--cyan);
+
+        line-height: 1.2;
+      }
+
+      .currency {
+        color: #c5d9e2;
+
+        font-size: 17px;
+      }
+
+      /* =========================================================
+         CONTACT
+      ========================================================= */
+
+      .contact-section {
+        padding-top: 35px;
+        padding-bottom: 42px;
+      }
+
+      .contact-wrapper {
+        display: flex;
+
+        justify-content: center;
+
+        width: 100%;
+      }
+
+      .contact-card {
+        width: min(760px, 100%);
+
+        display: grid;
+
+        grid-template-columns: 70px 1fr auto;
+
+        align-items: center;
+
+        gap: 18px;
+
+        padding: 22px;
+
+        background: linear-gradient(145deg, #0d202e, #08131e);
+
+        border: 1px solid #174a60;
+
+        border-radius: 10px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        transition: 0.3s ease;
+      }
+
+      .contact-card::before {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        left: 0;
+        right: 0;
+
+        height: 2px;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--cyan),
+          transparent
+        );
+
+        opacity: 0.7;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-5px);
+
+        border-color: var(--cyan);
+
+        box-shadow:
+          0 12px 35px rgba(39, 216, 255, 0.12),
+          0 0 25px rgba(39, 216, 255, 0.05);
+      }
+
+      .contact-icon-box {
+        width: 65px;
+
+        height: 65px;
+
+        border-radius: 10px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 30px;
+
+        background:
+          radial-gradient(circle, rgba(39, 216, 255, 0.12), transparent 70%),
+          #071722;
+
+        border: 1px solid var(--cyan);
+
+        box-shadow: 0 0 18px rgba(39, 216, 255, 0.08);
+      }
+
+      .contact-content {
+        min-width: 0;
+      }
+
+      .contact-content h3 {
+        color: #cceefa;
+
+        font-size: 17px;
+
+        margin-bottom: 5px;
+
+        line-height: 1.6;
+      }
+
+      .contact-content p {
+        color: #7894a3;
+
+        font-size: 12px;
+
+        line-height: 1.7;
+      }
+
+      .whatsapp-btn {
+        min-width: 190px;
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 9px;
+
+        padding: 12px 17px;
+
+        border-radius: 7px;
+
+        text-decoration: none;
+
+        color: #07111b;
+
+        background: var(--green);
+
+        border: 1px solid var(--green);
+
+        font-size: 13px;
+
+        font-weight: 800;
+
+        transition: 0.3s ease;
+
+        box-shadow: 0 0 20px rgba(82, 240, 177, 0.12);
+      }
+
+      .whatsapp-btn:hover {
+        transform: translateY(-2px);
+
+        background: #6ff7c1;
+
+        box-shadow: 0 8px 25px rgba(82, 240, 177, 0.2);
+      }
+
+      .whatsapp-icon {
+        font-size: 14px;
+
+        line-height: 1;
+      }
+
+      .arrow {
+        font-size: 17px;
+
+        line-height: 1;
+      }
+
+      /* =========================================================
+         FOOTER
+      ========================================================= */
+
+      footer {
+        margin-top: 0;
+
+        border-top: 1px solid #174a60;
+
+        padding: 24px 20px;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        flex-wrap: wrap;
+
+        gap: 35px;
+
+        color: #7894a3;
+
+        background: #06101a;
+
+        text-align: center;
+      }
+
+      footer p {
+        margin: 0;
+
+        color: #7894a3;
+
+        font-size: 13px;
+
+        line-height: 2;
+      }
+
+      /* =========================================================
+         COPYRIGHT
+      ========================================================= */
+
+      .copyright {
+        text-align: center;
+
+        padding: 14px;
+
+        color: #5d7481;
+
+        font-size: 12px;
+
+        border-top: 1px solid #102d3b;
+
+        background: #040b12;
+
+        line-height: 1.7;
+      }
+
+      /* =========================================================
+         TABLET
+      ========================================================= */
+
+      @media (max-width: 1000px) {
+        header {
+          grid-template-columns: 1fr 1fr;
+
+          padding: 40px 30px;
+
+          gap: 30px;
+
+          min-height: 500px;
+        }
+
+        .laptop {
+          width: min(400px, 100%);
+        }
+
+        .typing-area {
+          font-size: 11px;
+
+          padding: 14px;
+        }
+
+        .modules {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .why {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .why-item {
+          border-bottom: 1px solid #123746;
+        }
+
+        .contact-card {
+          grid-template-columns: 65px 1fr;
+
+          max-width: 700px;
+        }
+
+        .whatsapp-btn {
+          grid-column: 1 / -1;
+
+          width: 100%;
+        }
+      }
+
+      /* =========================================================
+         MOBILE
+      ========================================================= */
+
+      @media (max-width: 800px) {
+        .course {
+          width: 100%;
+
+          margin: 0;
+
+          border-left: 0;
+
+          border-right: 0;
+
+          border-radius: 0;
+        }
+
+        header {
+          grid-template-columns: 1fr;
+
+          text-align: center;
+
+          padding: 32px 16px 42px;
+
+          gap: 28px;
+
+          min-height: auto;
+        }
+
+        .laptop-area {
+          order: 1;
+
+          width: 100%;
+
+          min-height: 260px;
+
+          justify-content: flex-end;
+
+          padding-right: 3%;
+        }
+
+        .title {
+          order: 2;
+        }
+
+        .laptop {
+          width: min(400px, 92vw);
+
+          margin-right: 0;
+        }
+
+        .typing-area {
+          font-size: 10px;
+
+          padding: 12px;
+
+          line-height: 1.7;
+        }
+
+        .terminal-bar {
+          height: 22px;
+        }
+
+        .typing-area {
+          inset: 22px 0 0;
+        }
+
+        .title h1 {
+          font-size: clamp(42px, 12vw, 55px);
+
+          text-align: center;
+        }
+
+        .title h2 {
+          font-size: 22px;
+        }
+
+        .title p {
+          font-size: 14px;
+        }
+
+        .modules {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .why {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .why-item {
+          border-left: none;
+
+          border-bottom: 1px solid #123746;
+        }
+
+        .why-item:nth-child(odd) {
+          border-left: 1px solid #123746;
+        }
+
+        .section {
+          padding: 28px 15px;
+        }
+
+        .section-title {
+          font-size: 23px;
+        }
+
+        .section-title::before,
+        .section-title::after {
+          width: 28px;
+
+          margin: 0 7px 8px;
+        }
+
+        .contact-card {
+          grid-template-columns: 58px 1fr;
+
+          gap: 13px;
+
+          padding: 17px;
+
+          width: 100%;
+        }
+
+        .contact-icon-box {
+          width: 55px;
+
+          height: 55px;
+
+          font-size: 25px;
+        }
+
+        .contact-content h3 {
+          font-size: 14px;
+        }
+
+        .contact-content p {
+          font-size: 11px;
+        }
+
+        .whatsapp-btn {
+          min-width: 0;
+
+          padding: 12px 10px;
+
+          font-size: 12px;
+        }
+
+        footer {
+          flex-direction: column;
+
+          gap: 8px;
+
+          padding: 22px 15px;
+        }
+
+        footer p {
+          font-size: 12px;
+        }
+
+        .copyright {
+          padding: 12px 10px;
+
+          font-size: 11px;
+        }
+      }
+
+      /* =========================================================
+         PHONES
+      ========================================================= */
+
+      @media (max-width: 430px) {
+        header {
+          padding: 28px 11px 38px;
+        }
+
+        .laptop-area {
+          min-height: 220px;
+
+          padding-right: 0;
+        }
+
+        .laptop {
+          width: 96vw;
+
+          max-width: 350px;
+        }
+
+        .screen-frame {
+          border-width: 7px;
+
+          border-bottom-width: 9px;
+
+          border-radius: 11px 11px 6px 6px;
+        }
+
+        .typing-area {
+          font-size: 8px;
+
+          padding: 9px;
+
+          line-height: 1.7;
+        }
+
+        .terminal-bar {
+          height: 19px;
+
+          padding: 0 6px;
+        }
+
+        .terminal-dot {
+          width: 5px;
+
+          height: 5px;
+        }
+
+        .terminal-name {
+          font-size: 6px;
+        }
+
+        .typing-area {
+          inset: 19px 0 0;
+        }
+
+        .laptop-base {
+          height: 21px;
+
+          border-radius: 0 0 15px 15px;
+        }
+
+        .typing-light {
+          width: 120px;
+
+          height: 120px;
+        }
+
+        .title h1 {
+          font-size: 39px;
+
+          line-height: 1;
+        }
+
+        .title h2 {
+          font-size: 18px;
+
+          line-height: 1.6;
+        }
+
+        .title p {
+          font-size: 13px;
+
+          line-height: 1.9;
+        }
+
+        .modules {
+          gap: 9px;
+        }
+
+        .module {
+          padding: 18px 8px;
+
+          min-height: 170px;
+        }
+
+        .module h3 {
+          font-size: 14px;
+        }
+
+        .module p {
+          font-size: 11px;
+
+          line-height: 1.8;
+        }
+
+        .number {
+          width: 40px;
+
+          height: 40px;
+        }
+
+        .why-item {
+          padding: 17px 7px;
+        }
+
+        .icon {
+          font-size: 26px;
+        }
+
+        .why-item span {
+          font-size: 11px;
+        }
+
+        .suitable {
+          display: grid;
+
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+
+          gap: 9px;
+        }
+
+        .person {
+          min-width: 0;
+
+          padding: 14px 8px;
+
+          font-size: 11px;
+        }
+
+        .person strong {
+          font-size: 12px;
+        }
+
+        .person:last-child {
+          grid-column: 1 / -1;
+
+          width: 50%;
+
+          margin: auto;
+        }
+
+        .course-info {
+          flex-direction: column;
+
+          width: min(100%, 320px);
+        }
+
+        .price-box {
+          width: calc(100% - 10px);
+
+          padding: 22px 12px;
+        }
+
+        .price {
+          font-size: 42px;
+        }
+
+        .currency {
+          font-size: 15px;
+        }
+
+        .contact-card {
+          padding: 15px 12px;
+
+          gap: 10px;
+        }
+
+        .contact-icon-box {
+          width: 48px;
+
+          height: 48px;
+
+          font-size: 22px;
+        }
+
+        .contact-content h3 {
+          font-size: 12px;
+        }
+
+        .contact-content p {
+          font-size: 10px;
+        }
+
+        .whatsapp-btn {
+          font-size: 11px;
+
+          padding: 11px 8px;
+        }
+      }
+
+      /* =========================================================
+         VERY SMALL PHONES
+      ========================================================= */
+
+      @media (max-width: 350px) {
+        .section {
+          padding-left: 9px;
+
+          padding-right: 9px;
+        }
+
+        header {
+          padding-left: 8px;
+
+          padding-right: 8px;
+        }
+
+        .laptop-area {
+          min-height: 195px;
+        }
+
+        .laptop {
+          width: 98vw;
+
+          max-width: 310px;
+        }
+
+        .typing-area {
+          font-size: 7px;
+
+          padding: 8px;
+        }
+
+        .title h1 {
+          font-size: 34px;
+
+          letter-spacing: 1px;
+        }
+
+        .title h2 {
+          font-size: 16px;
+        }
+
+        .modules {
+          gap: 6px;
+        }
+
+        .module {
+          padding: 15px 5px;
+
+          min-height: 155px;
+        }
+
+        .module h3 {
+          font-size: 12px;
+        }
+
+        .module p {
+          font-size: 10px;
+        }
+
+        .why-item {
+          padding: 14px 4px;
+        }
+
+        .why-item span {
+          font-size: 10px;
+        }
+
+        .suitable {
+          gap: 6px;
+        }
+
+        .person {
+          font-size: 10px;
+        }
+
+        .contact-card {
+          padding: 12px 9px;
+        }
+
+        .contact-card h3 {
+          font-size: 11px;
+        }
+
+        .contact-card p {
+          font-size: 9px;
+        }
+
+        .whatsapp-btn {
+          font-size: 10px;
+
+          padding: 10px 7px;
+        }
+      }
+
+      /* =========================================================
+         TOUCH DEVICES
+      ========================================================= */
+
+      @media (hover: none) {
+        .module:hover,
+        .person:hover,
+        .contact-card:hover,
+        .whatsapp-btn:hover {
+          transform: none;
+        }
+      }
+
+      /* =========================================================
+         REDUCED MOTION
+      ========================================================= */
+
+      @media (prefers-reduced-motion: reduce) {
+        .laptop,
+        .typing-light,
+        .badge::before,
+        .cursor {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="course">
+      <!-- =====================================================
+           HEADER
+      ====================================================== -->
+
+      <header>
+        <div class="title">
+          <div class="badge">دورة احترافية</div>
+
+          <h1>
+            COMPUTER<br />
+            <span>SKILLS</span>
+          </h1>
+
+          <h2>إتقان مهارات الكمبيوتر الأساسية والمتقدمة</h2>
+
+          <p>
+            دورة عملية شاملة تعلمك أهم مهارات استخدام الكمبيوتر، إدارة النظام
+            بكفاءة، حماية بياناتك، وصيانة جهازك وحل المشكلات اليومية باحتراف.
+          </p>
+        </div>
+
+        <div class="laptop-area">
+          <div class="laptop">
+            <div class="typing-light"></div>
+
+            <div class="code-particle particle-1">&lt;/&gt;</div>
+            <div class="code-particle particle-2">0101</div>
+            <div class="code-particle particle-3">CMD</div>
+            <div class="code-particle particle-4">{ }</div>
+
+            <div class="screen-frame">
+              <div class="screen">
+                <div class="terminal-bar">
+                  <div class="terminal-dot"></div>
+                  <div class="terminal-dot"></div>
+                  <div class="terminal-dot"></div>
+
+                  <div class="terminal-name">computer_skills.exe</div>
+                </div>
+
+                <div class="typing-area">
+                  <div class="typing-line">
+                    <span class="prompt">C:\Users\Student&gt;</span>
+                    <span class="command" id="line1"></span>
+                  </div>
+
+                  <div class="typing-line">
+                    <span class="success" id="line2"></span>
+                  </div>
+
+                  <div class="typing-line">
+                    <span class="prompt">C:\Skills&gt;</span>
+                    <span class="command" id="line3"></span>
+                  </div>
+
+                  <div class="typing-line">
+                    <span class="info" id="line4"></span>
+                  </div>
+
+                  <div class="typing-line">
+                    <span class="success" id="line5"></span>
+                  </div>
+
+                  <div class="typing-line">
+                    <span class="prompt">C:\Skills&gt;</span>
+                    <span class="command" id="line6"></span>
+                    <span class="cursor"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="laptop-base"></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- =====================================================
+           MODULES
+      ====================================================== -->
+
+      <section class="section">
+        <h2 class="section-title">محاور الدورة</h2>
+
+        <div class="modules">
+          <div class="module">
+            <div class="number">01</div>
+            <h3>سطر الأوامر</h3>
+            <p>
+              Command Prompt<br />
+              أساسيات الأوامر<br />
+              التعامل مع الملفات<br />
+              تشغيل الأدوات
+            </p>
+          </div>
+
+          <div class="module">
+            <div class="number">02</div>
+            <h3>إدارة البرامج</h3>
+            <p>
+              تثبيت البرامج<br />
+              حذف البرامج<br />
+              تحديث البرامج<br />
+              إدارة التطبيقات
+            </p>
+          </div>
+
+          <div class="module">
+            <div class="number">03</div>
+            <h3>إدارة النظام</h3>
+            <p>
+              إعدادات النظام<br />
+              إدارة الخدمات<br />
+              إدارة المهام<br />
+              حل مشاكل النظام
+            </p>
+          </div>
+
+          <div class="module">
+            <div class="number">04</div>
+            <h3>إدارة الملفات</h3>
+            <p>
+              تنظيم الملفات<br />
+              نسخ ونقل الملفات<br />
+              البحث المتقدم<br />
+              إدارة المجلدات
+            </p>
+          </div>
+
+          <div class="module">
+            <div class="number">05</div>
+            <h3>الأمان والحماية</h3>
+            <p>
+              حماية النظام<br />
+              مكافحة الفيروسات<br />
+              حماية البيانات<br />
+              أساسيات الأمان
+            </p>
+          </div>
+
+          <div class="module">
+            <div class="number">06</div>
+            <h3>النسخ الاحتياطي</h3>
+            <p>
+              نسخ الملفات<br />
+              استعادة البيانات<br />
+              حماية المعلومات<br />
+              إنشاء نقاط الاستعادة
+            </p>
+          </div>
+
+          <div class="module">
+            <div class="number">07</div>
+            <h3>تحسين الأداء</h3>
+            <p>
+              تنظيف الجهاز<br />
+              إدارة الموارد<br />
+              تسريع البرامج<br />
+              تحسين النظام
+            </p>
+          </div>
+
+          <div class="module">
+            <div class="number">08</div>
+            <h3>صيانة الجهاز</h3>
+            <p>
+              تشخيص الأعطال<br />
+              أساسيات الصيانة<br />
+              أدوات النظام<br />
+              حل المشكلات
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           WHY
+      ====================================================== -->
+
+      <section class="section">
+        <h2 class="section-title">لماذا هذه الدورة؟</h2>
+
+        <div class="why">
+          <div class="why-item">
+            <div class="icon">★</div>
+            <span>مناسبة لجميع المستويات</span>
+          </div>
+
+          <div class="why-item">
+            <div class="icon">🔒</div>
+            <span>حماية بياناتك ومهاراتك</span>
+          </div>
+
+          <div class="why-item">
+            <div class="icon">◷</div>
+            <span>توفير الوقت وزيادة الإنتاجية</span>
+          </div>
+
+          <div class="why-item">
+            <div class="icon">⚙</div>
+            <span>مهارات عملية مطلوبة</span>
+          </div>
+
+          <div class="why-item">
+            <div class="icon">▶</div>
+            <span>مشروع تخرج</span>
+          </div>
+
+          <div class="why-item">
+            <div class="icon">✓</div>
+            <span>شرح مبسط وسهل</span>
+          </div>
+
+          <div class="why-item">
+            <div class="icon">🏆</div>
+            <span>شهادة خبرة</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           SUITABLE
+      ====================================================== -->
+
+      <section class="section">
+        <h2 class="section-title">هذه الدورة مناسبة لـ</h2>
+
+        <div class="suitable">
+          <div class="person">
+            <strong>👨‍🎓 الطلاب</strong>
+            تطوير المهارات الرقمية
+          </div>
+
+          <div class="person">
+            <strong>💼 الموظفين</strong>
+            رفع كفاءة العمل
+          </div>
+
+          <div class="person">
+            <strong>🏢 أصحاب الأعمال</strong>
+            إدارة المهام بكفاءة
+          </div>
+
+          <div class="person">
+            <strong>💻 المبتدئين</strong>
+            تعلم الكمبيوتر من الأساس
+          </div>
+
+          <div class="person">
+            <strong>👨‍💻 المستخدمين</strong>
+            إتقان استخدام الحاسوب
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           COURSE INFO
+      ====================================================== -->
+
+      <div class="course-info">
+        <div class="info-box">
+          <small>مدة الدورة</small>
+          <strong>شهر واحد</strong>
+        </div>
+
+        <div class="info-box">
+          <small>عدد الجلسات</small>
+          <strong>7 جلسات</strong>
+        </div>
+      </div>
+
+      <!-- =====================================================
+           PRICE
+      ====================================================== -->
+
+      <div class="price-box">
+        <small>سعر الدورة</small>
+
+        <div class="price">700</div>
+
+        <div class="currency">ليرة سورية </div>
+      </div>
+
+      <!-- =====================================================
+           CONTACT
+      ====================================================== -->
+
+      <section class="section contact-section" id="contact">
+        <div class="section-title">📞 التواصل</div>
+
+        <div class="contact-wrapper">
+          <div class="contact-card">
+            <div class="contact-icon-box">
+              <span>👨‍🏫</span>
+            </div>
+
+            <div class="contact-content">
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>يمكنك التواصل مباشرة عبر واتساب</p>
+            </div>
+
+            <a
+              href="https://wa.me/963995980568"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="whatsapp-btn"
+            >
+              <span class="whatsapp-icon">◉</span>
+
+              <span> تواصل عبر واتساب </span>
+
+              <span class="arrow">←</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           FOOTER
+      ====================================================== -->
+
+      <footer>
+        <p>
+          جميع الحقوق محفوظة © 2027
+          <br />
+          اعداد المهندسة لين حسن الكردي
+        </p>
+      </footer>
+    </div>
+
+    <!-- =====================================================
+         TYPING SCRIPT
+    ====================================================== -->
+
+    <script>
+      const lines = [
+        {
+          id: "line1",
+          text: "systeminfo",
+        },
+        {
+          id: "line2",
+          text: "✓ System Skills loaded successfully...",
+        },
+        {
+          id: "line3",
+          text: "learn-computer-skills",
+        },
+        {
+          id: "line4",
+          text: "→ Managing files...",
+        },
+        {
+          id: "line5",
+          text: "✓ Productivity increased by 100%",
+        },
+        {
+          id: "line6",
+          text: "start-learning",
+        },
+      ];
+
+      const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+      async function typeText(element, text, speed = 55) {
+        element.textContent = "";
+
+        for (let i = 0; i < text.length; i++) {
+          element.textContent += text[i];
+
+          await sleep(speed + Math.random() * 35);
+        }
+      }
+
+      async function runTyping() {
+        while (true) {
+          for (const item of lines) {
+            const element = document.getElementById(item.id);
+
+            if (!element) continue;
+
+            await typeText(element, item.text, item.id === "line6" ? 75 : 35);
+
+            await sleep(500);
+          }
+
+          await sleep(1600);
+
+          for (const item of lines) {
+            const element = document.getElementById(item.id);
+
+            if (element) {
+              element.textContent = "";
+            }
+          }
+
+          await sleep(500);
+        }
+      }
+
+      runTyping();
+    </script>
+  </body>
+</html>

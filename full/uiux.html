@@ -1,0 +1,2818 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <meta
+      name="description"
+      content="دورة UI UX احترافية من Coursyria - تعلم تصميم واجهات وتجارب المستخدم وبناء مشاريع رقمية احترافية."
+    />
+
+    <title>UI UX Design | Coursyria</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap");
+
+      /* =====================================================
+         ROOT
+      ===================================================== */
+
+      :root {
+        --bg: #06050d;
+        --bg2: #0c0917;
+        --panel: #12101f;
+        --panel2: #18142a;
+
+        --purple: #a78bfa;
+        --violet: #8b5cf6;
+        --pink: #f472b6;
+        --cyan: #67e8f9;
+        --blue: #60a5fa;
+
+        --white: #ffffff;
+        --muted: #aaa6bc;
+
+        --line: rgba(255, 255, 255, 0.1);
+
+        --gradient: linear-gradient(135deg, #8b5cf6, #d946ef, #f472b6);
+
+        --shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+      }
+
+      /* =====================================================
+         RESET
+      ===================================================== */
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body {
+        min-height: 100vh;
+        overflow-x: hidden;
+
+        font-family: "Cairo", sans-serif;
+        color: var(--white);
+
+        background:
+          radial-gradient(
+            circle at 10% 10%,
+            rgba(139, 92, 246, 0.2),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 90% 20%,
+            rgba(244, 114, 182, 0.14),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 50% 90%,
+            rgba(96, 165, 250, 0.1),
+            transparent 30%
+          ),
+          var(--bg);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      /* =====================================================
+         PAGE
+      ===================================================== */
+
+      .page {
+        width: min(1180px, 94%);
+        margin: 24px auto;
+
+        padding: 28px;
+
+        position: relative;
+        overflow: hidden;
+
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 34px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(22, 19, 38, 0.98),
+          rgba(7, 6, 15, 0.99)
+        );
+
+        box-shadow:
+          0 30px 100px rgba(0, 0, 0, 0.5),
+          0 0 100px rgba(139, 92, 246, 0.07);
+      }
+
+      .page::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        pointer-events: none;
+
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+
+        background-size: 42px 42px;
+
+        opacity: 0.3;
+
+        mask-image: linear-gradient(to bottom, black, transparent 80%);
+      }
+
+      /* =====================================================
+         GLOW ORBS
+      ===================================================== */
+
+      .orb {
+        position: absolute;
+
+        border-radius: 50%;
+
+        pointer-events: none;
+
+        filter: blur(5px);
+
+        animation: orbFloat 8s ease-in-out infinite;
+      }
+
+      .orb-one {
+        width: 180px;
+        height: 180px;
+
+        top: 80px;
+        right: -80px;
+
+        background: rgba(139, 92, 246, 0.1);
+      }
+
+      .orb-two {
+        width: 140px;
+        height: 140px;
+
+        top: 520px;
+        left: -60px;
+
+        background: rgba(244, 114, 182, 0.08);
+
+        animation-delay: 2s;
+      }
+
+      @keyframes orbFloat {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+
+        50% {
+          transform: translateY(-25px) scale(1.08);
+        }
+      }
+
+      /* =====================================================
+         LOGO
+      ===================================================== */
+
+      .logo {
+        position: relative;
+        z-index: 5;
+
+        display: flex;
+        align-items: center;
+
+        gap: 14px;
+
+        margin-bottom: 35px;
+      }
+
+      .logo-icon {
+        width: 58px;
+        height: 58px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 18px;
+
+        font-size: 27px;
+        font-weight: 900;
+
+        background: var(--gradient);
+
+        box-shadow:
+          0 0 35px rgba(139, 92, 246, 0.35),
+          inset 0 0 20px rgba(255, 255, 255, 0.13);
+
+        transform: rotate(-6deg);
+
+        transition: 0.5s;
+      }
+
+      .logo:hover .logo-icon {
+        transform: rotate(6deg) scale(1.08);
+      }
+
+      .logo h2 {
+        font-size: 25px;
+        font-weight: 900;
+        letter-spacing: 1px;
+      }
+
+      .logo p {
+        margin-top: 2px;
+
+        font-size: 9px;
+
+        color: var(--muted);
+
+        letter-spacing: 3px;
+
+        direction: ltr;
+      }
+
+      /* =====================================================
+         HERO
+      ===================================================== */
+
+      .hero {
+        min-height: 520px;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 50px;
+
+        align-items: center;
+
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-content {
+        min-width: 0;
+      }
+
+      .badge {
+        width: max-content;
+        max-width: 100%;
+
+        padding: 8px 18px;
+
+        border: 1px solid rgba(167, 139, 250, 0.4);
+
+        border-radius: 30px;
+
+        color: var(--purple);
+
+        background: rgba(139, 92, 246, 0.08);
+
+        font-size: 12px;
+        font-weight: 800;
+
+        margin-bottom: 20px;
+
+        box-shadow: 0 0 30px rgba(139, 92, 246, 0.1);
+
+        animation: badgePulse 3s ease-in-out infinite;
+      }
+
+      @keyframes badgePulse {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(139, 92, 246, 0.08);
+        }
+
+        50% {
+          box-shadow: 0 0 35px rgba(139, 92, 246, 0.22);
+        }
+      }
+
+      .hero h1 {
+        font-size: clamp(50px, 7vw, 82px);
+
+        line-height: 0.95;
+
+        font-weight: 900;
+
+        letter-spacing: -3px;
+
+        background: linear-gradient(90deg, #ffffff, var(--purple), var(--pink));
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+
+        animation: titleGlow 4s ease-in-out infinite alternate;
+      }
+
+      @keyframes titleGlow {
+        from {
+          filter: drop-shadow(0 0 5px rgba(167, 139, 250, 0.05));
+        }
+
+        to {
+          filter: drop-shadow(0 0 25px rgba(244, 114, 182, 0.2));
+        }
+      }
+
+      .hero h2 {
+        margin-top: 8px;
+
+        font-size: clamp(30px, 4vw, 52px);
+
+        line-height: 1.2;
+
+        font-weight: 800;
+      }
+
+      .english {
+        margin: 14px 0 20px;
+
+        direction: ltr;
+
+        font-size: clamp(25px, 4vw, 43px);
+
+        font-weight: 900;
+
+        letter-spacing: 2px;
+
+        color: var(--cyan);
+
+        text-shadow: 0 0 20px rgba(103, 232, 249, 0.15);
+      }
+
+      .hero-description {
+        max-width: 570px;
+
+        color: var(--muted);
+
+        line-height: 2;
+
+        font-size: 15px;
+      }
+
+      /* =====================================================
+         INTERACTIVE UI/UX DESIGN STAGE
+      ===================================================== */
+
+      .visual {
+        height: 450px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        border-radius: 32px;
+
+        background:
+          radial-gradient(
+            circle at 50% 45%,
+            rgba(139, 92, 246, 0.2),
+            transparent 38%
+          ),
+          linear-gradient(145deg, #19162c, #090812);
+
+        box-shadow:
+          inset 0 0 70px rgba(255, 255, 255, 0.025),
+          0 0 70px rgba(139, 92, 246, 0.1);
+
+        perspective: 1000px;
+      }
+
+      .visual::before {
+        content: "";
+
+        position: absolute;
+
+        inset: 0;
+
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+          );
+
+        background-size: 28px 28px;
+
+        mask-image: radial-gradient(circle, black, transparent 75%);
+
+        pointer-events: none;
+      }
+
+      .visual::after {
+        content: "";
+
+        position: absolute;
+
+        width: 260px;
+        height: 260px;
+
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+
+        border-radius: 50%;
+
+        border: 1px solid rgba(167, 139, 250, 0.13);
+
+        box-shadow:
+          0 0 80px rgba(139, 92, 246, 0.12),
+          inset 0 0 50px rgba(244, 114, 182, 0.05);
+
+        animation: uiOrbit 8s linear infinite;
+
+        pointer-events: none;
+      }
+
+      @keyframes uiOrbit {
+        from {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      /* =====================================================
+         FLOATING UI BADGES
+      ===================================================== */
+
+      .ui-floating {
+        position: absolute;
+
+        z-index: 10;
+
+        padding: 8px 13px;
+
+        border-radius: 12px;
+
+        border: 1px solid rgba(255, 255, 255, 0.12);
+
+        background: rgba(16, 14, 28, 0.85);
+
+        backdrop-filter: blur(14px);
+
+        color: white;
+
+        font-size: 9px;
+
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+
+        animation: floatingUI 4s ease-in-out infinite;
+      }
+
+      .ui-floating strong {
+        color: var(--cyan);
+      }
+
+      .ui-floating.one {
+        top: 12%;
+        left: 5%;
+      }
+
+      .ui-floating.two {
+        right: 5%;
+        top: 20%;
+
+        animation-delay: 1s;
+      }
+
+      .ui-floating.three {
+        left: 8%;
+        bottom: 18%;
+
+        animation-delay: 2s;
+      }
+
+      @keyframes floatingUI {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* =====================================================
+         MAIN DESIGN SCREEN
+      ===================================================== */
+
+      .design-screen {
+        position: absolute;
+
+        width: 315px;
+        height: 335px;
+
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%) rotateX(5deg) rotateY(-8deg)
+          rotateZ(-2deg);
+
+        border-radius: 20px;
+
+        background: #f7f7fb;
+
+        overflow: hidden;
+
+        box-shadow:
+          0 35px 80px rgba(0, 0, 0, 0.55),
+          0 0 50px rgba(139, 92, 246, 0.18);
+
+        transition:
+          transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+          box-shadow 0.5s;
+
+        z-index: 5;
+      }
+
+      .visual:hover .design-screen {
+        transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg)
+          rotateZ(0deg) scale(1.035);
+
+        box-shadow:
+          0 40px 90px rgba(0, 0, 0, 0.6),
+          0 0 70px rgba(139, 92, 246, 0.25);
+      }
+
+      /* =====================================================
+         DESIGN TOOLBAR
+      ===================================================== */
+
+      .design-toolbar {
+        height: 38px;
+
+        display: flex;
+        align-items: center;
+
+        padding: 0 12px;
+
+        background: #ececf2;
+
+        border-bottom: 1px solid #dedee6;
+      }
+
+      .tool-dots {
+        display: flex;
+
+        gap: 5px;
+      }
+
+      .tool-dots span {
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        background: #b9b9c2;
+      }
+
+      .tool-name {
+        margin-right: auto;
+
+        font-size: 7px;
+
+        color: #858592;
+
+        direction: ltr;
+
+        font-weight: 700;
+      }
+
+      /* =====================================================
+         DESIGN BODY
+      ===================================================== */
+
+      .design-body {
+        height: calc(100% - 38px);
+
+        display: grid;
+
+        grid-template-columns: 48px 1fr 55px;
+      }
+
+      /* =====================================================
+         LEFT TOOLS
+      ===================================================== */
+
+      .left-tools {
+        background: #eeeef3;
+
+        border-left: 1px solid #dedee5;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 11px;
+
+        padding-top: 14px;
+      }
+
+      .tool {
+        width: 25px;
+        height: 25px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 7px;
+
+        color: #888895;
+
+        font-size: 10px;
+
+        transition: 0.3s;
+
+        cursor: pointer;
+      }
+
+      .tool:hover {
+        background: #8b5cf6;
+
+        color: white;
+
+        transform: scale(1.12);
+
+        box-shadow: 0 5px 15px rgba(139, 92, 246, 0.25);
+      }
+
+      .tool.active {
+        background: linear-gradient(135deg, #8b5cf6, #d946ef);
+
+        color: white;
+
+        box-shadow: 0 5px 15px rgba(139, 92, 246, 0.25);
+      }
+
+      /* =====================================================
+         ARTBOARD
+      ===================================================== */
+
+      .artboard {
+        position: relative;
+
+        padding: 16px;
+
+        background: #ffffff;
+
+        overflow: hidden;
+      }
+
+      /* =====================================================
+         APP HEADER
+      ===================================================== */
+
+      .app-header {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        margin-bottom: 18px;
+      }
+
+      .app-logo {
+        width: 43px;
+        height: 9px;
+
+        border-radius: 5px;
+
+        background: #20202b;
+      }
+
+      .app-menu {
+        display: flex;
+
+        gap: 5px;
+      }
+
+      .app-menu span {
+        width: 20px;
+        height: 4px;
+
+        border-radius: 4px;
+
+        background: #d3d3dc;
+      }
+
+      /* =====================================================
+         UI HERO
+      ===================================================== */
+
+      .ui-hero {
+        padding: 16px 12px;
+
+        border-radius: 13px;
+
+        background: linear-gradient(135deg, #f0eaff, #f9e9f5);
+
+        position: relative;
+
+        overflow: hidden;
+
+        transition: 0.4s;
+      }
+
+      .ui-hero:hover {
+        transform: translateY(-3px);
+
+        box-shadow: 0 12px 25px rgba(139, 92, 246, 0.12);
+      }
+
+      .ui-hero::after {
+        content: "";
+
+        position: absolute;
+
+        width: 75px;
+        height: 75px;
+
+        border-radius: 50%;
+
+        right: -25px;
+        bottom: -30px;
+
+        background: linear-gradient(
+          135deg,
+          rgba(139, 92, 246, 0.35),
+          rgba(244, 114, 182, 0.15)
+        );
+
+        filter: blur(5px);
+      }
+
+      .ui-hero-title {
+        width: 62%;
+        height: 11px;
+
+        border-radius: 4px;
+
+        background: #252230;
+
+        margin-bottom: 8px;
+      }
+
+      .ui-hero-text {
+        width: 46%;
+        height: 5px;
+
+        border-radius: 4px;
+
+        background: #aaa5b7;
+
+        margin-bottom: 13px;
+      }
+
+      .ui-hero-button {
+        width: 53px;
+        height: 17px;
+
+        border-radius: 6px;
+
+        background: linear-gradient(135deg, #8b5cf6, #d946ef);
+
+        box-shadow: 0 5px 13px rgba(139, 92, 246, 0.25);
+
+        transition: 0.3s;
+
+        cursor: pointer;
+      }
+
+      .ui-hero-button:hover {
+        transform: scale(1.08);
+
+        box-shadow: 0 7px 18px rgba(139, 92, 246, 0.35);
+      }
+
+      /* =====================================================
+         UI CARDS
+      ===================================================== */
+
+      .ui-cards {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 8px;
+
+        margin-top: 11px;
+      }
+
+      .ui-card {
+        height: 63px;
+
+        padding: 9px;
+
+        border-radius: 10px;
+
+        background: #fafafd;
+
+        border: 1px solid #ececf2;
+
+        transition: 0.35s;
+
+        cursor: pointer;
+      }
+
+      .ui-card:hover {
+        transform: translateY(-5px) scale(1.02);
+
+        border-color: #bda7fa;
+
+        box-shadow: 0 10px 22px rgba(139, 92, 246, 0.13);
+      }
+
+      .ui-card-icon {
+        width: 18px;
+        height: 18px;
+
+        border-radius: 6px;
+
+        margin-bottom: 6px;
+
+        background: linear-gradient(135deg, #8b5cf6, #f472b6);
+      }
+
+      .ui-card:nth-child(2) .ui-card-icon {
+        background: linear-gradient(135deg, #22d3ee, #3b82f6);
+      }
+
+      .ui-card:nth-child(3) .ui-card-icon {
+        background: linear-gradient(135deg, #f97316, #ec4899);
+      }
+
+      .ui-card:nth-child(4) .ui-card-icon {
+        background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+      }
+
+      .ui-card-title {
+        width: 55%;
+        height: 4px;
+
+        border-radius: 4px;
+
+        background: #3a3943;
+      }
+
+      .ui-card-line {
+        width: 75%;
+        height: 3px;
+
+        margin-top: 5px;
+
+        border-radius: 4px;
+
+        background: #dddde4;
+      }
+
+      /* =====================================================
+         RIGHT PROPERTIES
+      ===================================================== */
+
+      .properties {
+        background: #eeeef3;
+
+        border-right: 1px solid #dedee5;
+
+        padding: 12px 7px;
+      }
+
+      .property-title {
+        width: 32px;
+        height: 5px;
+
+        background: #777783;
+
+        border-radius: 4px;
+
+        margin-bottom: 13px;
+      }
+
+      .property-line {
+        width: 100%;
+        height: 4px;
+
+        background: #c9c9d1;
+
+        border-radius: 4px;
+
+        margin-bottom: 9px;
+      }
+
+      .property-line.short {
+        width: 65%;
+      }
+
+      .property-color {
+        width: 24px;
+        height: 24px;
+
+        border-radius: 7px;
+
+        background: linear-gradient(135deg, #8b5cf6, #f472b6);
+
+        margin-top: 14px;
+
+        box-shadow: 0 5px 15px rgba(139, 92, 246, 0.25);
+
+        animation: colorPulse 3s ease-in-out infinite;
+      }
+
+      @keyframes colorPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.12);
+        }
+      }
+
+      /* =====================================================
+         DESIGN CURSOR
+      ===================================================== */
+
+      .design-cursor {
+        position: absolute;
+
+        z-index: 20;
+
+        left: 54%;
+        top: 55%;
+
+        pointer-events: none;
+
+        animation: cursorMove 4s ease-in-out infinite;
+
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+      }
+
+      .design-cursor::before {
+        content: "↖";
+
+        font-size: 30px;
+
+        color: #17141f;
+
+        text-shadow:
+          1px 1px white,
+          -1px -1px white;
+      }
+
+      @keyframes cursorMove {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(-15deg);
+        }
+
+        25% {
+          transform: translate(-35px, 18px) rotate(-15deg);
+        }
+
+        50% {
+          transform: translate(20px, -18px) rotate(-15deg);
+        }
+
+        75% {
+          transform: translate(30px, 15px) rotate(-15deg);
+        }
+      }
+
+      /* =====================================================
+         SELECTION BOX
+      ===================================================== */
+
+      .selection {
+        position: absolute;
+
+        width: 92px;
+        height: 53px;
+
+        left: 23%;
+        top: 49%;
+
+        border: 1px solid #8b5cf6;
+
+        border-radius: 5px;
+
+        pointer-events: none;
+
+        animation: selectionPulse 3s ease-in-out infinite;
+      }
+
+      .selection::before,
+      .selection::after {
+        content: "";
+
+        position: absolute;
+
+        width: 6px;
+        height: 6px;
+
+        background: white;
+
+        border: 1px solid #8b5cf6;
+
+        border-radius: 2px;
+      }
+
+      .selection::before {
+        left: -4px;
+        top: -4px;
+      }
+
+      .selection::after {
+        right: -4px;
+        bottom: -4px;
+      }
+
+      @keyframes selectionPulse {
+        0%,
+        100% {
+          opacity: 0.45;
+        }
+
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* =====================================================
+         INFO
+      ===================================================== */
+
+      .info-strip {
+        position: relative;
+        z-index: 3;
+
+        display: grid;
+
+        grid-template-columns: repeat(4, 1fr);
+
+        border: 1px solid var(--line);
+
+        border-radius: 22px;
+
+        overflow: hidden;
+
+        margin: 22px 0 40px;
+
+        background: rgba(255, 255, 255, 0.025);
+
+        backdrop-filter: blur(12px);
+      }
+
+      .info-item {
+        padding: 23px 10px;
+
+        text-align: center;
+
+        border-left: 1px solid var(--line);
+
+        transition: 0.35s;
+      }
+
+      .info-item:last-child {
+        border-left: 0;
+      }
+
+      .info-item:hover {
+        background: rgba(139, 92, 246, 0.08);
+
+        transform: translateY(-3px);
+      }
+
+      .info-icon {
+        font-size: 27px;
+
+        margin-bottom: 6px;
+
+        background: linear-gradient(
+          135deg,
+          var(--pink),
+          var(--purple),
+          var(--cyan)
+        );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+      }
+
+      .info-item h4 {
+        font-size: 14px;
+      }
+
+      .info-item p {
+        color: var(--muted);
+
+        font-size: 10px;
+
+        margin-top: 4px;
+      }
+
+      /* =====================================================
+         SECTION TITLE
+      ===================================================== */
+
+      .section-title {
+        text-align: center;
+
+        margin: 50px 0 27px;
+      }
+
+      .section-title span {
+        position: relative;
+
+        display: inline-block;
+
+        padding: 8px 27px;
+
+        font-size: 26px;
+
+        font-weight: 900;
+      }
+
+      .section-title span::before {
+        content: "";
+
+        position: absolute;
+
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        top: 50%;
+        right: 0;
+
+        transform: translateY(-50%);
+
+        background: var(--pink);
+
+        box-shadow: 0 0 15px var(--pink);
+      }
+
+      .section-title span::after {
+        content: "";
+
+        position: absolute;
+
+        bottom: 0;
+
+        right: 20%;
+
+        width: 60%;
+
+        height: 2px;
+
+        background: linear-gradient(
+          90deg,
+          var(--pink),
+          var(--purple),
+          var(--cyan)
+        );
+
+        box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+      }
+
+      /* =====================================================
+         MODULES
+      ===================================================== */
+
+      .modules {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 16px;
+      }
+
+      .module {
+        min-height: 205px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        padding: 23px 19px;
+
+        border: 1px solid var(--line);
+
+        border-radius: 21px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(27, 24, 45, 0.96),
+          rgba(12, 10, 21, 0.98)
+        );
+
+        transition: 0.45s;
+      }
+
+      .module::before {
+        content: "";
+
+        position: absolute;
+
+        width: 100px;
+        height: 100px;
+
+        border-radius: 50%;
+
+        top: -50px;
+        left: -50px;
+
+        background: var(--purple);
+
+        opacity: 0.08;
+
+        filter: blur(20px);
+
+        transition: 0.5s;
+      }
+
+      .module:hover {
+        transform: translateY(-9px);
+
+        border-color: rgba(167, 139, 250, 0.5);
+
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      }
+
+      .module:hover::before {
+        transform: scale(2);
+
+        opacity: 0.17;
+      }
+
+      .module-number {
+        width: 44px;
+        height: 44px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 13px;
+
+        margin-bottom: 15px;
+
+        font-size: 12px;
+
+        font-weight: 900;
+
+        color: white;
+
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+
+        box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
+      }
+
+      .module:nth-child(2) .module-number {
+        background: linear-gradient(135deg, #3b82f6, #22d3ee);
+      }
+
+      .module:nth-child(3) .module-number {
+        background: linear-gradient(135deg, #ec4899, #f97316);
+      }
+
+      .module:nth-child(4) .module-number {
+        background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      }
+
+      .module:nth-child(5) .module-number {
+        background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      }
+
+      .module:nth-child(6) .module-number {
+        background: linear-gradient(135deg, #d946ef, #8b5cf6);
+      }
+
+      .module h3 {
+        font-size: 16px;
+
+        margin-bottom: 8px;
+      }
+
+      .module p {
+        color: var(--muted);
+
+        font-size: 12px;
+
+        line-height: 1.9;
+      }
+
+      /* =====================================================
+         WHY
+      ===================================================== */
+
+      .why {
+        display: grid;
+
+        grid-template-columns: repeat(6, 1fr);
+
+        border: 1px solid var(--line);
+
+        border-radius: 21px;
+
+        overflow: hidden;
+
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      .why-item {
+        padding: 27px 8px;
+
+        text-align: center;
+
+        border-left: 1px solid var(--line);
+
+        transition: 0.35s;
+      }
+
+      .why-item:last-child {
+        border-left: 0;
+      }
+
+      .why-item:hover {
+        background: rgba(139, 92, 246, 0.08);
+
+        transform: translateY(-4px);
+      }
+
+      .why-icon {
+        font-size: 29px;
+
+        margin-bottom: 10px;
+
+        background: linear-gradient(
+          135deg,
+          var(--pink),
+          var(--purple),
+          var(--cyan)
+        );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+      }
+
+      .why-item p {
+        font-size: 11px;
+
+        line-height: 1.7;
+
+        color: #e9e6f0;
+      }
+
+      /* =====================================================
+         PRICE
+      ===================================================== */
+
+      .price-box {
+        width: min(510px, 100%);
+
+        margin: 50px auto 22px;
+
+        padding: 31px 20px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        text-align: center;
+
+        border: 1px solid rgba(167, 139, 250, 0.45);
+
+        border-radius: 27px;
+
+        background:
+          radial-gradient(
+            circle at 50% 0%,
+            rgba(139, 92, 246, 0.2),
+            transparent 60%
+          ),
+          rgba(17, 16, 29, 0.95);
+
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+      }
+
+      .price-box::before {
+        content: "";
+
+        position: absolute;
+
+        width: 190px;
+        height: 190px;
+
+        border-radius: 50%;
+
+        border: 1px solid rgba(244, 114, 182, 0.15);
+
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+
+        animation: pulseRing 3s infinite;
+      }
+
+      @keyframes pulseRing {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(0.8);
+
+          opacity: 0.2;
+        }
+
+        50% {
+          transform: translate(-50%, -50%) scale(1.2);
+
+          opacity: 0.6;
+        }
+      }
+
+      .price-box small {
+        position: relative;
+        z-index: 2;
+
+        color: var(--muted);
+
+        font-size: 12px;
+      }
+
+      .price {
+        position: relative;
+        z-index: 2;
+
+        margin: 6px 0;
+
+        font-size: 46px;
+
+        font-weight: 900;
+
+        background: linear-gradient(90deg, var(--purple), var(--pink));
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+      }
+
+      .price span {
+        font-size: 17px;
+
+        color: white;
+      }
+
+      /* =====================================================
+         CTA
+      ===================================================== */
+
+      .cta {
+        margin-top: 32px;
+
+        padding: 32px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 20px;
+
+        border: 1px solid var(--line);
+
+        border-radius: 25px;
+
+        background:
+          radial-gradient(
+            circle at 100% 50%,
+            rgba(139, 92, 246, 0.16),
+            transparent 40%
+          ),
+          linear-gradient(90deg, #151225, #0d0b18);
+      }
+
+      .cta h2 {
+        font-size: 27px;
+
+        background: linear-gradient(90deg, var(--purple), var(--pink));
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+      }
+
+      .cta p {
+        color: var(--muted);
+
+        font-size: 12px;
+
+        margin-top: 6px;
+      }
+
+      .cta-button {
+        min-width: 155px;
+
+        padding: 14px 27px;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 8px;
+
+        border-radius: 30px;
+
+        text-decoration: none;
+
+        color: white;
+
+        font-weight: 900;
+
+        white-space: nowrap;
+
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+
+        box-shadow: 0 13px 35px rgba(139, 92, 246, 0.25);
+
+        transition: 0.35s;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-4px) scale(1.03);
+
+        box-shadow: 0 18px 45px rgba(139, 92, 246, 0.4);
+      }
+
+      /* =====================================================
+         CONTACT
+      ===================================================== */
+
+      .contact-section {
+        margin-top: 15px;
+      }
+
+      .contact-wrapper {
+        max-width: 850px;
+
+        margin: 25px auto 0;
+      }
+
+      .contact-card {
+        position: relative;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 18px;
+
+        padding: 22px;
+
+        border: 1px solid var(--line);
+
+        border-radius: 23px;
+
+        background: linear-gradient(145deg, #1b182c, #0e0c18);
+
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+
+        transition: 0.4s;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-6px);
+
+        border-color: rgba(167, 139, 250, 0.45);
+
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .contact-card::before {
+        content: "";
+
+        position: absolute;
+
+        width: 100px;
+        height: 100px;
+
+        border-radius: 50%;
+
+        right: -35px;
+        top: -45px;
+
+        background: rgba(139, 92, 246, 0.12);
+
+        filter: blur(15px);
+
+        pointer-events: none;
+      }
+
+      .contact-icon-box {
+        width: 62px;
+        height: 62px;
+
+        min-width: 62px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 17px;
+
+        font-size: 27px;
+
+        background: linear-gradient(
+          135deg,
+          rgba(139, 92, 246, 0.18),
+          rgba(244, 114, 182, 0.1)
+        );
+
+        border: 1px solid rgba(167, 139, 250, 0.35);
+
+        box-shadow: 0 0 25px rgba(139, 92, 246, 0.1);
+      }
+
+      .contact-content {
+        flex: 1;
+
+        min-width: 0;
+      }
+
+      .contact-content h3 {
+        font-size: 16px;
+
+        margin-bottom: 5px;
+      }
+
+      .contact-content p {
+        color: var(--muted);
+
+        font-size: 11px;
+      }
+
+      .whatsapp-btn {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px;
+
+        padding: 12px 17px;
+
+        border-radius: 14px;
+
+        text-decoration: none;
+
+        color: white;
+
+        font-size: 11px;
+
+        font-weight: 800;
+
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+
+        box-shadow: 0 10px 25px rgba(34, 197, 94, 0.18);
+
+        transition: 0.35s;
+
+        white-space: nowrap;
+      }
+
+      .whatsapp-btn:hover {
+        transform: translateY(-3px) scale(1.03);
+
+        box-shadow: 0 15px 30px rgba(34, 197, 94, 0.3);
+      }
+
+      .whatsapp-icon {
+        font-size: 14px;
+      }
+
+      .arrow {
+        font-size: 15px;
+
+        transition: 0.3s;
+      }
+
+      .whatsapp-btn:hover .arrow {
+        transform: translateX(-4px);
+      }
+
+      /* =====================================================
+         FOOTER
+      ===================================================== */
+
+      footer {
+        margin-top: 50px;
+
+        padding: 27px 10px 10px;
+
+        border-top: 1px solid var(--line);
+
+        text-align: center;
+
+        color: var(--muted);
+
+        font-size: 11px;
+
+        line-height: 2;
+      }
+
+      footer p {
+        transition: 0.3s;
+      }
+
+      footer p:hover {
+        color: var(--purple);
+      }
+
+      /* =====================================================
+         TABLET
+      ===================================================== */
+
+      @media (max-width: 900px) {
+        .page {
+          width: 95%;
+
+          padding: 22px;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+
+          gap: 30px;
+
+          text-align: center;
+        }
+
+        .hero-content {
+          display: flex;
+
+          flex-direction: column;
+
+          align-items: center;
+        }
+
+        .hero-description {
+          margin: auto;
+        }
+
+        .visual {
+          height: 390px;
+        }
+
+        .modules {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .why {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .why-item:nth-child(3n) {
+          border-left: 0;
+        }
+
+        .why-item {
+          border-bottom: 1px solid var(--line);
+        }
+
+        .cta {
+          flex-direction: column;
+
+          text-align: center;
+        }
+      }
+
+      /* =====================================================
+         MOBILE
+      ===================================================== */
+
+      @media (max-width: 600px) {
+        .page {
+          width: calc(100% - 10px);
+
+          margin: 5px auto;
+
+          padding: 15px 11px 20px;
+
+          border-radius: 23px;
+        }
+
+        .logo {
+          justify-content: center;
+
+          margin-bottom: 25px;
+        }
+
+        .logo-icon {
+          width: 48px;
+          height: 48px;
+
+          font-size: 21px;
+
+          border-radius: 15px;
+        }
+
+        .logo h2 {
+          font-size: 21px;
+        }
+
+        .logo p {
+          font-size: 7px;
+
+          letter-spacing: 2px;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .badge {
+          font-size: 10px;
+
+          padding: 6px 14px;
+        }
+
+        .hero h1 {
+          font-size: clamp(40px, 13vw, 53px);
+        }
+
+        .hero h2 {
+          font-size: clamp(27px, 9vw, 38px);
+        }
+
+        .english {
+          font-size: clamp(22px, 7vw, 31px);
+
+          letter-spacing: 1px;
+        }
+
+        .hero-description {
+          font-size: 12px;
+
+          line-height: 1.9;
+        }
+
+        /* =================================================
+           MOBILE UI/UX VISUAL
+        ================================================= */
+
+        .visual {
+          height: 315px;
+
+          border-radius: 23px;
+        }
+
+        .visual::after {
+          width: 190px;
+          height: 190px;
+        }
+
+        .design-screen {
+          width: 235px;
+          height: 250px;
+
+          border-radius: 15px;
+        }
+
+        .design-toolbar {
+          height: 29px;
+
+          padding: 0 9px;
+        }
+
+        .tool-dots span {
+          width: 5px;
+          height: 5px;
+        }
+
+        .tool-name {
+          font-size: 5px;
+        }
+
+        .design-body {
+          grid-template-columns: 35px 1fr 40px;
+        }
+
+        .left-tools {
+          gap: 7px;
+
+          padding-top: 10px;
+        }
+
+        .tool {
+          width: 20px;
+          height: 20px;
+
+          font-size: 8px;
+        }
+
+        .properties {
+          padding: 9px 5px;
+        }
+
+        .property-title {
+          width: 25px;
+          height: 4px;
+
+          margin-bottom: 9px;
+        }
+
+        .property-line {
+          height: 3px;
+
+          margin-bottom: 6px;
+        }
+
+        .property-color {
+          width: 18px;
+          height: 18px;
+
+          border-radius: 5px;
+        }
+
+        .artboard {
+          padding: 11px;
+        }
+
+        .app-header {
+          margin-bottom: 11px;
+        }
+
+        .app-logo {
+          width: 33px;
+          height: 7px;
+        }
+
+        .app-menu {
+          gap: 3px;
+        }
+
+        .app-menu span {
+          width: 15px;
+          height: 3px;
+        }
+
+        .ui-hero {
+          padding: 11px 9px;
+
+          border-radius: 9px;
+        }
+
+        .ui-hero-title {
+          height: 8px;
+
+          margin-bottom: 6px;
+        }
+
+        .ui-hero-text {
+          height: 4px;
+
+          margin-bottom: 9px;
+        }
+
+        .ui-hero-button {
+          width: 40px;
+          height: 13px;
+
+          border-radius: 5px;
+        }
+
+        .ui-cards {
+          gap: 5px;
+
+          margin-top: 7px;
+        }
+
+        .ui-card {
+          height: 48px;
+
+          padding: 6px;
+
+          border-radius: 7px;
+        }
+
+        .ui-card-icon {
+          width: 14px;
+          height: 14px;
+
+          margin-bottom: 4px;
+
+          border-radius: 4px;
+        }
+
+        .ui-card-title {
+          height: 3px;
+        }
+
+        .ui-card-line {
+          height: 2px;
+
+          margin-top: 4px;
+        }
+
+        .design-cursor {
+          transform: scale(0.7);
+        }
+
+        .selection {
+          width: 65px;
+          height: 37px;
+        }
+
+        .ui-floating {
+          padding: 5px 8px;
+
+          font-size: 6px;
+
+          border-radius: 8px;
+        }
+
+        .ui-floating.one {
+          top: 8%;
+          left: 2%;
+        }
+
+        .ui-floating.two {
+          right: 2%;
+          top: 15%;
+        }
+
+        .ui-floating.three {
+          left: 3%;
+          bottom: 12%;
+        }
+
+        /* =================================================
+           INFO
+        ================================================= */
+
+        .info-strip {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .info-item {
+          padding: 17px 6px;
+        }
+
+        .info-item:nth-child(2) {
+          border-left: 0;
+        }
+
+        .info-item:nth-child(3),
+        .info-item:nth-child(4) {
+          border-top: 1px solid var(--line);
+        }
+
+        .info-item:nth-child(4) {
+          border-left: 0;
+        }
+
+        .info-icon {
+          font-size: 22px;
+        }
+
+        .info-item h4 {
+          font-size: 11px;
+        }
+
+        .info-item p {
+          font-size: 8px;
+        }
+
+        /* =================================================
+           TITLES
+        ================================================= */
+
+        .section-title {
+          margin: 36px 0 19px;
+        }
+
+        .section-title span {
+          font-size: 20px;
+
+          padding: 6px 18px;
+        }
+
+        /* =================================================
+           MODULES
+        ================================================= */
+
+        .modules {
+          grid-template-columns: 1fr 1fr;
+
+          gap: 9px;
+        }
+
+        .module {
+          min-height: 180px;
+
+          padding: 17px 10px;
+
+          border-radius: 17px;
+        }
+
+        .module-number {
+          width: 34px;
+          height: 34px;
+
+          font-size: 9px;
+
+          border-radius: 10px;
+        }
+
+        .module h3 {
+          font-size: 12px;
+        }
+
+        .module p {
+          font-size: 9px;
+
+          line-height: 1.7;
+        }
+
+        /* =================================================
+           WHY
+        ================================================= */
+
+        .why {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .why-item {
+          padding: 19px 6px;
+        }
+
+        .why-item:nth-child(3n) {
+          border-left: 1px solid var(--line);
+        }
+
+        .why-item:nth-child(even) {
+          border-left: 0;
+        }
+
+        .why-icon {
+          font-size: 23px;
+        }
+
+        .why-item p {
+          font-size: 9px;
+        }
+
+        /* =================================================
+           PRICE
+        ================================================= */
+
+        .price-box {
+          padding: 23px 12px;
+
+          margin-top: 32px;
+        }
+
+        .price {
+          font-size: 36px;
+        }
+
+        .price span {
+          font-size: 14px;
+        }
+
+        /* =================================================
+           CTA
+        ================================================= */
+
+        .cta {
+          padding: 23px 14px;
+        }
+
+        .cta h2 {
+          font-size: 20px;
+        }
+
+        .cta p {
+          font-size: 10px;
+
+          line-height: 1.8;
+        }
+
+        .cta-button {
+          width: 100%;
+
+          padding: 13px 20px;
+        }
+
+        /* =================================================
+           CONTACT
+        ================================================= */
+
+        .contact-wrapper {
+          margin-top: 20px;
+        }
+
+        .contact-card {
+          flex-direction: column;
+
+          text-align: center;
+
+          padding: 20px 13px;
+
+          gap: 13px;
+        }
+
+        .contact-icon-box {
+          width: 52px;
+          height: 52px;
+
+          min-width: 52px;
+
+          font-size: 23px;
+        }
+
+        .contact-content h3 {
+          font-size: 12px;
+        }
+
+        .contact-content p {
+          font-size: 9px;
+        }
+
+        .whatsapp-btn {
+          width: 100%;
+
+          padding: 12px;
+
+          font-size: 10px;
+        }
+
+        /* =================================================
+           FOOTER
+        ================================================= */
+
+        footer {
+          margin-top: 35px;
+
+          padding-top: 20px;
+
+          font-size: 9px;
+        }
+      }
+
+      /* =====================================================
+         VERY SMALL PHONES
+      ===================================================== */
+
+      @media (max-width: 380px) {
+        .modules {
+          grid-template-columns: 1fr;
+        }
+
+        .module {
+          min-height: auto;
+        }
+
+        .why {
+          grid-template-columns: 1fr;
+        }
+
+        .why-item {
+          border-left: 0 !important;
+        }
+
+        .why-item:last-child {
+          border-bottom: 0;
+        }
+
+        .visual {
+          height: 290px;
+        }
+
+        .design-screen {
+          width: 215px;
+          height: 230px;
+        }
+      }
+
+      /* =====================================================
+         REDUCED MOTION
+      ===================================================== */
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+
+          animation-iteration-count: 1 !important;
+
+          scroll-behavior: auto !important;
+
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- FLOATING BACKGROUND -->
+      <div class="orb orb-one"></div>
+      <div class="orb orb-two"></div>
+
+      <!-- =====================================================
+           LOGO
+      ====================================================== -->
+
+      <div class="logo">
+        <div class="logo-icon">C</div>
+
+        <div>
+          <h2>Coursyria</h2>
+
+          <p>LEARN • GROW • LEAD</p>
+        </div>
+      </div>
+
+      <!-- =====================================================
+           HERO
+      ====================================================== -->
+
+      <section class="hero">
+        <div class="hero-content">
+          <div class="badge">✦ دورة إبداعية احترافية</div>
+
+          <h1>صمّم</h1>
+
+          <h2>تجربة لا تُنسى</h2>
+
+          <div class="english">UI / UX DESIGN</div>
+
+          <p class="hero-description">
+            تعلّم كيف تحوّل الأفكار إلى واجهات جذابة وتجارب مستخدم ذكية، وابنِ
+            تصاميم احترافية تبدأ من فهم المستخدم وتنتهي بمنتج رقمي متكامل.
+          </p>
+        </div>
+
+        <!-- =====================================================
+             INTERACTIVE UI/UX DESIGN
+        ====================================================== -->
+
+        <div class="visual">
+          <!-- Floating Labels -->
+
+          <div class="ui-floating one">✦ <strong>UI Design</strong></div>
+
+          <div class="ui-floating two">◇ <strong>UX Research</strong></div>
+
+          <div class="ui-floating three">⌁ <strong>Prototype</strong></div>
+
+          <!-- Main Design Tool -->
+
+          <div class="design-screen">
+            <!-- Toolbar -->
+
+            <div class="design-toolbar">
+              <div class="tool-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="tool-name">UI / UX DESIGN — PROTOTYPE</div>
+            </div>
+
+            <!-- Design Body -->
+
+            <div class="design-body">
+              <!-- Left Tools -->
+
+              <div class="left-tools">
+                <div class="tool active">⌁</div>
+
+                <div class="tool">□</div>
+
+                <div class="tool">T</div>
+
+                <div class="tool">○</div>
+
+                <div class="tool">◇</div>
+
+                <div class="tool">⌘</div>
+              </div>
+
+              <!-- Artboard -->
+
+              <div class="artboard">
+                <div class="app-header">
+                  <div class="app-logo"></div>
+
+                  <div class="app-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+
+                <!-- UI Hero -->
+
+                <div class="ui-hero">
+                  <div class="ui-hero-title"></div>
+
+                  <div class="ui-hero-text"></div>
+
+                  <div class="ui-hero-button"></div>
+                </div>
+
+                <!-- UI Cards -->
+
+                <div class="ui-cards">
+                  <div class="ui-card">
+                    <div class="ui-card-icon"></div>
+
+                    <div class="ui-card-title"></div>
+
+                    <div class="ui-card-line"></div>
+                  </div>
+
+                  <div class="ui-card">
+                    <div class="ui-card-icon"></div>
+
+                    <div class="ui-card-title"></div>
+
+                    <div class="ui-card-line"></div>
+                  </div>
+
+                  <div class="ui-card">
+                    <div class="ui-card-icon"></div>
+
+                    <div class="ui-card-title"></div>
+
+                    <div class="ui-card-line"></div>
+                  </div>
+
+                  <div class="ui-card">
+                    <div class="ui-card-icon"></div>
+
+                    <div class="ui-card-title"></div>
+
+                    <div class="ui-card-line"></div>
+                  </div>
+                </div>
+
+                <!-- Selection -->
+
+                <div class="selection"></div>
+
+                <!-- Cursor -->
+
+                <div class="design-cursor"></div>
+              </div>
+
+              <!-- Properties -->
+
+              <div class="properties">
+                <div class="property-title"></div>
+
+                <div class="property-line"></div>
+
+                <div class="property-line short"></div>
+
+                <div class="property-line"></div>
+
+                <div class="property-line short"></div>
+
+                <div class="property-line"></div>
+
+                <div class="property-color"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           INFO
+      ====================================================== -->
+
+      <div class="info-strip">
+        <div class="info-item">
+          <div class="info-icon">✦</div>
+
+          <h4>شهادة خبرة</h4>
+
+          <p>بعد إتمام الدورة</p>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">◈</div>
+
+          <h4>15 جلسة</h4>
+
+          <p>يليها مشروع تخرج لتطبيق ما تعلمت</p>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">◫</div>
+
+          <h4>مدة الدورة</h4>
+
+          <p>3 أشهر</p>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">∞</div>
+
+          <h4>دعم مستمر</h4>
+
+          <p>متابعة وتوجيه</p>
+        </div>
+      </div>
+
+      <!-- =====================================================
+           MODULES
+      ====================================================== -->
+
+      <div class="section-title">
+        <span>محاور الدورة</span>
+      </div>
+
+      <section class="modules">
+        <div class="module">
+          <div class="module-number">01</div>
+
+          <h3>مبادئ UI / UX</h3>
+
+          <p>
+            فهم الفرق بين تصميم الواجهة وتجربة المستخدم، والتعرف على المبادئ
+            الأساسية للتصميم الرقمي.
+          </p>
+        </div>
+
+        <div class="module">
+          <div class="module-number">02</div>
+
+          <h3>البحث عن المستخدم</h3>
+
+          <p>
+            دراسة احتياجات المستخدم وتحليل سلوكه وبناء Personas تساعدك على اتخاذ
+            قرارات تصميم أفضل.
+          </p>
+        </div>
+
+        <div class="module">
+          <div class="module-number">03</div>
+
+          <h3>Wireframe & Layout</h3>
+
+          <p>
+            تحويل الأفكار إلى مخططات واضحة وتنظيم المحتوى بطريقة تجعل المنتج سهل
+            الاستخدام.
+          </p>
+        </div>
+
+        <div class="module">
+          <div class="module-number">04</div>
+
+          <h3>تصميم الواجهات</h3>
+
+          <p>
+            اختيار الألوان والخطوط والمكونات وبناء واجهات حديثة ومتناسقة وقابلة
+            للتوسع.
+          </p>
+        </div>
+
+        <div class="module">
+          <div class="module-number">05</div>
+
+          <h3>Prototype & Interaction</h3>
+
+          <p>
+            إنشاء نماذج تفاعلية تحاكي المنتج الحقيقي وتجربة الانتقالات
+            والتفاعلات قبل التنفيذ.
+          </p>
+        </div>
+
+        <div class="module">
+          <div class="module-number">06</div>
+
+          <h3>اختبار وتحسين التصميم</h3>
+
+          <p>
+            اختبار التصميم مع المستخدمين واكتشاف المشاكل وتحسين التجربة للوصول
+            إلى منتج أكثر فعالية.
+          </p>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           WHY
+      ====================================================== -->
+
+      <div class="section-title">
+        <span>لماذا هذه الدورة؟</span>
+      </div>
+
+      <section class="why">
+        <div class="why-item">
+          <div class="why-icon">✦</div>
+          <p>مناسبة لجميع المستويات</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">◈</div>
+          <p>مشاريع تطبيقية حقيقية</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">⌁</div>
+          <p>تطوير الحس الإبداعي</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">▦</div>
+          <p>محتوى منظم ومحدث</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">◇</div>
+          <p>مشروع تخرج</p>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">🏅</div>
+          <p>شهادة خبرة</p>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           PRICE
+      ====================================================== -->
+
+      <div class="price-box">
+        <small> سعر الدورة </small>
+
+        <div class="price">
+          2,000
+          <span>ليرة سورية</span>
+        </div>
+
+        <small> تصميم وتجربة المستخدم UI / UX </small>
+
+        <br />
+
+        <small> 15 جلسة • مدة 3 أشهر </small>
+      </div>
+
+      <!-- =====================================================
+           CTA
+      ====================================================== -->
+
+      <section class="cta">
+        <div>
+          <h2>جاهز تصمّم بشكل مختلف؟</h2>
+
+          <p>ابدأ رحلتك في عالم UI / UX وحوّل أفكارك إلى تجارب رقمية حقيقية.</p>
+        </div>
+
+        <a
+          href="https://wa.me/963995980568"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-button"
+        >
+          ابدأ الآن
+          <span>↗</span>
+        </a>
+      </section>
+
+      <!-- =====================================================
+           CONTACT
+      ====================================================== -->
+
+      <section class="contact-section" id="contact">
+        <div class="section-title">
+          <span>📞 التواصل</span>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-card">
+            <div class="contact-icon-box">
+              <span>👨‍🏫</span>
+            </div>
+
+            <div class="contact-content">
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>يمكنك التواصل مباشرة عبر واتساب</p>
+            </div>
+
+            <a
+              href="https://wa.me/963995980568"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="whatsapp-btn"
+            >
+              <span class="whatsapp-icon"> ◉ </span>
+
+              <span> تواصل عبر واتساب </span>
+
+              <span class="arrow"> ← </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           FOOTER
+      ====================================================== -->
+
+      <footer>
+        <p>
+          جميع الحقوق محفوظة © 2027
+          <br />
+          اعداد المهندسة لين حسن الكردي
+        </p>
+      </footer>
+    </div>
+
+    <!-- =====================================================
+         SMALL INTERACTION SCRIPT
+    ====================================================== -->
+
+    <script>
+      const tools = document.querySelectorAll(".tool");
+
+      tools.forEach((tool) => {
+        tool.addEventListener("click", () => {
+          tools.forEach((item) => {
+            item.classList.remove("active");
+          });
+
+          tool.classList.add("active");
+        });
+      });
+
+      const cards = document.querySelectorAll(".ui-card");
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          cards.forEach((item) => {
+            item.style.transform = "";
+          });
+
+          card.style.transform = "translateY(-7px) scale(1.04)";
+
+          setTimeout(() => {
+            card.style.transform = "";
+          }, 700);
+        });
+      });
+    </script>
+  </body>
+</html>

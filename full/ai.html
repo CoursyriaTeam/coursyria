@@ -1,0 +1,1486 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>التعلم مع الذكاء الاصطناعي | Coursyria</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap");
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #08052b;
+        --bg2: #11064a;
+        --card: #10134b;
+        --purple: #8b35ff;
+        --violet: #b329ff;
+        --blue: #007cff;
+        --cyan: #00e5ff;
+        --pink: #ff28a8;
+        --orange: #ff9d00;
+        --text: #ffffff;
+        --muted: #bfc8ed;
+        --line: rgba(103, 106, 255, 0.45);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Cairo", sans-serif;
+        background:
+          radial-gradient(
+            circle at 15% 10%,
+            rgba(87, 0, 255, 0.35),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 85% 15%,
+            rgba(0, 151, 255, 0.25),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 50% 75%,
+            rgba(160, 0, 255, 0.2),
+            transparent 35%
+          ),
+          linear-gradient(135deg, #050321, #100548 45%, #07062d);
+        color: white;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.35;
+        background-image:
+          radial-gradient(circle, #fff 1px, transparent 1px),
+          radial-gradient(circle, #6c5cff 1px, transparent 1px);
+        background-size:
+          90px 90px,
+          140px 140px;
+        background-position:
+          20px 30px,
+          70px 80px;
+      }
+
+      .container {
+        width: min(1180px, 94%);
+        margin: auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* ================= HEADER ================= */
+
+      header {
+        padding: 25px 0 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+      }
+
+      .logo-shield {
+        width: 58px;
+        height: 68px;
+        border: 3px solid #7e8dff;
+        clip-path: polygon(50% 0, 92% 15%, 88% 70%, 50% 100%, 12% 70%, 8% 15%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(145deg, #15164b, #08082a);
+        box-shadow:
+          0 0 12px #306eff,
+          inset 0 0 18px rgba(68, 116, 255, 0.3);
+        font-size: 27px;
+        font-weight: 900;
+        flex-shrink: 0;
+      }
+
+      .logo-text {
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      .logo-text span {
+        color: #ffd51a;
+      }
+
+      .logo-sub {
+        font-size: 10px;
+        color: #c6c9df;
+        letter-spacing: 2px;
+        margin-top: -5px;
+      }
+
+      /* ================= HERO ================= */
+
+      .hero {
+        min-height: 470px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 30px;
+        padding: 35px 0 20px;
+      }
+
+      .hero-content {
+        order: 2;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 7px 28px;
+        border-radius: 30px;
+        background: linear-gradient(90deg, #7c19ff, #e827a8);
+        box-shadow: 0 0 22px rgba(168, 30, 255, 0.7);
+        font-size: 16px;
+        font-weight: 800;
+        margin-bottom: 18px;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 7vw, 82px);
+        line-height: 1.05;
+        font-weight: 900;
+        margin-bottom: 8px;
+        text-shadow: 0 0 22px rgba(255, 255, 255, 0.18);
+      }
+
+      .hero h1 .cyan {
+        color: var(--cyan);
+        text-shadow:
+          0 0 8px #00e5ff,
+          0 0 25px rgba(0, 229, 255, 0.6);
+      }
+
+      .hero h1 .pink {
+        color: #d83cff;
+        text-shadow:
+          0 0 10px #d83cff,
+          0 0 30px rgba(216, 60, 255, 0.5);
+      }
+
+      .english-title {
+        font-size: clamp(25px, 4vw, 42px);
+        font-weight: 800;
+        color: #a83cff;
+        letter-spacing: 1px;
+        word-break: break-word;
+      }
+
+      .hero-description {
+        color: #d7d8ef;
+        font-size: 17px;
+        line-height: 2;
+        margin: 20px 0;
+        max-width: 600px;
+      }
+
+      .hero-description strong {
+        color: var(--cyan);
+      }
+
+      .hero-visual {
+        order: 1;
+        height: 390px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .ai-circle {
+        width: 290px;
+        height: 290px;
+        max-width: 80vw;
+        max-height: 80vw;
+        border-radius: 50%;
+        border: 2px solid #8a2dff;
+        background: radial-gradient(circle, #201079, #100646 65%, #080326);
+        box-shadow:
+          0 0 30px #5b16ff,
+          0 0 90px rgba(109, 0, 255, 0.5),
+          inset 0 0 50px rgba(0, 220, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .ai-robot {
+        font-size: 125px;
+        filter: drop-shadow(0 0 12px #00cfff) drop-shadow(0 0 25px #7a2cff);
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+
+      .ai-bubble {
+        position: absolute;
+        padding: 12px 20px;
+        border: 1px solid #00dfff;
+        background: rgba(4, 8, 50, 0.9);
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 220, 255, 0.5);
+        color: #8ff7ff;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .bubble1 {
+        top: 30px;
+        right: -20px;
+      }
+
+      .bubble2 {
+        bottom: 30px;
+        left: -20px;
+      }
+
+      /* ================= FEATURES ================= */
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        border: 1px solid #3d5cff;
+        border-radius: 18px;
+        background: rgba(8, 12, 61, 0.8);
+        box-shadow: 0 0 25px rgba(42, 61, 255, 0.3);
+        overflow: hidden;
+        margin: 15px 0 35px;
+      }
+
+      .feature {
+        padding: 20px 12px;
+        text-align: center;
+        border-left: 1px solid rgba(100, 110, 255, 0.25);
+      }
+
+      .feature:last-child {
+        border-left: none;
+      }
+
+      .feature-icon {
+        width: 55px;
+        height: 55px;
+        margin: 0 auto 9px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 27px;
+        background: #181455;
+        border: 2px solid var(--cyan);
+        box-shadow: 0 0 16px rgba(0, 220, 255, 0.5);
+      }
+
+      .feature:nth-child(2) .feature-icon {
+        border-color: #008cff;
+      }
+
+      .feature:nth-child(3) .feature-icon {
+        border-color: #ff2db5;
+      }
+
+      .feature:nth-child(4) .feature-icon {
+        border-color: #ff9d00;
+      }
+
+      .feature:nth-child(5) .feature-icon {
+        border-color: #00e5d4;
+      }
+
+      .feature h3 {
+        font-size: 14px;
+      }
+
+      .feature p {
+        color: #bfc5e8;
+        font-size: 12px;
+      }
+
+      /* ================= SECTION TITLE ================= */
+
+      .section-title {
+        text-align: center;
+        margin: 35px auto 25px;
+      }
+
+      .section-title span {
+        display: inline-block;
+        padding: 8px 45px;
+        border-radius: 12px;
+        background: linear-gradient(90deg, #3c12a6, #711bca, #3c12a6);
+        border: 1px solid #9c50ff;
+        box-shadow: 0 0 18px rgba(135, 35, 255, 0.5);
+        font-size: 22px;
+        font-weight: 800;
+        max-width: 100%;
+      }
+
+      /* ================= MODULES ================= */
+
+      .modules {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+      }
+
+      .module {
+        position: relative;
+        min-height: 230px;
+        padding: 45px 15px 18px;
+        border-radius: 16px;
+        background: linear-gradient(
+          145deg,
+          rgba(24, 18, 76, 0.95),
+          rgba(9, 8, 42, 0.95)
+        );
+        border: 1px solid var(--purple);
+        box-shadow:
+          inset 0 0 20px rgba(110, 25, 255, 0.12),
+          0 0 14px rgba(116, 30, 255, 0.2);
+        transition: 0.3s;
+      }
+
+      .module:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 0 30px rgba(130, 50, 255, 0.55);
+      }
+
+      .module-number {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 42px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9px;
+        font-weight: 900;
+        background: #3515a4;
+        border: 1px solid #b36cff;
+      }
+
+      .module-icon {
+        font-size: 42px;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      .module:nth-child(2) {
+        border-color: #00cfff;
+      }
+
+      .module:nth-child(3) {
+        border-color: #00d5c9;
+      }
+
+      .module:nth-child(4) {
+        border-color: #ff9c00;
+      }
+
+      .module:nth-child(5) {
+        border-color: #ff35aa;
+      }
+
+      .module h3 {
+        text-align: center;
+        color: #fff;
+        font-size: 16px;
+        margin-bottom: 13px;
+      }
+
+      .module ul {
+        list-style: none;
+      }
+
+      .module li {
+        font-size: 11px;
+        color: #cbd0ec;
+        margin: 9px 0;
+        padding-right: 15px;
+        position: relative;
+        line-height: 1.5;
+      }
+
+      .module li::before {
+        content: "•";
+        color: #00e5ff;
+        position: absolute;
+        right: 0;
+        font-size: 16px;
+      }
+
+      /* ================= TWO COLUMNS ================= */
+
+      .two-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 25px;
+      }
+
+      .panel {
+        background: linear-gradient(
+          145deg,
+          rgba(16, 18, 72, 0.95),
+          rgba(8, 8, 40, 0.95)
+        );
+        border: 1px solid #4353bb;
+        border-radius: 18px;
+        padding: 22px;
+        box-shadow: inset 0 0 30px rgba(62, 47, 255, 0.08);
+      }
+
+      .panel h2 {
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      .check-list {
+        list-style: none;
+      }
+
+      .check-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 13px;
+        padding: 11px 0;
+        border-bottom: 1px solid rgba(117, 120, 220, 0.15);
+        color: #d9dcf3;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .check {
+        flex: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #14105d;
+        border: 1px solid #805cff;
+        color: #00e5ff;
+      }
+
+      /* ================= AI TOOLS ================= */
+
+      .tools {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+      }
+
+      .tool {
+        padding: 20px;
+        text-align: center;
+        border-radius: 16px;
+        background: rgba(14, 13, 64, 0.9);
+        border: 1px solid #473baf;
+      }
+
+      .tool-icon {
+        font-size: 42px;
+        margin-bottom: 10px;
+      }
+
+      .tool:nth-child(1) .tool-icon {
+        color: #00e5ff;
+      }
+
+      .tool:nth-child(2) .tool-icon {
+        color: #ff45c8;
+      }
+
+      .tool:nth-child(3) .tool-icon {
+        color: #ffc400;
+      }
+
+      .tool:nth-child(4) .tool-icon {
+        color: #8d6cff;
+      }
+
+      .tool h3 {
+        font-size: 15px;
+      }
+
+      .tool p {
+        font-size: 11px;
+        color: #bfc5e8;
+        margin-top: 6px;
+      }
+
+      /* ================= WHY ================= */
+
+      .why {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .why-card {
+        background: linear-gradient(145deg, #11135b, #08072d);
+        border: 1px solid #326dff;
+        border-radius: 18px;
+        padding: 25px;
+      }
+
+      .why-card h2 {
+        margin-bottom: 20px;
+        color: #00dcff;
+      }
+
+      .why-list {
+        list-style: none;
+      }
+
+      .why-list li {
+        padding: 12px;
+        border-bottom: 1px solid rgba(90, 100, 210, 0.2);
+        color: #e1e4f7;
+        line-height: 1.7;
+      }
+
+      .why-list li::before {
+        content: "✓";
+        color: #00f0ff;
+        font-weight: 900;
+        margin-left: 10px;
+      }
+
+      /* ================= INFO ================= */
+
+      .info-bar {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 30px 0;
+        border: 1px solid #653cff;
+        border-radius: 18px;
+        overflow: hidden;
+        background: rgba(9, 8, 45, 0.9);
+      }
+
+      .info {
+        text-align: center;
+        padding: 20px 10px;
+        border-left: 1px solid rgba(105, 100, 230, 0.25);
+      }
+
+      .info:last-child {
+        border-left: none;
+      }
+
+      .info-icon {
+        font-size: 30px;
+        color: #a94dff;
+      }
+
+      .info h3 {
+        font-size: 14px;
+      }
+
+      .info p {
+        color: #b7bce0;
+        font-size: 11px;
+      }
+
+      /* ================= PRICE ================= */
+
+      .price-box {
+        margin: 35px auto;
+        max-width: 700px;
+        padding: 30px 20px;
+        text-align: center;
+        border: 2px solid #a93cff;
+        border-radius: 25px;
+        background:
+          radial-gradient(
+            circle at center,
+            rgba(112, 26, 255, 0.28),
+            transparent 65%
+          ),
+          rgba(10, 7, 52, 0.95);
+        box-shadow:
+          0 0 30px rgba(128, 40, 255, 0.45),
+          inset 0 0 35px rgba(98, 35, 255, 0.15);
+      }
+
+      .price-label {
+        color: #c7c9e8;
+        font-size: 18px;
+      }
+
+      .price {
+        font-size: 48px;
+        font-weight: 900;
+        color: #fff;
+        text-shadow:
+          0 0 10px #7d43ff,
+          0 0 25px #7d43ff;
+      }
+
+      .price span {
+        color: #00eaff;
+        font-size: 22px;
+      }
+
+      .price-button {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 13px 45px;
+        border-radius: 30px;
+        background: linear-gradient(90deg, #6825ff, #d327ff);
+        color: white;
+        text-decoration: none;
+        font-weight: 800;
+        box-shadow: 0 0 25px rgba(176, 40, 255, 0.55);
+        transition: 0.3s;
+      }
+
+      .price-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(176, 40, 255, 0.8);
+      }
+
+      /* =====================================================
+         CONTACT
+      ====================================================== */
+
+      .contact-section {
+        margin-top: 45px;
+        padding: 10px 0 5px;
+      }
+
+      .section-heading {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      .section-heading span {
+        display: inline-block;
+        padding: 8px 45px;
+        border-radius: 12px;
+        background: linear-gradient(90deg, #3c12a6, #711bca, #3c12a6);
+        border: 1px solid #9c50ff;
+        box-shadow: 0 0 18px rgba(135, 35, 255, 0.5);
+        font-size: 22px;
+        font-weight: 800;
+        max-width: 100%;
+      }
+
+      .contact-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+
+      .contact-card {
+        width: min(650px, 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 14px;
+        padding: 30px 25px;
+        text-decoration: none;
+        color: #fff;
+        text-align: center;
+
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(0, 229, 255, 0.14),
+            transparent 45%
+          ),
+          linear-gradient(145deg, rgba(25, 20, 85, 0.97), rgba(8, 8, 42, 0.97));
+
+        border: 1px solid #00d9ff;
+        border-radius: 22px;
+
+        box-shadow:
+          0 0 18px rgba(0, 217, 255, 0.18),
+          inset 0 0 30px rgba(0, 217, 255, 0.05);
+
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-7px);
+        border-color: #00f2ff;
+        box-shadow:
+          0 0 28px rgba(0, 225, 255, 0.45),
+          0 0 60px rgba(108, 40, 255, 0.2);
+      }
+
+      .contact-icon-box {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+
+        font-size: 34px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(0, 210, 255, 0.2),
+          rgba(30, 20, 100, 0.85)
+        );
+
+        border: 1px solid #00dfff;
+
+        box-shadow:
+          0 0 18px rgba(0, 220, 255, 0.35),
+          inset 0 0 15px rgba(0, 220, 255, 0.08);
+      }
+
+      .contact-content h3 {
+        font-size: 18px;
+        font-weight: 800;
+        margin-bottom: 4px;
+        color: #fff;
+      }
+
+      .contact-content p {
+        font-size: 13px;
+        color: #aeefff;
+        line-height: 1.8;
+      }
+
+      .whatsapp-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        margin-top: 5px;
+        padding: 12px 25px;
+
+        border-radius: 30px;
+
+        background: linear-gradient(90deg, #18c95b, #08a943);
+        color: #fff;
+        text-decoration: none;
+
+        font-size: 14px;
+        font-weight: 800;
+
+        box-shadow: 0 0 18px rgba(24, 201, 91, 0.35);
+
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .whatsapp-btn:hover {
+        transform: scale(1.04);
+        box-shadow: 0 0 28px rgba(24, 201, 91, 0.6);
+      }
+
+      .whatsapp-icon {
+        width: 23px;
+        height: 23px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+
+        font-size: 14px;
+      }
+
+      .arrow {
+        font-size: 18px;
+        margin-right: 3px;
+      }
+
+      /* ================= FOOTER ================= */
+
+      footer {
+        margin-top: 45px;
+        padding: 25px 15px;
+
+        text-align: center;
+
+        border-top: 1px solid rgba(100, 100, 220, 0.3);
+
+        background: rgba(5, 5, 30, 0.35);
+
+        color: #bfc5e8;
+        font-size: 13px;
+
+        line-height: 1.9;
+      }
+
+      /* ================= COPYRIGHT ================= */
+
+      .copyright {
+        text-align: center;
+        padding: 15px 10px 25px;
+
+        color: #8f96c2;
+        font-size: 12px;
+
+        border-top: 1px solid rgba(100, 100, 220, 0.12);
+      }
+
+      /* ================= RESPONSIVE ================= */
+
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .hero-content {
+          order: 1;
+        }
+
+        .hero-visual {
+          order: 2;
+          height: 330px;
+        }
+
+        .hero-description {
+          margin-right: auto;
+          margin-left: auto;
+        }
+
+        .modules {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .features {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .tools {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          width: min(94%, 520px);
+        }
+
+        header {
+          justify-content: center;
+          text-align: right;
+        }
+
+        .logo-text {
+          font-size: 24px;
+        }
+
+        .hero {
+          padding-top: 20px;
+          min-height: auto;
+        }
+
+        .hero h1 {
+          font-size: clamp(40px, 13vw, 52px);
+        }
+
+        .english-title {
+          font-size: 25px;
+          letter-spacing: 0;
+        }
+
+        .hero-description {
+          font-size: 14px;
+        }
+
+        .hero-visual {
+          height: 300px;
+        }
+
+        .ai-circle {
+          width: 230px;
+          height: 230px;
+        }
+
+        .ai-robot {
+          font-size: 90px;
+        }
+
+        .ai-bubble {
+          padding: 8px 12px;
+          font-size: 12px;
+        }
+
+        .bubble1 {
+          top: 10px;
+          right: -5px;
+        }
+
+        .bubble2 {
+          bottom: 10px;
+          left: -5px;
+        }
+
+        .features {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .feature {
+          border-bottom: 1px solid rgba(100, 110, 255, 0.2);
+          padding: 16px 8px;
+        }
+
+        .feature h3 {
+          font-size: 12px;
+        }
+
+        .feature p {
+          font-size: 10px;
+        }
+
+        .modules {
+          grid-template-columns: 1fr;
+        }
+
+        .module {
+          min-height: auto;
+        }
+
+        .two-columns,
+        .why {
+          grid-template-columns: 1fr;
+        }
+
+        .tools {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+
+        .tool {
+          padding: 15px 8px;
+        }
+
+        .info-bar {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .info {
+          padding: 16px 8px;
+          border-bottom: 1px solid rgba(105, 100, 230, 0.25);
+        }
+
+        .price-box {
+          padding: 25px 15px;
+        }
+
+        .price {
+          font-size: 38px;
+        }
+
+        .price span {
+          font-size: 17px;
+        }
+
+        .price-button {
+          width: 100%;
+          padding: 14px 15px;
+        }
+
+        .section-title {
+          margin: 30px auto 20px;
+        }
+
+        .section-title span,
+        .section-heading span {
+          font-size: 16px;
+          padding: 9px 18px;
+        }
+
+        .contact-section {
+          margin-top: 35px;
+        }
+
+        .contact-card {
+          padding: 25px 15px;
+        }
+
+        .contact-icon-box {
+          width: 60px;
+          height: 60px;
+          font-size: 29px;
+        }
+
+        .contact-content h3 {
+          font-size: 14px;
+        }
+
+        .contact-content p {
+          font-size: 11px;
+        }
+
+        .whatsapp-btn {
+          width: 100%;
+          max-width: 300px;
+          padding: 13px 15px;
+          font-size: 13px;
+        }
+
+        footer {
+          margin-top: 35px;
+          padding: 22px 10px;
+          font-size: 12px;
+        }
+
+        .copyright {
+          font-size: 11px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .features,
+        .tools,
+        .info-bar {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-visual {
+          height: 270px;
+        }
+
+        .ai-circle {
+          width: 200px;
+          height: 200px;
+        }
+
+        .ai-robot {
+          font-size: 75px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- ================= HEADER ================= -->
+
+      <header>
+        <div class="logo">
+          <div class="logo-shield">C</div>
+
+          <div>
+            <div class="logo-text">Cours<span>yria</span></div>
+            <div class="logo-sub">تعلم • تطور • أنجز</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ================= HERO ================= -->
+
+      <section class="hero">
+        <div class="hero-content">
+          <div class="badge">دورة احترافية</div>
+
+          <h1>
+            التعلّم
+            <br />
+            مع <span class="cyan">الذكاء</span>
+            <span class="pink">الاصطناعي</span>
+          </h1>
+
+          <div class="english-title">LEARNING WITH AI</div>
+
+          <p class="hero-description">
+            اكتشف كيف يساعدك <strong>الذكاء الاصطناعي</strong>
+            في التعلم والبحث والإنتاج والإبداع.
+            <br />
+            <strong>تعلّم أذكى .. أنجز أكثر ✦</strong>
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="ai-circle">
+            <div class="ai-robot">🤖</div>
+
+            <div class="ai-bubble bubble1">AI ✨</div>
+
+            <div class="ai-bubble bubble2">تعلّم بذكاء</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FEATURES ================= -->
+
+      <section class="features">
+        <div class="feature">
+          <div class="feature-icon">📜</div>
+          <h3>شهادة خبرة</h3>
+          <p>ومشروع تخرج</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">💡</div>
+          <h3>إبداع وإنتاجية أعلى</h3>
+          <p>أنجز أعمالك بذكاء</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🚀</div>
+          <h3>تطوير المهارات</h3>
+          <p>مهارات للمستقبل</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🎯</div>
+          <h3>توفير الوقت والجهد</h3>
+          <p>اعمل بذكاء أكثر</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🧠</div>
+          <h3>تعلّم ذكي باستخدام AI</h3>
+          <p>استفد من قوة الذكاء الاصطناعي</p>
+        </div>
+      </section>
+
+      <!-- ================= MODULES ================= -->
+
+      <div class="section-title">
+        <span>❯❯ محاور الدورة ❮❮</span>
+      </div>
+
+      <section class="modules">
+        <div class="module">
+          <div class="module-number">01</div>
+          <div class="module-icon">🤖</div>
+
+          <h3>مدخل إلى الذكاء الاصطناعي</h3>
+
+          <ul>
+            <li>ما هو الذكاء الاصطناعي؟</li>
+            <li>أين نستخدمه؟</li>
+            <li>كيف يساعدك في التعلم؟</li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <div class="module-number">02</div>
+          <div class="module-icon">🔍</div>
+
+          <h3>البحث والتعلّم بـ AI</h3>
+
+          <ul>
+            <li>البحث الذكي</li>
+            <li>التفكير بالمعلومات</li>
+            <li>فهم أسرع وأعمق</li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <div class="module-number">03</div>
+          <div class="module-icon">📝</div>
+
+          <h3>إنتاج المحتوى باحتراف</h3>
+
+          <ul>
+            <li>كتابة المقالات والتقارير</li>
+            <li>إنشاء عروض تقديمية</li>
+            <li>التلخيص وتحويل الأفكار</li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <div class="module-number">04</div>
+          <div class="module-icon">🎨</div>
+
+          <h3>الإبداع والتصميم بمساعدة AI</h3>
+
+          <ul>
+            <li>تصميم صور احترافية</li>
+            <li>إنشاء أفكار مبتكرة</li>
+            <li>تحسين جودة المحتوى</li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <div class="module-number">05</div>
+          <div class="module-icon">📈</div>
+
+          <h3>تنظيم الوقت وزيادة الإنتاجية</h3>
+
+          <ul>
+            <li>تخطيط المهام</li>
+            <li>إدارة الأعمال</li>
+            <li>التركيز على الأهم</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ================= WHAT YOU LEARN ================= -->
+
+      <section class="two-columns">
+        <div class="panel">
+          <h2>ماذا ستتعلم؟</h2>
+
+          <ul class="check-list">
+            <li>
+              <span class="check">✓</span>
+              مقدمة في تحليل البيانات
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              تعزيز قدرتك على البحث والتعلّم
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              أساسيات استخدام أدوات الذكاء الاصطناعي
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              كتابة محتوى أفضل وأسرع
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              تحسين طريقة التفكير وتنظيم الأفكار
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              استخدام AI في الدراسة والعمل
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h2>لماذا هذه الدورة؟</h2>
+
+          <ul class="check-list">
+            <li>
+              <span class="check">✓</span>
+              محتوى عملي وتطبيقي
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              مشاريع وأمثلة واقعية
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              مناسبة للمبتدئين والمحترفين
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              دعم ومتابعة مستمرة
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ================= AI TOOLS ================= -->
+
+      <div class="section-title">
+        <span>⚙ أدوات الذكاء الاصطناعي</span>
+      </div>
+
+      <section class="tools">
+        <div class="tool">
+          <div class="tool-icon">◉</div>
+          <h3>ChatGPT</h3>
+          <p>المساعدة والكتابة والتعلّم</p>
+        </div>
+
+        <div class="tool">
+          <div class="tool-icon">✦</div>
+          <h3>Gemini</h3>
+          <p>البحث والإنتاج الذكي</p>
+        </div>
+
+        <div class="tool">
+          <div class="tool-icon">AI</div>
+          <h3>Copilot</h3>
+          <p>المساعدة والإنتاجية</p>
+        </div>
+
+        <div class="tool">
+          <div class="tool-icon">✧</div>
+          <h3>Claude</h3>
+          <p>الكتابة وتحليل المحتوى</p>
+        </div>
+      </section>
+
+      <!-- ================= WHY ================= -->
+
+      <div class="section-title">
+        <span>لماذا هذه الدورة؟</span>
+      </div>
+
+      <section class="why">
+        <div class="why-card">
+          <h2>ماذا ستحصل؟</h2>
+
+          <ul class="why-list">
+            <li>شهادة إتمام الدورة</li>
+            <li>محتوى عملي وتطبيقي</li>
+            <li>مشاريع واقعية</li>
+            <li>مهارات تساعدك في المستقبل</li>
+            <li>معرفة أدوات الذكاء الاصطناعي</li>
+          </ul>
+        </div>
+
+        <div class="why-card">
+          <h2>ماذا ستحقق؟</h2>
+
+          <ul class="why-list">
+            <li>توفير الوقت والجهد</li>
+            <li>إنتاج محتوى أفضل</li>
+            <li>تطوير مهاراتك</li>
+            <li>تحسين طريقة تعلمك</li>
+            <li>استخدام AI في الدراسة والعمل</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ================= COURSE INFO ================= -->
+
+      <section class="info-bar">
+        <div class="info">
+          <div class="info-icon">🎓</div>
+          <h3>شهادة خبرة</h3>
+          <p>ومشروع تخرج</p>
+        </div>
+
+        <div class="info">
+          <div class="info-icon">🌐</div>
+          <h3>الدورة أونلاين</h3>
+          <p>تعلم من أي مكان</p>
+        </div>
+
+        <div class="info">
+          <div class="info-icon">📚</div>
+          <h3>عدد الجلسات</h3>
+          <p>7 جلسات تدريبية</p>
+        </div>
+
+        <div class="info">
+          <div class="info-icon">📅</div>
+          <h3>مدة الدورة</h3>
+          <p>شهر كامل</p>
+        </div>
+      </section>
+
+      <!-- ================= PRICE ================= -->
+
+      <section class="price-box">
+        <div class="price-label">ابدأ رحلتك الآن 🚀</div>
+
+        <div class="price">700 <span>ليرة سورية</span></div>
+
+        <p style="color: #c4c8e8; margin-top: 5px">
+          7 جلسات تدريبية خلال شهر كامل
+        </p>
+
+        <p style="color: #c4c8e8; margin-top: 5px">تعلّم أذكى .. أنجز أكثر!</p>
+
+        <a
+          href="https://wa.me/963995980568"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="price-button"
+        >
+          ابدأ الدورة الآن ✨
+        </a>
+      </section>
+
+      <!-- =====================================================
+           CONTACT
+      ====================================================== -->
+
+      <section class="section contact-section" id="contact">
+        <div class="section-heading">
+          <span>📞 التواصل</span>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-card">
+            <div class="contact-icon-box">
+              <span>👨‍🏫</span>
+            </div>
+
+            <div class="contact-content">
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>يمكنك التواصل مباشرة عبر واتساب</p>
+            </div>
+
+            <a
+              href="https://wa.me/963995980568"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="whatsapp-btn"
+            >
+              <span class="whatsapp-icon">◉</span>
+
+              <span> تواصل عبر واتساب </span>
+
+              <span class="arrow"> ← </span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+      <p>
+        جميع الحقوق محفوظة © 2027
+        <br />
+        اعداد المهندسة لين حسن الكردي
+      </p>
+    </footer>
+  </body>
+</html>
