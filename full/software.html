@@ -1,5 +1,5 @@
-
 <!doctype html>
+
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
@@ -16,10 +16,6 @@
     />
 
     <style>
-      /* =========================================================
-       ROOT
-    ========================================================= */
-
       :root {
         --bg: #050812;
         --bg2: #08101e;
@@ -41,15 +37,9 @@
         --muted: #8c9bb0;
 
         --border: rgba(112, 180, 255, 0.16);
-
         --shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
-
         --glow: 0 0 45px rgba(66, 217, 255, 0.15);
       }
-
-      /* =========================================================
-       RESET
-    ========================================================= */
 
       * {
         margin: 0;
@@ -76,21 +66,14 @@
             transparent 25%
           ),
           linear-gradient(180deg, #040711 0%, #070c17 50%, #040711 100%);
-
         overflow-x: hidden;
       }
-
-      /* =========================================================
-       BACKGROUND GRID
-    ========================================================= */
 
       body::before {
         content: "";
         position: fixed;
         inset: 0;
-
         pointer-events: none;
-
         opacity: 0.22;
 
         background-image:
@@ -102,14 +85,12 @@
           );
 
         background-size: 55px 55px;
-
         mask-image: linear-gradient(to bottom, black, transparent 85%);
-
         z-index: -5;
       }
 
       /* =========================================================
-       FLOATING LIGHTS
+       AMBIENT
     ========================================================= */
 
       .ambient {
@@ -254,6 +235,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         gap: 20px;
       }
 
@@ -297,6 +279,7 @@
 
       .logo:hover .logo-box {
         transform: rotate(-5deg) scale(1.05);
+
         box-shadow:
           inset 0 0 20px rgba(66, 217, 255, 0.12),
           0 0 30px rgba(66, 217, 255, 0.25);
@@ -319,6 +302,7 @@
         background: rgba(69, 240, 163, 0.05);
 
         color: #b9f9dc;
+
         font-size: 12px;
         font-weight: 700;
       }
@@ -326,7 +310,9 @@
       .status-dot {
         width: 7px;
         height: 7px;
+
         border-radius: 50%;
+
         background: var(--green);
         box-shadow: 0 0 12px var(--green);
 
@@ -342,12 +328,22 @@
 
       /* =========================================================
        HERO
+       TEXT LEFT / VISUAL RIGHT
     ========================================================= */
 
       .hero {
         min-height: 760px;
 
         display: grid;
+
+        /*
+        مهم:
+        بسبب dir="rtl"
+        العنصر الأول يظهر على اليمين.
+        لذلك استخدمنا explicit placement
+        حتى نضمن النص يسار والرسمة يمين.
+      */
+
         grid-template-columns: 1fr 1.05fr;
 
         gap: 55px;
@@ -357,8 +353,20 @@
         padding: 75px 0 90px;
       }
 
+      /* النص — يسار */
       .hero-content {
         position: relative;
+
+        grid-column: 1;
+        grid-row: 1;
+
+        text-align: right;
+      }
+
+      /* الرسمة — يمين */
+      .software-area {
+        grid-column: 2;
+        grid-row: 1;
       }
 
       .eyebrow {
@@ -367,7 +375,6 @@
         gap: 9px;
 
         padding: 8px 15px;
-
         margin-bottom: 22px;
 
         border: 1px solid rgba(66, 217, 255, 0.22);
@@ -378,14 +385,14 @@
         color: #a9eefe;
 
         font-family: "JetBrains Mono", monospace;
+
         font-size: 12px;
         font-weight: 600;
-
-        box-shadow: 0 0 25px rgba(66, 217, 255, 0.05);
       }
 
       .eyebrow::before {
         content: "";
+
         width: 7px;
         height: 7px;
 
@@ -397,9 +404,11 @@
 
       .hero h1 {
         font-size: clamp(48px, 7vw, 86px);
+
         line-height: 1.02;
 
         font-weight: 900;
+
         letter-spacing: -3px;
 
         margin-bottom: 22px;
@@ -446,16 +455,18 @@
         color: var(--muted);
 
         font-size: 15px;
+
         line-height: 2.05;
       }
 
       /* =========================================================
-       HERO BUTTONS
+       BUTTONS
     ========================================================= */
 
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
+
         gap: 12px;
 
         margin-top: 30px;
@@ -465,8 +476,10 @@
         position: relative;
 
         display: inline-flex;
+
         align-items: center;
         justify-content: center;
+
         gap: 9px;
 
         padding: 14px 23px;
@@ -476,6 +489,7 @@
         text-decoration: none;
 
         font-weight: 800;
+
         font-size: 14px;
 
         transition: 0.3s;
@@ -487,7 +501,6 @@
         content: "";
 
         position: absolute;
-
         inset: 0;
 
         transform: translateX(-110%);
@@ -516,6 +529,7 @@
 
       .btn-primary:hover {
         transform: translateY(-4px);
+
         box-shadow: 0 15px 40px rgba(56, 189, 248, 0.28);
       }
 
@@ -536,12 +550,14 @@
       }
 
       /* =========================================================
-       HERO MINI INFO
+       HERO MINI
     ========================================================= */
 
       .hero-mini {
         display: flex;
+
         align-items: center;
+
         gap: 18px;
 
         margin-top: 32px;
@@ -558,6 +574,7 @@
         color: #e9f5ff;
 
         font-size: 14px;
+
         margin-bottom: 2px;
       }
 
@@ -569,138 +586,125 @@
       }
 
       /* =========================================================
-       LAPTOP AREA
+       SOFTWARE DASHBOARD
     ========================================================= */
 
-      .laptop-area {
-        min-height: 480px;
+      .software-area {
+        min-height: 520px;
 
         display: grid;
         place-items: center;
 
         position: relative;
 
-        perspective: 1200px;
+        perspective: 1400px;
       }
 
-      .laptop-glow {
+      .software-glow {
         position: absolute;
 
-        width: 480px;
-        height: 480px;
+        width: 520px;
+        height: 520px;
 
         border-radius: 50%;
 
         background: radial-gradient(
           circle,
-          rgba(66, 217, 255, 0.18),
-          rgba(139, 92, 246, 0.09) 35%,
-          transparent 70%
+          rgba(66, 217, 255, 0.2),
+          rgba(139, 92, 246, 0.1) 38%,
+          transparent 72%
         );
 
         filter: blur(10px);
 
-        animation: laptopGlow 5s ease-in-out infinite;
+        animation: softwareGlow 5s ease-in-out infinite;
+
+        pointer-events: none;
       }
 
-      @keyframes laptopGlow {
+      @keyframes softwareGlow {
         50% {
           transform: scale(1.13);
           opacity: 0.65;
         }
       }
 
-      .laptop {
-        width: min(520px, 100%);
+      .software-dashboard {
+        width: min(590px, 100%);
 
         position: relative;
-        z-index: 3;
 
-        transform: rotateY(-8deg) rotateX(4deg) rotateZ(0.5deg);
+        z-index: 5;
+
+        transform-style: preserve-3d;
+
+        transform: rotateY(-5deg) rotateX(3deg);
 
         transition: transform 0.15s ease-out;
       }
 
-      .screen-frame {
+      /* =========================================================
+       DEV WINDOW
+    ========================================================= */
+
+      .dev-window {
         position: relative;
 
-        padding: 12px;
+        border: 1px solid rgba(66, 217, 255, 0.2);
 
-        border-radius: 22px 22px 10px 10px;
-
-        background: linear-gradient(145deg, #263246, #080d18);
-
-        border: 1px solid rgba(255, 255, 255, 0.13);
-
-        box-shadow:
-          0 35px 60px rgba(0, 0, 0, 0.55),
-          0 0 0 1px rgba(66, 217, 255, 0.07);
-      }
-
-      .screen {
-        position: relative;
-
-        height: 320px;
+        border-radius: 20px;
 
         overflow: hidden;
 
-        border-radius: 13px 13px 5px 5px;
+        background: linear-gradient(
+          145deg,
+          rgba(10, 20, 36, 0.98),
+          rgba(4, 9, 19, 0.98)
+        );
 
-        background:
-          radial-gradient(
-            circle at 50% 10%,
-            rgba(66, 217, 255, 0.07),
-            transparent 35%
-          ),
-          #050914;
+        box-shadow:
+          0 35px 70px rgba(0, 0, 0, 0.55),
+          0 0 45px rgba(66, 217, 255, 0.08);
 
-        border: 1px solid rgba(66, 217, 255, 0.17);
-
-        font-family: "JetBrains Mono", monospace;
+        backdrop-filter: blur(15px);
       }
 
-      .screen::after {
+      .dev-window::before {
         content: "";
 
         position: absolute;
-        left: 0;
-        right: 0;
-
-        height: 2px;
-
-        background: rgba(66, 217, 255, 0.12);
-
-        box-shadow: 0 0 15px rgba(66, 217, 255, 0.2);
-
-        animation: scan 5s linear infinite;
+        inset: 0;
 
         pointer-events: none;
-      }
 
-      @keyframes scan {
-        from {
-          top: -5px;
-        }
+        background: linear-gradient(
+          rgba(255, 255, 255, 0.018) 1px,
+          transparent 1px
+        );
 
-        to {
-          top: 100%;
-        }
+        background-size: 100% 28px;
+
+        opacity: 0.35;
       }
 
       /* =========================================================
-       SCREEN TOPBAR
+       DEV HEADER
     ========================================================= */
 
-      .screen-top {
-        height: 39px;
+      .dev-header {
+        height: 46px;
 
-        display: flex;
+        display: grid;
+
+        grid-template-columns: 100px 1fr 115px;
+
         align-items: center;
-        justify-content: space-between;
 
-        padding: 0 14px;
+        gap: 10px;
 
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 0 13px;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
         background: rgba(255, 255, 255, 0.025);
       }
@@ -711,8 +715,8 @@
       }
 
       .window-dots span {
-        width: 8px;
-        height: 8px;
+        width: 9px;
+        height: 9px;
         border-radius: 50%;
       }
 
@@ -728,53 +732,307 @@
         background: #45f0a3;
       }
 
-      .screen-title {
-        color: #6f8198;
+      .dev-title {
+        text-align: center;
+
+        color: #91a4ba;
+
+        font-family: "JetBrains Mono", monospace;
+
         font-size: 9px;
       }
 
+      .dev-status {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: flex-end;
+
+        gap: 5px;
+
+        color: #6ef5b1;
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 7px;
+      }
+
+      .dev-status span {
+        width: 5px;
+        height: 5px;
+
+        border-radius: 50%;
+
+        background: var(--green);
+
+        box-shadow: 0 0 9px var(--green);
+
+        animation: statusPulse 1.5s infinite;
+      }
+
       /* =========================================================
-       SCREEN CONTENT
+       DEV BODY
     ========================================================= */
 
-      .screen-content {
-        position: relative;
-        height: calc(100% - 39px);
-        padding: 18px;
+      .dev-body {
+        display: grid;
+
+        grid-template-columns: 55px 1fr 155px;
+
+        min-height: 330px;
       }
 
-      .terminal {
-        width: 58%;
+      .dev-sidebar {
+        display: flex;
 
-        color: #8ca4bb;
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 14px;
+
+        padding: 14px 7px;
+
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+
+        background: rgba(255, 255, 255, 0.018);
+      }
+
+      .sidebar-logo {
+        width: 34px;
+        height: 34px;
+
+        display: grid;
+
+        place-items: center;
+
+        margin-bottom: 5px;
+
+        border-radius: 10px;
+
+        color: var(--cyan);
+
+        border: 1px solid rgba(66, 217, 255, 0.25);
+
+        background: rgba(66, 217, 255, 0.06);
+
+        font-family: "JetBrains Mono", monospace;
 
         font-size: 10px;
-        line-height: 2;
 
-        opacity: 0.85;
+        box-shadow: 0 0 20px rgba(66, 217, 255, 0.08);
       }
 
-      .terminal .cyan {
+      .side-item {
+        width: 40px;
+        height: 48px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 3px;
+
+        border: 1px solid transparent;
+
+        border-radius: 9px;
+
+        color: #657a92;
+
+        cursor: pointer;
+
+        transition: 0.25s;
+      }
+
+      .side-item span {
+        font-size: 14px;
+      }
+
+      .side-item small {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 6px;
+      }
+
+      .side-item:hover,
+      .side-item.active {
         color: var(--cyan);
+
+        border-color: rgba(66, 217, 255, 0.2);
+
+        background: rgba(66, 217, 255, 0.07);
+
+        box-shadow: 0 0 18px rgba(66, 217, 255, 0.06);
       }
 
-      .terminal .green {
+      /* =========================================================
+       CODE AREA
+    ========================================================= */
+
+      .code-area {
+        min-width: 0;
+
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .code-tabs {
+        height: 38px;
+
+        display: flex;
+
+        align-items: stretch;
+
+        overflow: hidden;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+        background: rgba(0, 0, 0, 0.12);
+      }
+
+      .code-tab {
+        display: flex;
+
+        align-items: center;
+
+        gap: 5px;
+
+        padding: 0 10px;
+
+        color: #60738b;
+
+        border-left: 1px solid rgba(255, 255, 255, 0.04);
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 7px;
+
+        cursor: pointer;
+
+        transition: 0.25s;
+
+        white-space: nowrap;
+      }
+
+      .code-tab:hover {
+        color: #b9d0e7;
+      }
+
+      .code-tab.active {
+        color: #dceeff;
+
+        background: rgba(66, 217, 255, 0.055);
+
+        box-shadow: inset 0 -2px var(--cyan);
+      }
+
+      .file-icon {
+        color: #f7df68;
+
+        font-size: 6px;
+
+        font-weight: 800;
+      }
+
+      .file-icon.html {
+        color: #ff795f;
+      }
+
+      .file-icon.css {
+        color: #5cb8ff;
+      }
+
+      /* =========================================================
+       CODE EDITOR
+    ========================================================= */
+
+      .code-editor {
+        padding: 20px 12px;
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 8px;
+
+        line-height: 2.05;
+
+        color: #8ea1b7;
+      }
+
+      .code-line {
+        min-height: 17px;
+
+        white-space: nowrap;
+      }
+
+      .line-number {
+        display: inline-block;
+
+        width: 25px;
+
+        color: #34465c;
+
+        user-select: none;
+      }
+
+      .purple {
+        color: #c59cff;
+      }
+
+      .blue {
+        color: #67bfff;
+      }
+
+      .cyan {
+        color: #5ce9ff;
+      }
+
+      .green {
+        color: #69eeb0;
+      }
+
+      .yellow {
+        color: #ffd86a;
+      }
+
+      /* =========================================================
+       TERMINAL
+    ========================================================= */
+
+      .terminal-mini {
+        margin-top: 18px;
+
+        padding-top: 13px;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+        color: #6f8299;
+
+        font-size: 7px;
+
+        line-height: 2.1;
+      }
+
+      .terminal-green {
         color: var(--green);
       }
 
-      .terminal .purple {
-        color: #b49cff;
+      .terminal-blue {
+        color: var(--blue);
       }
 
-      .typing-line {
-        display: inline;
+      .terminal-success {
+        color: #65efac;
+        margin-right: 5px;
       }
 
-      .cursor {
+      .terminal-cursor {
         display: inline-block;
 
-        width: 6px;
-        height: 11px;
+        width: 5px;
+        height: 9px;
 
         margin-right: 3px;
 
@@ -792,182 +1050,438 @@
       }
 
       /* =========================================================
-       SOFTWARE WINDOWS
+       SYSTEM PANEL
     ========================================================= */
 
-      .software-window {
-        position: absolute;
+      .system-panel {
+        padding: 16px 11px;
 
-        width: 175px;
+        background: linear-gradient(
+          180deg,
+          rgba(66, 217, 255, 0.025),
+          rgba(139, 92, 246, 0.025)
+        );
+      }
+
+      .panel-title {
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        margin-bottom: 19px;
+
+        color: #a8bad0;
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 8px;
+
+        font-weight: 600;
+      }
+
+      .live-dot {
+        color: var(--green);
+
+        font-size: 6px;
+
+        letter-spacing: 1px;
+      }
+
+      .monitor-item {
+        margin-bottom: 15px;
+      }
+
+      .monitor-head {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        margin-bottom: 6px;
+
+        color: #667b92;
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 7px;
+      }
+
+      .monitor-head strong {
+        color: #d7e9fa;
+
+        font-size: 7px;
+      }
+
+      .monitor-bar {
+        height: 5px;
+
+        overflow: hidden;
+
+        border-radius: 10px;
+
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .monitor-bar span {
+        display: block;
+
+        width: 72%;
+
+        height: 100%;
+
+        border-radius: inherit;
+
+        background: linear-gradient(90deg, #1687ff, #67e8f9);
+
+        box-shadow: 0 0 12px rgba(66, 217, 255, 0.25);
+
+        transition: width 0.8s ease;
+      }
+
+      .monitor-bar.purple-bar span {
+        width: 64%;
+
+        background: linear-gradient(90deg, #8b5cf6, #d946ef);
+      }
+
+      .monitor-bar.green-bar span {
+        width: 38%;
+
+        background: linear-gradient(90deg, #45f0a3, #67e8f9);
+      }
+
+      /* =========================================================
+       ACTIVITY
+    ========================================================= */
+
+      .activity-box {
+        margin-top: 20px;
 
         padding: 10px;
 
-        border: 1px solid rgba(117, 174, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.06);
 
-        border-radius: 10px;
+        border-radius: 9px;
 
-        background: rgba(9, 17, 31, 0.86);
-
-        box-shadow:
-          0 18px 35px rgba(0, 0, 0, 0.35),
-          0 0 25px rgba(66, 217, 255, 0.05);
-
-        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.02);
       }
 
-      .window-one {
-        right: 15px;
-        top: 27px;
-
-        animation: windowFloatOne 4s ease-in-out infinite;
-      }
-
-      .window-two {
-        right: 75px;
-        bottom: 24px;
-
-        width: 190px;
-
-        animation: windowFloatTwo 5s ease-in-out infinite;
-      }
-
-      @keyframes windowFloatOne {
-        50% {
-          transform: translateY(-9px);
-        }
-      }
-
-      @keyframes windowFloatTwo {
-        50% {
-          transform: translateY(8px);
-        }
-      }
-
-      .window-header {
+      .activity-title {
         display: flex;
+
         justify-content: space-between;
 
-        margin-bottom: 9px;
+        margin-bottom: 10px;
 
-        color: #71869d;
+        color: #60738a;
 
-        font-size: 8px;
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 6px;
       }
 
-      .window-body {
+      .activity-graph {
+        height: 50px;
+
         display: flex;
-        gap: 6px;
+
+        align-items: flex-end;
+
+        gap: 4px;
       }
 
-      .bar {
-        height: 5px;
-        border-radius: 10px;
-
-        background: linear-gradient(90deg, var(--blue), var(--purple));
-      }
-
-      .bar:nth-child(1) {
-        width: 65%;
-      }
-
-      .bar:nth-child(2) {
-        width: 40%;
-      }
-
-      .bar:nth-child(3) {
-        width: 80%;
-      }
-
-      .mini-bars {
-        display: flex;
-        align-items: end;
-        gap: 5px;
-
-        height: 45px;
-      }
-
-      .mini-bars i {
+      .activity-graph i {
         display: block;
 
-        width: 12px;
+        flex: 1;
+
+        min-width: 3px;
 
         border-radius: 3px 3px 0 0;
 
         background: linear-gradient(to top, #1687ff, #67e8f9);
 
-        animation: barPulse 2s ease-in-out infinite;
+        opacity: 0.75;
+
+        animation: graphPulse 2.5s ease-in-out infinite;
       }
 
-      .mini-bars i:nth-child(1) {
-        height: 30%;
+      .activity-graph i:nth-child(2) {
+        animation-delay: 0.15s;
       }
 
-      .mini-bars i:nth-child(2) {
-        height: 65%;
-        animation-delay: 0.2s;
+      .activity-graph i:nth-child(3) {
+        animation-delay: 0.3s;
       }
 
-      .mini-bars i:nth-child(3) {
-        height: 45%;
-        animation-delay: 0.4s;
+      .activity-graph i:nth-child(4) {
+        animation-delay: 0.45s;
       }
 
-      .mini-bars i:nth-child(4) {
-        height: 85%;
+      .activity-graph i:nth-child(5) {
         animation-delay: 0.6s;
       }
 
-      .mini-bars i:nth-child(5) {
-        height: 60%;
-        animation-delay: 0.8s;
+      .activity-graph i:nth-child(6) {
+        animation-delay: 0.75s;
       }
 
-      @keyframes barPulse {
+      .activity-graph i:nth-child(7) {
+        animation-delay: 0.9s;
+      }
+
+      .activity-graph i:nth-child(8) {
+        animation-delay: 1.05s;
+      }
+
+      .activity-graph i:nth-child(9) {
+        animation-delay: 1.2s;
+      }
+
+      .activity-graph i:nth-child(10) {
+        animation-delay: 1.35s;
+      }
+
+      @keyframes graphPulse {
         50% {
-          opacity: 0.45;
-          transform: scaleY(0.7);
+          opacity: 0.35;
+          transform: scaleY(0.75);
         }
       }
 
       /* =========================================================
-       TRACKPAD / LAPTOP BASE
+       SYSTEM READY
     ========================================================= */
 
-      .laptop-base {
-        position: relative;
+      .system-ready {
+        display: flex;
 
-        width: 112%;
-        height: 28px;
+        align-items: center;
 
-        margin-right: -6%;
+        gap: 8px;
 
-        background: linear-gradient(180deg, #58667a, #202938 65%, #111827);
+        margin-top: 14px;
 
-        border-radius: 0 0 28px 28px;
+        padding: 9px;
 
-        box-shadow: 0 22px 30px rgba(0, 0, 0, 0.55);
+        border: 1px solid rgba(69, 240, 163, 0.12);
+
+        border-radius: 9px;
+
+        background: rgba(69, 240, 163, 0.035);
       }
 
-      .laptop-base::after {
-        content: "";
+      .ready-icon {
+        width: 24px;
+        height: 24px;
 
-        position: absolute;
+        display: grid;
 
-        width: 110px;
-        height: 6px;
+        place-items: center;
 
-        border-radius: 0 0 10px 10px;
+        border-radius: 7px;
 
-        left: 50%;
-        top: 0;
+        color: #071a12;
 
-        transform: translateX(-50%);
+        background: var(--green);
 
-        background: #182130;
+        font-size: 10px;
+
+        box-shadow: 0 0 15px rgba(69, 240, 163, 0.2);
+      }
+
+      .system-ready strong {
+        display: block;
+
+        color: #c8fbe2;
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 7px;
+      }
+
+      .system-ready small {
+        color: #587063;
+
+        font-size: 6px;
       }
 
       /* =========================================================
-       TRUST STRIP
+       DEV FOOTER
+    ========================================================= */
+
+      .dev-footer {
+        height: 28px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 10px;
+
+        padding: 0 12px;
+
+        color: #52667d;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+        background: rgba(0, 0, 0, 0.12);
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 6px;
+      }
+
+      .dev-footer span {
+        white-space: nowrap;
+      }
+
+      .dev-footer b {
+        display: inline-block;
+
+        width: 5px;
+        height: 5px;
+
+        margin-left: 3px;
+
+        border-radius: 50%;
+
+        background: var(--green);
+
+        box-shadow: 0 0 8px var(--green);
+      }
+
+      /* =========================================================
+       FLOATING TOOLS
+    ========================================================= */
+
+      .floating-tool {
+        position: absolute;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        min-width: 125px;
+
+        padding: 9px 11px;
+
+        border: 1px solid rgba(66, 217, 255, 0.18);
+
+        border-radius: 11px;
+
+        background: rgba(8, 16, 29, 0.88);
+
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.4),
+          0 0 25px rgba(66, 217, 255, 0.05);
+
+        backdrop-filter: blur(12px);
+
+        z-index: 10;
+      }
+
+      .tool-one {
+        top: 35px;
+        left: -48px;
+
+        animation: floatingOne 4s ease-in-out infinite;
+      }
+
+      .tool-two {
+        right: -55px;
+        top: 150px;
+
+        animation: floatingTwo 5s ease-in-out infinite;
+      }
+
+      .tool-three {
+        left: -35px;
+        bottom: 55px;
+
+        animation: floatingThree 4.5s ease-in-out infinite;
+      }
+
+      @keyframes floatingOne {
+        50% {
+          transform: translateY(-10px) rotate(-2deg);
+        }
+      }
+
+      @keyframes floatingTwo {
+        50% {
+          transform: translateY(9px) rotate(2deg);
+        }
+      }
+
+      @keyframes floatingThree {
+        50% {
+          transform: translateY(-7px) rotate(1deg);
+        }
+      }
+
+      .tool-icon {
+        width: 29px;
+        height: 29px;
+
+        display: grid;
+
+        place-items: center;
+
+        border-radius: 8px;
+
+        color: var(--cyan);
+
+        background: rgba(66, 217, 255, 0.08);
+
+        border: 1px solid rgba(66, 217, 255, 0.16);
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 11px;
+      }
+
+      .purple-tool {
+        color: #c3a3ff;
+
+        background: rgba(139, 92, 246, 0.1);
+
+        border-color: rgba(139, 92, 246, 0.2);
+      }
+
+      .green-tool {
+        color: var(--green);
+
+        background: rgba(69, 240, 163, 0.08);
+
+        border-color: rgba(69, 240, 163, 0.18);
+      }
+
+      .floating-tool strong {
+        display: block;
+
+        color: #dcecff;
+
+        font-family: "JetBrains Mono", monospace;
+
+        font-size: 7px;
+      }
+
+      .floating-tool small {
+        color: #62758c;
+
+        font-size: 7px;
+      }
+
+      /* =========================================================
+       TRUST
     ========================================================= */
 
       .trust-strip {
@@ -976,6 +1490,7 @@
 
       .trust-inner {
         display: grid;
+
         grid-template-columns: repeat(3, 1fr);
 
         border-top: 1px solid var(--border);
@@ -1032,11 +1547,13 @@
         font-family: "JetBrains Mono", monospace;
 
         font-size: 11px;
+
         font-weight: 700;
       }
 
       .section-heading h2 {
         font-size: 36px;
+
         line-height: 1.25;
 
         font-weight: 900;
@@ -1048,15 +1565,17 @@
         color: var(--muted);
 
         font-size: 14px;
+
         line-height: 1.9;
       }
 
       /* =========================================================
-       INFO CARDS
+       STATS
     ========================================================= */
 
       .stats {
         display: grid;
+
         grid-template-columns: repeat(3, 1fr);
 
         gap: 17px;
@@ -1115,6 +1634,7 @@
 
       .stat-card h3 {
         font-size: 25px;
+
         font-weight: 900;
 
         color: #eef8ff;
@@ -1122,7 +1642,9 @@
 
       .stat-card p {
         color: var(--muted);
+
         font-size: 12px;
+
         margin-top: 4px;
       }
 
@@ -1132,6 +1654,7 @@
 
       .features {
         display: grid;
+
         grid-template-columns: repeat(3, 1fr);
 
         gap: 17px;
@@ -1145,6 +1668,7 @@
         padding: 27px;
 
         border: 1px solid var(--border);
+
         border-radius: 20px;
 
         background: linear-gradient(
@@ -1195,6 +1719,7 @@
         height: 55px;
 
         display: grid;
+
         place-items: center;
 
         margin-bottom: 19px;
@@ -1220,7 +1745,6 @@
 
       .feature h3 {
         font-size: 18px;
-
         margin-bottom: 8px;
       }
 
@@ -1233,13 +1757,14 @@
       }
 
       /* =========================================================
-       COURSE ROADMAP
+       ROADMAP
     ========================================================= */
 
       .roadmap {
         position: relative;
 
         display: grid;
+
         grid-template-columns: repeat(4, 1fr);
 
         gap: 15px;
@@ -1251,6 +1776,7 @@
         position: absolute;
 
         top: 38px;
+
         right: 10%;
         left: 10%;
 
@@ -1298,6 +1824,7 @@
         height: 27px;
 
         display: grid;
+
         place-items: center;
 
         margin: 0 auto 13px;
@@ -1311,6 +1838,7 @@
         font-family: "JetBrains Mono", monospace;
 
         font-size: 10px;
+
         font-weight: 800;
 
         box-shadow: 0 0 20px rgba(66, 217, 255, 0.15);
@@ -1335,7 +1863,7 @@
       }
 
       /* =========================================================
-       LEARN SECTION
+       LEARN
     ========================================================= */
 
       .learn-grid {
@@ -1398,6 +1926,7 @@
 
       .learn-list li {
         display: flex;
+
         align-items: center;
 
         gap: 11px;
@@ -1422,6 +1951,7 @@
         flex: 0 0 24px;
 
         display: grid;
+
         place-items: center;
 
         border-radius: 8px;
@@ -1436,13 +1966,14 @@
       }
 
       /* =========================================================
-       PRACTICAL BOX
+       PRACTICE
     ========================================================= */
 
       .practice {
         margin-top: 25px;
 
         display: grid;
+
         grid-template-columns: 1.1fr 0.9fr;
 
         border: 1px solid rgba(66, 217, 255, 0.16);
@@ -1468,6 +1999,7 @@
         font-family: "JetBrains Mono", monospace;
 
         font-size: 11px;
+
         font-weight: 700;
 
         margin-bottom: 10px;
@@ -1492,6 +2024,7 @@
         min-height: 260px;
 
         display: grid;
+
         place-items: center;
 
         background: radial-gradient(
@@ -1503,6 +2036,7 @@
 
       .terminal-card {
         width: 80%;
+
         padding: 17px;
 
         border-radius: 13px;
@@ -1516,6 +2050,7 @@
         font-family: "JetBrains Mono", monospace;
 
         font-size: 9px;
+
         line-height: 2;
 
         color: #7d91a7;
@@ -1613,6 +2148,7 @@
         color: #9eb1c5;
 
         font-size: 13px;
+
         font-weight: 700;
       }
 
@@ -1620,6 +2156,7 @@
         margin: 9px 0;
 
         font-size: 65px;
+
         line-height: 1;
 
         font-weight: 900;
@@ -1627,6 +2164,7 @@
         background: linear-gradient(90deg, #67e8f9, #38bdf8, #a78bfa);
 
         -webkit-background-clip: text;
+
         background-clip: text;
 
         color: transparent;
@@ -1650,8 +2188,11 @@
 
       .price-button {
         display: inline-flex;
+
         align-items: center;
+
         justify-content: center;
+
         gap: 9px;
 
         padding: 15px 30px;
@@ -1676,7 +2217,7 @@
       }
 
       /* =========================================================
-       CONTACT - NEW DESIGN
+       CONTACT
     ========================================================= */
 
       .contact-section {
@@ -1690,7 +2231,9 @@
 
       .contact-section .section-heading > span {
         display: inline-flex;
+
         align-items: center;
+
         justify-content: center;
 
         padding: 9px 18px;
@@ -1704,9 +2247,8 @@
         border: 1px solid rgba(66, 217, 255, 0.2);
 
         font-size: 13px;
-        font-weight: 800;
 
-        box-shadow: 0 0 25px rgba(66, 217, 255, 0.05);
+        font-weight: 800;
       }
 
       .contact-wrapper {
@@ -1718,6 +2260,7 @@
         position: relative;
 
         display: flex;
+
         align-items: center;
 
         gap: 20px;
@@ -1783,6 +2326,7 @@
         flex: 0 0 62px;
 
         display: grid;
+
         place-items: center;
 
         border-radius: 17px;
@@ -1796,10 +2340,6 @@
         border: 1px solid rgba(66, 217, 255, 0.2);
 
         font-size: 28px;
-
-        box-shadow:
-          inset 0 0 20px rgba(66, 217, 255, 0.04),
-          0 0 25px rgba(66, 217, 255, 0.05);
 
         transition: 0.35s;
       }
@@ -1821,6 +2361,7 @@
         color: #f2f8ff;
 
         font-size: 17px;
+
         font-weight: 900;
 
         margin-bottom: 5px;
@@ -1834,7 +2375,9 @@
 
       .whatsapp-btn {
         display: inline-flex;
+
         align-items: center;
+
         justify-content: center;
 
         gap: 9px;
@@ -1854,6 +2397,7 @@
         background: rgba(69, 240, 163, 0.07);
 
         font-size: 12px;
+
         font-weight: 800;
 
         transition: 0.3s;
@@ -1876,6 +2420,7 @@
         height: 21px;
 
         display: grid;
+
         place-items: center;
 
         border-radius: 50%;
@@ -1896,7 +2441,6 @@
 
       .arrow {
         font-size: 15px;
-
         transition: transform 0.3s;
       }
 
@@ -1905,7 +2449,7 @@
       }
 
       /* =========================================================
-       FOOTER - NEW DESIGN
+       FOOTER
     ========================================================= */
 
       footer {
@@ -1918,6 +2462,7 @@
         display: flex;
 
         justify-content: center;
+
         align-items: center;
 
         text-align: center;
@@ -1931,12 +2476,7 @@
 
       footer p {
         line-height: 2;
-
         margin: 0;
-      }
-
-      footer p::first-line {
-        color: #8393a8;
       }
 
       footer:hover {
@@ -1944,16 +2484,36 @@
       }
 
       /* =========================================================
-       RESPONSIVE TABLET
+       TABLET
     ========================================================= */
 
       @media (max-width: 950px) {
         .hero {
           grid-template-columns: 1fr;
 
+          min-height: auto;
+
           text-align: center;
 
           gap: 35px;
+        }
+
+        /* النص أولاً */
+        .hero-content {
+          grid-column: 1;
+          grid-row: 1;
+
+          text-align: center;
+        }
+
+        /* الرسمة تحت النص */
+        .software-area {
+          grid-column: 1;
+          grid-row: 2;
+
+          width: min(680px, 100%);
+
+          margin: auto;
         }
 
         .hero-description {
@@ -1966,10 +2526,6 @@
 
         .hero-mini {
           justify-content: center;
-        }
-
-        .laptop {
-          width: 500px;
         }
 
         .features {
@@ -2027,7 +2583,6 @@
 
         .nav-status {
           padding: 6px 9px;
-
           font-size: 9px;
         }
 
@@ -2039,47 +2594,39 @@
           gap: 25px;
         }
 
-        .eyebrow {
-          font-size: 9px;
-
-          padding: 7px 12px;
-        }
-
         .hero h1 {
           font-size: 51px;
-
           letter-spacing: -2px;
+        }
+
+        .eyebrow {
+          font-size: 9px;
+          padding: 7px 12px;
         }
 
         .hero-subtitle {
           font-size: 16px;
-
           line-height: 1.7;
         }
 
         .hero-description {
           font-size: 12px;
-
           line-height: 1.9;
         }
 
         .hero-actions {
           flex-direction: column;
-
           gap: 10px;
         }
 
         .btn {
           width: 100%;
-
           padding: 13px 18px;
-
           font-size: 13px;
         }
 
         .hero-mini {
           gap: 11px;
-
           margin-top: 24px;
         }
 
@@ -2095,41 +2642,39 @@
           height: 24px;
         }
 
-        /* laptop */
+        /* =====================================================
+         SOFTWARE MOBILE
+      ===================================================== */
 
-        .laptop-area {
-          min-height: 320px;
+        .software-area {
+          min-height: 365px;
 
           margin-top: 5px;
+
+          width: 100%;
         }
 
-        .laptop-glow {
-          width: 330px;
-          height: 330px;
+        .software-glow {
+          width: 340px;
+          height: 340px;
         }
 
-        .laptop {
+        .software-dashboard {
           width: 100%;
 
-          transform: rotateY(-3deg) rotateX(2deg);
+          transform: rotateY(-2deg) rotateX(1deg);
         }
 
-        .screen-frame {
-          padding: 7px;
-
-          border-radius: 15px 15px 7px 7px;
+        .dev-window {
+          border-radius: 14px;
         }
 
-        .screen {
-          height: 215px;
+        .dev-header {
+          height: 34px;
 
-          border-radius: 9px 9px 4px 4px;
-        }
+          grid-template-columns: 65px 1fr 82px;
 
-        .screen-top {
-          height: 29px;
-
-          padding: 0 9px;
+          padding: 0 8px;
         }
 
         .window-dots {
@@ -2141,80 +2686,215 @@
           height: 6px;
         }
 
-        .screen-title {
-          font-size: 7px;
-        }
-
-        .screen-content {
-          padding: 10px;
-        }
-
-        .terminal {
-          width: 62%;
-
-          font-size: 6.5px;
-
-          line-height: 1.9;
-        }
-
-        .cursor {
-          width: 4px;
-          height: 8px;
-        }
-
-        .software-window {
-          width: 112px;
-
-          padding: 7px;
-
-          border-radius: 7px;
-        }
-
-        .window-one {
-          right: 8px;
-          top: 18px;
-        }
-
-        .window-two {
-          right: 32px;
-          bottom: 13px;
-
-          width: 125px;
-        }
-
-        .window-header {
+        .dev-title {
           font-size: 6px;
-
-          margin-bottom: 5px;
         }
 
-        .bar {
-          height: 3px;
+        .dev-status {
+          font-size: 5px;
         }
 
-        .mini-bars {
-          height: 27px;
-          gap: 3px;
-        }
-
-        .mini-bars i {
-          width: 7px;
-        }
-
-        .laptop-base {
-          height: 17px;
-
-          width: 108%;
-
-          margin-right: -4%;
-        }
-
-        .laptop-base::after {
-          width: 65px;
+        .dev-status span {
+          width: 4px;
           height: 4px;
         }
 
-        /* trust */
+        .dev-body {
+          grid-template-columns: 38px 1fr 105px;
+
+          min-height: 225px;
+        }
+
+        .dev-sidebar {
+          gap: 7px;
+          padding: 8px 4px;
+        }
+
+        .sidebar-logo {
+          width: 25px;
+          height: 25px;
+
+          font-size: 7px;
+        }
+
+        .side-item {
+          width: 29px;
+          height: 34px;
+          gap: 2px;
+        }
+
+        .side-item span {
+          font-size: 10px;
+        }
+
+        .side-item small {
+          font-size: 4px;
+        }
+
+        .code-tabs {
+          height: 28px;
+        }
+
+        .code-tab {
+          padding: 0 6px;
+
+          gap: 3px;
+
+          font-size: 5px;
+        }
+
+        .file-icon {
+          font-size: 4px;
+        }
+
+        .code-editor {
+          padding: 11px 6px;
+
+          font-size: 5.5px;
+
+          line-height: 1.95;
+        }
+
+        .code-line {
+          min-height: 12px;
+        }
+
+        .line-number {
+          width: 17px;
+        }
+
+        .terminal-mini {
+          margin-top: 10px;
+
+          padding-top: 8px;
+
+          font-size: 4.7px;
+        }
+
+        .terminal-cursor {
+          width: 3px;
+          height: 6px;
+        }
+
+        .system-panel {
+          padding: 10px 7px;
+        }
+
+        .panel-title {
+          margin-bottom: 10px;
+          font-size: 5px;
+        }
+
+        .live-dot {
+          font-size: 4px;
+        }
+
+        .monitor-item {
+          margin-bottom: 9px;
+        }
+
+        .monitor-head {
+          margin-bottom: 4px;
+          font-size: 5px;
+        }
+
+        .monitor-head strong {
+          font-size: 5px;
+        }
+
+        .monitor-bar {
+          height: 3px;
+        }
+
+        .activity-box {
+          margin-top: 10px;
+          padding: 6px;
+        }
+
+        .activity-title {
+          margin-bottom: 6px;
+          font-size: 4px;
+        }
+
+        .activity-graph {
+          height: 30px;
+          gap: 2px;
+        }
+
+        .system-ready {
+          gap: 5px;
+
+          margin-top: 8px;
+
+          padding: 5px;
+        }
+
+        .ready-icon {
+          width: 17px;
+          height: 17px;
+
+          border-radius: 5px;
+
+          font-size: 7px;
+        }
+
+        .system-ready strong {
+          font-size: 4.5px;
+        }
+
+        .system-ready small {
+          font-size: 4px;
+        }
+
+        .dev-footer {
+          height: 20px;
+
+          padding: 0 7px;
+
+          font-size: 4px;
+        }
+
+        .floating-tool {
+          min-width: 85px;
+
+          padding: 6px 7px;
+
+          gap: 5px;
+
+          border-radius: 8px;
+        }
+
+        .tool-one {
+          top: 22px;
+          left: -10px;
+        }
+
+        .tool-two {
+          right: -9px;
+          top: 110px;
+        }
+
+        .tool-three {
+          left: -7px;
+          bottom: 20px;
+        }
+
+        .tool-icon {
+          width: 20px;
+          height: 20px;
+
+          font-size: 7px;
+        }
+
+        .floating-tool strong {
+          font-size: 5px;
+        }
+
+        .floating-tool small {
+          font-size: 5px;
+        }
+
+        /* TRUST */
 
         .trust-inner {
           grid-template-columns: 1fr;
@@ -2230,7 +2910,7 @@
           border-top: 1px solid var(--border);
         }
 
-        /* sections */
+        /* SECTIONS */
 
         .section {
           padding: 70px 0;
@@ -2248,11 +2928,10 @@
           font-size: 12px;
         }
 
-        /* stats */
+        /* STATS */
 
         .stats {
           grid-template-columns: 1fr;
-
           gap: 10px;
         }
 
@@ -2282,17 +2961,15 @@
           font-size: 20px;
         }
 
-        /* features */
+        /* FEATURES */
 
         .features {
           grid-template-columns: 1fr;
-
           gap: 11px;
         }
 
         .feature {
           min-height: auto;
-
           padding: 22px;
         }
 
@@ -2311,24 +2988,21 @@
           font-size: 12px;
         }
 
-        /* roadmap */
+        /* ROADMAP */
 
         .roadmap {
           grid-template-columns: 1fr 1fr;
-
           gap: 10px;
         }
 
         .road {
           min-height: 185px;
-
           padding: 20px 11px;
         }
 
         .road-number {
           width: 24px;
           height: 24px;
-
           font-size: 8px;
         }
 
@@ -2344,7 +3018,7 @@
           font-size: 9px;
         }
 
-        /* learn */
+        /* LEARN */
 
         .learn-card {
           padding: 23px 18px;
@@ -2365,7 +3039,7 @@
           flex-basis: 21px;
         }
 
-        /* practice */
+        /* PRACTICE */
 
         .practice-text {
           padding: 27px 20px;
@@ -2388,7 +3062,7 @@
           font-size: 7px;
         }
 
-        /* price */
+        /* PRICE */
 
         .price-section {
           padding: 75px 0;
@@ -2408,13 +3082,10 @@
 
         .price-button {
           width: 100%;
-
           padding: 14px;
         }
 
-        /* =====================================================
-           CONTACT MOBILE
-        ====================================================== */
+        /* CONTACT */
 
         .contact-section {
           padding-top: 65px;
@@ -2451,7 +3122,6 @@
 
         .contact-content h3 {
           font-size: 14px;
-
           line-height: 1.7;
         }
 
@@ -2467,9 +3137,7 @@
           font-size: 11px;
         }
 
-        /* =====================================================
-           FOOTER MOBILE
-        ====================================================== */
+        /* FOOTER */
 
         footer {
           margin-top: 10px;
@@ -2493,12 +3161,16 @@
           font-size: 44px;
         }
 
-        .laptop-area {
-          min-height: 285px;
+        .software-area {
+          min-height: 325px;
         }
 
-        .screen {
-          height: 190px;
+        .dev-body {
+          grid-template-columns: 34px 1fr 92px;
+        }
+
+        .system-panel {
+          padding: 8px 5px;
         }
 
         .road {
@@ -2538,7 +3210,9 @@
   </head>
 
   <body>
-    <!-- ambient background -->
+    <!-- =======================================================
+       BACKGROUND
+  ======================================================== -->
 
     <div class="ambient one"></div>
     <div class="ambient two"></div>
@@ -2554,10 +3228,11 @@
 
     <!-- =======================================================
        NAVBAR
-    ======================================================== -->
+  ======================================================== -->
 
     <nav>
       <div class="container nav-content">
+        ```
         <div class="logo">
           <div class="logo-box">&lt;/&gt;</div>
 
@@ -2569,13 +3244,17 @@
           دورة متاحة للتسجيل
         </div>
       </div>
+      ```
     </nav>
 
     <!-- =======================================================
        HERO
-    ======================================================== -->
+  ======================================================== -->
 
     <header class="container hero">
+      ```
+      <!-- TEXT — LEFT -->
+
       <div class="hero-content">
         <div class="eyebrow">SOFTWARE LAPTOP / LEVEL 01</div>
 
@@ -2615,111 +3294,309 @@
           <div class="mini-divider"></div>
 
           <div class="mini-item">
-            <strong>1300 SP</strong>
+            <strong>1300 ل.س</strong>
             المستوى الأول
           </div>
         </div>
       </div>
 
-      <!-- =====================================================
-         INTERACTIVE LAPTOP
-      ====================================================== -->
+      <!-- SOFTWARE VISUAL — RIGHT -->
 
-      <div class="laptop-area">
-        <div class="laptop-glow"></div>
+      <div class="software-area">
+        <div class="software-glow"></div>
 
-        <div class="laptop" id="laptop">
-          <div class="screen-frame">
-            <div class="screen">
-              <div class="screen-top">
-                <div class="window-dots">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
+        <div class="software-dashboard" id="softwareDashboard">
+          <div class="dev-window">
+            <!-- HEADER -->
 
-                <div class="screen-title">coursyria_system.exe</div>
+            <div class="dev-header">
+              <div class="window-dots">
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
 
-              <div class="screen-content">
-                <div class="terminal">
-                  <div>
-                    <span class="cyan">SYSTEM</span>
-                    :: boot sequence initiated
+              <div class="dev-title">Coursyria Software Lab</div>
+
+              <div class="dev-status">
+                <span></span>
+                SYSTEM ONLINE
+              </div>
+            </div>
+
+            <!-- BODY -->
+
+            <div class="dev-body">
+              <!-- SIDEBAR -->
+
+              <aside class="dev-sidebar">
+                <div class="sidebar-logo">&lt;/&gt;</div>
+
+                <div class="side-item active">
+                  <span>⌘</span>
+                  <small>Code</small>
+                </div>
+
+                <div class="side-item">
+                  <span>▣</span>
+                  <small>Files</small>
+                </div>
+
+                <div class="side-item">
+                  <span>⚙</span>
+                  <small>System</small>
+                </div>
+
+                <div class="side-item">
+                  <span>◈</span>
+                  <small>Tools</small>
+                </div>
+              </aside>
+
+              <!-- CODE -->
+
+              <div class="code-area">
+                <div class="code-tabs">
+                  <div class="code-tab active">
+                    <span class="file-icon">JS</span>
+                    software.js
                   </div>
 
-                  <div>
-                    <span class="purple">USER</span>
-                    :: coursyria_student
+                  <div class="code-tab">
+                    <span class="file-icon html">HTML</span>
+                    system.html
                   </div>
 
-                  <div>
-                    <span class="green">✓</span>
-                    system check completed
-                  </div>
-
-                  <div>
-                    <span class="green">✓</span>
-                    storage optimized
-                  </div>
-
-                  <div>
-                    <span class="green">✓</span>
-                    security modules loaded
-                  </div>
-
-                  <div>
-                    <span class="cyan">&gt;</span>
-                    <span id="typing"></span>
-                    <span class="cursor"></span>
+                  <div class="code-tab">
+                    <span class="file-icon css">CSS</span>
+                    style.css
                   </div>
                 </div>
 
-                <div class="software-window window-one">
-                  <div class="window-header">
-                    <span>Performance</span>
-                    <span>●</span>
+                <div class="code-editor">
+                  <div class="code-line">
+                    <span class="line-number">01</span>
+                    <span class="purple">const</span>
+                    <span class="blue">system</span>
+                    =
+                    <span class="yellow">{</span>
                   </div>
 
-                  <div class="window-body">
-                    <div style="width: 100%">
-                      <div class="bar"></div>
-                      <br />
-                      <div class="bar"></div>
-                      <br />
-                      <div class="bar"></div>
+                  <div class="code-line">
+                    <span class="line-number">02</span>
+                    &nbsp;&nbsp;
+                    <span class="cyan">performance</span>:
+                    <span class="green">"optimized"</span>,
+                  </div>
+
+                  <div class="code-line">
+                    <span class="line-number">03</span>
+                    &nbsp;&nbsp;
+                    <span class="cyan">security</span>:
+                    <span class="green">"protected"</span>,
+                  </div>
+
+                  <div class="code-line">
+                    <span class="line-number">04</span>
+                    &nbsp;&nbsp;
+                    <span class="cyan">software</span>:
+                    <span class="green">"ready"</span>
+                  </div>
+
+                  <div class="code-line">
+                    <span class="line-number">05</span>
+                    <span class="yellow">}</span>;
+                  </div>
+
+                  <div class="code-line">
+                    <span class="line-number">06</span>
+                    <span class="purple">function</span>
+                    <span class="blue">optimize</span>() {
+                  </div>
+
+                  <div class="code-line">
+                    <span class="line-number">07</span>
+                    &nbsp;&nbsp;
+                    <span class="purple">return</span>
+                    <span class="green">"system.ready()"</span>;
+                  </div>
+
+                  <div class="code-line">
+                    <span class="line-number">08</span>
+                    }
+                  </div>
+
+                  <div class="terminal-mini">
+                    <div>
+                      <span class="terminal-green">●</span>
+                      SYSTEM CHECK
+                      <span class="terminal-success"> PASSED </span>
+                    </div>
+
+                    <div>
+                      <span class="terminal-blue">›</span>
+                      analyzing software...
+                    </div>
+
+                    <div>
+                      <span class="terminal-green">✓</span>
+                      optimization completed
+                    </div>
+
+                    <div>
+                      <span class="terminal-blue">›</span>
+
+                      <span id="softwareTyping"></span>
+
+                      <span class="terminal-cursor"></span>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <div class="software-window window-two">
-                  <div class="window-header">
-                    <span>System Activity</span>
-                    <span>LIVE</span>
+              <!-- SYSTEM MONITOR -->
+
+              <div class="system-panel">
+                <div class="panel-title">
+                  <span> System Monitor </span>
+
+                  <span class="live-dot"> LIVE </span>
+                </div>
+
+                <!-- CPU -->
+
+                <div class="monitor-item">
+                  <div class="monitor-head">
+                    <span>CPU</span>
+
+                    <strong id="cpuValue"> 72% </strong>
                   </div>
 
-                  <div class="mini-bars">
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
+                  <div class="monitor-bar">
+                    <span id="cpuBar"></span>
+                  </div>
+                </div>
+
+                <!-- RAM -->
+
+                <div class="monitor-item">
+                  <div class="monitor-head">
+                    <span>RAM</span>
+
+                    <strong id="ramValue"> 64% </strong>
+                  </div>
+
+                  <div class="monitor-bar purple-bar">
+                    <span id="ramBar"></span>
+                  </div>
+                </div>
+
+                <!-- STORAGE -->
+
+                <div class="monitor-item">
+                  <div class="monitor-head">
+                    <span>STORAGE</span>
+
+                    <strong> 38% </strong>
+                  </div>
+
+                  <div class="monitor-bar green-bar">
+                    <span></span>
+                  </div>
+                </div>
+
+                <!-- GRAPH -->
+
+                <div class="activity-box">
+                  <div class="activity-title">
+                    <span> Software Activity </span>
+
+                    <span> 24h </span>
+                  </div>
+
+                  <div class="activity-graph">
+                    <i style="height: 30%"></i>
+                    <i style="height: 55%"></i>
+                    <i style="height: 42%"></i>
+                    <i style="height: 78%"></i>
+                    <i style="height: 63%"></i>
+                    <i style="height: 90%"></i>
+                    <i style="height: 72%"></i>
+                    <i style="height: 96%"></i>
+                    <i style="height: 68%"></i>
+                    <i style="height: 84%"></i>
+                  </div>
+                </div>
+
+                <!-- READY -->
+
+                <div class="system-ready">
+                  <div class="ready-icon">✓</div>
+
+                  <div>
+                    <strong> Software Ready </strong>
+
+                    <small> All systems operational </small>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- FOOTER -->
+
+            <div class="dev-footer">
+              <span>
+                <b></b>
+                Coursyria Software Environment
+              </span>
+
+              <span> UTF-8 </span>
+
+              <span> JavaScript </span>
+
+              <span> ⚡ Ready </span>
+            </div>
           </div>
 
-          <div class="laptop-base"></div>
+          <!-- FLOATING CARDS -->
+
+          <div class="floating-tool tool-one">
+            <div class="tool-icon">⌘</div>
+
+            <div>
+              <strong>CODE</strong>
+              <small>Development</small>
+            </div>
+          </div>
+
+          <div class="floating-tool tool-two">
+            <div class="tool-icon purple-tool">⚙</div>
+
+            <div>
+              <strong>SYSTEM</strong>
+              <small>Optimization</small>
+            </div>
+          </div>
+
+          <div class="floating-tool tool-three">
+            <div class="tool-icon green-tool">🛡</div>
+
+            <div>
+              <strong>SECURITY</strong>
+              <small>Protected</small>
+            </div>
+          </div>
         </div>
       </div>
+      ```
     </header>
 
     <!-- =======================================================
        TRUST
-    ======================================================== -->
+  ======================================================== -->
 
     <div class="trust-strip">
+      ```
       <div class="container trust-inner">
         <div class="trust-item">
           <strong>💻 تطبيق عملي</strong>
@@ -2736,13 +3613,15 @@
           حماية وخصوصية أفضل
         </div>
       </div>
+      ```
     </div>
 
     <!-- =======================================================
        COURSE INFO
-    ======================================================== -->
+  ======================================================== -->
 
     <section class="section">
+      ```
       <div class="container">
         <div class="section-heading">
           <div class="tag">// COURSE_INFO</div>
@@ -2784,13 +3663,15 @@
           </div>
         </div>
       </div>
+      ```
     </section>
 
     <!-- =======================================================
        FEATURES
-    ======================================================== -->
+  ======================================================== -->
 
     <section class="section">
+      ```
       <div class="container">
         <div class="section-heading">
           <div class="tag">// WHAT_YOU_GET</div>
@@ -2864,13 +3745,15 @@
           </div>
         </div>
       </div>
+      ```
     </section>
 
     <!-- =======================================================
-       COURSE ROADMAP
-    ======================================================== -->
+       ROADMAP
+  ======================================================== -->
 
     <section class="section" id="courses">
+      ```
       <div class="container">
         <div class="section-heading">
           <div class="tag">// LEARNING_PATH</div>
@@ -2938,13 +3821,15 @@
           </div>
         </div>
       </div>
+      ```
     </section>
 
     <!-- =======================================================
        WHAT YOU LEARN
-    ======================================================== -->
+  ======================================================== -->
 
     <section class="section" id="learn">
+      ```
       <div class="container">
         <div class="section-heading">
           <div class="tag">// SKILLS</div>
@@ -3047,12 +3932,14 @@
           <div class="practice-visual">
             <div class="terminal-card">
               <div>
-                <span class="command">&gt;</span>
+                <span class="command"> &gt; </span>
                 diagnose_system()
               </div>
 
               <div>checking_processes...</div>
+
               <div>checking_storage...</div>
+
               <div>checking_startup_apps...</div>
 
               <div>
@@ -3060,24 +3947,26 @@
               </div>
 
               <div>
-                <span class="command">&gt;</span>
+                <span class="command"> &gt; </span>
                 optimize_system()
               </div>
 
               <div>
-                <span class="success">✓ system_ready</span>
+                <span class="success"> ✓ system_ready </span>
               </div>
             </div>
           </div>
         </div>
       </div>
+      ```
     </section>
 
     <!-- =======================================================
        PRICE
-    ======================================================== -->
+  ======================================================== -->
 
     <section class="price-section" id="price">
+      ```
       <div class="container">
         <div class="section-heading">
           <div class="tag">// START_LEARNING</div>
@@ -3092,7 +3981,7 @@
 
           <div class="price">
             1300
-            <span class="currency">SP</span>
+            <span class="currency"> SP </span>
           </div>
 
           <div class="price-description">
@@ -3109,15 +3998,17 @@
           </a>
         </div>
       </div>
+      ```
     </section>
 
-    <!-- =====================================================
-         CONTACT
-    ====================================================== -->
+    <!-- =======================================================
+       CONTACT
+  ======================================================== -->
 
     <section class="section contact-section" id="contact">
+      ```
       <div class="section-heading">
-        <span>📞 التواصل</span>
+        <span> 📞 التواصل </span>
       </div>
 
       <div class="contact-wrapper">
@@ -3138,139 +4029,231 @@
             rel="noopener noreferrer"
             class="whatsapp-btn"
           >
-            <span class="whatsapp-icon">◉</span>
-            <span>تواصل عبر واتساب</span>
-            <span class="arrow">←</span>
+            <span class="whatsapp-icon"> ◉ </span>
+
+            <span> تواصل عبر واتساب </span>
+
+            <span class="arrow"> ← </span>
           </a>
         </div>
       </div>
+      ```
     </section>
 
-    <!-- ================= FOOTER ================= -->
+    <!-- =======================================================
+       FOOTER
+  ======================================================== -->
 
     <footer>
+      ```
       <p>
-        جميع الحقوق محفوظة © 2027
+        جميع الحقوق محفوظة © 2026
         <br />
         اعداد المهندسة لين حسن الكردي
       </p>
+      ```
     </footer>
 
     <!-- =======================================================
        JAVASCRIPT
-    ======================================================== -->
+  ======================================================== -->
 
     <script>
-      /* =========================================================
-       TYPING EFFECT
-      ========================================================= */
+      /* =====================================================
+       SOFTWARE TYPING
+    ===================================================== */
 
-      const typingElement = document.getElementById("typing");
+      const softwareTyping = document.getElementById("softwareTyping");
 
-      const messages = [
-        "optimizing_laptop()",
+      const softwareMessages = [
+        "loading_software_tools()",
+        "optimizing_system()",
         "checking_security()",
-        "organizing_files()",
-        "loading_productivity()",
+        "analyzing_performance()",
         "software.ready()",
       ];
 
-      let messageIndex = 0;
-      let charIndex = 0;
-      let deleting = false;
+      let softwareMessageIndex = 0;
+      let softwareCharIndex = 0;
+      let softwareDeleting = false;
 
-      function typeEffect() {
-        const current = messages[messageIndex];
+      function softwareTypeEffect() {
+        if (!softwareTyping) return;
 
-        if (!deleting) {
-          typingElement.textContent = current.substring(0, charIndex + 1);
+        const current = softwareMessages[softwareMessageIndex];
 
-          charIndex++;
+        if (!softwareDeleting) {
+          softwareTyping.textContent = current.substring(
+            0,
+            softwareCharIndex + 1,
+          );
 
-          if (charIndex === current.length) {
-            deleting = true;
+          softwareCharIndex++;
 
-            setTimeout(typeEffect, 1200);
+          if (softwareCharIndex === current.length) {
+            softwareDeleting = true;
+
+            setTimeout(softwareTypeEffect, 1000);
 
             return;
           }
         } else {
-          typingElement.textContent = current.substring(0, charIndex - 1);
+          softwareTyping.textContent = current.substring(
+            0,
+            softwareCharIndex - 1,
+          );
 
-          charIndex--;
+          softwareCharIndex--;
 
-          if (charIndex === 0) {
-            deleting = false;
+          if (softwareCharIndex === 0) {
+            softwareDeleting = false;
 
-            messageIndex = (messageIndex + 1) % messages.length;
+            softwareMessageIndex =
+              (softwareMessageIndex + 1) % softwareMessages.length;
           }
         }
 
-        setTimeout(typeEffect, deleting ? 45 : 75);
+        setTimeout(softwareTypeEffect, softwareDeleting ? 35 : 65);
       }
 
-      typeEffect();
+      softwareTypeEffect();
 
-      /* =========================================================
-       LAPTOP MOUSE PARALLAX
-      ========================================================= */
+      /* =====================================================
+       LIVE SYSTEM MONITOR
+    ===================================================== */
 
-      const laptop = document.getElementById("laptop");
+      const cpuValue = document.getElementById("cpuValue");
 
-      if (window.matchMedia("(pointer:fine)").matches) {
+      const ramValue = document.getElementById("ramValue");
+
+      const cpuBar = document.getElementById("cpuBar");
+
+      const ramBar = document.getElementById("ramBar");
+
+      function updateSystemMonitor() {
+        if (!cpuValue || !ramValue || !cpuBar || !ramBar) {
+          return;
+        }
+
+        const cpu = Math.floor(55 + Math.random() * 28);
+
+        const ram = Math.floor(48 + Math.random() * 25);
+
+        cpuValue.textContent = cpu + "%";
+
+        ramValue.textContent = ram + "%";
+
+        cpuBar.style.width = cpu + "%";
+
+        ramBar.style.width = ram + "%";
+      }
+
+      updateSystemMonitor();
+
+      setInterval(updateSystemMonitor, 1800);
+
+      /* =====================================================
+       SOFTWARE DASHBOARD PARALLAX
+    ===================================================== */
+
+      const softwareDashboard = document.getElementById("softwareDashboard");
+
+      const finePointer = window.matchMedia("(pointer:fine)");
+
+      if (softwareDashboard && finePointer.matches) {
         document.addEventListener("mousemove", function (e) {
           const x = e.clientX / window.innerWidth - 0.5;
 
           const y = e.clientY / window.innerHeight - 0.5;
 
-          laptop.style.transform = `
-            rotateY(${x * 10 - 5}deg)
-            rotateX(${y * -7 + 3}deg)
-            rotateZ(${x * 0.8}deg)
+          softwareDashboard.style.transform = `
+            rotateY(${x * 9 - 4}deg)
+            rotateX(${y * -6 + 2}deg)
+            rotateZ(${x * 0.5}deg)
           `;
         });
       }
 
-      /* =========================================================
+      /* =====================================================
+       SIDEBAR INTERACTION
+    ===================================================== */
+
+      const sideItems = document.querySelectorAll(".side-item");
+
+      sideItems.forEach(function (item) {
+        item.addEventListener("click", function () {
+          sideItems.forEach(function (el) {
+            el.classList.remove("active");
+          });
+
+          this.classList.add("active");
+        });
+      });
+
+      /* =====================================================
+       CODE TABS
+    ===================================================== */
+
+      const codeTabs = document.querySelectorAll(".code-tab");
+
+      codeTabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          codeTabs.forEach(function (el) {
+            el.classList.remove("active");
+          });
+
+          this.classList.add("active");
+        });
+      });
+
+      /* =====================================================
        SCROLL REVEAL
-      ========================================================= */
+    ===================================================== */
 
       const revealElements = document.querySelectorAll(
         ".stat-card, .feature, .road, .learn-card, .practice, .price-card, .contact-card",
       );
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = "1";
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
 
-              entry.target.style.transform = "translateY(0)";
+                entry.target.style.transform = "translateY(0)";
 
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.12,
-        },
-      );
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.12,
+          },
+        );
 
-      revealElements.forEach((element) => {
-        element.style.opacity = "0";
+        revealElements.forEach(function (element) {
+          element.style.opacity = "0";
 
-        element.style.transform = "translateY(25px)";
+          element.style.transform = "translateY(25px)";
 
-        element.style.transition = "opacity .7s ease, transform .7s ease";
+          element.style.transition = "opacity .7s ease, transform .7s ease";
 
-        observer.observe(element);
-      });
+          observer.observe(element);
+        });
+      } else {
+        revealElements.forEach(function (element) {
+          element.style.opacity = "1";
 
-      /* =========================================================
-       RANDOM PARTICLE POSITIONS
-      ========================================================= */
+          element.style.transform = "translateY(0)";
+        });
+      }
 
-      document.querySelectorAll(".particle").forEach((particle) => {
+      /* =====================================================
+       RANDOM PARTICLES
+    ===================================================== */
+
+      document.querySelectorAll(".particle").forEach(function (particle) {
         particle.style.animationDelay = `${Math.random() * 5}s`;
       });
     </script>
