@@ -2,13 +2,19 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="كورس بناء المواقع من الفكرة إلى موقع ويب احترافي"
+    />
 
     <title>Building Website | كورس بناء المواقع</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
@@ -17,6 +23,10 @@
     />
 
     <style>
+      /* =====================================================
+       RESET
+    ====================================================== */
+
       * {
         margin: 0;
         padding: 0;
@@ -29,7 +39,6 @@
 
       body {
         font-family: "Cairo", sans-serif;
-
         background:
           radial-gradient(
             circle at 80% 10%,
@@ -42,10 +51,16 @@
             transparent 30%
           ),
           #02080c;
-
         color: #fff;
-
         overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      button {
+        font-family: inherit;
       }
 
       /* =====================================================
@@ -54,49 +69,35 @@
 
       body::before {
         content: "";
-
         position: fixed;
-
         inset: 0;
-
         z-index: -2;
-
         background-image:
           linear-gradient(rgba(0, 190, 255, 0.035) 1px, transparent 1px),
           linear-gradient(90deg, rgba(0, 190, 255, 0.035) 1px, transparent 1px);
-
         background-size: 45px 45px;
-
         mask-image: linear-gradient(to bottom, black, transparent);
       }
 
       .floating-light {
         position: fixed;
-
         width: 300px;
         height: 300px;
-
         border-radius: 50%;
-
         filter: blur(100px);
-
         opacity: 0.12;
-
         pointer-events: none;
-
         z-index: -1;
       }
 
       .floating-light.one {
         background: #00c8ff;
-
         top: -150px;
         right: -100px;
       }
 
       .floating-light.two {
         background: #0066ff;
-
         bottom: -150px;
         left: -100px;
       }
@@ -107,95 +108,63 @@
 
       header {
         position: fixed;
-
         top: 0;
         right: 0;
-
         width: 100%;
-
         height: 72px;
-
         z-index: 999;
-
         transition: 0.35s;
       }
 
       header.scrolled {
         background: rgba(2, 8, 12, 0.9);
-
         backdrop-filter: blur(18px);
-
         border-bottom: 1px solid rgba(0, 190, 255, 0.15);
       }
 
       .navbar {
         width: 100%;
-
         max-width: 1200px;
-
         height: 100%;
-
         margin: auto;
-
         padding: 0 20px;
-
         display: flex;
-
         align-items: center;
-
         justify-content: space-between;
       }
 
       .logo {
         display: flex;
-
         align-items: center;
-
         gap: 10px;
-
         font-weight: 900;
-
         color: white;
-
         font-size: 16px;
       }
 
       .logo-icon {
         width: 42px;
         height: 42px;
-
         display: grid;
-
         place-items: center;
-
         border-radius: 12px;
-
         color: #00d9ff;
-
         border: 1px solid rgba(0, 210, 255, 0.5);
-
         background: rgba(0, 180, 255, 0.08);
-
         box-shadow: 0 0 25px rgba(0, 190, 255, 0.15);
-
         font-size: 20px;
       }
 
       .nav-links {
         display: flex;
-
         gap: 28px;
-
         list-style: none;
       }
 
       .nav-links a {
         color: #a9bec7;
-
         font-size: 13px;
-
         font-weight: 700;
-
         transition: 0.3s;
       }
 
@@ -205,36 +174,26 @@
 
       .nav-button {
         padding: 10px 22px;
-
         border-radius: 10px;
-
         background: #00c8ff;
-
         color: #001018;
-
         font-size: 13px;
-
         font-weight: 900;
-
         transition: 0.3s;
       }
 
       .nav-button:hover {
         transform: translateY(-3px);
-
         box-shadow: 0 0 25px rgba(0, 200, 255, 0.4);
       }
 
       .menu-btn {
         display: none;
-
         border: 0;
-
         background: none;
-
         color: #00d9ff;
-
         font-size: 27px;
+        cursor: pointer;
       }
 
       /* =====================================================
@@ -243,25 +202,17 @@
 
       .hero {
         min-height: 100vh;
-
         padding: 110px 20px 60px;
-
         position: relative;
       }
 
       .hero-container {
         max-width: 1200px;
-
         min-height: calc(100vh - 150px);
-
         margin: auto;
-
         display: grid;
-
         grid-template-columns: 1fr 1fr;
-
         align-items: center;
-
         gap: 30px;
       }
 
@@ -272,158 +223,110 @@
       @keyframes heroText {
         from {
           opacity: 0;
-
           transform: translateX(50px);
         }
 
         to {
           opacity: 1;
-
           transform: translateX(0);
         }
       }
 
       .course-label {
         display: inline-block;
-
         padding: 7px 35px;
-
         margin-bottom: 20px;
-
         color: #00151b;
-
         background: linear-gradient(135deg, #00a8ff, #00e1ff);
-
         border-radius: 10px;
-
         font-size: 21px;
-
         font-weight: 900;
-
         transform: rotate(-4deg);
-
         box-shadow: 0 0 25px rgba(0, 210, 255, 0.2);
       }
 
       .hero-title {
         font-size: clamp(55px, 8vw, 105px);
-
         line-height: 0.85;
-
         font-weight: 1000;
-
         letter-spacing: -5px;
       }
 
       .hero-title .white {
         display: block;
-
         color: white;
       }
 
       .hero-title .cyan {
         display: block;
-
         margin-top: 15px;
-
         color: #00d9ff;
-
         text-shadow: 0 0 25px rgba(0, 210, 255, 0.3);
       }
 
       .hero-subtitle {
         margin-top: 25px;
-
         color: #d9e9ee;
-
         font-size: 20px;
-
         font-weight: 800;
       }
 
       .hero-line {
         width: 260px;
-
         height: 2px;
-
         margin: 15px 0 22px;
-
         background: linear-gradient(to left, #00d9ff, transparent);
-
         box-shadow: 0 0 10px #00d9ff;
       }
 
       .hero-description {
         max-width: 560px;
-
         padding: 17px 22px;
-
         border-radius: 16px;
-
         border: 1px solid rgba(0, 210, 255, 0.5);
-
         background: rgba(0, 30, 40, 0.55);
-
         color: #cde3e8;
-
         line-height: 2;
-
         font-size: 15px;
-
         font-weight: 600;
-
         box-shadow: 0 0 30px rgba(0, 170, 255, 0.07);
       }
 
       .hero-description span {
         color: #00d9ff;
-
         font-weight: 900;
       }
 
       .hero-buttons {
         display: flex;
-
         gap: 12px;
-
         margin-top: 25px;
-
         flex-wrap: wrap;
       }
 
       .btn-main {
+        display: inline-block;
         padding: 13px 26px;
-
         border-radius: 10px;
-
         background: #00c8ff;
-
         color: #001018;
-
         font-weight: 900;
-
         transition: 0.3s;
       }
 
       .btn-main:hover {
         transform: translateY(-4px);
-
         box-shadow: 0 0 30px rgba(0, 200, 255, 0.35);
       }
 
       .btn-secondary {
+        display: inline-block;
         padding: 13px 26px;
-
         border-radius: 10px;
-
         border: 1px solid rgba(0, 210, 255, 0.5);
-
         color: #00d9ff;
-
         background: rgba(0, 210, 255, 0.04);
-
         font-weight: 900;
-
         transition: 0.3s;
       }
 
@@ -432,82 +335,62 @@
       }
 
       /* =====================================================
-       INTERACTIVE WEBSITE VISUAL
+       CREATIVE INTERACTIVE VISUAL
     ====================================================== */
 
       .hero-visual {
-        height: 560px;
-
+        height: 570px;
         position: relative;
-
         display: flex;
-
         justify-content: center;
-
         align-items: center;
-
         perspective: 1200px;
+        touch-action: pan-y;
       }
-
-      /*
-       العنصر الذي يتحرك مع الماوس
-    */
 
       .interactive-scene {
         width: 100%;
-
         height: 100%;
-
         position: relative;
-
         transform-style: preserve-3d;
-
-        transition: transform 0.15s ease-out;
+        transition:
+          transform 0.18s ease-out,
+          filter 0.3s ease;
       }
 
-      /* الدائرة الخلفية */
+      /* =====================================================
+       TECH RINGS
+    ====================================================== */
 
       .tech-ring {
         position: absolute;
-
         width: 480px;
         height: 480px;
-
         border-radius: 50%;
-
         top: 50%;
         left: 50%;
-
         transform: translate(-50%, -50%);
-
         border: 1px solid rgba(0, 210, 255, 0.2);
-
-        box-shadow: 0 0 70px rgba(0, 210, 255, 0.06);
-
+        box-shadow:
+          0 0 70px rgba(0, 210, 255, 0.06),
+          inset 0 0 60px rgba(0, 210, 255, 0.025);
         animation: ringRotate 18s linear infinite;
+        pointer-events: none;
       }
 
       .tech-ring::before {
         content: "";
-
         position: absolute;
-
         inset: 35px;
-
         border-radius: 50%;
-
         border: 1px dashed rgba(0, 210, 255, 0.25);
       }
 
       .tech-ring::after {
         content: "";
-
         position: absolute;
-
         inset: 80px;
-
         border-radius: 50%;
-
         border: 1px solid rgba(0, 210, 255, 0.12);
       }
 
@@ -521,34 +404,231 @@
         }
       }
 
+      /* نقاط مضيئة حول الدائرة */
+
+      .orbit-dot {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #00d9ff;
+        box-shadow:
+          0 0 10px #00d9ff,
+          0 0 25px rgba(0, 217, 255, 0.7);
+        z-index: 4;
+        pointer-events: none;
+      }
+
+      .orbit-dot.one {
+        top: 18%;
+        right: 22%;
+        animation: orbitPulse 2s infinite ease-in-out;
+      }
+
+      .orbit-dot.two {
+        bottom: 18%;
+        left: 24%;
+        animation: orbitPulse 2.5s infinite ease-in-out 0.5s;
+      }
+
+      .orbit-dot.three {
+        top: 49%;
+        left: 7%;
+        animation: orbitPulse 2.2s infinite ease-in-out 0.9s;
+      }
+
+      @keyframes orbitPulse {
+        0%,
+        100% {
+          transform: scale(0.7);
+          opacity: 0.4;
+        }
+
+        50% {
+          transform: scale(1.5);
+          opacity: 1;
+        }
+      }
+
+      /* =====================================================
+       CODE CARD
+    ====================================================== */
+
+      .code-card {
+        position: absolute;
+        width: 205px;
+        min-height: 235px;
+        top: 45px;
+        left: 0;
+        z-index: 3;
+        padding: 18px;
+        border-radius: 15px;
+        background: linear-gradient(
+          145deg,
+          rgba(7, 27, 33, 0.96),
+          rgba(2, 12, 16, 0.95)
+        );
+        border: 1px solid rgba(0, 210, 255, 0.25);
+        transform: rotate(7deg) translateZ(-20px);
+        box-shadow:
+          0 25px 50px rgba(0, 0, 0, 0.45),
+          0 0 25px rgba(0, 210, 255, 0.06);
+        animation: codeFloat 4s ease-in-out infinite;
+        overflow: hidden;
+      }
+
+      .code-card::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        left: 0;
+        top: 48px;
+        background: rgba(0, 210, 255, 0.1);
+      }
+
+      .code-card::after {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(0, 210, 255, 0.08);
+        filter: blur(25px);
+        right: -25px;
+        bottom: -25px;
+      }
+
+      @keyframes codeFloat {
+        0%,
+        100% {
+          transform: rotate(7deg) translateY(0) translateZ(-20px);
+        }
+
+        50% {
+          transform: rotate(4deg) translateY(-13px) translateZ(-10px);
+        }
+      }
+
+      .code-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 17px;
+      }
+
+      .code-dots {
+        display: flex;
+        gap: 5px;
+      }
+
+      .code-dots span {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #3d555b;
+      }
+
+      .code-title {
+        color: #00d9ff;
+        font-size: 10px;
+        font-weight: 900;
+      }
+
+      .code-editor {
+        direction: ltr;
+        text-align: left;
+        font-family: monospace;
+        font-size: 8px;
+        line-height: 2.1;
+        color: #7d9ba3;
+      }
+
+      .code-line {
+        white-space: nowrap;
+        opacity: 0;
+        animation: codeReveal 5s infinite;
+      }
+
+      .code-line:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .code-line:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .code-line:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      .code-line:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+
+      .code-line:nth-child(5) {
+        animation-delay: 0.8s;
+      }
+
+      .code-line:nth-child(6) {
+        animation-delay: 1s;
+      }
+
+      .code-line:nth-child(7) {
+        animation-delay: 1.2s;
+      }
+
+      @keyframes codeReveal {
+        0%,
+        10% {
+          opacity: 0;
+          transform: translateX(-8px);
+        }
+
+        18%,
+        75% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        90%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .code-blue {
+        color: #00bfff;
+      }
+
+      .code-green {
+        color: #55e6a5;
+      }
+
+      .code-purple {
+        color: #b38cff;
+      }
+
       /* =====================================================
        LAPTOP
     ====================================================== */
 
       .laptop {
         position: absolute;
-
         width: 440px;
         height: 285px;
-
         top: 115px;
         right: 50%;
-
         transform: translateX(50%) translateZ(40px);
-
         background: #101b1f;
-
         border: 7px solid #56666b;
-
         border-radius: 16px 16px 8px 8px;
-
         overflow: hidden;
-
         box-shadow:
           0 30px 60px rgba(0, 0, 0, 0.55),
           0 0 35px rgba(0, 200, 255, 0.13);
-
-        transition: 0.25s;
+        transition: 0.3s;
+        z-index: 2;
       }
 
       .laptop:hover {
@@ -559,58 +639,42 @@
 
       .browser-bar {
         height: 35px;
-
         display: flex;
-
         align-items: center;
-
         justify-content: space-between;
-
         padding: 0 13px;
-
         background: #071114;
-
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       }
 
       .browser-dots {
         display: flex;
-
         gap: 5px;
       }
 
       .browser-dots span {
         width: 7px;
         height: 7px;
-
         border-radius: 50%;
-
         background: #425257;
       }
 
       .browser-address {
         width: 150px;
-
         height: 15px;
-
         border-radius: 20px;
-
         background: #142326;
-
         font-size: 7px;
-
         color: #5d767c;
-
         display: grid;
-
         place-items: center;
       }
 
       .website-screen {
-        height: 100%;
-
+        height: calc(100% - 35px);
         padding: 18px;
-
+        position: relative;
+        overflow: hidden;
         background:
           radial-gradient(
             circle at 70% 30%,
@@ -620,35 +684,55 @@
           linear-gradient(135deg, #092027, #030c0f);
       }
 
+      .website-screen::after {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: -30%;
+        width: 20%;
+        height: 300%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 217, 255, 0.12),
+          transparent
+        );
+        transform: rotate(25deg);
+        animation: screenScan 5s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes screenScan {
+        0% {
+          left: -40%;
+        }
+
+        100% {
+          left: 130%;
+        }
+      }
+
       .screen-nav {
         display: flex;
-
         align-items: center;
-
         justify-content: space-between;
-
         color: #a8c1c7;
-
         font-size: 8px;
       }
 
       .screen-logo {
         color: #00d9ff;
-
         font-weight: 900;
       }
 
       .screen-main {
-        margin-top: 38px;
-
+        margin-top: 32px;
         width: 65%;
       }
 
       .screen-main h3 {
         font-size: 27px;
-
         line-height: 1.1;
-
         font-weight: 900;
       }
 
@@ -658,105 +742,115 @@
 
       .screen-main p {
         color: #779097;
-
         font-size: 8px;
-
         line-height: 1.8;
-
         margin-top: 9px;
       }
 
       .screen-btn {
         display: inline-block;
-
         margin-top: 13px;
-
         padding: 6px 13px;
-
         border-radius: 4px;
-
         background: #00c8ff;
-
         color: #001018;
-
         font-size: 7px;
-
         font-weight: 900;
+        animation: buttonGlow 2s ease-in-out infinite;
+      }
+
+      @keyframes buttonGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 0 rgba(0, 210, 255, 0);
+        }
+
+        50% {
+          box-shadow: 0 0 18px rgba(0, 210, 255, 0.5);
+        }
       }
 
       .screen-cards {
         display: flex;
-
         gap: 7px;
-
         margin-top: 22px;
       }
 
       .screen-card {
         width: 65px;
-
         height: 40px;
-
         padding: 6px;
-
         border-radius: 5px;
-
         background: rgba(255, 255, 255, 0.06);
-
         border: 1px solid rgba(255, 255, 255, 0.06);
+        animation: cardLift 3s ease-in-out infinite;
+      }
+
+      .screen-card:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+
+      .screen-card:nth-child(3) {
+        animation-delay: 0.8s;
+      }
+
+      @keyframes cardLift {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-5px);
+        }
       }
 
       .screen-card::before {
         content: "";
-
         display: block;
-
         width: 13px;
         height: 13px;
-
         border-radius: 3px;
-
         background: rgba(0, 210, 255, 0.4);
-
         margin-bottom: 5px;
       }
 
       .screen-card::after {
         content: "";
-
         display: block;
-
         width: 70%;
-
         height: 3px;
-
         border-radius: 5px;
-
         background: #3a565d;
       }
 
-      /* قاعدة اللابتوب */
+      /* =====================================================
+       LAPTOP BASE
+    ====================================================== */
 
       .laptop-base {
         position: absolute;
-
         width: 500px;
-
         height: 25px;
-
         top: 394px;
-
         right: 50%;
-
         transform: translateX(50%);
-
         border-radius: 0 0 30px 30px;
-
         background: linear-gradient(#738084, #2b373a);
-
         box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
-
         z-index: 2;
+      }
+
+      .laptop-base::after {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 4px;
+        border-radius: 10px;
+        background: #1d292c;
+        left: 50%;
+        top: 5px;
+        transform: translateX(-50%);
       }
 
       /* =====================================================
@@ -765,72 +859,153 @@
 
       .phone {
         position: absolute;
-
-        width: 135px;
-
-        height: 270px;
-
-        left: 20px;
-
-        bottom: 70px;
-
-        z-index: 5;
-
-        padding: 20px 10px;
-
+        width: 150px;
+        height: 295px;
+        left: 18px;
+        bottom: 48px;
+        z-index: 8;
+        padding: 21px 10px 12px;
         border: 6px solid #4d5b60;
-
-        border-radius: 24px;
-
+        border-radius: 26px;
         background: #071013;
-
         box-shadow:
           0 25px 40px rgba(0, 0, 0, 0.55),
           0 0 30px rgba(0, 210, 255, 0.12);
-
         transform: rotate(-8deg) translateZ(90px);
+        transition:
+          transform 0.35s ease,
+          box-shadow 0.35s ease;
+        overflow: hidden;
+        cursor: grab;
+        touch-action: pan-y;
+      }
 
-        transition: 0.3s;
+      .phone:active {
+        cursor: grabbing;
       }
 
       .phone:hover {
         transform: rotate(-3deg) translateZ(110px) scale(1.04);
+        box-shadow:
+          0 30px 50px rgba(0, 0, 0, 0.6),
+          0 0 45px rgba(0, 210, 255, 0.2);
+      }
+
+      .phone::after {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 180px;
+        top: -40px;
+        right: -80px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 217, 255, 0.12),
+          transparent
+        );
+        transform: rotate(25deg);
+        animation: phoneLight 4s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes phoneLight {
+        0% {
+          right: -100px;
+        }
+
+        100% {
+          right: 180px;
+        }
       }
 
       .phone-notch {
         position: absolute;
-
         width: 48px;
-
         height: 7px;
-
         border-radius: 10px;
-
         background: #1b292d;
-
         top: 7px;
-
         right: 50%;
-
         transform: translateX(50%);
+        z-index: 4;
+      }
+
+      .phone-screen {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 14px;
+        background:
+          radial-gradient(
+            circle at 70% 20%,
+            rgba(0, 210, 255, 0.2),
+            transparent 40%
+          ),
+          linear-gradient(145deg, #0a2028, #030b0e);
+      }
+
+      /* صفحات الهاتف */
+
+      .phone-page {
+        position: absolute;
+        inset: 0;
+        padding: 24px 10px 14px;
+        opacity: 0;
+        transform: translateX(35px) scale(0.96);
+        pointer-events: none;
+        transition:
+          opacity 0.45s ease,
+          transform 0.45s ease;
+      }
+
+      .phone-page.active {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        pointer-events: auto;
+      }
+
+      .phone-page.exit-left {
+        opacity: 0;
+        transform: translateX(-35px) scale(0.96);
+      }
+
+      .phone-page.exit-right {
+        opacity: 0;
+        transform: translateX(35px) scale(0.96);
       }
 
       .phone-logo {
-        margin-top: 25px;
-
         color: #00d9ff;
-
-        font-size: 9px;
-
+        font-size: 8px;
         font-weight: 900;
+        letter-spacing: 0.5px;
+      }
+
+      .phone-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .phone-menu-icon {
+        width: 20px;
+        height: 20px;
+        border-radius: 6px;
+        display: grid;
+        place-items: center;
+        background: rgba(0, 210, 255, 0.1);
+        color: #00d9ff;
+        font-size: 9px;
       }
 
       .phone h3 {
-        margin-top: 20px;
-
+        margin-top: 18px;
         font-size: 18px;
-
         line-height: 1.25;
+        font-weight: 900;
       }
 
       .phone h3 span {
@@ -838,124 +1013,187 @@
       }
 
       .phone p {
-        margin-top: 10px;
-
+        margin-top: 9px;
         color: #71868c;
-
         font-size: 7px;
-
         line-height: 1.8;
       }
 
       .phone-button {
         display: inline-block;
-
         margin-top: 13px;
-
         padding: 6px 12px;
-
         border-radius: 4px;
-
         background: #00c8ff;
-
         color: #001018;
-
         font-size: 7px;
-
         font-weight: 900;
+      }
+
+      /* صفحة الخدمات */
+
+      .phone-service-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        margin-top: 16px;
+      }
+
+      .phone-service {
+        min-height: 42px;
+        padding: 7px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(0, 210, 255, 0.08);
+      }
+
+      .phone-service-icon {
+        font-size: 10px;
+        color: #00d9ff;
+      }
+
+      .phone-service span {
+        display: block;
+        margin-top: 3px;
+        color: #9db6bd;
+        font-size: 6px;
+      }
+
+      /* صفحة التواصل */
+
+      .phone-contact-box {
+        margin-top: 20px;
+        padding: 12px 8px;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 210, 255, 0.15);
+        background: rgba(0, 210, 255, 0.05);
+        text-align: center;
+      }
+
+      .phone-contact-box strong {
+        display: block;
+        color: #00d9ff;
+        font-size: 9px;
+      }
+
+      .phone-contact-box small {
+        display: block;
+        color: #70878e;
+        font-size: 6px;
+        margin-top: 5px;
+      }
+
+      .phone-progress {
+        position: absolute;
+        bottom: 9px;
+        left: 10px;
+        right: 10px;
+        display: flex;
+        gap: 4px;
+        z-index: 20;
+      }
+
+      .phone-progress span {
+        flex: 1;
+        height: 2px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.12);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .phone-progress span.active {
+        background: rgba(0, 217, 255, 0.25);
+      }
+
+      .phone-progress span.active::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: #00d9ff;
+        transform-origin: right;
+        animation: progressFill 3.2s linear forwards;
+      }
+
+      @keyframes progressFill {
+        from {
+          transform: scaleX(0);
+        }
+
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      .phone-swipe-hint {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 6px;
+        color: rgba(255, 255, 255, 0.38);
+        white-space: nowrap;
+        z-index: 21;
+        opacity: 0;
+        animation: hintAppear 5s ease-in-out infinite;
+      }
+
+      @keyframes hintAppear {
+        0%,
+        20% {
+          opacity: 0;
+        }
+
+        35%,
+        60% {
+          opacity: 1;
+        }
+
+        80%,
+        100% {
+          opacity: 0;
+        }
       }
 
       /* =====================================================
-       CODE CARD
+       FLOATING LABELS
     ====================================================== */
 
-      .code-card {
+      .floating-tag {
         position: absolute;
-
-        width: 190px;
-
-        height: 220px;
-
-        top: 55px;
-
-        left: 0;
-
-        z-index: 1;
-
-        padding: 18px;
-
-        border-radius: 12px;
-
-        background: rgba(4, 15, 19, 0.88);
-
-        border: 1px solid rgba(0, 210, 255, 0.17);
-
-        transform: rotate(7deg) translateZ(-20px);
-
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-
-        animation: codeFloat 4s ease-in-out infinite;
+        z-index: 9;
+        padding: 7px 10px;
+        border-radius: 8px;
+        background: rgba(3, 17, 22, 0.9);
+        border: 1px solid rgba(0, 210, 255, 0.2);
+        color: #9fc4cc;
+        font-size: 8px;
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        pointer-events: none;
       }
 
-      @keyframes codeFloat {
+      .floating-tag.tag-one {
+        right: 3%;
+        top: 20%;
+        animation: tagFloat 4s ease-in-out infinite;
+      }
+
+      .floating-tag.tag-two {
+        right: 5%;
+        bottom: 14%;
+        animation: tagFloat 4.5s ease-in-out infinite 0.7s;
+      }
+
+      @keyframes tagFloat {
         0%,
         100% {
-          transform: rotate(7deg) translateY(0) translateZ(-20px);
+          transform: translateY(0);
         }
 
         50% {
-          transform: rotate(7deg) translateY(-12px) translateZ(-20px);
+          transform: translateY(-8px);
         }
-      }
-
-      .code-title {
-        color: #00d9ff;
-
-        font-size: 10px;
-
-        margin-bottom: 15px;
-
-        font-weight: 900;
-      }
-
-      .code-line {
-        width: 100%;
-
-        height: 5px;
-
-        border-radius: 10px;
-
-        margin-bottom: 10px;
-
-        background: #20393f;
-      }
-
-      .code-line:nth-child(3) {
-        width: 75%;
-      }
-
-      .code-line:nth-child(4) {
-        width: 50%;
-
-        background: #007d96;
-      }
-
-      .code-line:nth-child(5) {
-        width: 85%;
-      }
-
-      .code-line:nth-child(6) {
-        width: 60%;
-
-        background: #00a3bd;
-      }
-
-      .code-line:nth-child(7) {
-        width: 45%;
-      }
-
-      .code-line:nth-child(8) {
-        width: 70%;
       }
 
       /* =====================================================
@@ -964,49 +1202,31 @@
 
       .quick-info {
         max-width: 1150px;
-
         margin: 0 auto 70px;
-
         padding: 0 20px;
-
         display: grid;
-
         grid-template-columns: 1.2fr 0.8fr;
-
         gap: 25px;
       }
 
       .info-box {
         display: grid;
-
         grid-template-columns: repeat(4, 1fr);
-
         min-height: 145px;
-
         border: 1px solid rgba(0, 200, 255, 0.18);
-
         border-radius: 20px;
-
         background: rgba(5, 22, 27, 0.75);
-
         overflow: hidden;
       }
 
       .info-item {
         display: flex;
-
         flex-direction: column;
-
         align-items: center;
-
         justify-content: center;
-
         text-align: center;
-
         gap: 8px;
-
         padding: 12px;
-
         border-left: 1px dashed rgba(0, 200, 255, 0.2);
       }
 
@@ -1016,59 +1236,44 @@
 
       .info-icon {
         font-size: 31px;
-
         color: #00d9ff;
       }
 
       .info-item h3 {
         font-size: 12px;
-
         line-height: 1.7;
       }
 
       .price-box {
         display: flex;
-
         flex-direction: column;
-
         align-items: center;
-
         justify-content: center;
-
         border: 2px solid #00c8ff;
-
         border-radius: 28px;
-
         background: radial-gradient(
           circle,
           rgba(0, 200, 255, 0.12),
           transparent 65%
         );
-
         box-shadow: 0 0 30px rgba(0, 200, 255, 0.08);
       }
 
       .price-box small {
         font-size: 17px;
-
         font-weight: 800;
       }
 
       .price {
         font-size: 70px;
-
         line-height: 1;
-
         color: #00d9ff;
-
         font-weight: 1000;
-
         text-shadow: 0 0 25px rgba(0, 210, 255, 0.3);
       }
 
       .price-box span {
         font-size: 13px;
-
         color: #a5bdc4;
       }
 
@@ -1078,39 +1283,28 @@
 
       .team-project {
         max-width: 1150px;
-
         margin: auto;
-
         padding: 0 20px 80px;
       }
 
       .section-label {
         text-align: center;
-
         margin-bottom: 30px;
       }
 
       .section-label span {
         display: inline-block;
-
         padding: 10px 35px;
-
         border-radius: 10px;
-
         background: linear-gradient(135deg, #00a8ff, #00d9ff);
-
         color: #001018;
-
         font-weight: 1000;
       }
 
       .project-box {
         padding: 40px;
-
         border-radius: 24px;
-
         border: 1px solid rgba(0, 200, 255, 0.18);
-
         background: linear-gradient(
           135deg,
           rgba(4, 25, 31, 0.9),
@@ -1124,7 +1318,6 @@
 
       .project-title h2 {
         font-size: clamp(24px, 4vw, 40px);
-
         line-height: 1.5;
       }
 
@@ -1134,97 +1327,69 @@
 
       .project-title p {
         max-width: 700px;
-
         margin: 10px auto 35px;
-
         color: #91a9b0;
-
         font-size: 14px;
-
         line-height: 2;
       }
 
       .process-grid {
         display: grid;
-
         grid-template-columns: repeat(5, 1fr);
-
         gap: 12px;
       }
 
       .process-card {
         padding: 22px 12px;
-
         min-height: 190px;
-
         text-align: center;
-
         border-radius: 14px;
-
         background: rgba(7, 31, 37, 0.65);
-
         border: 1px solid rgba(0, 200, 255, 0.12);
-
         transition: 0.35s;
       }
 
       .process-card:hover {
         transform: translateY(-8px);
-
         border-color: rgba(0, 210, 255, 0.55);
-
         box-shadow: 0 0 25px rgba(0, 200, 255, 0.08);
       }
 
       .process-number {
         color: #00d9ff;
-
         font-size: 13px;
-
         font-weight: 1000;
       }
 
       .process-icon {
         font-size: 34px;
-
         margin: 12px 0;
       }
 
       .process-card h3 {
         font-size: 14px;
-
         margin-bottom: 7px;
       }
 
       .process-card p {
         color: #789197;
-
         font-size: 10px;
-
         line-height: 1.8;
       }
 
       .project-note {
         margin-top: 25px;
-
         padding: 15px;
-
         border-radius: 12px;
-
         text-align: center;
-
         color: #b9d1d7;
-
         font-size: 13px;
-
         background: rgba(0, 200, 255, 0.04);
-
         border: 1px solid rgba(0, 200, 255, 0.13);
       }
 
       .project-note span {
         color: #00d9ff;
-
         font-weight: 900;
       }
 
@@ -1234,79 +1399,51 @@
 
       .final-section {
         max-width: 1150px;
-
         margin: auto;
-
         padding: 0 20px 70px;
-
         display: grid;
-
         grid-template-columns: 1.1fr 0.9fr;
-
         gap: 25px;
       }
 
       .preview-box {
         min-height: 310px;
-
         border-radius: 22px;
-
         border: 1px solid rgba(0, 200, 255, 0.18);
-
         background: linear-gradient(135deg, #061b22, #02090c);
-
         position: relative;
-
         overflow: hidden;
       }
 
       .preview-box::before {
         content: "";
-
         position: absolute;
-
         width: 350px;
         height: 350px;
-
         border-radius: 50%;
-
         background: rgba(0, 210, 255, 0.07);
-
         filter: blur(50px);
-
         top: -150px;
-
         right: -100px;
       }
 
       .monitor {
         position: absolute;
-
         width: 380px;
-
         height: 220px;
-
         top: 35px;
-
         right: 50%;
-
         transform: translateX(50%);
-
         border: 7px solid #425155;
-
         border-radius: 12px;
-
         background: #081214;
-
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
       }
 
       .monitor-screen {
         width: 100%;
         height: 100%;
-
         padding: 28px;
-
         background: radial-gradient(
           circle,
           rgba(0, 210, 255, 0.16),
@@ -1316,43 +1453,30 @@
 
       .monitor-screen h3 {
         font-size: 22px;
-
         line-height: 1.2;
       }
 
       .monitor-screen span {
         display: inline-block;
-
         margin-top: 15px;
-
         padding: 7px 16px;
-
         border-radius: 4px;
-
         background: #00c8ff;
-
         color: #001018;
-
         font-size: 9px;
-
         font-weight: 900;
       }
 
       .skills-box {
         padding: 30px;
-
         border-radius: 22px;
-
         border: 1px solid rgba(0, 200, 255, 0.18);
-
         background: rgba(5, 22, 27, 0.7);
       }
 
       .skills-box h2 {
         color: #00d9ff;
-
         font-size: 22px;
-
         margin-bottom: 15px;
       }
 
@@ -1362,21 +1486,15 @@
 
       .skills-list li {
         padding: 9px 0;
-
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-
         color: #b9ced3;
-
         font-size: 13px;
       }
 
       .skills-list li::before {
         content: "✓";
-
         color: #00d9ff;
-
         font-weight: 900;
-
         margin-left: 9px;
       }
 
@@ -1390,17 +1508,11 @@
 
       .cta-box {
         max-width: 1150px;
-
         margin: auto;
-
         padding: 35px 20px;
-
         text-align: center;
-
         border: 1px solid rgba(0, 210, 255, 0.3);
-
         border-radius: 22px;
-
         background: linear-gradient(
           135deg,
           rgba(0, 190, 255, 0.08),
@@ -1418,7 +1530,6 @@
 
       .cta-box p {
         margin: 10px 0 22px;
-
         color: #91a9b0;
       }
 
@@ -1428,123 +1539,84 @@
 
       .contact-section {
         width: 100%;
-
         padding: 80px 20px 70px;
       }
 
       .contact-section .section-heading {
         display: flex;
-
         justify-content: center;
-
         margin-bottom: 35px;
       }
 
       .contact-section .section-heading span {
         padding: 11px 35px;
-
         border-radius: 13px;
-
         background: linear-gradient(135deg, #00a8ff, #0077ff);
-
         color: white;
-
         font-size: 21px;
-
         font-weight: 900;
-
         box-shadow: 0 0 25px rgba(0, 157, 255, 0.22);
-
         transition: 0.3s;
       }
 
       .contact-section .section-heading span:hover {
         transform: translateY(-4px);
-
         box-shadow: 0 0 35px rgba(0, 157, 255, 0.45);
       }
 
       .contact-wrapper {
         width: 100%;
-
         max-width: 950px;
-
         margin: auto;
       }
 
       .contact-card {
         width: 100%;
-
         display: grid;
-
         grid-template-columns: 85px 1fr auto;
-
         align-items: center;
-
         gap: 24px;
-
         padding: 27px 30px;
-
         position: relative;
-
         overflow: hidden;
-
         border-radius: 23px;
-
         border: 1px solid rgba(0, 174, 255, 0.35);
-
         background: linear-gradient(
           135deg,
           rgba(0, 157, 255, 0.1),
           rgba(3, 15, 25, 0.95)
         );
-
         box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
-
         transition: 0.4s;
       }
 
       .contact-card:hover {
         transform: translateY(-7px);
-
         border-color: rgba(0, 194, 255, 0.75);
-
         box-shadow: 0 20px 55px rgba(0, 144, 255, 0.15);
       }
 
       .contact-card::before {
         content: "";
-
         position: absolute;
-
         width: 180px;
         height: 180px;
-
         top: -90px;
         right: -70px;
-
         border-radius: 50%;
-
         background: #00a9ff;
-
         opacity: 0.08;
-
         filter: blur(35px);
       }
 
       .contact-card::after {
         content: "";
-
         position: absolute;
-
         top: 0;
         left: -120%;
-
         width: 80%;
         height: 2px;
-
         background: linear-gradient(90deg, transparent, #00c8ff, transparent);
-
         animation: contactLight 4s linear infinite;
       }
 
@@ -1561,92 +1633,63 @@
       .contact-icon-box {
         width: 78px;
         height: 78px;
-
         display: flex;
-
         align-items: center;
         justify-content: center;
-
         border-radius: 20px;
-
         background: linear-gradient(
           135deg,
           rgba(0, 174, 255, 0.18),
           rgba(0, 119, 255, 0.05)
         );
-
         border: 1px solid rgba(0, 174, 255, 0.35);
-
         font-size: 39px;
-
         transition: 0.4s;
       }
 
       .contact-card:hover .contact-icon-box {
         transform: rotate(-5deg) scale(1.08);
-
         box-shadow: 0 0 25px rgba(0, 174, 255, 0.25);
       }
 
       .contact-label {
         display: inline-block;
-
         color: #00bfff;
-
         font-size: 12px;
-
         font-weight: 800;
-
         margin-bottom: 6px;
       }
 
       .contact-content h3 {
         font-size: 20px;
-
         line-height: 1.5;
-
         font-weight: 900;
       }
 
       .contact-content p {
         margin-top: 5px;
-
         color: #9db5c0;
-
         font-size: 13px;
       }
 
       .whatsapp-btn {
         min-width: 220px;
-
         display: flex;
-
         align-items: center;
-
         justify-content: center;
-
         gap: 9px;
-
         padding: 14px 18px;
-
         border-radius: 12px;
-
         background: linear-gradient(135deg, #16d66f, #08a957);
-
         color: white;
-
         font-size: 13px;
-
         font-weight: 900;
-
         box-shadow: 0 8px 25px rgba(22, 214, 111, 0.18);
-
         transition: 0.35s;
       }
 
       .whatsapp-btn:hover {
         transform: translateY(-4px) scale(1.02);
-
         box-shadow: 0 13px 35px rgba(22, 214, 111, 0.35);
       }
 
@@ -1657,21 +1700,15 @@
       .whatsapp-icon {
         width: 26px;
         height: 26px;
-
         display: grid;
-
         place-items: center;
-
         border-radius: 50%;
-
         background: rgba(255, 255, 255, 0.18);
-
         font-size: 13px;
       }
 
       .arrow {
         font-size: 18px;
-
         transition: 0.3s;
       }
 
@@ -1685,51 +1722,38 @@
 
       .site-footer {
         width: 100%;
-
         padding: 30px 20px 35px;
-
         text-align: center;
-
         background: linear-gradient(
           180deg,
           rgba(3, 10, 15, 0.2),
           rgba(1, 5, 8, 0.95)
         );
-
         border-top: 1px solid rgba(0, 174, 255, 0.12);
       }
 
       .footer-line {
         width: 80px;
-
         height: 2px;
-
         margin: 0 auto 17px;
-
         background: linear-gradient(90deg, transparent, #00a9ff, transparent);
-
         box-shadow: 0 0 12px rgba(0, 169, 255, 0.4);
       }
 
       .site-footer p {
         color: #8197a3;
-
         font-size: 12px;
-
         line-height: 2;
       }
 
       .site-footer p span {
         color: #00bfff;
-
         font-weight: 800;
-
         transition: 0.3s;
       }
 
       .site-footer p span:hover {
         color: #38d5ff;
-
         text-shadow: 0 0 12px rgba(0, 191, 255, 0.55);
       }
 
@@ -1739,15 +1763,12 @@
 
       .reveal {
         opacity: 0;
-
         transform: translateY(35px);
-
         transition: 0.8s ease;
       }
 
       .reveal.active {
         opacity: 1;
-
         transform: translateY(0);
       }
 
@@ -1766,28 +1787,19 @@
 
         .nav-links {
           position: absolute;
-
           top: 72px;
           right: 0;
-
           width: 100%;
-
           max-height: 0;
-
           overflow: hidden;
-
           flex-direction: column;
-
           gap: 0;
-
           background: rgba(2, 10, 14, 0.97);
-
           transition: 0.4s;
         }
 
         .nav-links.active {
           max-height: 350px;
-
           padding: 8px 0;
         }
 
@@ -1797,7 +1809,6 @@
 
         .nav-links a {
           display: block;
-
           padding: 13px 22px;
         }
 
@@ -1807,14 +1818,12 @@
 
         .hero-content {
           text-align: center;
-
           order: 2;
         }
 
         .hero-visual {
           order: 1;
-
-          height: 430px;
+          height: 500px;
         }
 
         .hero-description {
@@ -1847,23 +1856,21 @@
 
         .whatsapp-btn {
           grid-column: 1 / -1;
-
           width: 100%;
         }
       }
 
       /* =====================================================
-       MOBILE
+       TABLET / MOBILE
     ====================================================== */
 
       @media (max-width: 600px) {
         .hero {
-          padding: 95px 15px 40px;
+          padding: 90px 15px 35px;
         }
 
         .hero-title {
           font-size: clamp(48px, 16vw, 70px);
-
           letter-spacing: -3px;
         }
 
@@ -1873,28 +1880,127 @@
 
         .hero-description {
           font-size: 13px;
-
           padding: 14px;
-
           line-height: 1.9;
         }
 
         /*
-        تصغير المشهد مع الحفاظ
-        على التفاعل
+        المشهد لم يعد يستخدم scale ثابت.
+        نضبط أحجام العناصر مباشرة حسب الشاشة.
       */
 
         .hero-visual {
-          height: 350px;
+          height: min(440px, 92vw);
+          min-height: 330px;
+          width: 100%;
+          overflow: visible;
+          margin: -5px 0 0;
+        }
 
-          transform: scale(0.72);
-
-          margin: -35px -65px -20px;
+        .interactive-scene {
+          transform-origin: center center;
         }
 
         .tech-ring {
-          width: 430px;
-          height: 430px;
+          width: min(410px, 92vw);
+          height: min(410px, 92vw);
+        }
+
+        .laptop {
+          width: min(390px, 78vw);
+          height: min(252px, 50vw);
+          top: 70px;
+          border-width: 5px;
+        }
+
+        .laptop-base {
+          width: min(440px, 86vw);
+          height: 20px;
+          top: calc(70px + min(252px, 50vw) + 7px);
+        }
+
+        .website-screen {
+          padding: 12px;
+        }
+
+        .screen-main {
+          margin-top: 22px;
+        }
+
+        .screen-main h3 {
+          font-size: clamp(18px, 5vw, 25px);
+        }
+
+        .screen-cards {
+          margin-top: 14px;
+        }
+
+        .screen-card {
+          width: 55px;
+          height: 34px;
+        }
+
+        .code-card {
+          width: min(165px, 38vw);
+          min-height: 195px;
+          top: 38px;
+          left: -3px;
+          padding: 13px;
+        }
+
+        .code-editor {
+          font-size: 7px;
+        }
+
+        .phone {
+          width: min(132px, 30vw);
+          height: min(258px, 59vw);
+          left: 0;
+          bottom: 35px;
+          border-width: 5px;
+          border-radius: 22px;
+          padding: 17px 8px 10px;
+        }
+
+        .phone-screen {
+          border-radius: 12px;
+        }
+
+        .phone-page {
+          padding: 21px 8px 10px;
+        }
+
+        .phone h3 {
+          font-size: clamp(15px, 4vw, 18px);
+        }
+
+        .phone p {
+          font-size: 6px;
+        }
+
+        .phone-service-grid {
+          gap: 4px;
+          margin-top: 12px;
+        }
+
+        .phone-service {
+          min-height: 37px;
+          padding: 5px;
+        }
+
+        .floating-tag {
+          font-size: 6px;
+          padding: 5px 7px;
+        }
+
+        .floating-tag.tag-one {
+          right: 1%;
+          top: 15%;
+        }
+
+        .floating-tag.tag-two {
+          right: 2%;
+          bottom: 9%;
         }
 
         .info-box {
@@ -1938,9 +2044,11 @@
         }
 
         .monitor {
-          transform: translateX(50%) scale(0.65);
-
+          width: min(380px, 90vw);
+          height: 220px;
           top: 0;
+          transform: translateX(50%) scale(0.65);
+          transform-origin: top center;
         }
 
         .contact-section {
@@ -1949,24 +2057,19 @@
 
         .contact-card {
           grid-template-columns: 1fr;
-
           text-align: center;
-
           padding: 25px 18px;
-
           gap: 15px;
         }
 
         .contact-icon-box {
           width: 70px;
           height: 70px;
-
           margin: auto;
         }
 
         .contact-content h3 {
           font-size: 16px;
-
           line-height: 1.7;
         }
 
@@ -1976,9 +2079,7 @@
 
         .whatsapp-btn {
           min-width: 0;
-
           width: 100%;
-
           font-size: 12px;
         }
       }
@@ -1987,23 +2088,100 @@
        SMALL PHONES
     ====================================================== */
 
-      @media (max-width: 370px) {
+      @media (max-width: 390px) {
+        .hero {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
         .hero-title {
-          font-size: 48px;
+          font-size: 46px;
         }
 
         .hero-visual {
-          transform: scale(0.6);
+          height: 330px;
+        }
 
-          margin: -55px -100px -40px;
+        .tech-ring {
+          width: 300px;
+          height: 300px;
+        }
+
+        .laptop {
+          width: 300px;
+          height: 195px;
+          top: 58px;
+        }
+
+        .laptop-base {
+          width: 335px;
+          top: 258px;
+        }
+
+        .code-card {
+          width: 125px;
+          min-height: 155px;
+          top: 40px;
+          padding: 10px;
+        }
+
+        .code-editor {
+          font-size: 5.5px;
+        }
+
+        .phone {
+          width: 105px;
+          height: 210px;
+          bottom: 22px;
+        }
+
+        .phone h3 {
+          font-size: 13px;
+        }
+
+        .phone p {
+          font-size: 5px;
+        }
+
+        .phone-button {
+          font-size: 5px;
+          padding: 5px 8px;
+        }
+
+        .screen-main h3 {
+          font-size: 17px;
+        }
+
+        .screen-main p {
+          font-size: 6px;
+        }
+
+        .screen-card {
+          width: 42px;
+          height: 27px;
+        }
+
+        .floating-tag {
+          display: none;
         }
 
         .process-grid {
           grid-template-columns: 1fr;
         }
+      }
 
-        .contact-content h3 {
-          font-size: 15px;
+      /* =====================================================
+       REDUCED MOTION
+    ====================================================== */
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
         }
       }
     </style>
@@ -2014,44 +2192,50 @@
     <div class="floating-light two"></div>
 
     <!-- =====================================================
-     HEADER
-====================================================== -->
+       HEADER
+  ====================================================== -->
 
     <header id="header">
       <nav class="navbar">
         <a href="#" class="logo">
           <div class="logo-icon">&lt;/&gt;</div>
-
           Building Website
         </a>
 
         <ul class="nav-links" id="navLinks">
           <li>
-            <a href="#project"> عن الكورس </a>
+            <a href="#project">عن الكورس</a>
           </li>
 
           <li>
-            <a href="#steps"> ماذا سنتعلم </a>
+            <a href="#steps">ماذا سنتعلم</a>
           </li>
 
           <li>
-            <a href="#price"> السعر </a>
+            <a href="#price">السعر</a>
           </li>
 
           <li>
-            <a href="#contact"> التواصل </a>
+            <a href="#contact">التواصل</a>
           </li>
         </ul>
 
-        <a href="#contact" class="nav-button"> سجل الآن </a>
+        <a href="#contact" class="nav-button">سجل الآن</a>
 
-        <button class="menu-btn" id="menuBtn">☰</button>
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="فتح القائمة"
+          type="button"
+        >
+          ☰
+        </button>
       </nav>
     </header>
 
     <!-- =====================================================
-     HERO
-====================================================== -->
+       HERO
+  ====================================================== -->
 
     <section class="hero">
       <div class="hero-container">
@@ -2059,9 +2243,8 @@
           <div class="course-label">كورس</div>
 
           <h1 class="hero-title">
-            <span class="white"> BUILDING </span>
-
-            <span class="cyan"> WEBSITE </span>
+            <span class="white">BUILDING</span>
+            <span class="cyan">WEBSITE</span>
           </h1>
 
           <h2 class="hero-subtitle">من الفكرة إلى موقع احترافي</h2>
@@ -2070,10 +2253,9 @@
 
           <div class="hero-description">
             تعلم خطوة بخطوة كيفية
-            <span> بناء وتطوير مواقع ويب احترافية </span>
-
+            <span>بناء وتطوير مواقع ويب احترافية</span>
             من الصفر، وافهم الطريقة العملية التي استخدمناها في بناء
-            <span> موقع الفريق الحقيقي. </span>
+            <span>موقع الفريق الحقيقي.</span>
           </div>
 
           <div class="hero-buttons">
@@ -2084,28 +2266,55 @@
         </div>
 
         <!-- =================================================
-         INTERACTIVE VISUAL
-    ================================================== -->
+           CREATIVE INTERACTIVE VISUAL
+      ================================================== -->
 
         <div class="hero-visual" id="heroVisual">
           <div class="interactive-scene" id="interactiveScene">
             <div class="tech-ring"></div>
 
-            <!-- CODE -->
+            <div class="orbit-dot one"></div>
+            <div class="orbit-dot two"></div>
+            <div class="orbit-dot three"></div>
 
-            <div class="code-card">
-              <div class="code-title">&lt; WEBSITE /&gt;</div>
+            <!-- ================= CODE ================= -->
 
-              <div class="code-line"></div>
-              <div class="code-line"></div>
-              <div class="code-line"></div>
-              <div class="code-line"></div>
-              <div class="code-line"></div>
-              <div class="code-line"></div>
-              <div class="code-line"></div>
+            <div class="code-card" id="codeCard">
+              <div class="code-top">
+                <div class="code-title">&lt; WEBSITE /&gt;</div>
+
+                <div class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+
+              <div class="code-editor">
+                <div class="code-line">
+                  <span class="code-purple">const</span>
+                  website =
+                  <span class="code-green">"Coursyria"</span>;
+                </div>
+
+                <div class="code-line">
+                  <span class="code-blue">function</span>
+                  buildSite() {
+                </div>
+
+                <div class="code-line">&nbsp;&nbsp;createLayout();</div>
+
+                <div class="code-line">&nbsp;&nbsp;addResponsive();</div>
+
+                <div class="code-line">&nbsp;&nbsp;addInteraction();</div>
+
+                <div class="code-line">&nbsp;&nbsp;deploy();</div>
+
+                <div class="code-line">}</div>
+              </div>
             </div>
 
-            <!-- LAPTOP -->
+            <!-- ================= LAPTOP ================= -->
 
             <div class="laptop">
               <div class="browser-bar">
@@ -2129,7 +2338,7 @@
                   <h3>
                     Build Your
                     <br />
-                    <span> Dream Website </span>
+                    <span>Dream Website</span>
                   </h3>
 
                   <p>Create modern, responsive and professional websites.</p>
@@ -2147,32 +2356,138 @@
 
             <div class="laptop-base"></div>
 
-            <!-- PHONE -->
+            <!-- ================= PHONE ================= -->
 
-            <div class="phone">
+            <div class="phone" id="phone" aria-label="معاينة موقع تفاعلية">
               <div class="phone-notch"></div>
 
-              <div class="phone-logo">BUILD WEBSITE</div>
+              <div class="phone-screen" id="phoneScreen">
+                <!-- PAGE 1 -->
 
-              <h3>
-                Build
-                <br />
+                <div class="phone-page active" data-page="0">
+                  <div class="phone-menu">
+                    <div class="phone-logo">BUILD WEBSITE</div>
 
-                <span> Your Website </span>
-              </h3>
+                    <div class="phone-menu-icon">☰</div>
+                  </div>
 
-              <p>Responsive website for every device.</p>
+                  <h3>
+                    Build
+                    <br />
+                    <span>Your Website</span>
+                  </h3>
 
-              <span class="phone-button"> START </span>
+                  <p>Responsive website for every device.</p>
+
+                  <span class="phone-button"> START </span>
+                </div>
+
+                <!-- PAGE 2 -->
+
+                <div class="phone-page" data-page="1">
+                  <div class="phone-menu">
+                    <div class="phone-logo">ABOUT</div>
+
+                    <div class="phone-menu-icon">←</div>
+                  </div>
+
+                  <h3>
+                    From Idea
+                    <br />
+                    <span>To Reality</span>
+                  </h3>
+
+                  <p>نحول الفكرة إلى تجربة رقمية متكاملة.</p>
+
+                  <span class="phone-button"> EXPLORE </span>
+                </div>
+
+                <!-- PAGE 3 -->
+
+                <div class="phone-page" data-page="2">
+                  <div class="phone-menu">
+                    <div class="phone-logo">SERVICES</div>
+
+                    <div class="phone-menu-icon">+</div>
+                  </div>
+
+                  <h3>
+                    What
+                    <br />
+                    <span>We Build</span>
+                  </h3>
+
+                  <div class="phone-service-grid">
+                    <div class="phone-service">
+                      <div class="phone-service-icon">&lt;/&gt;</div>
+                      <span>Websites</span>
+                    </div>
+
+                    <div class="phone-service">
+                      <div class="phone-service-icon">🎨</div>
+                      <span>UI Design</span>
+                    </div>
+
+                    <div class="phone-service">
+                      <div class="phone-service-icon">⚡</div>
+                      <span>Animation</span>
+                    </div>
+
+                    <div class="phone-service">
+                      <div class="phone-service-icon">📱</div>
+                      <span>Responsive</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PAGE 4 -->
+
+                <div class="phone-page" data-page="3">
+                  <div class="phone-menu">
+                    <div class="phone-logo">CONTACT</div>
+
+                    <div class="phone-menu-icon">●</div>
+                  </div>
+
+                  <h3>
+                    Let's
+                    <br />
+                    <span>Build Together</span>
+                  </h3>
+
+                  <p>جاهز تحول فكرتك إلى موقع حقيقي؟</p>
+
+                  <div class="phone-contact-box">
+                    <strong> START PROJECT </strong>
+
+                    <small> Contact us today </small>
+                  </div>
+                </div>
+
+                <!-- PAGE INDICATORS -->
+
+                <div class="phone-progress" id="phoneProgress">
+                  <span class="active"></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="phone-swipe-hint">اسحب لتجربة الصفحات ←</div>
+              </div>
             </div>
+
+            <div class="floating-tag tag-one">Responsive</div>
+
+            <div class="floating-tag tag-two">Interactive</div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- =====================================================
-     QUICK INFO
-====================================================== -->
+       QUICK INFO
+  ====================================================== -->
 
     <section class="quick-info">
       <div class="info-box reveal">
@@ -2227,8 +2542,8 @@
     </section>
 
     <!-- =====================================================
-     PROJECT
-====================================================== -->
+       PROJECT
+  ====================================================== -->
 
     <section class="team-project" id="project">
       <div class="section-label reveal">
@@ -2240,7 +2555,6 @@
           <h2>
             رح نشرح
             <span> كيف عملنا موقع الفريق </span>
-
             خطوة بخطوة
           </h2>
 
@@ -2253,51 +2567,36 @@
         <div class="process-grid" id="steps">
           <div class="process-card">
             <div class="process-number">01</div>
-
             <div class="process-icon">💡</div>
-
             <h3>بداية الفكرة</h3>
-
             <p>كيف حددنا فكرة الموقع والأقسام المطلوبة فيه.</p>
           </div>
 
           <div class="process-card">
             <div class="process-number">02</div>
-
             <div class="process-icon">🎨</div>
-
             <h3>تصميم الواجهة</h3>
-
             <p>كيف اخترنا الألوان ورتبنا شكل الصفحات.</p>
           </div>
 
           <div class="process-card">
             <div class="process-number">03</div>
-
             <div class="process-icon">&lt;/&gt;</div>
-
             <h3>بناء الموقع</h3>
-
             <p>كيف حولنا التصميم إلى صفحات ويب.</p>
           </div>
 
           <div class="process-card">
             <div class="process-number">04</div>
-
             <div class="process-icon">⚡</div>
-
             <h3>إضافة التفاعل</h3>
-
             <p>كيف جعلنا الموقع متفاعلاً وحيوياً.</p>
           </div>
 
           <div class="process-card">
             <div class="process-number">05</div>
-
             <div class="process-icon">🚀</div>
-
             <h3>النتيجة النهائية</h3>
-
             <p>كيف جهزنا الموقع ليصبح جاهزاً للنشر.</p>
           </div>
         </div>
@@ -2310,8 +2609,8 @@
     </section>
 
     <!-- =====================================================
-     FINAL
-====================================================== -->
+       FINAL
+  ====================================================== -->
 
     <section class="final-section">
       <div class="preview-box reveal">
@@ -2350,8 +2649,8 @@
     </section>
 
     <!-- =====================================================
-     CTA
-====================================================== -->
+       CTA
+  ====================================================== -->
 
     <section class="cta">
       <div class="cta-box reveal">
@@ -2368,8 +2667,8 @@
     </section>
 
     <!-- =====================================================
-     CONTACT
-====================================================== -->
+       CONTACT
+  ====================================================== -->
 
     <section class="section contact-section" id="contact">
       <div class="section-heading">
@@ -2379,7 +2678,7 @@
       <div class="contact-wrapper">
         <div class="contact-card">
           <div class="contact-icon-box">
-            <span> 👨‍🏫 </span>
+            <span>👨‍🏫</span>
           </div>
 
           <div class="contact-content">
@@ -2405,8 +2704,8 @@
     </section>
 
     <!-- =====================================================
-     FOOTER
-====================================================== -->
+       FOOTER
+  ====================================================== -->
 
     <footer class="site-footer">
       <div class="footer-line"></div>
@@ -2422,11 +2721,10 @@
 
     <script>
       /* =====================================================
-     MOBILE MENU
-  ====================================================== */
+       MOBILE MENU
+    ====================================================== */
 
       const menuBtn = document.getElementById("menuBtn");
-
       const navLinks = document.getElementById("navLinks");
 
       menuBtn.addEventListener("click", () => {
@@ -2440,22 +2738,26 @@
       });
 
       /* =====================================================
-     HEADER
-  ====================================================== */
+       HEADER
+    ====================================================== */
 
       const header = document.getElementById("header");
 
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 30) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-      });
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (window.scrollY > 30) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        },
+        { passive: true },
+      );
 
       /* =====================================================
-     REVEAL
-  ====================================================== */
+       REVEAL
+    ====================================================== */
 
       const reveals = document.querySelectorAll(".reveal");
 
@@ -2477,139 +2779,315 @@
       });
 
       /* =====================================================
-     MOUSE INTERACTION
-     
-     اللابتوب والموبايل والكود
-     يتحركون مع حركة الماوس
-  ====================================================== */
+       3D MOUSE INTERACTION
+    ====================================================== */
 
       const heroVisual = document.getElementById("heroVisual");
-
       const scene = document.getElementById("interactiveScene");
 
+      let mouseActive = false;
+
       heroVisual.addEventListener("mousemove", (event) => {
-        /*
-        إذا كان الجهاز يدعم الماوس
-      */
-
-        if (window.matchMedia("(hover: hover)").matches) {
-          const rect = heroVisual.getBoundingClientRect();
-
-          const x = event.clientX - rect.left;
-
-          const y = event.clientY - rect.top;
-
-          const centerX = rect.width / 2;
-
-          const centerY = rect.height / 2;
-
-          const rotateY = ((x - centerX) / centerX) * 8;
-
-          const rotateX = ((centerY - y) / centerY) * 7;
-
-          scene.style.transform = `
-          rotateX(${rotateX}deg)
-          rotateY(${rotateY}deg)
-          translateZ(10px)
-          `;
+        if (!window.matchMedia("(hover: hover)").matches) {
+          return;
         }
+
+        const rect = heroVisual.getBoundingClientRect();
+
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateY = ((x - centerX) / centerX) * 8;
+
+        const rotateX = ((centerY - y) / centerY) * 7;
+
+        mouseActive = true;
+
+        scene.style.transform = `
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        translateZ(10px)
+      `;
       });
 
       heroVisual.addEventListener("mouseleave", () => {
+        mouseActive = false;
+
         scene.style.transform = "rotateX(0deg) rotateY(0deg)";
       });
 
       /* =====================================================
-     TOUCH / MOBILE INTERACTION
-     
-     عند لمس الشاشة يتحرك المشهد
-  ====================================================== */
+       PHONE PAGE SYSTEM
+    ====================================================== */
 
+      const phone = document.getElementById("phone");
+      const pages = Array.from(document.querySelectorAll(".phone-page"));
+
+      const progressItems = Array.from(
+        document.querySelectorAll("#phoneProgress span"),
+      );
+
+      let currentPage = 0;
+      let pageTimer = null;
       let touchStartX = 0;
       let touchStartY = 0;
+      let isTouchingPhone = false;
 
-      heroVisual.addEventListener(
+      function updatePhonePage(nextPage, direction = 1) {
+        if (!pages.length) return;
+
+        nextPage = (nextPage + pages.length) % pages.length;
+
+        if (nextPage === currentPage) {
+          return;
+        }
+
+        const oldPage = pages[currentPage];
+        const newPage = pages[nextPage];
+
+        oldPage.classList.remove("active");
+
+        oldPage.classList.add(direction > 0 ? "exit-left" : "exit-right");
+
+        newPage.classList.remove("exit-left", "exit-right");
+
+        newPage.classList.add("active");
+
+        progressItems.forEach((item, index) => {
+          item.classList.toggle("active", index === nextPage);
+        });
+
+        currentPage = nextPage;
+
+        setTimeout(() => {
+          oldPage.classList.remove("exit-left", "exit-right");
+        }, 500);
+      }
+
+      function nextPhonePage() {
+        updatePhonePage(currentPage + 1, 1);
+      }
+
+      function previousPhonePage() {
+        updatePhonePage(currentPage - 1, -1);
+      }
+
+      /* =====================================================
+       AUTO PAGE TRANSITION
+    ====================================================== */
+
+      function startPageAnimation() {
+        stopPageAnimation();
+
+        pageTimer = setInterval(() => {
+          if (!document.hidden) {
+            nextPhonePage();
+          }
+        }, 3200);
+      }
+
+      function stopPageAnimation() {
+        if (pageTimer) {
+          clearInterval(pageTimer);
+          pageTimer = null;
+        }
+      }
+
+      startPageAnimation();
+
+      /* =====================================================
+       PHONE CLICK
+    ====================================================== */
+
+      phone.addEventListener("click", (event) => {
+        const rect = phone.getBoundingClientRect();
+
+        const x = event.clientX - rect.left;
+
+        if (x < rect.width / 2) {
+          nextPhonePage();
+        } else {
+          previousPhonePage();
+        }
+
+        startPageAnimation();
+      });
+
+      /* =====================================================
+       PHONE TOUCH SWIPE
+    ====================================================== */
+
+      phone.addEventListener(
         "touchstart",
         (event) => {
           const touch = event.touches[0];
 
           touchStartX = touch.clientX;
-
           touchStartY = touch.clientY;
+
+          isTouchingPhone = true;
+
+          stopPageAnimation();
         },
         { passive: true },
       );
 
-      heroVisual.addEventListener(
+      phone.addEventListener(
         "touchmove",
         (event) => {
+          if (!isTouchingPhone) {
+            return;
+          }
+
           const touch = event.touches[0];
 
           const dx = touch.clientX - touchStartX;
 
           const dy = touch.clientY - touchStartY;
 
-          const rotateY = Math.max(-8, Math.min(8, dx / 15));
+          /*
+          فقط إذا كانت الحركة أفقية بشكل واضح
+          لا نتدخل بحركة الصفحة العمودية.
+        */
 
-          const rotateX = Math.max(-7, Math.min(7, -dy / 15));
+          if (Math.abs(dx) > Math.abs(dy)) {
+            event.preventDefault();
+          }
+        },
+        { passive: false },
+      );
 
-          scene.style.transform = `
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
-        `;
+      phone.addEventListener(
+        "touchend",
+        (event) => {
+          if (!isTouchingPhone) {
+            return;
+          }
+
+          const touch = event.changedTouches[0];
+
+          const dx = touch.clientX - touchStartX;
+
+          const dy = touch.clientY - touchStartY;
+
+          const swipeDistance = 35;
+
+          if (Math.abs(dx) > swipeDistance && Math.abs(dx) > Math.abs(dy)) {
+            if (dx < 0) {
+              nextPhonePage();
+            } else {
+              previousPhonePage();
+            }
+          }
+
+          isTouchingPhone = false;
+
+          startPageAnimation();
         },
         { passive: true },
       );
 
-      heroVisual.addEventListener("touchend", () => {
-        scene.style.transform = "rotateX(0deg) rotateY(0deg)";
+      /* =====================================================
+       PAUSE WHEN USER HOVERS PHONE
+    ====================================================== */
+
+      phone.addEventListener("mouseenter", () => {
+        stopPageAnimation();
+      });
+
+      phone.addEventListener("mouseleave", () => {
+        startPageAnimation();
       });
 
       /* =====================================================
-     MOBILE AUTO FLOAT
-     
-     على الموبايل يتحرك تلقائياً
-  ====================================================== */
+       PAUSE WHEN TAB IS HIDDEN
+    ====================================================== */
 
-      let mobileAnimation;
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          stopPageAnimation();
+        } else {
+          startPageAnimation();
+        }
+      });
+
+      /* =====================================================
+       MOBILE 3D AUTO MOVEMENT
+    ====================================================== */
+
+      let mobileAnimation = null;
+      let mobileTime = 0;
 
       function startMobileAnimation() {
-        if (window.innerWidth <= 600 && !mobileAnimation) {
-          let t = 0;
+        if (
+          window.innerWidth <= 850 &&
+          !mobileAnimation &&
+          !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+          const animate = () => {
+            if (!mouseActive && !isTouchingPhone) {
+              mobileTime += 0.012;
 
-          mobileAnimation = setInterval(() => {
-            t += 0.025;
+              const rotateY = Math.sin(mobileTime) * 2.8;
 
-            const rotateY = Math.sin(t) * 4;
+              const rotateX = Math.cos(mobileTime * 0.75) * 1.8;
 
-            const rotateX = Math.cos(t * 0.8) * 3;
-
-            scene.style.transform = `
+              scene.style.transform = `
               rotateX(${rotateX}deg)
               rotateY(${rotateY}deg)
-              `;
-          }, 30);
+            `;
+            }
+
+            mobileAnimation = requestAnimationFrame(animate);
+          };
+
+          mobileAnimation = requestAnimationFrame(animate);
         }
       }
 
       function stopMobileAnimation() {
-        if (window.innerWidth > 600 && mobileAnimation) {
-          clearInterval(mobileAnimation);
+        if (mobileAnimation) {
+          cancelAnimationFrame(mobileAnimation);
 
           mobileAnimation = null;
-
-          scene.style.transform = "rotateX(0deg) rotateY(0deg)";
         }
       }
 
       startMobileAnimation();
 
-      window.addEventListener("resize", () => {
-        if (window.innerWidth <= 600) {
-          startMobileAnimation();
-        } else {
-          stopMobileAnimation();
-        }
+      /* =====================================================
+       RESIZE
+    ====================================================== */
+
+      let resizeTimeout;
+
+      window.addEventListener(
+        "resize",
+        () => {
+          clearTimeout(resizeTimeout);
+
+          resizeTimeout = setTimeout(() => {
+            stopMobileAnimation();
+
+            if (window.innerWidth <= 850) {
+              startMobileAnimation();
+            } else {
+              scene.style.transform = "rotateX(0deg) rotateY(0deg)";
+            }
+          }, 150);
+        },
+        { passive: true },
+      );
+
+      /* =====================================================
+       PREVENT ACCIDENTAL DOUBLE CLICK EFFECT
+    ====================================================== */
+
+      phone.addEventListener("dblclick", (event) => {
+        event.preventDefault();
       });
     </script>
   </body>
