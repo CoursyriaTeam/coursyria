@@ -11,6 +11,17 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link
+  href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"
+  rel="stylesheet"
+/>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap");
 
@@ -4090,6 +4101,691 @@
           gap: 12px;
         }
       }
+      /* =====================================================
+         GRADUATION PROJECT + CERTIFICATE
+      ====================================================== */
+
+      .extra-section {
+        padding: 10px 55px 55px;
+      }
+
+      .extra-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: min(950px, 100%);
+        margin: 0 auto;
+      }
+
+      .extra-card {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+        color: inherit;
+        padding: 30px 22px;
+        border-radius: 26px;
+        border: 1px solid rgba(30, 126, 220, 0.22);
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.97),
+          rgba(233, 247, 255, 0.9)
+        );
+        box-shadow: 0 14px 34px rgba(8, 74, 155, 0.1);
+        transition: 0.35s ease;
+      }
+
+      .extra-card::before {
+        content: "";
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        top: -60px;
+        left: -60px;
+        background: radial-gradient(
+          circle,
+          rgba(45, 168, 255, 0.18),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .extra-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(15, 117, 224, 0.5);
+        box-shadow: 0 22px 46px rgba(7, 76, 160, 0.18);
+      }
+
+      .extra-icon {
+        position: relative;
+        z-index: 2;
+        width: 76px;
+        height: 76px;
+        margin-bottom: 16px;
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 34px;
+        color: #fff;
+        background: linear-gradient(145deg, #8ee5ff 0%, #1687ec 55%, #031c59 100%);
+        box-shadow:
+          0 10px 24px rgba(2, 52, 126, 0.28),
+          0 0 22px rgba(58, 190, 255, 0.35),
+          inset 1px 1px 4px rgba(255, 255, 255, 0.6);
+      }
+
+      .extra-card h3 {
+        position: relative;
+        z-index: 2;
+        color: #08489f;
+        font-size: 19px;
+        margin-bottom: 8px;
+      }
+
+      .extra-card p {
+        position: relative;
+        z-index: 2;
+        color: #5f7392;
+        font-size: 13px;
+        line-height: 1.9;
+        max-width: 320px;
+      }
+
+      .extra-cta {
+        position: relative;
+        z-index: 2;
+        margin-top: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 22px;
+        border-radius: 30px;
+        background: linear-gradient(135deg, #35adff, #0751b7);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 800;
+        box-shadow: 0 8px 20px rgba(7, 82, 186, 0.25);
+        transition: 0.3s ease;
+      }
+
+      .extra-card:hover .extra-cta {
+        transform: translateX(-4px);
+        box-shadow: 0 10px 26px rgba(7, 82, 186, 0.35);
+      }
+
+      @media (max-width: 950px) {
+        .extra-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 650px) {
+        .extra-section {
+          padding: 10px 12px 30px;
+        }
+        .extra-card {
+          padding: 22px 16px;
+          border-radius: 20px;
+        }
+        .extra-icon {
+          width: 62px;
+          height: 62px;
+          font-size: 28px;
+          border-radius: 18px;
+          margin-bottom: 12px;
+        }
+        .extra-card h3 {
+          font-size: 16px;
+        }
+        .extra-card p {
+          font-size: 12px;
+        }
+        .extra-cta {
+          padding: 8px 18px;
+          font-size: 12px;
+        }
+      }
+      /* =====================================================
+   CHESS EDITION
+===================================================== */
+
+.announce-section {
+  width: 100%;
+  padding: 35px 15px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  font-family: "Cairo", sans-serif;
+}
+
+.announce-card {
+  position: relative;
+  width: min(900px, 100%);
+  min-height: 430px;
+  overflow: hidden;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(53, 106, 180, .25), transparent 35%),
+    radial-gradient(circle at 15% 80%, rgba(31, 77, 139, .25), transparent 30%),
+    linear-gradient(145deg, #07101f, #0b1729 55%, #050b15);
+  border: 1px solid rgba(181, 210, 242, .45);
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, .4),
+    inset 0 0 50px rgba(104, 161, 225, .08);
+}
+
+/* Inner frame */
+.announce-card::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(180, 210, 245, .16);
+  border-radius: 17px;
+  pointer-events: none;
+}
+
+.announce-card::after {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(91, 145, 205, .08);
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+/* Corners */
+.corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #b9d7f8;
+  z-index: 8;
+}
+
+.corner-tl {
+  top: 18px;
+  left: 18px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.corner-tr {
+  top: 18px;
+  right: 18px;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.corner-bl {
+  bottom: 18px;
+  left: 18px;
+  border-right: 0;
+  border-top: 0;
+}
+
+.corner-br {
+  bottom: 18px;
+  right: 18px;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* Chess floor */
+.chess-floor {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  width: 850px;
+  height: 230px;
+  transform: translateX(-50%) perspective(450px) rotateX(65deg);
+  background:
+    repeating-conic-gradient(
+      from 45deg,
+      rgba(210, 225, 244, .12) 0 25%,
+      rgba(255, 255, 255, .025) 0 50%
+    ) 0 0 / 70px 70px;
+  opacity: .65;
+  mask-image: linear-gradient(to top, black, transparent);
+}
+
+/* Content */
+.announce-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 430px;
+  padding: 32px 30px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Brand */
+.announce-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 19px;
+  transform: rotate(45deg);
+  border: 1px solid rgba(220, 235, 255, .65);
+  background: linear-gradient(145deg, #213b5e, #081321);
+  box-shadow: 0 0 20px rgba(110, 177, 244, .22);
+}
+
+.brand-mark::first-letter {
+  transform: rotate(-45deg);
+}
+
+.announce-brand strong {
+  display: block;
+  color: #f5f8fc;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 4px;
+  font-size: 14px;
+}
+
+.announce-brand small {
+  display: block;
+  color: #7e9bbb;
+  font-size: 7px;
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+
+/* Title */
+.announce-title {
+  display: flex;
+  flex-direction: column;
+  line-height: .95;
+}
+
+.announce-title span {
+  color: #a9bdd5;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(22px, 4vw, 35px);
+  letter-spacing: 5px;
+}
+
+.announce-title strong {
+  margin-top: 5px;
+  color: #f7fbff;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(29px, 5.5vw, 52px);
+  letter-spacing: 3px;
+  text-shadow: 0 0 25px rgba(157, 202, 250, .2);
+}
+
+.announce-line {
+  width: 100px;
+  height: 1px;
+  margin: 14px 0 8px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #b9d8f7,
+    transparent
+  );
+}
+
+.announce-subtitle {
+  margin: 0;
+  color: #91abc9;
+  font-size: 9px;
+  letter-spacing: 4px;
+  font-weight: 700;
+}
+
+/* Date */
+.announce-date {
+  margin-top: 13px;
+}
+
+.date-number {
+  color: #ffffff;
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 3px;
+}
+
+.date-month {
+  margin-top: 3px;
+  color: #6f8cab;
+  font-size: 8px;
+  letter-spacing: 5px;
+}
+
+/* Countdown */
+.announce-countdown {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.count-box {
+  width: 67px;
+  height: 58px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(168, 201, 236, .25);
+  background: rgba(9, 23, 40, .65);
+  box-shadow:
+    inset 0 0 15px rgba(110, 170, 230, .04),
+    0 7px 20px rgba(0, 0, 0, .2);
+}
+
+.count-box strong {
+  color: #f4f9ff;
+  font-family: "Playfair Display", serif;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.count-box span {
+  color: #7692b1;
+  font-size: 7px;
+  margin-top: 4px;
+}
+
+/* Strategy */
+.strategy-text {
+  margin-top: 14px;
+  color: #a9c3df;
+  font-family: "Playfair Display", serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+.strategy-text i {
+  color: #55789f;
+  font-style: normal;
+  margin: 0 4px;
+}
+
+/* Footer */
+.announce-footer {
+  margin-top: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.announce-footer strong {
+  color: #dce9f7;
+  font-size: 8px;
+  letter-spacing: 3px;
+}
+
+.announce-footer span {
+  color: #597694;
+  font-size: 7px;
+  letter-spacing: 3px;
+}
+
+/* =====================================================
+   CHESS PIECES
+===================================================== */
+
+.chess-world {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.chess-piece {
+  position: absolute;
+  width: 70px;
+  height: auto;
+  filter:
+    drop-shadow(0 0 9px rgba(177, 215, 255, .25))
+    drop-shadow(0 15px 18px rgba(0, 0, 0, .55));
+  opacity: .85;
+  animation: chessFloat 5s ease-in-out infinite;
+}
+
+.queen {
+  width: 72px;
+  left: 5%;
+  bottom: 25px;
+  --r: -8deg;
+  transform: rotate(var(--r));
+}
+
+.king {
+  width: 76px;
+  right: 5%;
+  bottom: 18px;
+  --r: 8deg;
+  transform: rotate(var(--r));
+  animation-delay: -1.4s;
+}
+
+.rook-one {
+  width: 58px;
+  left: 18%;
+  top: 55px;
+  --r: -5deg;
+  transform: rotate(var(--r));
+  opacity: .65;
+  animation-delay: -2.5s;
+}
+
+.bishop {
+  width: 55px;
+  right: 18%;
+  top: 60px;
+  --r: 5deg;
+  transform: rotate(var(--r));
+  opacity: .65;
+  animation-delay: -3.2s;
+}
+
+.knight {
+  width: 65px;
+  left: 10%;
+  top: 180px;
+  --r: -10deg;
+  transform: rotate(var(--r));
+  opacity: .6;
+  animation-delay: -1.8s;
+}
+
+.pawn {
+  width: 42px;
+  opacity: .58;
+}
+
+.pawn-one {
+  left: 28%;
+  bottom: 22px;
+  animation-delay: -2s;
+}
+
+.pawn-two {
+  left: 36%;
+  bottom: 38px;
+  animation-delay: -4s;
+}
+
+.pawn-three {
+  right: 31%;
+  bottom: 28px;
+  animation-delay: -1s;
+}
+
+.pawn-four {
+  right: 24%;
+  bottom: 45px;
+  animation-delay: -3.5s;
+}
+
+@keyframes chessFloat {
+  0%, 100% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: -7px;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .announce-section {
+    padding: 20px 10px;
+  }
+
+  .announce-card {
+    min-height: 390px;
+    border-radius: 20px;
+  }
+
+  .announce-content {
+    min-height: 390px;
+    padding: 27px 18px 22px;
+  }
+
+  .announce-title strong {
+    font-size: clamp(27px, 8vw, 42px);
+  }
+
+  .announce-title span {
+    font-size: clamp(19px, 5vw, 28px);
+  }
+
+  .count-box {
+    width: 60px;
+    height: 53px;
+  }
+
+  .count-box strong {
+    font-size: 19px;
+  }
+
+  .chess-piece {
+    opacity: .42;
+  }
+
+  .queen {
+    left: -7px;
+    bottom: 15px;
+  }
+
+  .king {
+    right: -7px;
+    bottom: 10px;
+  }
+
+  .rook-one {
+    left: 3%;
+    top: 45px;
+  }
+
+  .bishop {
+    right: 3%;
+    top: 50px;
+  }
+
+  .knight {
+    left: -5px;
+    top: 175px;
+  }
+}
+
+@media (max-width: 400px) {
+
+  .announce-section {
+    padding: 15px 7px;
+  }
+
+  .announce-card {
+    min-height: 360px;
+  }
+
+  .announce-content {
+    min-height: 360px;
+    padding: 24px 12px 18px;
+  }
+
+  .announce-brand strong {
+    font-size: 12px;
+  }
+
+  .announce-title strong {
+    font-size: 25px;
+  }
+
+  .announce-title span {
+    font-size: 18px;
+  }
+
+  .announce-subtitle {
+    font-size: 7px;
+    letter-spacing: 3px;
+  }
+
+  .announce-date {
+    margin-top: 10px;
+  }
+
+  .date-number {
+    font-size: 25px;
+  }
+
+  .announce-countdown {
+    gap: 5px;
+    margin-top: 12px;
+  }
+
+  .count-box {
+    width: 55px;
+    height: 49px;
+  }
+
+  .count-box strong {
+    font-size: 17px;
+  }
+
+  .strategy-text {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+
+  .announce-footer strong {
+    font-size: 6px;
+  }
+
+  .announce-footer span {
+    font-size: 6px;
+  }
+
+  .chess-piece {
+    opacity: .3;
+  }
+}
     </style>
   </head>
 
@@ -4202,6 +4898,10 @@
               <a href="#promotion" class="nav-link">شروط الترقية</a>
 
               <a href="#payment" class="nav-link">الدفع</a>
+
+              <a href="#announcements" class="nav-link">الإعلانات</a>
+
+              <a href="#graduation" class="nav-link">مشروع التخرج</a>
 
               <a href="#faq" class="nav-link">الأسئلة الشائعة</a>
 
@@ -5035,6 +5735,274 @@
             </div>
           </section>
 
+<!-- ================= CHESS EDITION ================= -->
+<section class="announce-section" id="chessEdition">
+
+  <div class="announce-card">
+
+    <!-- Decorative diamonds -->
+    <span class="corner corner-tl"></span>
+    <span class="corner corner-tr"></span>
+    <span class="corner corner-bl"></span>
+    <span class="corner corner-br"></span>
+
+    <!-- Chess floor -->
+    <div class="chess-floor"></div>
+
+    <!-- Chess pieces -->
+    <div class="chess-world">
+
+      <!-- Queen -->
+      <svg class="chess-piece queen" viewBox="0 0 100 150">
+        <defs>
+          <linearGradient id="silverQueen" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset=".45" stop-color="#cfd8e6"/>
+            <stop offset="1" stop-color="#71809a"/>
+          </linearGradient>
+        </defs>
+
+        <g fill="url(#silverQueen)" stroke="#eaf3ff" stroke-width="1.5">
+          <circle cx="25" cy="15" r="7"/>
+          <circle cx="50" cy="9" r="7"/>
+          <circle cx="75" cy="15" r="7"/>
+          <path d="M25 25 L35 52 L50 25 L65 52 L75 25 L68 70 L32 70 Z"/>
+          <path d="M30 70 H70 L77 91 H23 Z"/>
+          <path d="M23 91 H77 L84 116 H16 Z"/>
+          <path d="M13 116 H87 L94 130 H6 Z"/>
+        </g>
+      </svg>
+
+      <!-- King -->
+      <svg class="chess-piece king" viewBox="0 0 100 150">
+        <defs>
+          <linearGradient id="silverKing" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset=".5" stop-color="#d6deea"/>
+            <stop offset="1" stop-color="#73839d"/>
+          </linearGradient>
+        </defs>
+
+        <g fill="url(#silverKing)" stroke="#f4f8ff" stroke-width="1.5">
+          <rect x="43" y="5" width="14" height="35" rx="2"/>
+          <rect x="34" y="15" width="32" height="12" rx="2"/>
+          <path d="M30 40 H70 L65 70 H35 Z"/>
+          <path d="M32 70 H68 L76 94 H24 Z"/>
+          <path d="M22 94 H78 L85 118 H15 Z"/>
+          <path d="M10 118 H90 L96 132 H4 Z"/>
+        </g>
+      </svg>
+
+      <!-- Rook -->
+      <svg class="chess-piece rook rook-one" viewBox="0 0 100 150">
+        <defs>
+          <linearGradient id="silverRook" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset=".5" stop-color="#d2dbe8"/>
+            <stop offset="1" stop-color="#6e7d96"/>
+          </linearGradient>
+        </defs>
+
+        <g fill="url(#silverRook)" stroke="#eef5ff" stroke-width="1.5">
+          <path d="M18 12 H35 V25 H45 V12 H55 V25 H65 V12 H82 V42 H18 Z"/>
+          <path d="M27 42 H73 L68 72 H32 Z"/>
+          <path d="M30 72 H70 L78 96 H22 Z"/>
+          <path d="M20 96 H80 L87 120 H13 Z"/>
+          <path d="M8 120 H92 L97 133 H3 Z"/>
+        </g>
+      </svg>
+
+      <!-- Bishop -->
+      <svg class="chess-piece bishop" viewBox="0 0 100 150">
+        <defs>
+          <linearGradient id="silverBishop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset=".5" stop-color="#d4deea"/>
+            <stop offset="1" stop-color="#718099"/>
+          </linearGradient>
+        </defs>
+
+        <g fill="url(#silverBishop)" stroke="#eef5ff" stroke-width="1.5">
+          <path d="M50 8 C33 25 30 39 40 55 L30 75 H70 L60 55 C70 39 67 25 50 8 Z"/>
+          <path d="M32 75 H68 L77 98 H23 Z"/>
+          <path d="M22 98 H78 L87 120 H13 Z"/>
+          <path d="M8 120 H92 L97 133 H3 Z"/>
+          <path d="M43 28 L58 15"/>
+        </g>
+      </svg>
+
+      <!-- Knight -->
+      <svg class="chess-piece knight" viewBox="0 0 100 150">
+        <defs>
+          <linearGradient id="silverKnight" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset=".5" stop-color="#d0dbe9"/>
+            <stop offset="1" stop-color="#6d7d97"/>
+          </linearGradient>
+        </defs>
+
+        <g fill="url(#silverKnight)" stroke="#edf5ff" stroke-width="1.5">
+          <path d="M65 12 C43 10 25 22 28 42 C30 54 43 57 48 68 L32 83 H68 C79 69 76 53 64 44 C75 35 78 22 65 12 Z"/>
+          <circle cx="55" cy="27" r="3" fill="#4d5b72"/>
+          <path d="M30 83 H70 L78 101 H22 Z"/>
+          <path d="M20 101 H80 L88 121 H12 Z"/>
+          <path d="M7 121 H93 L97 133 H3 Z"/>
+        </g>
+      </svg>
+
+      <!-- Pawns -->
+      <svg class="chess-piece pawn pawn-one" viewBox="0 0 100 150">
+        <defs>
+          <linearGradient id="silverPawn" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset=".5" stop-color="#d4deea"/>
+            <stop offset="1" stop-color="#73829b"/>
+          </linearGradient>
+        </defs>
+
+        <g fill="url(#silverPawn)" stroke="#eef5ff" stroke-width="1.5">
+          <circle cx="50" cy="25" r="17"/>
+          <path d="M38 40 C43 52 43 61 35 75 H65 C57 61 57 52 62 40 Z"/>
+          <path d="M29 75 H71 L78 98 H22 Z"/>
+          <path d="M18 98 H82 L89 120 H11 Z"/>
+          <path d="M7 120 H93 L97 133 H3 Z"/>
+        </g>
+      </svg>
+
+      <svg class="chess-piece pawn pawn-two" viewBox="0 0 100 150">
+        <g fill="url(#silverPawn)" stroke="#eef5ff" stroke-width="1.5">
+          <circle cx="50" cy="25" r="17"/>
+          <path d="M38 40 C43 52 43 61 35 75 H65 C57 61 57 52 62 40 Z"/>
+          <path d="M29 75 H71 L78 98 H22 Z"/>
+          <path d="M18 98 H82 L89 120 H11 Z"/>
+          <path d="M7 120 H93 L97 133 H3 Z"/>
+        </g>
+      </svg>
+
+      <svg class="chess-piece pawn pawn-three" viewBox="0 0 100 150">
+        <g fill="url(#silverPawn)" stroke="#eef5ff" stroke-width="1.5">
+          <circle cx="50" cy="25" r="17"/>
+          <path d="M38 40 C43 52 43 61 35 75 H65 C57 61 57 52 62 40 Z"/>
+          <path d="M29 75 H71 L78 98 H22 Z"/>
+          <path d="M18 98 H82 L89 120 H11 Z"/>
+          <path d="M7 120 H93 L97 133 H3 Z"/>
+        </g>
+      </svg>
+
+      <svg class="chess-piece pawn pawn-four" viewBox="0 0 100 150">
+        <g fill="url(#silverPawn)" stroke="#eef5ff" stroke-width="1.5">
+          <circle cx="50" cy="25" r="17"/>
+          <path d="M38 40 C43 52 43 61 35 75 H65 C57 61 57 52 62 40 Z"/>
+          <path d="M29 75 H71 L78 98 H22 Z"/>
+          <path d="M18 98 H82 L89 120 H11 Z"/>
+          <path d="M7 120 H93 L97 133 H3 Z"/>
+        </g>
+      </svg>
+
+    </div>
+
+    <!-- Main content -->
+    <div class="announce-content">
+
+      <div class="announce-brand">
+        <div class="brand-mark">♛</div>
+        <div>
+          <strong>COURSYRIA</strong>
+          <small>LEARN • GROW • LEAD</small>
+        </div>
+      </div>
+
+      <div class="announce-title">
+        <span>SOMETHING</span>
+        <strong>BIG IS COMING</strong>
+      </div>
+
+      <div class="announce-line"></div>
+
+      <p class="announce-subtitle">
+        PREPARE YOUR STRATEGY
+      </p>
+
+      <div class="announce-date">
+        <div class="date-number">10 / 1</div>
+        <div class="date-month">OCTOBER</div>
+      </div>
+
+      <div class="announce-countdown">
+
+        <div class="count-box">
+          <strong id="chessDays">00</strong>
+          <span>يوم</span>
+        </div>
+
+        <div class="count-box">
+          <strong id="chessHours">00</strong>
+          <span>ساعة</span>
+        </div>
+
+        <div class="count-box">
+          <strong id="chessMinutes">00</strong>
+          <span>دقيقة</span>
+        </div>
+
+        <div class="count-box">
+          <strong id="chessSeconds">00</strong>
+          <span>ثانية</span>
+        </div>
+
+      </div>
+
+      <div class="strategy-text">
+        COMPETE <i>•</i> STRATEGIZE <i>•</i> WIN
+      </div>
+
+      <div class="announce-footer">
+        <strong>ONLY THE BEST WILL RISE</strong>
+        <span>STAY TUNED...</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+          <!-- =====================================================
+           GRADUATION PROJECT & CERTIFICATE
+        ====================================================== -->
+
+          <section class="extra-section" id="graduation">
+            <div class="section-title">
+              <h2>مشروع التخرج والشهادات</h2>
+
+              <div class="blue-line"></div>
+
+              <p>تعرّف على مشروع التخرج وشهادة الخبرة الخاصة بنا</p>
+            </div>
+
+            <div class="extra-grid">
+              <a href="" class="extra-card" id="graduationProjectLink">
+                <div class="extra-icon">🎓</div>
+                <h3>مشروع التخرج</h3>
+                <p>
+                  تعرّف على مشروع التخرج الخاص بـ Coursyria، تفاصيله، مراحله،
+                  وأهدافه التعليمية.
+                </p>
+                <span class="extra-cta">استكشف المشروع ←</span>
+              </a>
+
+              <a href="" class="extra-card" id="experienceCertificateLink">
+                <div class="extra-icon">📜</div>
+                <h3>شهادة الخبرة</h3>
+                <p>
+                  اطّلع على تفاصيل شهادة الخبرة التي يقدّمها Coursyria وشروط
+                  الحصول عليها.
+                </p>
+                <span class="extra-cta">استكشف الشهادة ←</span>
+              </a>
+            </div>
+          </section>
+
           <!-- =====================================================
            FAQ
         ====================================================== -->
@@ -5318,6 +6286,71 @@ FOOTER
       }
 
       document.querySelectorAll("img").forEach(attachImageFallback);
+
+      /* =====================================================
+         COUNTDOWN TIMER (ANNOUNCEMENT)
+      ====================================================== */
+
+      (function initCountdown() {
+        // موعد المفاجأة: 1 تشرين الأول (أكتوبر) من السنة الحالية أو القادمة إن كان قد مرّ
+        function getTargetDate() {
+          const now = new Date();
+          let target = new Date(now.getFullYear(), 9, 1, 0, 0, 0); // الشهر 9 = أكتوبر (index 0-based)
+          if (target.getTime() <= now.getTime()) {
+            target = new Date(now.getFullYear() + 1, 9, 1, 0, 0, 0);
+          }
+          return target;
+        }
+
+        const cdDays = document.getElementById("cdDays");
+        const cdHours = document.getElementById("cdHours");
+        const cdMinutes = document.getElementById("cdMinutes");
+        const cdSeconds = document.getElementById("cdSeconds");
+        const countdownWrap = document.getElementById("countdownWrap");
+        const announceEnded = document.getElementById("announceEnded");
+
+        if (!cdDays || !cdHours || !cdMinutes || !cdSeconds) return;
+
+        let targetDate = getTargetDate();
+
+        function pad(n) {
+          return String(n).padStart(2, "0");
+        }
+
+        function tick() {
+          const now = new Date().getTime();
+          let diff = targetDate.getTime() - now;
+
+          if (diff <= 0) {
+            if (countdownWrap) countdownWrap.style.display = "none";
+            if (announceEnded) announceEnded.style.display = "inline-block";
+            // إعادة حساب الهدف لو مرّ الموعد (تحسباً لبقاء الصفحة مفتوحة)
+            targetDate = getTargetDate();
+            return;
+          }
+
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+          const minutes = Math.floor((diff / (1000 * 60)) % 60);
+          const seconds = Math.floor((diff / 1000) % 60);
+
+          cdDays.textContent = pad(days);
+          cdHours.textContent = pad(hours);
+          cdMinutes.textContent = pad(minutes);
+          cdSeconds.textContent = pad(seconds);
+        }
+
+        tick();
+        setInterval(tick, 1000);
+      })();
+
+      /* =====================================================
+         GRADUATION PROJECT / CERTIFICATE LINKS
+         (ضع الروابط هنا لاحقاً)
+      ====================================================== */
+
+      // مثال: document.getElementById('graduationProjectLink').href = 'full/graduation.html';
+      // مثال: document.getElementById('experienceCertificateLink').href = 'full/certificate.html';
 
       /* =====================================================
          AUDIO
@@ -5715,6 +6748,74 @@ FOOTER
           }
         });
       });
+/* =====================================================
+   CHESS EDITION COUNTDOWN
+===================================================== */
+
+(function () {
+
+  const targetDate = new Date("2026-10-01T00:00:00").getTime();
+
+  function updateChessCountdown() {
+
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    const days = Math.max(
+      0,
+      Math.floor(distance / (1000 * 60 * 60 * 24))
+    );
+
+    const hours = Math.max(
+      0,
+      Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+      )
+    );
+
+    const minutes = Math.max(
+      0,
+      Math.floor(
+        (distance % (1000 * 60 * 60)) /
+        (1000 * 60)
+      )
+    );
+
+    const seconds = Math.max(
+      0,
+      Math.floor(
+        (distance % (1000 * 60)) /
+        1000
+      )
+    );
+
+    const dayElement = document.getElementById("chessDays");
+    const hourElement = document.getElementById("chessHours");
+    const minuteElement = document.getElementById("chessMinutes");
+    const secondElement = document.getElementById("chessSeconds");
+
+    if (dayElement) {
+      dayElement.textContent = String(days).padStart(2, "0");
+    }
+
+    if (hourElement) {
+      hourElement.textContent = String(hours).padStart(2, "0");
+    }
+
+    if (minuteElement) {
+      minuteElement.textContent = String(minutes).padStart(2, "0");
+    }
+
+    if (secondElement) {
+      secondElement.textContent = String(seconds).padStart(2, "0");
+    }
+  }
+
+  updateChessCountdown();
+  setInterval(updateChessCountdown, 1000);
+
+})();
     </script>
   </body>
 </html>
