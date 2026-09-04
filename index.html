@@ -4263,6 +4263,18 @@
   font-family: "Cairo", sans-serif;
 }
 
+/* ربط قسم الإعلانات بصرياً مع عنوان الأقسام */
+#announcements > .section-title {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+#announcements > .section-title h2 {
+  font-family: "Cairo", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
 .announce-card {
   position: relative;
   width: min(900px, 100%);
@@ -4786,7 +4798,49 @@
     opacity: .3;
   }
 }
-    </style>
+    
+/* ===== تحسين أسماء التواصل في الفوتر على الموبايل ===== */
+.footer-contact,
+.contact-footer,
+.footer-contacts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: nowrap;
+}
+
+.footer-contact > *,
+.contact-footer > *,
+.footer-contacts > * {
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .footer-contact,
+  .contact-footer,
+  .footer-contacts {
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-contact > *,
+  .contact-footer > *,
+  .footer-contacts > * {
+    flex: 0 1 auto;
+    white-space: nowrap;
+  }
+
+  .footer-contact a,
+  .contact-footer a,
+  .footer-contacts a {
+    white-space: nowrap;
+  }
+}
+
+</style>
   </head>
 
   <body>
@@ -5736,237 +5790,223 @@
           </section>
 
 <!-- ================= CHESS EDITION ================= -->
-<section class="announce-section" id="chessEdition">
-
-  <div class="announce-card">
-
-    <!-- Decorative diamonds -->
-    <span class="corner corner-tl"></span>
-    <span class="corner corner-tr"></span>
-    <span class="corner corner-bl"></span>
-    <span class="corner corner-br"></span>
-
-    <!-- Chess floor -->
-    <div class="chess-floor"></div>
-
-    <!-- Chess pieces -->
-    <div class="chess-world">
-
-      <!-- Queen -->
-      <svg class="chess-piece queen" viewBox="0 0 100 150">
-        <defs>
-          <linearGradient id="silverQueen" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#ffffff"/>
-            <stop offset=".45" stop-color="#cfd8e6"/>
-            <stop offset="1" stop-color="#71809a"/>
-          </linearGradient>
-        </defs>
-
-        <g fill="url(#silverQueen)" stroke="#eaf3ff" stroke-width="1.5">
-          <circle cx="25" cy="15" r="7"/>
-          <circle cx="50" cy="9" r="7"/>
-          <circle cx="75" cy="15" r="7"/>
-          <path d="M25 25 L35 52 L50 25 L65 52 L75 25 L68 70 L32 70 Z"/>
-          <path d="M30 70 H70 L77 91 H23 Z"/>
-          <path d="M23 91 H77 L84 116 H16 Z"/>
-          <path d="M13 116 H87 L94 130 H6 Z"/>
-        </g>
-      </svg>
-
-      <!-- King -->
-      <svg class="chess-piece king" viewBox="0 0 100 150">
-        <defs>
-          <linearGradient id="silverKing" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#ffffff"/>
-            <stop offset=".5" stop-color="#d6deea"/>
-            <stop offset="1" stop-color="#73839d"/>
-          </linearGradient>
-        </defs>
-
-        <g fill="url(#silverKing)" stroke="#f4f8ff" stroke-width="1.5">
-          <rect x="43" y="5" width="14" height="35" rx="2"/>
-          <rect x="34" y="15" width="32" height="12" rx="2"/>
-          <path d="M30 40 H70 L65 70 H35 Z"/>
-          <path d="M32 70 H68 L76 94 H24 Z"/>
-          <path d="M22 94 H78 L85 118 H15 Z"/>
-          <path d="M10 118 H90 L96 132 H4 Z"/>
-        </g>
-      </svg>
-
-      <!-- Rook -->
-      <svg class="chess-piece rook rook-one" viewBox="0 0 100 150">
-        <defs>
-          <linearGradient id="silverRook" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#ffffff"/>
-            <stop offset=".5" stop-color="#d2dbe8"/>
-            <stop offset="1" stop-color="#6e7d96"/>
-          </linearGradient>
-        </defs>
-
-        <g fill="url(#silverRook)" stroke="#eef5ff" stroke-width="1.5">
-          <path d="M18 12 H35 V25 H45 V12 H55 V25 H65 V12 H82 V42 H18 Z"/>
-          <path d="M27 42 H73 L68 72 H32 Z"/>
-          <path d="M30 72 H70 L78 96 H22 Z"/>
-          <path d="M20 96 H80 L87 120 H13 Z"/>
-          <path d="M8 120 H92 L97 133 H3 Z"/>
-        </g>
-      </svg>
-
-      <!-- Bishop -->
-      <svg class="chess-piece bishop" viewBox="0 0 100 150">
-        <defs>
-          <linearGradient id="silverBishop" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#ffffff"/>
-            <stop offset=".5" stop-color="#d4deea"/>
-            <stop offset="1" stop-color="#718099"/>
-          </linearGradient>
-        </defs>
-
-        <g fill="url(#silverBishop)" stroke="#eef5ff" stroke-width="1.5">
-          <path d="M50 8 C33 25 30 39 40 55 L30 75 H70 L60 55 C70 39 67 25 50 8 Z"/>
-          <path d="M32 75 H68 L77 98 H23 Z"/>
-          <path d="M22 98 H78 L87 120 H13 Z"/>
-          <path d="M8 120 H92 L97 133 H3 Z"/>
-          <path d="M43 28 L58 15"/>
-        </g>
-      </svg>
-
-      <!-- Knight -->
-      <svg class="chess-piece knight" viewBox="0 0 100 150">
-        <defs>
-          <linearGradient id="silverKnight" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#ffffff"/>
-            <stop offset=".5" stop-color="#d0dbe9"/>
-            <stop offset="1" stop-color="#6d7d97"/>
-          </linearGradient>
-        </defs>
-
-        <g fill="url(#silverKnight)" stroke="#edf5ff" stroke-width="1.5">
-          <path d="M65 12 C43 10 25 22 28 42 C30 54 43 57 48 68 L32 83 H68 C79 69 76 53 64 44 C75 35 78 22 65 12 Z"/>
-          <circle cx="55" cy="27" r="3" fill="#4d5b72"/>
-          <path d="M30 83 H70 L78 101 H22 Z"/>
-          <path d="M20 101 H80 L88 121 H12 Z"/>
-          <path d="M7 121 H93 L97 133 H3 Z"/>
-        </g>
-      </svg>
-
-      <!-- Pawns -->
-      <svg class="chess-piece pawn pawn-one" viewBox="0 0 100 150">
-        <defs>
-          <linearGradient id="silverPawn" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#ffffff"/>
-            <stop offset=".5" stop-color="#d4deea"/>
-            <stop offset="1" stop-color="#73829b"/>
-          </linearGradient>
-        </defs>
-
-        <g fill="url(#silverPawn)" stroke="#eef5ff" stroke-width="1.5">
-          <circle cx="50" cy="25" r="17"/>
-          <path d="M38 40 C43 52 43 61 35 75 H65 C57 61 57 52 62 40 Z"/>
-          <path d="M29 75 H71 L78 98 H22 Z"/>
-          <path d="M18 98 H82 L89 120 H11 Z"/>
-          <path d="M7 120 H93 L97 133 H3 Z"/>
-        </g>
-      </svg>
-
-      <svg class="chess-piece pawn pawn-two" viewBox="0 0 100 150">
-        <g fill="url(#silverPawn)" stroke="#eef5ff" stroke-width="1.5">
-          <circle cx="50" cy="25" r="17"/>
-          <path d="M38 40 C43 52 43 61 35 75 H65 C57 61 57 52 62 40 Z"/>
-          <path d="M29 75 H71 L78 98 H22 Z"/>
-          <path d="M18 98 H82 L89 120 H11 Z"/>
-          <path d="M7 120 H93 L97 133 H3 Z"/>
-        </g>
-      </svg>
-
-      <svg class="chess-piece pawn pawn-three" viewBox="0 0 100 150">
-        <g fill="url(#silverPawn)" stroke="#eef5ff" stroke-width="1.5">
-          <circle cx="50" cy="25" r="17"/>
-          <path d="M38 40 C43 52 43 61 35 75 H65 C57 61 57 52 62 40 Z"/>
-          <path d="M29 75 H71 L78 98 H22 Z"/>
-          <path d="M18 98 H82 L89 120 H11 Z"/>
-          <path d="M7 120 H93 L97 133 H3 Z"/>
-        </g>
-      </svg>
-
-      <svg class="chess-piece pawn pawn-four" viewBox="0 0 100 150">
-        <g fill="url(#silverPawn)" stroke="#eef5ff" stroke-width="1.5">
-          <circle cx="50" cy="25" r="17"/>
-          <path d="M38 40 C43 52 43 61 35 75 H65 C57 61 57 52 62 40 Z"/>
-          <path d="M29 75 H71 L78 98 H22 Z"/>
-          <path d="M18 98 H82 L89 120 H11 Z"/>
-          <path d="M7 120 H93 L97 133 H3 Z"/>
-        </g>
-      </svg>
-
-    </div>
-
-    <!-- Main content -->
-    <div class="announce-content">
-
-      <div class="announce-brand">
-        <div class="brand-mark">♛</div>
-        <div>
-          <strong>COURSYRIA</strong>
-          <small>LEARN • GROW • LEAD</small>
-        </div>
-      </div>
-
-      <div class="announce-title">
-        <span>SOMETHING</span>
-        <strong>BIG IS COMING</strong>
-      </div>
-
-      <div class="announce-line"></div>
-
-      <p class="announce-subtitle">
-        PREPARE YOUR STRATEGY
-      </p>
-
-      <div class="announce-date">
-        <div class="date-number">10 / 1</div>
-        <div class="date-month">OCTOBER</div>
-      </div>
-
-      <div class="announce-countdown">
-
-        <div class="count-box">
-          <strong id="chessDays">00</strong>
-          <span>يوم</span>
-        </div>
-
-        <div class="count-box">
-          <strong id="chessHours">00</strong>
-          <span>ساعة</span>
-        </div>
-
-        <div class="count-box">
-          <strong id="chessMinutes">00</strong>
-          <span>دقيقة</span>
-        </div>
-
-        <div class="count-box">
-          <strong id="chessSeconds">00</strong>
-          <span>ثانية</span>
-        </div>
-
-      </div>
-
-      <div class="strategy-text">
-        COMPETE <i>•</i> STRATEGIZE <i>•</i> WIN
-      </div>
-
-      <div class="announce-footer">
-        <strong>ONLY THE BEST WILL RISE</strong>
-        <span>STAY TUNED...</span>
-      </div>
-
-    </div>
-
+<section class="extra-section" id="announcements">
+  <div class="section-title">
+    <h2>الإعلانات</h2>
+    <div class="blue-line"></div>
   </div>
 
-</section>
+  <!-- ====== قسم الشطرنج ====== -->
+  <section class="announce-section" id="chessEdition">
+    <div class="announce-card">
 
+      <!-- الزوايا المزخرفة -->
+      <span class="corner corner-tl"></span>
+      <span class="corner corner-tr"></span>
+      <span class="corner corner-bl"></span>
+      <span class="corner corner-br"></span>
+
+      <!-- أرضية الشطرنج -->
+      <div class="chess-floor"></div>
+
+      <!-- قطع الشطرنج -->
+      <div class="chess-world">
+
+        <!-- الملكة -->
+        <svg class="chess-piece queen" viewBox="0 0 100 150">
+          <defs>
+            <linearGradient id="silverQueen" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset=".45" stop-color="#cfd8e6"/>
+              <stop offset="1" stop-color="#71809a"/>
+            </linearGradient>
+          </defs>
+          <g fill="url(#silverQueen)" stroke="#eaf3ff" stroke-width="1.5">
+            <circle cx="25" cy="15" r="7"/>
+            <circle cx="50" cy="9" r="7"/>
+            <circle cx="75" cy="15" r="7"/>
+            <path d="M25 25 L35 52 L50 25 L65 52 L75 25 L68 70 L32 70 Z"/>
+            <path d="M30 70 H70 L77 91 H23 Z"/>
+            <path d="M23 91 H77 L84 116 H16 Z"/>
+            <path d="M13 116 H87 L94 130 H6 Z"/>
+          </g>
+        </svg>
+
+        <!-- الملك -->
+        <svg class="chess-piece king" viewBox="0 0 100 150">
+          <defs>
+            <linearGradient id="silverKing" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset=".5" stop-color="#d6deea"/>
+              <stop offset="1" stop-color="#73839d"/>
+            </linearGradient>
+          </defs>
+          <g fill="url(#silverKing)" stroke="#f4f8ff" stroke-width="1.5">
+            <rect x="43" y="5" width="14" height="35" rx="2"/>
+            <rect x="34" y="15" width="32" height="12" rx="2"/>
+            <path d="M30 40 H70 L65 70 H35 Z"/>
+            <path d="M32 70 H68 L76 94 H24 Z"/>
+            <path d="M22 94 H78 L85 118 H15 Z"/>
+            <path d="M10 118 H90 L96 132 H4 Z"/>
+          </g>
+        </svg>
+
+        <!-- القلعة -->
+        <svg class="chess-piece rook rook-one" viewBox="0 0 100 150">
+          <defs>
+            <linearGradient id="silverRook" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset=".5" stop-color="#d2dbe8"/>
+              <stop offset="1" stop-color="#6e7d96"/>
+            </linearGradient>
+          </defs>
+          <g fill="url(#silverRook)" stroke="#eef5ff" stroke-width="1.5">
+            <path d="M18 12 H35 V25 H45 V12 H55 V25 H65 V12 H82 V42 H18 Z"/>
+            <path d="M27 42 H73 L68 72 H32 Z"/>
+            <path d="M30 72 H70 L78 96 H22 Z"/>
+            <path d="M20 96 H80 L87 120 H13 Z"/>
+            <path d="M8 120 H92 L97 133 H3 Z"/>
+          </g>
+        </svg>
+
+        <!-- الفيل -->
+        <svg class="chess-piece bishop" viewBox="0 0 100 150">
+          <defs>
+            <linearGradient id="silverBishop" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset=".5" stop-color="#d4deea"/>
+              <stop offset="1" stop-color="#718099"/>
+            </linearGradient>
+          </defs>
+          <g fill="url(#silverBishop)" stroke="#eef5ff" stroke-width="1.5">
+            <path d="M50 8 C33 25 30 39 40 55 L30 75 H70 L60 55 C70 39 67 25 50 8 Z"/>
+            <path d="M32 75 H68 L77 98 H23 Z"/>
+            <path d="M22 98 H78 L87 120 H13 Z"/>
+            <path d="M8 120 H92 L97 133 H3 Z"/>
+            <path d="M43 28 L58 15"/>
+          </g>
+        </svg>
+
+        <!-- الحصان -->
+        <svg class="chess-piece knight" viewBox="0 0 100 150">
+          <defs>
+            <linearGradient id="silverKnight" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset=".5" stop-color="#d0dbe9"/>
+              <stop offset="1" stop-color="#6d7d97"/>
+            </linearGradient>
+          </defs>
+          <g fill="url(#silverKnight)" stroke="#edf5ff" stroke-width="1.5">
+            <path d="M65 12 C43 10 25 22 28 42 C30 54 43 57 48 68 L32 83 H68 C79 69 76 53 64 44 C75 35 78 22 65 12 Z"/>
+            <circle cx="55" cy="27" r="3" fill="#4d5b72"/>
+            <path d="M30 83 H70 L78 101 H22 Z"/>
+            <path d="M20 101 H80 L88 121 H12 Z"/>
+            <path d="M7 121 H93 L97 133 H3 Z"/>
+          </g>
+        </svg>
+
+        <!-- البيادق -->
+        <svg class="chess-piece pawn pawn-one" viewBox="0 0 100 150">
+          <defs>
+            <linearGradient id="silverPawn" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset=".5" stop-color="#d4deea"/>
+              <stop offset="1" stop-color="#73829b"/>
+            </linearGradient>
+          </defs>
+          <g fill="url(#silverPawn)" stroke="#eef5ff" stroke-width="1.5">
+            <circle cx="50" cy="25" r="17"/>
+            <path d="M38 40 C43 52 43 61 35 75 H65 C57 61 57 52 62 40 Z"/>
+            <path d="M29 75 H71 L78 98 H22 Z"/>
+            <path d="M18 98 H82 L89 120 H11 Z"/>
+            <path d="M7 120 H93 L97 133 H3 Z"/>
+          </g>
+        </svg>
+
+        <svg class="chess-piece pawn pawn-two" viewBox="0 0 100 150">
+          <g fill="url(#silverPawn)" stroke="#eef5ff" stroke-width="1.5">
+            <circle cx="50" cy="25" r="17"/>
+            <path d="M38 40 C43 52 43 61 35 75 H65 C57 61 57 52 62 40 Z"/>
+            <path d="M29 75 H71 L78 98 H22 Z"/>
+            <path d="M18 98 H82 L89 120 H11 Z"/>
+            <path d="M7 120 H93 L97 133 H3 Z"/>
+          </g>
+        </svg>
+
+        <svg class="chess-piece pawn pawn-three" viewBox="0 0 100 150">
+          <g fill="url(#silverPawn)" stroke="#eef5ff" stroke-width="1.5">
+            <circle cx="50" cy="25" r="17"/>
+            <path d="M38 40 C43 52 43 61 35 75 H65 C57 61 57 52 62 40 Z"/>
+            <path d="M29 75 H71 L78 98 H22 Z"/>
+            <path d="M18 98 H82 L89 120 H11 Z"/>
+            <path d="M7 120 H93 L97 133 H3 Z"/>
+          </g>
+        </svg>
+
+        <svg class="chess-piece pawn pawn-four" viewBox="0 0 100 150">
+          <g fill="url(#silverPawn)" stroke="#eef5ff" stroke-width="1.5">
+            <circle cx="50" cy="25" r="17"/>
+            <path d="M38 40 C43 52 43 61 35 75 H65 C57 61 57 52 62 40 Z"/>
+            <path d="M29 75 H71 L78 98 H22 Z"/>
+            <path d="M18 98 H82 L89 120 H11 Z"/>
+            <path d="M7 120 H93 L97 133 H3 Z"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- المحتوى الرئيسي -->
+      <div class="announce-content">
+        <div class="announce-brand">
+          <div class="brand-mark">♛</div>
+          <div>
+            <strong>COURSYRIA</strong>
+            <small>LEARN • GROW • LEAD</small>
+          </div>
+        </div>
+
+        <div class="announce-title">
+          <span>SOMETHING</span>
+          <strong>BIG IS COMING</strong>
+        </div>
+
+        <div class="announce-line"></div>
+
+        <p class="announce-subtitle">PREPARE YOUR STRATEGY</p>
+
+        <div class="announce-date">
+          <div class="date-number">10 / 1</div>
+          <div class="date-month">OCTOBER</div>
+        </div>
+
+        <div class="announce-countdown">
+          <div class="count-box">
+            <strong id="chessDays">00</strong>
+            <span>يوم</span>
+          </div>
+          <div class="count-box">
+            <strong id="chessHours">00</strong>
+            <span>ساعة</span>
+          </div>
+          <div class="count-box">
+            <strong id="chessMinutes">00</strong>
+            <span>دقيقة</span>
+          </div>
+          <div class="count-box">
+            <strong id="chessSeconds">00</strong>
+            <span>ثانية</span>
+          </div>
+        </div>
+
+        <div class="strategy-text">COMPETE <i>•</i> STRATEGIZE <i>•</i> WIN</div>
+
+        <div class="announce-footer">
+          <strong>ONLY THE BEST WILL RISE</strong>
+          <span>STAY TUNED...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
           <!-- =====================================================
            GRADUATION PROJECT & CERTIFICATE
         ====================================================== -->
@@ -6468,6 +6508,64 @@ FOOTER
           mobileMenuBtn.textContent = "☰";
         });
       });
+
+      /* =====================================================
+         NAVIGATION <-> SECTIONS
+         ربط عناصر الناف بار بالأقسام وإظهار العنصر النشط
+      ====================================================== */
+      const sectionNavLinks = Array.from(document.querySelectorAll(".navbar .nav-link"));
+      const sectionIds = sectionNavLinks
+        .map(function (link) {
+          return link.getAttribute("href");
+        })
+        .filter(function (href) {
+          return href && href.startsWith("#");
+        });
+
+      const trackedSections = sectionIds
+        .map(function (id) {
+          return document.querySelector(id);
+        })
+        .filter(Boolean);
+
+      function setActiveNav(sectionId) {
+        sectionNavLinks.forEach(function (link) {
+          const isActive = link.getAttribute("href") === "#" + sectionId;
+          link.classList.toggle("active-nav", isActive);
+          if (isActive) {
+            link.setAttribute("aria-current", "page");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      }
+
+      if ("IntersectionObserver" in window) {
+        const navObserver = new IntersectionObserver(
+          function (entries) {
+            const visibleSections = entries
+              .filter(function (entry) {
+                return entry.isIntersecting;
+              })
+              .sort(function (a, b) {
+                return b.intersectionRatio - a.intersectionRatio;
+              });
+
+            if (visibleSections.length) {
+              setActiveNav(visibleSections[0].target.id);
+            }
+          },
+          {
+            root: null,
+            rootMargin: "-28% 0px -55% 0px",
+            threshold: [0.05, 0.2, 0.4, 0.6]
+          }
+        );
+
+        trackedSections.forEach(function (section) {
+          navObserver.observe(section);
+        });
+      }
 
       /* =====================================================
    COURSE FILTER
