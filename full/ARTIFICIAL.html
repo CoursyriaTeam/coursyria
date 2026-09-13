@@ -1,0 +1,2046 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <meta
+      name="description"
+      content="كورس Artificial Intelligence A1 من Coursyria - مدخل عملي إلى الذكاء الاصطناعي"
+    />
+
+    <meta name="theme-color" content="#07101f" />
+
+    <title>Artificial Intelligence A1 | Coursyria</title>
+
+    <style>
+      /* =========================================================
+       RESET
+    ========================================================= */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 88px;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+
+        background:
+          radial-gradient(
+            circle at 15% 10%,
+            rgba(41, 104, 255, 0.13),
+            transparent 30%
+          ),
+          radial-gradient(
+            circle at 85% 20%,
+            rgba(132, 63, 255, 0.13),
+            transparent 28%
+          ),
+          #050a13;
+
+        color: #eef5ff;
+        min-height: 100vh;
+        overflow-x: hidden;
+        line-height: 1.8;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -1;
+
+        background-image:
+          linear-gradient(rgba(91, 147, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(91, 147, 255, 0.025) 1px, transparent 1px);
+
+        background-size: 45px 45px;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* =========================================================
+       SCROLLBAR
+    ========================================================= */
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #050a13;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(#267cff, #7b4dff);
+        border-radius: 20px;
+      }
+
+      /* =========================================================
+       NAVBAR
+    ========================================================= */
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 76px;
+        z-index: 1000;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 6%;
+
+        background: rgba(4, 9, 18, 0.78);
+        border-bottom: 1px solid rgba(100, 160, 255, 0.12);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        font-size: 22px;
+        font-weight: 900;
+        letter-spacing: 1px;
+
+        background: linear-gradient(90deg, #66c7ff, #477cff, #9b62ff);
+
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        position: relative;
+
+        color: #aebbd1;
+        font-size: 14px;
+        font-weight: 700;
+
+        transition: 0.3s ease;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+
+        right: 0;
+        bottom: -7px;
+
+        width: 0;
+        height: 2px;
+
+        background: linear-gradient(90deg, #30bfff, #8057ff);
+
+        transition: 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #ffffff;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .menu-btn {
+        display: none;
+
+        width: 44px;
+        height: 44px;
+
+        border: 1px solid rgba(91, 147, 255, 0.25);
+        border-radius: 12px;
+
+        background: rgba(15, 27, 48, 0.8);
+        color: white;
+
+        cursor: pointer;
+        font-size: 21px;
+      }
+
+      /* =========================================================
+       MAIN
+    ========================================================= */
+
+      main {
+        padding-top: 76px;
+      }
+
+      .section {
+        width: min(1180px, 92%);
+        margin: auto;
+        padding: 95px 0;
+      }
+
+      /* =========================================================
+       HERO
+    ========================================================= */
+
+      .hero {
+        min-height: calc(100vh - 76px);
+
+        width: min(1250px, 92%);
+        margin: auto;
+
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 55px;
+
+        padding: 65px 0;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+      }
+
+      .small-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+
+        padding: 7px 14px;
+
+        border: 1px solid rgba(67, 157, 255, 0.25);
+        border-radius: 50px;
+
+        background: rgba(32, 89, 170, 0.1);
+
+        color: #63bfff;
+        font-size: 13px;
+        font-weight: 800;
+
+        margin-bottom: 18px;
+      }
+
+      .small-label::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+        background: #45c5ff;
+
+        box-shadow: 0 0 14px #45c5ff;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 6vw, 74px);
+        line-height: 1.05;
+        font-weight: 950;
+
+        letter-spacing: -2px;
+
+        margin-bottom: 18px;
+      }
+
+      .hero h1 .arabic-title {
+        display: block;
+
+        font-size: 0.44em;
+        letter-spacing: 0;
+
+        color: #dbe7ff;
+        margin-bottom: 8px;
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #5cd4ff, #4587ff 48%, #a25fff);
+
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-description {
+        max-width: 680px;
+
+        color: #aab8ce;
+        font-size: 17px;
+
+        margin-bottom: 28px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 13px;
+        margin-bottom: 34px;
+      }
+
+      .join,
+      .secondary-btn {
+        min-height: 50px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+
+        padding: 0 24px;
+
+        border-radius: 13px;
+
+        font-weight: 900;
+        font-size: 14px;
+
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .join {
+        color: white;
+
+        background: linear-gradient(135deg, #167dff, #573fff 55%, #813cff);
+
+        box-shadow: 0 10px 30px rgba(52, 95, 255, 0.24);
+      }
+
+      .join:hover,
+      .secondary-btn:hover {
+        transform: translateY(-3px);
+      }
+
+      .join:hover {
+        box-shadow: 0 15px 38px rgba(68, 105, 255, 0.4);
+      }
+
+      .secondary-btn {
+        border: 1px solid rgba(107, 160, 255, 0.25);
+        background: rgba(15, 26, 47, 0.7);
+        color: #cbd9ef;
+      }
+
+      .course-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+        gap: 12px;
+        max-width: 650px;
+      }
+
+      .meta-box {
+        padding: 15px;
+
+        border-radius: 15px;
+
+        border: 1px solid rgba(107, 160, 255, 0.13);
+
+        background: linear-gradient(
+          145deg,
+          rgba(22, 40, 68, 0.7),
+          rgba(9, 18, 32, 0.72)
+        );
+
+        transition: 0.3s ease;
+      }
+
+      .meta-box:hover {
+        border-color: rgba(73, 157, 255, 0.4);
+        transform: translateY(-3px);
+      }
+
+      .meta-icon {
+        font-size: 20px;
+        margin-bottom: 3px;
+      }
+
+      .meta-title {
+        color: #75859f;
+        font-size: 11px;
+      }
+
+      .meta-value {
+        color: white;
+        font-size: 15px;
+        font-weight: 900;
+      }
+
+      /* =========================================================
+       AI VISUAL
+    ========================================================= */
+
+      .ai-visual-wrap {
+        position: relative;
+        min-height: 530px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        perspective: 1000px;
+      }
+
+      .ai-orb {
+        position: absolute;
+
+        width: 420px;
+        height: 420px;
+
+        border-radius: 50%;
+
+        background: radial-gradient(
+          circle,
+          rgba(69, 137, 255, 0.16),
+          rgba(94, 54, 255, 0.08) 45%,
+          transparent 70%
+        );
+
+        filter: blur(4px);
+
+        animation: breathe 5s ease-in-out infinite;
+      }
+
+      .ai-card {
+        --rx: 0deg;
+        --ry: 0deg;
+
+        position: relative;
+
+        width: min(450px, 90vw);
+        aspect-ratio: 1 / 1;
+
+        transform: rotateX(var(--rx)) rotateY(var(--ry));
+
+        transition: transform 0.18s ease-out;
+
+        transform-style: preserve-3d;
+      }
+
+      .ai-ring {
+        position: absolute;
+        inset: 8%;
+
+        border: 1px solid rgba(72, 177, 255, 0.45);
+        border-radius: 50%;
+
+        box-shadow:
+          0 0 30px rgba(44, 137, 255, 0.15),
+          inset 0 0 30px rgba(98, 70, 255, 0.1);
+
+        animation: rotateRing 16s linear infinite;
+      }
+
+      .ai-ring::before,
+      .ai-ring::after {
+        content: "";
+
+        position: absolute;
+
+        border-radius: 50%;
+
+        border: 1px dashed rgba(123, 91, 255, 0.5);
+      }
+
+      .ai-ring::before {
+        inset: 8%;
+        animation: rotateRingReverse 11s linear infinite;
+      }
+
+      .ai-ring::after {
+        inset: 19%;
+        border-color: rgba(50, 199, 255, 0.38);
+        animation: rotateRing 8s linear infinite;
+      }
+
+      .brain {
+        position: absolute;
+
+        left: 50%;
+        top: 50%;
+
+        width: 215px;
+        height: 175px;
+
+        transform: translate(-50%, -50%) translateZ(45px);
+
+        border-radius: 48% 52% 48% 52% / 52% 45% 55% 48%;
+
+        background: radial-gradient(
+          circle at 35% 30%,
+          #8ae5ff,
+          #4e9dff 38%,
+          #6047e9 70%,
+          #321e91
+        );
+
+        box-shadow:
+          0 0 35px rgba(64, 150, 255, 0.5),
+          0 0 85px rgba(98, 63, 255, 0.28);
+
+        animation: brainFloat 4s ease-in-out infinite;
+      }
+
+      .brain::before,
+      .brain::after {
+        content: "";
+
+        position: absolute;
+
+        top: 50%;
+        transform: translateY(-50%);
+
+        width: 42%;
+        height: 74%;
+
+        border: 2px solid rgba(221, 246, 255, 0.75);
+
+        border-radius: 50%;
+      }
+
+      .brain::before {
+        right: 50%;
+        border-left: 0;
+      }
+
+      .brain::after {
+        left: 50%;
+        border-right: 0;
+      }
+
+      .brain-line {
+        position: absolute;
+
+        height: 3px;
+        border-radius: 20px;
+
+        background: #c9f4ff;
+
+        box-shadow: 0 0 9px #5bdcff;
+
+        opacity: 0.9;
+      }
+
+      .line-1 {
+        width: 80px;
+        top: 38px;
+        left: 64px;
+        transform: rotate(-13deg);
+      }
+
+      .line-2 {
+        width: 95px;
+        top: 73px;
+        right: 45px;
+        transform: rotate(9deg);
+      }
+
+      .line-3 {
+        width: 70px;
+        bottom: 47px;
+        left: 72px;
+        transform: rotate(12deg);
+      }
+
+      .line-4 {
+        width: 54px;
+        bottom: 71px;
+        right: 72px;
+        transform: rotate(-18deg);
+      }
+
+      .node {
+        position: absolute;
+
+        width: 12px;
+        height: 12px;
+
+        border-radius: 50%;
+
+        background: #b7f4ff;
+
+        box-shadow:
+          0 0 8px #64dcff,
+          0 0 20px #498aff;
+      }
+
+      .node-1 {
+        top: 24%;
+        right: 23%;
+      }
+
+      .node-2 {
+        top: 30%;
+        left: 19%;
+      }
+
+      .node-3 {
+        bottom: 25%;
+        right: 22%;
+      }
+
+      .node-4 {
+        bottom: 20%;
+        left: 24%;
+      }
+
+      .floating-chip {
+        position: absolute;
+
+        padding: 9px 13px;
+
+        border: 1px solid rgba(95, 170, 255, 0.25);
+        border-radius: 12px;
+
+        background: rgba(10, 22, 40, 0.82);
+
+        color: #a9dfff;
+        font-size: 12px;
+        font-weight: 800;
+
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+        backdrop-filter: blur(8px);
+      }
+
+      .chip-1 {
+        top: 16%;
+        left: 5%;
+        animation: floatOne 4s ease-in-out infinite;
+      }
+
+      .chip-2 {
+        top: 31%;
+        right: 2%;
+        animation: floatTwo 5s ease-in-out infinite;
+      }
+
+      .chip-3 {
+        bottom: 21%;
+        left: 5%;
+        animation: floatTwo 4.5s ease-in-out infinite reverse;
+      }
+
+      .chip-4 {
+        bottom: 11%;
+        right: 13%;
+        animation: floatOne 5.5s ease-in-out infinite;
+      }
+
+      /* =========================================================
+       SECTION HEADING
+    ========================================================= */
+
+      .section-heading {
+        text-align: center;
+        margin-bottom: 45px;
+      }
+
+      .section-heading span {
+        display: inline-block;
+
+        padding: 7px 15px;
+
+        border: 1px solid rgba(79, 155, 255, 0.18);
+        border-radius: 50px;
+
+        background: rgba(33, 83, 156, 0.08);
+
+        color: #67c7ff;
+
+        font-size: 12px;
+        font-weight: 900;
+
+        margin-bottom: 10px;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(27px, 4vw, 40px);
+        line-height: 1.2;
+        margin-bottom: 8px;
+      }
+
+      .section-heading p {
+        color: #8292aa;
+        max-width: 620px;
+        margin: auto;
+        font-size: 14px;
+      }
+
+      /* =========================================================
+       ABOUT
+    ========================================================= */
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+
+      .glass-card {
+        position: relative;
+
+        padding: 30px;
+
+        border: 1px solid rgba(105, 158, 255, 0.13);
+        border-radius: 22px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(18, 35, 59, 0.76),
+          rgba(8, 16, 29, 0.84)
+        );
+
+        overflow: hidden;
+      }
+
+      .glass-card::before {
+        content: "";
+
+        position: absolute;
+        top: 0;
+        right: 20%;
+        width: 50%;
+        height: 1px;
+
+        background: linear-gradient(90deg, transparent, #4abfff, transparent);
+
+        opacity: 0.7;
+      }
+
+      .glass-card h3 {
+        margin-bottom: 10px;
+        font-size: 20px;
+      }
+
+      .glass-card p {
+        color: #9aaac0;
+        font-size: 14px;
+      }
+
+      /* =========================================================
+       COURSE INFO
+    ========================================================= */
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+      }
+
+      .info-card {
+        padding: 25px 18px;
+        text-align: center;
+
+        border: 1px solid rgba(98, 151, 255, 0.13);
+        border-radius: 18px;
+
+        background: rgba(10, 21, 38, 0.72);
+
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .info-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(72, 167, 255, 0.38);
+      }
+
+      .info-card .icon {
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+
+      .info-card h3 {
+        font-size: 14px;
+        color: #788aa5;
+        margin-bottom: 4px;
+      }
+
+      .info-card strong {
+        display: block;
+        font-size: 17px;
+        color: white;
+      }
+
+      /* =========================================================
+       SESSIONS
+    ========================================================= */
+
+      .sessions {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .session-card {
+        position: relative;
+
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+
+        padding: 21px;
+
+        border-radius: 17px;
+
+        border: 1px solid rgba(100, 156, 255, 0.12);
+
+        background: linear-gradient(
+          135deg,
+          rgba(16, 31, 52, 0.72),
+          rgba(7, 15, 27, 0.8)
+        );
+
+        transition: 0.3s ease;
+      }
+
+      .session-card:hover {
+        transform: translateX(-4px);
+
+        border-color: rgba(72, 160, 255, 0.35);
+
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+      }
+
+      .session-number {
+        flex: 0 0 45px;
+
+        width: 45px;
+        height: 45px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 13px;
+
+        background: linear-gradient(
+          135deg,
+          rgba(43, 133, 255, 0.25),
+          rgba(112, 70, 255, 0.3)
+        );
+
+        border: 1px solid rgba(85, 157, 255, 0.24);
+
+        color: #77ceff;
+        font-weight: 950;
+      }
+
+      .session-card h3 {
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .session-card p {
+        color: #8292a9;
+        font-size: 13px;
+      }
+
+      /* =========================================================
+       WHY
+    ========================================================= */
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 17px;
+      }
+
+      .why-card {
+        padding: 27px;
+
+        border: 1px solid rgba(105, 159, 255, 0.12);
+        border-radius: 20px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(16, 31, 53, 0.76),
+          rgba(8, 16, 29, 0.82)
+        );
+
+        transition: 0.3s ease;
+      }
+
+      .why-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(82, 160, 255, 0.3);
+      }
+
+      .why-icon {
+        width: 48px;
+        height: 48px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 14px;
+
+        background: rgba(53, 119, 255, 0.13);
+
+        font-size: 23px;
+
+        margin-bottom: 15px;
+      }
+
+      .why-card h3 {
+        font-size: 16px;
+        margin-bottom: 7px;
+      }
+
+      .why-card p {
+        color: #8493a9;
+        font-size: 13px;
+      }
+
+      /* =========================================================
+       CTA
+    ========================================================= */
+
+      .cta-box {
+        position: relative;
+
+        padding: 50px 30px;
+
+        text-align: center;
+
+        border-radius: 27px;
+
+        overflow: hidden;
+
+        border: 1px solid rgba(79, 159, 255, 0.22);
+
+        background:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(29, 121, 255, 0.18),
+            transparent 30%
+          ),
+          radial-gradient(
+            circle at 80% 50%,
+            rgba(118, 59, 255, 0.17),
+            transparent 30%
+          ),
+          rgba(10, 20, 36, 0.85);
+      }
+
+      .cta-box::before {
+        content: "";
+
+        position: absolute;
+        width: 240px;
+        height: 240px;
+
+        left: -90px;
+        top: -100px;
+
+        border-radius: 50%;
+
+        border: 1px solid rgba(74, 178, 255, 0.15);
+
+        animation: rotateRing 12s linear infinite;
+      }
+
+      .cta-box h2 {
+        font-size: clamp(26px, 4vw, 40px);
+        margin-bottom: 8px;
+      }
+
+      .cta-box p {
+        color: #8494aa;
+        margin-bottom: 23px;
+        font-size: 14px;
+      }
+
+      .price {
+        display: block;
+
+        color: #78d5ff;
+
+        font-size: 30px;
+        font-weight: 950;
+
+        margin-bottom: 20px;
+      }
+
+      /* =========================================================
+       CONTACT
+    ========================================================= */
+
+      .contact-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+
+      .contact-card {
+        width: min(800px, 100%);
+
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 18px;
+
+        padding: 24px;
+
+        border-radius: 20px;
+
+        border: 1px solid rgba(99, 158, 255, 0.15);
+
+        background: linear-gradient(
+          145deg,
+          rgba(18, 35, 58, 0.78),
+          rgba(8, 17, 30, 0.85)
+        );
+      }
+
+      .contact-icon-box {
+        width: 57px;
+        height: 57px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 16px;
+
+        background: linear-gradient(
+          135deg,
+          rgba(34, 130, 255, 0.2),
+          rgba(116, 63, 255, 0.2)
+        );
+
+        font-size: 25px;
+      }
+
+      .contact-content h3 {
+        font-size: 16px;
+        margin-bottom: 3px;
+      }
+
+      .contact-content p {
+        color: #8393a9;
+        font-size: 13px;
+      }
+
+      .whatsapp-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+
+        min-height: 46px;
+        padding: 0 18px;
+
+        border-radius: 12px;
+
+        background: #168d58;
+        color: white;
+
+        font-size: 13px;
+        font-weight: 900;
+
+        transition: 0.25s ease;
+      }
+
+      .whatsapp-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(22, 141, 88, 0.25);
+      }
+
+      .whatsapp-icon {
+        font-size: 16px;
+      }
+
+      /* =========================================================
+       FOOTER
+    ========================================================= */
+
+      footer {
+        padding: 35px 20px 45px;
+
+        text-align: center;
+
+        border-top: 1px solid rgba(91, 140, 220, 0.08);
+
+        color: #63728a;
+
+        font-size: 12px;
+      }
+
+      footer p {
+        line-height: 2;
+      }
+
+      /* =========================================================
+       ANIMATIONS
+    ========================================================= */
+
+      @keyframes breathe {
+        0%,
+        100% {
+          transform: scale(0.94);
+          opacity: 0.65;
+        }
+
+        50% {
+          transform: scale(1.08);
+          opacity: 1;
+        }
+      }
+
+      @keyframes rotateRing {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes rotateRingReverse {
+        from {
+          transform: rotate(360deg);
+        }
+
+        to {
+          transform: rotate(0deg);
+        }
+      }
+
+      @keyframes brainFloat {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) translateZ(45px) translateY(0);
+        }
+
+        50% {
+          transform: translate(-50%, -50%) translateZ(70px) translateY(-10px);
+        }
+      }
+
+      @keyframes floatOne {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+
+      @keyframes floatTwo {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0);
+        }
+
+        50% {
+          transform: translateY(9px) translateX(5px);
+        }
+      }
+
+      /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+      @media (max-width: 950px) {
+        .hero {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .hero-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .hero-description {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .course-meta {
+          width: 100%;
+        }
+
+        .ai-visual-wrap {
+          min-height: 460px;
+          order: -1;
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .info-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .why-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 720px) {
+        .navbar {
+          padding: 0 18px;
+        }
+
+        .menu-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .nav-links {
+          position: absolute;
+
+          top: 76px;
+          right: 14px;
+          left: 14px;
+
+          display: none;
+          flex-direction: column;
+          align-items: stretch;
+
+          padding: 12px;
+
+          border: 1px solid rgba(90, 150, 255, 0.15);
+          border-radius: 17px;
+
+          background: rgba(5, 13, 25, 0.96);
+
+          backdrop-filter: blur(18px);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-links a {
+          display: block;
+          padding: 12px 14px;
+        }
+
+        .nav-links a::after {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 40px;
+          gap: 20px;
+        }
+
+        .hero h1 {
+          letter-spacing: -1px;
+        }
+
+        .hero-description {
+          font-size: 14px;
+        }
+
+        .ai-visual-wrap {
+          min-height: 380px;
+        }
+
+        .ai-card {
+          width: min(380px, 95vw);
+        }
+
+        .ai-ring {
+          inset: 5%;
+        }
+
+        .brain {
+          width: 175px;
+          height: 145px;
+        }
+
+        .floating-chip {
+          font-size: 10px;
+          padding: 7px 9px;
+        }
+
+        .chip-1 {
+          left: 2%;
+        }
+
+        .chip-2 {
+          right: 0;
+        }
+
+        .chip-3 {
+          left: 1%;
+        }
+
+        .chip-4 {
+          right: 7%;
+        }
+
+        .section {
+          padding: 65px 0;
+        }
+
+        .info-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .sessions {
+          grid-template-columns: 1fr;
+        }
+
+        .why-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-card {
+          grid-template-columns: auto 1fr;
+        }
+
+        .whatsapp-btn {
+          grid-column: 1 / -1;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 450px) {
+        .brand {
+          font-size: 18px;
+        }
+
+        .hero {
+          width: 94%;
+        }
+
+        .hero h1 {
+          font-size: 38px;
+        }
+
+        .hero h1 .arabic-title {
+          font-size: 16px;
+        }
+
+        .hero-buttons {
+          width: 100%;
+          flex-direction: column;
+        }
+
+        .join,
+        .secondary-btn {
+          width: 100%;
+        }
+
+        .course-meta {
+          grid-template-columns: 1fr;
+        }
+
+        .ai-visual-wrap {
+          min-height: 320px;
+        }
+
+        .ai-card {
+          width: 330px;
+        }
+
+        .brain {
+          width: 145px;
+          height: 120px;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 9px;
+        }
+
+        .info-card {
+          padding: 18px 10px;
+        }
+
+        .info-card .icon {
+          font-size: 22px;
+        }
+
+        .info-card strong {
+          font-size: 14px;
+        }
+
+        .glass-card {
+          padding: 22px;
+        }
+
+        .session-card {
+          padding: 17px;
+        }
+
+        .contact-card {
+          padding: 18px;
+        }
+
+        .contact-content h3 {
+          font-size: 14px;
+        }
+
+        .cta-box {
+          padding: 35px 18px;
+        }
+      }
+
+      /* =========================================================
+       ACCESSIBILITY
+    ========================================================= */
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =========================================================
+       NAVBAR
+  ========================================================= -->
+
+    <header class="navbar">
+      <a href="#" class="brand"> COURSYRIA </a>
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="فتح القائمة"
+        type="button"
+      >
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="#home">الرئيسية</a>
+        </li>
+
+        <li>
+          <a href="#about">عن الدورة</a>
+        </li>
+
+        <li>
+          <a href="#sessions">الجلسات</a>
+        </li>
+
+        <li>
+          <a href="#why">لماذا تختارنا</a>
+        </li>
+
+        <li>
+          <a href="#contact">التواصل</a>
+        </li>
+      </ul>
+    </header>
+
+    <main>
+      <!-- =======================================================
+         HERO
+    ======================================================== -->
+
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <span class="small-label"> ARTIFICIAL INTELLIGENCE A1 </span>
+
+          <h1>
+            <span class="arabic-title"> كورس الذكاء الاصطناعي للمبتدئين </span>
+
+            <span class="gradient-text"> Artificial Intelligence </span>
+
+            <br />
+
+            <span> A1 </span>
+          </h1>
+
+          <p class="hero-description">
+            ابدأ رحلتك في عالم الذكاء الاصطناعي وتعرّف على المفاهيم الأساسية
+            والتطبيقات العملية بطريقة بسيطة ومنظمة ومناسبة للمبتدئين.
+          </p>
+
+          <div class="hero-buttons">
+            <a
+              href="https://wa.me/963995980568"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="join"
+            >
+              🛡️ انضم إلى الدورة الآن
+            </a>
+
+            <a href="#sessions" class="secondary-btn"> استكشف الجلسات ↓ </a>
+          </div>
+
+          <div class="course-meta">
+            <div class="meta-box">
+              <div class="meta-icon">🗓️</div>
+
+              <div class="meta-title">مدة الدورة</div>
+
+              <div class="meta-value">شهر واحد</div>
+            </div>
+
+            <div class="meta-box">
+              <div class="meta-icon">📚</div>
+
+              <div class="meta-title">عدد الجلسات</div>
+
+              <div class="meta-value">7 جلسات</div>
+            </div>
+
+            <div class="meta-box">
+              <div class="meta-icon">💰</div>
+
+              <div class="meta-title">سعر الدورة</div>
+
+              <div class="meta-value">1,000 ل.س جديدة</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =====================================================
+           AI INTERACTIVE VISUAL
+      ====================================================== -->
+
+        <div class="ai-visual-wrap" id="aiVisual">
+          <div class="ai-orb"></div>
+
+          <div class="ai-card" id="aiCard">
+            <div class="ai-ring"></div>
+
+            <div class="brain">
+              <span class="brain-line line-1"></span>
+              <span class="brain-line line-2"></span>
+              <span class="brain-line line-3"></span>
+              <span class="brain-line line-4"></span>
+            </div>
+
+            <span class="node node-1"></span>
+            <span class="node node-2"></span>
+            <span class="node node-3"></span>
+            <span class="node node-4"></span>
+
+            <div class="floating-chip chip-1">Machine Learning</div>
+
+            <div class="floating-chip chip-2">Neural Network</div>
+
+            <div class="floating-chip chip-3">AI / DATA</div>
+
+            <div class="floating-chip chip-4">01 → 10 → AI</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+         ABOUT
+    ======================================================== -->
+
+      <section class="section" id="about">
+        <div class="section-heading">
+          <span> 🤖 عن الدورة </span>
+
+          <h2>بوابتك إلى عالم الذكاء الاصطناعي</h2>
+
+          <p>
+            محتوى مبسط يساعدك على فهم أساسيات الذكاء الاصطناعي قبل الانتقال إلى
+            المراحل المتقدمة.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="glass-card">
+            <h3>🧠 ماذا ستتعلم؟</h3>
+
+            <p>
+              ستتعرف على مفهوم الذكاء الاصطناعي، الفرق بين الذكاء الاصطناعي
+              وتعلم الآلة، فكرة الشبكات العصبية، البيانات، النماذج، وأهم
+              الاستخدامات الحديثة للذكاء الاصطناعي.
+            </p>
+          </div>
+
+          <div class="glass-card">
+            <h3>💻 الجانب العملي</h3>
+
+            <p>
+              لن يكون التعلم نظريًا فقط، بل ستتعرف على طريقة التفكير الصحيحة عند
+              التعامل مع أدوات وتقنيات الذكاء الاصطناعي وتطبيقها في سيناريوهات
+              عملية.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+         COURSE INFO
+    ======================================================== -->
+
+      <section class="section">
+        <div class="section-heading">
+          <span> 📌 معلومات الدورة </span>
+
+          <h2>كل ما تحتاج معرفته</h2>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="icon">🤖</div>
+
+            <h3>المستوى</h3>
+
+            <strong> A1 مبتدئ </strong>
+          </div>
+
+          <div class="info-card">
+            <div class="icon">📅</div>
+
+            <h3>المدة</h3>
+
+            <strong> شهر واحد </strong>
+          </div>
+
+          <div class="info-card">
+            <div class="icon">🎓</div>
+
+            <h3>الجلسات</h3>
+
+            <strong> 7 جلسات </strong>
+          </div>
+
+          <div class="info-card">
+            <div class="icon">💳</div>
+
+            <h3>السعر</h3>
+
+            <strong> 1,000 ل.س جديدة </strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+         SESSIONS
+    ======================================================== -->
+
+      <section class="section" id="sessions">
+        <div class="section-heading">
+          <span> 📚 محتوى الدورة </span>
+
+          <h2>7 جلسات لبناء الأساس</h2>
+
+          <p>
+            ترتيب تدريجي يبدأ من المفاهيم الأساسية وينتقل إلى التطبيقات
+            والاستخدامات.
+          </p>
+        </div>
+
+        <div class="sessions">
+          <div class="session-card">
+            <div class="session-number">01</div>
+
+            <div>
+              <h3>مقدمة إلى الذكاء الاصطناعي</h3>
+
+              <p>مفهوم AI، تاريخه، أنواعه، وأهم استخداماته.</p>
+            </div>
+          </div>
+
+          <div class="session-card">
+            <div class="session-number">02</div>
+
+            <div>
+              <h3>البيانات والذكاء الاصطناعي</h3>
+
+              <p>لماذا تعتبر البيانات أساسًا مهمًا للأنظمة الذكية.</p>
+            </div>
+          </div>
+
+          <div class="session-card">
+            <div class="session-number">03</div>
+
+            <div>
+              <h3>Machine Learning</h3>
+
+              <p>التعرف على مفهوم تعلم الآلة وكيف تتعلم النماذج.</p>
+            </div>
+          </div>
+
+          <div class="session-card">
+            <div class="session-number">04</div>
+
+            <div>
+              <h3>Neural Networks</h3>
+
+              <p>فكرة الشبكات العصبية ومكوناتها بطريقة مبسطة.</p>
+            </div>
+          </div>
+
+          <div class="session-card">
+            <div class="session-number">05</div>
+
+            <div>
+              <h3>Generative AI</h3>
+
+              <p>التعرف على الذكاء الاصطناعي التوليدي وأبرز تطبيقاته.</p>
+            </div>
+          </div>
+
+          <div class="session-card">
+            <div class="session-number">06</div>
+
+            <div>
+              <h3>أدوات الذكاء الاصطناعي</h3>
+
+              <p>التعرف على الأدوات الحديثة واستخداماتها المختلفة.</p>
+            </div>
+          </div>
+
+          <div class="session-card">
+            <div class="session-number">07</div>
+
+            <div>
+              <h3>تطبيقات ومشروع ختامي</h3>
+
+              <p>ربط المفاهيم التي تم تعلمها من خلال تطبيق عملي.</p>
+            </div>
+          </div>
+
+          <div class="session-card">
+            <div class="session-number">AI</div>
+
+            <div>
+              <h3>ماذا بعد A1؟</h3>
+
+              <p>تصور واضح للخطوات التالية في رحلة تعلم الذكاء الاصطناعي.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+         WHY COURSYRIA
+    ======================================================== -->
+
+      <section class="section" id="why">
+        <div class="section-heading">
+          <span> ⭐ لماذا تختارنا </span>
+
+          <h2>تعلم بطريقة أبسط</h2>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon">🎯</div>
+
+            <h3>مناسب للمبتدئين</h3>
+
+            <p>لا تحتاج إلى معرفة متقدمة مسبقًا للبدء.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">🧩</div>
+
+            <h3>شرح تدريجي</h3>
+
+            <p>
+              تنتقل من المفاهيم البسيطة إلى المفاهيم الأكثر تقدمًا خطوة بخطوة.
+            </p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">💡</div>
+
+            <h3>تركيز على الفهم</h3>
+
+            <p>الهدف هو فهم طريقة عمل التقنيات وليس مجرد حفظ المصطلحات.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">⚡</div>
+
+            <h3>أمثلة عملية</h3>
+
+            <p>ربط المفاهيم النظرية بأمثلة وتطبيقات من عالم التقنية.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">🌐</div>
+
+            <h3>مهارة مستقبلية</h3>
+
+            <p>الذكاء الاصطناعي أصبح جزءًا أساسيًا من عالم التكنولوجيا.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">🚀</div>
+
+            <h3>أساس للمستوى التالي</h3>
+
+            <p>بناء قاعدة تساعدك على الانتقال إلى مواضيع AI المتقدمة.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+         CTA
+    ======================================================== -->
+
+      <section class="section">
+        <div class="cta-box">
+          <h2>جاهز تبدأ رحلتك مع AI؟</h2>
+
+          <p>
+            احجز مكانك في Artificial Intelligence A1 وابدأ بتكوين أساس قوي في
+            الذكاء الاصطناعي.
+          </p>
+
+          <strong class="price"> 1,000 ليرة سورية جديدة </strong>
+
+          <a
+            href="https://wa.me/963995980568"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="join"
+          >
+            🛡️ انضم إلى الدورة الآن
+          </a>
+        </div>
+      </section>
+
+      <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+      <section class="section contact-section" id="contact">
+        <div class="section-heading">
+          <span> 📞 التواصل </span>
+
+          <h2>هل لديك استفسار؟</h2>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-card">
+            <div class="contact-icon-box">
+              <span> 👨‍🏫 </span>
+            </div>
+
+            <div class="contact-content">
+              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+
+              <p>يمكنك التواصل مباشرة عبر واتساب</p>
+            </div>
+
+            <a
+              href="https://wa.me/963995980568"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="whatsapp-btn"
+            >
+              <span class="whatsapp-icon"> ◉ </span>
+
+              <span> تواصل عبر واتساب </span>
+
+              <span class="arrow"> ← </span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+    <footer>
+      <p>
+        جميع الحقوق محفوظة © 2027
+
+        <br />
+
+        اعداد المهندسة لين حسن الكردي
+      </p>
+    </footer>
+
+    <script>
+      /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+      const menuBtn = document.getElementById("menuBtn");
+      const navLinks = document.getElementById("navLinks");
+
+      menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+
+        menuBtn.textContent = navLinks.classList.contains("active")
+          ? "×"
+          : "☰";
+      });
+
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+
+          menuBtn.textContent = "☰";
+        });
+      });
+
+      /* =========================================================
+       INTERACTIVE AI CARD
+       Mouse + Touch
+    ========================================================== */
+
+      const aiVisual = document.getElementById("aiVisual");
+      const aiCard = document.getElementById("aiCard");
+
+      let pointerX = 0;
+      let pointerY = 0;
+
+      function updateAI(x, y) {
+        const rect = aiVisual.getBoundingClientRect();
+
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const relativeX = x - centerX;
+        const relativeY = y - centerY;
+
+        const rotateY = Math.max(-10, Math.min(10, relativeX / 30));
+
+        const rotateX = Math.max(-10, Math.min(10, -relativeY / 30));
+
+        aiCard.style.setProperty("--rx", `${rotateX}deg`);
+
+        aiCard.style.setProperty("--ry", `${rotateY}deg`);
+      }
+
+      aiVisual.addEventListener("mousemove", (event) => {
+        updateAI(event.clientX, event.clientY);
+      });
+
+      aiVisual.addEventListener("mouseleave", () => {
+        aiCard.style.setProperty("--rx", "0deg");
+
+        aiCard.style.setProperty("--ry", "0deg");
+      });
+
+      aiVisual.addEventListener(
+        "touchmove",
+        (event) => {
+          const touch = event.touches[0];
+
+          if (!touch) return;
+
+          updateAI(touch.clientX, touch.clientY);
+        },
+        {
+          passive: true,
+        },
+      );
+
+      aiVisual.addEventListener("touchend", () => {
+        aiCard.style.setProperty("--rx", "0deg");
+
+        aiCard.style.setProperty("--ry", "0deg");
+      });
+
+      /* =========================================================
+       SCROLL REVEAL
+    ========================================================== */
+
+      const revealElements = document.querySelectorAll(
+        ".glass-card, .info-card, .session-card, .why-card, .cta-box, .contact-card",
+      );
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+        },
+      );
+
+      revealElements.forEach((element) => {
+        element.style.opacity = "0";
+
+        element.style.transform = "translateY(22px)";
+
+        element.style.transition = "opacity .6s ease, transform .6s ease";
+
+        observer.observe(element);
+      });
+
+      /* =========================================================
+       ACTIVE NAV LINK
+    ========================================================== */
+
+      const sections = document.querySelectorAll("section[id]");
+
+      const navAnchors = document.querySelectorAll(".nav-links a");
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          let current = "";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 130;
+
+            if (window.scrollY >= sectionTop) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navAnchors.forEach((anchor) => {
+            anchor.style.color =
+              anchor.getAttribute("href") === `#${current}` ? "#69c8ff" : "";
+          });
+        },
+        {
+          passive: true,
+        },
+      );
+    </script>
+  </body>
+</html>
