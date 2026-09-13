@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Coursyria Admin - تقييمات الطلاب</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Tahoma, Arial, sans-serif;
+        min-height: 100vh;
+
+        background:
+          radial-gradient(
+            circle at 80% 10%,
+            rgba(105, 70, 217, 0.22),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 10% 50%,
+            rgba(20, 126, 209, 0.12),
+            transparent 30%
+          ),
+          linear-gradient(135deg, #010722, #06133b 50%, #02091f);
+
+        color: white;
+        padding: 30px 15px;
+      }
+
+      .container {
+        width: min(1100px, 100%);
+        margin: auto;
+      }
+
+      /* =====================================================
+       HEADER
+    ====================================================== */
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .logo {
+        width: 65px;
+        height: 65px;
+        margin: 0 auto 15px;
+
+        display: grid;
+        place-items: center;
+
+        border: 3px solid #d6e8ff;
+
+        clip-path: polygon(50% 0, 100% 15%, 88% 75%, 50% 100%, 12% 75%, 0 15%);
+
+        background: linear-gradient(145deg, #101b55, #0a1235);
+
+        font-size: 30px;
+        font-weight: bold;
+
+        box-shadow: 0 0 25px rgba(80, 124, 255, 0.3);
+      }
+
+      .header h1 {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+
+      .header h1 span {
+        color: #ffd629;
+      }
+
+      .header p {
+        color: #aebbdc;
+        font-size: 14px;
+      }
+
+      /* =====================================================
+       REVIEWS BOX
+    ====================================================== */
+
+      .reviews-box {
+        background: linear-gradient(
+          145deg,
+          rgba(10, 34, 85, 0.96),
+          rgba(4, 17, 51, 0.96)
+        );
+
+        border: 1px solid rgba(119, 147, 225, 0.4);
+
+        border-radius: 22px;
+
+        padding: 25px;
+
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      /* =====================================================
+       TITLE
+    ====================================================== */
+
+      .reviews-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 15px;
+
+        margin-bottom: 22px;
+      }
+
+      .reviews-title h2 {
+        font-size: 22px;
+        color: #ffd629;
+      }
+
+      .refresh-btn {
+        border: none;
+        border-radius: 10px;
+
+        padding: 10px 16px;
+
+        background: linear-gradient(135deg, #147ed1, #39a9ff);
+
+        color: white;
+
+        font-family: inherit;
+        font-weight: bold;
+
+        cursor: pointer;
+
+        transition: 0.25s ease;
+      }
+
+      .refresh-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(57, 169, 255, 0.2);
+      }
+
+      /* =====================================================
+       COURSE FILTER
+    ====================================================== */
+
+      .filter-box {
+        margin-bottom: 25px;
+
+        padding: 18px;
+
+        border-radius: 16px;
+
+        background: rgba(2, 11, 43, 0.55);
+
+        border: 1px solid rgba(119, 147, 225, 0.25);
+      }
+
+      .filter-label {
+        display: block;
+
+        margin-bottom: 9px;
+
+        color: #cbd5ef;
+
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .course-filter {
+        width: 100%;
+
+        padding: 13px 15px;
+
+        border-radius: 12px;
+
+        border: 1px solid rgba(119, 147, 225, 0.45);
+
+        background: #071743;
+
+        color: white;
+
+        font-family: inherit;
+        font-size: 14px;
+
+        outline: none;
+
+        cursor: pointer;
+
+        transition: 0.25s ease;
+      }
+
+      .course-filter:hover,
+      .course-filter:focus {
+        border-color: #39a9ff;
+
+        box-shadow: 0 0 15px rgba(57, 169, 255, 0.12);
+      }
+
+      .course-filter option {
+        background: #071743;
+        color: white;
+      }
+
+      /* =====================================================
+       FILTER RESULT INFO
+    ====================================================== */
+
+      .filter-result {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 10px;
+
+        margin-bottom: 18px;
+
+        color: #aebbdc;
+
+        font-size: 13px;
+      }
+
+      .filter-result strong {
+        color: #ffd629;
+      }
+
+      /* =====================================================
+       REVIEW CARD
+    ====================================================== */
+
+      .review-card {
+        background: rgba(2, 11, 43, 0.65);
+
+        border: 1px solid rgba(119, 147, 225, 0.25);
+
+        border-radius: 16px;
+
+        padding: 20px;
+
+        margin-bottom: 14px;
+
+        transition: 0.3s ease;
+      }
+
+      .review-card:hover {
+        border-color: rgba(57, 169, 255, 0.55);
+
+        transform: translateY(-2px);
+
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+      }
+
+      .review-top {
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 15px;
+
+        margin-bottom: 10px;
+      }
+
+      .student-name {
+        font-size: 17px;
+        font-weight: bold;
+        color: white;
+      }
+
+      .date {
+        color: #8290b2;
+        font-size: 12px;
+      }
+
+      .stars {
+        color: #ffd629;
+
+        font-size: 19px;
+
+        direction: ltr;
+
+        margin-bottom: 10px;
+      }
+
+      /* =====================================================
+       COURSE BADGE
+    ====================================================== */
+
+      .course {
+        display: inline-block;
+
+        padding: 5px 10px;
+
+        border-radius: 8px;
+
+        background: rgba(105, 70, 217, 0.2);
+
+        border: 1px solid rgba(140, 92, 246, 0.3);
+
+        color: #cdbfff;
+
+        font-size: 11px;
+
+        margin-bottom: 12px;
+
+        direction: ltr;
+      }
+
+      .comment {
+        color: #dce3f5;
+
+        font-size: 14px;
+
+        line-height: 1.9;
+
+        margin-bottom: 15px;
+
+        word-break: break-word;
+      }
+
+      /* =====================================================
+       DELETE BUTTON
+    ====================================================== */
+
+      .delete-btn {
+        border: none;
+
+        padding: 9px 16px;
+
+        border-radius: 9px;
+
+        background: linear-gradient(135deg, #c93645, #8e1d2a);
+
+        color: white;
+
+        font-family: inherit;
+        font-weight: bold;
+
+        cursor: pointer;
+
+        transition: 0.3s ease;
+      }
+
+      .delete-btn:hover {
+        transform: translateY(-2px);
+
+        box-shadow: 0 7px 18px rgba(201, 54, 69, 0.3);
+      }
+
+      /* =====================================================
+       EMPTY / LOADING / ERROR
+    ====================================================== */
+
+      .empty {
+        text-align: center;
+
+        padding: 40px 15px;
+
+        color: #9eacd0;
+
+        line-height: 2;
+      }
+
+      .loading {
+        text-align: center;
+
+        padding: 35px;
+
+        color: #aebbdc;
+      }
+
+      .error {
+        text-align: center;
+
+        padding: 25px;
+
+        color: #ff8b8b;
+      }
+
+      /* =====================================================
+       MOBILE
+    ====================================================== */
+
+      @media (max-width: 600px) {
+        body {
+          padding: 20px 10px;
+        }
+
+        .header h1 {
+          font-size: 25px;
+        }
+
+        .reviews-box {
+          padding: 16px;
+          border-radius: 18px;
+        }
+
+        .reviews-title {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .reviews-title h2 {
+          font-size: 20px;
+        }
+
+        .refresh-btn {
+          width: 100%;
+        }
+
+        .filter-box {
+          padding: 14px;
+        }
+
+        .course-filter {
+          font-size: 13px;
+        }
+
+        .filter-result {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .review-top {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 5px;
+        }
+
+        .review-card {
+          padding: 16px;
+        }
+
+        .student-name {
+          font-size: 15px;
+        }
+
+        .comment {
+          font-size: 13px;
+        }
+
+        .delete-btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+      <div class="header">
+        <div class="logo">C</div>
+
+        <h1>Cours<span>yria</span> Admin</h1>
+
+        <p>إدارة تقييمات الطلاب</p>
+      </div>
+
+      <!-- =====================================================
+         REVIEWS
+    ====================================================== -->
+
+      <div class="reviews-box">
+        <!-- TITLE -->
+
+        <div class="reviews-title">
+          <h2>⭐ تقييمات الطلاب</h2>
+
+          <button class="refresh-btn" onclick="loadReviews()">
+            🔄 تحديث التقييمات
+          </button>
+        </div>
+
+        <!-- ===================================================
+           COURSE FILTER
+      ==================================================== -->
+
+        <div class="filter-box">
+          <label class="filter-label" for="courseFilter">
+            📚 اختر الكورس لعرض تقييماته
+          </label>
+
+          <select id="courseFilter" class="course-filter">
+            <option value="all">كل الكورسات</option>
+          </select>
+        </div>
+
+        <!-- ===================================================
+           FILTER RESULT
+      ==================================================== -->
+
+        <div class="filter-result" id="filterResult">
+          <span>
+            الكورس:
+            <strong id="selectedCourseName"> كل الكورسات </strong>
+          </span>
+
+          <span>
+            عدد التقييمات:
+            <strong id="visibleReviewsCount"> 0 </strong>
+          </span>
+        </div>
+
+        <!-- ===================================================
+           REVIEWS LIST
+      ==================================================== -->
+
+        <div id="reviewsList">
+          <div class="loading">جاري تحميل التقييمات...</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* =====================================================
+       API
+    ====================================================== */
+
+      const API_URL = "http://localhost:5000/api/reviews";
+
+      /* =====================================================
+       البيانات
+    ====================================================== */
+
+      let allReviews = [];
+
+      let selectedCourse = "all";
+
+      /* =====================================================
+       عناصر الصفحة
+    ====================================================== */
+
+      const reviewsList = document.getElementById("reviewsList");
+
+      const courseFilter = document.getElementById("courseFilter");
+
+      const selectedCourseName = document.getElementById("selectedCourseName");
+
+      const visibleReviewsCount = document.getElementById(
+        "visibleReviewsCount",
+      );
+
+      /* =====================================================
+       تحميل التقييمات
+    ====================================================== */
+
+      async function loadReviews() {
+        reviewsList.innerHTML = `
+        <div class="loading">
+          جاري تحميل التقييمات...
+        </div>
+      `;
+
+        try {
+          const response = await fetch(API_URL);
+
+          if (!response.ok) {
+            throw new Error("Failed to load reviews");
+          }
+
+          const reviews = await response.json();
+
+          allReviews = reviews;
+
+          /*
+          بناء فلتر الكورسات
+          من البيانات الموجودة فعليًا
+        */
+
+          buildCourseFilter(allReviews);
+
+          /*
+          عرض التقييمات
+        */
+
+          applyFilter();
+        } catch (error) {
+          console.error(error);
+
+          reviewsList.innerHTML = `
+          <div class="error">
+
+            تعذر تحميل التقييمات.<br>
+
+            تأكدي أن السيرفر يعمل.
+
+          </div>
+        `;
+
+          visibleReviewsCount.textContent = "0";
+        }
+      }
+
+      /* =====================================================
+       بناء قائمة الكورسات
+    ====================================================== */
+
+      function buildCourseFilter(reviews) {
+        /*
+        حفظ الكورس المختار حاليًا
+        حتى لا يرجع إلى "كل الكورسات"
+        عند الضغط على تحديث
+      */
+
+        const currentValue = selectedCourse;
+
+        /*
+        استخراج course_slug
+        بدون تكرار
+      */
+
+        const courses = [
+          ...new Set(
+            reviews.map((review) => review.course_slug).filter(Boolean),
+          ),
+        ];
+
+        /*
+        ترتيب أبجدي
+      */
+
+        courses.sort();
+
+        /*
+        إعادة بناء القائمة
+      */
+
+        courseFilter.innerHTML = `
+        <option value="all">
+          كل الكورسات
+        </option>
+      `;
+
+        courses.forEach((courseSlug) => {
+          const option = document.createElement("option");
+
+          option.value = courseSlug;
+
+          option.textContent = getCourseName(courseSlug);
+
+          courseFilter.appendChild(option);
+        });
+
+        /*
+        إذا الكورس القديم ما زال موجود
+        نخليه محدد
+      */
+
+        const exists = courses.includes(currentValue);
+
+        if (currentValue !== "all" && exists) {
+          courseFilter.value = currentValue;
+        } else {
+          courseFilter.value = "all";
+
+          selectedCourse = "all";
+        }
+      }
+
+      /* =====================================================
+       أسماء الكورسات
+    ====================================================== */
+
+      function getCourseName(slug) {
+        const courseNames = {
+          "english-a1": "English A1",
+
+          "english-a2": "English A2",
+
+          "english-b1": "English B1",
+
+          "english-b2": "English B2",
+
+          excel: "Excel Master",
+
+          computerskill: "Computer Skills",
+
+          computermaster: "Computer Skills Master",
+
+          icdl: "ICDL",
+
+          software: "Computer Software",
+
+          ai: "Learning With AI",
+
+          cpp: "C++ Programming",
+
+          "coursyria-csharp-beginner": "C# Programming",
+
+          python: "Python Programming",
+
+          project: "Small Project Building",
+
+          website: "Website Development",
+
+          "data-analyst-1": "Data Analyst 1",
+
+          "data-analyst-2": "Data Analyst 2",
+
+          "data-analyst-3": "Data Analyst 3",
+
+          "data-analyst-4": "Data Analyst 4",
+
+          canva: "Canva A1",
+
+          uiux: "UI/UX Design",
+
+          "social-media": "Social Media Platforms",
+
+          market: "Marketing Content Management",
+
+          marketing1: "Marketing 1",
+
+          marketing2: "Marketing 2",
+
+          marketing3: "Marketing 3",
+
+          secure: "Information Security",
+
+          cyber: "Cyber Security Camp",
+
+          blueteam: "Blue Team Cyber Security",
+
+          hr: "Human Resources",
+
+          "hr-master": "HR Master",
+
+          alamen: "Al-Ameen Accounting",
+
+          albayan: "Al-Bayan Accounting",
+
+          time: "Time Management Art",
+
+          "conversation-a1": "English Conversation A1",
+
+          "conversation-a2": "English Conversation A2",
+
+          "make-cv-pro": "Make CV Pro",
+
+          job: "Job Skills",
+        };
+
+        /*
+        إذا كان الكورس معروف
+        نعرض اسمه الجميل
+
+        وإذا غير معروف
+        نعرض slug نفسه
+      */
+
+        return courseNames[slug] || slug;
+      }
+
+      /* =====================================================
+       عند تغيير الفلتر
+    ====================================================== */
+
+      courseFilter.addEventListener("change", function () {
+        selectedCourse = this.value;
+
+        applyFilter();
+      });
+
+      /* =====================================================
+       تطبيق الفلتر
+    ====================================================== */
+
+      function applyFilter() {
+        let filteredReviews;
+
+        /*
+        كل الكورسات
+      */
+
+        if (selectedCourse === "all") {
+          filteredReviews = allReviews;
+
+          selectedCourseName.textContent = "كل الكورسات";
+        } else {
+
+        /*
+        كورس معين
+      */
+          filteredReviews = allReviews.filter(
+            (review) => review.course_slug === selectedCourse,
+          );
+
+          selectedCourseName.textContent = getCourseName(selectedCourse);
+        }
+
+        /*
+        تحديث العدد
+      */
+
+        visibleReviewsCount.textContent = filteredReviews.length;
+
+        /*
+        عرض النتائج
+      */
+
+        displayReviews(filteredReviews);
+      }
+
+      /* =====================================================
+       عرض التقييمات
+    ====================================================== */
+
+      function displayReviews(reviews) {
+        if (!reviews.length) {
+          reviewsList.innerHTML = `
+          <div class="empty">
+
+            لا توجد تقييمات لهذا الكورس حاليًا.
+
+          </div>
+        `;
+
+          return;
+        }
+
+        reviewsList.innerHTML = reviews
+          .map((review) => {
+            const rating = Number(review.rating);
+
+            const stars = "★".repeat(rating) + "☆".repeat(5 - rating);
+
+            const date = new Date(review.created_at).toLocaleDateString(
+              "ar-SY",
+            );
+
+            return `
+
+                <div
+                  class="review-card"
+                  data-review-id="${review.id}"
+                >
+
+                  <!-- TOP -->
+
+                  <div class="review-top">
+
+                    <div class="student-name">
+
+                      👤
+                      ${escapeHTML(review.student_name)}
+
+                    </div>
+
+
+                    <div class="date">
+
+                      ${date}
+
+                    </div>
+
+                  </div>
+
+
+                  <!-- STARS -->
+
+                  <div class="stars">
+
+                    ${stars}
+
+                  </div>
+
+
+                  <!-- COURSE -->
+
+                  <div class="course">
+
+                    ${escapeHTML(getCourseName(review.course_slug))}
+
+                  </div>
+
+
+                  <!-- COMMENT -->
+
+                  <div class="comment">
+
+                    ${escapeHTML(review.comment)}
+
+                  </div>
+
+
+                  <!-- DELETE -->
+
+                  <button
+                    class="delete-btn"
+                    onclick="deleteReview(${review.id})"
+                  >
+
+                    🗑️ حذف التقييم
+
+                  </button>
+
+                </div>
+
+              `;
+          })
+          .join("");
+      }
+
+      /* =====================================================
+       حذف تقييم
+    ====================================================== */
+
+      async function deleteReview(id) {
+        const confirmed = confirm("هل أنت متأكدة من حذف هذا التقييم؟");
+
+        if (!confirmed) {
+          return;
+        }
+
+        try {
+          const response = await fetch(`${API_URL}/${id}`, {
+            method: "DELETE",
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.message || "حدث خطأ أثناء الحذف");
+          }
+
+          alert("تم حذف التقييم بنجاح ✅");
+
+          /*
+          إعادة تحميل البيانات
+        */
+
+          await loadReviews();
+        } catch (error) {
+          console.error(error);
+
+          alert("تعذر حذف التقييم. تأكدي أن السيرفر يعمل.");
+        }
+      }
+
+      /* =====================================================
+       حماية النصوص من HTML
+    ====================================================== */
+
+      function escapeHTML(text) {
+        const div = document.createElement("div");
+
+        div.textContent = text;
+
+        return div.innerHTML;
+      }
+
+      /* =====================================================
+       تشغيل الصفحة
+    ====================================================== */
+
+      loadReviews();
+    </script>
+  </body>
+</html>
