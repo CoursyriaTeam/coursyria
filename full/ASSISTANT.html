@@ -19,8 +19,8 @@
 
     <style>
       /* =========================================================
-       RESET
-    ========================================================= */
+         RESET
+      ========================================================= */
 
       * {
         margin: 0;
@@ -35,7 +35,6 @@
 
       body {
         font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-
         background:
           radial-gradient(
             circle at 15% 10%,
@@ -48,7 +47,6 @@
             transparent 30%
           ),
           #040a12;
-
         color: #eef8ff;
         min-height: 100vh;
         overflow-x: hidden;
@@ -69,18 +67,23 @@
       }
 
       /* =========================================================
-       BACKGROUND
-    ========================================================= */
+         BACKGROUND
+      ========================================================= */
 
       body::before {
         content: "";
         position: fixed;
         inset: 0;
-
         background-image:
-          linear-gradient(rgba(0, 174, 255, 0.025) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 174, 255, 0.025) 1px, transparent 1px);
-
+          linear-gradient(
+            rgba(0, 174, 255, 0.025) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            90deg,
+            rgba(0, 174, 255, 0.025) 1px,
+            transparent 1px
+          );
         background-size: 45px 45px;
         pointer-events: none;
         z-index: -3;
@@ -91,33 +94,26 @@
         position: fixed;
         width: 500px;
         height: 500px;
-
         left: -220px;
         top: 20%;
-
         background: rgba(0, 183, 255, 0.08);
         filter: blur(100px);
         border-radius: 50%;
-
         pointer-events: none;
         z-index: -2;
       }
 
       /* =========================================================
-       NAVBAR
-    ========================================================= */
+         NAVBAR
+      ========================================================= */
 
       .navbar {
         position: sticky;
         top: 0;
         z-index: 1000;
-
         width: 100%;
-
         background: rgba(3, 10, 18, 0.82);
-
         border-bottom: 1px solid rgba(87, 203, 255, 0.12);
-
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
       }
@@ -126,7 +122,6 @@
         width: min(1180px, calc(100% - 30px));
         min-height: 74px;
         margin: auto;
-
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -144,18 +139,12 @@
       .brand-icon {
         width: 42px;
         height: 42px;
-
         border-radius: 13px;
-
         display: grid;
         place-items: center;
-
         font-size: 22px;
-
         background: linear-gradient(145deg, #071c31, #0b5b8e);
-
         border: 1px solid rgba(93, 214, 255, 0.45);
-
         box-shadow: 0 0 20px rgba(0, 190, 255, 0.18);
       }
 
@@ -171,12 +160,9 @@
 
       .nav-links a {
         padding: 10px 14px;
-
         color: #91a8b9;
         font-size: 14px;
-
         border-radius: 10px;
-
         transition:
           color 0.25s ease,
           background 0.25s ease,
@@ -191,34 +177,27 @@
 
       .menu-btn {
         display: none;
-
         width: 43px;
         height: 43px;
-
         border: 1px solid rgba(74, 204, 255, 0.2);
         background: rgba(0, 150, 220, 0.07);
         color: white;
-
         border-radius: 12px;
         cursor: pointer;
       }
 
       /* =========================================================
-       HERO
-    ========================================================= */
+         HERO
+      ========================================================= */
 
       .hero {
         width: min(1180px, calc(100% - 30px));
         margin: auto;
-
         min-height: calc(100vh - 74px);
-
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: center;
-
         gap: 55px;
-
         padding: 75px 0 70px;
       }
 
@@ -231,20 +210,13 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-
         padding: 8px 13px;
-
         border: 1px solid rgba(57, 203, 255, 0.2);
-
         border-radius: 100px;
-
         background: rgba(0, 180, 255, 0.06);
-
         color: #63d8ff;
-
         font-size: 13px;
         font-weight: 700;
-
         margin-bottom: 22px;
       }
 
@@ -252,13 +224,9 @@
         content: "";
         width: 7px;
         height: 7px;
-
         border-radius: 50%;
-
         background: #31d6ff;
-
         box-shadow: 0 0 12px #31d6ff;
-
         animation: pulse 1.8s infinite;
       }
 
@@ -277,19 +245,19 @@
 
       .hero h1 {
         font-size: clamp(42px, 6vw, 78px);
-
         line-height: 1.02;
-
         letter-spacing: -2px;
-
         margin-bottom: 17px;
       }
 
       .hero h1 .blue {
         display: block;
-
-        background: linear-gradient(90deg, #e8faff, #3fd3ff, #3b8cff);
-
+        background: linear-gradient(
+          90deg,
+          #e8faff,
+          #3fd3ff,
+          #3b8cff
+        );
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -297,25 +265,18 @@
 
       .hero h1 small {
         display: block;
-
         margin-top: 10px;
-
         color: #70899c;
-
         font-size: clamp(17px, 2vw, 22px);
-
         letter-spacing: 0;
         font-weight: 500;
       }
 
       .hero-description {
         max-width: 590px;
-
         color: #9cb2c3;
-
         font-size: 17px;
         line-height: 2;
-
         margin-bottom: 25px;
       }
 
@@ -323,7 +284,6 @@
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-
         margin-bottom: 30px;
       }
 
@@ -331,22 +291,40 @@
         display: flex;
         align-items: center;
         gap: 8px;
-
         padding: 10px 13px;
-
         border-radius: 11px;
-
         background: rgba(255, 255, 255, 0.025);
-
         border: 1px solid rgba(255, 255, 255, 0.08);
-
         color: #b6cbd8;
-
         font-size: 13px;
       }
 
       .info-chip strong {
         color: #55d7ff;
+      }
+
+      /* =========================================================
+         PRICE
+      ========================================================= */
+
+      .price-chip {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 174, 255, 0.15),
+          rgba(55, 104, 255, 0.1)
+        );
+
+        border-color: rgba(75, 211, 255, 0.3);
+
+        box-shadow:
+          0 0 20px rgba(0, 174, 255, 0.08),
+          inset 0 1px rgba(255, 255, 255, 0.04);
+      }
+
+      .price-chip strong {
+        color: #6ce2ff;
+        font-size: 14px;
+        font-weight: 900;
       }
 
       .hero-buttons {
@@ -359,27 +337,21 @@
       .join {
         position: relative;
         overflow: hidden;
-
         display: inline-flex;
         align-items: center;
         justify-content: center;
-
         padding: 14px 22px;
-
         min-height: 50px;
-
         border-radius: 13px;
-
         color: white;
-
         font-weight: 800;
-
-        background: linear-gradient(135deg, #007dc1, #168fff);
-
+        background: linear-gradient(
+          135deg,
+          #007dc1,
+          #168fff
+        );
         border: 1px solid rgba(110, 224, 255, 0.45);
-
         box-shadow: 0 10px 35px rgba(0, 139, 255, 0.18);
-
         transition:
           transform 0.25s ease,
           box-shadow 0.25s ease;
@@ -387,24 +359,18 @@
 
       .join::before {
         content: "";
-
         position: absolute;
-
         top: 0;
         left: -100%;
-
         width: 70%;
         height: 100%;
-
         background: linear-gradient(
           90deg,
           transparent,
           rgba(255, 255, 255, 0.28),
           transparent
         );
-
         transform: skewX(-20deg);
-
         animation: shine 3.5s infinite;
       }
 
@@ -426,21 +392,14 @@
 
       .learn-btn {
         min-height: 50px;
-
         display: inline-flex;
         align-items: center;
         justify-content: center;
-
         padding: 13px 20px;
-
         border-radius: 13px;
-
         color: #a9c3d1;
-
         border: 1px solid rgba(129, 194, 221, 0.14);
-
         background: rgba(255, 255, 255, 0.025);
-
         transition: 0.25s ease;
       }
 
@@ -451,37 +410,29 @@
       }
 
       /* =========================================================
-       SMART HOME VISUAL
-    ========================================================= */
+         SMART HOME VISUAL
+      ========================================================= */
 
       .visual-wrap {
         position: relative;
-
         display: grid;
         place-items: center;
-
         min-height: 510px;
-
         perspective: 1000px;
       }
 
       .visual-glow {
         position: absolute;
-
         width: 390px;
         height: 390px;
-
         border-radius: 50%;
-
         background: radial-gradient(
           circle,
           rgba(0, 191, 255, 0.25),
           rgba(0, 90, 255, 0.07) 45%,
           transparent 70%
         );
-
         filter: blur(5px);
-
         animation: breathe 4s ease-in-out infinite;
       }
 
@@ -500,55 +451,41 @@
 
       .smart-card {
         position: relative;
-
         width: min(490px, 100%);
         aspect-ratio: 1 / 0.92;
-
         border-radius: 28px;
-
         background: linear-gradient(
           145deg,
           rgba(14, 32, 49, 0.96),
           rgba(3, 13, 24, 0.96)
         );
-
         border: 1px solid rgba(100, 211, 255, 0.18);
-
         box-shadow:
           0 35px 80px rgba(0, 0, 0, 0.45),
           inset 0 1px rgba(255, 255, 255, 0.06);
-
         transform-style: preserve-3d;
-
         transition: transform 0.18s ease-out;
       }
 
       .smart-card::before {
         content: "";
-
         position: absolute;
         inset: 1px;
-
         border-radius: 27px;
-
         background: linear-gradient(
           130deg,
           rgba(49, 205, 255, 0.08),
           transparent 35%
         );
-
         pointer-events: none;
       }
 
       .dashboard-top {
         height: 64px;
-
         display: flex;
         align-items: center;
         justify-content: space-between;
-
         padding: 0 21px;
-
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       }
 
@@ -556,7 +493,6 @@
         display: flex;
         align-items: center;
         gap: 10px;
-
         color: #d9f7ff;
         font-weight: 800;
         font-size: 14px;
@@ -565,14 +501,14 @@
       .home-logo {
         width: 34px;
         height: 34px;
-
         display: grid;
         place-items: center;
-
         border-radius: 10px;
-
-        background: linear-gradient(145deg, #0a7caf, #1946a0);
-
+        background: linear-gradient(
+          145deg,
+          #0a7caf,
+          #1946a0
+        );
         box-shadow: 0 0 20px rgba(0, 188, 255, 0.2);
       }
 
@@ -580,7 +516,6 @@
         display: flex;
         align-items: center;
         gap: 7px;
-
         font-size: 11px;
         color: #69dfff;
       }
@@ -588,19 +523,14 @@
       .status-dot {
         width: 7px;
         height: 7px;
-
         border-radius: 50%;
-
         background: #4dffbd;
-
         box-shadow: 0 0 12px #4dffbd;
       }
 
       .dashboard-body {
         position: relative;
-
         padding: 20px;
-
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 12px;
@@ -608,25 +538,17 @@
 
       .room {
         min-height: 120px;
-
         padding: 15px;
-
         border-radius: 17px;
-
         background: rgba(255, 255, 255, 0.035);
-
         border: 1px solid rgba(255, 255, 255, 0.06);
-
         transition: 0.3s ease;
-
         transform: translateZ(20px);
       }
 
       .room:hover {
         background: rgba(0, 174, 255, 0.08);
-
         border-color: rgba(54, 202, 255, 0.25);
-
         transform: translateY(-3px) translateZ(25px);
       }
 
@@ -634,7 +556,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         margin-bottom: 16px;
       }
 
@@ -645,7 +566,9 @@
 
       .room-icon {
         font-size: 23px;
-        filter: drop-shadow(0 0 7px rgba(0, 202, 255, 0.35));
+        filter: drop-shadow(
+          0 0 7px rgba(0, 202, 255, 0.35)
+        );
       }
 
       .device-line {
@@ -668,28 +591,19 @@
       .toggle {
         width: 36px;
         height: 20px;
-
         border-radius: 20px;
-
         background: #0c5e82;
-
         padding: 3px;
-
         cursor: pointer;
       }
 
       .toggle span {
         display: block;
-
         width: 14px;
         height: 14px;
-
         border-radius: 50%;
-
         background: #a8edff;
-
         transition: 0.3s ease;
-
         box-shadow: 0 0 8px rgba(83, 221, 255, 0.5);
       }
 
@@ -704,21 +618,16 @@
 
       .temperature {
         grid-column: 1 / -1;
-
         display: flex;
         align-items: center;
         justify-content: space-between;
-
         padding: 17px 19px;
-
         border-radius: 17px;
-
         background: linear-gradient(
           100deg,
           rgba(0, 177, 255, 0.08),
           rgba(52, 97, 255, 0.05)
         );
-
         border: 1px solid rgba(66, 202, 255, 0.12);
       }
 
@@ -731,14 +640,10 @@
       .temperature-icon {
         width: 43px;
         height: 43px;
-
         display: grid;
         place-items: center;
-
         border-radius: 13px;
-
         background: rgba(0, 177, 255, 0.1);
-
         font-size: 22px;
       }
 
@@ -759,27 +664,17 @@
         font-size: 25px;
       }
 
-      /* floating signals */
-
       .signal {
         position: absolute;
-
         width: 43px;
         height: 43px;
-
         display: grid;
         place-items: center;
-
         border-radius: 13px;
-
         background: rgba(6, 27, 45, 0.85);
-
         border: 1px solid rgba(77, 211, 255, 0.25);
-
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-
         z-index: 4;
-
         animation: floating 4s ease-in-out infinite;
       }
 
@@ -813,14 +708,10 @@
 
       .connection {
         position: absolute;
-
         width: 85px;
         height: 85px;
-
         border: 1px dashed rgba(68, 209, 255, 0.22);
-
         border-radius: 50%;
-
         animation: rotate 12s linear infinite;
       }
 
@@ -831,84 +722,64 @@
       }
 
       /* =========================================================
-       GENERAL SECTIONS
-    ========================================================= */
+         GENERAL SECTIONS
+      ========================================================= */
 
       .section {
         width: min(1100px, calc(100% - 30px));
         margin: auto;
-
         padding: 85px 0;
       }
 
       .section-heading {
         text-align: center;
-
         margin-bottom: 40px;
       }
 
       .section-heading span {
         display: inline-block;
-
         padding: 8px 15px;
-
         color: #57d7ff;
-
         background: rgba(0, 185, 255, 0.06);
-
         border: 1px solid rgba(0, 185, 255, 0.12);
-
         border-radius: 100px;
-
         font-size: 13px;
         font-weight: 800;
       }
 
       .section-heading h2 {
         margin-top: 14px;
-
         font-size: clamp(27px, 4vw, 40px);
       }
 
       .section-heading p {
         color: #748d9e;
-
         margin-top: 10px;
-
         line-height: 1.8;
       }
 
       /* =========================================================
-       COURSE OVERVIEW
-    ========================================================= */
+         COURSE OVERVIEW
+      ========================================================= */
 
       .overview-grid {
         display: grid;
-
         grid-template-columns: repeat(3, 1fr);
-
         gap: 15px;
       }
 
       .overview-card {
         position: relative;
-
         padding: 25px;
-
         min-height: 185px;
-
         border-radius: 20px;
-
         background: linear-gradient(
           145deg,
           rgba(16, 34, 51, 0.7),
           rgba(5, 15, 25, 0.8)
         );
-
         border: 1px solid rgba(255, 255, 255, 0.065);
-
         overflow: hidden;
-
         transition:
           transform 0.3s ease,
           border 0.3s ease,
@@ -917,44 +788,31 @@
 
       .overview-card::after {
         content: "";
-
         position: absolute;
-
         width: 100px;
         height: 100px;
-
         left: -40px;
         bottom: -50px;
-
         background: rgba(0, 187, 255, 0.08);
-
         border-radius: 50%;
         filter: blur(15px);
       }
 
       .overview-card:hover {
         transform: translateY(-7px);
-
         border-color: rgba(69, 207, 255, 0.2);
-
         background: rgba(10, 37, 57, 0.85);
       }
 
       .overview-icon {
         width: 48px;
         height: 48px;
-
         display: grid;
         place-items: center;
-
         border-radius: 14px;
-
         background: rgba(0, 179, 255, 0.09);
-
         border: 1px solid rgba(0, 179, 255, 0.13);
-
         font-size: 23px;
-
         margin-bottom: 18px;
       }
 
@@ -970,14 +828,12 @@
       }
 
       /* =========================================================
-       WHAT YOU LEARN
-    ========================================================= */
+         WHAT YOU LEARN
+      ========================================================= */
 
       .learn-grid {
         display: grid;
-
         grid-template-columns: repeat(2, 1fr);
-
         gap: 12px;
       }
 
@@ -985,49 +841,34 @@
         display: flex;
         align-items: flex-start;
         gap: 14px;
-
         padding: 17px;
-
         border-radius: 15px;
-
         background: rgba(255, 255, 255, 0.025);
-
         border: 1px solid rgba(255, 255, 255, 0.055);
-
         transition: 0.25s ease;
       }
 
       .learn-item:hover {
         transform: translateX(-4px);
-
         border-color: rgba(67, 205, 255, 0.2);
-
         background: rgba(0, 174, 255, 0.045);
       }
 
       .check {
         flex: 0 0 30px;
-
         width: 30px;
         height: 30px;
-
         display: grid;
         place-items: center;
-
         border-radius: 9px;
-
         background: rgba(0, 195, 255, 0.1);
-
         color: #52d9ff;
-
         font-weight: 900;
       }
 
       .learn-item strong {
         display: block;
-
         font-size: 14px;
-
         margin-bottom: 4px;
       }
 
@@ -1038,8 +879,8 @@
       }
 
       /* =========================================================
-       SESSIONS
-    ========================================================= */
+         SESSIONS
+      ========================================================= */
 
       .sessions {
         display: grid;
@@ -1048,51 +889,35 @@
 
       .session {
         display: grid;
-
         grid-template-columns: 62px 1fr auto;
-
         align-items: center;
-
         gap: 16px;
-
         padding: 16px;
-
         border-radius: 16px;
-
         background: rgba(255, 255, 255, 0.025);
-
         border: 1px solid rgba(255, 255, 255, 0.055);
-
         transition: 0.25s ease;
       }
 
       .session:hover {
         transform: translateX(-5px);
-
         border-color: rgba(69, 206, 255, 0.2);
-
         background: rgba(0, 174, 255, 0.045);
       }
 
       .session-number {
         width: 55px;
         height: 55px;
-
         display: grid;
         place-items: center;
-
         border-radius: 15px;
-
         background: linear-gradient(
           145deg,
           rgba(0, 173, 240, 0.16),
           rgba(36, 70, 190, 0.12)
         );
-
         border: 1px solid rgba(80, 209, 255, 0.13);
-
         color: #5ddaff;
-
         font-size: 14px;
         font-weight: 900;
       }
@@ -1104,73 +929,50 @@
 
       .session p {
         color: #708899;
-
         font-size: 12px;
-
         line-height: 1.7;
       }
 
       .session-tag {
         padding: 6px 10px;
-
         border-radius: 8px;
-
         font-size: 10px;
-
         color: #69dfff;
-
         background: rgba(0, 184, 255, 0.07);
-
         border: 1px solid rgba(0, 184, 255, 0.1);
       }
 
       /* =========================================================
-       CTA
-    ========================================================= */
+         CTA
+      ========================================================= */
 
       .cta {
         position: relative;
-
         overflow: hidden;
-
         width: min(1000px, calc(100% - 30px));
-
         margin: 35px auto 20px;
-
         padding: 45px 30px;
-
         text-align: center;
-
         border-radius: 27px;
-
         background: linear-gradient(
           135deg,
           rgba(5, 55, 82, 0.75),
           rgba(13, 28, 64, 0.72)
         );
-
         border: 1px solid rgba(70, 205, 255, 0.16);
-
         box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
       }
 
       .cta::before {
         content: "";
-
         position: absolute;
-
         width: 250px;
         height: 250px;
-
         top: -140px;
         left: 50%;
-
         transform: translateX(-50%);
-
         background: rgba(0, 187, 255, 0.13);
-
         border-radius: 50%;
-
         filter: blur(45px);
       }
 
@@ -1181,17 +983,13 @@
 
       .cta h2 {
         font-size: clamp(25px, 4vw, 36px);
-
         margin-bottom: 10px;
       }
 
       .cta p {
         color: #87a1b2;
-
         line-height: 1.9;
-
         max-width: 650px;
-
         margin: 0 auto 25px;
       }
 
@@ -1200,8 +998,8 @@
       }
 
       /* =========================================================
-       CONTACT
-    ========================================================= */
+         CONTACT
+      ========================================================= */
 
       .contact-section {
         padding-top: 45px;
@@ -1214,41 +1012,28 @@
 
       .contact-card {
         display: grid;
-
         grid-template-columns: 65px 1fr auto;
-
         align-items: center;
-
         gap: 18px;
-
         padding: 22px;
-
         border-radius: 20px;
-
         background: linear-gradient(
           145deg,
           rgba(13, 32, 48, 0.82),
           rgba(5, 16, 27, 0.88)
         );
-
         border: 1px solid rgba(255, 255, 255, 0.07);
-
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
       }
 
       .contact-icon-box {
         width: 65px;
         height: 65px;
-
         display: grid;
         place-items: center;
-
         border-radius: 18px;
-
         background: rgba(0, 181, 255, 0.09);
-
         border: 1px solid rgba(0, 181, 255, 0.15);
-
         font-size: 27px;
       }
 
@@ -1266,28 +1051,19 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-
         padding: 12px 15px;
-
         border-radius: 12px;
-
         background: rgba(23, 194, 119, 0.08);
-
         border: 1px solid rgba(23, 194, 119, 0.2);
-
         color: #68e3b1;
-
         font-size: 12px;
         font-weight: 800;
-
         transition: 0.25s ease;
       }
 
       .whatsapp-btn:hover {
         transform: translateY(-3px);
-
         background: rgba(23, 194, 119, 0.14);
-
         box-shadow: 0 10px 30px rgba(23, 194, 119, 0.1);
       }
 
@@ -1300,44 +1076,32 @@
       }
 
       /* =========================================================
-       FOOTER
-    ========================================================= */
+         FOOTER
+      ========================================================= */
 
       footer {
         width: 100%;
-
         margin-top: 30px;
-
-        padding: 30px 20px calc(30px + env(safe-area-inset-bottom));
-
+        padding: 30px 20px
+          calc(30px + env(safe-area-inset-bottom));
         text-align: center;
-
         border-top: 1px solid rgba(255, 255, 255, 0.055);
-
         background: rgba(2, 8, 14, 0.55);
       }
 
       footer p {
         color: #5f7788;
-
         line-height: 2;
-
         font-size: 12px;
       }
 
-      footer p br + * {
-        color: #7d9aaa;
-      }
-
       /* =========================================================
-       REVEAL
-    ========================================================= */
+         REVEAL
+      ========================================================= */
 
       .reveal {
         opacity: 0;
-
         transform: translateY(25px);
-
         transition:
           opacity 0.7s ease,
           transform 0.7s ease;
@@ -1349,17 +1113,14 @@
       }
 
       /* =========================================================
-       RESPONSIVE
-    ========================================================= */
+         RESPONSIVE
+      ========================================================= */
 
       @media (max-width: 900px) {
         .hero {
           grid-template-columns: 1fr;
-
           text-align: center;
-
           padding-top: 55px;
-
           gap: 35px;
         }
 
@@ -1399,26 +1160,17 @@
 
         .nav-links {
           position: absolute;
-
           top: 66px;
           right: 15px;
           left: 15px;
-
           display: none;
-
           flex-direction: column;
           align-items: stretch;
-
           padding: 10px;
-
           border-radius: 16px;
-
           background: rgba(4, 14, 24, 0.97);
-
           border: 1px solid rgba(73, 204, 255, 0.12);
-
           box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-
           backdrop-filter: blur(20px);
         }
 
@@ -1433,7 +1185,6 @@
 
         .hero {
           width: min(100% - 24px, 1180px);
-
           padding-top: 45px;
         }
 
@@ -1558,6 +1309,10 @@
           padding: 9px 7px;
         }
 
+        .price-chip strong {
+          font-size: 12px;
+        }
+
         .hero-buttons {
           width: 100%;
         }
@@ -1642,14 +1397,13 @@
 
   <body>
     <!-- =========================================================
-       NAVBAR
-  ========================================================== -->
+         NAVBAR
+    ========================================================== -->
 
     <header class="navbar">
       <div class="nav-inner">
         <a href="#home" class="brand">
           <span class="brand-icon">🏠</span>
-
           <span>COURSYRIA</span>
         </a>
 
@@ -1664,21 +1418,17 @@
 
         <nav class="nav-links" id="navLinks">
           <a href="#home">الرئيسية</a>
-
           <a href="#overview">عن الكورس</a>
-
           <a href="#learn">ماذا ستتعلم؟</a>
-
           <a href="#sessions">الجلسات</a>
-
           <a href="#contact">📞 التواصل</a>
         </nav>
       </div>
     </header>
 
     <!-- =========================================================
-       HERO
-  ========================================================== -->
+         HERO
+    ========================================================== -->
 
     <main id="home">
       <section class="hero">
@@ -1686,25 +1436,40 @@
           <div class="eyebrow">SMART HOME • IoT</div>
 
           <h1>
-            <span class="blue"> HOME ASSISTANT </span>
+            <span class="blue">HOME ASSISTANT</span>
 
-            <small> ابنِ منزلك الذكي وتحكم به من مكان واحد </small>
+            <small>
+              ابنِ منزلك الذكي وتحكم به من مكان واحد
+            </small>
           </h1>
 
           <p class="hero-description">
-            تعلّم كيف تحوّل الأجهزة المنزلية المختلفة إلى منظومة ذكية مترابطة،
-            وتتحكم بها وتبني الأتمتة والسيناريوهات الخاصة بك باستخدام Home
-            Assistant بطريقة عملية.
+            تعلّم كيف تحوّل الأجهزة المنزلية المختلفة إلى منظومة ذكية
+            مترابطة، وتتحكم بها وتبني الأتمتة والسيناريوهات الخاصة بك
+            باستخدام Home Assistant بطريقة عملية.
           </p>
 
           <div class="hero-info">
-            <div class="info-chip">📅 <strong>شهران</strong></div>
+            <div class="info-chip">
+              📅 <strong>شهران</strong>
+            </div>
 
-            <div class="info-chip">🎓 <strong>25 جلسة</strong></div>
+            <div class="info-chip">
+              🎓 <strong>25 جلسة</strong>
+            </div>
 
-            <div class="info-chip">🧠 <strong>عملي</strong></div>
+            <div class="info-chip">
+              🧠 <strong>عملي</strong>
+            </div>
 
-            <div class="info-chip">🏠 <strong>Smart Home</strong></div>
+            <div class="info-chip">
+              🏠 <strong>Smart Home</strong>
+            </div>
+
+            <!-- السعر -->
+            <div class="info-chip price-chip">
+              💰 <strong>2500 ل.س جديدة</strong>
+            </div>
           </div>
 
           <div class="hero-buttons">
@@ -1717,13 +1482,15 @@
               🛡️ انضم إلى الدورة الآن
             </a>
 
-            <a href="#overview" class="learn-btn"> اكتشف محتوى الكورس ↓ </a>
+            <a href="#overview" class="learn-btn">
+              اكتشف محتوى الكورس ↓
+            </a>
           </div>
         </div>
 
         <!-- =====================================================
-           SMART HOME INTERACTIVE VISUAL
-      ====================================================== -->
+             SMART HOME INTERACTIVE VISUAL
+        ====================================================== -->
 
         <div class="visual-wrap reveal" id="visualWrap">
           <div class="visual-glow"></div>
@@ -1731,22 +1498,18 @@
           <div class="connection"></div>
 
           <div class="signal one">📡</div>
-
           <div class="signal two">💡</div>
-
           <div class="signal three">🌡️</div>
 
           <div class="smart-card" id="smartCard">
             <div class="dashboard-top">
               <div class="dashboard-title">
                 <div class="home-logo">🏠</div>
-
-                <span> Smart Home </span>
+                <span>Smart Home</span>
               </div>
 
               <div class="status">
                 <span class="status-dot"></span>
-
                 النظام متصل
               </div>
             </div>
@@ -1754,15 +1517,16 @@
             <div class="dashboard-body">
               <div class="room">
                 <div class="room-head">
-                  <span class="room-name"> غرفة المعيشة </span>
+                  <span class="room-name">
+                    غرفة المعيشة
+                  </span>
 
-                  <span class="room-icon"> 🛋️ </span>
+                  <span class="room-icon">🛋️</span>
                 </div>
 
                 <div class="device-line">
                   <div>
                     <div class="device-value">24°</div>
-
                     <div class="device-state">الحرارة</div>
                   </div>
 
@@ -1774,16 +1538,23 @@
 
               <div class="room">
                 <div class="room-head">
-                  <span class="room-name"> الإضاءة </span>
+                  <span class="room-name">الإضاءة</span>
 
-                  <span class="room-icon"> 💡 </span>
+                  <span class="room-icon">💡</span>
                 </div>
 
                 <div class="device-line">
                   <div>
-                    <div class="device-value" id="lightValue">ON</div>
+                    <div
+                      class="device-value"
+                      id="lightValue"
+                    >
+                      ON
+                    </div>
 
-                    <div class="device-state">Smart Light</div>
+                    <div class="device-state">
+                      Smart Light
+                    </div>
                   </div>
 
                   <div
@@ -1797,15 +1568,14 @@
 
               <div class="room">
                 <div class="room-head">
-                  <span class="room-name"> الأمان </span>
+                  <span class="room-name">الأمان</span>
 
-                  <span class="room-icon"> 🛡️ </span>
+                  <span class="room-icon">🛡️</span>
                 </div>
 
                 <div class="device-line">
                   <div>
                     <div class="device-value">آمن</div>
-
                     <div class="device-state">Security</div>
                   </div>
 
@@ -1815,16 +1585,20 @@
 
               <div class="room">
                 <div class="room-head">
-                  <span class="room-name"> الطاقة </span>
+                  <span class="room-name">الطاقة</span>
 
-                  <span class="room-icon"> ⚡ </span>
+                  <span class="room-icon">⚡</span>
                 </div>
 
                 <div class="device-line">
                   <div>
-                    <div class="device-value">1.8 kW</div>
+                    <div class="device-value">
+                      1.8 kW
+                    </div>
 
-                    <div class="device-state">استهلاك حالي</div>
+                    <div class="device-state">
+                      استهلاك حالي
+                    </div>
                   </div>
 
                   <div class="status-dot"></div>
@@ -1836,13 +1610,20 @@
                   <div class="temperature-icon">🌡️</div>
 
                   <div>
-                    <small> حالة المنزل </small>
+                    <small>حالة المنزل</small>
 
-                    <strong> الوضع التلقائي </strong>
+                    <strong>
+                      الوضع التلقائي
+                    </strong>
                   </div>
                 </div>
 
-                <div class="temperature-value" id="temperature">24°C</div>
+                <div
+                  class="temperature-value"
+                  id="temperature"
+                >
+                  24°C
+                </div>
               </div>
             </div>
           </div>
@@ -1850,16 +1631,18 @@
       </section>
 
       <!-- =====================================================
-         OVERVIEW
-    ====================================================== -->
+           OVERVIEW
+      ====================================================== -->
 
       <section class="section reveal" id="overview">
         <div class="section-heading">
-          <span> 🏠 عن الكورس </span>
+          <span>🏠 عن الكورس</span>
 
           <h2>من الأجهزة إلى المنزل الذكي</h2>
 
-          <p>رحلة عملية لفهم وإدارة منظومة Home Assistant</p>
+          <p>
+            رحلة عملية لفهم وإدارة منظومة Home Assistant
+          </p>
         </div>
 
         <div class="overview-grid">
@@ -1869,8 +1652,8 @@
             <h3>Smart Home</h3>
 
             <p>
-              فهم مفهوم المنزل الذكي وكيفية ربط الأجهزة والخدمات ضمن منظومة
-              واحدة.
+              فهم مفهوم المنزل الذكي وكيفية ربط الأجهزة
+              والخدمات ضمن منظومة واحدة.
             </p>
           </article>
 
@@ -1880,8 +1663,8 @@
             <h3>Automation</h3>
 
             <p>
-              بناء الأتمتة والقواعد التي تجعل المنزل يتفاعل تلقائيًا مع الأحداث
-              المختلفة.
+              بناء الأتمتة والقواعد التي تجعل المنزل يتفاعل
+              تلقائيًا مع الأحداث المختلفة.
             </p>
           </article>
 
@@ -1890,22 +1673,27 @@
 
             <h3>Dashboard</h3>
 
-            <p>تصميم لوحات تحكم مرتبة لمراقبة الأجهزة والبيانات والتحكم بها.</p>
+            <p>
+              تصميم لوحات تحكم مرتبة لمراقبة الأجهزة
+              والبيانات والتحكم بها.
+            </p>
           </article>
         </div>
       </section>
 
       <!-- =====================================================
-         LEARN
-    ====================================================== -->
+           LEARN
+      ====================================================== -->
 
       <section class="section reveal" id="learn">
         <div class="section-heading">
-          <span> 🎯 ماذا ستتعلم؟ </span>
+          <span>🎯 ماذا ستتعلم؟</span>
 
           <h2>المهارات التي ستبنيها</h2>
 
-          <p>أساسيات عملية قابلة للتطبيق في مشاريع المنزل الذكي</p>
+          <p>
+            أساسيات عملية قابلة للتطبيق في مشاريع المنزل الذكي
+          </p>
         </div>
 
         <div class="learn-grid">
@@ -1913,9 +1701,11 @@
             <div class="check">✓</div>
 
             <div>
-              <strong> تثبيت Home Assistant </strong>
+              <strong>تثبيت Home Assistant</strong>
 
-              <p>التعرف على البيئة وتجهيز النظام وبدء العمل عليه.</p>
+              <p>
+                التعرف على البيئة وتجهيز النظام وبدء العمل عليه.
+              </p>
             </div>
           </div>
 
@@ -1923,9 +1713,11 @@
             <div class="check">✓</div>
 
             <div>
-              <strong> إدارة الأجهزة </strong>
+              <strong>إدارة الأجهزة</strong>
 
-              <p>إضافة الأجهزة والخدمات وإدارتها من واجهة واحدة.</p>
+              <p>
+                إضافة الأجهزة والخدمات وإدارتها من واجهة واحدة.
+              </p>
             </div>
           </div>
 
@@ -1933,9 +1725,12 @@
             <div class="check">✓</div>
 
             <div>
-              <strong> Automations </strong>
+              <strong>Automations</strong>
 
-              <p>إنشاء سيناريوهات ذكية تعتمد على الأحداث والشروط والإجراءات.</p>
+              <p>
+                إنشاء سيناريوهات ذكية تعتمد على الأحداث
+                والشروط والإجراءات.
+              </p>
             </div>
           </div>
 
@@ -1943,9 +1738,12 @@
             <div class="check">✓</div>
 
             <div>
-              <strong> Sensors </strong>
+              <strong>Sensors</strong>
 
-              <p>التعامل مع الحساسات وقراءة البيانات واستخدامها داخل النظام.</p>
+              <p>
+                التعامل مع الحساسات وقراءة البيانات
+                واستخدامها داخل النظام.
+              </p>
             </div>
           </div>
 
@@ -1953,9 +1751,11 @@
             <div class="check">✓</div>
 
             <div>
-              <strong> Dashboards </strong>
+              <strong>Dashboards</strong>
 
-              <p>إنشاء واجهات تحكم واضحة ومناسبة للاستخدام اليومي.</p>
+              <p>
+                إنشاء واجهات تحكم واضحة ومناسبة للاستخدام اليومي.
+              </p>
             </div>
           </div>
 
@@ -1963,25 +1763,30 @@
             <div class="check">✓</div>
 
             <div>
-              <strong> مشاريع عملية </strong>
+              <strong>مشاريع عملية</strong>
 
-              <p>تطبيق المفاهيم ضمن أفكار ومشاريع تحاكي الاستخدام الحقيقي.</p>
+              <p>
+                تطبيق المفاهيم ضمن أفكار ومشاريع تحاكي
+                الاستخدام الحقيقي.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- =====================================================
-         SESSIONS
-    ====================================================== -->
+           SESSIONS
+      ====================================================== -->
 
       <section class="section reveal" id="sessions">
         <div class="section-heading">
-          <span> 📚 الجلسات </span>
+          <span>📚 الجلسات</span>
 
           <h2>خطة الكورس</h2>
 
-          <p>25 جلسة منظمة من الأساسيات حتى بناء الأنظمة</p>
+          <p>
+            25 جلسة منظمة من الأساسيات حتى بناء الأنظمة
+          </p>
         </div>
 
         <div class="sessions">
@@ -1990,11 +1795,12 @@
 
             <div>
               <h3>مقدمة إلى Smart Home</h3>
-
-              <p>مفهوم المنزل الذكي ومكونات المنظومة.</p>
+              <p>
+                مفهوم المنزل الذكي ومكونات المنظومة.
+              </p>
             </div>
 
-            <span class="session-tag"> Basics </span>
+            <span class="session-tag">Basics</span>
           </div>
 
           <div class="session">
@@ -2002,11 +1808,12 @@
 
             <div>
               <h3>التعرف على Home Assistant</h3>
-
-              <p>الواجهة، المفاهيم الأساسية وطريقة العمل.</p>
+              <p>
+                الواجهة، المفاهيم الأساسية وطريقة العمل.
+              </p>
             </div>
 
-            <span class="session-tag"> HA </span>
+            <span class="session-tag">HA</span>
           </div>
 
           <div class="session">
@@ -2014,11 +1821,12 @@
 
             <div>
               <h3>تجهيز وتثبيت النظام</h3>
-
-              <p>إعداد البيئة وتجهيز Home Assistant.</p>
+              <p>
+                إعداد البيئة وتجهيز Home Assistant.
+              </p>
             </div>
 
-            <span class="session-tag"> Setup </span>
+            <span class="session-tag">Setup</span>
           </div>
 
           <div class="session">
@@ -2026,11 +1834,12 @@
 
             <div>
               <h3>Devices & Integrations</h3>
-
-              <p>ربط الأجهزة والخدمات المختلفة.</p>
+              <p>
+                ربط الأجهزة والخدمات المختلفة.
+              </p>
             </div>
 
-            <span class="session-tag"> Devices </span>
+            <span class="session-tag">Devices</span>
           </div>
 
           <div class="session">
@@ -2038,11 +1847,12 @@
 
             <div>
               <h3>Entities & States</h3>
-
-              <p>فهم الكيانات والحالات والبيانات.</p>
+              <p>
+                فهم الكيانات والحالات والبيانات.
+              </p>
             </div>
 
-            <span class="session-tag"> Core </span>
+            <span class="session-tag">Core</span>
           </div>
 
           <div class="session">
@@ -2050,11 +1860,12 @@
 
             <div>
               <h3>Sensors</h3>
-
-              <p>قراءة الحساسات والاستفادة من بياناتها.</p>
+              <p>
+                قراءة الحساسات والاستفادة من بياناتها.
+              </p>
             </div>
 
-            <span class="session-tag"> Sensors </span>
+            <span class="session-tag">Sensors</span>
           </div>
 
           <div class="session">
@@ -2062,11 +1873,12 @@
 
             <div>
               <h3>التحكم بالأجهزة</h3>
-
-              <p>التحكم بالإضاءة والمفاتيح والأجهزة.</p>
+              <p>
+                التحكم بالإضاءة والمفاتيح والأجهزة.
+              </p>
             </div>
 
-            <span class="session-tag"> Control </span>
+            <span class="session-tag">Control</span>
           </div>
 
           <div class="session">
@@ -2074,11 +1886,12 @@
 
             <div>
               <h3>Automations</h3>
-
-              <p>إنشاء أول Automation داخل النظام.</p>
+              <p>
+                إنشاء أول Automation داخل النظام.
+              </p>
             </div>
 
-            <span class="session-tag"> Automation </span>
+            <span class="session-tag">Automation</span>
           </div>
 
           <div class="session">
@@ -2086,11 +1899,12 @@
 
             <div>
               <h3>Triggers & Conditions</h3>
-
-              <p>بناء منطق ذكي يعتمد على الأحداث والشروط.</p>
+              <p>
+                بناء منطق ذكي يعتمد على الأحداث والشروط.
+              </p>
             </div>
 
-            <span class="session-tag"> Logic </span>
+            <span class="session-tag">Logic</span>
           </div>
 
           <div class="session">
@@ -2098,11 +1912,12 @@
 
             <div>
               <h3>Scripts & Scenes</h3>
-
-              <p>إنشاء سيناريوهات وتشغيل مجموعة أوامر.</p>
+              <p>
+                إنشاء سيناريوهات وتشغيل مجموعة أوامر.
+              </p>
             </div>
 
-            <span class="session-tag"> Scripts </span>
+            <span class="session-tag">Scripts</span>
           </div>
 
           <div class="session">
@@ -2110,11 +1925,12 @@
 
             <div>
               <h3>Dashboards</h3>
-
-              <p>بناء واجهة تحكم مناسبة للمنزل.</p>
+              <p>
+                بناء واجهة تحكم مناسبة للمنزل.
+              </p>
             </div>
 
-            <span class="session-tag"> UI </span>
+            <span class="session-tag">UI</span>
           </div>
 
           <div class="session">
@@ -2122,11 +1938,12 @@
 
             <div>
               <h3>تخصيص الواجهة</h3>
-
-              <p>تنظيم البطاقات والعناصر بطريقة احترافية.</p>
+              <p>
+                تنظيم البطاقات والعناصر بطريقة احترافية.
+              </p>
             </div>
 
-            <span class="session-tag"> Design </span>
+            <span class="session-tag">Design</span>
           </div>
 
           <div class="session">
@@ -2134,11 +1951,12 @@
 
             <div>
               <h3>الطاقة والمراقبة</h3>
-
-              <p>متابعة استهلاك الطاقة والبيانات.</p>
+              <p>
+                متابعة استهلاك الطاقة والبيانات.
+              </p>
             </div>
 
-            <span class="session-tag"> Energy </span>
+            <span class="session-tag">Energy</span>
           </div>
 
           <div class="session">
@@ -2146,11 +1964,12 @@
 
             <div>
               <h3>الإشعارات</h3>
-
-              <p>إنشاء تنبيهات وإشعارات للأحداث المهمة.</p>
+              <p>
+                إنشاء تنبيهات وإشعارات للأحداث المهمة.
+              </p>
             </div>
 
-            <span class="session-tag"> Alerts </span>
+            <span class="session-tag">Alerts</span>
           </div>
 
           <div class="session">
@@ -2158,11 +1977,12 @@
 
             <div>
               <h3>الحضور والغياب</h3>
-
-              <p>التعامل مع حالات وجود المستخدم داخل المنزل.</p>
+              <p>
+                التعامل مع حالات وجود المستخدم داخل المنزل.
+              </p>
             </div>
 
-            <span class="session-tag"> Presence </span>
+            <span class="session-tag">Presence</span>
           </div>
 
           <div class="session">
@@ -2170,11 +1990,12 @@
 
             <div>
               <h3>Voice Control</h3>
-
-              <p>مفهوم التحكم الصوتي وربطه بالمنزل الذكي.</p>
+              <p>
+                مفهوم التحكم الصوتي وربطه بالمنزل الذكي.
+              </p>
             </div>
 
-            <span class="session-tag"> Voice </span>
+            <span class="session-tag">Voice</span>
           </div>
 
           <div class="session">
@@ -2182,11 +2003,12 @@
 
             <div>
               <h3>الأمن في Smart Home</h3>
-
-              <p>مبادئ حماية النظام والأجهزة المتصلة.</p>
+              <p>
+                مبادئ حماية النظام والأجهزة المتصلة.
+              </p>
             </div>
 
-            <span class="session-tag"> Security </span>
+            <span class="session-tag">Security</span>
           </div>
 
           <div class="session">
@@ -2194,11 +2016,12 @@
 
             <div>
               <h3>Backup & Restore</h3>
-
-              <p>حماية إعدادات النظام واستعادتها.</p>
+              <p>
+                حماية إعدادات النظام واستعادتها.
+              </p>
             </div>
 
-            <span class="session-tag"> Backup </span>
+            <span class="session-tag">Backup</span>
           </div>
 
           <div class="session">
@@ -2206,11 +2029,12 @@
 
             <div>
               <h3>Advanced Automations</h3>
-
-              <p>بناء أتمتة أكثر تقدمًا وتعقيدًا.</p>
+              <p>
+                بناء أتمتة أكثر تقدمًا وتعقيدًا.
+              </p>
             </div>
 
-            <span class="session-tag"> Advanced </span>
+            <span class="session-tag">Advanced</span>
           </div>
 
           <div class="session">
@@ -2218,11 +2042,12 @@
 
             <div>
               <h3>مشروع Smart Lighting</h3>
-
-              <p>تطبيق عملي للتحكم الذكي بالإضاءة.</p>
+              <p>
+                تطبيق عملي للتحكم الذكي بالإضاءة.
+              </p>
             </div>
 
-            <span class="session-tag"> Project </span>
+            <span class="session-tag">Project</span>
           </div>
 
           <div class="session">
@@ -2230,11 +2055,12 @@
 
             <div>
               <h3>مشروع Climate Control</h3>
-
-              <p>بناء نظام تحكم ذكي بدرجة الحرارة.</p>
+              <p>
+                بناء نظام تحكم ذكي بدرجة الحرارة.
+              </p>
             </div>
 
-            <span class="session-tag"> Project </span>
+            <span class="session-tag">Project</span>
           </div>
 
           <div class="session">
@@ -2242,11 +2068,12 @@
 
             <div>
               <h3>مشروع Security</h3>
-
-              <p>تطبيق مبادئ المراقبة والتنبيهات الأمنية.</p>
+              <p>
+                تطبيق مبادئ المراقبة والتنبيهات الأمنية.
+              </p>
             </div>
 
-            <span class="session-tag"> Project </span>
+            <span class="session-tag">Project</span>
           </div>
 
           <div class="session">
@@ -2254,11 +2081,12 @@
 
             <div>
               <h3>مشروع متكامل</h3>
-
-              <p>دمج عدة أجهزة وخدمات في منظومة واحدة.</p>
+              <p>
+                دمج عدة أجهزة وخدمات في منظومة واحدة.
+              </p>
             </div>
 
-            <span class="session-tag"> Final </span>
+            <span class="session-tag">Final</span>
           </div>
 
           <div class="session">
@@ -2266,11 +2094,12 @@
 
             <div>
               <h3>اختبار النظام وتحسينه</h3>
-
-              <p>اكتشاف المشاكل وتحسين أداء النظام.</p>
+              <p>
+                اكتشاف المشاكل وتحسين أداء النظام.
+              </p>
             </div>
 
-            <span class="session-tag"> Testing </span>
+            <span class="session-tag">Testing</span>
           </div>
 
           <div class="session">
@@ -2278,24 +2107,26 @@
 
             <div>
               <h3>المشروع النهائي</h3>
-
-              <p>تطبيق شامل لما تم تعلمه خلال الكورس.</p>
+              <p>
+                تطبيق شامل لما تم تعلمه خلال الكورس.
+              </p>
             </div>
 
-            <span class="session-tag"> Final </span>
+            <span class="session-tag">Final</span>
           </div>
         </div>
       </section>
 
       <!-- =====================================================
-         CTA
-    ====================================================== -->
+           CTA
+      ====================================================== -->
 
       <section class="cta reveal">
         <h2>جاهز تبدأ رحلتك مع Smart Home؟</h2>
 
         <p>
-          ابدأ بتعلم Home Assistant وابنِ نظامك الذكي خطوة بخطوة بطريقة عملية.
+          ابدأ بتعلم Home Assistant وابنِ نظامك الذكي
+          خطوة بخطوة بطريقة عملية.
         </p>
 
         <a
@@ -2309,24 +2140,31 @@
       </section>
 
       <!-- =====================================================
-         CONTACT
-    ====================================================== -->
+           CONTACT
+      ====================================================== -->
 
-      <section class="section contact-section reveal" id="contact">
+      <section
+        class="section contact-section reveal"
+        id="contact"
+      >
         <div class="section-heading">
-          <span> 📞 التواصل </span>
+          <span>📞 التواصل</span>
         </div>
 
         <div class="contact-wrapper">
           <div class="contact-card">
             <div class="contact-icon-box">
-              <span> 👨‍🏫 </span>
+              <span>👨‍🏫</span>
             </div>
 
             <div class="contact-content">
-              <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+              <h3>
+                المدرب المهندس عبدالرحمن الحنفي
+              </h3>
 
-              <p>يمكنك التواصل مباشرة عبر واتساب</p>
+              <p>
+                يمكنك التواصل مباشرة عبر واتساب
+              </p>
             </div>
 
             <a
@@ -2335,11 +2173,11 @@
               rel="noopener noreferrer"
               class="whatsapp-btn"
             >
-              <span class="whatsapp-icon"> ◉ </span>
+              <span class="whatsapp-icon">◉</span>
 
-              <span> تواصل عبر واتساب </span>
+              <span>تواصل عبر واتساب</span>
 
-              <span class="arrow"> ← </span>
+              <span class="arrow">←</span>
             </a>
           </div>
         </div>
@@ -2347,8 +2185,8 @@
     </main>
 
     <!-- =====================================================
-       FOOTER
-  ====================================================== -->
+         FOOTER
+    ====================================================== -->
 
     <footer>
       <p>
@@ -2361,90 +2199,119 @@
     </footer>
 
     <!-- =========================================================
-       JAVASCRIPT
-  ========================================================== -->
+         JAVASCRIPT
+    ========================================================== -->
 
     <script>
       /* =========================================================
-       MOBILE MENU
-    ========================================================= */
+         MOBILE MENU
+      ========================================================= */
 
       const menuBtn = document.getElementById("menuBtn");
-
       const navLinks = document.getElementById("navLinks");
 
       menuBtn.addEventListener("click", () => {
         const isOpen = navLinks.classList.toggle("open");
 
-        menuBtn.setAttribute("aria-expanded", isOpen);
+        menuBtn.setAttribute(
+          "aria-expanded",
+          isOpen
+        );
 
         menuBtn.textContent = isOpen ? "✕" : "☰";
       });
 
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navLinks.classList.remove("open");
+      document
+        .querySelectorAll(".nav-links a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            navLinks.classList.remove("open");
 
-          menuBtn.setAttribute("aria-expanded", "false");
+            menuBtn.setAttribute(
+              "aria-expanded",
+              "false"
+            );
 
-          menuBtn.textContent = "☰";
+            menuBtn.textContent = "☰";
+          });
         });
-      });
 
       /* =========================================================
-       SCROLL REVEAL
-    ========================================================== */
+         SCROLL REVEAL
+      ========================================================== */
 
-      const revealElements = document.querySelectorAll(".reveal");
+      const revealElements =
+        document.querySelectorAll(".reveal");
 
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("show");
+      const revealObserver =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show");
 
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.12,
-        },
-      );
+                revealObserver.unobserve(
+                  entry.target
+                );
+              }
+            });
+          },
+          {
+            threshold: 0.12,
+          }
+        );
 
       revealElements.forEach((element) => {
         revealObserver.observe(element);
       });
 
       /* =========================================================
-       INTERACTIVE SMART HOME CARD
-    ========================================================== */
+         INTERACTIVE SMART HOME CARD
+      ========================================================== */
 
-      const visualWrap = document.getElementById("visualWrap");
+      const visualWrap =
+        document.getElementById("visualWrap");
 
-      const smartCard = document.getElementById("smartCard");
+      const smartCard =
+        document.getElementById("smartCard");
 
       function moveCard(x, y) {
-        const rect = visualWrap.getBoundingClientRect();
+        const rect =
+          visualWrap.getBoundingClientRect();
 
-        const centerX = rect.left + rect.width / 2;
+        const centerX =
+          rect.left + rect.width / 2;
 
-        const centerY = rect.top + rect.height / 2;
+        const centerY =
+          rect.top + rect.height / 2;
 
-        const rotateY = (x - centerX) / 30;
+        const rotateY =
+          (x - centerX) / 30;
 
-        const rotateX = (centerY - y) / 30;
+        const rotateX =
+          (centerY - y) / 30;
 
-        smartCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        smartCard.style.transform =
+          `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       }
 
-      visualWrap.addEventListener("mousemove", (event) => {
-        moveCard(event.clientX, event.clientY);
-      });
+      visualWrap.addEventListener(
+        "mousemove",
+        (event) => {
+          moveCard(
+            event.clientX,
+            event.clientY
+          );
+        }
+      );
 
-      visualWrap.addEventListener("mouseleave", () => {
-        smartCard.style.transform = "rotateX(0deg) rotateY(0deg)";
-      });
+      visualWrap.addEventListener(
+        "mouseleave",
+        () => {
+          smartCard.style.transform =
+            "rotateX(0deg) rotateY(0deg)";
+        }
+      );
 
       visualWrap.addEventListener(
         "touchmove",
@@ -2453,43 +2320,61 @@
 
           const touch = event.touches[0];
 
-          moveCard(touch.clientX, touch.clientY);
+          moveCard(
+            touch.clientX,
+            touch.clientY
+          );
         },
         {
           passive: true,
-        },
+        }
       );
 
-      visualWrap.addEventListener("touchend", () => {
-        smartCard.style.transform = "rotateX(0deg) rotateY(0deg)";
-      });
-
-      /* =========================================================
-       INTERACTIVE LIGHT SWITCH
-    ========================================================== */
-
-      const lightToggle = document.getElementById("lightToggle");
-
-      const lightValue = document.getElementById("lightValue");
-
-      lightToggle.addEventListener("click", () => {
-        lightToggle.classList.toggle("active");
-
-        if (lightToggle.classList.contains("active")) {
-          lightValue.textContent = "ON";
-        } else {
-          lightValue.textContent = "OFF";
+      visualWrap.addEventListener(
+        "touchend",
+        () => {
+          smartCard.style.transform =
+            "rotateX(0deg) rotateY(0deg)";
         }
-      });
+      );
 
       /* =========================================================
-       TEMPERATURE ANIMATION
-    ========================================================== */
+         INTERACTIVE LIGHT SWITCH
+      ========================================================== */
 
-      const temperature = document.getElementById("temperature");
+      const lightToggle =
+        document.getElementById("lightToggle");
+
+      const lightValue =
+        document.getElementById("lightValue");
+
+      lightToggle.addEventListener(
+        "click",
+        () => {
+          lightToggle.classList.toggle(
+            "active"
+          );
+
+          if (
+            lightToggle.classList.contains(
+              "active"
+            )
+          ) {
+            lightValue.textContent = "ON";
+          } else {
+            lightValue.textContent = "OFF";
+          }
+        }
+      );
+
+      /* =========================================================
+         TEMPERATURE ANIMATION
+      ========================================================== */
+
+      const temperature =
+        document.getElementById("temperature");
 
       let temp = 24;
-
       let direction = 1;
 
       setInterval(() => {
@@ -2503,42 +2388,66 @@
           direction = 1;
         }
 
-        temperature.textContent = temp.toFixed(1) + "°C";
+        temperature.textContent =
+          temp.toFixed(1) + "°C";
       }, 1800);
 
       /* =========================================================
-       PARALLAX SIGNALS
-    ========================================================== */
+         PARALLAX SIGNALS
+      ========================================================== */
 
-      const signals = document.querySelectorAll(".signal");
+      const signals =
+        document.querySelectorAll(".signal");
 
-      document.addEventListener("mousemove", (event) => {
-        const x = event.clientX / window.innerWidth - 0.5;
+      document.addEventListener(
+        "mousemove",
+        (event) => {
+          const x =
+            event.clientX /
+              window.innerWidth -
+            0.5;
 
-        const y = event.clientY / window.innerHeight - 0.5;
+          const y =
+            event.clientY /
+              window.innerHeight -
+            0.5;
 
-        signals.forEach((signal, index) => {
-          const strength = (index + 1) * 5;
+          signals.forEach(
+            (signal, index) => {
+              const strength =
+                (index + 1) * 5;
 
-          signal.style.marginLeft = `${x * strength}px`;
+              signal.style.marginLeft =
+                `${x * strength}px`;
 
-          signal.style.marginTop = `${y * strength}px`;
-        });
-      });
+              signal.style.marginTop =
+                `${y * strength}px`;
+            }
+          );
+        }
+      );
 
       /* =========================================================
-       PREVENT STUCK MENU ON RESIZE
-    ========================================================== */
+         PREVENT STUCK MENU ON RESIZE
+      ========================================================== */
 
-      window.addEventListener("resize", () => {
-        if (window.innerWidth > 700) {
-          navLinks.classList.remove("open");
+      window.addEventListener(
+        "resize",
+        () => {
+          if (window.innerWidth > 700) {
+            navLinks.classList.remove(
+              "open"
+            );
 
-          menuBtn.setAttribute("aria-expanded", "false");
+            menuBtn.setAttribute(
+              "aria-expanded",
+              "false"
+            );
 
-          menuBtn.textContent = "☰";
+            menuBtn.textContent = "☰";
+          }
         }
-      });
+      );
     </script>
   </body>
 </html>
