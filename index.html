@@ -127,7 +127,7 @@
       .scroll-progress-bar {
         position: fixed;
         top: 0;
-        right: 0; /* يبدأ من اليمين في العربية */
+        right: 0;
         width: 0%;
         height: 4px;
         background: linear-gradient(90deg, #1478e8, #2da8ff, #8ed8ff);
@@ -144,7 +144,7 @@
       .back-to-top {
         position: fixed;
         bottom: 30px;
-        left: 30px; /* يسار الشاشة في العربية */
+        left: 30px;
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -1353,7 +1353,7 @@
       }
 
       .course:hover .arrow {
-        transform: translateX(5px); /* تحريك لليمين في العربية */
+        transform: translateX(5px);
       }
 
       /* =====================================================
@@ -1851,7 +1851,6 @@
         overflow: hidden;
       }
 
-      /* تأثير الخلفية المتحركة */
       .collaboration-section::before {
         content: "";
         position: absolute;
@@ -1894,10 +1893,6 @@
         z-index: 1;
       }
 
-      /* =====================================================
-         روابط الأسماء (قابلة للضغط)
-      ====================================================== */
-
       .collaborator-link {
         text-decoration: none;
         display: inline-block;
@@ -1915,7 +1910,6 @@
         border-color: rgba(23, 119, 220, 0.3);
       }
 
-      /* إضافة أيقونة واتساب صغيرة عند hover */
       .collaborator-link::after {
         content: "💬";
         position: absolute;
@@ -1947,10 +1941,6 @@
         display: inline-block;
       }
 
-      /* =====================================================
-         تأثير VS الفخم
-      ====================================================== */
-
       .vs-container {
         position: relative;
         width: 70px;
@@ -1961,7 +1951,6 @@
         flex-shrink: 0;
       }
 
-      /* الحلقات الدائرية */
       .vs-ring {
         position: absolute;
         width: 100%;
@@ -1990,7 +1979,6 @@
         }
       }
 
-      /* نص VS */
       .vs-text {
         font-family: "Playfair Display", serif;
         font-size: 28px;
@@ -2016,7 +2004,6 @@
         }
       }
 
-      /* النص الفرعي */
       .collaboration-sub {
         font-size: 13px;
         color: #8294ad;
@@ -2035,10 +2022,6 @@
         font-size: 10px;
         opacity: 0.5;
       }
-
-      /* =====================================================
-         باقي عناصر الفوتر
-      ====================================================== */
 
       .social-links {
         display: flex;
@@ -2079,10 +2062,6 @@
         font-size: 12px;
       }
 
-      /* =====================================================
-         Responsive
-      ====================================================== */
-
       @media (max-width: 600px) {
         .collaboration-wrapper {
           gap: 8px;
@@ -2097,38 +2076,6 @@
           font-size: 14px;
           top: -8px;
           right: -8px;
-        }
-
-        .vs-container {
-          width: 55px;
-          height: 55px;
-        }
-
-        .vs-text {
-          font-size: 22px;
-        }
-
-        .collaboration-sub {
-          font-size: 11px;
-        }
-
-        .collaboration-sub::before,
-        .collaboration-sub::after {
-          margin: 0 5px;
-        }
-      }
-      /* =====================================================
-         Responsive
-      ====================================================== */
-
-      @media (max-width: 600px) {
-        .collaboration-wrapper {
-          gap: 8px;
-        }
-
-        .collaborator {
-          font-size: 14px;
-          padding: 4px 14px;
         }
 
         .vs-container {
@@ -2193,857 +2140,13 @@
       }
 
       /* =====================================================
-         MAIN CONTENT
+         MAIN CONTENT (ظاهر دائماً - لا يوجد إخفاء)
       ====================================================== */
-
-      .hidden {
-        opacity: 0;
-
-        visibility: hidden;
-
-        transform: translateY(18px);
-      }
 
       #main-content {
-        transition:
-          opacity 0.9s ease,
-          transform 0.9s ease,
-          visibility 0.9s ease;
-      }
-
-      /* =====================================================
-         SPLASH
-      ====================================================== */
-
-      #splash {
-        position: fixed;
-
-        inset: 0;
-
-        display: flex;
-
-        justify-content: center;
-
-        align-items: center;
-
-        z-index: 99999;
-
-        overflow: hidden;
-
-        background-image:
-          linear-gradient(rgba(1, 18, 65, 0.12), rgba(0, 39, 100, 0.25)),
-          url("image/back.png");
-
-        background-size: cover;
-
-        background-position: center;
-
-        background-repeat: no-repeat;
-
-        transition:
-          opacity 0.85s ease,
-          visibility 0.85s ease,
-          transform 0.85s ease;
-      }
-
-      #splash.hide {
-        opacity: 0;
-
-        visibility: hidden;
-
-        transform: scale(1.05);
-
-        pointer-events: none;
-      }
-
-      #splash::before {
-        content: "";
-
-        position: absolute;
-
-        inset: 0;
-
-        background:
-          radial-gradient(
-            circle at center,
-            rgba(69, 191, 255, 0.25),
-            transparent 28%
-          ),
-          radial-gradient(
-              circle,
-              rgba(89, 202, 255, 0.28) 0 1px,
-              transparent 2px
-            )
-            0 0 / 48px 48px;
-
-        animation: starsMove 16s linear infinite;
-      }
-
-      #splash::after {
-        content: "";
-
-        position: absolute;
-
-        width: min(88vw, 850px);
-
-        height: min(88vw, 850px);
-
-        border-radius: 50%;
-
-        border: 1px solid rgba(112, 215, 255, 0.14);
-
-        box-shadow:
-          0 0 0 60px rgba(48, 160, 255, 0.025),
-          0 0 0 130px rgba(48, 160, 255, 0.015),
-          0 0 150px rgba(30, 169, 255, 0.45);
-
-        animation: pulseRing 3.5s ease-in-out infinite;
-      }
-
-      .splash-content {
-        width: min(95vw, 900px);
-
-        position: relative;
-
-        z-index: 20;
-
-        text-align: center;
-
-        padding: 20px;
-      }
-
-      .logo-stage {
-        width: min(72vw, 560px);
-
-        height: min(58vh, 560px);
-
-        margin: 0 auto 18px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        position: relative;
-
-        z-index: 25;
-
-        will-change: transform;
-
-        animation: stageFloat 4s ease-in-out infinite;
-      }
-
-      .logo-stage::before {
-        content: "";
-
-        position: absolute;
-
-        width: 73%;
-        height: 73%;
-
-        border-radius: 50%;
-
-        background: radial-gradient(
-          circle,
-          rgba(80, 206, 255, 0.26),
-          rgba(39, 150, 255, 0.12) 42%,
-          transparent 70%
-        );
-
-        filter: blur(10px);
-
-        animation: logoAura 3s ease-in-out infinite;
-
-        pointer-events: none;
-      }
-
-      .logo-stage::after {
-        content: "";
-
-        position: absolute;
-
-        width: 91%;
-        height: 91%;
-
-        border-radius: 50%;
-
-        border: 1px solid rgba(126, 222, 255, 0.12);
-
-        box-shadow:
-          0 0 30px rgba(42, 174, 255, 0.16),
-          inset 0 0 35px rgba(42, 174, 255, 0.08);
-
-        animation: softRing 4s ease-in-out infinite;
-
-        pointer-events: none;
-      }
-
-      .logo-rope {
-        position: absolute;
-
-        inset: -2%;
-
-        border-radius: 50%;
-
-        z-index: 35;
-
-        pointer-events: none;
-
-        transform: rotate(-8deg);
-
-        will-change: transform;
-
-        filter: drop-shadow(0 0 4px #ffffff) drop-shadow(0 0 12px #38c4ff)
-          drop-shadow(0 0 25px rgba(30, 157, 255, 0.95))
-          drop-shadow(0 0 50px rgba(22, 111, 255, 0.45));
-
-        animation:
-          ropeOrbit 8s linear infinite,
-          ropeBreath 2.8s ease-in-out infinite;
-      }
-
-      .logo-rope::before {
-        content: "";
-
-        position: absolute;
-
-        inset: 7%;
-
-        border-radius: 50%;
-
-        background: conic-gradient(
-          from 0deg,
-          transparent 0deg,
-          transparent 18deg,
-          rgba(42, 175, 255, 0.18) 22deg,
-          #36c7ff 27deg,
-          #eaffff 30deg,
-          #ffffff 33deg,
-          #48cfff 37deg,
-          rgba(37, 153, 255, 0.1) 42deg,
-          transparent 53deg,
-          transparent 112deg,
-          rgba(42, 175, 255, 0.12) 118deg,
-          #31bfff 123deg,
-          #ffffff 127deg,
-          #4fd3ff 132deg,
-          rgba(37, 153, 255, 0.1) 137deg,
-          transparent 150deg,
-          transparent 228deg,
-          rgba(42, 175, 255, 0.12) 234deg,
-          #31bfff 239deg,
-          #ffffff 243deg,
-          #4fd3ff 248deg,
-          rgba(37, 153, 255, 0.1) 254deg,
-          transparent 268deg,
-          transparent 315deg,
-          rgba(42, 175, 255, 0.15) 320deg,
-          #31bfff 326deg,
-          #ffffff 330deg,
-          #4fd3ff 335deg,
-          transparent 345deg,
-          transparent 360deg
-        );
-
-        -webkit-mask: radial-gradient(
-          circle,
-          transparent 59.5%,
-          #000 60.2%,
-          #000 63.2%,
-          transparent 64%
-        );
-
-        mask: radial-gradient(
-          circle,
-          transparent 59.5%,
-          #000 60.2%,
-          #000 63.2%,
-          transparent 64%
-        );
-      }
-
-      .logo-rope::after {
-        content: "";
-
-        position: absolute;
-
-        inset: 12%;
-
-        border-radius: 50%;
-
-        background: conic-gradient(
-          from 180deg,
-          transparent 0deg,
-          transparent 27deg,
-          rgba(63, 205, 255, 0.18) 31deg,
-          #43caff 36deg,
-          #ffffff 39deg,
-          #62d8ff 43deg,
-          transparent 48deg,
-          transparent 91deg,
-          rgba(63, 205, 255, 0.18) 96deg,
-          #43caff 101deg,
-          #ffffff 104deg,
-          #62d8ff 108deg,
-          transparent 113deg,
-          transparent 178deg,
-          rgba(63, 205, 255, 0.18) 183deg,
-          #43caff 188deg,
-          #ffffff 191deg,
-          #62d8ff 195deg,
-          transparent 200deg,
-          transparent 267deg,
-          rgba(63, 205, 255, 0.18) 272deg,
-          #43caff 277deg,
-          #ffffff 280deg,
-          #62d8ff 284deg,
-          transparent 289deg,
-          transparent 360deg
-        );
-
-        -webkit-mask: radial-gradient(
-          circle,
-          transparent 62%,
-          #000 62.8%,
-          #000 64.2%,
-          transparent 65%
-        );
-
-        mask: radial-gradient(
-          circle,
-          transparent 62%,
-          #000 62.8%,
-          #000 64.2%,
-          transparent 65%
-        );
-
-        filter: drop-shadow(0 0 5px #55d5ff)
-          drop-shadow(0 0 14px rgba(43, 177, 255, 0.9));
-
-        animation: innerRopeSpin 5s linear infinite;
-      }
-
-      .rope-light {
-        position: absolute;
-
-        width: 18px;
-        height: 18px;
-
-        top: 7%;
-        left: 50%;
-
-        transform: translate(-50%, -50%);
-
-        border-radius: 50%;
-
-        background: #ffffff;
-
-        box-shadow:
-          0 0 5px #ffffff,
-          0 0 12px #ffffff,
-          0 0 25px #55d7ff,
-          0 0 45px #1ba5ff,
-          0 0 75px rgba(0, 137, 255, 0.95);
-
-        animation:
-          lightOrbit 8s linear infinite,
-          lightPulse 1.3s ease-in-out infinite;
-
-        z-index: 50;
-      }
-
-      .rope-light-2 {
-        position: absolute;
-
-        width: 9px;
-        height: 9px;
-
-        bottom: 13%;
-        left: 15%;
-
-        border-radius: 50%;
-
-        background: #dffaff;
-
-        box-shadow:
-          0 0 7px #ffffff,
-          0 0 18px #43caff,
-          0 0 35px #168eff;
-
-        animation:
-          secondLight 5s linear infinite,
-          smallLightPulse 1.7s ease-in-out infinite;
-
-        z-index: 50;
-      }
-
-      .crystal-field {
-        position: absolute;
-
-        inset: 0;
-
-        z-index: 3;
-
-        overflow: hidden;
-
-        pointer-events: none;
-      }
-
-      .crystal {
-        position: absolute;
-
-        width: 18px;
-        height: 18px;
-
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.95),
-          rgba(126, 221, 255, 0.85) 45%,
-          rgba(19, 104, 220, 0.75)
-        );
-
-        clip-path: polygon(50% 0%, 100% 35%, 82% 100%, 18% 100%, 0% 35%);
-
-        box-shadow:
-          0 0 12px rgba(78, 199, 255, 0.8),
-          0 0 28px rgba(38, 149, 255, 0.45);
-
-        opacity: 0.85;
-
-        animation:
-          crystalFloat 5s ease-in-out infinite,
-          crystalSpin 7s linear infinite;
-      }
-
-      .c1 {
-        top: 12%;
-        left: 12%;
-        width: 24px;
-        height: 24px;
-      }
-
-      .c2 {
-        top: 22%;
-        left: 25%;
-        width: 12px;
-        height: 12px;
-        animation-delay: -1.2s;
-      }
-
-      .c3 {
-        top: 9%;
-        right: 18%;
-        width: 30px;
-        height: 30px;
-        animation-delay: -2s;
-      }
-
-      .c4 {
-        top: 35%;
-        right: 8%;
-        width: 15px;
-        height: 15px;
-        animation-delay: -3s;
-      }
-
-      .c5 {
-        bottom: 18%;
-        left: 10%;
-        width: 26px;
-        height: 26px;
-        animation-delay: -1.5s;
-      }
-
-      .c6 {
-        bottom: 9%;
-        right: 15%;
-        width: 19px;
-        height: 19px;
-        animation-delay: -4s;
-      }
-
-      .c7 {
-        top: 48%;
-        left: 5%;
-        width: 10px;
-        height: 10px;
-        animation-delay: -2.5s;
-      }
-
-      .c8 {
-        top: 18%;
-        right: 35%;
-        width: 16px;
-        height: 16px;
-        animation-delay: -0.8s;
-      }
-
-      .c9 {
-        bottom: 30%;
-        right: 28%;
-        width: 11px;
-        height: 11px;
-        animation-delay: -3.5s;
-      }
-
-      .c10 {
-        bottom: 12%;
-        left: 30%;
-        width: 22px;
-        height: 22px;
-        animation-delay: -2.2s;
-      }
-
-      .c11 {
-        top: 60%;
-        right: 4%;
-        width: 28px;
-        height: 28px;
-        animation-delay: -4.5s;
-      }
-
-      .c12 {
-        top: 5%;
-        left: 42%;
-        width: 13px;
-        height: 13px;
-        animation-delay: -1.8s;
-      }
-
-      .c13 {
-        bottom: 42%;
-        left: 20%;
-        width: 17px;
-        height: 17px;
-        animation-delay: -3.8s;
-      }
-
-      .c14 {
-        bottom: 5%;
-        right: 42%;
-        width: 14px;
-        height: 14px;
-        animation-delay: -0.5s;
-      }
-
-      .logo-3d {
-        width: min(65vw, 470px);
-
-        height: min(52vh, 470px);
-
-        object-fit: contain;
-
-        display: block;
-
-        position: relative;
-
-        z-index: 45;
-
-        filter: drop-shadow(0 30px 35px rgba(0, 0, 0, 0.38))
-          drop-shadow(0 0 18px rgba(72, 192, 255, 0.8))
-          drop-shadow(0 0 45px rgba(72, 192, 255, 0.65));
-
-        animation: logoFloat 4s ease-in-out infinite;
-      }
-
-      .splash-title {
-        position: relative;
-
-        z-index: 30;
-
-        color: #0b278c;
-
-        font-family: "Playfair Display", serif;
-
-        font-size: clamp(38px, 6vw, 68px);
-
-        letter-spacing: 7px;
-
-        text-shadow:
-          0 0 22px rgba(91, 203, 255, 0.75),
-          2px 2px 0 rgba(255, 255, 255, 0.7);
-
-        direction: ltr;
-      }
-
-      .splash-subtitle {
-        position: relative;
-
-        z-index: 30;
-
-        margin-top: 8px;
-
-        color: #03104d;
-
-        font-size: 15px;
-
-        font-weight: 800;
-      }
-
-      .loader-wrap {
-        position: relative;
-
-        z-index: 30;
-
-        width: min(340px, 76vw);
-
-        margin: 25px auto 0;
-      }
-
-      .loader-bar {
-        height: 8px;
-
-        background: rgba(255, 255, 255, 0.25);
-
-        border: 1px solid rgba(60, 168, 255, 0.4);
-
-        border-radius: 50px;
-
-        overflow: hidden;
-      }
-
-      #loader-progress {
-        width: 0%;
-
-        height: 100%;
-
-        border-radius: inherit;
-
-        background: linear-gradient(90deg, #168dff, #e1f8ff, #126df0);
-
-        box-shadow:
-          0 0 10px #45c8ff,
-          0 0 20px #45c8ff;
-
-        transition: width 0.12s linear;
-      }
-
-      #loader-text {
-        margin-top: 10px;
-
-        color: #06134d;
-
-        font-size: 12px;
-
-        font-weight: 900;
-      }
-
-      .skip-splash {
-        position: relative;
-        z-index: 30;
-        margin-top: 22px;
-        padding: 9px 22px;
-        border: 1px solid rgba(20, 121, 220, 0.35);
-        border-radius: 30px;
-        background: rgba(255, 255, 255, 0.6);
-        color: #0752aa;
-        font-family: "Cairo", sans-serif;
-        font-size: 12px;
-        font-weight: 800;
-        cursor: pointer;
-        transition: 0.25s ease;
-      }
-
-      .skip-splash:hover {
-        background: rgba(255, 255, 255, 0.9);
-        transform: translateY(-2px);
-      }
-
-      /* =====================================================
-         ANIMATIONS
-      ====================================================== */
-
-      @keyframes logoFloat {
-        0%,
-        100% {
-          transform: scale(1) translateY(0);
-        }
-
-        50% {
-          transform: scale(1.035) translateY(-12px);
-        }
-      }
-
-      @keyframes stageFloat {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      @keyframes logoAura {
-        0%,
-        100% {
-          transform: scale(0.9);
-          opacity: 0.55;
-        }
-
-        50% {
-          transform: scale(1.08);
-          opacity: 1;
-        }
-      }
-
-      @keyframes softRing {
-        0%,
-        100% {
-          transform: scale(0.96);
-          opacity: 0.4;
-        }
-
-        50% {
-          transform: scale(1.03);
-          opacity: 0.9;
-        }
-      }
-
-      @keyframes ropeOrbit {
-        from {
-          transform: rotate(-8deg);
-        }
-
-        to {
-          transform: rotate(352deg);
-        }
-      }
-
-      @keyframes innerRopeSpin {
-        from {
-          transform: rotate(0deg);
-        }
-
-        to {
-          transform: rotate(-360deg);
-        }
-      }
-
-      @keyframes ropeBreath {
-        0%,
-        100% {
-          scale: 0.98;
-          opacity: 0.78;
-        }
-
-        50% {
-          scale: 1.03;
-          opacity: 1;
-        }
-      }
-
-      @keyframes lightOrbit {
-        0% {
-          transform: translate(-50%, -50%) rotate(0deg) translateY(245px)
-            rotate(0deg);
-        }
-
-        100% {
-          transform: translate(-50%, -50%) rotate(360deg) translateY(245px)
-            rotate(-360deg);
-        }
-      }
-
-      @keyframes lightPulse {
-        0%,
-        100% {
-          scale: 0.75;
-          opacity: 0.65;
-        }
-
-        50% {
-          scale: 1.3;
-          opacity: 1;
-        }
-      }
-
-      @keyframes secondLight {
-        0% {
-          transform: translate(0, 0);
-          opacity: 0.4;
-        }
-
-        25% {
-          transform: translate(55px, -70px);
-          opacity: 1;
-        }
-
-        50% {
-          transform: translate(130px, -20px);
-          opacity: 0.55;
-        }
-
-        75% {
-          transform: translate(65px, 65px);
-          opacity: 1;
-        }
-
-        100% {
-          transform: translate(0, 0);
-          opacity: 0.4;
-        }
-      }
-
-      @keyframes smallLightPulse {
-        0%,
-        100% {
-          scale: 0.7;
-        }
-
-        50% {
-          scale: 1.5;
-        }
-      }
-
-      @keyframes starsMove {
-        to {
-          transform: translate3d(80px, -100px, 0);
-        }
-      }
-
-      @keyframes pulseRing {
-        0%,
-        100% {
-          transform: scale(0.96);
-          opacity: 0.55;
-        }
-
-        50% {
-          transform: scale(1.04);
-          opacity: 1;
-        }
-      }
-
-      @keyframes crystalFloat {
-        0%,
-        100% {
-          transform: translateY(0) translateX(0) scale(1);
-        }
-
-        25% {
-          transform: translateY(-18px) translateX(8px) scale(1.08);
-        }
-
-        50% {
-          transform: translateY(-8px) translateX(-10px) scale(0.92);
-        }
-
-        75% {
-          transform: translateY(15px) translateX(5px) scale(1.05);
-        }
-      }
-
-      @keyframes crystalSpin {
-        from {
-          rotate: 0deg;
-        }
-
-        to {
-          rotate: 360deg;
-        }
+        opacity: 1;
+        visibility: visible;
+        transform: none;
       }
 
       /* =====================================================
@@ -3512,8 +2615,6 @@
           border-radius: 23px;
         }
 
-        /* MUSIC */
-
         .music-control {
           top: 12px;
           left: 12px;
@@ -3527,8 +2628,6 @@
           height: 29px;
           font-size: 14px;
         }
-
-        /* NAV MOBILE */
 
         .navbar {
           top: 7px;
@@ -3568,8 +2667,6 @@
           display: none;
         }
 
-        /* HEADER */
-
         .header {
           padding: 30px 15px 28px;
         }
@@ -3597,8 +2694,6 @@
         .page-subtitle {
           font-size: 13px;
         }
-
-        /* SECTIONS */
 
         .team-section,
         .courses-section,
@@ -3655,8 +2750,6 @@
           font-size: 10px;
         }
 
-        /* Vision Card Mobile */
-
         .vision-text {
           font-size: 12px;
           line-height: 1.7;
@@ -3666,8 +2759,6 @@
           padding: 7px 10px;
           font-size: 11px;
         }
-
-        /* Teacher Card Mobile */
 
         .teacher-image {
           height: 130px;
@@ -3688,8 +2779,6 @@
           font-size: 13px;
         }
 
-        /* Features Card Mobile */
-
         .feature-item {
           padding: 8px 10px;
           font-size: 11px;
@@ -3702,8 +2791,6 @@
           font-size: 14px;
         }
 
-        /* FILTERS */
-
         .course-filters {
           gap: 6px;
           margin-bottom: 18px;
@@ -3713,8 +2800,6 @@
           padding: 7px 11px;
           font-size: 10px;
         }
-
-        /* COURSES */
 
         .courses {
           grid-template-columns: 1fr;
@@ -3759,8 +2844,6 @@
           font-size: 12px;
         }
 
-        /* INFO IMAGE */
-
         .info-image-card {
           padding: 10px;
           border-radius: 18px;
@@ -3769,8 +2852,6 @@
         .info-image-card img {
           border-radius: 12px;
         }
-
-        /* SHAM CASH */
 
         .shamcash-trigger {
           padding: 18px 14px;
@@ -3814,8 +2895,6 @@
           margin-top: 10px;
         }
 
-        /* CONTACT */
-
         .contact-grid {
           grid-template-columns: 1fr;
           gap: 10px;
@@ -3843,8 +2922,6 @@
           font-size: 11px;
         }
 
-        /* FAQ */
-
         .faq-item {
           border-radius: 14px;
         }
@@ -3867,8 +2944,6 @@
           line-height: 1.8;
         }
 
-        /* FOOTER */
-
         .footer {
           padding: 24px 12px;
           font-size: 11px;
@@ -3887,109 +2962,7 @@
         .copyright {
           font-size: 10px;
         }
-
-        /* SPLASH */
-
-        .logo-stage {
-          width: min(92vw, 390px);
-          height: min(47vh, 390px);
-          margin: 0 auto 12px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .logo-3d {
-          width: min(78vw, 320px);
-          height: min(40vh, 320px);
-        }
-
-        .logo-rope {
-          inset: 0; /* إلغاء الإزاحة */
-          transform: rotate(0deg); /* إلغاء الميلان في الجوال ليبدو متوازناً */
-          filter: drop-shadow(0 0 3px #ffffff) drop-shadow(0 0 8px #38c4ff)
-            drop-shadow(0 0 16px rgba(30, 157, 255, 0.85));
-        }
-
-        .logo-stage::before {
-          filter: blur(6px);
-        }
-
-        .logo-rope::before {
-          -webkit-mask: radial-gradient(
-            circle,
-            transparent 57%,
-            #000 58%,
-            #000 61.5%,
-            transparent 62.5%
-          );
-          mask: radial-gradient(
-            circle,
-            transparent 57%,
-            #000 58%,
-            #000 61.5%,
-            transparent 62.5%
-          );
-        }
-
-        .logo-rope::after {
-          -webkit-mask: radial-gradient(
-            circle,
-            transparent 60%,
-            #000 60.8%,
-            #000 62.5%,
-            transparent 63.5%
-          );
-          mask: radial-gradient(
-            circle,
-            transparent 60%,
-            #000 60.8%,
-            #000 62.5%,
-            transparent 63.5%
-          );
-        }
-
-        .rope-light {
-          width: 14px;
-          height: 14px;
-        }
-
-        @keyframes lightOrbit {
-          0% {
-            transform: translate(-50%, -50%) rotate(0deg) translateY(165px)
-              rotate(0deg);
-          }
-          100% {
-            transform: translate(-50%, -50%) rotate(360deg) translateY(165px)
-              rotate(-360deg);
-          }
-        }
-
-        .splash-title {
-          font-size: 32px;
-          letter-spacing: 3px;
-        }
-
-        .splash-subtitle {
-          font-size: 12px;
-        }
-
-        .loader-wrap {
-          margin-top: 16px;
-          width: min(280px, 80vw);
-        }
-
-        .loader-bar {
-          height: 6px;
-        }
-
-        #loader-text {
-          font-size: 10px;
-          margin-top: 8px;
-        }
       }
-
-      /* شاشات صغيرة جداً */
 
       @media (max-width: 390px) {
         .logo-box {
@@ -4018,33 +2991,8 @@
         .team-info h2 {
           font-size: 20px;
         }
-
-        .logo-stage {
-          width: 92vw;
-          height: 330px;
-        }
-
-        .logo-3d {
-          width: 270px;
-          height: 270px;
-        }
-
-        @keyframes lightOrbit {
-          0% {
-            transform: translate(-50%, -50%) rotate(0deg) translateY(145px)
-              rotate(0deg);
-          }
-          100% {
-            transform: translate(-50%, -50%) rotate(360deg) translateY(145px)
-              rotate(-360deg);
-          }
-        }
-
-        .splash-title {
-          font-size: 28px;
-          letter-spacing: 2px;
-        }
       }
+
       /* =====================================================
    SOCIAL LINKS - FOOTER
 ===================================================== */
@@ -4079,7 +3027,6 @@
         box-shadow: 0 10px 25px rgba(7, 82, 186, 0.2);
       }
 
-      /* ألوان خاصة لكل منصة عند التمرير */
       .social-link:hover .fa-facebook-f {
         color: #1877f2;
       }
@@ -4092,7 +3039,6 @@
         color: #ff0000;
       }
 
-      /* حجم الأيقونات في الشاشات الصغيرة */
       @media (max-width: 650px) {
         .social-link {
           width: 44px;
@@ -4101,6 +3047,7 @@
           gap: 12px;
         }
       }
+
       /* =====================================================
          GRADUATION PROJECT + CERTIFICATE
       ====================================================== */
@@ -4250,6 +3197,7 @@
           font-size: 12px;
         }
       }
+
       /* =====================================================
    CHESS EDITION
 ===================================================== */
@@ -4263,7 +3211,6 @@
   font-family: "Cairo", sans-serif;
 }
 
-/* ربط قسم الإعلانات بصرياً مع عنوان الأقسام */
 #announcements > .section-title {
   width: 100%;
   margin-bottom: 0;
@@ -4291,7 +3238,6 @@
     inset 0 0 50px rgba(104, 161, 225, .08);
 }
 
-/* Inner frame */
 .announce-card::before {
   content: "";
   position: absolute;
@@ -4310,7 +3256,6 @@
   pointer-events: none;
 }
 
-/* Corners */
 .corner {
   position: absolute;
   width: 18px;
@@ -4347,7 +3292,6 @@
   border-top: 0;
 }
 
-/* Chess floor */
 .chess-floor {
   position: absolute;
   bottom: -100px;
@@ -4365,7 +3309,6 @@
   mask-image: linear-gradient(to top, black, transparent);
 }
 
-/* Content */
 .announce-content {
   position: relative;
   z-index: 10;
@@ -4378,7 +3321,6 @@
   text-align: center;
 }
 
-/* Brand */
 .announce-brand {
   display: flex;
   align-items: center;
@@ -4419,7 +3361,6 @@
   margin-top: 2px;
 }
 
-/* Title */
 .announce-title {
   display: flex;
   flex-direction: column;
@@ -4462,7 +3403,6 @@
   font-weight: 700;
 }
 
-/* Date */
 .announce-date {
   margin-top: 13px;
 }
@@ -4482,7 +3422,6 @@
   letter-spacing: 5px;
 }
 
-/* Countdown */
 .announce-countdown {
   display: flex;
   justify-content: center;
@@ -4517,7 +3456,6 @@
   margin-top: 4px;
 }
 
-/* Strategy */
 .strategy-text {
   margin-top: 14px;
   color: #a9c3df;
@@ -4532,7 +3470,6 @@
   margin: 0 4px;
 }
 
-/* Footer */
 .announce-footer {
   margin-top: 13px;
   display: flex;
@@ -4551,10 +3488,6 @@
   font-size: 7px;
   letter-spacing: 3px;
 }
-
-/* =====================================================
-   CHESS PIECES
-===================================================== */
 
 .chess-world {
   position: absolute;
@@ -4659,10 +3592,6 @@
     margin-top: -7px;
   }
 }
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
 
 @media (max-width: 700px) {
 
@@ -4798,8 +3727,7 @@
     opacity: .3;
   }
 }
-    
-/* ===== تحسين أسماء التواصل في الفوتر على الموبايل ===== */
+
 .footer-contact,
 .contact-footer,
 .footer-contacts {
@@ -4840,6 +3768,197 @@
   }
 }
 
+/* =====================================================
+   CAREER OPPORTUNITY SECTION (قسم فرص العمل)
+===================================================== */
+
+.career-section {
+  padding: 10px 55px 55px;
+}
+
+.career-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 22px;
+  width: min(480px, 100%);
+  margin: 0 auto;
+}
+.career-card { width: 100%; }
+
+.career-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 34px 24px;
+  border-radius: 26px;
+  border: 1px solid rgba(30, 126, 220, 0.25);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.97),
+    rgba(233, 247, 255, 0.9)
+  );
+  box-shadow: 0 14px 34px rgba(8, 74, 155, 0.1);
+  transition: 0.35s ease;
+}
+
+.career-card::before {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  top: -70px;
+  right: -70px;
+  background: radial-gradient(
+    circle,
+    rgba(45, 168, 255, 0.2),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.career-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(15, 117, 224, 0.55);
+  box-shadow:
+    0 22px 46px rgba(7, 76, 160, 0.18),
+    0 0 24px rgba(33, 151, 244, 0.18);
+}
+
+.career-icon {
+  position: relative;
+  z-index: 2;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 18px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: #fff;
+  background: linear-gradient(
+    145deg,
+    #8ee5ff 0%,
+    #1687ec 55%,
+    #031c59 100%
+  );
+  box-shadow:
+    0 10px 24px rgba(2, 52, 126, 0.28),
+    0 0 22px rgba(58, 190, 255, 0.35),
+    inset 1px 1px 4px rgba(255, 255, 255, 0.6);
+  transition: 0.35s ease;
+}
+
+.career-card:hover .career-icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.career-card h3 {
+  position: relative;
+  z-index: 2;
+  color: #08489f;
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.career-card p {
+  position: relative;
+  z-index: 2;
+  color: #5f7392;
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 340px;
+}
+
+.career-cta {
+  position: relative;
+  z-index: 2;
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 26px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #35adff, #0751b7);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 8px 20px rgba(7, 82, 186, 0.25);
+  transition: 0.3s ease;
+}
+
+.career-card:hover .career-cta {
+  transform: translateX(-5px);
+  box-shadow: 0 10px 26px rgba(7, 82, 186, 0.4);
+}
+
+
+
+@media (max-width: 650px) {
+  .career-section {
+    padding: 10px 12px 30px;
+  }
+  .career-card {
+    padding: 24px 18px;
+    border-radius: 20px;
+  }
+  .career-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 28px;
+    border-radius: 18px;
+    margin-bottom: 14px;
+  }
+  .career-card h3 {
+    font-size: 18px;
+  }
+  .career-card p {
+    font-size: 12px;
+  }
+  .career-cta {
+    padding: 9px 20px;
+    font-size: 12px;
+  }
+}
+
+
+/* ===== CHESS CLICKABLE + MODAL ===== */
+.chess-clickable{cursor:pointer;transition:.35s ease}
+.chess-clickable:hover{transform:translateY(-6px);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 35px rgba(110,177,244,.25)}
+.announce-subtitle{font-family:"Cairo",sans-serif;font-size:15px;letter-spacing:1px;margin-top:4px}
+.chess-open-btn{margin-top:22px;padding:12px 28px;border-radius:30px;font-weight:800;font-size:14px;color:#07101f;background:linear-gradient(135deg,#fff,#b9d8f7);box-shadow:0 0 25px rgba(157,202,250,.35);animation:chessPulse 2.2s ease-in-out infinite}
+@keyframes chessPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.chess-modal{display:none;position:fixed;inset:0;z-index:10001;background:rgba(2,18,50,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:flex-start;justify-content:center;overflow-y:auto;padding:30px 14px}
+.chess-modal.show{display:flex}
+.chess-modal-box{width:min(520px,100%);padding:28px 22px 22px;border-radius:26px;text-align:center;color:#e8f1fb;background:radial-gradient(circle at 50% 0%,rgba(53,106,180,.35),transparent 45%),linear-gradient(145deg,#07101f,#0b1729 55%,#050b15);border:1px solid rgba(181,210,242,.45);box-shadow:0 30px 80px rgba(0,0,0,.55);animation:chessModalIn .5s cubic-bezier(.22,.8,.25,1)}
+@keyframes chessModalIn{from{transform:translateY(-40px) scale(.95);opacity:0}to{transform:none;opacity:1}}
+.chess-modal-icon{width:64px;height:64px;margin:0 auto 10px;display:grid;place-items:center;font-size:32px;color:#fff;border-radius:18px;background:linear-gradient(145deg,#213b5e,#081321);border:1px solid rgba(220,235,255,.6);box-shadow:0 0 25px rgba(110,177,244,.35)}
+.chess-modal-box h3{font-size:24px;font-weight:900;color:#fff}
+.chess-modal-sub{color:#8fb0d3;font-size:13px;margin-bottom:14px}
+.chess-intro{font-size:14px;line-height:2;color:#cfe0f3}
+.chess-intro strong{color:#fff}
+.chess-prizes-title{margin:16px 0 10px;font-weight:800;color:#b9d8f7;font-size:14px}
+.chess-prizes{display:flex;flex-direction:column;gap:10px;text-align:right}
+.prize-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;font-size:13px;line-height:1.8;color:#d6e5f6;background:rgba(9,23,40,.7);border:1px solid rgba(168,201,236,.25)}
+.prize-item b{color:#fff;font-size:14px}
+.prize-badge{min-width:58px;padding:8px 6px;border-radius:12px;text-align:center;font-weight:900;font-size:14px;color:#07101f;background:linear-gradient(135deg,#fff,#b9d8f7)}
+.prize-gold{border-color:rgba(255,215,100,.6);box-shadow:0 0 20px rgba(255,200,80,.15)}
+.prize-gold .prize-badge{background:linear-gradient(135deg,#fff3b0,#f0b429)}
+.prize-out{opacity:.85;border-color:rgba(255,120,120,.35)}
+.prize-out .prize-badge{background:linear-gradient(135deg,#ffd6d6,#e57373)}
+.chess-download{margin-top:20px;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;border-radius:16px;text-decoration:none;font-weight:800;font-size:15px;color:#fff;background:linear-gradient(135deg,#35adff,#0751b7);box-shadow:0 10px 25px rgba(7,82,186,.4);transition:.3s}
+.chess-download:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(7,82,186,.55)}
+.chess-download-note{margin-top:8px;font-size:12px;color:#7f9cbc}
+.chess-close{margin-top:14px;width:100%;padding:11px;border-radius:13px;font-family:inherit;font-weight:800;font-size:14px;color:#cfe0f3;cursor:pointer;background:transparent;border:1px solid rgba(168,201,236,.35);transition:.3s}
+.chess-close:hover{background:rgba(168,201,236,.12)}
 </style>
   </head>
 
@@ -4868,64 +3987,16 @@
       type="button"
       aria-label="تشغيل الموسيقى"
     >
-      <span class="music-icon" id="musicIcon">🔊</span>
+      <span class="music-icon" id="musicIcon">🔇</span>
 
       <span id="musicText">تشغيل الموسيقى</span>
     </button>
 
     <!-- =====================================================
-       SPLASH SCREEN
+       MAIN CONTENT (ظاهر مباشرة بدون شاشة تحميل)
     ====================================================== -->
 
-    <div id="splash" aria-label="Loading">
-      <div class="crystal-field">
-        <span class="crystal c1"></span>
-        <span class="crystal c2"></span>
-        <span class="crystal c3"></span>
-        <span class="crystal c4"></span>
-        <span class="crystal c5"></span>
-        <span class="crystal c6"></span>
-        <span class="crystal c7"></span>
-        <span class="crystal c8"></span>
-        <span class="crystal c9"></span>
-        <span class="crystal c10"></span>
-        <span class="crystal c11"></span>
-        <span class="crystal c12"></span>
-        <span class="crystal c13"></span>
-        <span class="crystal c14"></span>
-      </div>
-
-      <div class="splash-content">
-        <div class="logo-stage">
-          <div class="logo-rope">
-            <div class="rope-light"></div>
-            <div class="rope-light-2"></div>
-          </div>
-
-          <img src="image/logoo.png" class="logo-3d" alt="Coursyria Logo" />
-        </div>
-
-        <div class="splash-title">COURSYRIA</div>
-
-        <div class="splash-subtitle">تعلّم • تطوّر • قد</div>
-
-        <div class="loader-wrap">
-          <div class="loader-bar">
-            <div id="loader-progress"></div>
-          </div>
-
-          <div id="loader-text">جارِ تحميل الموقع... 0%</div>
-        </div>
-
-        <button id="skipSplash" class="skip-splash">تخطي ⏭</button>
-      </div>
-    </div>
-
-    <!-- =====================================================
-       MAIN CONTENT
-    ====================================================== -->
-
-    <div id="main-content" class="hidden">
+    <div id="main-content">
       <div class="page">
         <!-- =====================================================
            NAVIGATION
@@ -4956,6 +4027,8 @@
               <a href="#announcements" class="nav-link">الإعلانات</a>
 
               <a href="#graduation" class="nav-link">مشروع التخرج</a>
+
+              <a href="#career" class="nav-link">انضم إلينا</a>
 
               <a href="#faq" class="nav-link">الأسئلة الشائعة</a>
 
@@ -5132,10 +4205,6 @@
             <button class="filter-btn" data-filter="languages">🌎 لغات</button>
           </div>
           <div class="courses">
-            <!-- =====================================================
-       COMPUTER & DIGITAL SKILLS
-  ====================================================== -->
-
             <!-- 01 -->
             <a href="full/excel.html" class="course" data-category="tech">
               <div class="course-number">01</div>
@@ -5226,10 +4295,6 @@
               <div class="arrow">←</div>
             </a>
 
-            <!-- =====================================================
-       PROGRAMMING & DEVELOPMENT
-  ====================================================== -->
-
             <!-- 07 -->
             <a href="full/cpp.html" class="course" data-category="programming">
               <div class="course-number">07</div>
@@ -5311,10 +4376,6 @@
               <div class="arrow">←</div>
             </a>
 
-            <!-- =====================================================
-       DATA ANALYSIS
-  ====================================================== -->
-
             <!-- 12 -->
             <a
               href="full/Data_Analyst1.html"
@@ -5374,10 +4435,6 @@
               </div>
               <div class="arrow">←</div>
             </a>
-
-            <!-- =====================================================
-       DESIGN & MARKETING
-  ====================================================== -->
 
             <!-- 16 -->
             <a href="full/canva.html" class="course" data-category="design">
@@ -5486,10 +4543,6 @@
               <div class="arrow">←</div>
             </a>
 
-            <!-- =====================================================
-       CYBER SECURITY
-  ====================================================== -->
-
             <!-- 23 -->
             <a href="full/secure.html" class="course" data-category="cyber">
               <div class="course-number">23</div>
@@ -5530,10 +4583,6 @@
               </div>
               <div class="arrow">←</div>
             </a>
-
-            <!-- =====================================================
-       BUSINESS & PROFESSIONAL SKILLS
-  ====================================================== -->
 
             <!-- 26 -->
             <a href="full/hr.html" class="course" data-category="business">
@@ -5603,10 +4652,6 @@
               </div>
               <div class="arrow">←</div>
             </a>
-
-            <!-- =====================================================
-       ENGLISH LANGUAGE
-  ====================================================== -->
 
             <!-- 31 -->
             <a href="full/a1.html" class="course" data-category="languages">
@@ -5693,10 +4738,6 @@
               </div>
               <div class="arrow">←</div>
             </a>
-
-            <!-- =====================================================
-       CAREER & EMPLOYMENT
-  ====================================================== -->
 
             <!-- 37 -->
             <a href="full/makeCvPro.html" class="course" data-category="career">
@@ -5825,30 +4866,25 @@
             </div>
           </section>
 
-<!-- ================= CHESS EDITION ================= -->
+<!-- ================= ANNOUNCEMENTS ================= -->
 <section class="extra-section" id="announcements">
   <div class="section-title">
     <h2>الإعلانات</h2>
     <div class="blue-line"></div>
   </div>
 
-  <!-- ====== قسم الشطرنج ====== -->
   <section class="announce-section" id="chessEdition">
-    <div class="announce-card">
+    <div class="announce-card chess-clickable" role="button" tabindex="0" onclick="openChess()">
 
-      <!-- الزوايا المزخرفة -->
       <span class="corner corner-tl"></span>
       <span class="corner corner-tr"></span>
       <span class="corner corner-bl"></span>
       <span class="corner corner-br"></span>
 
-      <!-- أرضية الشطرنج -->
       <div class="chess-floor"></div>
 
-      <!-- قطع الشطرنج -->
       <div class="chess-world">
 
-        <!-- الملكة -->
         <svg class="chess-piece queen" viewBox="0 0 100 150">
           <defs>
             <linearGradient id="silverQueen" x1="0" y1="0" x2="1" y2="1">
@@ -5868,7 +4904,6 @@
           </g>
         </svg>
 
-        <!-- الملك -->
         <svg class="chess-piece king" viewBox="0 0 100 150">
           <defs>
             <linearGradient id="silverKing" x1="0" y1="0" x2="1" y2="1">
@@ -5887,7 +4922,6 @@
           </g>
         </svg>
 
-        <!-- القلعة -->
         <svg class="chess-piece rook rook-one" viewBox="0 0 100 150">
           <defs>
             <linearGradient id="silverRook" x1="0" y1="0" x2="1" y2="1">
@@ -5905,7 +4939,6 @@
           </g>
         </svg>
 
-        <!-- الفيل -->
         <svg class="chess-piece bishop" viewBox="0 0 100 150">
           <defs>
             <linearGradient id="silverBishop" x1="0" y1="0" x2="1" y2="1">
@@ -5923,7 +4956,6 @@
           </g>
         </svg>
 
-        <!-- الحصان -->
         <svg class="chess-piece knight" viewBox="0 0 100 150">
           <defs>
             <linearGradient id="silverKnight" x1="0" y1="0" x2="1" y2="1">
@@ -5941,7 +4973,6 @@
           </g>
         </svg>
 
-        <!-- البيادق -->
         <svg class="chess-piece pawn pawn-one" viewBox="0 0 100 150">
           <defs>
             <linearGradient id="silverPawn" x1="0" y1="0" x2="1" y2="1">
@@ -5990,7 +5021,6 @@
         </svg>
       </div>
 
-      <!-- المحتوى الرئيسي -->
       <div class="announce-content">
         <div class="announce-brand">
           <div class="brand-mark">♛</div>
@@ -6001,48 +5031,22 @@
         </div>
 
         <div class="announce-title">
-          <span>SOMETHING</span>
-          <strong>BIG IS COMING</strong>
+          <span>CHESS</span>
+          <strong>CHALLENGE</strong>
         </div>
 
         <div class="announce-line"></div>
 
-        <p class="announce-subtitle">PREPARE YOUR STRATEGY</p>
+        <p class="announce-subtitle">تحدَّ المدرب واربح الجوائز</p>
 
-        <div class="announce-date">
-          <div class="date-number">10 / 1</div>
-          <div class="date-month">OCTOBER</div>
-        </div>
-
-        <div class="announce-countdown">
-          <div class="count-box">
-            <strong id="chessDays">00</strong>
-            <span>يوم</span>
-          </div>
-          <div class="count-box">
-            <strong id="chessHours">00</strong>
-            <span>ساعة</span>
-          </div>
-          <div class="count-box">
-            <strong id="chessMinutes">00</strong>
-            <span>دقيقة</span>
-          </div>
-          <div class="count-box">
-            <strong id="chessSeconds">00</strong>
-            <span>ثانية</span>
-          </div>
-        </div>
+        <span class="chess-open-btn">اضغط لمعرفة تفاصيل الحرب ♟</span>
 
         <div class="strategy-text">COMPETE <i>•</i> STRATEGIZE <i>•</i> WIN</div>
-
-        <div class="announce-footer">
-          <strong>ONLY THE BEST WILL RISE</strong>
-          <span>STAY TUNED...</span>
-        </div>
       </div>
     </div>
   </section>
 </section>
+
         <!-- =====================================================
      GRADUATION PROJECT & CERTIFICATE
 ====================================================== -->
@@ -6059,41 +5063,28 @@
 
   <div class="extra-grid">
 
-    <!-- مشروع التخرج -->
     <a href="extra/project.html" class="extra-card" id="graduationProjectLink">
-
       <div class="extra-icon">🎓</div>
-
       <h3>مشروع التخرج</h3>
-
       <p>
         تعرّف على مشروع التخرج الخاص بـ Coursyria، تفاصيله، مراحله،
         وأهدافه التعليمية.
       </p>
-
       <span class="extra-cta">
         استكشف المشروع ←
       </span>
-
     </a>
 
-
-    <!-- شهادة الخبرة -->
     <a href="extra/certificate.html" class="extra-card" id="experienceCertificateLink">
-
       <div class="extra-icon">📜</div>
-
       <h3>شهادة الخبرة</h3>
-
       <p>
         اطّلع على تفاصيل شهادة الخبرة التي يقدّمها Coursyria وشروط
         الحصول عليها.
       </p>
-
       <span class="extra-cta">
         استكشف الشهادة ←
       </span>
-
     </a>
 
   </div>
@@ -6101,33 +5092,59 @@
 </section>
 
 <!-- =====================================================
+   CAREER OPPORTUNITY - فرص العمل
+====================================================== -->
+
+<section class="career-section" id="career">
+  <div class="section-title">
+    <h2>انضم إلى فريقنا</h2>
+    <div class="blue-line"></div>
+    <p>فرصة عمل مع فريق Coursyria</p>
+  </div>
+
+  <div class="career-grid">
+    
+    <!-- بطاقة العمل -->
+    <a href="full/joop.html" class="career-card">
+      <div class="career-icon">
+        <i class="fas fa-briefcase"></i>
+      </div>
+      <h3>فرصة عمل</h3>
+      <p>
+        انضم إلى فريق Coursyria في مجال العمل والإدارة، وكن جزءاً من
+        رحلة النجاح والتطوير.
+      </p>
+      <span class="career-cta">
+        قدّم الآن <i class="fas fa-arrow-left"></i>
+      </span>
+    </a>
+  </div>
+  
+</section>
+
+<!-- =====================================================
 FOOTER
 ===================================================== -->
 <footer class="footer">
     <div class="footer-content">
-        <!-- القسم الرئيسي -->
         <div class="footer-main">
             <strong>COURSYRIA</strong>
             <br />
             <span>تعلّم • تطوّر • قد</span>
         </div>
 
-        <!-- قسم التعاون الفخم -->
         <div class="collaboration-section">
             <div class="collaboration-wrapper">
-                <!-- اسم عبدالرحمن مع رابط واتساب -->
                 <a href="https://wa.me/963995980568" target="_blank" rel="noopener noreferrer" class="collaborator-link">
                     <span class="collaborator"> المهندس عبد الرحمن الحنفي</span>
                 </a>
                 
-                <!-- تأثير VS الفخم -->
                 <div class="vs-container">
                     <div class="vs-ring"></div>
                     <span class="vs-text">VS</span>
                     <div class="vs-ring vs-ring-2"></div>
                 </div>
                 
-                <!-- اسم لين مع رابط واتساب -->
                 <a href="https://wa.me/963937015714" target="_blank" rel="noopener noreferrer" class="collaborator-link">
                     <span class="collaborator"> المهندسة لين حسن الكردي</span>
                 </a>
@@ -6135,7 +5152,6 @@ FOOTER
             <p class="collaboration-sub">بتعاون احترافي • معاً نبني المستقبل</p>
         </div>
 
-        <!-- روابط التواصل الاجتماعي -->
         <div class="social-links">
             <a href="https://www.facebook.com/share/17mC8apPAL/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="فيسبوك">
                 <i class="fab fa-facebook-f"></i>
@@ -6152,14 +5168,9 @@ FOOTER
     </div>
 </footer>
       </div>
-      <!-- =====================================================
-         إغلاق .page
-      ====================================================== -->
+      <!-- إغلاق .page -->
 
-      <!-- =====================================================
-   SHAM CASH CURTAIN (خارج .page)
-===================================================== -->
-
+      <!-- SHAM CASH CURTAIN -->
       <div
         id="shamCashCurtain"
         class="shamcash-curtain"
@@ -6173,10 +5184,27 @@ FOOTER
         </div>
       </div>
 
-      <!-- =====================================================
-   RANK MODAL (خارج .page)
-===================================================== -->
+      <!-- CHESS MODAL -->
+      <div id="chessModal" class="chess-modal" onclick="if (event.target === this) closeChess();">
+        <div class="chess-modal-box">
+          <div class="chess-modal-icon">♛</div>
+          <h3>حرب الشطرنج</h3>
+          <p class="chess-modal-sub">نظام التحدي والجوائز</p>
+          <p class="chess-intro">تُقام حرب شطرنج، حيث يحق لكل مشارك أن <strong>يتحدى المدرب ثلاث مرات</strong>.</p>
+          <p class="chess-prizes-title">الجوائز حسب عدد مرات الفوز على المدرب:</p>
+          <div class="chess-prizes">
+            <div class="prize-item prize-gold"><span class="prize-badge">🏆 3</span><div><b>الفوز 3 مرات</b><br />الجائزة الكبرى (سرية) 🎁</div></div>
+            <div class="prize-item"><span class="prize-badge">🥈 2</span><div><b>الفوز مرتين</b><br />حسم دائم على الكورسات، وتدفع فقط رسوم الشهادة والمشروع</div></div>
+            <div class="prize-item"><span class="prize-badge">🥉 1</span><div><b>الفوز مرة واحدة</b><br />حسم 50% لمدة شهر على كل شيء</div></div>
+            <div class="prize-item prize-out"><span class="prize-badge">✖ 0</span><div><b>عدم الفوز ولا مرة</b><br />يُستبعد المشارك ويخرج من الفريق تماماا</div></div>
+          </div>
+          <a class="chess-download" href="https://play.google.com/store/apps/details?id=com.miniclip.chess" target="_blank" rel="noopener noreferrer"><i class="fab fa-google-play"></i> نزّل لعبة الشطرنج من Google Play</a>
+          <p class="chess-download-note">نزّل اللعبة لتلعب مع الأستاذ ♟</p>
+          <button class="chess-close" onclick="closeChess()">إغلاق</button>
+        </div>
+      </div>
 
+      <!-- RANK MODAL -->
       <div
         id="rankModal"
         class="modal"
@@ -6188,9 +5216,7 @@ FOOTER
         </div>
       </div>
     </div>
-    <!-- =====================================================
-       إغلاق #main-content
-    ====================================================== -->
+    <!-- إغلاق #main-content -->
 
     <button id="backToTop" class="back-to-top" aria-label="العودة للأعلى">
       <i class="fas fa-arrow-up"></i>
@@ -6255,7 +5281,7 @@ FOOTER
       renderRanks();
 
       /* =====================================================
-         IMAGE FALLBACK (broken image handling)
+         IMAGE FALLBACK
       ====================================================== */
 
       const FALLBACK_IMG =
@@ -6277,124 +5303,22 @@ FOOTER
       document.querySelectorAll("img").forEach(attachImageFallback);
 
       /* =====================================================
-         COUNTDOWN TIMER (ANNOUNCEMENT)
-      ====================================================== */
-
-      (function initCountdown() {
-        // موعد المفاجأة: 1 تشرين الأول (أكتوبر) من السنة الحالية أو القادمة إن كان قد مرّ
-        function getTargetDate() {
-          const now = new Date();
-          let target = new Date(now.getFullYear(), 9, 1, 0, 0, 0); // الشهر 9 = أكتوبر (index 0-based)
-          if (target.getTime() <= now.getTime()) {
-            target = new Date(now.getFullYear() + 1, 9, 1, 0, 0, 0);
-          }
-          return target;
-        }
-
-        const cdDays = document.getElementById("cdDays");
-        const cdHours = document.getElementById("cdHours");
-        const cdMinutes = document.getElementById("cdMinutes");
-        const cdSeconds = document.getElementById("cdSeconds");
-        const countdownWrap = document.getElementById("countdownWrap");
-        const announceEnded = document.getElementById("announceEnded");
-
-        if (!cdDays || !cdHours || !cdMinutes || !cdSeconds) return;
-
-        let targetDate = getTargetDate();
-
-        function pad(n) {
-          return String(n).padStart(2, "0");
-        }
-
-        function tick() {
-          const now = new Date().getTime();
-          let diff = targetDate.getTime() - now;
-
-          if (diff <= 0) {
-            if (countdownWrap) countdownWrap.style.display = "none";
-            if (announceEnded) announceEnded.style.display = "inline-block";
-            // إعادة حساب الهدف لو مرّ الموعد (تحسباً لبقاء الصفحة مفتوحة)
-            targetDate = getTargetDate();
-            return;
-          }
-
-          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-          const minutes = Math.floor((diff / (1000 * 60)) % 60);
-          const seconds = Math.floor((diff / 1000) % 60);
-
-          cdDays.textContent = pad(days);
-          cdHours.textContent = pad(hours);
-          cdMinutes.textContent = pad(minutes);
-          cdSeconds.textContent = pad(seconds);
-        }
-
-        tick();
-        setInterval(tick, 1000);
-      })();
-
-      /* =====================================================
-         GRADUATION PROJECT / CERTIFICATE LINKS
-         (ضع الروابط هنا لاحقاً)
-      ====================================================== */
-
-      // مثال: document.getElementById('graduationProjectLink').href = 'full/graduation.html';
-      // مثال: document.getElementById('experienceCertificateLink').href = 'full/certificate.html';
-
-      /* =====================================================
          AUDIO
       ====================================================== */
 
       const introAudio = document.getElementById("introAudio");
-
       const backgroundAudio = document.getElementById("backgroundAudio");
-
       const musicControl = document.getElementById("musicControl");
-
       const musicIcon = document.getElementById("musicIcon");
-
       const musicText = document.getElementById("musicText");
 
       let musicEnabled = false;
 
-      function startIntroMusic() {
-        introAudio.currentTime = 0;
-
-        const playPromise = introAudio.play();
-
-        if (playPromise !== undefined) {
-          playPromise
-            .then(function () {
-              musicEnabled = true;
-              updateMusicButton();
-            })
-            .catch(function () {
-              musicEnabled = false;
-              updateMusicButton();
-            });
-        }
-      }
-
       musicControl.addEventListener("click", function () {
-        if (!introAudio.paused && !introAudio.ended) {
-          introAudio.pause();
-
-          backgroundAudio.pause();
-
-          musicEnabled = false;
-
-          updateMusicButton();
-
-          return;
-        }
-
         if (!backgroundAudio.paused) {
           backgroundAudio.pause();
-
           musicEnabled = false;
-
           updateMusicButton();
-
           return;
         }
 
@@ -6408,59 +5332,63 @@ FOOTER
       });
 
       function updateMusicButton() {
-        const playing =
-          musicEnabled && (!introAudio.paused || !backgroundAudio.paused);
+        const playing = musicEnabled && !backgroundAudio.paused;
 
         if (playing) {
           musicControl.classList.add("playing");
-
           musicIcon.textContent = "🔊";
-
           musicText.textContent = "إيقاف الموسيقى";
-
           musicControl.setAttribute("aria-label", "إيقاف الموسيقى");
         } else {
           musicControl.classList.remove("playing");
-
           musicIcon.textContent = "🔇";
-
           musicText.textContent = "تشغيل الموسيقى";
-
           musicControl.setAttribute("aria-label", "تشغيل الموسيقى");
         }
       }
+
+      /* تشغيل الموسيقى عند أول تفاعل من المستخدم */
+      document.addEventListener(
+        "click",
+        function firstUserInteraction() {
+          if (backgroundAudio.paused && !musicEnabled) {
+            backgroundAudio
+              .play()
+              .then(function () {
+                musicEnabled = true;
+                updateMusicButton();
+              })
+              .catch(function () {});
+          }
+          document.removeEventListener("click", firstUserInteraction);
+        },
+        { once: true },
+      );
 
       /* =====================================================
          MOBILE NAVIGATION
       ====================================================== */
 
       const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-
       const navLinks = document.getElementById("navLinks");
 
       mobileMenuBtn.addEventListener("click", function () {
         navLinks.classList.toggle("open");
-
         const isOpen = navLinks.classList.contains("open");
-
         mobileMenuBtn.setAttribute("aria-expanded", isOpen);
-
         mobileMenuBtn.textContent = isOpen ? "✕" : "☰";
       });
 
       document.querySelectorAll(".nav-link").forEach(function (link) {
         link.addEventListener("click", function () {
           navLinks.classList.remove("open");
-
           mobileMenuBtn.setAttribute("aria-expanded", "false");
-
           mobileMenuBtn.textContent = "☰";
         });
       });
 
       /* =====================================================
          NAVIGATION <-> SECTIONS
-         ربط عناصر الناف بار بالأقسام وإظهار العنصر النشط
       ====================================================== */
       const sectionNavLinks = Array.from(document.querySelectorAll(".navbar .nav-link"));
       const sectionIds = sectionNavLinks
@@ -6521,7 +5449,6 @@ FOOTER
 ===================================================== */
 
       const filterButtons = document.querySelectorAll(".filter-btn");
-
       const courseCards = document.querySelectorAll(
         ".courses-section#courses .course",
       );
@@ -6530,15 +5457,12 @@ FOOTER
         button.addEventListener("click", function () {
           const filter = button.getAttribute("data-filter");
 
-          // إزالة التفعيل عن جميع الأزرار
           filterButtons.forEach(function (btn) {
             btn.classList.remove("active");
           });
 
-          // تفعيل الزر الحالي
           button.classList.add("active");
 
-          // إظهار وإخفاء الكورسات
           courseCards.forEach(function (course) {
             const category = course.getAttribute("data-category");
 
@@ -6577,6 +5501,16 @@ FOOTER
    RANK MODAL
 ===================================================== */
 
+      function openChess() {
+        document.getElementById("chessModal").classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeChess() {
+        document.getElementById("chessModal").classList.remove("show");
+        document.body.style.overflow = "";
+      }
+
       function openRank(imgSrc) {
         document.getElementById("rankImg").src = imgSrc;
         document.getElementById("rankModal").style.display = "flex";
@@ -6608,6 +5542,7 @@ FOOTER
           document.body.style.overflow = "";
         }, 450);
       }
+
       /* =====================================================
          KEYBOARD ACTIVATION FOR role="button" DIVs
       ====================================================== */
@@ -6628,117 +5563,13 @@ FOOTER
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") {
           closeRank();
-
           closeShamCash();
-
+          closeChess();
           navLinks.classList.remove("open");
-
           mobileMenuBtn.setAttribute("aria-expanded", "false");
-
           mobileMenuBtn.textContent = "☰";
         }
       });
-
-      /* =====================================================
-         SPLASH LOADING
-      ====================================================== */
-
-      window.addEventListener("load", function () {
-        const splash = document.getElementById("splash");
-
-        const mainContent = document.getElementById("main-content");
-
-        const progress = document.getElementById("loader-progress");
-
-        const loaderText = document.getElementById("loader-text");
-
-        const skipBtn = document.getElementById("skipSplash");
-
-        startIntroMusic();
-
-        const totalTime = 3200;
-
-        let current = 0;
-
-        let finished = false;
-
-        function finishSplash() {
-          if (finished) return;
-          finished = true;
-
-          splash.classList.add("hide");
-
-          mainContent.classList.remove("hidden");
-
-          if (!introAudio.paused) {
-            introAudio.pause();
-          }
-
-          introAudio.currentTime = 0;
-
-          if (musicEnabled) {
-            backgroundAudio.currentTime = 0;
-
-            backgroundAudio
-              .play()
-              .then(function () {
-                musicEnabled = true;
-                updateMusicButton();
-              })
-              .catch(function () {});
-          }
-
-          setTimeout(function () {
-            splash.remove();
-          }, 900);
-        }
-
-        const loading = setInterval(function () {
-          current += 1;
-
-          progress.style.width = current + "%";
-
-          loaderText.textContent = "جارِ تحميل الموقع... " + current + "%";
-
-          if (current >= 100) {
-            clearInterval(loading);
-
-            setTimeout(finishSplash, 250);
-          }
-        }, totalTime / 100);
-
-        if (skipBtn) {
-          skipBtn.addEventListener("click", function () {
-            clearInterval(loading);
-            finishSplash();
-          });
-        }
-      });
-
-      document.addEventListener(
-        "click",
-        function firstUserInteraction() {
-          const splashStillVisible = document.getElementById("splash");
-
-          if (
-            splashStillVisible &&
-            introAudio.paused &&
-            backgroundAudio.paused &&
-            !musicEnabled
-          ) {
-            introAudio
-              .play()
-              .then(function () {
-                musicEnabled = true;
-                updateMusicButton();
-              })
-              .catch(function () {});
-          }
-
-          document.removeEventListener("click", firstUserInteraction);
-        },
-        { once: true },
-      );
 
       /* =====================================================
          SCROLL PROGRESS BAR
@@ -6795,74 +5626,7 @@ FOOTER
           }
         });
       });
-/* =====================================================
-   CHESS EDITION COUNTDOWN
-===================================================== */
 
-(function () {
-
-  const targetDate = new Date("2026-10-01T00:00:00").getTime();
-
-  function updateChessCountdown() {
-
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    const days = Math.max(
-      0,
-      Math.floor(distance / (1000 * 60 * 60 * 24))
-    );
-
-    const hours = Math.max(
-      0,
-      Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
-      )
-    );
-
-    const minutes = Math.max(
-      0,
-      Math.floor(
-        (distance % (1000 * 60 * 60)) /
-        (1000 * 60)
-      )
-    );
-
-    const seconds = Math.max(
-      0,
-      Math.floor(
-        (distance % (1000 * 60)) /
-        1000
-      )
-    );
-
-    const dayElement = document.getElementById("chessDays");
-    const hourElement = document.getElementById("chessHours");
-    const minuteElement = document.getElementById("chessMinutes");
-    const secondElement = document.getElementById("chessSeconds");
-
-    if (dayElement) {
-      dayElement.textContent = String(days).padStart(2, "0");
-    }
-
-    if (hourElement) {
-      hourElement.textContent = String(hours).padStart(2, "0");
-    }
-
-    if (minuteElement) {
-      minuteElement.textContent = String(minutes).padStart(2, "0");
-    }
-
-    if (secondElement) {
-      secondElement.textContent = String(seconds).padStart(2, "0");
-    }
-  }
-
-  updateChessCountdown();
-  setInterval(updateChessCountdown, 1000);
-
-})();
-    </script>
+      </script>
   </body>
 </html>
