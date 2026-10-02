@@ -1,0 +1,1251 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نحن نوظف | Coursyria</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --primary: #0a4d8c;
+        --primary-dark: #073d76;
+        --primary-light: #1599ed;
+        --accent: #00bcd4;
+        --text: #1a2b3c;
+        --text-light: #5a6f82;
+        --bg: #f5f9fd;
+        --white: #ffffff;
+        --shadow-sm: 0 2px 8px rgba(10, 77, 140, 0.06);
+        --shadow-md: 0 8px 24px rgba(10, 77, 140, 0.1);
+        --shadow-lg: 0 16px 48px rgba(10, 77, 140, 0.14);
+        --radius: 16px;
+        --radius-lg: 24px;
+      }
+
+      body {
+        font-family: "Cairo", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* =========================
+         Page Wrapper
+      ========================= */
+      .page {
+        width: 100%;
+        min-height: 100vh;
+        background:
+          radial-gradient(
+            ellipse 60% 40% at 10% 0%,
+            rgba(21, 153, 237, 0.07),
+            transparent
+          ),
+          radial-gradient(
+            ellipse 50% 40% at 95% 30%,
+            rgba(0, 188, 212, 0.06),
+            transparent
+          ),
+          radial-gradient(
+            ellipse 40% 30% at 50% 100%,
+            rgba(10, 77, 140, 0.04),
+            transparent
+          ),
+          var(--bg);
+      }
+
+      .container {
+        width: min(1120px, 92%);
+        margin: auto;
+      }
+
+      /* =========================
+         Header
+      ========================= */
+      header {
+        padding: 32px 0 0;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .brand {
+        text-align: center;
+      }
+
+      .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .logo-icon {
+        width: 68px;
+        height: 60px;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .graduation-cap {
+        width: 64px;
+        height: 28px;
+        background: linear-gradient(135deg, #1599ed, #0a7bc4);
+        transform: rotate(-3deg);
+        clip-path: polygon(0 45%, 50% 0, 100% 45%, 50% 100%);
+        position: absolute;
+        top: 3px;
+        left: 0;
+        filter: drop-shadow(0 3px 6px rgba(21, 153, 237, 0.25));
+      }
+
+      .cap-bottom {
+        position: absolute;
+        width: 44px;
+        height: 26px;
+        background: linear-gradient(180deg, #0a7bc4, #085a94);
+        left: 11px;
+        top: 28px;
+        border-radius: 0 0 10px 10px;
+        transform: skewY(6deg);
+      }
+
+      .cap-tassel {
+        position: absolute;
+        width: 4px;
+        height: 28px;
+        background: linear-gradient(180deg, #0d416e, #073d76);
+        right: 0;
+        top: 17px;
+        transform: rotate(8deg);
+        border-radius: 2px;
+      }
+
+      .brand-text {
+        text-align: right;
+      }
+
+      .brand-name {
+        font-size: 34px;
+        line-height: 1;
+        font-weight: 900;
+        color: var(--primary-dark);
+        letter-spacing: -1px;
+      }
+
+      .brand-subtitle {
+        font-size: 15px;
+        color: var(--text-light);
+        margin-top: 6px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      /* =========================
+         Hero
+      ========================= */
+      .hero {
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(21, 153, 237, 0.1);
+        color: var(--primary-light);
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        border: 1px solid rgba(21, 153, 237, 0.15);
+      }
+
+      .hero-badge::before {
+        content: "●";
+        font-size: 8px;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+
+      .hero-title {
+        font-size: clamp(44px, 8vw, 80px);
+        font-weight: 900;
+        color: var(--primary-dark);
+        line-height: 1.1;
+        letter-spacing: -2px;
+        margin-bottom: 16px;
+      }
+
+      .hero-title span {
+        color: var(--primary-light);
+      }
+
+      .hero-subtitle {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--primary-light), #0798ec);
+        color: white;
+        padding: 10px 36px;
+        border-radius: 50px;
+        font-size: clamp(16px, 2.5vw, 22px);
+        font-weight: 700;
+        margin-bottom: 24px;
+        box-shadow: 0 6px 20px rgba(21, 153, 237, 0.3);
+      }
+
+      .hero-description {
+        max-width: 640px;
+        margin: auto;
+        color: var(--text-light);
+        font-size: 18px;
+        line-height: 2;
+        font-weight: 500;
+      }
+
+      /* =========================
+         Section Label
+      ========================= */
+      .section-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+
+      .section-label::before {
+        content: "";
+        width: 4px;
+        height: 28px;
+        background: linear-gradient(
+          180deg,
+          var(--primary-light),
+          var(--accent)
+        );
+        border-radius: 4px;
+      }
+
+      .section-label h2 {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--primary-dark);
+      }
+
+      /* =========================
+         Jobs Grid
+      ========================= */
+      .jobs {
+        margin-top: 60px;
+      }
+
+      .jobs-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .job-card {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        padding: 28px 22px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border: 1px solid rgba(10, 77, 140, 0.06);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .job-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        transition: height 0.3s ease;
+      }
+
+      .job-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+        border-color: transparent;
+      }
+
+      .job-card:hover::before {
+        height: 6px;
+      }
+
+      .job-card.blue::before {
+        background: linear-gradient(90deg, #1599ed, #0a7bc4);
+      }
+      .job-card.purple::before {
+        background: linear-gradient(90deg, #8b5cf6, #6d28d9);
+      }
+      .job-card.green::before {
+        background: linear-gradient(90deg, #10b981, #059669);
+      }
+      .job-card.yellow::before {
+        background: linear-gradient(90deg, #f59e0b, #d97706);
+      }
+      .job-card.pink::before {
+        background: linear-gradient(90deg, #ec4899, #db2777);
+      }
+
+      .job-icon-wrapper {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 16px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        transition: transform 0.3s ease;
+      }
+
+      .job-card:hover .job-icon-wrapper {
+        transform: scale(1.1) rotate(-5deg);
+      }
+
+      .job-card.blue .job-icon-wrapper {
+        background: linear-gradient(135deg, #eef8ff, #dff2ff);
+      }
+      .job-card.purple .job-icon-wrapper {
+        background: linear-gradient(135deg, #f4efff, #e8ddff);
+      }
+      .job-card.green .job-icon-wrapper {
+        background: linear-gradient(135deg, #ecfffa, #d7f6ef);
+      }
+      .job-card.yellow .job-icon-wrapper {
+        background: linear-gradient(135deg, #fffaf0, #fff0cf);
+      }
+      .job-card.pink .job-icon-wrapper {
+        background: linear-gradient(135deg, #fff1f5, #ffe0e9);
+      }
+
+      .job-title {
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--primary-dark);
+        margin-bottom: 10px;
+      }
+
+      .job-description {
+        color: var(--text-light);
+        font-size: 13.5px;
+        line-height: 1.9;
+        font-weight: 500;
+      }
+
+      /* =========================
+         Contact Section
+      ========================= */
+      .contact-section {
+        margin-top: 60px;
+      }
+
+      .contact-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+
+      .contact-card {
+        width: 100%;
+        max-width: 720px;
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        padding: 36px 32px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(10, 77, 140, 0.06);
+        box-shadow: var(--shadow-md);
+        transition: all 0.35s ease;
+      }
+
+      .contact-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #25d366, #128c7e);
+      }
+
+      .contact-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .contact-icon-box {
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #ecfffa, #d7f6ef);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        transition: transform 0.3s ease;
+      }
+
+      .contact-card:hover .contact-icon-box {
+        transform: scale(1.08) rotate(-5deg);
+      }
+
+      .contact-content {
+        flex: 1;
+        text-align: right;
+      }
+
+      .contact-content h3 {
+        font-size: 19px;
+        font-weight: 800;
+        color: var(--primary-dark);
+        margin-bottom: 6px;
+        line-height: 1.5;
+      }
+
+      .contact-content p {
+        font-size: 14px;
+        color: var(--text-light);
+        font-weight: 500;
+      }
+
+      .whatsapp-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #25d366, #128c7e);
+        color: white;
+        text-decoration: none;
+        padding: 14px 28px;
+        border-radius: 50px;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 700;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+      }
+
+      .whatsapp-btn:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5);
+      }
+
+      .whatsapp-btn:active {
+        transform: translateY(-1px) scale(0.99);
+      }
+
+      .whatsapp-icon {
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+      }
+
+      .whatsapp-btn .arrow {
+        font-size: 18px;
+        transition: transform 0.3s ease;
+      }
+
+      .whatsapp-btn:hover .arrow {
+        transform: translateX(-5px);
+      }
+
+      /* =========================
+         Bottom Section
+      ========================= */
+      .bottom-section {
+        margin-top: 70px;
+        background: linear-gradient(
+          160deg,
+          #063b72 0%,
+          #0a4d8c 50%,
+          #0d5fa8 100%
+        );
+        color: white;
+        border-radius: 60px 60px 0 0;
+        padding: 50px 0 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bottom-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(21, 153, 237, 0.15),
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+
+      .bottom-section::after {
+        content: "";
+        position: absolute;
+        bottom: -30%;
+        left: -5%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 188, 212, 0.1),
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+
+      .bottom-section .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .benefits {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-bottom: 45px;
+      }
+
+      .benefit {
+        text-align: center;
+        padding: 24px 16px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.3s ease;
+        backdrop-filter: blur(4px);
+      }
+
+      .benefit:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-4px);
+      }
+
+      .benefit-icon {
+        font-size: 32px;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .benefit-title {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      /* =========================
+         CTA
+      ========================= */
+      .cta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .apply-button {
+        border: none;
+        background: linear-gradient(135deg, #1599ed, #0798ec);
+        color: white;
+        padding: 15px 38px;
+        border-radius: 50px;
+        font-family: inherit;
+        font-size: 19px;
+        font-weight: 800;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 24px rgba(21, 153, 237, 0.35);
+        white-space: nowrap;
+        text-decoration: none;
+        border: none;
+      }
+
+      .apply-button:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 12px 32px rgba(21, 153, 237, 0.5);
+        background: linear-gradient(135deg, #1aa5f5, #0890e0);
+        color: white;
+      }
+
+      .apply-button:active {
+        transform: translateY(-1px) scale(0.99);
+      }
+      .cta-text {
+        font-size: 14px;
+        line-height: 1.9;
+        color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        flex: 1;
+        font-weight: 500;
+      }
+
+      .future {
+        text-align: center;
+        min-width: 160px;
+      }
+
+      .future-main {
+        font-size: 18px;
+        font-weight: 800;
+        color: white;
+      }
+
+      .future-small {
+        font-size: 13px;
+        margin-bottom: 4px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .future-heart {
+        font-size: 24px;
+        color: #ff6b9d;
+        display: block;
+        margin-top: 4px;
+        animation: heartbeat 1.5s ease infinite;
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        14% {
+          transform: scale(1.2);
+        }
+        28% {
+          transform: scale(1);
+        }
+        42% {
+          transform: scale(1.15);
+        }
+        56% {
+          transform: scale(1);
+        }
+      }
+
+      /* =========================
+         Modal
+      ========================= */
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 29, 55, 0.7);
+        backdrop-filter: blur(6px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        z-index: 999;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-box {
+        width: min(480px, 100%);
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+        animation: popup 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .modal-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary-light), var(--accent));
+      }
+
+      @keyframes popup {
+        from {
+          opacity: 0;
+          transform: scale(0.85) translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      .modal-icon {
+        font-size: 52px;
+        margin-bottom: 16px;
+      }
+
+      .modal-box h2 {
+        color: var(--primary-dark);
+        margin-bottom: 10px;
+        font-size: 26px;
+        font-weight: 800;
+      }
+
+      .modal-box p {
+        color: var(--text-light);
+        margin-bottom: 24px;
+        font-size: 15px;
+        line-height: 1.9;
+        font-weight: 500;
+      }
+
+      .close-btn {
+        border: none;
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark),
+          var(--primary)
+        );
+        color: white;
+        padding: 12px 40px;
+        border-radius: 50px;
+        font-family: inherit;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 18px rgba(7, 61, 118, 0.25);
+      }
+
+      .close-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(7, 61, 118, 0.35);
+      }
+
+      /* =========================
+         Responsive
+      ========================= */
+      @media (max-width: 900px) {
+        .jobs-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .benefits {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .cta {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .cta-text {
+          order: 2;
+        }
+
+        .future {
+          order: 3;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .contact-card {
+          flex-direction: column;
+          text-align: center;
+          padding: 30px 22px;
+          gap: 18px;
+        }
+
+        .contact-content {
+          text-align: center;
+        }
+
+        .contact-content h3 {
+          font-size: 17px;
+        }
+
+        .whatsapp-btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 560px) {
+        header {
+          padding-top: 24px;
+        }
+
+        .brand-name {
+          font-size: 26px;
+        }
+
+        .brand-subtitle {
+          font-size: 12px;
+        }
+
+        .logo-icon {
+          transform: scale(0.8);
+          margin-left: -4px;
+        }
+
+        .hero {
+          margin-top: 24px;
+        }
+
+        .hero-badge {
+          font-size: 12px;
+          padding: 6px 14px;
+        }
+
+        .hero-title {
+          font-size: 40px;
+          letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+          font-size: 14px;
+          padding: 8px 22px;
+        }
+
+        .hero-description {
+          font-size: 14px;
+          line-height: 1.9;
+          padding: 0 10px;
+        }
+
+        .jobs {
+          margin-top: 36px;
+        }
+
+        .section-label h2 {
+          font-size: 20px;
+        }
+
+        .jobs-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+
+        .job-card {
+          padding: 18px 12px;
+          border-radius: var(--radius);
+        }
+
+        .job-icon-wrapper {
+          width: 60px;
+          height: 60px;
+          font-size: 30px;
+          margin-bottom: 12px;
+          border-radius: 16px;
+        }
+
+        .job-title {
+          font-size: 14px;
+        }
+
+        .job-description {
+          font-size: 11px;
+          line-height: 1.7;
+        }
+
+        .contact-section {
+          margin-top: 40px;
+        }
+
+        .contact-icon-box {
+          width: 66px;
+          height: 66px;
+          font-size: 32px;
+          border-radius: 16px;
+        }
+
+        .contact-content h3 {
+          font-size: 15px;
+        }
+
+        .contact-content p {
+          font-size: 12.5px;
+        }
+
+        .whatsapp-btn {
+          font-size: 14px;
+          padding: 12px 22px;
+        }
+
+        .bottom-section {
+          margin-top: 40px;
+          border-radius: 36px 36px 0 0;
+          padding: 32px 0 28px;
+        }
+
+        .benefits {
+          gap: 12px;
+          margin-bottom: 30px;
+        }
+
+        .benefit {
+          padding: 16px 10px;
+          border-radius: 12px;
+        }
+
+        .benefit-icon {
+          font-size: 24px;
+        }
+
+        .benefit-title {
+          font-size: 11px;
+        }
+
+        .apply-button {
+          font-size: 16px;
+          padding: 13px 30px;
+        }
+
+        .cta-text {
+          font-size: 12px;
+        }
+
+        .future-main {
+          font-size: 16px;
+        }
+
+        .future-small {
+          font-size: 12px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .hero-title {
+          font-size: 34px;
+        }
+
+        .jobs-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+
+        .job-card {
+          padding: 14px 8px;
+        }
+
+        .job-title {
+          font-size: 12px;
+        }
+
+        .job-description {
+          font-size: 10px;
+        }
+
+        .job-icon-wrapper {
+          width: 50px;
+          height: 50px;
+          font-size: 26px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- ================= Header ================= -->
+      <header>
+        <div class="container">
+          <div class="header-content">
+            <div class="brand">
+              <div class="logo">
+                <div class="logo-icon">
+                  <div class="graduation-cap"></div>
+                  <div class="cap-bottom"></div>
+                  <div class="cap-tassel"></div>
+                </div>
+                <div class="brand-text">
+                  <div class="brand-name">COURSYRIA</div>
+                  <div class="brand-subtitle">تعلم • تطور • قد</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ================= Hero ================= -->
+      <main>
+        <section class="hero container">
+          <div class="hero-badge">وظائف متاحة الآن</div>
+          <h1 class="hero-title">نحن <span>نوظف</span></h1>
+          <div class="hero-subtitle">كن جزءًا من فريق Coursyria</div>
+          <p class="hero-description">
+            نبحث عن طاقات مبدعة وشغوفة بالتعلم والتطوير
+            <br />
+            للانضمام إلى فريقنا في مجالات مختلفة.
+          </p>
+        </section>
+
+        <!-- ================= Jobs ================= -->
+        <section class="jobs container">
+          <div class="section-label">
+            <h2>الوظائف المتاحة</h2>
+          </div>
+          <div class="jobs-grid">
+            <!-- Designer -->
+            <article class="job-card blue">
+              <div class="job-icon-wrapper">💻</div>
+              <div class="job-title">مصمم كانفا</div>
+              <p class="job-description">
+                لديك إبداع في التصميم؟
+                <br />
+                انضم إلينا لتصميم محتوى بصري
+                <br />
+                مميز ومؤثر.
+              </p>
+            </article>
+
+            <!-- Media -->
+            <article class="job-card purple">
+              <div class="job-icon-wrapper">🎥</div>
+              <div class="job-title">وجه إعلامي</div>
+              <p class="job-description">
+                لديك حضور قوي وصوت مميز؟
+                <br />
+                كن صوت Coursyria وشارك
+                <br />
+                في إيصال رسالتنا.
+              </p>
+            </article>
+
+            <!-- Management -->
+            <article class="job-card green">
+              <div class="job-icon-wrapper">📅</div>
+              <div class="job-title">إدارة غروبات وتنظيم مواعيد</div>
+              <p class="job-description">
+                تنظيمك واهتمامك بالتفاصيل
+                <br />
+                يصنعان فرقًا في سير العمل
+                <br />
+                وتواصلنا مع المنضمين.
+              </p>
+            </article>
+
+            <!-- Trainer -->
+            <article class="job-card yellow">
+              <div class="job-icon-wrapper">👨‍🏫</div>
+              <div class="job-title">مدرب</div>
+              <p class="job-description">
+                هل لديك خبرة في مجال معين؟
+                <br />
+                انقل معرفتك وكن سببًا في تطوير
+                <br />
+                مهارات الآخرين.
+              </p>
+            </article>
+
+            <!-- Marketing -->
+            <article class="job-card pink">
+              <div class="job-icon-wrapper">📣</div>
+              <div class="job-title">مسوق إلكتروني</div>
+              <p class="job-description">
+                تملك شغف التسويق وخبرة في
+                <br />
+                المنصات الرقمية؟
+                <br />
+                ساعدنا في توسيع أثر Coursyria.
+              </p>
+            </article>
+
+            <!-- Extra card -->
+            <article class="job-card blue">
+              <div class="job-icon-wrapper">💡</div>
+              <div class="job-title">أفكار ومبادرات</div>
+              <p class="job-description">
+                لديك فكرة جديدة أو مهارة
+                <br />
+                مختلفة؟
+                <br />
+                نرحب بإبداعك معنا.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- ================= Contact ================= -->
+        <section class="contact-section" id="contact">
+          <div class="container">
+            <div class="section-label">
+              <h2>📞 التواصل</h2>
+            </div>
+
+            <div class="contact-wrapper">
+              <div class="contact-card">
+                <div class="contact-icon-box">
+                  <span>👨‍🏫</span>
+                </div>
+
+                <div class="contact-content">
+                  <h3>المدرب المهندس عبدالرحمن الحنفي</h3>
+                  <p>يمكنك التواصل مباشرة عبر واتساب</p>
+                </div>
+
+                <a
+                  href="https://wa.me/963995980568"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="whatsapp-btn"
+                  aria-label="التواصل عبر واتساب"
+                >
+                  <span class="whatsapp-icon">◉</span>
+                  <span>تواصل عبر واتساب</span>
+                  <span class="arrow">←</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- ================= Bottom ================= -->
+      <footer class="bottom-section">
+        <div class="container">
+          <div class="benefits">
+            <div class="benefit">
+              <span class="benefit-icon">👥</span>
+              <div class="benefit-title">
+                فريق شاب<br />
+                ومتحمس
+              </div>
+            </div>
+
+            <div class="benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-title">
+                بيئة عمل<br />
+                داعمة وإبداعية
+              </div>
+            </div>
+
+            <div class="benefit">
+              <span class="benefit-icon">📈</span>
+              <div class="benefit-title">
+                فرص للتطور<br />
+                والتعلم
+              </div>
+            </div>
+
+            <div class="benefit">
+              <span class="benefit-icon">★</span>
+              <div class="benefit-title">
+                المساهمة في<br />
+                مشروع تعليمي هادف
+              </div>
+            </div>
+          </div>
+
+          <div class="cta">
+            <a
+              href="https://form.svhrt.com/6abf9aebbef3d743c1426574"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="apply-button"
+            >
+              ✈ قدم الآن
+            </a>
+            <div class="cta-text">
+              إذا كنت ترى في نفسك الشغف
+              <br />
+              والكفاءة، تواصل معنا وانضم إلى
+              <br />
+              رحلة Coursyria.
+            </div>
+
+            <div class="future">
+              <div class="future-small">معًا نصنع</div>
+              <div class="future-main">مستقبلًا أفضل</div>
+              <div class="future-heart">♡</div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ================= Modal ================= -->
+    <div class="modal" id="modal">
+      <div class="modal-box">
+        <div class="modal-icon">🎉</div>
+        <h2>انضم إلى فريق Coursyria</h2>
+        <p>
+          شكرًا لاهتمامك بالانضمام إلى فريقنا.
+          <br />
+          سيتم التواصل معك بعد إرسال طلبك.
+        </p>
+        <button class="close-btn" id="closeBtn">إغلاق</button>
+      </div>
+    </div>
+
+    <script>
+      const applyBtn = document.getElementById("applyBtn");
+      const modal = document.getElementById("modal");
+      const closeBtn = document.getElementById("closeBtn");
+
+      applyBtn.addEventListener("click", function () {
+        modal.classList.add("active");
+      });
+
+      closeBtn.addEventListener("click", function () {
+        modal.classList.remove("active");
+      });
+
+      modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+          modal.classList.remove("active");
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          modal.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>
